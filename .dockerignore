@@ -1,0 +1,8 @@
+.env
+.git
+.venv
+__pycache__
+*.pyc
+data/qdrant_db
+data/docs_db
+data/parsed_docs
