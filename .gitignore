@@ -181,3 +181,11 @@ cython_debug/
 
 # ignore below since it gets updated on every local run
 uploads/skin_lesion_output/segmentation_plot.png
+
+# Generated RAG artifacts - regenerate via: python ingest_rag_data.py --dir data/raw
+data/qdrant_db/
+data/docs_db/
+data/parsed_docs/
+
+# Model weights - skin lesion auto-downloads; others must be placed manually
+*.pth

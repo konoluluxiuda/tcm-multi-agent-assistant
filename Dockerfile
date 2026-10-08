@@ -40,8 +40,8 @@ EXPOSE 8000
 # Set environment variable for Python to run in unbuffered mode
 ENV PYTHONUNBUFFERED=1
 
-# Set healthcheck
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+# Set healthcheck (start-period covers CV model loading on boot, ~15s)
+HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
   CMD curl -f http://localhost:8000/health || exit 1
 
 # Run the application
