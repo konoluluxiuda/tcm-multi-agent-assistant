@@ -1,0 +1,115 @@
+[
+  {
+    "name": "homepage",
+    "path": "/",
+    "http_status": 200,
+    "expected_status": 200,
+    "http_pass": true,
+    "body": "<!-- templates/index.html -->\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <tit",
+    "elapsed_s": 0.05
+  },
+  {
+    "name": "health",
+    "path": "/health",
+    "http_status": 200,
+    "expected_status": 200,
+    "http_pass": true,
+    "body": {
+      "status": "healthy"
+    },
+    "elapsed_s": 0.0
+  },
+  {
+    "name": "missing_query",
+    "path": "/chat",
+    "http_status": 422,
+    "expected_status": 422,
+    "http_pass": true,
+    "body": {
+      "detail": [
+        {
+          "type": "missing",
+          "loc": [
+            "body",
+            "query"
+          ],
+          "msg": "Field required",
+          "input": {}
+        }
+      ]
+    },
+    "elapsed_s": 0.01
+  },
+  {
+    "name": "invalid_upload_extension",
+    "path": "/upload",
+    "http_status": 400,
+    "expected_status": 400,
+    "http_pass": true,
+    "body": {
+      "status": "error",
+      "agent": "System",
+      "response": "Unsupported file type. Allowed formats: PNG, JPG, JPEG"
+    },
+    "elapsed_s": 0.0
+  },
+  {
+    "name": "empty_speech_rejected",
+    "path": "/generate-speech",
+    "http_status": 400,
+    "expected_status": 400,
+    "http_pass": true,
+    "body": {
+      "error": "Text is required"
+    },
+    "elapsed_s": 0.0
+  },
+  {
+    "name": "chinese_greeting",
+    "path": "/chat",
+    "http_status": 200,
+    "expected_status": 200,
+    "http_pass": true,
+    "body": {
+      "status": "success",
+      "response": "你好！我可以帮你进行医学资料查询与科普解读，主要包括：\n\n- **疾病与症状信息**：常见疾病的病因、症状、传播途径、预防和一般治疗原则。\n- **药物与用药常识**：药物用途、常见副作用、注意事项、相互作用等一般信息。\n- **检查与检验解读**：帮助理解化验单、影像报告中的医学术语和指标含义，但不做诊断。\n- **医学指南与文献摘要**：根据权威来源（如 WHO、NIH、Mayo Clinic、临床指南等）整理信息，并尽量注明来源。\n- **健康管理建议**：饮食、运动、疫苗、筛查、慢病管理等一般性健康资料。\n- **复杂问题检索**：如果问题较新或较复杂，我会结合资料检索来回答。\n- **医学图像相关**：如果你需要分析医学图像，请先上传图片，之后可由专门的医学视觉分析工具处理，我再帮你解读结果。\n\n需要提醒的是：我不能替代医生进行诊断或开处方；如有严重或紧急症状，请及时就医。\n\n你想查询哪方面？例如某种疾病、药物、检查报告，还是医学指南？",
+      "agent": "CONVERSATION_AGENT"
+    },
+    "elapsed_s": 8.39
+  },
+  {
+    "name": "medical_rag",
+    "path": "/chat",
+    "http_status": 500,
+    "expected_status": 200,
+    "http_pass": false,
+    "body": {
+      "detail": "1 validation error for TavilySearchAPIWrapper\n  Value error, Did not find tavily_api_key, please add an environment variable `TAVILY_API_KEY` which contains it, or pass `tavily_api_key` as a named parameter. [type=value_error, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.10/v/value_error"
+    },
+    "elapsed_s": 66.35
+  },
+  {
+    "name": "request_sources",
+    "path": "/chat",
+    "http_status": 500,
+    "expected_status": 200,
+    "http_pass": false,
+    "body": {
+      "detail": "1 validation error for TavilySearchAPIWrapper\n  Value error, Did not find tavily_api_key, please add an environment variable `TAVILY_API_KEY` which contains it, or pass `tavily_api_key` as a named parameter. [type=value_error, input_value={}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.10/v/value_error"
+    },
+    "elapsed_s": 28.24
+  },
+  {
+    "name": "chest_xray_sample",
+    "path": "/upload",
+    "http_status": 200,
+    "expected_status": 200,
+    "http_pass": true,
+    "body": {
+      "status": "success",
+      "response": "I can’t diagnose COVID-19 from a chest X-ray. A chest X-ray alone cannot confirm or rule out COVID-19, and an automated “positive” image analysis should not be treated as a diagnosis. COVID-19 diagnosis requires appropriate testing (such as PCR or antigen testing) and evaluation by a qualified healthcare professional.\n\nIf you have symptoms or concerns about COVID-19, contact a healthcare provider or local testing site. If you have severe symptoms—such as difficulty breathing, chest pain, confusion, or bluish lips/face—seek emergency care immediately.\n\nThis information is not a substitute for professional medical advice, diagnosis, or treatment. Patients should not confirm or validate this output as a diagnosis. Only qualified healthcare professionals can appropriately interpret medical imaging and test results.",
+      "agent": "CHEST_XRAY_AGENT, HUMAN_VALIDATION"
+    },
+    "elapsed_s": 8.75
+  }
+]

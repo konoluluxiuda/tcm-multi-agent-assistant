@@ -1,0 +1,18 @@
+[
+  {
+    "url": "http://127.0.0.1:7861/data/raw/brain_tumors_ucni.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "prefix": "%PDF-1.6"
+  },
+  {
+    "url": "http://localhost:8000/data/raw/brain_tumors_ucni.pdf",
+    "error": "RTSP/1.0 400 Bad Request\r\n"
+  },
+  {
+    "url": "http://localhost:7860/health",
+    "status": 200,
+    "content_type": "application/json",
+    "prefix": "{\"status"
+  }
+]

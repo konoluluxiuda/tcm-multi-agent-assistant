@@ -1,0 +1,2991 @@
+{
+  "created_at": "2026-10-10T04:33:30.981393+00:00",
+  "source": "/home/zry/workspace/HDCTI/dataset/ETCM2.0",
+  "method": "Full scan of selected full_groups; other groups: seeded random sample plus smallest/largest/median file. Inventory counts all JSON files. Table row-field names only sample first 3 rows per table.",
+  "full_groups": [
+    "etcm_herbs",
+    "etcm_targets"
+  ],
+  "groups": {
+    "etcm_diseases": {
+      "inventory_files": 7705,
+      "inventory_bytes": 34542210363,
+      "largest_file_bytes": 6128393,
+      "scanned_files": 27,
+      "scan_scope": "sample_only",
+      "parsed_object_files": 27,
+      "valid_basic_information_files": 27,
+      "basic_layouts": {
+        "flat": 27
+      },
+      "primary_names_containing_cjk": 0,
+      "api_codes": {
+        "1": 27
+      },
+      "data_types": {
+        "list": 27
+      },
+      "top_fields": {
+        "code": 27,
+        "msg": 27,
+        "data": 27,
+        "name": 27,
+        "page_title": 27,
+        "complete_fetch_summary": 26
+      },
+      "basic_fields": {
+        "Disease Name": {
+          "records_present": 27,
+          "nonempty": 27,
+          "types": {
+            "str": 27
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_diseases/Agenesis_of_the_Corpus_Callosum_with_Peripheral_Neuropathy.json",
+              "value_preview": "Agenesis of the Corpus Callosum with Peripheral Neuropathy"
+            },
+            {
+              "file": "etcm_diseases/Alkuraya-Kucinskas_Syndrome.json",
+              "value_preview": "Alkuraya-Kucinskas Syndrome"
+            }
+          ],
+          "records_absent": 0,
+          "nonempty_fraction_of_scanned_files": 1.0
+        },
+        "Global Category": {
+          "records_present": 27,
+          "nonempty": 27,
+          "types": {
+            "str": 27
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_diseases/Agenesis_of_the_Corpus_Callosum_with_Peripheral_Neuropathy.json",
+              "value_preview": "Fetal diseases;Genetic diseases;Rare diseases"
+            },
+            {
+              "file": "etcm_diseases/Alkuraya-Kucinskas_Syndrome.json",
+              "value_preview": "Genetic diseases"
+            }
+          ],
+          "records_absent": 0,
+          "nonempty_fraction_of_scanned_files": 1.0
+        },
+        "Anatomical Category": {
+          "records_present": 27,
+          "nonempty": 27,
+          "types": {
+            "str": 27
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_diseases/Agenesis_of_the_Corpus_Callosum_with_Peripheral_Neuropathy.json",
+              "value_preview": "Mental diseases;Neuronal diseases;Skin diseases"
+            },
+            {
+              "file": "etcm_diseases/Alkuraya-Kucinskas_Syndrome.json",
+              "value_preview": "Neuronal diseases"
+            }
+          ],
+          "records_absent": 0,
+          "nonempty_fraction_of_scanned_files": 1.0
+        }
+      },
+      "sections": {
+        "base_information": 27,
+        "related_table": 26,
+        "Enrichment": 27,
+        "basic_network": 26
+      },
+      "related_tables": {
+        "chinese_patent_drug": {
+          "records": 14,
+          "rows": 114,
+          "max_rows": 20,
+          "row_fields": {
+            "linkformat": 40,
+            "Formula Name in Chinese Pinyin": 40,
+            "Dosage Form": 40,
+            "Herbs Contained in This Formula (Chinese Pinyin)": 40,
+            "Indications": 40,
+            "Formula Type": 40
+          }
+        },
+        "traditional_chinese_medicine_formula": {
+          "records": 5,
+          "rows": 39,
+          "max_rows": 13,
+          "row_fields": {
+            "linkformat": 15,
+            "Formula Name in Chinese Pinyin": 15,
+            "Dosage Form": 15,
+            "Herbs Contained in This Formula (Chinese Pinyin)": 15,
+            "Major Symptoms or Signs": 15,
+            "Reference (Ancient Books of Traditional Chinese Medicine)": 15
+          }
+        },
+        "target": {
+          "records": 26,
+          "rows": 6766,
+          "max_rows": 395,
+          "row_fields": {
+            "linkformat": 78,
+            "Target Name": 78,
+            "UniProt Accession Number": 78,
+            "Gene Symbol": 78,
+            "Inhibitors": 78
+          }
+        },
+        "herb": {
+          "records": 14,
+          "rows": 160,
+          "max_rows": 20,
+          "row_fields": {
+            "linkformat": 38,
+            "Herb Name in Pinyin": 38,
+            "Herb Name in Latin": 38,
+            "Property": 38,
+            "Flavor": 38,
+            "Meridian Tropism": 38
+          }
+        }
+      },
+      "fetch_summary_status_counts": {
+        "skipped": 34,
+        "ok": 51
+      },
+      "duplicate_casefolded_primary_names": {},
+      "identical_content_files": [],
+      "issues": [],
+      "issue_counts": {},
+      "examples": [
+        {
+          "file": "etcm_diseases/Agenesis_of_the_Corpus_Callosum_with_Peripheral_Neuropathy.json",
+          "top_name": "Agenesis of the Corpus Callosum with Peripheral Neuropathy",
+          "page_title": "Disease Agenesis of the Corpus Callosum with Peripheral Neuropathy Details page",
+          "basic_fields": {
+            "Disease Name": "Agenesis of the Corpus Callosum with Peripheral Neuropathy",
+            "Global Category": "Fetal diseases;Genetic diseases;Rare diseases",
+            "Anatomical Category": "Mental diseases;Neuronal diseases;Skin diseases"
+          }
+        },
+        {
+          "file": "etcm_diseases/Alkuraya-Kucinskas_Syndrome.json",
+          "top_name": "Alkuraya-Kucinskas Syndrome",
+          "page_title": "Disease Alkuraya-Kucinskas Syndrome Details page",
+          "basic_fields": {
+            "Disease Name": "Alkuraya-Kucinskas Syndrome",
+            "Global Category": "Genetic diseases",
+            "Anatomical Category": "Neuronal diseases"
+          }
+        }
+      ]
+    },
+    "etcm_herbs": {
+      "inventory_files": 2076,
+      "inventory_bytes": 1553044450,
+      "largest_file_bytes": 28480305,
+      "scanned_files": 2076,
+      "scan_scope": "full",
+      "parsed_object_files": 2076,
+      "valid_basic_information_files": 2076,
+      "basic_layouts": {
+        "flat": 2076
+      },
+      "primary_names_containing_cjk": 0,
+      "api_codes": {
+        "1": 2076
+      },
+      "data_types": {
+        "list": 2076
+      },
+      "top_fields": {
+        "code": 2076,
+        "msg": 2076,
+        "data": 2076,
+        "name": 2076,
+        "page_title": 2076,
+        "complete_fetch_summary": 1728
+      },
+      "basic_fields": {
+        "Herb Name in Pinyin": {
+          "records_present": 2076,
+          "nonempty": 2076,
+          "types": {
+            "str": 2076
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_herbs/ABiXiNiYaCiTong.json",
+              "value_preview": "ABiXiNiYaCiTong"
+            },
+            {
+              "file": "etcm_herbs/ALaBoJinHeHuan.json",
+              "value_preview": "ALaBoJinHeHuan"
+            }
+          ],
+          "records_absent": 0,
+          "nonempty_fraction_of_scanned_files": 1.0
+        },
+        "Herb Name in Latin": {
+          "records_present": 2076,
+          "nonempty": 2076,
+          "types": {
+            "str": 2076
+          },
+          "html_records": 2076,
+          "examples": [
+            {
+              "file": "etcm_herbs/ABiXiNiYaCiTong.json",
+              "value_preview": "<i>Erythrina abyssinica</i>"
+            },
+            {
+              "file": "etcm_herbs/ALaBoJinHeHuan.json",
+              "value_preview": "<i>Vachellia nilotica</i>"
+            }
+          ],
+          "records_absent": 0,
+          "nonempty_fraction_of_scanned_files": 1.0
+        },
+        "Herb Name in English": {
+          "records_present": 2076,
+          "nonempty": 2076,
+          "types": {
+            "str": 2076
+          },
+          "html_records": 2076,
+          "examples": [
+            {
+              "file": "etcm_herbs/ABiXiNiYaCiTong.json",
+              "value_preview": "<i>Erythrina abyssinica</i>"
+            },
+            {
+              "file": "etcm_herbs/ALaBoJinHeHuan.json",
+              "value_preview": "<i>Vachellia nilotica</i>"
+            }
+          ],
+          "records_absent": 0,
+          "nonempty_fraction_of_scanned_files": 1.0
+        },
+        "Family": {
+          "records_present": 2068,
+          "nonempty": 2068,
+          "types": {
+            "str": 2068
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_herbs/ABiXiNiYaCiTong.json",
+              "value_preview": "Leguminosae"
+            },
+            {
+              "file": "etcm_herbs/ALaBoJinHeHuan.json",
+              "value_preview": "Leguminosae"
+            }
+          ],
+          "records_absent": 8,
+          "nonempty_fraction_of_scanned_files": 0.9961
+        },
+        "Habitat": {
+          "records_present": 1988,
+          "nonempty": 1988,
+          "types": {
+            "str": 1988
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_herbs/ABiXiNiYaCiTong.json",
+              "value_preview": "HeBei, BeiJing, TianJin, ShanDong, JiangSu, ZheJiang, ShangHai, GuangDong, HaiNan, FuJian, TaiWan, Hongkong "
+            },
+            {
+              "file": "etcm_herbs/ALaBoJinHeHuan.json",
+              "value_preview": "HaiNan, YunNan"
+            }
+          ],
+          "records_absent": 88,
+          "nonempty_fraction_of_scanned_files": 0.9576
+        },
+        "Indications": {
+          "records_present": 1843,
+          "nonempty": 1843,
+          "types": {
+            "str": 1843
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_herbs/ABiXiNiYaCiTong.json",
+              "value_preview": "Malaria,Measles,Cough,Asthma,Stomachache,Diarrhea,Amebic dysentery,Peptic ulcer,Conjunctivitis,Earache,Meningitis,Hepatitis,Epilepsy,Arthralgia,Hernia,Syphilis,Blennurethria,Trauma"
+            },
+            {
+              "file": "etcm_herbs/ALaBoPoPoNa.json",
+              "value_preview": "Expelling cold and eliminating dampness,Strengthening the kidney,Preventing attack of malaria."
+            }
+          ],
+          "records_absent": 233,
+          "nonempty_fraction_of_scanned_files": 0.8878
+        },
+        "Database Cross References": {
+          "records_present": 1621,
+          "nonempty": 1621,
+          "types": {
+            "list": 1621
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_herbs/ABiXiNiYaCiTong.json",
+              "value_preview": "['HERB2.0']"
+            },
+            {
+              "file": "etcm_herbs/ALaBoJinHeHuan.json",
+              "value_preview": "['HERB2.0']"
+            }
+          ],
+          "records_absent": 455,
+          "nonempty_fraction_of_scanned_files": 0.7808
+        },
+        "Medicinal Part": {
+          "records_present": 1931,
+          "nonempty": 1931,
+          "types": {
+            "str": 1931
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_herbs/ALaBoJinHeHuan.json",
+              "value_preview": "Resin From Stems"
+            },
+            {
+              "file": "etcm_herbs/ALaBoPoPoNa.json",
+              "value_preview": "Whole Herb"
+            }
+          ],
+          "records_absent": 145,
+          "nonempty_fraction_of_scanned_files": 0.9302
+        },
+        "Property": {
+          "records_present": 1766,
+          "nonempty": 1766,
+          "types": {
+            "str": 1766
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_herbs/ALaBoPoPoNa.json",
+              "value_preview": "Even"
+            },
+            {
+              "file": "etcm_herbs/ALiHong.json",
+              "value_preview": "Warm"
+            }
+          ],
+          "records_absent": 310,
+          "nonempty_fraction_of_scanned_files": 0.8507
+        },
+        "Flavor": {
+          "records_present": 1775,
+          "nonempty": 1775,
+          "types": {
+            "str": 1775
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_herbs/ALaBoPoPoNa.json",
+              "value_preview": "Pungent, Bitter, Salty"
+            },
+            {
+              "file": "etcm_herbs/ALiHong.json",
+              "value_preview": "Sweet, Bitter"
+            }
+          ],
+          "records_absent": 301,
+          "nonempty_fraction_of_scanned_files": 0.855
+        },
+        "Herb classification based on efficacy": {
+          "records_present": 609,
+          "nonempty": 609,
+          "types": {
+            "str": 609
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_herbs/AWei.json",
+              "value_preview": "Digestant medicinal"
+            },
+            {
+              "file": "etcm_herbs/AiDiCha.json",
+              "value_preview": "Resolve phlegm, Suppress cough, Calm panting medicinal"
+            }
+          ],
+          "records_absent": 1467,
+          "nonempty_fraction_of_scanned_files": 0.2934
+        },
+        "Meridian Tropism": {
+          "records_present": 1438,
+          "nonempty": 1438,
+          "types": {
+            "str": 1438
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_herbs/AWei.json",
+              "value_preview": "Spleen meridian, Stomach meridian"
+            },
+            {
+              "file": "etcm_herbs/AYueHunZi.json",
+              "value_preview": "Spleen meridian, Kidney meridian"
+            }
+          ],
+          "records_absent": 638,
+          "nonempty_fraction_of_scanned_files": 0.6927
+        },
+        "PubMed": {
+          "records_present": 65,
+          "nonempty": 65,
+          "types": {
+            "list": 65
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_herbs/BaiLiXiang.json",
+              "value_preview": "['35464010']"
+            },
+            {
+              "file": "etcm_herbs/BaiZhu.json",
+              "value_preview": "['24893211']"
+            }
+          ],
+          "records_absent": 2011,
+          "nonempty_fraction_of_scanned_files": 0.0313
+        }
+      },
+      "sections": {
+        "base_information": 2076,
+        "related_table": 2038,
+        "habitat": 2076,
+        "ingredient_target": 1849,
+        "component_target": 1849,
+        "component_chem_phy": 1849,
+        "relation_heatmap": 1849,
+        "Enrichment": 1849,
+        "Correlation": 1898,
+        "basic_network": 1898,
+        "Quantitative": 445
+      },
+      "related_tables": {
+        "ingredient": {
+          "records": 1898,
+          "rows": 67342,
+          "max_rows": 500,
+          "row_fields": {
+            "linkformat": 5561,
+            "Ingredient Name": 5561,
+            "Molecular Formula": 5561,
+            "Molecular Weight": 5561,
+            "Quantitative Estimate of Drug-likeness（QED）": 5561,
+            "FDA Maximum Daily Dose (FDAMDD)": 5561,
+            "Standards": 5561
+          }
+        },
+        "target": {
+          "records": 1849,
+          "rows": 126775,
+          "max_rows": 344,
+          "row_fields": {
+            "linkformat": 5487,
+            "Target Name": 5487,
+            "UniProt Accession Number": 5487,
+            "Gene Symbol": 5487,
+            "Inhibitors": 5487
+          }
+        },
+        "disease": {
+          "records": 801,
+          "rows": 14176,
+          "max_rows": 20,
+          "row_fields": {
+            "linkformat": 2242,
+            "Disease Name": 2242,
+            "Global category": 2242,
+            "Anatomical category": 2242
+          }
+        },
+        "chinese_patent_drug": {
+          "records": 898,
+          "rows": 70007,
+          "max_rows": 2015,
+          "row_fields": {
+            "linkformat": 2382,
+            "Formula Name in Chinese Pinyin": 2382,
+            "Dosage Form": 2382,
+            "Herbs Contained in This Formula (Chinese Pinyin)": 2382,
+            "Indications": 2382,
+            "Formula Type": 2382
+          }
+        },
+        "traditional_chinese_medicine_formula": {
+          "records": 654,
+          "rows": 303566,
+          "max_rows": 15990,
+          "row_fields": {
+            "linkformat": 1767,
+            "Formula Name in Chinese Pinyin": 1767,
+            "Dosage Form": 1767,
+            "Herbs Contained in This Formula (Chinese Pinyin)": 1767,
+            "Major Symptoms or Signs": 1767,
+            "Reference (Ancient Books of Traditional Chinese Medicine)": 1767
+          }
+        }
+      },
+      "fetch_summary_status_counts": {
+        "ok": 5780,
+        "skipped": 2949
+      },
+      "duplicate_casefolded_primary_names": {
+        "huashi": [
+          "etcm_herbs/HuaShi .json",
+          "etcm_herbs/HuaShi_.json"
+        ]
+      },
+      "identical_content_files": [],
+      "issues": [
+        {
+          "file": "etcm_herbs/TianRanBingPianя╝ИYouXuanLongNaoя╝Й.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "TianRanBingPian（YouXuanLongNao）"
+        },
+        {
+          "file": "etcm_herbs/YaHuNuя╝ИXiShengTengя╝Й.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "YaHuNu（XiShengTeng）"
+        }
+      ],
+      "issue_counts": {
+        "filename_vs_primary_name": 2
+      },
+      "examples": [
+        {
+          "file": "etcm_herbs/ABiXiNiYaCiTong.json",
+          "top_name": "ABiXiNiYaCiTong",
+          "page_title": "Herb ABiXiNiYaCiTong Details page",
+          "basic_fields": {
+            "Herb Name in Pinyin": "ABiXiNiYaCiTong",
+            "Herb Name in Latin": "<i>Erythrina abyssinica</i>",
+            "Herb Name in English": "<i>Erythrina abyssinica</i>",
+            "Family": "Leguminosae",
+            "Habitat": "HeBei, BeiJing, TianJin, ShanDong, JiangSu, ZheJiang, ShangHai, GuangDong, HaiNan, FuJian, TaiWan, Hongkong ",
+            "Indications": "Malaria,Measles,Cough,Asthma,Stomachache,Diarrhea,Amebic dysentery,Peptic ulcer,Conjunctivitis,Earache,Meningitis,Hepatitis,Epilepsy,Arthralgia,Hernia,Syphilis,Blennurethria,Trauma,Burn injuries,Ulcer,Swelling,Schistosomiasis,Venomous snake bite.",
+            "Database Cross References": [
+              "HERB2.0"
+            ]
+          }
+        },
+        {
+          "file": "etcm_herbs/ALaBoJinHeHuan.json",
+          "top_name": "ALaBoJinHeHuan",
+          "page_title": "Herb ALaBoJinHeHuan Details page",
+          "basic_fields": {
+            "Herb Name in Pinyin": "ALaBoJinHeHuan",
+            "Herb Name in Latin": "<i>Vachellia nilotica</i>",
+            "Herb Name in English": "<i>Vachellia nilotica</i>",
+            "Family": "Leguminosae",
+            "Habitat": "HaiNan, YunNan",
+            "Medicinal Part": "Resin From Stems",
+            "Database Cross References": [
+              "HERB2.0"
+            ]
+          }
+        },
+        {
+          "file": "etcm_herbs/HuangQin.json",
+          "top_name": "HuangQin",
+          "page_title": "Herb HuangQin Details page",
+          "basic_fields": {
+            "Herb Name in Pinyin": "HuangQin",
+            "Herb Name in Latin": "<i>Scutellaria baicalensis Georgi</i>",
+            "Herb Name in English": "<i>Scutellaria baicalensis Georgi</i>",
+            "Family": "Labiatae",
+            "Habitat": "HeiLongJiang, LiaoNing, NeiMengGu, HeBei, HeNan, GanSu, Shaanxi, ShanXi, ShanDong, SiChuan",
+            "Medicinal Part": "Root",
+            "Herb classification based on efficacy": "Heat-clearing medicinal",
+            "Property": "Cold",
+            "Flavor": "Bitter",
+            "Meridian Tropism": "Lung meridian, Gallbladder meridian, Spleen meridian, Large intestine meridian, Small intestine meridian",
+            "Indications": "Clearing heat,Drying dampness,Discharging fire,Removing toxin,Stopping bleeding,Calming fetus.",
+            "PubMed": [
+              "32784835",
+              "28901063"
+            ],
+            "Database Cross References": [
+              "HIT2.0",
+              "HERB2.0",
+              "SymMap"
+            ]
+          }
+        }
+      ]
+    },
+    "etcm_ingredients": {
+      "inventory_files": 38281,
+      "inventory_bytes": 138578840653,
+      "largest_file_bytes": 64102209,
+      "scanned_files": 27,
+      "scan_scope": "sample_only",
+      "parsed_object_files": 27,
+      "valid_basic_information_files": 26,
+      "basic_layouts": {
+        "nested_children": 26
+      },
+      "primary_names_containing_cjk": 0,
+      "api_codes": {
+        "1": 26,
+        "2": 1
+      },
+      "data_types": {
+        "list": 26,
+        "NoneType": 1
+      },
+      "top_fields": {
+        "code": 27,
+        "msg": 27,
+        "data": 26,
+        "name": 26,
+        "page_title": 26,
+        "complete_fetch_summary": 27
+      },
+      "basic_fields": {
+        "Physicochemical_property/Basic_Information/Component Name IN English": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "(3R)-2,2-dimethyl-3-propyloxirane"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Physicochemical_property/Basic_Information/Molecular Formula": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "C31H43NO8"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "C7H14O"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Physicochemical_property/Basic_Information/2D Structure": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "http://www.tcmip.cn/ETCM2/ETCM/public/svg/ETCM-Obabel-SVG/TCMIP-I-00027.svg"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "http://www.tcmip.cn/ETCM2/ETCM/public/svg/ETCM-Obabel-SVG/TCMIP-I-01882.svg"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Physicochemical_property/Basic_Information/Molecular Weight": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "557.300"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "114.100"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Physicochemical_property/Structural_Information/nHA(Number of hydrogen bond acceptors)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "int": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "9"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "1"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Physicochemical_property/Structural_Information/nHD(Number of hydrogen bond donors)": {
+          "records_present": 19,
+          "nonempty": 19,
+          "types": {
+            "int": 19
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "3"
+            },
+            {
+              "file": "etcm_ingredients/2-(4-hydroxyphenyl)ethyl_acetate.json",
+              "value_preview": "1"
+            }
+          ],
+          "records_absent": 8,
+          "nonempty_fraction_of_scanned_files": 0.7037
+        },
+        "Physicochemical_property/Structural_Information/nRot(Number of rotatable bonds)": {
+          "records_present": 24,
+          "nonempty": 24,
+          "types": {
+            "int": 24
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "8"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "2"
+            }
+          ],
+          "records_absent": 3,
+          "nonempty_fraction_of_scanned_files": 0.8889
+        },
+        "Physicochemical_property/Structural_Information/nRing(Number of rings)": {
+          "records_present": 23,
+          "nonempty": 23,
+          "types": {
+            "int": 23
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "7"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "1"
+            }
+          ],
+          "records_absent": 4,
+          "nonempty_fraction_of_scanned_files": 0.8519
+        },
+        "Physicochemical_property/Structural_Information/MaxRing(Number of atoms in the biggest ring)": {
+          "records_present": 23,
+          "nonempty": 23,
+          "types": {
+            "int": 23
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "6"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "3"
+            }
+          ],
+          "records_absent": 4,
+          "nonempty_fraction_of_scanned_files": 0.8519
+        },
+        "Physicochemical_property/Structural_Information/nHet(Number of heteroatoms)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "int": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "9"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "1"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Physicochemical_property/Stability/nRig(Number of rigid bonds)": {
+          "records_present": 25,
+          "nonempty": 25,
+          "types": {
+            "int": 25
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "31"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "3"
+            }
+          ],
+          "records_absent": 2,
+          "nonempty_fraction_of_scanned_files": 0.9259
+        },
+        "Physicochemical_property/Stability/Flexibility": {
+          "records_present": 23,
+          "nonempty": 23,
+          "types": {
+            "str": 23
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.258"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.667"
+            }
+          ],
+          "records_absent": 4,
+          "nonempty_fraction_of_scanned_files": 0.8519
+        },
+        "Physicochemical_property/Stability/Stereo Centers(Number of stereocenters)": {
+          "records_present": 19,
+          "nonempty": 19,
+          "types": {
+            "int": 19
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "14"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "1"
+            }
+          ],
+          "records_absent": 8,
+          "nonempty_fraction_of_scanned_files": 0.7037
+        },
+        "Physicochemical_property/Solubility/TPSA(Topological polar surface area)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "117.920"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "12.530"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Physicochemical_property/Solubility/logS(The logarithm of aqueous solubility value)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "-3.844"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "-1.817"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Physicochemical_property/Solubility/logP(The logarithm of the n-octanol/water distribution coefficient)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "2.142"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "2.394"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Physicochemical_property/Solubility/logD7.4(The logarithm of the n-octanol/water distribution coefficients at pH=7.4)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "2.511"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "2.637"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/(Quantitative Estimate of Drug-likeness)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.427"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.500"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/(Synthetic accessibility score)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "7.042"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "2.989"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/(Natural Product-likeness score)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "2.794"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "2.621"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Lipinski Rule": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "Accepted"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "Accepted"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/GSK Rule": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "Rejected"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "Accepted"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Golden Triangle": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "Rejected"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "Rejected"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Absorption/Caco-2 Permeability": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "-5.621"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "-4.244"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Absorption/MDCK Permeability": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.0000720922"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.0000243051"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Absorption/Pgp-inhibitor": {
+          "records_present": 23,
+          "nonempty": 23,
+          "types": {
+            "str": 23
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.234"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.001"
+            }
+          ],
+          "records_absent": 4,
+          "nonempty_fraction_of_scanned_files": 0.8519
+        },
+        "Pharmacokinetic_property/Absorption/Pgp-substrate": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.999"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.001"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Absorption/HIA(human intestinal absorption)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.839"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.003"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Absorption/F20%(20% Oral Bioavailability)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.031"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.177"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Distribution/PPB(Plasma protein binding)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "27.72"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "66.69"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Distribution/VD(Volume Distribution)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "1.466"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "2.001"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Distribution/BBB Penetration(Blood brain barrier penetration)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.132"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.946"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Distribution/Fu(The fraction unbound in plasms)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "34.72"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "40.63"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Metabolism/CYP 1A2  inhibitor": {
+          "records_present": 23,
+          "nonempty": 23,
+          "types": {
+            "str": 23
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.024"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.162"
+            }
+          ],
+          "records_absent": 4,
+          "nonempty_fraction_of_scanned_files": 0.8519
+        },
+        "Pharmacokinetic_property/Metabolism/CYP 2C19  inhibitor": {
+          "records_present": 24,
+          "nonempty": 24,
+          "types": {
+            "str": 24
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.008"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.057"
+            }
+          ],
+          "records_absent": 3,
+          "nonempty_fraction_of_scanned_files": 0.8889
+        },
+        "Pharmacokinetic_property/Metabolism/CYP 2C9   inhibitor": {
+          "records_present": 23,
+          "nonempty": 23,
+          "types": {
+            "str": 23
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.007"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.027"
+            }
+          ],
+          "records_absent": 4,
+          "nonempty_fraction_of_scanned_files": 0.8519
+        },
+        "Pharmacokinetic_property/Metabolism/CYP 2D6 inhibitor": {
+          "records_present": 23,
+          "nonempty": 23,
+          "types": {
+            "str": 23
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.031"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.006"
+            }
+          ],
+          "records_absent": 4,
+          "nonempty_fraction_of_scanned_files": 0.8519
+        },
+        "Pharmacokinetic_property/Metabolism/CYP 3A4 inhibitor": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.126"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.011"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Metabolism/CYP 1A2 substrate": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.976"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.522"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Metabolism/CYP 2C19 substrate": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.706"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.909"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Metabolism/CYP 2C9 substrate": {
+          "records_present": 25,
+          "nonempty": 25,
+          "types": {
+            "str": 25
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.027"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.336"
+            }
+          ],
+          "records_absent": 2,
+          "nonempty_fraction_of_scanned_files": 0.9259
+        },
+        "Pharmacokinetic_property/Metabolism/CYP 2D6  substrate": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.207"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.654"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Metabolism/CYP 3A4 substrate": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.288"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.262"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Excretion/CL(The clearance of a drug)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "5.275"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "9.168"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Pharmacokinetic_property/Excretion/T1/2": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.400"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.447"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/FAF-Drugs4 Rule": {
+          "records_present": 19,
+          "nonempty": 19,
+          "types": {
+            "int": 19
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "1"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "1"
+            }
+          ],
+          "records_absent": 8,
+          "nonempty_fraction_of_scanned_files": 0.7037
+        },
+        "Toxicology/NonBiodegradable Rule": {
+          "records_present": 13,
+          "nonempty": 13,
+          "types": {
+            "int": 13
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "1"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "2"
+            }
+          ],
+          "records_absent": 14,
+          "nonempty_fraction_of_scanned_files": 0.4815
+        },
+        "Toxicology/Pfizer Rule": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "Accepted"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "Accepted"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/SR-MMP": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.597"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.013"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Toxic_dose/FDAMDD(FDA Maximum (Recommended) Daily Dose)": {
+          "records_present": 24,
+          "nonempty": 24,
+          "types": {
+            "str": 24
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.039"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.040"
+            }
+          ],
+          "records_absent": 3,
+          "nonempty_fraction_of_scanned_files": 0.8889
+        },
+        "Toxicology/Toxic_dose/IGC50": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "3.321"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "2.980"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Toxic_dose/LC50FM": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "4.256"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "3.422"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Toxic_dose/LC50DM": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "8.006"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "3.876"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Reproductive_effects/NR-AR(Androgen receptor)": {
+          "records_present": 25,
+          "nonempty": 25,
+          "types": {
+            "str": 25
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.143"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.007"
+            }
+          ],
+          "records_absent": 2,
+          "nonempty_fraction_of_scanned_files": 0.9259
+        },
+        "Toxicology/Reproductive_effects/NR-AR-LBD(Androgen receptor)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.012"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.003"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Reproductive_effects/NR-Aromatase": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.061"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.006"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Reproductive_effects/NR-ER(Estrogen receptor)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.121"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.217"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Reproductive_effects/NR-ER-LBD(Estrogen receptor)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.205"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.129"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Allergy/Skin Sensitization": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.090"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.211"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Acute_toxicity/Rat Oral Acute Toxicity": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.679"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.046"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Organ_toxicity/hERG Blockers": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.855"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.014"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Organ_toxicity/H-HT(The human hepatotoxicity)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.630"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.061"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Organ_toxicity/DILI(Drug-induced liver injury)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.067"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.130"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Primary_irritation/Eye Corrosion": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.003"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.942"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Primary_irritation/Eye Irritation": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.007"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.980"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Primary_irritation/Respiratory Toxicity": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.963"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.893"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Mutagenic_effects/AMES Toxicity": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.010"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.031"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Tumorigenic_effects/Carcinogencity": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.008"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.195"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Tumorigenic_effects/SR-ARE(Antioxidant Response Element)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.029"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.015"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Tumorigenic_effects/SR-ATAD5(ATPase family AAA domain-containing protein 5)": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.504"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.004"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Toxicology/Tumorigenic_effects/SR-p53": {
+          "records_present": 26,
+          "nonempty": 26,
+          "types": {
+            "str": 26
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+              "value_preview": "0.624"
+            },
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "0.003"
+            }
+          ],
+          "records_absent": 1,
+          "nonempty_fraction_of_scanned_files": 0.963
+        },
+        "Physicochemical_property/Basic_Information/CAS Number": {
+          "records_present": 14,
+          "nonempty": 14,
+          "types": {
+            "str": 14
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "17612-35-0"
+            },
+            {
+              "file": "etcm_ingredients/2-(4-hydroxyphenyl)ethyl_acetate.json",
+              "value_preview": "58556-55-1"
+            }
+          ],
+          "records_absent": 13,
+          "nonempty_fraction_of_scanned_files": 0.5185
+        },
+        "Toxicology/SureChEMBL Rule": {
+          "records_present": 4,
+          "nonempty": 4,
+          "types": {
+            "int": 4
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "2"
+            },
+            {
+              "file": "etcm_ingredients/2-Methyl-2pentenal.json",
+              "value_preview": "1"
+            }
+          ],
+          "records_absent": 23,
+          "nonempty_fraction_of_scanned_files": 0.1481
+        },
+        "Toxicology/Allergy/Skin Sensitization Rule": {
+          "records_present": 20,
+          "nonempty": 20,
+          "types": {
+            "int": 20
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "3"
+            },
+            {
+              "file": "etcm_ingredients/1(7),8(10)-p-Menthadien-9-ol.json",
+              "value_preview": "1"
+            }
+          ],
+          "records_absent": 7,
+          "nonempty_fraction_of_scanned_files": 0.7407
+        },
+        "Toxicology/Acute_toxicity/Acute Toxicity Rule": {
+          "records_present": 14,
+          "nonempty": 14,
+          "types": {
+            "int": 14
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "2"
+            },
+            {
+              "file": "etcm_ingredients/1(7),8(10)-p-Menthadien-9-ol.json",
+              "value_preview": "1"
+            }
+          ],
+          "records_absent": 13,
+          "nonempty_fraction_of_scanned_files": 0.5185
+        },
+        "Toxicology/Tumorigenic_effects/Genotoxic Carcinogenicity Rule": {
+          "records_present": 10,
+          "nonempty": 10,
+          "types": {
+            "int": 10
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "5"
+            },
+            {
+              "file": "etcm_ingredients/2-Methyl-2pentenal.json",
+              "value_preview": "1"
+            }
+          ],
+          "records_absent": 17,
+          "nonempty_fraction_of_scanned_files": 0.3704
+        },
+        "Toxicology/Tumorigenic_effects/NonGenotoxic Carcinogenicity Rule": {
+          "records_present": 8,
+          "nonempty": 8,
+          "types": {
+            "int": 8
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+              "value_preview": "1"
+            },
+            {
+              "file": "etcm_ingredients/4′′,5′′-dehydroisopsoralidin.json",
+              "value_preview": "1"
+            }
+          ],
+          "records_absent": 19,
+          "nonempty_fraction_of_scanned_files": 0.2963
+        },
+        "Physicochemical_property/Basic_Information/Component Alias": {
+          "records_present": 11,
+          "nonempty": 11,
+          "types": {
+            "list": 11
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/1(7),8(10)-p-Menthadien-9-ol.json",
+              "value_preview": "['p-Mentha-1(7),8(10)-dien-9-ol', '29548-13-8', 'BETA,4-BIS(METHYLENE)CYCLOHEXANEETHANOL', 'SCHEMBL15319201', 'DTXSID50183731', 'ZINC2011501', '1(7),8(10)-p-Menthadien-9-ol', '2-(4"
+            },
+            {
+              "file": "etcm_ingredients/2-(4-hydroxyphenyl)ethyl_acetate.json",
+              "value_preview": "['2-(4-hydroxyphenyl)ethyl acetate', '58556-55-1', '4-(2-ACETOXY-ETHYL)PHENOL', '4-Hydroxyphenethyl Acetate', 'Tyrosol, acetate', '2-(p-Hydroxyphenyl)ethyl Acetate', 'Acetic Acid 2"
+            }
+          ],
+          "records_absent": 16,
+          "nonempty_fraction_of_scanned_files": 0.4074
+        },
+        "Physicochemical_property/Basic_Information/PubChem": {
+          "records_present": 11,
+          "nonempty": 11,
+          "types": {
+            "list": 11
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_ingredients/1(7),8(10)-p-Menthadien-9-ol.json",
+              "value_preview": "['34627']"
+            },
+            {
+              "file": "etcm_ingredients/2-(4-hydroxyphenyl)ethyl_acetate.json",
+              "value_preview": "['637753']"
+            }
+          ],
+          "records_absent": 16,
+          "nonempty_fraction_of_scanned_files": 0.4074
+        }
+      },
+      "sections": {
+        "base_information": 26,
+        "related_table": 26,
+        "basic_network": 26,
+        "Standards": 9
+      },
+      "related_tables": {
+        "chinese_patent_drug": {
+          "records": 19,
+          "rows": 11773,
+          "max_rows": 7945,
+          "row_fields": {
+            "linkformat": 55,
+            "Formula Name in Chinese Pinyin": 55,
+            "Dosage Form": 55,
+            "Herbs Contained in This Formula (Chinese Pinyin)": 55,
+            "Indications": 55,
+            "Formula Type": 55
+          }
+        },
+        "traditional_chinese_medicine_formula": {
+          "records": 18,
+          "rows": 57736,
+          "max_rows": 40881,
+          "row_fields": {
+            "linkformat": 52,
+            "Formula Name in Chinese Pinyin": 52,
+            "Dosage Form": 52,
+            "Herbs Contained in This Formula (Chinese Pinyin)": 52,
+            "Major Symptoms or Signs": 52,
+            "Reference (Ancient Books of Traditional Chinese Medicine)": 52
+          }
+        },
+        "herb": {
+          "records": 26,
+          "rows": 431,
+          "max_rows": 381,
+          "row_fields": {
+            "linkformat": 41,
+            "Herb Name in Pinyin": 41,
+            "Herb Name in Latin": 41,
+            "Property": 41,
+            "Flavor": 41,
+            "Meridian Tropism": 41
+          }
+        },
+        "similar_target": {
+          "records": 17,
+          "rows": 203,
+          "max_rows": 60,
+          "row_fields": {
+            "linkformat": 43,
+            "Gene Symbol": 43,
+            "Similar Score": 43,
+            "Activity": 43,
+            "References": 43
+          }
+        },
+        "disease": {
+          "records": 16,
+          "rows": 99850,
+          "max_rows": 7962,
+          "row_fields": {
+            "linkformat": 44,
+            "Disease Name": 44,
+            "Global category": 44,
+            "Anatomical category": 44
+          }
+        }
+      },
+      "fetch_summary_status_counts": {
+        "ok": 50,
+        "skipped": 46
+      },
+      "duplicate_casefolded_primary_names": {},
+      "identical_content_files": [],
+      "issues": [
+        {
+          "file": "etcm_ingredients/2,2'.json",
+          "kind": "api_non_success",
+          "code": 2,
+          "msg": "No Data for 2,2'!"
+        },
+        {
+          "file": "etcm_ingredients/2,2'.json",
+          "kind": "data_not_list"
+        }
+      ],
+      "issue_counts": {
+        "api_non_success": 1,
+        "data_not_list": 1
+      },
+      "examples": [
+        {
+          "file": "etcm_ingredients/(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane.json",
+          "top_name": "(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane",
+          "page_title": "Ingredient (-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane Details page",
+          "basic_fields": {
+            "Physicochemical_property/Basic_Information/Component Name IN English": "(-)-(A-b)-14α-benzoyloxy-N-ethyl-1α,8β,15α-trihydroxy-6α,16β,18-trimethoxyaconitane",
+            "Physicochemical_property/Basic_Information/Molecular Formula": "C31H43NO8",
+            "Physicochemical_property/Basic_Information/2D Structure": "http://www.tcmip.cn/ETCM2/ETCM/public/svg/ETCM-Obabel-SVG/TCMIP-I-00027.svg",
+            "Physicochemical_property/Basic_Information/Molecular Weight": "557.300",
+            "Physicochemical_property/Structural_Information/nHA(Number of hydrogen bond acceptors)": 9,
+            "Physicochemical_property/Structural_Information/nHD(Number of hydrogen bond donors)": 3,
+            "Physicochemical_property/Structural_Information/nRot(Number of rotatable bonds)": 8,
+            "Physicochemical_property/Structural_Information/nRing(Number of rings)": 7,
+            "Physicochemical_property/Structural_Information/MaxRing(Number of atoms in the biggest ring)": 6,
+            "Physicochemical_property/Structural_Information/nHet(Number of heteroatoms)": 9,
+            "Physicochemical_property/Stability/nRig(Number of rigid bonds)": 31,
+            "Physicochemical_property/Stability/Flexibility": "0.258",
+            "Physicochemical_property/Stability/Stereo Centers(Number of stereocenters)": 14,
+            "Physicochemical_property/Solubility/TPSA(Topological polar surface area)": "117.920",
+            "Physicochemical_property/Solubility/logS(The logarithm of aqueous solubility value)": "-3.844",
+            "Physicochemical_property/Solubility/logP(The logarithm of the n-octanol/water distribution coefficient)": "2.142",
+            "Physicochemical_property/Solubility/logD7.4(The logarithm of the n-octanol/water distribution coefficients at pH=7.4)": "2.511",
+            "Pharmacokinetic_property/(Quantitative Estimate of Drug-likeness)": "0.427",
+            "Pharmacokinetic_property/(Synthetic accessibility score)": "7.042",
+            "Pharmacokinetic_property/(Natural Product-likeness score)": "2.794",
+            "Pharmacokinetic_property/Lipinski Rule": "Accepted",
+            "Pharmacokinetic_property/GSK Rule": "Rejected",
+            "Pharmacokinetic_property/Golden Triangle": "Rejected",
+            "Pharmacokinetic_property/Absorption/Caco-2 Permeability": "-5.621",
+            "Pharmacokinetic_property/Absorption/MDCK Permeability": "0.0000720922",
+            "Pharmacokinetic_property/Absorption/Pgp-inhibitor": "0.234",
+            "Pharmacokinetic_property/Absorption/Pgp-substrate": "0.999",
+            "Pharmacokinetic_property/Absorption/HIA(human intestinal absorption)": "0.839",
+            "Pharmacokinetic_property/Absorption/F20%(20% Oral Bioavailability)": "0.031",
+            "Pharmacokinetic_property/Distribution/PPB(Plasma protein binding)": "27.72",
+            "Pharmacokinetic_property/Distribution/VD(Volume Distribution)": "1.466",
+            "Pharmacokinetic_property/Distribution/BBB Penetration(Blood brain barrier penetration)": "0.132",
+            "Pharmacokinetic_property/Distribution/Fu(The fraction unbound in plasms)": "34.72",
+            "Pharmacokinetic_property/Metabolism/CYP 1A2  inhibitor": "0.024",
+            "Pharmacokinetic_property/Metabolism/CYP 2C19  inhibitor": "0.008",
+            "Pharmacokinetic_property/Metabolism/CYP 2C9   inhibitor": "0.007",
+            "Pharmacokinetic_property/Metabolism/CYP 2D6 inhibitor": "0.031",
+            "Pharmacokinetic_property/Metabolism/CYP 3A4 inhibitor": "0.126",
+            "Pharmacokinetic_property/Metabolism/CYP 1A2 substrate": "0.976",
+            "Pharmacokinetic_property/Metabolism/CYP 2C19 substrate": "0.706",
+            "Pharmacokinetic_property/Metabolism/CYP 2C9 substrate": "0.027",
+            "Pharmacokinetic_property/Metabolism/CYP 2D6  substrate": "0.207",
+            "Pharmacokinetic_property/Metabolism/CYP 3A4 substrate": "0.288",
+            "Pharmacokinetic_property/Excretion/CL(The clearance of a drug)": "5.275",
+            "Pharmacokinetic_property/Excretion/T1/2": "0.400",
+            "Toxicology/FAF-Drugs4 Rule": 1,
+            "Toxicology/NonBiodegradable Rule": 1,
+            "Toxicology/Pfizer Rule": "Accepted",
+            "Toxicology/SR-MMP": "0.597",
+            "Toxicology/Toxic_dose/FDAMDD(FDA Maximum (Recommended) Daily Dose)": "0.039",
+            "Toxicology/Toxic_dose/IGC50": "3.321",
+            "Toxicology/Toxic_dose/LC50FM": "4.256",
+            "Toxicology/Toxic_dose/LC50DM": "8.006",
+            "Toxicology/Reproductive_effects/NR-AR(Androgen receptor)": "0.143",
+            "Toxicology/Reproductive_effects/NR-AR-LBD(Androgen receptor)": "0.012",
+            "Toxicology/Reproductive_effects/NR-Aromatase": "0.061",
+            "Toxicology/Reproductive_effects/NR-ER(Estrogen receptor)": "0.121",
+            "Toxicology/Reproductive_effects/NR-ER-LBD(Estrogen receptor)": "0.205",
+            "Toxicology/Allergy/Skin Sensitization": "0.090",
+            "Toxicology/Acute_toxicity/Rat Oral Acute Toxicity": "0.679",
+            "Toxicology/Organ_toxicity/hERG Blockers": "0.855",
+            "Toxicology/Organ_toxicity/H-HT(The human hepatotoxicity)": "0.630",
+            "Toxicology/Organ_toxicity/DILI(Drug-induced liver injury)": "0.067",
+            "Toxicology/Primary_irritation/Eye Corrosion": "0.003",
+            "Toxicology/Primary_irritation/Eye Irritation": "0.007",
+            "Toxicology/Primary_irritation/Respiratory Toxicity": "0.963",
+            "Toxicology/Mutagenic_effects/AMES Toxicity": "0.010",
+            "Toxicology/Tumorigenic_effects/Carcinogencity": "0.008",
+            "Toxicology/Tumorigenic_effects/SR-ARE(Antioxidant Response Element)": "0.029",
+            "Toxicology/Tumorigenic_effects/SR-ATAD5(ATPase family AAA domain-containing protein 5)": "0.504",
+            "Toxicology/Tumorigenic_effects/SR-p53": "0.624"
+          }
+        },
+        {
+          "file": "etcm_ingredients/(3R)-2,2-dimethyl-3-propyloxirane.json",
+          "top_name": "(3R)-2,2-dimethyl-3-propyloxirane",
+          "page_title": "Ingredient (3R)-2,2-dimethyl-3-propyloxirane Details page",
+          "basic_fields": {
+            "Physicochemical_property/Basic_Information/Component Name IN English": "(3R)-2,2-dimethyl-3-propyloxirane",
+            "Physicochemical_property/Basic_Information/Molecular Formula": "C7H14O",
+            "Physicochemical_property/Basic_Information/2D Structure": "http://www.tcmip.cn/ETCM2/ETCM/public/svg/ETCM-Obabel-SVG/TCMIP-I-01882.svg",
+            "Physicochemical_property/Basic_Information/Molecular Weight": "114.100",
+            "Physicochemical_property/Basic_Information/CAS Number": "17612-35-0",
+            "Physicochemical_property/Structural_Information/nHA(Number of hydrogen bond acceptors)": 1,
+            "Physicochemical_property/Structural_Information/nRot(Number of rotatable bonds)": 2,
+            "Physicochemical_property/Structural_Information/nRing(Number of rings)": 1,
+            "Physicochemical_property/Structural_Information/MaxRing(Number of atoms in the biggest ring)": 3,
+            "Physicochemical_property/Structural_Information/nHet(Number of heteroatoms)": 1,
+            "Physicochemical_property/Stability/nRig(Number of rigid bonds)": 3,
+            "Physicochemical_property/Stability/Flexibility": "0.667",
+            "Physicochemical_property/Stability/Stereo Centers(Number of stereocenters)": 1,
+            "Physicochemical_property/Solubility/TPSA(Topological polar surface area)": "12.530",
+            "Physicochemical_property/Solubility/logS(The logarithm of aqueous solubility value)": "-1.817",
+            "Physicochemical_property/Solubility/logP(The logarithm of the n-octanol/water distribution coefficient)": "2.394",
+            "Physicochemical_property/Solubility/logD7.4(The logarithm of the n-octanol/water distribution coefficients at pH=7.4)": "2.637",
+            "Pharmacokinetic_property/(Quantitative Estimate of Drug-likeness)": "0.500",
+            "Pharmacokinetic_property/(Synthetic accessibility score)": "2.989",
+            "Pharmacokinetic_property/(Natural Product-likeness score)": "2.621",
+            "Pharmacokinetic_property/Lipinski Rule": "Accepted",
+            "Pharmacokinetic_property/GSK Rule": "Accepted",
+            "Pharmacokinetic_property/Golden Triangle": "Rejected",
+            "Pharmacokinetic_property/Absorption/Caco-2 Permeability": "-4.244",
+            "Pharmacokinetic_property/Absorption/MDCK Permeability": "0.0000243051",
+            "Pharmacokinetic_property/Absorption/Pgp-inhibitor": "0.001",
+            "Pharmacokinetic_property/Absorption/Pgp-substrate": "0.001",
+            "Pharmacokinetic_property/Absorption/HIA(human intestinal absorption)": "0.003",
+            "Pharmacokinetic_property/Absorption/F20%(20% Oral Bioavailability)": "0.177",
+            "Pharmacokinetic_property/Distribution/PPB(Plasma protein binding)": "66.69",
+            "Pharmacokinetic_property/Distribution/VD(Volume Distribution)": "2.001",
+            "Pharmacokinetic_property/Distribution/BBB Penetration(Blood brain barrier penetration)": "0.946",
+            "Pharmacokinetic_property/Distribution/Fu(The fraction unbound in plasms)": "40.63",
+            "Pharmacokinetic_property/Metabolism/CYP 1A2  inhibitor": "0.162",
+            "Pharmacokinetic_property/Metabolism/CYP 2C19  inhibitor": "0.057",
+            "Pharmacokinetic_property/Metabolism/CYP 2C9   inhibitor": "0.027",
+            "Pharmacokinetic_property/Metabolism/CYP 2D6 inhibitor": "0.006",
+            "Pharmacokinetic_property/Metabolism/CYP 3A4 inhibitor": "0.011",
+            "Pharmacokinetic_property/Metabolism/CYP 1A2 substrate": "0.522",
+            "Pharmacokinetic_property/Metabolism/CYP 2C19 substrate": "0.909",
+            "Pharmacokinetic_property/Metabolism/CYP 2C9 substrate": "0.336",
+            "Pharmacokinetic_property/Metabolism/CYP 2D6  substrate": "0.654",
+            "Pharmacokinetic_property/Metabolism/CYP 3A4 substrate": "0.262",
+            "Pharmacokinetic_property/Excretion/CL(The clearance of a drug)": "9.168",
+            "Pharmacokinetic_property/Excretion/T1/2": "0.447",
+            "Toxicology/FAF-Drugs4 Rule": 1,
+            "Toxicology/NonBiodegradable Rule": 2,
+            "Toxicology/Pfizer Rule": "Accepted",
+            "Toxicology/SR-MMP": "0.013",
+            "Toxicology/SureChEMBL Rule": 2,
+            "Toxicology/Toxic_dose/FDAMDD(FDA Maximum (Recommended) Daily Dose)": "0.040",
+            "Toxicology/Toxic_dose/IGC50": "2.980",
+            "Toxicology/Toxic_dose/LC50FM": "3.422",
+            "Toxicology/Toxic_dose/LC50DM": "3.876",
+            "Toxicology/Reproductive_effects/NR-AR(Androgen receptor)": "0.007",
+            "Toxicology/Reproductive_effects/NR-AR-LBD(Androgen receptor)": "0.003",
+            "Toxicology/Reproductive_effects/NR-Aromatase": "0.006",
+            "Toxicology/Reproductive_effects/NR-ER(Estrogen receptor)": "0.217",
+            "Toxicology/Reproductive_effects/NR-ER-LBD(Estrogen receptor)": "0.129",
+            "Toxicology/Allergy/Skin Sensitization Rule": 3,
+            "Toxicology/Allergy/Skin Sensitization": "0.211",
+            "Toxicology/Acute_toxicity/Acute Toxicity Rule": 2,
+            "Toxicology/Acute_toxicity/Rat Oral Acute Toxicity": "0.046",
+            "Toxicology/Organ_toxicity/hERG Blockers": "0.014",
+            "Toxicology/Organ_toxicity/H-HT(The human hepatotoxicity)": "0.061",
+            "Toxicology/Organ_toxicity/DILI(Drug-induced liver injury)": "0.130",
+            "Toxicology/Primary_irritation/Eye Corrosion": "0.942",
+            "Toxicology/Primary_irritation/Eye Irritation": "0.980",
+            "Toxicology/Primary_irritation/Respiratory Toxicity": "0.893",
+            "Toxicology/Mutagenic_effects/AMES Toxicity": "0.031",
+            "Toxicology/Tumorigenic_effects/Genotoxic Carcinogenicity Rule": 5,
+            "Toxicology/Tumorigenic_effects/NonGenotoxic Carcinogenicity Rule": 1,
+            "Toxicology/Tumorigenic_effects/Carcinogencity": "0.195",
+            "Toxicology/Tumorigenic_effects/SR-ARE(Antioxidant Response Element)": "0.015",
+            "Toxicology/Tumorigenic_effects/SR-ATAD5(ATPase family AAA domain-containing protein 5)": "0.004",
+            "Toxicology/Tumorigenic_effects/SR-p53": "0.003"
+          }
+        }
+      ]
+    },
+    "etcm_targets": {
+      "inventory_files": 260,
+      "inventory_bytes": 7093716655,
+      "largest_file_bytes": 71838603,
+      "scanned_files": 260,
+      "scan_scope": "full",
+      "parsed_object_files": 260,
+      "valid_basic_information_files": 260,
+      "basic_layouts": {
+        "flat": 260
+      },
+      "primary_names_containing_cjk": 0,
+      "api_codes": {
+        "1": 260
+      },
+      "data_types": {
+        "list": 260
+      },
+      "top_fields": {
+        "code": 260,
+        "msg": 260,
+        "data": 260,
+        "name": 260,
+        "page_title": 260,
+        "complete_fetch_summary": 260
+      },
+      "basic_fields": {
+        "Target Name": {
+          "records_present": 260,
+          "nonempty": 260,
+          "types": {
+            "str": 260
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+              "value_preview": "1,25-dihydroxyvitamin D(3) 24-hydroxylase, mitochondrial"
+            },
+            {
+              "file": "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+              "value_preview": "1,25-dihydroxyvitamin D(3) 24-hydroxylase, mitochondrial"
+            }
+          ],
+          "records_absent": 0,
+          "nonempty_fraction_of_scanned_files": 1.0
+        },
+        "Gene Symbol": {
+          "records_present": 260,
+          "nonempty": 260,
+          "types": {
+            "list": 260
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+              "value_preview": "['CYP24A1']"
+            },
+            {
+              "file": "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+              "value_preview": "['CYP24A1']"
+            }
+          ],
+          "records_absent": 0,
+          "nonempty_fraction_of_scanned_files": 1.0
+        },
+        "UniProt Accession Number": {
+          "records_present": 260,
+          "nonempty": 260,
+          "types": {
+            "list": 260
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+              "value_preview": "['Q07973']"
+            },
+            {
+              "file": "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+              "value_preview": "['Q07973']"
+            }
+          ],
+          "records_absent": 0,
+          "nonempty_fraction_of_scanned_files": 1.0
+        },
+        "Protein": {
+          "records_present": 260,
+          "nonempty": 260,
+          "types": {
+            "str": 260
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+              "value_preview": "1,25-dihydroxyvitamin D(3) 24-hydroxylase, mitochondrial"
+            },
+            {
+              "file": "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+              "value_preview": "1,25-dihydroxyvitamin D(3) 24-hydroxylase, mitochondrial"
+            }
+          ],
+          "records_absent": 0,
+          "nonempty_fraction_of_scanned_files": 1.0
+        },
+        "Organism": {
+          "records_present": 260,
+          "nonempty": 260,
+          "types": {
+            "str": 260
+          },
+          "html_records": 0,
+          "examples": [
+            {
+              "file": "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+              "value_preview": "Homo sapiens (Human)"
+            },
+            {
+              "file": "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+              "value_preview": "Homo sapiens (Human)"
+            }
+          ],
+          "records_absent": 0,
+          "nonempty_fraction_of_scanned_files": 1.0
+        }
+      },
+      "sections": {
+        "base_information": 260,
+        "related_table": 260,
+        "basic_network": 254,
+        "Inhibitors": 30
+      },
+      "related_tables": {
+        "chinese_patent_drug": {
+          "records": 260,
+          "rows": 883753,
+          "max_rows": 8711,
+          "row_fields": {
+            "linkformat": 776,
+            "Formula Name in Chinese Pinyin": 776,
+            "Dosage Form": 776,
+            "Herbs Contained in This Formula (Chinese Pinyin)": 776,
+            "Indications": 776,
+            "Formula Type": 776
+          }
+        },
+        "traditional_chinese_medicine_formula": {
+          "records": 260,
+          "rows": 4482971,
+          "max_rows": 45118,
+          "row_fields": {
+            "linkformat": 780,
+            "Formula Name in Chinese Pinyin": 780,
+            "Dosage Form": 780,
+            "Herbs Contained in This Formula (Chinese Pinyin)": 780,
+            "Major Symptoms or Signs": 780,
+            "Reference (Ancient Books of Traditional Chinese Medicine)": 780
+          }
+        },
+        "herb": {
+          "records": 260,
+          "rows": 28966,
+          "max_rows": 1169,
+          "row_fields": {
+            "linkformat": 722,
+            "Herb Name in Pinyin": 722,
+            "Herb Name in Latin": 722,
+            "Property": 722,
+            "Flavor": 722,
+            "Meridian Tropism": 722
+          }
+        },
+        "ingredient": {
+          "records": 260,
+          "rows": 43279,
+          "max_rows": 3915,
+          "row_fields": {
+            "linkformat": 714,
+            "Ingredient Name": 714,
+            "Molecular Formula": 714,
+            "Molecular Weight": 714,
+            "Quantitative Estimate of Drug-likeness（QED）": 714,
+            "FDA Maximum Daily Dose (FDAMDD)": 714,
+            "Standards": 714
+          }
+        },
+        "disease": {
+          "records": 157,
+          "rows": 709043,
+          "max_rows": 7811,
+          "row_fields": {
+            "linkformat": 407,
+            "Disease Name": 407,
+            "Global category": 407,
+            "Anatomical category": 407
+          }
+        }
+      },
+      "fetch_summary_status_counts": {
+        "ok": 870,
+        "skipped": 323,
+        "partial": 1
+      },
+      "duplicate_casefolded_primary_names": {
+        "1,25-dihydroxyvitamin d(3) 24-hydroxylase, mitochondrial": [
+          "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+          "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+          "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-2.json"
+        ],
+        "14-3-3 protein gamma": [
+          "etcm_targets/14-3-3_protein_gamma.json",
+          "etcm_targets/2-5A-dependent_ribonuclease.json"
+        ],
+        "15-hydroxyprostaglandin dehydrogenase [nad(+)]": [
+          "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+          "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+          "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+          "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+          "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+          "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+          "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+          "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+          "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+          "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+          "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+        ],
+        "25-hydroxyvitamin d-1 alpha hydroxylase, mitochondrial": [
+          "etcm_targets/25-hydroxyvitamin_D-1_alpha_hydroxylase,_mitochondrial.json",
+          "etcm_targets/7-dehydrocholesterol_reductase.json"
+        ],
+        "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2": [
+          "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+        ]
+      },
+      "identical_content_files": [
+        [
+          "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+          "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+          "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-2.json"
+        ],
+        [
+          "etcm_targets/14-3-3_protein_gamma.json",
+          "etcm_targets/2-5A-dependent_ribonuclease.json"
+        ],
+        [
+          "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+          "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+          "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+          "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+          "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+          "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+          "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+          "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+          "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+          "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+          "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+        ],
+        [
+          "etcm_targets/25-hydroxyvitamin_D-1_alpha_hydroxylase,_mitochondrial.json",
+          "etcm_targets/7-dehydrocholesterol_reductase.json"
+        ],
+        [
+          "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+          "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+        ]
+      ],
+      "issues": [
+        {
+          "file": "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1,25-dihydroxyvitamin D(3) 24-hydroxylase, mitochondrial"
+        },
+        {
+          "file": "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-2.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1,25-dihydroxyvitamin D(3) 24-hydroxylase, mitochondrial"
+        },
+        {
+          "file": "etcm_targets/2-5A-dependent_ribonuclease.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "14-3-3 protein gamma"
+        },
+        {
+          "file": "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "file": "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "file": "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "file": "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "file": "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "file": "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "file": "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "file": "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "file": "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "file": "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "file": "etcm_targets/4-aminobutyrate_aminotransferase,_mitochondrial.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-1"
+        },
+        {
+          "file": "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "file": "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "file": "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "file": "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "file": "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "file": "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "file": "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "file": "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "file": "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "file": "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "file": "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "file": "etcm_targets/5-hydroxytryptamine_receptor_7.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "file": "etcm_targets/6-phosphogluconate_dehydrogenase,_decarboxylating.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "2-5A-dependent ribonuclease"
+        },
+        {
+          "file": "etcm_targets/7-dehydrocholesterol_reductase.json",
+          "kind": "filename_vs_primary_name",
+          "primary_name": "25-hydroxyvitamin D-1 alpha hydroxylase, mitochondrial"
+        },
+        {
+          "file": "etcm_targets/Aromatase.json",
+          "kind": "fetch_count_mismatch",
+          "summary": {
+            "section": "related_table",
+            "type": "traditional_chinese_medicine_formula",
+            "expected": 45118,
+            "actual": 2060,
+            "status": "partial",
+            "error": "502 Server Error: Bad Gateway for url: http://www.tcmip.cn:18124/home/related/"
+          }
+        }
+      ],
+      "issue_counts": {
+        "filename_vs_primary_name": 28,
+        "fetch_count_mismatch": 1
+      },
+      "examples": [
+        {
+          "file": "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+          "top_name": "CYP24A1",
+          "page_title": "Target CYP24A1 Details page",
+          "basic_fields": {
+            "Target Name": "1,25-dihydroxyvitamin D(3) 24-hydroxylase, mitochondrial",
+            "Gene Symbol": [
+              "CYP24A1"
+            ],
+            "UniProt Accession Number": [
+              "Q07973"
+            ],
+            "Protein": "1,25-dihydroxyvitamin D(3) 24-hydroxylase, mitochondrial",
+            "Organism": "Homo sapiens (Human)"
+          }
+        },
+        {
+          "file": "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+          "top_name": "CYP24A1",
+          "page_title": "Target CYP24A1 Details page",
+          "basic_fields": {
+            "Target Name": "1,25-dihydroxyvitamin D(3) 24-hydroxylase, mitochondrial",
+            "Gene Symbol": [
+              "CYP24A1"
+            ],
+            "UniProt Accession Number": [
+              "Q07973"
+            ],
+            "Protein": "1,25-dihydroxyvitamin D(3) 24-hydroxylase, mitochondrial",
+            "Organism": "Homo sapiens (Human)"
+          }
+        }
+      ]
+    }
+  }
+}

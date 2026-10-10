@@ -1,0 +1,67 @@
+[
+  {
+    "name": "session_A_seed",
+    "query": "我正在阅读脑肿瘤医学文献。这次医学学习笔记的编号是 HERB-74291。请记住编号，并只回复已记住；这是虚构的学习笔记，不涉及任何个人信息。",
+    "session": "isolation-A",
+    "http_status": 200,
+    "body": {
+      "status": "success",
+      "response": "已记住",
+      "agent": "CONVERSATION_AGENT"
+    },
+    "marker_in_answer": false,
+    "elapsed_s": 5.95
+  },
+  {
+    "name": "session_A_recall",
+    "query": "这次脑肿瘤医学学习笔记的编号是什么？请仅依据本次对话回答；如果我没有告诉你，请明确说不知道。",
+    "session": "isolation-A",
+    "http_status": 200,
+    "body": {
+      "status": "success",
+      "response": "这次脑肿瘤医学学习笔记的编号是 **HERB-74291**。",
+      "agent": "CONVERSATION_AGENT"
+    },
+    "marker_in_answer": true,
+    "elapsed_s": 6.36
+  },
+  {
+    "name": "session_B_isolation",
+    "query": "这次脑肿瘤医学学习笔记的编号是什么？请仅依据本次对话回答；如果我没有告诉你，请明确说不知道。",
+    "session": "isolation-B",
+    "http_status": 200,
+    "body": {
+      "status": "success",
+      "response": "不知道。你还没有在这次对话中告诉我“这次脑肿瘤医学学习笔记”的编号。",
+      "agent": "CONVERSATION_AGENT"
+    },
+    "marker_in_answer": false,
+    "elapsed_s": 5.54
+  },
+  {
+    "name": "concurrent_rag_2",
+    "query": "What general symptoms of brain tumors are described in the medical literature?",
+    "session": "concurrency-2",
+    "http_status": 200,
+    "body": {
+      "status": "success",
+      "response": "Based on the current search results from the National Brain Tumor Society, Harvard Health, Cleveland Clinic, Brain Tumor Network, and UT MD Anderson, the general symptoms of brain tumors described in the medical literature include:\n\n- **Headaches** – often reported and sometimes described as the most common symptom in adults. They may be worse in the morning, wake you from sleep, worsen with lying down or bending over, or not improve with over-the-counter pain medicine. However, headaches are nonspecific; most headaches are not due to brain tumors.\n- **Seizures** – especially new-onset seizures.\n- **Focal neurologic deficits** – weakness, numbness, or paralysis on one side of the body or face; balance problems, dizziness, or loss of coordination; trouble walking; slurred speech; trouble swallowing.\n- **Speech and language difficulties** – trouble speaking, finding words, or understanding language.\n- **Cognitive changes** – memory loss, confusion, disorientation, difficulty thinking clearly or focusing.\n- **Personality, mood, or behavior changes** – irritability, withdrawal, depression, anxiety, mood swings, or acting out of character.\n- **Sensory changes** – vision problems (blurry or double vision, loss of side vision, abnormal eye movements), hearing loss or ringing in one ear, loss of smell.\n- **Nausea or vomiting** – especially when accompanied by headaches.\n- **Fatigue, drowsiness, or muscle weakness**.\n- **Loss of appetite or weight loss**.\n\nSymptoms depend on the tumor’s location, size, and growth rate. They can be caused by increased pressure inside the skull, brain swelling (edema), hydrocephalus, or direct damage to brain tissue. Many of these symptoms are nonspecific and often have other causes, so new, persistent, or concerning symptoms should be evaluated by a healthcare provider. Emergency symptoms include sudden weakness or numbness in the face, arm, or leg; trouble speaking or understanding speech; trouble seeing; difficulty with walking, balance, or dizziness; the worst headache of your life; or a seizure lasting longer than 5 minutes or followed by breathing/walking difficulty.",
+      "agent": "RAG_AGENT, WEB_SEARCH_PROCESSOR_AGENT"
+    },
+    "marker_in_answer": false,
+    "elapsed_s": 89.16
+  },
+  {
+    "name": "concurrent_rag_1",
+    "query": "What general symptoms of brain tumors are described in the medical literature?",
+    "session": "concurrency-1",
+    "http_status": 200,
+    "body": {
+      "status": "success",
+      "response": "Brain tumor symptoms vary widely depending on the tumor’s location, size, type, and growth rate. General symptoms often result from increased pressure inside the skull, tissue damage, swelling, or blocked cerebrospinal fluid flow. Major sources—including the National Brain Tumor Society (braintumor.org), Harvard Health, Cleveland Clinic, Brain Tumor Network, and Brain Tumour Research—describe these common symptoms:\n\n- **Headaches** — often worse in the morning or after physical activity, and sometimes wake you from sleep. Some sources call headaches the most common symptom in adults, though they are rarely caused by a brain tumor; a new headache should still be evaluated.\n- **Seizures** — especially a first seizure in someone with no seizure history.\n- **Nausea or vomiting** — unexplained and sometimes associated with headache.\n- **Cognitive/behavioral changes** — difficulty thinking, speaking, finding words, memory loss, confusion, disorientation, personality changes, mood swings, depression, anxiety, or acting out of character.\n- **Motor and sensory problems** — weakness, numbness, or loss of movement on one side of the body; facial drooping or numbness; balance problems, dizziness, or loss of coordination; trouble walking or swallowing; slurred speech.\n- **Vision, hearing, or smell changes** — blurred or double vision, loss of side vision, abnormal eye movements, hearing loss or ringing in one ear, or loss of smell.\n- **Fatigue or extreme drowsiness** — reported by a large proportion of patients in some studies.\n- **Other possible symptoms** — loss of appetite, weight loss, or unexplained twitches of the face or limbs.\n\nSymptoms are often nonspecific and most often have causes other than a brain tumor. They may also be focal—for example, frontal-lobe tumors more often cause personality or behavior changes, while temporal-lobe tumors may affect memory or hearing.\n\nSeek urgent care (call 911) for sudden weakness or numbness in the face, arm, or leg; trouble speaking or understanding; trouble seeing in one or both eyes; difficulty walking, balance problems, or dizziness; or the worst headache of your life. Also seek emergency help for a first seizure, a seizure lasting longer than 5 minutes, repeated seizures, or difficulty breathing or walking after a seizure.\n\nIf you have new, persistent, or concerning symptoms, see a healthcare provider for evaluation. This information is general and not a substitute for medical advice.",
+      "agent": "RAG_AGENT, WEB_SEARCH_PROCESSOR_AGENT"
+    },
+    "marker_in_answer": false,
+    "elapsed_s": 108.7
+  }
+]

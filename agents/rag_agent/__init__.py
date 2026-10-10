@@ -28,9 +28,14 @@ class MedicalRAG:
         self.doc_parser = MedicalDocParser()
         self.content_processor = ContentProcessor(config)
         self.vector_store = VectorStore(config)
-        self.reranker = Reranker(config)
-        self.query_expander = QueryExpander(config)
-        self.response_generator = ResponseGenerator(config)
+        try:
+            self.reranker = Reranker(config)
+            self.query_expander = QueryExpander(config)
+            self.response_generator = ResponseGenerator(config)
+        except Exception:
+            # Release the local DB lock if later component initialization fails.
+            self.vector_store.client.close()
+            raise
         self.parsed_content_dir = self.config.rag.parsed_content_dir
     
     def ingest_directory(self, directory_path: str) -> Dict[str, Any]:

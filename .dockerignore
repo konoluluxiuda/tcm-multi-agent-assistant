@@ -4,3 +4,9 @@
 __pycache__
 *.pyc
 data/
+uploads/
+.env.*
+!.env.example
+
+# Generated local TCM knowledge database
+var/

@@ -1,0 +1,1 @@
+{"probe": "output_guardrail_without_history", "input_answer": "这次医学学习笔记的编号是 HERB-74291。", "filtered_answer": "我不知道。你没有在本对话中告诉我这次脑肿瘤医学学习笔记的编号，因此我无法仅依据本次对话回答。", "marker_preserved": false}

@@ -1,3 +1,4 @@
+from agents.source_links import source_url
 import os
 import re
 import logging
@@ -43,7 +44,7 @@ class Reranker:
         """
         try:
             if not documents:
-                return []
+                return [], []
             
             # Handle different document formats and ensure consistent structure
             if documents:
@@ -106,7 +107,7 @@ class Reranker:
                     # Create picture path based on document source and counter
                     doc_basename = os.path.splitext(doc['source'])[0]  # Remove file extension
                     # picture_path = Path(os.path.abspath(parsed_content_dir + "/" + f"{doc_basename}-picture-{counter_value}.png")).as_uri()
-                    picture_path = os.path.join("http://localhost:8000/", parsed_content_dir + "/" + f"{doc_basename}-picture-{counter_value}.png")
+                    picture_path = source_url(parsed_content_dir + "/" + f"{doc_basename}-picture-{counter_value}.png")
                     picture_reference_paths.append(picture_path)
             
             return reranked_docs, picture_reference_paths
@@ -115,4 +116,4 @@ class Reranker:
             self.logger.error(f"Error during reranking: {e}")
             # Fallback to original ranking if reranking fails
             self.logger.warning("Falling back to original ranking")
-            return documents
+            return documents, []

@@ -1,0 +1,111 @@
+{
+  "dataset_version": "local-2026-10-10",
+  "checks": [
+    {
+      "check": "lookup HuangQin",
+      "passed": true
+    },
+    {
+      "check": "lookup  huangqin ",
+      "passed": true
+    },
+    {
+      "check": "lookup Scutellaria baicalensis Georgi",
+      "passed": true
+    },
+    {
+      "check": "lookup HuaShi",
+      "passed": true
+    },
+    {
+      "check": "lookup HuaYeEZhangChai",
+      "passed": true
+    },
+    {
+      "check": "lookup 黄芩",
+      "passed": true
+    },
+    {
+      "check": "lookup __nonexistent_herb__",
+      "passed": true
+    },
+    {
+      "check": "lookup source ID",
+      "passed": true
+    },
+    {
+      "check": "HuangQin current source SHA-256",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer Herb Name in Pinyin",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer Herb Name in Latin",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer Herb Name in English",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer Family",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer Habitat",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer Medicinal Part",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer Property",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer Flavor",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer Meridian Tropism",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer Herb classification based on efficacy",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer Indications",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer PubMed",
+      "passed": true
+    },
+    {
+      "check": "JSON Pointer Database Cross References",
+      "passed": true
+    },
+    {
+      "check": "sparse record has explicit missing fields",
+      "passed": true
+    },
+    {
+      "check": "2076 valid source records",
+      "passed": true
+    },
+    {
+      "check": "all imported hashes match prior audit",
+      "passed": true
+    },
+    {
+      "check": "SQLite integrity",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "database_bytes": 20774912
+}

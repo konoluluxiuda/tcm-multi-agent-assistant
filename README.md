@@ -37,6 +37,7 @@
   - [Using Docker](#docker-setup)
   - [Manual Installation](#manual-setup)
 - [Usage](#usage)
+- [Evaluation](#evaluation)
 - [Contributions](#contributions)
 - [License](#license)
 - [Citing](#citing)
@@ -372,6 +373,45 @@ python ingest_rag_data.py --dir ./data/raw
 - Ask medical queries to leverage **retrieval-augmented generation (RAG)** if information in memory or **web-search** to retrieve latest information.  
 - Use **voice-based** interaction (speech-to-text and text-to-speech).  
 - Review AI-generated insights with **human-in-the-loop verification**.  
+
+---
+
+## Session memory and local concurrency
+
+The API passes its `session_id` cookie into the agent graph. Different sessions
+have separate history; turns in the same session are serialized. Output review
+and web-answer generation receive that session's recent context.
+
+Memory is **in-process and temporary**, with the active conversation trimmed to
+`max_conversation_history` (20 messages by default). Restarting the application
+clears memory. This is not an account-based or durable memory system, and the
+in-memory checkpointer does not provide a session expiry/retention policy.
+
+The local Qdrant backend is supported in a **single application process**. RAG
+requests share one instance and queue while it is in use; this prevents competing
+clients from locking the same folder. Do not run another worker, ingestion job,
+or evaluation process against that directory concurrently. For multiple workers,
+use a server-backed vector database and a shared persistent checkpointer.
+
+Local source links use `/data/...`, including old localhost URLs normalized on
+retrieval, so they follow the browser's actual host and port.
+
+## 🧪 Evaluation  <a name="evaluation"></a>
+
+A minimal, self-contained evaluation harness lives in [`eval_rag.py`](eval_rag.py). It auto-generates QA pairs from the ingested corpus and reports label-free metrics plus a badcase list (it does **not** modify anything under `agents/`).
+
+```bash
+# 1. Verify the vector DB (dimension + a live retrieval probe)
+docker run --rm --env-file .env -v "$PWD:/app" -w /app medical-assistant:dev python eval_rag.py --verify
+
+# 2. Generate QA pairs and run the evaluation (~ n_per_doc per document)
+docker run --rm --env-file .env -v "$PWD:/app" -w /app medical-assistant:dev python eval_rag.py --all --n-per-doc 10
+
+# 3. Re-run against the cached dataset, with optional LLM-as-judge
+docker run --rm --env-file .env -v "$PWD:/app" -w /app medical-assistant:dev python eval_rag.py --eval --judge
+```
+
+Reports are written to `data/eval/` (`report.json`, `summary.md`, `badcases.json`). Metrics: retrieval hit-rate, RAG stay-rate / routing distribution, retrieval-confidence distribution, answer keyword recall, and optional judge correctness. Badcases are flagged by retrieval misses, handoff away from RAG, insufficient-info responses, low answer overlap, and judge failures.
 
 ---
 

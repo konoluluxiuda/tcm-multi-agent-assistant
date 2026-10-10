@@ -1,3 +1,4 @@
+from agents.source_links import source_url
 import os
 import re
 import logging
@@ -116,7 +117,7 @@ class VectorStore:
                         "source": os.path.basename(document_path),
                         "doc_id": doc_ids[id_idx],
                         # "source_path": Path(os.path.abspath(document_path)).as_uri()
-                        "source_path": os.path.join("http://localhost:8000/", document_path)
+                        "source_path": source_url(document_path)
                     }
                 )
             )
@@ -195,7 +196,7 @@ class VectorStore:
                 "content": formatted_doc,
                 "score": score,  # Use the actual similarity score
                 "source": chunk.metadata['source'],
-                "source_path": chunk.metadata['source_path'],
+                "source_path": source_url(chunk.metadata['source_path']),
             }
             retrieved_docs.append(doc_dict)
             

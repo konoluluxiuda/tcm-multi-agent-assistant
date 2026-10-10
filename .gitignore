@@ -186,6 +186,11 @@ uploads/skin_lesion_output/segmentation_plot.png
 data/qdrant_db/
 data/docs_db/
 data/parsed_docs/
+data/eval/
+
+# Local backups of the above (e.g. pre-embedding-model-switch)
+data/*.bak/
+data/*.bak_*/
 
 # Model weights - skin lesion auto-downloads; others must be placed manually
 *.pth

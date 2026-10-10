@@ -6,8 +6,10 @@ It dynamically routes user queries to the appropriate agent based on content and
 """
 
 import json
+import atexit
+from agents.runtime import session_turn, SharedRAG
 from typing import Dict, List, Optional, Any, Literal, TypedDict, Union, Annotated
-from langchain_core.messages import HumanMessage, AIMessage, SystemMessage, BaseMessage
+from langchain_core.messages import HumanMessage, AIMessage, SystemMessage, BaseMessage, RemoveMessage
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.runnables import RunnablePassthrough
@@ -34,8 +36,9 @@ config = Config()
 # Initialize memory
 memory = MemorySaver()
 
-# Specify a thread
-thread_config = {"configurable": {"thread_id": "1"}}
+# One owner for the local vector DB. Threads serialize RAG work in this process.
+rag_runtime = SharedRAG()
+atexit.register(rag_runtime.close)
 
 
 # Agent that takes the decision of routing the request further to correct task specific agent
@@ -327,7 +330,6 @@ def create_agent_graph():
 
         print(f"Selected agent: RAG_AGENT")
 
-        rag_agent = MedicalRAG(config)
         
         messages = state["messages"]
         query = state["current_input"]
@@ -342,7 +344,7 @@ def create_agent_graph():
                 # print("######### DEBUG 2:", msg)
                 recent_context += f"Assistant: {msg.content}\n"
 
-        response = rag_agent.process_query(query, chat_history=recent_context)
+        response = rag_runtime.query(MedicalRAG, config, query, recent_context)
         retrieval_confidence = response.get("confidence", 0.0)  # Default to 0.0 if not provided
 
         print(f"Retrieval Confidence: {retrieval_confidence}")
@@ -583,7 +585,11 @@ def create_agent_graph():
             input_text = current_input.get("text", "")
         
         # Apply output sanitization
-        sanitized_output = guardrails.check_output(output_text, input_text)
+        history = "\n".join(
+            f"{msg.type}: {msg.content}"
+            for msg in state["messages"][-config.max_conversation_history:]
+        )
+        sanitized_output = guardrails.check_output(output_text, input_text, chat_history=history)
         # sanitized_output = output_text
         
         # For non-validation cases, add the sanitized output to messages
@@ -683,13 +689,13 @@ def init_agent_state() -> AgentState:
     }
 
 
-def process_query(query: Union[str, Dict], conversation_history: List[BaseMessage] = None) -> str:
+def _process_query(query: Union[str, Dict], thread_config: Dict) -> Dict:
     """
     Process a user query through the agent decision system.
     
     Args:
         query: User input (text string or dict with text and image)
-        conversation_history: Optional list of previous messages, NOT NEEDED ANYMORE since the state saves the conversation history now
+        thread_config: Explicit session checkpoint configuration
         
     Returns:
         Response from the appropriate agent
@@ -705,8 +711,6 @@ def process_query(query: Union[str, Dict], conversation_history: List[BaseMessag
     
     # Initialize state
     state = init_agent_state()
-    # if conversation_history:
-    #     state["messages"] = conversation_history
     
     # Add the current query
     state["current_input"] = query
@@ -717,13 +721,14 @@ def process_query(query: Union[str, Dict], conversation_history: List[BaseMessag
     
     state["messages"] = [HumanMessage(content=query)]
 
-    # result = graph.invoke(state, thread_config)
     result = graph.invoke(state, thread_config)
     # print("######### DEBUG 4:", result)
     # state["messages"] = [result["messages"][-1].content]
 
     # Keep history to reasonable size (ANOTHER OPTION: summarize and store before truncating history)
     if len(result["messages"]) > config.max_conversation_history:  # Keep last config.max_conversation_history messages
+        expired = result["messages"][:-config.max_conversation_history]
+        graph.update_state(thread_config, {"messages": [RemoveMessage(id=m.id) for m in expired]})
         result["messages"] = result["messages"][-config.max_conversation_history:]
 
     # visualize conversation history in console
@@ -732,3 +737,12 @@ def process_query(query: Union[str, Dict], conversation_history: List[BaseMessag
     
     # Add the response to conversation history
     return result
+
+def process_query(query: Union[str, Dict], conversation_history=None, *, session_id=None) -> Dict:
+    """Run a turn in its own session; omitted IDs create isolated one-shot calls.
+
+    History lives in process memory and is lost on restart. Client-supplied
+    history is intentionally not trusted as server-side state.
+    """
+    with session_turn(session_id) as thread_config:
+        return _process_query(query, thread_config)

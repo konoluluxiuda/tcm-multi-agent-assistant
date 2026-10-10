@@ -1,0 +1,1284 @@
+{
+  "source": "/home/zry/workspace/HDCTI/dataset/ETCM2.0",
+  "audit_created_at": "2026-10-10T04:33:30.981393+00:00",
+  "action": "Review candidates only; source files were not moved, deleted, or modified. Warnings do not prove every candidate is invalid.",
+  "files": [
+    {
+      "file": "etcm_herbs/HuaShi .json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "huashi",
+          "files": [
+            "etcm_herbs/HuaShi .json",
+            "etcm_herbs/HuaShi_.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_herbs/HuaShi_.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "huashi",
+          "files": [
+            "etcm_herbs/HuaShi .json",
+            "etcm_herbs/HuaShi_.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_herbs/TianRanBingPianя╝ИYouXuanLongNaoя╝Й.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "TianRanBingPian（YouXuanLongNao）"
+        }
+      ]
+    },
+    {
+      "file": "etcm_herbs/YaHuNuя╝ИXiShengTengя╝Й.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "YaHuNu（XiShengTeng）"
+        }
+      ]
+    },
+    {
+      "file": "etcm_ingredients/2,2'.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "api_non_success",
+          "code": 2,
+          "msg": "No Data for 2,2'!"
+        },
+        {
+          "kind": "data_not_list"
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+            "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+            "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-2.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1,25-dihydroxyvitamin d(3) 24-hydroxylase, mitochondrial",
+          "files": [
+            "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+            "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+            "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-2.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1,25-dihydroxyvitamin D(3) 24-hydroxylase, mitochondrial"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+            "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+            "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-2.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1,25-dihydroxyvitamin d(3) 24-hydroxylase, mitochondrial",
+          "files": [
+            "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+            "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+            "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-2.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-2.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1,25-dihydroxyvitamin D(3) 24-hydroxylase, mitochondrial"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+            "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+            "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-2.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1,25-dihydroxyvitamin d(3) 24-hydroxylase, mitochondrial",
+          "files": [
+            "etcm_targets/1,25-dihydroxyvitamin_D(3)_24-hydroxylase,_mitochondrial.json",
+            "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-1.json",
+            "etcm_targets/1-phosphatidylinositol_4,5-bisphosphate_phosphodiesterase_gamma-2.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/14-3-3_protein_gamma.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/14-3-3_protein_gamma.json",
+            "etcm_targets/2-5A-dependent_ribonuclease.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "14-3-3 protein gamma",
+          "files": [
+            "etcm_targets/14-3-3_protein_gamma.json",
+            "etcm_targets/2-5A-dependent_ribonuclease.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "15-hydroxyprostaglandin dehydrogenase [nad(+)]",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/2-5A-dependent_ribonuclease.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "14-3-3 protein gamma"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/14-3-3_protein_gamma.json",
+            "etcm_targets/2-5A-dependent_ribonuclease.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "14-3-3 protein gamma",
+          "files": [
+            "etcm_targets/14-3-3_protein_gamma.json",
+            "etcm_targets/2-5A-dependent_ribonuclease.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/25-hydroxyvitamin_D-1_alpha_hydroxylase,_mitochondrial.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/25-hydroxyvitamin_D-1_alpha_hydroxylase,_mitochondrial.json",
+            "etcm_targets/7-dehydrocholesterol_reductase.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "25-hydroxyvitamin d-1 alpha hydroxylase, mitochondrial",
+          "files": [
+            "etcm_targets/25-hydroxyvitamin_D-1_alpha_hydroxylase,_mitochondrial.json",
+            "etcm_targets/7-dehydrocholesterol_reductase.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "15-hydroxyprostaglandin dehydrogenase [nad(+)]",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "15-hydroxyprostaglandin dehydrogenase [nad(+)]",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "15-hydroxyprostaglandin dehydrogenase [nad(+)]",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "15-hydroxyprostaglandin dehydrogenase [nad(+)]",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "15-hydroxyprostaglandin dehydrogenase [nad(+)]",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "15-hydroxyprostaglandin dehydrogenase [nad(+)]",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "15-hydroxyprostaglandin dehydrogenase [nad(+)]",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "15-hydroxyprostaglandin dehydrogenase [nad(+)]",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "15-hydroxyprostaglandin dehydrogenase [nad(+)]",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "15-hydroxyprostaglandin dehydrogenase [NAD(+)]"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "15-hydroxyprostaglandin dehydrogenase [nad(+)]",
+          "files": [
+            "etcm_targets/15-hydroxyprostaglandin_dehydrogenase_[NAD(+)].json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(A162V).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(E166D).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(L159M).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(T222A).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T).json",
+            "etcm_targets/3-Phosphoinositide-Dependent_Protein_Kinase_1_(PDK1)_Mutant_(V143T_T222A).json",
+            "etcm_targets/3-beta-hydroxysteroid-Delta(8),Delta(7)-isomerase.json",
+            "etcm_targets/3-keto-steroid_reductase_17-beta-hydroxysteroid_dehydrogenase_7.json",
+            "etcm_targets/3-oxo-5-alpha-steroid_4-dehydrogenase_2.json",
+            "etcm_targets/3-phosphoinositide-dependent_protein_kinase_1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/4-aminobutyrate_aminotransferase,_mitochondrial.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-1"
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/5-hydroxytryptamine_receptor_7.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-2",
+          "files": [
+            "etcm_targets/5'-AMP-activated_protein_kinase_subunit_beta-1.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1D.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1E.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_1F.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2B.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_2C.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_3A.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_6.json",
+            "etcm_targets/5-hydroxytryptamine_receptor_7.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/6-phosphogluconate_dehydrogenase,_decarboxylating.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "2-5A-dependent ribonuclease"
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/7-dehydrocholesterol_reductase.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "filename_vs_primary_name",
+          "primary_name": "25-hydroxyvitamin D-1 alpha hydroxylase, mitochondrial"
+        },
+        {
+          "kind": "identical_content_group",
+          "files": [
+            "etcm_targets/25-hydroxyvitamin_D-1_alpha_hydroxylase,_mitochondrial.json",
+            "etcm_targets/7-dehydrocholesterol_reductase.json"
+          ]
+        },
+        {
+          "kind": "duplicate_primary_name",
+          "normalized_name": "25-hydroxyvitamin d-1 alpha hydroxylase, mitochondrial",
+          "files": [
+            "etcm_targets/25-hydroxyvitamin_D-1_alpha_hydroxylase,_mitochondrial.json",
+            "etcm_targets/7-dehydrocholesterol_reductase.json"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "etcm_targets/Aromatase.json",
+      "status": "needs_review",
+      "reasons": [
+        {
+          "kind": "fetch_count_mismatch",
+          "summary": {
+            "section": "related_table",
+            "type": "traditional_chinese_medicine_formula",
+            "expected": 45118,
+            "actual": 2060,
+            "status": "partial",
+            "error": "502 Server Error: Bad Gateway for url: http://www.tcmip.cn:18124/home/related/"
+          }
+        }
+      ]
+    }
+  ]
+}

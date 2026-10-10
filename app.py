@@ -103,11 +103,11 @@ def chat(
         session_id = str(uuid.uuid4())
     
     try:
-        response_data = process_query(request.query)
+        response_data = process_query(request.query, session_id=session_id)
         response_text = response_data['messages'][-1].content
         
         # Set session cookie
-        response.set_cookie(key="session_id", value=session_id)
+        response.set_cookie(key="session_id", value=session_id, httponly=True, samesite="lax")
 
         # Check if the agent is skin lesion segmentation and find the image path
         result = {
@@ -171,11 +171,11 @@ async def upload_image(
     
     try:
         query = {"text": text, "image": file_path}
-        response_data = process_query(query)
+        response_data = process_query(query, session_id=session_id)
         response_text = response_data['messages'][-1].content
 
         # Set session cookie
-        response.set_cookie(key="session_id", value=session_id)
+        response.set_cookie(key="session_id", value=session_id, httponly=True, samesite="lax")
 
         # Check if the agent is skin lesion segmentation and find the image path
         result = {
@@ -216,14 +216,14 @@ def validate_medical_output(
 
     try:
         # Set session cookie
-        response.set_cookie(key="session_id", value=session_id)
+        response.set_cookie(key="session_id", value=session_id, httponly=True, samesite="lax")
         
         # Re-run the agent decision system with the validation input
         validation_query = f"Validation result: {validation_result}"
         if comments:
             validation_query += f" Comments: {comments}"
         
-        response_data = process_query(validation_query)
+        response_data = process_query(validation_query, session_id=session_id)
 
         if validation_result.lower() == 'yes':
             return {

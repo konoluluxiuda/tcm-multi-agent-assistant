@@ -1,0 +1,65 @@
+[
+  {
+    "name": "session_A_seed",
+    "query": "我正在阅读脑肿瘤医学文献。这次医学学习笔记的编号是 HERB-74291。请记住编号，并只回复已记住；这是虚构的学习笔记，不涉及任何个人信息。",
+    "session": "isolation-A",
+    "http_status": 200,
+    "body": {
+      "status": "success",
+      "response": "已记住",
+      "agent": "CONVERSATION_AGENT"
+    },
+    "marker_in_answer": false,
+    "elapsed_s": 6.96
+  },
+  {
+    "name": "session_A_recall",
+    "query": "这次脑肿瘤医学学习笔记的编号是什么？请仅依据本次对话回答；如果我没有告诉你，请明确说不知道。",
+    "session": "isolation-A",
+    "http_status": 200,
+    "body": {
+      "status": "success",
+      "response": "我不知道。您没有在本次对话中告诉我该编号。",
+      "agent": "CONVERSATION_AGENT"
+    },
+    "marker_in_answer": false,
+    "elapsed_s": 6.59
+  },
+  {
+    "name": "session_B_isolation",
+    "query": "这次脑肿瘤医学学习笔记的编号是什么？请仅依据本次对话回答；如果我没有告诉你，请明确说不知道。",
+    "session": "isolation-B",
+    "http_status": 200,
+    "body": {
+      "status": "success",
+      "response": "我不知道。您没有在本对话中告诉我这次脑肿瘤医学学习笔记的编号。",
+      "agent": "CONVERSATION_AGENT"
+    },
+    "marker_in_answer": false,
+    "elapsed_s": 10.91
+  },
+  {
+    "name": "concurrent_rag_1",
+    "query": "What general symptoms of brain tumors are described in the medical literature?",
+    "session": "concurrency-1",
+    "http_status": 500,
+    "body": {
+      "detail": "Storage folder ./data/qdrant_db is already accessed by another instance of Qdrant client. If you require concurrent access, use Qdrant server instead."
+    },
+    "marker_in_answer": false,
+    "elapsed_s": 3.52
+  },
+  {
+    "name": "concurrent_rag_2",
+    "query": "What general symptoms of brain tumors are described in the medical literature?",
+    "session": "concurrency-2",
+    "http_status": 200,
+    "body": {
+      "status": "success",
+      "response": "Brain tumor symptoms vary widely depending on the tumor’s **location, size, and growth rate**. Some tumors cause no symptoms, especially if small. Medical sources often divide symptoms into **general/global symptoms** (often from increased pressure in the skull) and **focal symptoms** (from the tumor’s specific location).\n\n**Common general symptoms**\n- **Headaches** — often the most common symptom; may be progressive, worse in the morning or when lying down/bending over, and may not respond well to over-the-counter pain medicine.\n- **Seizures** — especially new-onset seizures.\n- **Nausea or vomiting** — often with headaches, sometimes worse in the morning.\n- **Fatigue, drowsiness, or excessive sleepiness.**\n- **Cognitive changes** — trouble thinking, remembering, focusing, or finding words.\n- **Confusion or disorientation.**\n- **Personality, mood, or behavior changes** — withdrawal, irritability, depression, anxiety, or acting out of character.\n- **Dizziness or balance problems.**\n- **Vision changes** — blurred/double vision, abnormal eye movements.\n- **Sensory changes** — hearing loss, loss of smell/taste, facial numbness/tingling.\n\n**Focal symptoms that may occur depending on tumor location**\n- Weakness, numbness, or paralysis on one side or in one part of the body.\n- Difficulty speaking, understanding language, or slurred speech.\n- Trouble swallowing or walking.\n- Facial drooping or weakness.\n- Loss of appetite or weight loss.\n\n**When to seek emergency care**\nCall emergency services for sudden:\n- Numbness or weakness in the face, arm, or leg.\n- Trouble speaking or understanding speech.\n- Trouble seeing in one or both eyes.\n- Difficulty walking, balance problems, or dizziness.\n- “Worst headache of your life.”\n\nThese symptoms are **not specific to brain tumors** and can have many other causes. New, persistent, or concerning symptoms should be evaluated by a healthcare provider.\n\nSources: National Brain Tumor Society, MD Anderson Cancer Center, Cleveland Clinic, The Brain Tumour Charity.",
+      "agent": "RAG_AGENT, WEB_SEARCH_PROCESSOR_AGENT"
+    },
+    "marker_in_answer": false,
+    "elapsed_s": 37.83
+  }
+]

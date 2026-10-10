@@ -1,0 +1,39 @@
+[
+  {
+    "name": "health_after_env_reload",
+    "path": "/health",
+    "http_status": 200,
+    "expected_status": 200,
+    "http_pass": true,
+    "body": {
+      "status": "healthy"
+    },
+    "elapsed_s": 0.02
+  },
+  {
+    "name": "medical_rag_with_tavily",
+    "path": "/chat",
+    "http_status": 200,
+    "expected_status": 200,
+    "http_pass": true,
+    "body": {
+      "status": "success",
+      "response": "Brain tumor symptoms vary by location, size, and growth rate; small tumors may cause no symptoms. The literature often groups them as **general symptoms** (often from increased pressure in the skull) and **focal symptoms** (specific to the tumor’s location).\n\nCommonly described general symptoms include:\n\n- **Headaches** — the most common symptom in adults; often worse in the morning or on waking, when lying down or bending over, and may not improve with over-the-counter pain medicine.\n- **Seizures** — especially new-onset seizures.\n- **Nausea or vomiting** — often with headaches.\n- **Cognitive/communication changes** — difficulty thinking, speaking, finding words, understanding language, memory loss, confusion, or disorientation.\n- **Personality, mood, or behavior changes** — withdrawal, irritability, depression, anxiety, or acting out of character.\n- **Weakness, numbness, tingling, or paralysis** — usually on one side or one part of the body.\n- **Balance problems or dizziness.**\n- **Sensory changes** — blurred/double vision, abnormal eye movements, hearing difficulty, or loss of smell/taste.\n- **Fatigue or drowsiness** — sometimes with appetite or weight loss.\n\nMore location-specific symptoms can include trouble swallowing or walking, facial drooping, and slurred speech. Benign tumors may cause gradual symptoms, while malignant tumors may progress faster.\n\nThese symptoms are nonspecific and can have many other causes. See a healthcare provider if they are new, persistent, or concerning. Seek emergency care for sudden weakness/numbness, trouble speaking or understanding, vision changes, balance difficulty, or the “worst headache of your life.”",
+      "agent": "RAG_AGENT, WEB_SEARCH_PROCESSOR_AGENT"
+    },
+    "elapsed_s": 87.87
+  },
+  {
+    "name": "request_sources_with_tavily",
+    "path": "/chat",
+    "http_status": 200,
+    "expected_status": 200,
+    "http_pass": true,
+    "body": {
+      "status": "success",
+      "response": "抱歉，我无法查看你所说的“刚才回答”的完整原文，因此不能逐条对应页码。另外，本次检索到的来源多为网页，网页通常没有传统书籍/期刊式的页码；为避免编造，以下用“小标题/段落”定位。\n\n可用于脑肿瘤相关回答的来源：\n\n1. **Dana-Farber Cancer Institute（丹娜—法伯癌症研究所）**  \n   《脑肿瘤有哪些常见症状?》  \n   https://blog.dana-farber.org/insight/zh-hans/脑肿瘤有哪些常见症状  \n   定位：正文“脑肿瘤有哪些常见症状?”及 Nayak 博士、Lee 博士访谈段。\n\n2. **UCLA Health（加州大学洛杉矶分校医疗系统）**  \n   《脑瘤宣传月：症状、风险与治疗新进展》  \n   https://cn.uclahealth.org/educational-resources/脑瘤宣传月：症状、风险与治疗新进展  \n   定位：“识别脑瘤的症状”“了解脑瘤的风险因素”“先进的诊断与治疗”。\n\n3. **Mount Elizabeth Hospital（新加坡伊丽莎白医院）**  \n   《您的头痛是脑瘤的征兆吗？》  \n   https://www.mountelizabeth.com.sg/zh/health-plus/article/headache-a-sign-brain-tumour  \n   定位：“脑肿瘤头痛的症状有哪些？”“脑肿瘤有哪些需要注意的症状？”“脑肿瘤如何治疗？”  \n   文末列有参考文献：Johnson 等、Louis 等、Ostrom 等，但检索结果未显示具体页码。\n\n4. **Heal Medical（希愈医疗）**  \n   《香港脑肿瘤全面指南｜脑膜瘤・胶质瘤・转移瘤・神经鞘瘤・垂体瘤症状与治疗》  \n   https://www.heal-medical.com/sc/our-services/brain-tumours  \n   定位：各类型肿瘤表格中的“常见症状/诊断方式/治疗方式”。\n\n5. **维基百科“脑瘤”**  \n   不建议作为医学引用来源；如上一回答引用过，建议替换为上述机构来源或 WHO 中枢神经系统肿瘤分类等权威资料。\n\n关于页码：以上网页无页码。若必须提供页码，需要查原始期刊/指南的正式出版版本；本次检索结果未提供这些页码。你可以把上一回答原文发来，我可以帮你逐条匹配来源；若需期刊页码，则需进一步查 DOI 或原文。  \n医学信息仅供参考，不能替代专业医疗建议。",
+      "agent": "RAG_AGENT, WEB_SEARCH_PROCESSOR_AGENT"
+    },
+    "elapsed_s": 60.62
+  }
+]

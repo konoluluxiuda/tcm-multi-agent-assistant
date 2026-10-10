@@ -25,8 +25,8 @@ class MedicalDocParser:
             self,
             document_path: str,
             output_dir: str,
-            image_resolution_scale: float = 2.0,
-            do_ocr: bool = True,
+            image_resolution_scale: float = 1.0,
+            do_ocr: bool = None,
             do_tables: bool = True,
             do_formulas: bool = True,
             do_picture_desc: bool = False
@@ -46,13 +46,21 @@ class MedicalDocParser:
         Returns:
             Tuple containing (parsed_document, list_of_image_paths)
         """
+        # OCR is the main memory cost on long PDFs and can OOM a modest host. Allow it
+        # to be disabled per-run via DOCLING_OCR=0 (text-layer PDFs don't need it).
+        if do_ocr is None:
+            do_ocr = os.environ.get("DOCLING_OCR", "1").lower() not in ("0", "false", "no")
+
         # Create output directory if it doesn't exist
         output_dir_path = Path(output_dir)
         output_dir_path.mkdir(parents=True, exist_ok=True)
         
         # Configure pipeline options
+        # generate_page_images is disabled: page rasters are never referenced downstream
+        # (only -picture-N.png via picture_counter_N), and rendering them per page is a
+        # large memory cost that OOMs on long PDFs.
         pipeline_options = PdfPipelineOptions(
-            generate_page_images=True,
+            generate_page_images=False,
             generate_picture_images=True,
             images_scale=image_resolution_scale,
             do_ocr=do_ocr,
@@ -75,8 +83,10 @@ class MedicalDocParser:
         # Get document filename
         doc_filename = conversion_res.input.file.stem
         
-        # Save page images
+        # Save page images (only when generated; skipped when generate_page_images=False)
         for page_no, page in conversion_res.document.pages.items():
+            if page.image is None:
+                continue
             page_image_filename = output_dir_path / f"{doc_filename}-{page_no}.png"
             with page_image_filename.open("wb") as fp:
                 page.image.pil_image.save(fp, format="PNG")

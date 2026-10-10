@@ -1,0 +1,12 @@
+{
+  "batch_id": 2,
+  "dataset_version": "local-2026-10-10",
+  "files": 2076,
+  "valid": 2076,
+  "quarantined": 0,
+  "inserted": 0,
+  "updated": 0,
+  "unchanged": 2076,
+  "missing_from_snapshot": 0,
+  "duplicate_pinyin_groups": 1
+}

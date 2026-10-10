@@ -1,3 +1,4 @@
+from agents.source_links import source_url
 import logging
 from typing import List, Dict, Any, Optional, Union
 
@@ -172,7 +173,7 @@ class ResponseGenerator:
         for doc in documents:
             # Extract source and source_path
             source = doc.get("source")
-            source_path = doc.get("source_path")
+            source_path = source_url(doc.get("source_path"))
             
             # Skip if no source information is available
             if not source:

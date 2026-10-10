@@ -1,0 +1,23 @@
+{
+  "mode": "simple",
+  "dataset_sha256": "6ab28672184c79a3cca99deb0985782da9b10b0bad142eb497945bff051384c0",
+  "case_ids": [
+    "q017"
+  ],
+  "chat_model": "deepseek-flash",
+  "embedding_model": "text-embedding-v4",
+  "embedding_dim": 1024,
+  "method": "Same corpus and hybrid retrieval; simple skips expansion, reranking, routing and guardrails. Full uses isolated sessions and reused RAG components. First-use costs may differ; no cost estimate without provider pricing. Counts exclude embeddings and provider retries.",
+  "summary": {
+    "cases": 1,
+    "successful": 1,
+    "errors": 0,
+    "retrieval_completed": 1,
+    "source_file_hit_rate_all": 1.0,
+    "source_file_hit_rate_retrieved": 1.0,
+    "successful_latency_median_s": 5.641,
+    "chat_calls_started": 1,
+    "warning": "File hits and successful execution do not measure answer correctness. No clinical/Chinese quality conclusion follows."
+  },
+  "cases_file": "/test-output/baseline/1791537578301288358-simple.jsonl"
+}

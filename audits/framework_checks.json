@@ -1,0 +1,83 @@
+{
+  "scope": "offline deterministic probes; injected outputs; no live API validation",
+  "results": [
+    {
+      "name": "long_section_not_bounded",
+      "status": "ISSUE_REPRODUCED",
+      "observed": [
+        2400
+      ],
+      "detail": "A valid split response cannot split a single long heading section internally."
+    },
+    {
+      "name": "bare_split_ids",
+      "status": "ISSUE_REPRODUCED",
+      "observed": [
+        "<|start_chunk_0|>alpha<|end_chunk_0|>\n<|start_chunk_1|>beta<|end_chunk_1|>"
+      ],
+      "detail": "Prompt also asks for IDs only; parser needs the split_after: prefix."
+    },
+    {
+      "name": "valid_split_preserves_text",
+      "status": "CHECK_PASSED",
+      "observed": [
+        "alpha",
+        "beta"
+      ],
+      "detail": "Positive control: expected format yields both original sections."
+    },
+    {
+      "name": "confidence_not_probability",
+      "status": "ISSUE_REPRODUCED",
+      "observed": [
+        -3.0,
+        4.0
+      ],
+      "detail": "Injected scores demonstrate no normalization despite the documented 0..1 contract."
+    },
+    {
+      "name": "citation_loses_locator",
+      "status": "ISSUE_REPRODUCED",
+      "observed": [
+        {
+          "title": "reference.pdf",
+          "path": "/data/reference.pdf"
+        }
+      ],
+      "detail": "Even supplied page/chunk identifiers are absent from the returned citation."
+    },
+    {
+      "name": "reranker_fallback_contract",
+      "status": "ISSUE_REPRODUCED",
+      "observed": {
+        "type": "list",
+        "length": 2
+      },
+      "detail": "Caller expects (documents, picture_paths), but exception fallback returns documents only."
+    },
+    {
+      "name": "chinese_keyword_metric",
+      "status": "ISSUE_REPRODUCED",
+      "observed": 0.0,
+      "detail": "Identical Chinese reference and answer score zero; metric cannot assess the planned Chinese use case."
+    },
+    {
+      "name": "historical_error_cases_unobservable",
+      "status": "ISSUE_REPRODUCED",
+      "observed": [
+        "q008",
+        "q010",
+        "q012",
+        "q013",
+        "q014",
+        "q015",
+        "q016",
+        "q017",
+        "q018",
+        "q023",
+        "q028"
+      ],
+      "detail": "These records cannot distinguish direct search routing from RAG followed by failed search; do not infer retrieval was never attempted."
+    }
+  ]
+}
