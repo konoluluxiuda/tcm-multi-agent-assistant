@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from tcm.herbs import InvalidRecord, import_snapshot, lookup, parse_herb
+from tcm.herbs import InvalidRecord, compare_herbs, filter_herbs, import_snapshot, lookup, parse_herb
 
 
 class HerbTests(unittest.TestCase):
@@ -150,6 +150,64 @@ class HerbTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             import_snapshot(self.root, self.root / 'bad.sqlite3', 'v1')
         self.assertFalse((self.root / 'bad.sqlite3').exists())
+
+    def _herb(self, pinyin, **fields):
+        obj = copy.deepcopy(self.obj)
+        base = obj['data'][1]['value']
+        for item in base:
+            if item.get('key') == 'Herb Name in Pinyin':
+                item['value'] = pinyin
+        for key, value in fields.items():
+            base.append({'key': key, 'value': value})
+        return obj
+
+    def test_filter_substring_and_combines_and(self):
+        self.write('A', self._herb('HerbA', Family='Leguminosae', Flavor='Bitter'))
+        self.write('B', self._herb('HerbB', Family='Leguminosae', Flavor='Sweet'))
+        self.write('C', self._herb('HerbC', Family='Apiaceae'))
+        self.ingest()
+        by_family = filter_herbs(self.db, filters={'family': 'leguminosae'})
+        self.assertEqual(by_family['status'], 'ok')
+        self.assertEqual(by_family['count'], 2)
+        combined = filter_herbs(self.db, filters={'family': 'Leguminosae', 'flavors': 'bitter'})
+        self.assertEqual(combined['count'], 1)
+        self.assertEqual(combined['records'][0]['name_pinyin'], 'HerbA')
+
+    def test_filter_empty_and_unknown_field(self):
+        self.ingest()
+        empty = filter_herbs(self.db, filters={'family': 'NonExistent'})
+        self.assertEqual(empty['status'], 'ok')
+        self.assertEqual(empty['count'], 0)
+        self.assertEqual(empty['records'], [])
+        with self.assertRaises(ValueError):
+            filter_herbs(self.db, filters={'name_pinyin': 'HuangQin'})
+        with self.assertRaises(ValueError):
+            filter_herbs(self.db, filters={})
+        with self.assertRaises(ValueError):
+            filter_herbs(self.db, filters={'family': '   '})
+
+    def test_compare_aligns_and_flags_missing(self):
+        self.write('A', self._herb('HerbA', Family='Leguminosae'))
+        self.write('B', self._herb('HerbB', Family='Apiaceae'))
+        self.ingest()
+        result = compare_herbs(self.db, names=['HerbA', 'HerbB', 'Nonexistent'])
+        self.assertEqual(result['status'], 'ok')
+        self.assertEqual([h['status'] for h in result['herbs']], ['ok', 'ok', 'not_found'])
+        self.assertEqual(result['herbs'][0]['record']['family'], 'Leguminosae')
+        self.assertEqual(result['herbs'][1]['record']['family'], 'Apiaceae')
+        self.assertNotIn('record', result['herbs'][2])
+
+    def test_compare_ambiguous_and_empty(self):
+        self.write('HuaShi', self._herb('HuaShi'))
+        self.write('HuaShi_', self._herb('HuaShi'))
+        self.ingest()
+        result = compare_herbs(self.db, names=['HuaShi'])
+        self.assertEqual(result['herbs'][0]['status'], 'ambiguous_entity')
+        self.assertEqual(len(result['herbs'][0]['records']), 2)
+        with self.assertRaises(ValueError):
+            compare_herbs(self.db, names=[])
+        with self.assertRaises(ValueError):
+            compare_herbs(self.db, names=[' '])
 
 
 if __name__ == '__main__':

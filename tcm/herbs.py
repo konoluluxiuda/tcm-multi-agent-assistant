@@ -212,6 +212,99 @@ def import_snapshot(source, database, dataset_version):
         return summary
 
 
+FILTERABLE_FIELDS = {
+    'family', 'habitat', 'medicinal_part', 'properties', 'flavors',
+    'meridians', 'efficacy_class', 'indications',
+}
+
+
+def _summarize(doc):
+    """Reduced field view for filter/compare/display. Values only, no provenance."""
+    result = {'source_record_id': doc['source_record_id']}
+    for target in FIELDS.values():
+        field = doc['fields'].get(target)
+        result[target] = field['value'] if field and field['state'] == 'present' else None
+    return result
+
+
+def _resolve_dataset_version(con, dataset_version):
+    if dataset_version is None:
+        row = con.execute('SELECT dataset_version FROM batches ORDER BY id DESC LIMIT 1').fetchone()
+        if row is None:
+            raise ValueError('No imported dataset')
+        dataset_version = row[0]
+    exists = con.execute('SELECT 1 FROM batches WHERE dataset_version=?', (dataset_version,)).fetchone()
+    if not exists:
+        return dataset_version, False
+    return dataset_version, True
+
+
+def filter_herbs(database, *, filters, dataset_version=None):
+    """Filter herbs by raw field values; casefold substring match, AND across filters.
+
+    filters: dict of target field name -> search string. Only FILTERABLE_FIELDS are
+    accepted (name fields use lookup, list fields are not filterable in this MVP).
+    """
+    if not isinstance(filters, dict) or not filters:
+        raise ValueError('filters must be a non-empty dict')
+    unknown = set(filters) - FILTERABLE_FIELDS
+    if unknown:
+        raise ValueError('unsupported_filter_field: ' + ', '.join(sorted(unknown)))
+    cleaned = {k: (v or '').strip() for k, v in filters.items()}
+    if any(not v for v in cleaned.values()):
+        raise ValueError('filter values must not be empty')
+    db = Path(database).resolve()
+    with closing(sqlite3.connect(db.as_uri() + '?mode=ro', uri=True)) as con:
+        if con.execute('PRAGMA user_version').fetchone()[0] != SCHEMA_VERSION:
+            raise ValueError('Unsupported database schema version')
+        dataset_version, exists = _resolve_dataset_version(con, dataset_version)
+        if not exists:
+            return {'status': 'dataset_not_found', 'dataset_version': dataset_version, 'filters': cleaned, 'records': []}
+        records = []
+        rows = con.execute(
+            "SELECT document FROM records WHERE dataset_version=? AND state='valid'",
+            (dataset_version,),
+        )
+        for (document,) in rows:
+            if document is None:
+                continue
+            doc = json.loads(document)
+            if all(
+                search_key(needle) in search_key(doc['fields'][target]['value'] or '')
+                for target, needle in cleaned.items()
+            ):
+                records.append(_summarize(doc))
+        return {
+            'status': 'ok', 'dataset_version': dataset_version, 'filters': cleaned,
+            'count': len(records), 'records': records,
+        }
+
+
+def compare_herbs(database, *, names, dataset_version=None):
+    """Resolve multiple herb names and align their reduced fields side by side."""
+    if not isinstance(names, (list, tuple)) or not names:
+        raise ValueError('names must be a non-empty list')
+    if any(not isinstance(n, str) or not n.strip() for n in names):
+        raise ValueError('names must be non-empty strings')
+    db = Path(database).resolve()
+    herbs = []
+    with closing(sqlite3.connect(db.as_uri() + '?mode=ro', uri=True)) as con:
+        if con.execute('PRAGMA user_version').fetchone()[0] != SCHEMA_VERSION:
+            raise ValueError('Unsupported database schema version')
+        dataset_version, exists = _resolve_dataset_version(con, dataset_version)
+        if not exists:
+            return {'status': 'dataset_not_found', 'dataset_version': dataset_version, 'herbs': []}
+    for name in names:
+        result = lookup(database, name=name, dataset_version=dataset_version)
+        entry = {'query': name, 'status': result['status']}
+        if result['status'] == 'ok':
+            entry['record'] = _summarize(result['records'][0])
+        elif result['status'] == 'ambiguous_entity':
+            entry['records'] = [_summarize(r) for r in result['records']]
+        herbs.append(entry)
+    return {'status': 'ok', 'dataset_version': dataset_version, 'herbs': herbs}
+
+
 def lookup(database, *, name=None, source_record_id=None, dataset_version=None):
     if (name is None) == (source_record_id is None):
         raise ValueError('Provide exactly one of name or source_record_id')

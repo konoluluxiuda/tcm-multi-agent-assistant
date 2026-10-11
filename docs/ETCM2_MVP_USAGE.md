@@ -21,6 +21,33 @@ python -m tcm query --name 黄芩
 
 查询也支持 `--id <source_record_id>`、`--version local-2026-10-10`。省略版本时使用最近一次成功提交的导入批次所对应版本，生产调用应显式固定版本。版本标签是本地标签，不代表官方数据发布日期。
 
+## HTTP API
+
+独立轻量服务 [`tcm/api.py`](../tcm/api.py)，只加载 herbs repository，不依赖 agent 图或 CV 模型。配置经环境变量 `TCM_DB`（默认 `var/tcm/herbs.sqlite3`）、`TCM_DATASET_VERSION`（默认最新导入批次）。
+
+```bash
+uvicorn tcm.api:app --host 0.0.0.0 --port 7860
+```
+
+路由：
+
+| 方法/路径 | 用途 |
+|---|---|
+| `GET /health` | 健康检查 |
+| `GET /` | 极简 HTML 页（名称查询 / 字段筛选 / 比较） |
+| `GET /herbs/{name}` | 单药材详情（返回完整 provenance） |
+| `GET /herbs?family=...&flavor=...` | 字段筛选（子串匹配，多条件 AND） |
+| `GET /herbs/compare?names=a,b,c` | 多药材字段对齐比较 |
+
+筛选可用的字段：`family`、`habitat`、`medicinal_part`、`properties`、`flavors`、`meridians`、`efficacy_class`、`indications`。非法字段返回 400，数据库缺失返回 503。
+
+```bash
+curl localhost:7860/health
+curl 'localhost:7860/herbs/HuangQin'
+curl 'localhost:7860/herbs?family=Leguminosae'
+curl 'localhost:7860/herbs/compare?names=HuangQin,HuaShi'
+```
+
 ## 返回契约
 
 - `ok`：一个来源记录匹配；拼音、拉丁名、英文名支持去首尾空格、折叠空白和大小写无关的精确查询。
@@ -52,8 +79,9 @@ python -m tcm query --name 黄芩
 
 ```bash
 python -m unittest discover -s tests -p test_tcm_herbs.py -v
+python -m unittest discover -s tests -p test_tcm_api.py -v
 ```
 
 回归覆盖来源定位、HTML、稀疏字段、未知术语、重复名称、幂等导入、更新失效、跨版本隔离、源文件删除、错误输入、中文未映射、事务回滚和只读源边界。
 
-真实数据导入、重复导入和查询验证结果见 [本次验收报告](../audits/etcm2_mvp/report.md)。下一步是建立少量人工核验的中文名称映射与黄金查询集，再将 repository 接入文本 API；不需要先增加新的 Agent。
+真实数据导入、重复导入和查询验证结果见 [本次验收报告](../audits/etcm2_mvp/report.md)。repository 已接入独立文本 API（见上文「HTTP API」）。下一步是建立少量人工核验的中文名称映射与黄金查询集；不需要先增加新的 Agent。
