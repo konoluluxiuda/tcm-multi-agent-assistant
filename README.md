@@ -376,6 +376,21 @@ python ingest_rag_data.py --dir ./data/raw
 
 ---
 
+## TCM herb query with Docker
+
+The independent herb service provides source-grounded lookup, filtering and comparison. Import the local herb snapshot first, then build and start it on port 7863:
+
+```bash
+python -m tcm import --source /path/to/ETCM2.0 --version local-2026-10-10
+docker compose -f compose.tcm.yaml up -d --build
+```
+
+Open http://127.0.0.1:7863. The database is mounted read-only; `/ready` checks the selected dataset. The lightweight service needs no chat, embedding or Tavily credentials. See [usage and dataset version configuration](docs/ETCM2_MVP_USAGE.md).
+
+## Optional medical features
+
+Image analysis, speech and web search now default to disabled. Enable them explicitly with `ENABLE_IMAGE_ANALYSIS=true`, `ENABLE_SPEECH=true` or `ENABLE_WEB_SEARCH=true`; speech/web also require their provider credentials. Disabled SDKs and CV weights are not loaded at text startup, and unavailable tools return explicit responses. See [configuration and startup limits](docs/OPTIONAL_FEATURES.md).
+
 ## Session memory and local concurrency
 
 The API passes its `session_id` cookie into the agent graph. Different sessions

@@ -1,0 +1,232 @@
+{
+  "suite_version": 1,
+  "dataset_version": "local-2026-10-10",
+  "review_status": "source_reconciled_pending_human_signoff",
+  "human_signoff": false,
+  "backend": "http",
+  "created_at": "2026-10-12T04:44:17.891751+00:00",
+  "preconditions": [
+    {
+      "check": "database snapshot, valid records and integrity",
+      "passed": true
+    }
+  ],
+  "cases": [
+    {
+      "id": "01-detail-huangqin",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 1,
+      "duration_seconds": 0.0188
+    },
+    {
+      "id": "02-name-case-and-space",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 1,
+      "duration_seconds": 0.0147
+    },
+    {
+      "id": "03-latin-name-html-normalized",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 1,
+      "duration_seconds": 0.0153
+    },
+    {
+      "id": "04-detail-gancao",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 1,
+      "duration_seconds": 0.0162
+    },
+    {
+      "id": "05-detail-danggui",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 1,
+      "duration_seconds": 0.0166
+    },
+    {
+      "id": "06-detail-renshen",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 1,
+      "duration_seconds": 0.016
+    },
+    {
+      "id": "07-sparse-basic-fields",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 1,
+      "duration_seconds": 0.0149
+    },
+    {
+      "id": "08-ambiguous-huashi",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 2,
+      "duration_seconds": 0.0152
+    },
+    {
+      "id": "09-specific-huashi-source",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 1,
+      "duration_seconds": 0.0149
+    },
+    {
+      "id": "10-chinese-name-unmapped",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 0,
+      "duration_seconds": 0.0147
+    },
+    {
+      "id": "11-unknown-name",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 0,
+      "duration_seconds": 0.0146
+    },
+    {
+      "id": "12-unknown-version",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 0,
+      "duration_seconds": 0.0149
+    },
+    {
+      "id": "13-missing-pubmed-field",
+      "operation": "lookup",
+      "passed": true,
+      "verified_records": 1,
+      "duration_seconds": 0.0152
+    },
+    {
+      "id": "14-family-first-page",
+      "operation": "filter",
+      "passed": true,
+      "verified_records": 20,
+      "duration_seconds": 0.1146
+    },
+    {
+      "id": "15-family-second-page",
+      "operation": "filter",
+      "passed": true,
+      "verified_records": 20,
+      "duration_seconds": 0.1147
+    },
+    {
+      "id": "16-family-last-page",
+      "operation": "filter",
+      "passed": true,
+      "verified_records": 7,
+      "duration_seconds": 0.097
+    },
+    {
+      "id": "17-page-beyond-total",
+      "operation": "filter",
+      "passed": true,
+      "verified_records": 0,
+      "duration_seconds": 0.0934
+    },
+    {
+      "id": "18-family-and-flavor",
+      "operation": "filter",
+      "passed": true,
+      "verified_records": 20,
+      "duration_seconds": 0.1036
+    },
+    {
+      "id": "19-property-and-flavor",
+      "operation": "filter",
+      "passed": true,
+      "verified_records": 5,
+      "duration_seconds": 0.0969
+    },
+    {
+      "id": "20-no-filter-results",
+      "operation": "filter",
+      "passed": true,
+      "verified_records": 0,
+      "duration_seconds": 0.0926
+    },
+    {
+      "id": "21-empty-filters",
+      "operation": "filter",
+      "passed": false,
+      "error": "Unexpected HTTP validation message",
+      "duration_seconds": 0.0136
+    },
+    {
+      "id": "22-unsupported-filter",
+      "operation": "filter",
+      "passed": true,
+      "duration_seconds": 0.0135
+    },
+    {
+      "id": "23-negative-offset",
+      "operation": "filter",
+      "passed": true,
+      "duration_seconds": 0.0131
+    },
+    {
+      "id": "24-excessive-limit",
+      "operation": "filter",
+      "passed": true,
+      "duration_seconds": 0.0133
+    },
+    {
+      "id": "25-compare-traditional-fields",
+      "operation": "compare",
+      "passed": true,
+      "verified_records": 3,
+      "duration_seconds": 0.0155
+    },
+    {
+      "id": "26-compare-ambiguity-and-missing",
+      "operation": "compare",
+      "passed": true,
+      "verified_records": 3,
+      "duration_seconds": 0.0156
+    },
+    {
+      "id": "27-compare-sparse-and-missing-reference",
+      "operation": "compare",
+      "passed": true,
+      "verified_records": 2,
+      "duration_seconds": 0.0141
+    },
+    {
+      "id": "28-compare-unknown-version",
+      "operation": "compare",
+      "passed": true,
+      "verified_records": 0,
+      "duration_seconds": 0.0132
+    },
+    {
+      "id": "29-empty-compare",
+      "operation": "compare",
+      "passed": true,
+      "duration_seconds": 0.0128
+    },
+    {
+      "id": "30-dataset-readiness",
+      "operation": "ready",
+      "passed": true,
+      "verified_records": 0,
+      "duration_seconds": 0.0155
+    }
+  ],
+  "status": "failed",
+  "passed": false,
+  "summary": {
+    "total": 30,
+    "passed": 29,
+    "failed": 1,
+    "not_run": 0
+  },
+  "duration_seconds": 1.413,
+  "suite_sha256": "8d3ff70dda9d1e9d4530bdc7830f63bcbcca0131677e4f23daf67c9db044be72"
+}

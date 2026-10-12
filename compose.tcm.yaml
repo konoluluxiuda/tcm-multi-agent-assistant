@@ -1,0 +1,24 @@
+name: tcm-herb-query
+services:
+  tcm-query:
+    image: tcm-herb-query:dev
+    build:
+      context: .
+      dockerfile: Dockerfile.tcm
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:7863:8000"
+    environment:
+      TCM_DB: /data/herbs.sqlite3
+      TCM_DATASET_VERSION: ${TCM_DATASET_VERSION:-local-2026-10-10}
+    volumes:
+      - type: bind
+        source: ./var/tcm/herbs.sqlite3
+        target: /data/herbs.sqlite3
+        read_only: true
+        bind:
+          create_host_path: false
+    read_only: true
+    tmpfs:
+      - /tmp
+    init: true

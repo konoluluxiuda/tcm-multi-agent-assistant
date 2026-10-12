@@ -1,0 +1,7 @@
+# Lightweight service; versions match the existing project baseline.
+fastapi==0.115.11
+uvicorn==0.34.0
+httpx==0.28.1
+anyio==4.8.0
+starlette==0.46.1
+pydantic==2.10.6

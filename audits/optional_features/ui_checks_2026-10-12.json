@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "running service reports all optional features off",
+    "image upload hidden and disabled",
+    "voice recording control absent",
+    "text reply renders without speech controls (mock reply)",
+    "no browser JavaScript errors"
+  ],
+  "chat_response": "mocked; no paid APIs called"
+}

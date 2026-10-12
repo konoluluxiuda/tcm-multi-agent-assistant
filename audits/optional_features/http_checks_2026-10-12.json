@@ -1,0 +1,36 @@
+{
+  "checks": [
+    {
+      "path": "/health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/features",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "/upload",
+      "status": 403,
+      "passed": true
+    },
+    {
+      "path": "/transcribe",
+      "status": 403,
+      "passed": true
+    },
+    {
+      "path": "/generate-speech",
+      "status": 403,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "startup_cv_model_loading_logged": false
+}

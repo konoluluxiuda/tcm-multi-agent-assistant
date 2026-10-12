@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "medical health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "check": "medical homepage",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "check": "TCM live",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "check": "TCM database ready",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "check": "TCM page",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "check": "TCM detail",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "check": "TCM source ID",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "check": "TCM pagination",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "check": "TCM compare",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "check": "TCM invalid filter",
+      "status": 400,
+      "passed": true
+    }
+  ]
+}

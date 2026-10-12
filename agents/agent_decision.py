@@ -15,20 +15,14 @@ from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langgraph.graph import MessagesState, StateGraph, END
 import os, getpass
-from dotenv import load_dotenv
-from agents.rag_agent import MedicalRAG
-from agents.web_search_processor_agent import WebSearchProcessorAgent
-from agents.image_analysis_agent import ImageAnalysisAgent
 from agents.guardrails.local_guardrails import LocalGuardrails
 
 from langgraph.checkpoint.memory import MemorySaver
 
-import cv2
-import numpy as np
+import threading
 
 from config import Config
 
-load_dotenv()
 
 # Load configuration
 config = Config()
@@ -42,6 +36,12 @@ atexit.register(rag_runtime.close)
 
 
 # Agent that takes the decision of routing the request further to correct task specific agent
+def MedicalRAG(configuration):
+    # Preserve the injectable factory used by eval_rag / compare_rag.
+    from agents.rag_agent import MedicalRAG as RAG
+    return RAG(configuration)
+
+
 class AgentConfig:
     """Configuration settings for the agent decision system."""
     
@@ -68,7 +68,7 @@ class AgentConfig:
     6. SKIN_LESION_AGENT - For analysis of skin lesion images to classify them as benign or malignant.
 
     Make your decision based on these guidelines:
-    - If the user has not uploaded any image, always route to the conversation agent.
+    - When no image is uploaded, select conversation, RAG, or enabled web search according to the text request.
     - If the user uploads a medical image, decide which medical vision agent is appropriate based on the image type and the user's query. If the image is uploaded without a query, always route to the correct medical vision agent based on the image type.
     - If the user asks about recent medical developments or current health situations, use the web search pocessor agent.
     - If the user asks specific medical knowledge questions, use the RAG agent.
@@ -82,7 +82,18 @@ class AgentConfig:
     }}
     """
 
-    image_analyzer = ImageAnalysisAgent(config=config)
+    image_analyzer = None
+    image_lock = threading.Lock()
+
+    @classmethod
+    def get_image_analyzer(cls):
+        if not config.features.image_analysis:
+            raise ValueError('Image analysis is disabled')
+        with cls.image_lock:
+            if cls.image_analyzer is None:
+                from agents.image_analysis_agent import ImageAnalysisAgent
+                cls.image_analyzer = ImageAnalysisAgent(config=config)
+        return cls.image_analyzer
 
 
 class AgentState(MessagesState):
@@ -97,6 +108,8 @@ class AgentState(MessagesState):
     retrieval_confidence: float  # Confidence in retrieval (for RAG agent)
     bypass_routing: bool  # Flag to bypass agent routing for guardrails
     insufficient_info: bool  # Flag indicating RAG response has insufficient information
+    next: str  # Explicit graph branch, rather than an undeclared nested state
+    disabled_feature: Optional[str]
 
 
 class AgentDecision(TypedDict):
@@ -119,8 +132,14 @@ def create_agent_graph():
     json_parser = JsonOutputParser(pydantic_object=AgentDecision)
     
     # Create the decision prompt
+    available_agents = ['CONVERSATION_AGENT', 'RAG_AGENT']
+    if config.features.state('web_search')['available']:
+        available_agents.append('WEB_SEARCH_PROCESSOR_AGENT')
+    if config.features.image_analysis:
+        available_agents.extend(['BRAIN_TUMOR_AGENT','CHEST_XRAY_AGENT','SKIN_LESION_AGENT'])
+    system_prompt = AgentConfig.DECISION_SYSTEM_PROMPT + '\nOnly select currently enabled agents: ' + ', '.join(available_agents)
     decision_prompt = ChatPromptTemplate.from_messages([
-        ("system", AgentConfig.DECISION_SYSTEM_PROMPT),
+        ("system", system_prompt),
         ("human", "{input}")
     ])
     
@@ -158,9 +177,12 @@ def create_agent_graph():
         
         # Original image processing code
         if isinstance(current_input, dict) and "image" in current_input:
+            if not config.features.image_analysis:
+                return {'has_image': False, 'image_type': None, 'bypass_routing': False,
+                        'disabled_feature': 'image_analysis'}
             has_image = True
             image_path = current_input.get("image", None)
-            image_type_response = AgentConfig.image_analyzer.analyze_image(image_path)
+            image_type_response = AgentConfig.get_image_analyzer().analyze_image(image_path)
             image_type = image_type_response['image_type']
             print("ANALYZED IMAGE TYPE: ", image_type)
         
@@ -173,6 +195,8 @@ def create_agent_graph():
     
     def check_if_bypassing(state: AgentState) -> str:
         """Check if we should bypass normal routing due to guardrails."""
+        if state.get("disabled_feature"):
+            return "feature_unavailable"
         if state.get("bypass_routing", False):
             return "apply_guardrails"
         return "route_to_agent"
@@ -218,17 +242,25 @@ def create_agent_graph():
         # Decided agent
         print(f"Decision: {decision['agent']}")
         
-        # Update state with decision
-        updated_state = {
-            **state,
-            "agent_name": decision["agent"],
-        }
-        
-        # Route based on agent name and confidence
-        if decision["confidence"] < AgentConfig.CONFIDENCE_THRESHOLD:
-            return {"agent_state": updated_state, "next": "needs_validation"}
-        
-        return {"agent_state": updated_state, "next": decision["agent"]}
+        agent = decision['agent']
+        image_agents = {'BRAIN_TUMOR_AGENT', 'CHEST_XRAY_AGENT', 'SKIN_LESION_AGENT'}
+        if agent in image_agents and not config.features.image_analysis:
+            return {'agent_name': agent, 'next': 'feature_unavailable', 'disabled_feature': 'image_analysis'}
+        if agent == 'WEB_SEARCH_PROCESSOR_AGENT' and not config.features.state('web_search')['available']:
+            return {'agent_name': agent, 'next': 'feature_unavailable', 'disabled_feature': 'web_search'}
+        if decision['confidence'] < AgentConfig.CONFIDENCE_THRESHOLD:
+            return {'agent_name': agent, 'next': 'needs_validation'}
+        return {'agent_name': agent, 'next': agent}
+
+    def feature_unavailable(state):
+        feature = state.get('disabled_feature') or 'web_search'
+        reason = config.features.state(feature)['reason']
+        message = ('图像分析功能已关闭，请使用文本查询。' if feature == 'image_analysis' else
+                   '本地资料或当前能力不足以完成该请求；联网检索已关闭。' if reason == 'disabled' else
+                   '本地资料或当前能力不足以完成该请求；联网检索未配置密钥。')
+        output = AIMessage(content=message)
+        return {'output': output, 'messages': [output], 'agent_name': 'FEATURE_UNAVAILABLE',
+                'needs_human_validation': False}
 
     # Define agent execution functions (these will be implemented in their respective modules)
     def run_conversation_agent(state: AgentState) -> AgentState:
@@ -312,6 +344,8 @@ def create_agent_graph():
 
         # print("Conversation Prompt:", conversation_prompt)
 
+        if not config.features.image_analysis:
+            conversation_prompt += '\nImage analysis is disabled; do not ask for an image upload.'
         response = config.conversation.llm.invoke(conversation_prompt)
 
         # print("Conversation respone:", response)
@@ -400,6 +434,9 @@ def create_agent_graph():
     # Web Search Processor Node
     def run_web_search_processor_agent(state: AgentState) -> AgentState:
         """Handles web search results, processes them with LLM, and generates a refined response."""
+        if not config.features.state('web_search')['available']:
+            return feature_unavailable(state)
+
 
         print(f"Selected agent: WEB_SEARCH_PROCESSOR_AGENT")
         print("[WEB_SEARCH_PROCESSOR_AGENT] Processing Web Search Results...")
@@ -416,6 +453,7 @@ def create_agent_graph():
                 # print("######### DEBUG 2:", msg)
                 recent_context += f"Assistant: {msg.content}\n"
 
+        from agents.web_search_processor_agent import WebSearchProcessorAgent
         web_search_processor = WebSearchProcessorAgent(config)
 
         processed_response = web_search_processor.process_web_search_results(query=state["current_input"], chat_history=recent_context)
@@ -446,7 +484,7 @@ def create_agent_graph():
         if (state.get("retrieval_confidence", 0.0) < config.rag.min_retrieval_confidence or 
             state.get("insufficient_info", False)):
             print("Re-routed to Web Search Agent due to low confidence or insufficient information...")
-            return "WEB_SEARCH_PROCESSOR_AGENT"  # Correct format
+            return "WEB_SEARCH_PROCESSOR_AGENT" if config.features.state("web_search")["available"] else "feature_unavailable"
         return "check_validation"  # No transition needed if confidence is high and info is sufficient
     
     def run_brain_tumor_agent(state: AgentState) -> AgentState:
@@ -472,7 +510,7 @@ def create_agent_graph():
         print(f"Selected agent: CHEST_XRAY_AGENT")
 
         # classify chest x-ray into covid or normal
-        predicted_class = AgentConfig.image_analyzer.classify_chest_xray(image_path)
+        predicted_class = AgentConfig.get_image_analyzer().classify_chest_xray(image_path)
 
         if predicted_class == "covid19":
             response = AIMessage(content="The analysis of the uploaded chest X-ray image indicates a **POSITIVE** result for **COVID-19**.")
@@ -499,7 +537,7 @@ def create_agent_graph():
         print(f"Selected agent: SKIN_LESION_AGENT")
 
         # classify chest x-ray into covid or normal
-        predicted_mask = AgentConfig.image_analyzer.segment_skin_lesion(image_path)
+        predicted_mask = AgentConfig.get_image_analyzer().segment_skin_lesion(image_path)
 
         if predicted_mask:
             response = AIMessage(content="Following is the analyzed **segmented** output of the uploaded skin lesion image:")
@@ -518,8 +556,8 @@ def create_agent_graph():
     def handle_human_validation(state: AgentState) -> Dict:
         """Prepare for human validation if needed."""
         if state.get("needs_human_validation", False):
-            return {"agent_state": state, "next": "human_validation", "agent": "HUMAN_VALIDATION"}
-        return {"agent_state": state, "next": END}
+            return {"next": "human_validation"}
+        return {"next": END}
     
     def perform_human_validation(state: AgentState) -> AgentState:
         """Handle human validation process."""
@@ -607,6 +645,8 @@ def create_agent_graph():
     
     # Add nodes for each step
     workflow.add_node("analyze_input", analyze_input)
+    workflow.add_node("feature_unavailable", feature_unavailable)
+    workflow.add_edge("feature_unavailable", END)
     workflow.add_node("route_to_agent", route_to_agent)
     workflow.add_node("CONVERSATION_AGENT", run_conversation_agent)
     workflow.add_node("RAG_AGENT", run_rag_agent)
@@ -626,6 +666,7 @@ def create_agent_graph():
         "analyze_input",
         check_if_bypassing,
         {
+            "feature_unavailable": "feature_unavailable",
             "apply_guardrails": "apply_guardrails",
             "route_to_agent": "route_to_agent"
         }
@@ -636,6 +677,7 @@ def create_agent_graph():
         "route_to_agent",
         lambda x: x["next"],
         {
+            "feature_unavailable": "feature_unavailable",
             "CONVERSATION_AGENT": "CONVERSATION_AGENT",
             "RAG_AGENT": "RAG_AGENT",
             "WEB_SEARCH_PROCESSOR_AGENT": "WEB_SEARCH_PROCESSOR_AGENT",
@@ -685,7 +727,9 @@ def init_agent_state() -> AgentState:
         "needs_human_validation": False,
         "retrieval_confidence": 0.0,
         "bypass_routing": False,
-        "insufficient_info": False
+        "insufficient_info": False,
+        "disabled_feature": None,
+        "next": ""
     }
 
 

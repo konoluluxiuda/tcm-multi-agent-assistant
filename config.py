@@ -10,6 +10,7 @@ specific class.
 """
 
 import os
+from features import FeatureFlags
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
@@ -131,20 +132,23 @@ class UIConfig:
     def __init__(self):
         self.theme = "light"
         # self.max_chat_history = 50
-        self.enable_speech = True
-        self.enable_image_upload = True
+        self.enable_speech = False
+        self.enable_image_upload = False
 
 class Config:
     def __init__(self):
+        self.features = FeatureFlags.from_env()
         self.agent_decision = AgentDecisoinConfig()
         self.conversation = ConversationConfig()
         self.rag = RAGConfig()
-        self.medical_cv = MedicalCVConfig()
-        self.web_search = WebSearchConfig()
+        self.medical_cv = MedicalCVConfig() if self.features.image_analysis else None
+        self.web_search = WebSearchConfig() if self.features.state("web_search")["available"] else None
         self.api = APIConfig()
-        self.speech = SpeechConfig()
+        self.speech = SpeechConfig() if self.features.state("speech")["available"] else None
         self.validation = ValidationConfig()
         self.ui = UIConfig()
+        self.ui.enable_speech = self.features.state("speech")["available"]
+        self.ui.enable_image_upload = self.features.image_analysis
         self.eleven_labs_api_key = os.getenv("ELEVEN_LABS_API_KEY")
         self.tavily_api_key = os.getenv("TAVILY_API_KEY")
         self.max_conversation_history = 20  # Include last 20 messsages (10 Q&A pairs) in history

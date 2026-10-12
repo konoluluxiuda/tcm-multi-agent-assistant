@@ -3,7 +3,6 @@ import time
 import logging
 from typing import List, Optional, Dict, Any
 
-from .doc_parser import MedicalDocParser
 from .content_processor import ContentProcessor
 from .vectorstore_qdrant import VectorStore
 from .reranker import Reranker
@@ -25,7 +24,7 @@ class MedicalRAG:
         self.logger = logging.getLogger(f"{self.__module__}")
         self.logger.info("Initializing Medical RAG system")
         self.config = config
-        self.doc_parser = MedicalDocParser()
+        self.doc_parser = None
         self.content_processor = ContentProcessor(config)
         self.vector_store = VectorStore(config)
         try:
@@ -125,6 +124,9 @@ class MedicalRAG:
         try:
             # Step 1: Parse document
             self.logger.info("1. Parsing document and extracting images...")
+            if self.doc_parser is None:
+                from .doc_parser import MedicalDocParser
+                self.doc_parser = MedicalDocParser()
             parsed_document, images = self.doc_parser.parse_document(document_path, self.parsed_content_dir)
             self.logger.info(f"   Parsed document and extracted {len(images)} images")
 

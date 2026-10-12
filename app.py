@@ -14,10 +14,6 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 
 import uvicorn
-import requests
-from werkzeug.utils import secure_filename
-from pydub import AudioSegment
-from elevenlabs.client import ElevenLabs
 
 from config import Config
 from agents.agent_decision import process_query
@@ -45,10 +41,45 @@ app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 # Set up templates
 templates = Jinja2Templates(directory="templates")
 
-# Initialize ElevenLabs client
-client = ElevenLabs(
-    api_key=config.speech.eleven_labs_api_key,
-)
+# Optional speech SDK is loaded only on an enabled transcription request.
+client = None
+client_lock = threading.Lock()
+
+
+def get_speech_client():
+    if not config.features.state("speech")["available"]:
+        raise ValueError("Speech is disabled or missing credentials")
+    global client
+    with client_lock:
+        if client is None:
+            from elevenlabs.client import ElevenLabs
+            client = ElevenLabs(api_key=config.speech.eleven_labs_api_key)
+    return client
+
+
+def feature_error(name):
+    state = config.features.state(name)
+    if state['available']:
+        return None
+    return JSONResponse(status_code=403 if state['reason'] == 'disabled' else 503,
+                        content={'status': 'feature_disabled' if state['reason'] == 'disabled' else 'feature_unavailable',
+                                 'feature': name, 'reason': state['reason']})
+
+
+@app.middleware('http')
+async def enforce_features(request: Request, call_next):
+    # Check before parsing upload bodies or invoking optional clients.
+    feature = {'/upload': 'image_analysis', '/transcribe': 'speech', '/generate-speech': 'speech'}.get(request.url.path)
+    if request.method == 'POST' and feature:
+        error = feature_error(feature)
+        if error is not None:
+            return error
+    return await call_next(request)
+
+
+@app.get('/features')
+def features():
+    return config.features.as_dict()
 
 # Define allowed file extensions
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -71,7 +102,8 @@ def cleanup_old_audio():
 
 # Start background cleanup thread
 cleanup_thread = threading.Thread(target=cleanup_old_audio, daemon=True)
-cleanup_thread.start()
+if config.features.state("speech")["available"]:
+    cleanup_thread.start()
 
 class QueryRequest(BaseModel):
     query: str
@@ -84,7 +116,7 @@ class SpeechRequest(BaseModel):
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     """Serve the main HTML page"""
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="index.html", context={"features": config.features.as_dict()})
 
 @app.get("/health")
 def health_check():
@@ -136,6 +168,7 @@ async def upload_image(
     session_id: Optional[str] = Cookie(None)
 ):
     """Process medical image uploads with optional text input."""
+    from werkzeug.utils import secure_filename
     # Validate file type
     if not allowed_file(image.filename):
         return JSONResponse(
@@ -275,6 +308,7 @@ async def transcribe_audio(audio: UploadFile = File(...)):
         
         try:
             # Use pydub with format detection
+            from pydub import AudioSegment
             audio = AudioSegment.from_file(temp_audio)
             audio.export(mp3_path, format="mp3")
             
@@ -286,7 +320,7 @@ async def transcribe_audio(audio: UploadFile = File(...)):
                 audio_data = mp3_file.read()
             print(f"Converted audio file into byte array successfully!")
 
-            transcription = client.speech_to_text.convert(
+            transcription = get_speech_client().speech_to_text.convert(
                 file=audio_data,
                 model_id="scribe_v1",
                 tag_audio_events=True,
@@ -354,7 +388,8 @@ async def generate_speech(request: SpeechRequest):
         }
 
         # Send request to ElevenLabs API
-        response = requests.post(elevenlabs_url, headers=headers, json=payload)
+        import requests
+        response = requests.post(elevenlabs_url, headers=headers, json=payload, timeout=60)
 
         if response.status_code != 200:
             return JSONResponse(

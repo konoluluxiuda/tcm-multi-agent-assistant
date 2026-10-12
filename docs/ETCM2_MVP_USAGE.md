@@ -42,14 +42,15 @@ uvicorn tcm.api:app --host 127.0.0.1 --port 7863
 
 | 方法/路径 | 用途 |
 |---|---|
-| `GET /health` | 健康检查 |
+| `GET /health` | 进程存活检查 |
+| `GET /ready` | 数据库与所选版本就绪检查 |
 | `GET /` | 查询页面：结果表格、分页、同名候选、字段比较和来源展开 |
 | `GET /herbs/{name}` | 单药材详情（返回完整 provenance） |
 | `GET /herb-records/{source_record_id}` | 按具体来源 ID 查详情，供同名候选选择 |
 | `GET /herbs?family=...&flavors=...&limit=20&offset=0` | 分页字段筛选（子串匹配，多条件 AND） |
 | `GET /herbs/compare?names=a,b,c` | 多药材字段对齐比较 |
 
-筛选可用的字段：`family`、`habitat`、`medicinal_part`、`properties`、`flavors`、`meridians`、`efficacy_class`、`indications`。未知字段（包括与合法字段混用）、空白值、重复字段返回 400，数据库缺失返回 503。`/health` 仅表示进程存活，不检查数据库就绪状态。7863 用于避开原医疗应用的 7860；如有占用可自行改端口。
+筛选可用的字段：`family`、`habitat`、`medicinal_part`、`properties`、`flavors`、`meridians`、`efficacy_class`、`indications`。未知字段（包括与合法字段混用）、空白值、重复字段返回 400，数据库缺失返回 503。`/health` 仅表示进程存活；`/ready` 会检查数据库 Schema、所选版本和有效记录数，不可用或无有效数据时返回 503。7863 用于避开原医疗应用的 7860；如有占用可自行改端口。
 
 ```bash
 curl localhost:7863/health
@@ -111,3 +112,37 @@ python -m unittest discover -s tests -p test_tcm_api.py -v
 2026-10-12 修复与验证见 [API 与页面验收报告](../audits/etcm2_mvp/api_review_2026-10-12.md)。
 
 结构化页面后续验收见 [页面工作流报告](../audits/etcm2_mvp/page_workflow_2026-10-12.md)。
+
+## Docker 本地运行
+
+已提供独立轻量镜像配置 [`Dockerfile.tcm`](../Dockerfile.tcm)、[`compose.tcm.yaml`](../compose.tcm.yaml) 和 [`requirements-tcm.txt`](../requirements-tcm.txt)。先按前文导入生成 `var/tcm/herbs.sqlite3`，再执行：
+
+```bash
+docker compose -f compose.tcm.yaml up -d --build
+docker compose -f compose.tcm.yaml ps
+curl http://127.0.0.1:7863/ready
+```
+
+页面：`http://127.0.0.1:7863`。镜像只复制 `tcm` 模块与轻量依赖，不加载原医疗模型；不需要 `.env` 中的聊天、嵌入或 Tavily 密钥。服务只读挂载数据库文件，容器内路径 `/data/herbs.sqlite3`，原始 169 GiB 数据集无需挂载或复制。数据库文件不存在时拒绝创建挂载，不会自动建立空目录替代它。
+
+Compose 默认固定 `local-2026-10-10` 版本，可在运行命令前设置 `TCM_DATASET_VERSION` 为实际导入版本。镜像标签为本地 `tcm-herb-query:dev`，此次未发布到 Docker Hub。Docker 健康检查使用 `/ready`。
+
+```bash
+docker compose -f compose.tcm.yaml logs --tail 50
+docker compose -f compose.tcm.yaml stop
+```
+
+服务设置 `restart: unless-stopped`；Docker 重新启动后会恢复此前运行的容器，手动停止的容器保持停止。恢复手动停止的服务用 `docker compose -f compose.tcm.yaml up -d`。
+
+代码修改后重新执行 `up -d --build`，因为此服务使用镜像内代码。更新同一导入版本的数据库内容无需复制到镜像，但尚不支持查询期间保证固定批次的分页快照。
+
+2026-10-12 Docker 启动结果见 [恢复与部署报告](../audits/docker_recovery_2026-10-12.md)。
+
+## 固定真实数据验收
+
+```bash
+python -m scripts.eval_tcm_golden
+python -m scripts.eval_tcm_golden --base-url http://127.0.0.1:7863 --out audits/tcm_golden/report_http.json
+```
+
+30 项固定候选用例使用原始 JSON 独立核对的字段、结果路径和来源；不会根据本次程序输出重写标准答案。数据快照变化会阻止评测。人类审核签核尚未完成，见 [运行说明与签核边界](../eval/README.md)。

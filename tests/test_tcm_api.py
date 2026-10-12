@@ -54,6 +54,19 @@ class ApiTests(unittest.TestCase):
     def test_health(self):
         self.assertEqual(_client.get('/health').json(), {'status': 'healthy'})
 
+    def test_readiness_uses_actual_dataset(self):
+        result = _client.get('/ready')
+        self.assertEqual(result.status_code, 200)
+        self.assertEqual(result.json(), {'status': 'ready', 'dataset_version': 'v1', 'record_count': 3})
+        from tcm import api
+        with patch.object(api, 'DATASET_VERSION', 'absent'):
+            missing = _client.get('/ready')
+            self.assertEqual(missing.status_code, 503)
+            self.assertEqual(missing.json()['status'], 'dataset_not_found')
+        with patch.object(api, 'DB_PATH', '/nonexistent/herbs.sqlite3'):
+            self.assertEqual(_client.get('/ready').status_code, 503)
+            self.assertEqual(_client.get('/health').status_code, 200)
+
     def test_herb_detail(self):
         res = _client.get('/herbs/HerbA')
         self.assertEqual(res.status_code, 200)

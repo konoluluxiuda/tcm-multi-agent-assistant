@@ -14,7 +14,7 @@ from pathlib import Path
 from fastapi import FastAPI, Query, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 
-from .herbs import FILTERABLE_FIELDS, compare_herbs, filter_herbs, lookup
+from .herbs import FILTERABLE_FIELDS, compare_herbs, dataset_status, filter_herbs, lookup
 
 DB_PATH = os.environ.get('TCM_DB', 'var/tcm/herbs.sqlite3')
 DATASET_VERSION = os.environ.get('TCM_DATASET_VERSION') or None
@@ -36,6 +36,15 @@ def _call(fn, *args, **kwargs):
 @app.get('/health')
 def health():
     return {'status': 'healthy'}
+
+
+@app.get('/ready')
+def ready():
+    try:
+        result = dataset_status(DB_PATH, dataset_version=DATASET_VERSION)
+    except (sqlite3.Error, OSError, ValueError):
+        return JSONResponse(status_code=503, content={'status': 'database_unavailable'})
+    return JSONResponse(status_code=200 if result['status'] == 'ready' else 503, content=result)
 
 
 @app.get('/herbs/compare')

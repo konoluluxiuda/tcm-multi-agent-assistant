@@ -243,6 +243,20 @@ def _resolve_dataset_version(con, dataset_version):
     return dataset_version, True
 
 
+def dataset_status(database, *, dataset_version=None):
+    """Readiness of the imported dataset, independent of particular herb names."""
+    db = Path(database).resolve()
+    with closing(sqlite3.connect(db.as_uri() + '?mode=ro', uri=True)) as con:
+        con.execute('BEGIN')
+        if con.execute('PRAGMA user_version').fetchone()[0] != SCHEMA_VERSION:
+            raise ValueError('Unsupported database schema version')
+        version, exists = _resolve_dataset_version(con, dataset_version)
+        if not exists:
+            return {'status': 'dataset_not_found', 'dataset_version': version, 'record_count': 0}
+        count = con.execute("SELECT COUNT(*) FROM records WHERE dataset_version=? AND state='valid'", (version,)).fetchone()[0]
+        return {'status': 'ready' if count else 'empty_dataset', 'dataset_version': version, 'record_count': count}
+
+
 def filter_herbs(database, *, filters, dataset_version=None, limit=20, offset=0):
     """Filter herbs by raw field values; casefold substring match, AND across filters.
 
