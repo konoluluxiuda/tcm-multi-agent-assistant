@@ -408,8 +408,7 @@ clients from locking the same folder. Do not run another worker, ingestion job,
 or evaluation process against that directory concurrently. For multiple workers,
 use a server-backed vector database and a shared persistent checkpointer.
 
-Local source links use `/data/...`, including old localhost URLs normalized on
-retrieval, so they follow the browser's actual host and port.
+Local source links use `/sources/{id}` with an explicit file allowlist and SHA-256 checks. Legacy `/data/...` links redirect only for registered files. Entire data/uploads folders are no longer public; generated image results use expiring session-scoped URLs. See [source publishing and access boundaries](docs/SOURCE_ACCESS.md).
 
 ## 🧪 Evaluation  <a name="evaluation"></a>
 

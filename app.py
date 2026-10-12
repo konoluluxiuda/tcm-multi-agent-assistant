@@ -6,10 +6,10 @@ import glob
 import threading
 import time
 from io import BytesIO
+from pathlib import Path
 
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Depends, Request, Response, Cookie
-from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
-from fastapi.staticfiles import StaticFiles
+from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 
@@ -17,6 +17,7 @@ import uvicorn
 
 from config import Config
 from agents.agent_decision import process_query
+from source_access import SourceCatalog, PrivateArtifacts, create_source_router
 
 # Load configuration
 config = Config()
@@ -34,9 +35,24 @@ SPEECH_DIR = "uploads/speech"
 for directory in [UPLOAD_FOLDER, FRONTEND_UPLOAD_FOLDER, SKIN_LESION_OUTPUT, SPEECH_DIR]:
     os.makedirs(directory, exist_ok=True)
 
-# Mount static files directory
-app.mount("/data", StaticFiles(directory="data"), name="data")
-app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
+# Public sources are explicitly registered; private results are session snapshots.
+source_catalog = SourceCatalog(Path.cwd(), os.getenv('SOURCE_MANIFEST_PATH', 'resources/source_manifest.json'))
+private_artifacts = PrivateArtifacts()
+app.include_router(create_source_router(source_catalog, private_artifacts))
+image_request_lock = threading.Lock()
+
+
+def process_image_query(query, session_id):
+    # The legacy CV backend writes a shared PNG. Serialize generation + snapshot
+    # and discard stale output before starting a new request.
+    path = Path(SKIN_LESION_OUTPUT) / 'segmentation_plot.png'
+    with image_request_lock:
+        path.unlink(missing_ok=True)
+        result = process_query(query, session_id=session_id)
+        artifact_url = None
+        if result['agent_name'] == 'SKIN_LESION_AGENT, HUMAN_VALIDATION' and path.is_file():
+            artifact_url = private_artifacts.publish_png(path.read_bytes(), session_id)
+        return result, artifact_url
 
 # Set up templates
 templates = Jinja2Templates(directory="templates")
@@ -148,14 +164,6 @@ def chat(
             "agent": response_data["agent_name"]
         }
         
-        # If it's the skin lesion segmentation agent, check for output image
-        if response_data["agent_name"] == "SKIN_LESION_AGENT, HUMAN_VALIDATION":
-            segmentation_path = os.path.join(SKIN_LESION_OUTPUT, "segmentation_plot.png")
-            if os.path.exists(segmentation_path):
-                result["result_image"] = f"/uploads/skin_lesion_output/segmentation_plot.png"
-            else:
-                print("Skin Lesion Output path does not exist.")
-        
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -204,7 +212,7 @@ async def upload_image(
     
     try:
         query = {"text": text, "image": file_path}
-        response_data = process_query(query, session_id=session_id)
+        response_data, artifact_url = process_image_query(query, session_id)
         response_text = response_data['messages'][-1].content
 
         # Set session cookie
@@ -217,23 +225,14 @@ async def upload_image(
             "agent": response_data["agent_name"]
         }
         
-        # If it's the skin lesion segmentation agent, check for output image
-        if response_data["agent_name"] == "SKIN_LESION_AGENT, HUMAN_VALIDATION":
-            segmentation_path = os.path.join(SKIN_LESION_OUTPUT, "segmentation_plot.png")
-            if os.path.exists(segmentation_path):
-                result["result_image"] = f"/uploads/skin_lesion_output/segmentation_plot.png"
-            else:
-                print("Skin Lesion Output path does not exist.")
-        
-        # Remove temporary file after sending
-        try:
-            os.remove(file_path)
-        except Exception as e:
-            print(f"Failed to remove temporary file: {str(e)}")
-        
+        if artifact_url:
+            result['result_image'] = artifact_url
+
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        Path(file_path).unlink(missing_ok=True)
 
 @app.post("/validate")
 def validate_medical_output(
@@ -397,18 +396,9 @@ async def generate_speech(request: SpeechRequest):
                 content={"error": f"Failed to generate speech, status: {response.status_code}", "details": response.text}
             )
         
-        # Save the audio file temporarily
-        os.makedirs(SPEECH_DIR, exist_ok=True)
-        temp_audio_path = f"./{SPEECH_DIR}/{uuid.uuid4()}.mp3"
-        with open(temp_audio_path, "wb") as f:
-            f.write(response.content)
-
-        # Return the generated audio file
-        return FileResponse(
-            path=temp_audio_path,
-            media_type="audio/mpeg",
-            filename="generated_speech.mp3"
-        )
+        # Return directly to the initiating request, without a public disk URL.
+        return Response(content=response.content, media_type='audio/mpeg',
+                        headers={'Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff'})
 
     except Exception as e:
         return JSONResponse(

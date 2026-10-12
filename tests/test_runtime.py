@@ -5,7 +5,7 @@ import unittest
 from types import SimpleNamespace
 
 from agents.runtime import SharedRAG, session_turn
-from agents.source_links import source_url
+from agents.source_links import source_url, source_id
 
 
 class RuntimeTests(unittest.TestCase):
@@ -62,7 +62,12 @@ class RuntimeTests(unittest.TestCase):
 
     def test_relative_sources_and_legacy_urls(self):
         for path in ('./data/raw/paper.pdf', 'data/raw/paper.pdf', 'http://localhost:8000/data/raw/paper.pdf', 'http://localhost:8000/./data/raw/paper.pdf'):
-            self.assertEqual(source_url(path), '/data/raw/paper.pdf')
+            self.assertEqual(source_url(path), '/sources/' + source_id('data/raw/paper.pdf'))
         self.assertEqual(source_url('https://example.org/paper?q=1'), 'https://example.org/paper?q=1')
-        self.assertEqual(source_url('./data/raw/a b.pdf'), '/data/raw/a%20b.pdf')
+        self.assertEqual(source_url('./data/raw/a b.pdf'), '/sources/' + source_id('data/raw/a b.pdf'))
+        self.assertIsNone(source_url('/data/docs_db/database'))
+        self.assertIsNone(source_url('/data/raw/%2e%2e/private.pdf'))
+        self.assertIsNone(source_url('file:///etc/passwd'))
+        canonical = '/sources/' + source_id('data/raw/paper.pdf')
+        self.assertEqual(source_url('http://localhost:8000' + canonical + '#page=2'), canonical + '#page=2')
         self.assertIsNone(source_url(None))

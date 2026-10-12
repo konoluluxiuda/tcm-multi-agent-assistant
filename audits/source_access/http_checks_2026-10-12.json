@@ -1,0 +1,355 @@
+{
+  "passed": true,
+  "registered_files": 75,
+  "blocked_paths": 11,
+  "checks": [
+    {
+      "check": "registered source s_a34cd9f43edabab346b8863b9f1f64ddf161e6d08a63a91cd869472ffee4cbd7",
+      "passed": true
+    },
+    {
+      "check": "registered source s_6dd56cc0bfaf098569e19dcfc6b3a29ad4e7429421e76a9d8d5c7fb6675645da",
+      "passed": true
+    },
+    {
+      "check": "registered source s_daf7b6b184f03f3d4dbd691ce5c4a602c68f67e602679e0051a270d11b471c6a",
+      "passed": true
+    },
+    {
+      "check": "registered source s_cbdaf3197a4834016e27c1be37adf32c4b27b8adcaf77cfee2ba17bfdc89f0de",
+      "passed": true
+    },
+    {
+      "check": "registered source s_3498a01333a95783bd80c9083c6d49805c8c7aeecd7c3482a39463a93d1a61cf",
+      "passed": true
+    },
+    {
+      "check": "registered source s_5f0c841db2996f2a67a7d5920f89ef2308bf76c05937a874ae5ea9b54fbc4863",
+      "passed": true
+    },
+    {
+      "check": "registered source s_8a795aee629e6f6231fa98ec7b61d2f6caff245f9ca42d85a69497c84f14275b",
+      "passed": true
+    },
+    {
+      "check": "registered source s_024a372c3f7cfba6be57853db76dc6ce16568780d871585e7fabbc4ea814b75f",
+      "passed": true
+    },
+    {
+      "check": "registered source s_ccc18b40d1866e9a61936baf391147780222f4cee20fdbeb9b129a496e57cf76",
+      "passed": true
+    },
+    {
+      "check": "registered source s_3091039d219600d2bd712b57d7df05918ae23e10bd7b5ae09886e93847a15df6",
+      "passed": true
+    },
+    {
+      "check": "registered source s_4e7cba788a4e28cac4f73fdfed3f506b6e3a56b56edc70247d89defe0e1cc6e4",
+      "passed": true
+    },
+    {
+      "check": "registered source s_84673df1f3cad6bb104e14bfdc3bcee221146ae9cfd31b0d63fb82ce6346a315",
+      "passed": true
+    },
+    {
+      "check": "registered source s_764bd81fe77c948af070640fe4ba58108ff95835c1f38246f0b1cdcf6e9adde9",
+      "passed": true
+    },
+    {
+      "check": "registered source s_8c1a5c2c48c93ba387d1be7cb4327a856ca7988d6eba840128a7047ba58e0108",
+      "passed": true
+    },
+    {
+      "check": "registered source s_a2f407b7a16e894b3ed76ea69311ba7f804366dfd4980a73f4219e20477e1019",
+      "passed": true
+    },
+    {
+      "check": "registered source s_306d86da53a270f13189dc6ee8a26e1d6ec2bfd22959ea9f5e367bc4ed21dbd6",
+      "passed": true
+    },
+    {
+      "check": "registered source s_47896c0d1642608c51144b0d94bc61b6d10251ca1b753d7adb924f898125794d",
+      "passed": true
+    },
+    {
+      "check": "registered source s_158cf17ed201bcc294e354aff52f9b8fd9d3a3690205d974338faedb10cfa4e2",
+      "passed": true
+    },
+    {
+      "check": "registered source s_caaa0d073bd476afac08d1f651357d5c51ad59c5a26871f3efd515d46dfdad2d",
+      "passed": true
+    },
+    {
+      "check": "registered source s_f04076ea09cf242e8364c6637ab670f3069862e81fb01eeeadcf064b90ed1625",
+      "passed": true
+    },
+    {
+      "check": "registered source s_134f7693b15680ba2e0d45b5eae86718c87dba4e989d40177d410e3c2a1cdabd",
+      "passed": true
+    },
+    {
+      "check": "registered source s_87195a0c5b0c2ca4baa6b7854fdaabd647e5bf5b0df11ca610ed88f4785df379",
+      "passed": true
+    },
+    {
+      "check": "registered source s_c2943a7700a68aa4ff31252a3814fc432da5e64b4e1f23f3caf3dd266bc25e38",
+      "passed": true
+    },
+    {
+      "check": "registered source s_d6684b5f9fec537e03128400786d6d6331a622014d4f3b284bbe2be6e0c76b2e",
+      "passed": true
+    },
+    {
+      "check": "registered source s_01d718d669e4cd104bac9bba598aae1b717961dd929daf1ed724fd330b852f3e",
+      "passed": true
+    },
+    {
+      "check": "registered source s_237c9c17a48ce50fbdb45a445f98cdeeba1c93ea7da586d20b3c879186b3a133",
+      "passed": true
+    },
+    {
+      "check": "registered source s_583c554451fe6989ca4bbd6becd9b5ceaa8fefbfadb4c240c0538c2819aa8b09",
+      "passed": true
+    },
+    {
+      "check": "registered source s_66e2b83aa436ca90c78515933a4833636dba3a5abe4a0722cd0cff09fc895cc5",
+      "passed": true
+    },
+    {
+      "check": "registered source s_e5008cef387452c761724dadf1129a1bd225382f7dbae4cbbaec0550515be94d",
+      "passed": true
+    },
+    {
+      "check": "registered source s_6d2673aa66c9ec645ddb18400f507fdf34d2961a77cb416f21e19860c655242d",
+      "passed": true
+    },
+    {
+      "check": "registered source s_1ef4d53693b2a1b954b9478293b410c05a04a5be8291bef17d032186ac8d5d1e",
+      "passed": true
+    },
+    {
+      "check": "registered source s_7c7cdf119b6883c98efd7a11e456ee5c4d73bca73bae663569cfec780ec63455",
+      "passed": true
+    },
+    {
+      "check": "registered source s_2c8f6238b67b01a72c13bafe32a296717b89808f239beda1371128aa53a4a9d6",
+      "passed": true
+    },
+    {
+      "check": "registered source s_8b0bc5820fc49e1b0b8120ab2fd647ab061d9431e64e5e961466774f5a75b0e9",
+      "passed": true
+    },
+    {
+      "check": "registered source s_a7240cbde51bc70587b7270c1a78d6d3bf99e8075ff3d49d5c05b6b9339f2cba",
+      "passed": true
+    },
+    {
+      "check": "registered source s_7ca1517f585fe3fd65d7f5d129142fd1444ed344c152add18d3095c0bd693a72",
+      "passed": true
+    },
+    {
+      "check": "registered source s_1034dc32ba15cbe6aa5482b6bb5818761b8fa4271a5773e1e4c4e7e7a591da59",
+      "passed": true
+    },
+    {
+      "check": "registered source s_43c42d3e455f9ee6ac7f7a82ee9eb485787c0aff07f9b938bd104dd91ff051e2",
+      "passed": true
+    },
+    {
+      "check": "registered source s_4c0168641578bab353341aad72808d5bf26dde226ff9b6d80c138e415082101b",
+      "passed": true
+    },
+    {
+      "check": "registered source s_90e2bf4d47c98f9404cd82ce1985c5c891725c4ba38756456236157e36c8cbae",
+      "passed": true
+    },
+    {
+      "check": "registered source s_22baf80a6112ea4a9bdac2a6c548143673f741493edbd791f1d7efb10ac329df",
+      "passed": true
+    },
+    {
+      "check": "registered source s_6f0d2045307e5f624855337c54e89dafb7da0a125a9703ad5f8386faed2124d8",
+      "passed": true
+    },
+    {
+      "check": "registered source s_d2bdfa81ce594ec513a684e7dc192506a29b6e2bdf1a14a7a87c0bc9773981f4",
+      "passed": true
+    },
+    {
+      "check": "registered source s_411deb0e47dafdd66d1e33e4ba45fa89a17f01c487a1839dcfa21f732143a0ce",
+      "passed": true
+    },
+    {
+      "check": "registered source s_929712b573d475320f4e13210555f4b86ab2d8b7071fa254d02a67a9a74fd581",
+      "passed": true
+    },
+    {
+      "check": "registered source s_7494b060f3980ebf7489617f6ff3bb5c24b90456d8e579ff426106e2bbe0da00",
+      "passed": true
+    },
+    {
+      "check": "registered source s_3d172315f8d547327e75924b7ba53c3eac5213ea61397d847e11a1e49239561e",
+      "passed": true
+    },
+    {
+      "check": "registered source s_ec56aa96e71edc0ad1f9829df617a09984a3b7843ac633062daf73f72b9f3f11",
+      "passed": true
+    },
+    {
+      "check": "registered source s_60bf92f3bffffa6a438b3260637f721c2bd3315fc9822f3eab36772622359a23",
+      "passed": true
+    },
+    {
+      "check": "registered source s_7efa0ef4a6a26bbcab3aa95f1e96a3b627ed8db551b4820305605692f650021d",
+      "passed": true
+    },
+    {
+      "check": "registered source s_6438f69bdbf6f4827419e132958a041714a28189f852d2fa4c2304085aaaa8a6",
+      "passed": true
+    },
+    {
+      "check": "registered source s_22e1cc9362e1ba6cf8f19978c3c5b82bc53c034b9ef99d7a71f4b917a1aea4f4",
+      "passed": true
+    },
+    {
+      "check": "registered source s_3b6ce3d6eb2cbdfc83678aac1f5bc9869e8d4e48021ece13e9ddddeda39b36f6",
+      "passed": true
+    },
+    {
+      "check": "registered source s_483461775b487fb907c6c0e95c513c164cfd8dfd2be28da53bb7fc67a316502b",
+      "passed": true
+    },
+    {
+      "check": "registered source s_c399e894a55c4d4c1e9c80e28c90494291c9e7e246da0149849f817cafd9d5b9",
+      "passed": true
+    },
+    {
+      "check": "registered source s_9933e25a1b542c4067e56f1ce4537a86b7652ac567051ad7927f3c1d9156124f",
+      "passed": true
+    },
+    {
+      "check": "registered source s_b03bfe3aab49b5bfd7180ceedb562e4e1348b3fccab951c656f57d00c9e30524",
+      "passed": true
+    },
+    {
+      "check": "registered source s_a71e9154da61bc18e7f85ea597de5119e1c9dc9243b4d0cc31a70921ac215862",
+      "passed": true
+    },
+    {
+      "check": "registered source s_9eb6b168bb3d2da52ba77733d13f66f158ae698d27757e6eaabb511f0f5f2ebb",
+      "passed": true
+    },
+    {
+      "check": "registered source s_b4003a4c2cdc1b713669530870c3999639475ce23f810d7019a3399f3fa4e429",
+      "passed": true
+    },
+    {
+      "check": "registered source s_fd9c51d8cf3e0199d1304bbbcde3ab0957c44a1da4777d28b38e9edd1b44adb0",
+      "passed": true
+    },
+    {
+      "check": "registered source s_91427c33774bfdd236b27645ec95e57d5b8cbe675693cc68bd2aa407a8ea6fcd",
+      "passed": true
+    },
+    {
+      "check": "registered source s_a283985403b34516cba91ff2f1e6edd3e1eadb4b16f369bfff4f918845b8fa5b",
+      "passed": true
+    },
+    {
+      "check": "registered source s_a74260357e4cc05a0bc4bd570defb03640fb36680f8ce7b089c81452e1daa6ac",
+      "passed": true
+    },
+    {
+      "check": "registered source s_221a8033833b1a9849ca8625b630d164b5fd15dc3523be75cc1758c6d3d3195a",
+      "passed": true
+    },
+    {
+      "check": "registered source s_0822d6193009c0b69653cb8c83d8541cf03c530204d93883eda42d06b2d3dba7",
+      "passed": true
+    },
+    {
+      "check": "registered source s_3ca12ef19fd98f262ca0954a1f8502a6811b8d36cef536f042745d1cf2cf2afb",
+      "passed": true
+    },
+    {
+      "check": "registered source s_9abee27ec890b03b967788c8a94629e0fd86a5e27aaf45061ffc92d262875099",
+      "passed": true
+    },
+    {
+      "check": "registered source s_6ecbfe54933fb95576493e11e3132fca858128818998843c0a7ff93c5947df5d",
+      "passed": true
+    },
+    {
+      "check": "registered source s_76e1dac7e8b5d45bc1ec66cd4b1e05ce225b531c005417ab1532789ad726d2c7",
+      "passed": true
+    },
+    {
+      "check": "registered source s_a1a364d8f4783e350d15291fda571973a6901b8fd585ea010f3d91c2a83d205a",
+      "passed": true
+    },
+    {
+      "check": "registered source s_fae1e44831487df2585ad696361c4ec4f29b7af1edd90673d9dfe8e9b087ccc2",
+      "passed": true
+    },
+    {
+      "check": "registered source s_f5d0f8c4c25e30a48653d05c789bfd2246528bf559613b8ab9ca5600b08618af",
+      "passed": true
+    },
+    {
+      "check": "registered source s_4610067b443baa283e61cde6ec97ddfa1dc814e00e64a56494fbc100fe7097e3",
+      "passed": true
+    },
+    {
+      "check": "registered source s_4105b69389d551bafc9e4663f8b475911580bff5aec728cadda8041e46fd0e29",
+      "passed": true
+    },
+    {
+      "check": "legacy approved PDF redirects successfully",
+      "passed": true
+    },
+    {
+      "check": "unregistered/private path blocked",
+      "passed": true
+    },
+    {
+      "check": "unregistered/private path blocked",
+      "passed": true
+    },
+    {
+      "check": "unregistered/private path blocked",
+      "passed": true
+    },
+    {
+      "check": "unregistered/private path blocked",
+      "passed": true
+    },
+    {
+      "check": "unregistered/private path blocked",
+      "passed": true
+    },
+    {
+      "check": "unregistered/private path blocked",
+      "passed": true
+    },
+    {
+      "check": "unregistered/private path blocked",
+      "passed": true
+    },
+    {
+      "check": "unregistered/private path blocked",
+      "passed": true
+    },
+    {
+      "check": "unregistered/private path blocked",
+      "passed": true
+    },
+    {
+      "check": "unregistered/private path blocked",
+      "passed": true
+    },
+    {
+      "check": "unregistered/private path blocked",
+      "passed": true
+    }
+  ]
+}
