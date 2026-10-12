@@ -219,8 +219,12 @@ FILTERABLE_FIELDS = {
 
 
 def _summarize(doc):
-    """Reduced field view for filter/compare/display. Values only, no provenance."""
-    result = {'source_record_id': doc['source_record_id']}
+    """Keep flat display values plus field evidence and source limitations."""
+    result = {
+        'source_record_id': doc['source_record_id'],
+        'source': doc['source'], 'warnings': doc['warnings'],
+        'fields': doc['fields'],
+    }
     for target in FIELDS.values():
         field = doc['fields'].get(target)
         result[target] = field['value'] if field and field['state'] == 'present' else None
@@ -239,18 +243,24 @@ def _resolve_dataset_version(con, dataset_version):
     return dataset_version, True
 
 
-def filter_herbs(database, *, filters, dataset_version=None):
+def filter_herbs(database, *, filters, dataset_version=None, limit=20, offset=0):
     """Filter herbs by raw field values; casefold substring match, AND across filters.
 
     filters: dict of target field name -> search string. Only FILTERABLE_FIELDS are
     accepted (name fields use lookup, list fields are not filterable in this MVP).
     """
+    if type(limit) is not int or not 1 <= limit <= 100:
+        raise ValueError('limit must be an integer between 1 and 100')
+    if type(offset) is not int or offset < 0:
+        raise ValueError('offset must be a non-negative integer')
     if not isinstance(filters, dict) or not filters:
         raise ValueError('filters must be a non-empty dict')
     unknown = set(filters) - FILTERABLE_FIELDS
     if unknown:
         raise ValueError('unsupported_filter_field: ' + ', '.join(sorted(unknown)))
-    cleaned = {k: (v or '').strip() for k, v in filters.items()}
+    if any(not isinstance(v, str) for v in filters.values()):
+        raise ValueError('filter values must be strings')
+    cleaned = {k: v.strip() for k, v in filters.items()}
     if any(not v for v in cleaned.values()):
         raise ValueError('filter values must not be empty')
     db = Path(database).resolve()
@@ -261,8 +271,9 @@ def filter_herbs(database, *, filters, dataset_version=None):
         if not exists:
             return {'status': 'dataset_not_found', 'dataset_version': dataset_version, 'filters': cleaned, 'records': []}
         records = []
+        total = 0
         rows = con.execute(
-            "SELECT document FROM records WHERE dataset_version=? AND state='valid'",
+            "SELECT document FROM records WHERE dataset_version=? AND state='valid' ORDER BY relative_path, source_record_id",
             (dataset_version,),
         )
         for (document,) in rows:
@@ -273,10 +284,13 @@ def filter_herbs(database, *, filters, dataset_version=None):
                 search_key(needle) in search_key(doc['fields'][target]['value'] or '')
                 for target, needle in cleaned.items()
             ):
-                records.append(_summarize(doc))
+                if offset <= total < offset + limit:
+                    records.append(_summarize(doc))
+                total += 1
         return {
             'status': 'ok', 'dataset_version': dataset_version, 'filters': cleaned,
-            'count': len(records), 'records': records,
+            'count': total, 'returned_count': len(records), 'limit': limit, 'offset': offset,
+            'next_offset': offset + limit if offset + limit < total else None, 'records': records,
         }
 
 
@@ -296,7 +310,7 @@ def compare_herbs(database, *, names, dataset_version=None):
             return {'status': 'dataset_not_found', 'dataset_version': dataset_version, 'herbs': []}
     for name in names:
         result = lookup(database, name=name, dataset_version=dataset_version)
-        entry = {'query': name, 'status': result['status']}
+        entry = {'query': name, 'status': result['status'], 'warnings': result.get('warnings', [])}
         if result['status'] == 'ok':
             entry['record'] = _summarize(result['records'][0])
         elif result['status'] == 'ambiguous_entity':

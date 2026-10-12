@@ -10,3 +10,5 @@ uploads/
 
 # Generated local TCM knowledge database
 var/
+
+.venv-tcm/

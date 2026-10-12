@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>药材资料查询 · ETCM</title>
+<style>
+:root { color-scheme: light; --ink:#193b32; --muted:#5b7169; --line:#d9e3dc; --paper:#fffefa; --accent:#24634e; }
+* { box-sizing:border-box; }
+body { margin:0; font:16px/1.6 system-ui,"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif; background:#f2f5ef; color:var(--ink); }
+header,main { max-width:1160px; margin:auto; padding:28px; }
+header { padding-bottom:12px; }
+h1 { margin:4px 0 8px; font-size:32px; letter-spacing:.02em; }
+h2 { margin:0 0 16px; font-size:21px; }
+h3 { margin:0 0 10px; font-size:17px; }
+p { margin:6px 0 14px; }
+.eyebrow { color:var(--muted); font-size:12px; letter-spacing:.16em; }
+.muted { color:var(--muted); }
+.notice { border-left:3px solid #ab8750; padding:8px 14px; background:#fbf4e5; }
+.card { background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:22px; margin-bottom:20px; }
+.forms { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+form + form { border-left:1px solid var(--line); padding-left:22px; }
+label { display:block; font-size:14px; margin-bottom:5px; }
+input,select,button { font:inherit; border-radius:6px; padding:9px 12px; }
+input,select { width:100%; min-width:0; background:white; border:1px solid #bdcec3; color:var(--ink); }
+button { cursor:pointer; background:var(--accent); color:white; border:1px solid var(--accent); white-space:nowrap; }
+button:hover { background:#174b39; }
+button:disabled { opacity:.45; cursor:default; }
+button.secondary { background:transparent; color:var(--accent); }
+:focus-visible { outline:3px solid #c69e52; outline-offset:3px; }
+.row { display:flex; gap:9px; align-items:center; margin:9px 0; }
+.row > input { flex:1; }
+.filter-row select { flex:1; }
+.filter-row input { flex:2; }
+.filter-row button { padding:8px; }
+.table-wrap { overflow:auto; }
+table { border-collapse:collapse; width:100%; text-align:left; }
+th,td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; min-width:110px; }
+th { font-size:13px; color:var(--muted); background:#f1f5ee; }
+td { font-size:14px; }
+td:first-child { font-weight:600; }
+.break { overflow-wrap:anywhere; white-space:pre-wrap; }
+.small { font-size:12px; font-weight:normal; color:var(--muted); }
+.pager { display:flex; justify-content:space-between; gap:10px; align-items:center; margin-top:18px; flex-wrap:wrap; }
+#status { min-height:26px; margin:0 0 16px; }
+#status.error { color:#a13421; }
+details { margin-top:9px; font-size:13px; font-weight:normal; }
+summary { cursor:pointer; color:var(--accent); }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; background:#f1f5ee; padding:12px; font-size:12px; }
+[hidden] { display:none !important; }
+@media(max-width:720px) { header,main { padding:18px; } .forms { grid-template-columns:1fr; } form + form { border-left:0; border-top:1px solid var(--line); padding:20px 0 0; } .filter-row { flex-wrap:wrap; } h1 { font-size:27px; } .card { padding:16px; } }
+</style>
+</head>
+<body>
+<header>
+<div class="eyebrow">ETCM · LOCAL HERB LIBRARY</div>
+<h1>药材资料查询</h1>
+<p class="muted">查阅药材原始属性，比较记录，并逐字段核对出处。</p>
+<p class="notice">当前支持拼音、拉丁名和英文名；中文名称与别名映射尚未提供。源资料内容未核验，关联文献不代表每项属性均获证实。</p>
+</header>
+<main>
+<section class="card forms" aria-label="查询条件">
+<form id="lookupForm">
+<h2>名称查询</h2>
+<label for="name">药材名称（精确匹配）</label>
+<div class="row"><input id="name" required placeholder="例如 HuangQin" autocomplete="off"><button type="submit">查详情</button></div>
+<p class="small">同名记录会列出全部候选，由你选择具体来源。</p>
+</form>
+<form id="compareForm">
+<h2>字段比较</h2>
+<label for="names">药材名称，以英文逗号分隔</label>
+<div class="row"><input id="names" required placeholder="例如 HuangQin,HuaShi" autocomplete="off"><button type="submit">比较</button></div>
+<p class="small">并列展示原库字段，缺失信息不补写。</p>
+</form>
+</section>
+<section class="card">
+<form id="filterForm">
+<h2>属性筛选</h2>
+<p class="small">按原文字段包含的文本筛选，多个条件须同时满足；不是标准术语或语义匹配。</p>
+<div id="conditions"></div>
+<div class="row"><button type="button" id="addCondition" class="secondary">添加条件</button><button type="submit">筛选</button></div>
+</form>
+</section>
+<p id="status" role="status" aria-live="polite">输入名称或筛选条件开始查询。</p>
+<section id="results" class="card" hidden aria-label="查询结果"></section>
+<section id="detail" class="card" hidden aria-label="药材详情"></section>
+</main>
+<script>
+'use strict';
+const byId = id => document.getElementById(id);
+const labels = {name_pinyin:'拼音',latin_name:'拉丁名',english_name:'英文名',family:'科',habitat:'分布',medicinal_part:'药用部位',properties:'性',flavors:'味',meridians:'归经',efficacy_class:'原库功效分类',indications:'原库 Indications',reference_pmids:'关联 PubMed ID',cross_references:'交叉来源'};
+const filterKeys = ['family','habitat','medicinal_part','properties','flavors','meridians','efficacy_class','indications'];
+const statusText = {not_found:'没有找到匹配记录。',unsupported_name_mapping:'暂不支持中文名称映射，请使用拼音、拉丁名或英文名。',dataset_not_found:'指定的数据版本不可用。',quarantined:'此来源记录已隔离，不能展示旧内容。',missing_from_snapshot:'此记录已不在当前快照中。'};
+let activeRequest = 0;
+let controller;
+function element(tag, text, className) { const el = document.createElement(tag); if (text !== undefined) el.textContent = text; if (className) el.className = className; return el; }
+function button(text, action, disabled=false) { const el=element('button',text,'secondary'); el.type='button'; el.disabled=disabled; el.addEventListener('click',action); return el; }
+function valueText(value) { return value === null || value === undefined ? '未提供' : Array.isArray(value) ? value.join('；') : String(value); }
+function announce(text, error=false) { byId('status').textContent=text; byId('status').className=error?'error':''; }
+function reset() { byId('results').hidden=true; byId('detail').hidden=true; }
+function versionLabel(data) { return element('p','数据版本：'+data.dataset_version,'small'); }
+function endpoint(path, params) { return path+'?'+new URLSearchParams(params); }
+async function request(path, render) {
+  const current=++activeRequest;
+  if (controller) controller.abort();
+  controller=new AbortController();
+  announce('查询中…');
+  byId('results').setAttribute('aria-busy','true');
+  try {
+    const response=await fetch(path,{signal:controller.signal});
+    const data=await response.json();
+    if (current!==activeRequest) return;
+    if (!response.ok) throw new Error(response.status===503?'资料库暂不可用，请检查服务配置。':'查询条件无效，请检查字段、空值和重复条件。');
+    announce('查询完成。');
+    render(data);
+  } catch(error) {
+    if(current===activeRequest && error.name!=='AbortError') announce(error.message,true);
+  } finally { if(current===activeRequest) byId('results').removeAttribute('aria-busy'); }
+}
+function evidence(field) {
+  if (!field || !field.source) return element('span','原库未提供该字段。','small');
+  const d=element('details'); d.append(element('summary','查看字段来源'));
+  const s=field.source;
+  d.append(element('p','来源内容未核验','small'));
+  const text = '文件：'+s.relative_file_path+'\n字段位置：'+s.json_pointer+'\n原字段：'+s.raw_field_key+'\nSHA-256：'+s.file_sha256+'\n原始值：\n'+JSON.stringify(s.raw_value,null,2);
+  d.append(element('pre',text)); return d;
+}
+function showDetail(doc, version) {
+  const section=byId('detail'); section.replaceChildren(); section.hidden=false;
+  section.append(element('h2',valueText(doc.fields.name_pinyin.value)),versionLabel({dataset_version:version}));
+  section.append(element('p','来源内容未核验 · 中文名称未映射','notice'));
+  section.append(element('p',doc.source.relative_file_path,'small break'));
+  const table=element('table'); const head=element('tr'); ['字段','原库值与出处'].forEach(v=>head.append(element('th',v))); table.append(head);
+  for(const [key,field] of Object.entries(doc.fields)) {
+    const tr=element('tr'); tr.append(element('td',labels[key]||key));
+    const td=element('td'); td.append(element('div',valueText(field.value),'break'),evidence(field)); tr.append(td); table.append(tr);
+  }
+  const wrap=element('div',undefined,'table-wrap'); wrap.append(table); section.append(wrap);
+  section.scrollIntoView({block:'start',behavior:'smooth'});
+}
+function openRecord(id,version) {
+  byId('detail').hidden=true;
+  request(endpoint('/herb-records/'+encodeURIComponent(id),{dataset_version:version}),data=>{
+    if(data.status==='ok') showDetail(data.records[0],data.dataset_version);
+    else announce(statusText[data.status]||'来源记录不可用。',true);
+  });
+}
+function recordTable(records,version) {
+  const table=element('table'); const head=element('tr');
+  ['药材','拉丁名','科','药用部位','来源'].forEach(v=>head.append(element('th',v))); table.append(head);
+  for(const doc of records) {
+    const tr=element('tr');
+    for(const key of ['name_pinyin','latin_name','family','medicinal_part']) tr.append(element('td',valueText(doc.fields[key]?.value)));
+    const td=element('td'); td.append(element('div',doc.source.relative_file_path,'small break'),button('查看记录',()=>openRecord(doc.source_record_id,version))); tr.append(td); table.append(tr);
+  }
+  const wrap=element('div',undefined,'table-wrap'); wrap.append(table); return wrap;
+}
+function showLookup(data) {
+  if(data.status==='ok') { showDetail(data.records[0],data.dataset_version); return; }
+  const section=byId('results'); section.replaceChildren(); section.hidden=false;
+  if(data.status==='ambiguous_entity') section.append(element('h2','发现同名候选，请选择来源'),versionLabel(data),recordTable(data.records,data.dataset_version));
+  else section.append(element('p',statusText[data.status]||'没有可展示的记录。'));
+}
+function runFilter(filters,offset=0,version=null) {
+  reset();
+  const params={...filters,limit:20,offset}; if(version) params.dataset_version=version;
+  request(endpoint('/herbs',params),data=>{
+    const section=byId('results'); section.replaceChildren(); section.hidden=false;
+    if(data.status!=='ok') { section.append(element('p',statusText[data.status]||'筛选不可用。')); return; }
+    section.append(element('h2','筛选结果 · '+data.count+' 条来源记录'),versionLabel(data));
+    section.append(element('p',Object.entries(data.filters).map(([k,v])=>(labels[k]||k)+'包含“'+v+'”').join('；'),'small'));
+    if(!data.records.length) section.append(element('p',data.count?'本页没有记录，请返回上一页。':'没有符合这些条件的记录。'));
+    else section.append(recordTable(data.records,data.dataset_version));
+    const pager=element('div',undefined,'pager');
+    pager.append(button('上一页',()=>runFilter(filters,Math.max(0,data.offset-data.limit),data.dataset_version),data.offset===0));
+    pager.append(element('span',data.records.length?(data.offset+1)+'–'+(data.offset+data.returned_count)+' / '+data.count:'0 / '+data.count,'small'));
+    pager.append(button('下一页',()=>runFilter(filters,data.next_offset,data.dataset_version),data.next_offset===null)); section.append(pager);
+  });
+}
+function showCompare(data) {
+  const section=byId('results'); section.replaceChildren(); section.hidden=false;
+  section.append(element('h2','药材字段比较'),versionLabel(data));
+  if(data.status!=='ok') { section.append(element('p',statusText[data.status]||'比较不可用。')); return; }
+  section.append(element('p','来源内容未核验；同名候选未自动合并。','notice'));
+  const table=element('table'); const head=element('tr'); head.append(element('th','字段')); data.herbs.forEach(h=>head.append(element('th',h.query))); table.append(head);
+  const identity=element('tr'); identity.append(element('td','记录状态'));
+  for(const h of data.herbs) {
+    const td=element('td');
+    if(h.status==='ok') { td.append(element('p',h.record.source.relative_file_path,'small break'),button('查看记录',()=>openRecord(h.record.source_record_id,data.dataset_version))); }
+    else if(h.status==='ambiguous_entity') { td.append(element('p','同名候选：'+h.records.length+' 份')); for(const r of h.records) td.append(element('p',r.source.relative_file_path,'small break'),button('查看候选',()=>openRecord(r.source_record_id,data.dataset_version))); }
+    else td.append(element('p',statusText[h.status]||h.status)); identity.append(td);
+  }
+  table.append(identity);
+  for(const key of Object.keys(labels)) {
+    const tr=element('tr'); tr.append(element('td',labels[key]));
+    for(const h of data.herbs) { const td=element('td'); if(h.status==='ok') { const f=h.record.fields[key]; td.append(element('div',valueText(f?.value),'break'),evidence(f)); } else td.textContent=h.status==='ambiguous_entity'?'尚未选择唯一记录':'不可比较'; tr.append(td); }
+    table.append(tr);
+  }
+  const wrap=element('div',undefined,'table-wrap'); wrap.append(table); section.append(wrap);
+}
+function addCondition() {
+  const row=element('div',undefined,'row filter-row');
+  const select=element('select'); select.setAttribute('aria-label','筛选字段');
+  for(const key of filterKeys) { const option=element('option',labels[key]); option.value=key; select.append(option); }
+  const input=element('input'); input.required=true; input.placeholder='例如 Leguminosae'; input.setAttribute('aria-label','筛选值');
+  row.append(select,input,button('移除',()=>row.remove())); byId('conditions').append(row);
+}
+byId('addCondition').addEventListener('click',addCondition); addCondition();
+byId('lookupForm').addEventListener('submit',event=>{event.preventDefault(); const name=byId('name').value.trim(); if(!name) return; reset(); request('/herbs/'+encodeURIComponent(name),showLookup);});
+byId('compareForm').addEventListener('submit',event=>{event.preventDefault(); reset(); request(endpoint('/herbs/compare',{names:byId('names').value}),showCompare);});
+byId('filterForm').addEventListener('submit',event=>{
+  event.preventDefault(); const filters={};
+  for(const row of byId('conditions').children) { const key=row.querySelector('select').value; const value=row.querySelector('input').value.trim(); if(key in filters || !value) { announce('请填写非空条件，每个字段只能使用一次。',true); return; } filters[key]=value; }
+  if(!Object.keys(filters).length) { announce('请至少添加一个筛选条件。',true); return; }
+  runFilter(filters);
+});
+</script>
+</body>
+</html>

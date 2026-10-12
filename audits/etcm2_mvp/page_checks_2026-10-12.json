@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "detail button works with existing window.name",
+    "filter button returns 127 records with field sources",
+    "invalid filter visible as error",
+    "compare button retains ambiguous and missing results",
+    "source markup rendered as text without execution (mock response)",
+    "no browser JavaScript errors"
+  ]
+}

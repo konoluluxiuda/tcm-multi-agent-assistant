@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "checks": [
+    "detail button works with existing window.name; structured detail visible",
+    "field evidence expands with source path, pointer and hash",
+    "filter shows first 20 of 127 records in table",
+    "next/previous pages stable and pin dataset version",
+    "all 127 records visited once across API pages",
+    "filtered row opens exact source ID",
+    "same-name candidate selection opens chosen record without merging",
+    "comparison table preserves ambiguous/missing states and evidence",
+    "unsupported Chinese lookup has explanatory message",
+    "empty filter state disables pagination",
+    "duplicate filter fields rejected visibly",
+    "multiple filter controls apply AND conditions",
+    "values and raw evidence render as text without HTML execution (mock response)",
+    "service error visible without stale detail (mock response)",
+    "mobile page has no document horizontal overflow",
+    "no browser JavaScript errors"
+  ]
+}

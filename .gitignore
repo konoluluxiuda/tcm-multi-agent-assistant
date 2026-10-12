@@ -194,3 +194,5 @@ data/*.bak_*/
 
 # Model weights - skin lesion auto-downloads; others must be placed manually
 *.pth
+# Optional lightweight TCM virtual environment
+.venv-tcm/

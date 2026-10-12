@@ -1,9 +1,9 @@
 """HTTP smoke tests for the lightweight herb query API (tcm/api.py)."""
 import json
-import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from tcm.herbs import import_snapshot
 
@@ -27,6 +27,7 @@ def _obj(pinyin, **fields):
 def setUpModule():
     global _client, _tmp
     _tmp = tempfile.TemporaryDirectory()
+    unittest.addModuleCleanup(_tmp.cleanup)
     root = Path(_tmp.name) / 'source'
     herbs = root / 'etcm_herbs'
     herbs.mkdir(parents=True)
@@ -38,17 +39,15 @@ def setUpModule():
     ]:
         (herbs / (name + '.json')).write_text(json.dumps(_obj(pinyin, **fields)), encoding='utf-8')
     import_snapshot(root, db, 'v1')
-    os.environ['TCM_DB'] = str(db)
-    os.environ['TCM_DATASET_VERSION'] = 'v1'
 
     from fastapi.testclient import TestClient
     from tcm import api
+    settings = patch.multiple(api, DB_PATH=str(db), DATASET_VERSION='v1')
+    settings.start()
+    unittest.addModuleCleanup(settings.stop)
     _client = TestClient(api.app)
+    unittest.addModuleCleanup(_client.close)
 
-
-def tearDownModule():
-    if _tmp is not None:
-        _tmp.cleanup()
 
 
 class ApiTests(unittest.TestCase):
@@ -85,6 +84,59 @@ class ApiTests(unittest.TestCase):
     def test_invalid_filter_returns_400(self):
         self.assertEqual(_client.get('/herbs', params={}).status_code, 400)
         self.assertEqual(_client.get('/herbs', params={'name_pinyin': 'x'}).status_code, 400)
+
+
+    def test_mixed_unknown_empty_and_duplicate_filters_rejected(self):
+        for params in [
+            {'family': 'Leguminosae', 'flavor': 'bitter'},
+            {'family': 'Leguminosae', 'flavors': ''},
+            {'family': 'Leguminosae', 'flavors': '   '},
+            [('family', 'Leguminosae'), ('family', 'Apiaceae')],
+        ]:
+            with self.subTest(params=params):
+                self.assertEqual(_client.get('/herbs', params=params).status_code, 400)
+
+    def test_filter_and_compare_preserve_field_evidence(self):
+        detail = _client.get('/herbs/HerbA').json()['records'][0]
+        filtered = _client.get('/herbs', params={'flavors': 'Bitter'}).json()['records'][0]
+        compared = _client.get('/herbs/compare', params={'names': 'HerbA'}).json()['herbs'][0]['record']
+        for record in (filtered, compared):
+            self.assertEqual(record['fields']['flavors'], detail['fields']['flavors'])
+            self.assertEqual(record['source'], detail['source'])
+            self.assertIn('source_content_unverified', record['warnings'])
+            self.assertEqual(record['fields']['properties']['state'], 'missing')
+        unresolved = _client.get('/herbs/compare', params={'names': '黄芩'}).json()['herbs'][0]
+        self.assertEqual(unresolved['status'], 'unsupported_name_mapping')
+        self.assertIn('chinese_names_unmapped', unresolved['warnings'])
+
+
+
+    def test_pagination_keeps_total_and_nonoverlapping_records(self):
+        first = _client.get('/herbs', params={'family': 'Leguminosae', 'limit': 1}).json()
+        second = _client.get('/herbs', params={'family': 'Leguminosae', 'limit': 1, 'offset': first['next_offset'], 'dataset_version': first['dataset_version']}).json()
+        self.assertEqual(first['count'], 2)
+        self.assertEqual(first['returned_count'], 1)
+        self.assertEqual(second['offset'], 1)
+        self.assertIsNone(second['next_offset'])
+        self.assertNotEqual(first['records'][0]['source_record_id'], second['records'][0]['source_record_id'])
+        beyond = _client.get('/herbs', params={'family': 'Leguminosae', 'offset': 20}).json()
+        self.assertEqual(beyond['count'], 2)
+        self.assertEqual(beyond['records'], [])
+
+    def test_invalid_page_bounds(self):
+        for params in [{'limit': 0}, {'limit': 101}, {'offset': -1}, {'limit': 'bad'}]:
+            with self.subTest(params=params):
+                self.assertEqual(_client.get('/herbs', params={'family': 'x', **params}).status_code, 422)
+        self.assertEqual(_client.get('/herbs', params=[('family', 'x'), ('limit', 1), ('limit', 2)]).status_code, 400)
+
+    def test_source_record_route_and_explicit_version(self):
+        detail = _client.get('/herbs/HerbA').json()['records'][0]
+        res = _client.get('/herb-records/' + detail['source_record_id'], params={'dataset_version': 'v1'}).json()
+        self.assertEqual(res['records'][0], detail)
+        self.assertEqual(_client.get('/herb-records/missing').json()['status'], 'not_found')
+        for path, params in [('/herbs/HerbA', {}), ('/herb-records/' + detail['source_record_id'], {}), ('/herbs/compare', {'names':'HerbA'}), ('/herbs', {'family':'Leguminosae'})]:
+            with self.subTest(path=path):
+                self.assertEqual(_client.get(path, params={**params, 'dataset_version': 'absent'}).json()['status'], 'dataset_not_found')
 
 
 if __name__ == '__main__':
