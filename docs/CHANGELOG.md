@@ -83,3 +83,9 @@
 - 本地沙箱最小 TestClient 事件循环卡住，改在沙箱外保留网络阻断复测；首轮发现缺 Werkzeug，补入原有版本后全部通过，失败记录保留。
 - 全量快照与真实服务明确列为未运行；远程 Python 3.11 CI 结果待上传后确认，M0-06 不提前标为完成。
 - 详见 [运行说明](OFFLINE_CI.md)、[验收报告](../audits/offline_ci/report.md)。
+
+## 2026-10-14：远程 CI 验收与基线上传
+
+- 上传离线 CI 与项目证据计划，提交 `5f251ed`。
+- GitHub Python 3.11.17 离线回归 75/75、pip check 成功，报告与日志 artifact 已上传；[运行记录](https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/38441261550)。
+- 保存远程结果证据并将大纲 M0-06 标为完成；全量快照和付费服务未运行，冻结集人工签核仍待完成。

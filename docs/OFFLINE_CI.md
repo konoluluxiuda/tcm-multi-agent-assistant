@@ -43,3 +43,7 @@ python -m scripts.eval_tcm_golden \
 详情见 [冻结集运行说明](../eval/README.md)。CI 只测试评测器在临时快照上的正确性，不宣称已重新验证全量 2,076 份记录。`summary.json` 将全快照和真实服务评测明确标为 `not_run`，不计入离线通过数。
 
 真实模型效果、付费工具、浏览器交互、Docker 无源码挂载验收及容量测试仍单独执行。当前没有自动的付费评测任务；今后新增须独立入口和明确的调用预算，不混入默认回归。
+
+## 首次远程验收
+
+2026-10-14：提交 `5f251ed` 在 GitHub Python 3.11.17 上 75/75 通过，报告 artifact 已上传。见 [运行记录](https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/38441261550) 与 [验收证据](../audits/offline_ci/report_remote.json)。M0-06 已完成；全量私有快照与真实服务仍不在默认 CI 范围。
