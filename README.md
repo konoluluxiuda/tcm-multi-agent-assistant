@@ -429,6 +429,10 @@ Reports are written to `data/eval/` (`report.json`, `summary.md`, `badcases.json
 
 ---
 
+## Offline regression
+
+Run `python -m scripts.run_offline_ci` after installing `requirements-ci.txt` in an isolated environment. Tests use temporary data and deterministic substitutes; skipped tests and network attempts fail the run. Reports are saved in `var/ci/`. The GitHub workflow runs on main pushes and pull requests. Private ETCM snapshot acceptance and live provider evaluation remain separate, explicitly unrun scopes. See [instructions](docs/OFFLINE_CI.md) and [local results](audits/offline_ci/report.md).
+
 ## 🤝 Contributions  <a name="contributions"></a>
 Contributions are welcome! Please check the [issues](https://github.com/konoluluxiuda/tcm-multi-agent-assistant/issues) tab for feature requests and improvements.  
 
