@@ -46,7 +46,8 @@ def verify(database, output, server_python, executable):
                 obj = {'code': 1, 'data': [{'id': 'base_information', 'value': [
                     {'key': 'Herb Name in Pinyin', 'value': name},
                     {'key': 'Indications', 'value': '<img src=x onerror="window.sourceExecuted=true"> source text'},
-                    {'key': 'PubMed', 'value': ['123']}]}]}
+                    {'key': 'PubMed', 'value': ['123']},
+                    {'key': 'Family', 'value': 'BrowserFixtureFamily'}]}]}
                 (source / (filename + '.json')).write_text(json.dumps(obj), encoding='utf-8')
             database = temporary / 'fixture.sqlite3'
             import_snapshot(source.parent, database, 'browser-fixture-v1')
@@ -106,6 +107,7 @@ def verify(database, output, server_python, executable):
                             assert last.get_attribute('data-tcm-status') == status
                             return last, body
                         last, body = submit('/herb BaiBu', 'ok')
+                        initial_record = body['tcm']['records'][0]
                         assert last.locator('.herb-source-card').count() == 1
                         assert '字段出处与原值' in last.inner_text()
                         assert body['tcm']['records'][0]['source_record_id'] in last.inner_text()
@@ -130,6 +132,41 @@ def verify(database, output, server_python, executable):
                             assert not page.evaluate('Boolean(window.sourceExecuted || window.userExecuted)')
                             assert page.locator('.herb-source-card img, .user-message img').count() == 0
                             report['cases'].append({'case': 'source_and_user_html_literal', 'status': 'passed'})
+                        submit('/herb BaiBu', 'ok')
+                        last, body = submit('它的药用部位是什么？', 'ok')
+                        focused = body['tcm']['records'][0]
+                        assert set(focused['fields']) == {'name_pinyin', 'medicinal_part'}
+                        assert focused['fields']['medicinal_part'] == initial_record['fields']['medicinal_part']
+                        assert focused['source_record_id'] == initial_record['source_record_id']
+                        assert '药用部位' in last.inner_text()
+                        report['cases'].append({'case': 'followup_field_and_provenance', 'status': 'passed'})
+                        _, family = submit('查询 BaiBu 的科名', 'ok')
+                        _, source = submit('刚才那味药的来源在哪？', 'ok')
+                        assert source['tcm']['records'][0]['fields']['family'] == family['tcm']['records'][0]['fields']['family']
+                        report['cases'].append({'case': 'named_field_then_source_followup', 'status': 'passed'})
+                        _, ambiguous = submit('/herb HuaShi', 'ambiguous_entity')
+                        submit('它的部位呢？', 'clarify_source')
+                        selected = ambiguous['tcm']['records'][1]['source_record_id']
+                        submit('/herb ' + selected, 'ok')
+                        _, followed = submit('它的部位呢？', 'ok')
+                        assert followed['tcm']['records'][0]['source_record_id'] == selected
+                        report['cases'].append({'case': 'ambiguity_blocks_old_focus_then_choice', 'status': 'passed'})
+                        submit('/herb-clear', 'context_cleared')
+                        submit('它的部位呢？', 'clarify_entity')
+                        report['cases'].append({'case': 'explicit_clear', 'status': 'passed'})
+                        submit('/herb BaiBu', 'ok')
+                        first_cookie = page.context.cookies()[0]['value']
+                        fresh = browser.new_context(viewport={'width': 1280, 'height': 900})
+                        page = fresh.new_page()
+                        page.route('**/*', guard)
+                        page.on('pageerror', lambda error: report['page_errors'].append(str(error)))
+                        page.goto(url)
+                        _, other = submit('它的部位呢？', 'clarify_entity')
+                        assert other['tcm']['records'] == []
+                        assert initial_record['source_record_id'] not in json.dumps(other)
+                        assert fresh.cookies()[0]['value'] != first_cookie
+                        fresh.close()
+                        report['cases'].append({'case': 'separate_browser_session_clarifies', 'status': 'passed'})
                         assert not report['page_errors'], report['page_errors']
                         browser.close()
                     assert hashlib.sha256(database.read_bytes()).hexdigest() == initial

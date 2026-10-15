@@ -22,7 +22,7 @@ from langgraph.checkpoint.memory import MemorySaver
 import threading
 
 from config import Config
-from tcm.chat import parse_request, execute_request
+from tcm.chat import HerbContext, parse_request, execute_turn
 
 
 # Load configuration
@@ -113,6 +113,7 @@ class AgentState(MessagesState):
     disabled_feature: Optional[str]
     tcm_request: Optional[Dict]
     tcm_result: Optional[Dict]
+    tcm_context: Optional[HerbContext]
 
 
 class AgentDecision(TypedDict):
@@ -168,6 +169,9 @@ def create_agent_graph():
             return {"tcm_request": tcm_request, "has_image": False,
                     "image_type": None, "bypass_routing": False}
 
+        # An unrelated turn ends the explicit herb focus, even if a guardrail blocks it.
+        state = {**state, "tcm_context": None}
+
         # Check input through guardrails if text is present
         if input_text:
             is_allowed, message = guardrails.check_input(input_text)
@@ -187,7 +191,7 @@ def create_agent_graph():
         if isinstance(current_input, dict) and "image" in current_input:
             if not config.features.image_analysis:
                 return {'has_image': False, 'image_type': None, 'bypass_routing': False,
-                        'disabled_feature': 'image_analysis'}
+                        'disabled_feature': 'image_analysis', 'tcm_context': None}
             has_image = True
             image_path = current_input.get("image", None)
             image_type_response = AgentConfig.get_image_analyzer().analyze_image(image_path)
@@ -212,9 +216,9 @@ def create_agent_graph():
         return "route_to_agent"
     
     def run_tcm_herb_agent(state: AgentState) -> Dict:
-        result = execute_request(state["tcm_request"])
+        result, context = execute_turn(state["tcm_request"], state.get("tcm_context"))
         message = AIMessage(content=result["message"])
-        return {"tcm_result": result, "agent_name": "TCM_HERB_AGENT",
+        return {"tcm_result": result, "tcm_context": context, "agent_name": "TCM_HERB_AGENT",
                 "output": message, "messages": [message], "needs_human_validation": False}
 
     def route_to_agent(state: AgentState) -> Dict:
@@ -750,6 +754,7 @@ def init_agent_state() -> AgentState:
         "disabled_feature": None,
         "tcm_request": None,
         "tcm_result": None,
+        "tcm_context": None,
         "next": ""
     }
 
@@ -776,6 +781,8 @@ def _process_query(query: Union[str, Dict], thread_config: Dict) -> Dict:
     
     # Initialize state
     state = init_agent_state()
+    # Keep only this explicit session slot across turns; transient tool output is reset.
+    state.pop("tcm_context")
     
     # Add the current query
     state["current_input"] = query
