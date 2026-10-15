@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-15",
+  "status": "passed",
+  "checks": [
+    {
+      "field": "etcm_herbs/CuMaoGanCao.json.latin_name.value",
+      "status": "passed",
+      "lookup_status": "ok",
+      "returned_records": 1,
+      "same_source_records": true,
+      "display_value_preserved": true
+    },
+    {
+      "field": "etcm_herbs/CuMaoGanCao.json.english_name.value",
+      "status": "passed",
+      "lookup_status": "ok",
+      "returned_records": 1,
+      "same_source_records": true,
+      "display_value_preserved": true
+    },
+    {
+      "field": "etcm_herbs/DuBianDou.json.latin_name.value",
+      "status": "passed",
+      "lookup_status": "ok",
+      "returned_records": 1,
+      "same_source_records": true,
+      "display_value_preserved": true
+    },
+    {
+      "field": "etcm_herbs/DuBianDou.json.english_name.value",
+      "status": "passed",
+      "lookup_status": "ok",
+      "returned_records": 1,
+      "same_source_records": true,
+      "display_value_preserved": true
+    },
+    {
+      "field": "etcm_herbs/Huai.json.latin_name.value",
+      "status": "passed",
+      "lookup_status": "ambiguous_entity",
+      "returned_records": 3,
+      "same_source_records": true,
+      "display_value_preserved": true
+    },
+    {
+      "field": "etcm_herbs/Huai.json.english_name.value",
+      "status": "passed",
+      "lookup_status": "ambiguous_entity",
+      "returned_records": 3,
+      "same_source_records": true,
+      "display_value_preserved": true
+    },
+    {
+      "field": "etcm_herbs/ZiSuiHuai.json.latin_name.value",
+      "status": "passed",
+      "lookup_status": "ok",
+      "returned_records": 1,
+      "same_source_records": true,
+      "display_value_preserved": true
+    },
+    {
+      "field": "etcm_herbs/ZiSuiHuai.json.english_name.value",
+      "status": "passed",
+      "lookup_status": "ok",
+      "returned_records": 1,
+      "same_source_records": true,
+      "display_value_preserved": true
+    }
+  ],
+  "total": 8,
+  "frozen_suite_unchanged": true,
+  "sqlite_unchanged": true,
+  "purpose": "Existing display/query contract check only; does not execute task candidate set",
+  "initial_check_correction": "Initial probe incorrectly assumed all names unique; final check preserves matching ambiguity and verifies the target source explicitly."
+}

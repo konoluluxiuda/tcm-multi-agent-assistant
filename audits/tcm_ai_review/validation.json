@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-14",
+  "frozen_input_hashes_before": {
+    "eval/tcm_golden_v1.json": "8d3ff70dda9d1e9d4530bdc7830f63bcbcca0131677e4f23daf67c9db044be72",
+    "var/tcm/herbs.sqlite3": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec"
+  },
+  "frozen_input_hashes_after": {
+    "eval/tcm_golden_v1.json": "8d3ff70dda9d1e9d4530bdc7830f63bcbcca0131677e4f23daf67c9db044be72",
+    "var/tcm/herbs.sqlite3": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec"
+  },
+  "inputs_unchanged": true,
+  "repository_baseline": {
+    "total": 30,
+    "passed": 30,
+    "failed": 0,
+    "not_run": 0
+  },
+  "ai_review_disagreements": 8,
+  "disagreement_class": "NBSP U+00A0 vs ordinary space U+0020 in 4 records / 8 display fields",
+  "audit_fault_tests": {
+    "total": 9,
+    "passed": 9
+  },
+  "local_offline_regression": {
+    "total": 84,
+    "passed": 84,
+    "skipped": 0
+  },
+  "new_remote_ci": "not_run",
+  "human_signoff": "pending"
+}

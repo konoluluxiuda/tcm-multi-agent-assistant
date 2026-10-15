@@ -60,3 +60,9 @@ python -m scripts.build_tcm_golden \
 生成器含当前快照的代表性断言，新数据变化需要审核并明确修改，不能为消除失败任意更新它们。不同基线通过率不能直接比较。
 
 [本轮结果与限制](../audits/tcm_golden/report.md)。
+
+## 任务候选草案（2026-10-15）
+
+[tcm_task_candidates_v1.json](tcm_task_candidates_v1.json) 是另一个独立AI设计的60条任务草案，dev20/test40，全部designed、observed=0；与上方冻结30题分开管理。仅完成格式与来源锚点校验，尚未人工审定、运行任务或计算准确率。
+
+运行 `python -m scripts.validate_tcm_task_candidates --source /home/zry/workspace/HDCTI/dataset/ETCM2.0` 检查候选来源；不传source只查格式与声明分组。报告中的passed指校验通过，task_execution仍为not_run；目前尚无这60题的任务执行器。见 [候选说明](../docs/TCM_TASK_CANDIDATES.md)。

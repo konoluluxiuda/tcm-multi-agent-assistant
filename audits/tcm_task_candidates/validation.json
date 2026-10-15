@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "candidate_count": 60,
+  "category_counts": {
+    "detail": 15,
+    "filter": 10,
+    "compare": 10,
+    "boundary": 10,
+    "sparse_evidence": 10,
+    "multi_step": 5
+  },
+  "splits": {
+    "dev": 20,
+    "test": 40
+  },
+  "source_anchor_checks": 650,
+  "evidence_focus_counts": {
+    "sparse": 5,
+    "pmid": 5
+  },
+  "capability_declarations": {
+    "supported": 55,
+    "unsupported": 5
+  },
+  "source_validation": "checked",
+  "errors": [],
+  "task_execution": "not_run",
+  "human_review": "pending",
+  "limitations": "Format, declared split anchors and source consistency only; not answer completeness, scientific validity or task accuracy.",
+  "suite_sha256": "5de95e2a6136f11974d9aaef7c1f40e3a4987a671bd1a3511ddcd111b4660dd8"
+}

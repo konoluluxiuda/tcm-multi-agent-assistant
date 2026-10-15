@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-14",
+  "decision_type": "product_normalization_contract",
+  "human_signoff": "pending",
+  "decision": "preserve_internal_display_whitespace_and_normalize_query_matching",
+  "review_sha256": "14fa25d641cb81e1f340caa95b21ccbdb10f63248dc638a59ebfeb15a522b991",
+  "items": [
+    {
+      "field": "etcm_herbs/CuMaoGanCao.json.latin_name.value",
+      "classification": "accepted_contract_difference",
+      "frozen_value": "Glycyrrhiza aspera Pall.",
+      "blind_value": "Glycyrrhiza aspera Pall.",
+      "reason": "Display preserves internal NBSP; query matching folds Unicode whitespace; raw source unchanged"
+    },
+    {
+      "field": "etcm_herbs/CuMaoGanCao.json.english_name.value",
+      "classification": "accepted_contract_difference",
+      "frozen_value": "Glycyrrhiza aspera Pall.",
+      "blind_value": "Glycyrrhiza aspera Pall.",
+      "reason": "Display preserves internal NBSP; query matching folds Unicode whitespace; raw source unchanged"
+    },
+    {
+      "field": "etcm_herbs/DuBianDou.json.latin_name.value",
+      "classification": "accepted_contract_difference",
+      "frozen_value": "Physostigma venenosum Balf.",
+      "blind_value": "Physostigma venenosum Balf.",
+      "reason": "Display preserves internal NBSP; query matching folds Unicode whitespace; raw source unchanged"
+    },
+    {
+      "field": "etcm_herbs/DuBianDou.json.english_name.value",
+      "classification": "accepted_contract_difference",
+      "frozen_value": "Physostigma venenosum Balf.",
+      "blind_value": "Physostigma venenosum Balf.",
+      "reason": "Display preserves internal NBSP; query matching folds Unicode whitespace; raw source unchanged"
+    },
+    {
+      "field": "etcm_herbs/Huai.json.latin_name.value",
+      "classification": "accepted_contract_difference",
+      "frozen_value": "Sophora japonica L.",
+      "blind_value": "Sophora japonica L.",
+      "reason": "Display preserves internal NBSP; query matching folds Unicode whitespace; raw source unchanged"
+    },
+    {
+      "field": "etcm_herbs/Huai.json.english_name.value",
+      "classification": "accepted_contract_difference",
+      "frozen_value": "Sophora japonica L.",
+      "blind_value": "Sophora japonica L.",
+      "reason": "Display preserves internal NBSP; query matching folds Unicode whitespace; raw source unchanged"
+    },
+    {
+      "field": "etcm_herbs/ZiSuiHuai.json.latin_name.value",
+      "classification": "accepted_contract_difference",
+      "frozen_value": "Amorpha fruticosa L.",
+      "blind_value": "Amorpha fruticosa L.",
+      "reason": "Display preserves internal NBSP; query matching folds Unicode whitespace; raw source unchanged"
+    },
+    {
+      "field": "etcm_herbs/ZiSuiHuai.json.english_name.value",
+      "classification": "accepted_contract_difference",
+      "frozen_value": "Amorpha fruticosa L.",
+      "blind_value": "Amorpha fruticosa L.",
+      "reason": "Display preserves internal NBSP; query matching folds Unicode whitespace; raw source unchanged"
+    }
+  ],
+  "ordinary_trim_differences": [
+    {
+      "path": "etcm_herbs/ABiXiNiYaCiTong.json",
+      "field": "habitat",
+      "frozen": "HeBei, BeiJing, TianJin, ShanDong, JiangSu, ZheJiang, ShangHai, GuangDong, HaiNan, FuJian, TaiWan, Hongkong",
+      "blind": "HeBei, BeiJing, TianJin, ShanDong, JiangSu, ZheJiang, ShangHai, GuangDong, HaiNan, FuJian, TaiWan, Hongkong ",
+      "reason": "frozen trims ordinary field edges; independent blind rules preserved them"
+    },
+    {
+      "path": "etcm_herbs/AnHuiBeiMu.json",
+      "field": "family",
+      "frozen": "Liliaceae",
+      "blind": "Liliaceae ",
+      "reason": "frozen trims ordinary field edges; independent blind rules preserved them"
+    },
+    {
+      "path": "etcm_herbs/AnZiBeiMu.json",
+      "field": "family",
+      "frozen": "Liliaceae",
+      "blind": "Liliaceae ",
+      "reason": "frozen trims ordinary field edges; independent blind rules preserved them"
+    },
+    {
+      "path": "etcm_herbs/HuaShi .json",
+      "field": "name_pinyin",
+      "frozen": "HuaShi",
+      "blind": "HuaShi ",
+      "reason": "frozen trims ordinary field edges; independent blind rules preserved them"
+    },
+    {
+      "path": "etcm_herbs/HuaShi_.json",
+      "field": "name_pinyin",
+      "frozen": "HuaShi",
+      "blind": "HuaShi ",
+      "reason": "frozen trims ordinary field edges; independent blind rules preserved them"
+    }
+  ],
+  "original_audit_mismatches_retained": 8,
+  "changes_to_frozen_suite": false,
+  "scientific_validation": false
+}
