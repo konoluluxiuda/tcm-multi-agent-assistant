@@ -22,6 +22,7 @@ from langgraph.checkpoint.memory import MemorySaver
 import threading
 
 from config import Config
+from tcm.chat import parse_request, execute_request
 
 
 # Load configuration
@@ -110,6 +111,8 @@ class AgentState(MessagesState):
     insufficient_info: bool  # Flag indicating RAG response has insufficient information
     next: str  # Explicit graph branch, rather than an undeclared nested state
     disabled_feature: Optional[str]
+    tcm_request: Optional[Dict]
+    tcm_result: Optional[Dict]
 
 
 class AgentDecision(TypedDict):
@@ -160,6 +163,11 @@ def create_agent_graph():
         elif isinstance(current_input, dict):
             input_text = current_input.get("text", "")
         
+        tcm_request = parse_request(current_input)
+        if tcm_request is not None:
+            return {"tcm_request": tcm_request, "has_image": False,
+                    "image_type": None, "bypass_routing": False}
+
         # Check input through guardrails if text is present
         if input_text:
             is_allowed, message = guardrails.check_input(input_text)
@@ -195,12 +203,20 @@ def create_agent_graph():
     
     def check_if_bypassing(state: AgentState) -> str:
         """Check if we should bypass normal routing due to guardrails."""
+        if state.get("tcm_request") is not None:
+            return "TCM_HERB_AGENT"
         if state.get("disabled_feature"):
             return "feature_unavailable"
         if state.get("bypass_routing", False):
             return "apply_guardrails"
         return "route_to_agent"
     
+    def run_tcm_herb_agent(state: AgentState) -> Dict:
+        result = execute_request(state["tcm_request"])
+        message = AIMessage(content=result["message"])
+        return {"tcm_result": result, "agent_name": "TCM_HERB_AGENT",
+                "output": message, "messages": [message], "needs_human_validation": False}
+
     def route_to_agent(state: AgentState) -> Dict:
         """Make decision about which agent should handle the query."""
         messages = state["messages"]
@@ -659,6 +675,8 @@ def create_agent_graph():
     workflow.add_node("apply_guardrails", apply_output_guardrails)
     
     # Define the edges (workflow connections)
+    workflow.add_node("TCM_HERB_AGENT", run_tcm_herb_agent)
+    workflow.add_edge("TCM_HERB_AGENT", END)
     workflow.set_entry_point("analyze_input")
     # workflow.add_edge("analyze_input", "route_to_agent")
     # Add conditional routing for guardrails bypass
@@ -668,7 +686,8 @@ def create_agent_graph():
         {
             "feature_unavailable": "feature_unavailable",
             "apply_guardrails": "apply_guardrails",
-            "route_to_agent": "route_to_agent"
+            "route_to_agent": "route_to_agent",
+            "TCM_HERB_AGENT": "TCM_HERB_AGENT"
         }
     )
     
@@ -729,6 +748,8 @@ def init_agent_state() -> AgentState:
         "bypass_routing": False,
         "insufficient_info": False,
         "disabled_feature": None,
+        "tcm_request": None,
+        "tcm_result": None,
         "next": ""
     }
 

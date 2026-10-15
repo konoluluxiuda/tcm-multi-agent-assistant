@@ -164,6 +164,11 @@ def chat(
             "agent": response_data["agent_name"]
         }
         
+        if response_data.get("tcm_result") is not None:
+            result["tcm"] = response_data["tcm_result"]
+            if result["tcm"]["status"] in ("database_unavailable", "dataset_not_found"):
+                response.status_code = 503
+                result["status"] = "unavailable"
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

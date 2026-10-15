@@ -1,0 +1,157 @@
+{
+  "status": "passed",
+  "python": "3.13.5",
+  "syntax_files": 63,
+  "total": 109,
+  "skipped": 0,
+  "modules": [
+    {
+      "module": "test_agent_sessions.py",
+      "status": "passed",
+      "total": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_compare_rag.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_eval_tcm_tasks.py",
+      "status": "passed",
+      "total": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_offline_ci.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_optional_features.py",
+      "status": "passed",
+      "total": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_runtime.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_source_access.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_task_candidates.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_tcm_ai_review.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_tcm_api.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_tcm_chat.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_tcm_golden.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_tcm_herbs.py",
+      "status": "passed",
+      "total": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_upload_privacy.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "full_snapshot_evaluation": {
+    "status": "not_run",
+    "reason": "requires private ETCM snapshot/database; separate local acceptance"
+  },
+  "live_provider_evaluation": {
+    "status": "not_run",
+    "reason": "offline regression uses deterministic substitutes"
+  }
+}

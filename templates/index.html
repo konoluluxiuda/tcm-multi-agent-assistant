@@ -310,7 +310,8 @@
                                         </button>
                                     </div>
                                 </div>
-                                <textarea id="message-input" class="form-control message-input" rows="1" placeholder="Ask a medical question..."></textarea>
+                                <small class="d-block text-muted">药材资料：输入 /herb 加拼音、拉丁名、英文名或来源 ID。中文名映射与代词追问暂不支持。</small>
+                                <textarea id="message-input" class="form-control message-input" rows="1" placeholder="药材查询示例：/herb BaiBu"></textarea>
                             </div>
                             
                             <button type="submit" class="btn btn-primary rounded-circle ms-2" style="width: 40px; height: 40px;">
@@ -951,6 +952,54 @@
             
         //     return text;
         // }
+        function renderHerbResult(container, result, chooseSource) {
+            const labels = {
+                name_pinyin: '拼音', latin_name: '拉丁名', english_name: '英文名',
+                family: '科', habitat: '产地', medicinal_part: '药用部位',
+                properties: '药性', flavors: '药味', meridians: '归经',
+                efficacy_class: '传统功效分类', indications: '来源记载的适应证',
+                reference_pmids: 'PMID（仅标识，未核验文献内容）', cross_references: '数据库交叉引用'
+            };
+            function add(parent, tag, value) {
+                const node = document.createElement(tag);
+                node.textContent = typeof value === 'string' ? value : JSON.stringify(value);
+                parent.appendChild(node);
+                return node;
+            }
+            container.dataset.tcmStatus = result.status;
+            add(container, 'strong', '药材来源查询');
+            add(container, 'p', result.message);
+            add(container, 'p', '状态：' + result.status + '；版本：' + (result.dataset_version || '未提供'));
+            if (result.truncated) add(container, 'p', '匹配 ' + result.total_record_count + ' 条，展示前 20 条，请使用来源 ID 精确定位。');
+            for (const record of result.records || []) {
+                const card = document.createElement('section');
+                card.className = 'border rounded p-2 my-2 herb-source-card';
+                container.appendChild(card);
+                add(card, 'h6', record.fields.name_pinyin.value);
+                add(card, 'p', record.source_record_id).style.overflowWrap = 'anywhere';
+                if (result.status === 'ambiguous_entity') {
+                    const button = add(card, 'button', '选择此来源');
+                    button.type = 'button';
+                    button.className = 'btn btn-sm btn-outline-primary';
+                    button.addEventListener('click', () => chooseSource(record.source_record_id));
+                }
+                for (const [key, field] of Object.entries(record.fields)) {
+                    add(card, 'p', (labels[key] || key) + '：' +
+                        (field.state === 'missing' ? '来源未提供' :
+                        Array.isArray(field.value) ? field.value.join('；') : field.value));
+                    if (field.source) {
+                        const details = document.createElement('details');
+                        card.appendChild(details);
+                        add(details, 'summary', '字段出处与原值');
+                        add(details, 'pre', JSON.stringify(field.source, null, 2)).style.whiteSpace = 'pre-wrap';
+                    }
+                }
+                const details = document.createElement('details');
+                card.appendChild(details);
+                add(details, 'summary', '记录来源与警告');
+                add(details, 'pre', JSON.stringify({source: record.source, warnings: record.warnings}, null, 2)).style.whiteSpace = 'pre-wrap';
+            }
+        }
         const featureFlags = {{ features | tojson }};
         let mediaRecorder;
         let audioChunks = [];
@@ -1051,17 +1100,16 @@
                 const userMessageElement = document.createElement('div');
                 userMessageElement.className = 'message user-message';
                 
-                // Create message content with image if available
-                let messageContent = `<p>${message}</p>`;
+                const userText = document.createElement('p');
+                userText.textContent = message;
+                userMessageElement.appendChild(userText);
                 if (imageDataUrl) {
-                    messageContent += `
-                        <div class="mt-2">
-                            <img src="${imageDataUrl}" alt="Uploaded image" class="img-fluid rounded" style="max-height: 200px;">
-                        </div>
-                    `;
+                    const uploadedImage = document.createElement('img');
+                    uploadedImage.src = imageDataUrl;
+                    uploadedImage.alt = 'Uploaded image';
+                    uploadedImage.style.maxHeight = '200px';
+                    userMessageElement.appendChild(uploadedImage);
                 }
-                
-                userMessageElement.innerHTML = messageContent;
                 chatBody.appendChild(userMessageElement);
                 
                 // Add thinking indicator
@@ -1125,7 +1173,7 @@
                     const cleanText = removeMarkdown(data.response);
                     
                     // Build HTML content for the response with audio controls
-                    let assistantHtml = `
+                    let assistantHtml = data.tcm ? '' : `
                         <div class="agent-tag">${data.agent}</div>
                         <div>${marked.parse(data.response)}</div>
                         <div class="audio-controls mt-2">
@@ -1174,7 +1222,14 @@
                         }
                     }
                     
-                    assistantMessageElement.innerHTML = assistantHtml;
+                    if (data.tcm) {
+                        renderHerbResult(assistantMessageElement, data.tcm, sourceId => {
+                            messageInput.value = '/herb ' + sourceId;
+                            chatForm.requestSubmit();
+                        });
+                    } else {
+                        assistantMessageElement.innerHTML = assistantHtml;
+                    }
                     if (!featureFlags.speech.available) assistantMessageElement.querySelectorAll('.audio-controls').forEach(el => el.remove());
                     chatBody.appendChild(assistantMessageElement);
 
