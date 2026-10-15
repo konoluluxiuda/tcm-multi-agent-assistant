@@ -65,4 +65,6 @@ python -m scripts.build_tcm_golden \
 
 [tcm_task_candidates_v1.json](tcm_task_candidates_v1.json) 是另一个独立AI设计的60条任务草案，dev20/test40，全部designed、observed=0；与上方冻结30题分开管理。仅完成格式与来源锚点校验，尚未人工审定、运行任务或计算准确率。
 
-运行 `python -m scripts.validate_tcm_task_candidates --source /home/zry/workspace/HDCTI/dataset/ETCM2.0` 检查候选来源；不传source只查格式与声明分组。报告中的passed指校验通过，task_execution仍为not_run；目前尚无这60题的任务执行器。见 [候选说明](../docs/TCM_TASK_CANDIDATES.md)。
+运行 `python -m scripts.validate_tcm_task_candidates --source /home/zry/workspace/HDCTI/dataset/ETCM2.0` 检查候选来源；不传source只查格式与声明分组。此校验器不执行任务，报告中的passed指格式与来源校验通过。见 [候选说明](../docs/TCM_TASK_CANDIDATES.md)。
+
+后续新增 `python -m scripts.eval_tcm_tasks`，默认通过ASGI测试客户端执行真实FastAPI接口检查；本地需已导入SQLite，`--source`可增加原始来源校验。它分别记录自动检查、partial、人工未执行和未支持状态，不生成业务准确率。当前55条API检查已运行，其余5条未执行；见 [逐题说明](../docs/TCM_TASK_EXECUTION.md)。

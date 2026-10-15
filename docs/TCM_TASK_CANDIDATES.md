@@ -1,6 +1,6 @@
 # 60 条任务候选：审核与后续评测
 
-日期：2026-10-15。状态：AI 设计草案，尚未人工审定或执行任务评测。
+日期：2026-10-15。状态：AI 设计草案，API自动检查已运行，完整任务目标尚未人工审定。
 
 ## 与原有 30 题的关系
 
@@ -42,4 +42,6 @@ dev20/test40 是候选分组，不是已经完成的独立测试实验。相同 
 
 ## 本轮验收
 
-60条候选格式、声明分组、650个来源锚点和全量快照检查通过；声明入口支持55、未支持5，任务执行仍为not_run。校验器6项回归纳入统一入口后，本地工程回归90/90通过。见 [设计报告](../audits/tcm_task_candidates/report.md)、[来源校验](../audits/tcm_task_candidates/validation.json)、[回归结果](../audits/tcm_task_candidates/regression_local.json)。新增修改尚未上传，远程CI未运行。
+候选设计阶段的格式、声明分组、650个来源锚点和全量快照检查通过；声明入口支持55、未支持5。当时未执行任务，校验器6项回归纳入统一入口后工程回归90/90通过。见 [设计报告](../audits/tcm_task_candidates/report.md)、[来源校验](../audits/tcm_task_candidates/validation.json)、[设计阶段回归](../audits/tcm_task_candidates/regression_local.json)。后续上传与执行情况见下方。
+
+2026-10-15 补充：以上基线已以 `7db320e` 上传，远程90项回归通过。随后已运行55条API题的自动检查，46条机器检查通过、9条partial，0条失败；其余3条人工UI和2条聊天题未执行。任务完成率仍为空，人工签核未完成。见 [逐题执行说明](TCM_TASK_EXECUTION.md)。

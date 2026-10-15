@@ -1,0 +1,58 @@
+{
+  "commit": "7db320e1852d86bf5d285764ee3c2cd1c56743bb",
+  "run_id": 38748123771,
+  "job_id": 116467058161,
+  "conclusion": "success",
+  "url": "https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/38748123771",
+  "modules": [
+    {
+      "module": "test_agent_sessions.py",
+      "passed": 3
+    },
+    {
+      "module": "test_compare_rag.py",
+      "passed": 6
+    },
+    {
+      "module": "test_offline_ci.py",
+      "passed": 4
+    },
+    {
+      "module": "test_optional_features.py",
+      "passed": 13
+    },
+    {
+      "module": "test_runtime.py",
+      "passed": 5
+    },
+    {
+      "module": "test_source_access.py",
+      "passed": 7
+    },
+    {
+      "module": "test_task_candidates.py",
+      "passed": 6
+    },
+    {
+      "module": "test_tcm_ai_review.py",
+      "passed": 9
+    },
+    {
+      "module": "test_tcm_api.py",
+      "passed": 12
+    },
+    {
+      "module": "test_tcm_golden.py",
+      "passed": 7
+    },
+    {
+      "module": "test_tcm_herbs.py",
+      "passed": 14
+    },
+    {
+      "module": "test_upload_privacy.py",
+      "passed": 4
+    }
+  ],
+  "total": 90
+}
