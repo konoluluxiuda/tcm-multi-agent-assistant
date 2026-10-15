@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-15",
+  "method": "Independent AI read-only triage plus direct browser/API evidence; not human review",
+  "source_api_report_sha256": "a2f20ecea2921f410fce59d6b264c7821687e49b5e864abd13d662e610ffd958",
+  "source_browser_report_sha256": "1f3be2d4e9c63515e405cd06c5208788d5f989e1740c0a43fc39b9af191eabf4",
+  "items": [
+    {
+      "id": "TCM-CAND-BOUNDARY-01",
+      "original_status": "partial",
+      "unverified_expected_keys": [
+        "requested_capability",
+        "requested_capability_supported"
+      ],
+      "human_review": "pending",
+      "promoted_to_task_passed": false,
+      "classification": "known_capability_gap",
+      "supplemental_browser_status": "passed",
+      "requested_capability": "unsupported",
+      "remaining": "Chinese name mapping is unavailable; correct degradation is not query completion."
+    },
+    {
+      "id": "TCM-CAND-BOUNDARY-02",
+      "original_status": "partial",
+      "unverified_expected_keys": [
+        "requested_capability",
+        "requested_capability_supported"
+      ],
+      "human_review": "pending",
+      "promoted_to_task_passed": false,
+      "classification": "known_capability_gap",
+      "supplemental_browser_status": "passed",
+      "requested_capability": "unsupported",
+      "remaining": "Chinese name mapping is unavailable; correct degradation is not query completion."
+    },
+    {
+      "id": "TCM-CAND-BOUNDARY-03",
+      "original_status": "partial",
+      "unverified_expected_keys": [
+        "requested_capability",
+        "requested_capability_supported"
+      ],
+      "human_review": "pending",
+      "promoted_to_task_passed": false,
+      "classification": "known_capability_gap",
+      "supplemental_browser_status": "passed",
+      "requested_capability": "unsupported",
+      "remaining": "Chinese name mapping is unavailable; correct degradation is not query completion."
+    },
+    {
+      "id": "TCM-CAND-BOUNDARY-10",
+      "original_status": "partial",
+      "unverified_expected_keys": [
+        "contract"
+      ],
+      "human_review": "pending",
+      "promoted_to_task_passed": false,
+      "classification": "explanatory_note_not_response_field",
+      "http_status": 422,
+      "response_constraint_verified": true,
+      "remaining": "contract is documentation of the constraint; no response contract property is expected."
+    },
+    {
+      "id": "TCM-CAND-SPARSE_EVIDENCE-06",
+      "original_status": "partial",
+      "unverified_expected_keys": [
+        "evidence_scope",
+        "scientific_conclusion_verified"
+      ],
+      "human_review": "pending",
+      "promoted_to_task_passed": false,
+      "classification": "unassessed_scientific_interpretation",
+      "supplemental_browser_status": "passed",
+      "remaining": "Paper contents and support for source indications have not been reviewed."
+    },
+    {
+      "id": "TCM-CAND-SPARSE_EVIDENCE-07",
+      "original_status": "partial",
+      "unverified_expected_keys": [
+        "evidence_scope",
+        "scientific_conclusion_verified"
+      ],
+      "human_review": "pending",
+      "promoted_to_task_passed": false,
+      "classification": "unassessed_scientific_interpretation",
+      "supplemental_browser_status": "passed",
+      "remaining": "Paper contents and support for source indications have not been reviewed."
+    },
+    {
+      "id": "TCM-CAND-SPARSE_EVIDENCE-08",
+      "original_status": "partial",
+      "unverified_expected_keys": [
+        "evidence_scope",
+        "scientific_conclusion_verified"
+      ],
+      "human_review": "pending",
+      "promoted_to_task_passed": false,
+      "classification": "unassessed_scientific_interpretation",
+      "supplemental_browser_status": "passed",
+      "remaining": "Paper contents and support for source indications have not been reviewed."
+    },
+    {
+      "id": "TCM-CAND-SPARSE_EVIDENCE-09",
+      "original_status": "partial",
+      "unverified_expected_keys": [
+        "evidence_scope",
+        "scientific_conclusion_verified"
+      ],
+      "human_review": "pending",
+      "promoted_to_task_passed": false,
+      "classification": "unassessed_scientific_interpretation",
+      "supplemental_browser_status": "passed",
+      "remaining": "Paper contents and support for source indications have not been reviewed."
+    },
+    {
+      "id": "TCM-CAND-SPARSE_EVIDENCE-10",
+      "original_status": "partial",
+      "unverified_expected_keys": [
+        "evidence_scope",
+        "scientific_conclusion_verified"
+      ],
+      "human_review": "pending",
+      "promoted_to_task_passed": false,
+      "classification": "unassessed_scientific_interpretation",
+      "supplemental_browser_status": "passed",
+      "remaining": "Paper contents and support for source indications have not been reviewed."
+    }
+  ],
+  "original_report_unchanged": true,
+  "task_completion_rate": null,
+  "human_signoff": false
+}

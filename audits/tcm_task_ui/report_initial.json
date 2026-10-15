@@ -1,0 +1,438 @@
+{
+  "suite_sha256": "5de95e2a6136f11974d9aaef7c1f40e3a4987a671bd1a3511ddcd111b4660dd8",
+  "dataset_version": "local-2026-10-10",
+  "method": "real Chromium + temporary loopback Uvicorn server",
+  "cases": [
+    {
+      "id": "TCM-CAND-MULTI_STEP-01",
+      "browser_status": "failed",
+      "human_review": "pending",
+      "task_status": "pending_human_review",
+      "stages": [
+        {
+          "filters": {
+            "family": "Labiatae",
+            "properties": "Cool"
+          },
+          "count": 21,
+          "requests": [
+            {
+              "query": {
+                "family": [
+                  "Labiatae"
+                ],
+                "properties": [
+                  "Cool"
+                ],
+                "limit": [
+                  "20"
+                ],
+                "offset": [
+                  "0"
+                ]
+              },
+              "offset": 0,
+              "source_ids": [
+                "etcm2-local:f8a8d0d86f79b0e46134af955048b8712a0d35280ea3245790ce0f0e2a0694dc",
+                "etcm2-local:b06f59e4d94a99a55b2d5d019aeb6230eeab10544394d6a7241323a3a3790856",
+                "etcm2-local:83ae7eacc8bf95535a33df229237a3c7efe5947f2ac353f61a3a47350e645b79",
+                "etcm2-local:0f6527dc56be119646e7351d3a744d3b1b81571e237dcffa4741f6e8137d40ad",
+                "etcm2-local:1ce5e09f7638e02e71248bbb7e2573c24b0c9fd8cff4c470697fcd910bacd6c9",
+                "etcm2-local:baa11f0c319f940cd0cefabd2fdb5adda93eed6f615e072a89be6b57b227faac",
+                "etcm2-local:2dd27cc9e363aa3766494fe95140ccceebfd5c783db38545015b5fdaa41f61f2",
+                "etcm2-local:0e174dbdd8517d767a33cc3d7c4d4fd5e910fdae8fb38cd95dc71f70b964f55b",
+                "etcm2-local:cabf372d0f8773722288ab3d193f97eed7226500fa7dba940bccb72f465b7b7b",
+                "etcm2-local:6ef210f4cc2ef5e6025c6e4433105b64a3c3be023d9158b7727925c5c0e8e534",
+                "etcm2-local:ac5230bfbd8c100b6f46f49a8c0ce304bbcd5e1008f354908d0fcd9f8be98b75",
+                "etcm2-local:75857edc701c64f9fe9d70df474ccc980c05d3200aded82f83b04279028c35da",
+                "etcm2-local:0eff0ae8c1554016c4b7005aa3ca44cc94a2d8da06677fe38cc361c4bc2f6c2d",
+                "etcm2-local:7ad32645480657dc0635174f582834286cbf89974a57a301a04998e50b55c24e",
+                "etcm2-local:195b8e8fdca18075712af0943a78eb197f1a7bcd8d37f25ef4872e54960d83f4",
+                "etcm2-local:f64c35bf87ef164fb8eb4c114df9decd506cd6ac0e9fa88a467de024a4f15809",
+                "etcm2-local:419e115cc70591f68909e7b20234b0c3426607379c2a0131b49d0ce57a979789",
+                "etcm2-local:9d9156d20139b6653b8d84fecffb33b472f857990dd067b6bfcaff1881963575",
+                "etcm2-local:3541bcb705743e440289f187b2363f6d45cab05162d53569fbe411d5fd4cdf6d",
+                "etcm2-local:9ae2526c7154fa266b81cd7c46ae011d7601b1d915084ab6dc30a10e27ed921b"
+              ]
+            },
+            {
+              "query": {
+                "family": [
+                  "Labiatae"
+                ],
+                "properties": [
+                  "Cool"
+                ],
+                "limit": [
+                  "20"
+                ],
+                "offset": [
+                  "20"
+                ],
+                "dataset_version": [
+                  "local-2026-10-10"
+                ]
+              },
+              "offset": 20,
+              "source_ids": [
+                "etcm2-local:e806ba10583c7fe112ab92696f93b33707fa7111ebc79e55eb8894717e5b5aae"
+              ]
+            }
+          ],
+          "complete_result_set_checked": true
+        },
+        {
+          "filters": {
+            "family": "Labiatae",
+            "properties": "Cool",
+            "flavors": "Pungent"
+          },
+          "count": 17,
+          "requests": [
+            {
+              "query": {
+                "family": [
+                  "Labiatae"
+                ],
+                "properties": [
+                  "Cool"
+                ],
+                "flavors": [
+                  "Pungent"
+                ],
+                "limit": [
+                  "20"
+                ],
+                "offset": [
+                  "0"
+                ]
+              },
+              "offset": 0,
+              "source_ids": [
+                "etcm2-local:f8a8d0d86f79b0e46134af955048b8712a0d35280ea3245790ce0f0e2a0694dc",
+                "etcm2-local:b06f59e4d94a99a55b2d5d019aeb6230eeab10544394d6a7241323a3a3790856",
+                "etcm2-local:1ce5e09f7638e02e71248bbb7e2573c24b0c9fd8cff4c470697fcd910bacd6c9",
+                "etcm2-local:2dd27cc9e363aa3766494fe95140ccceebfd5c783db38545015b5fdaa41f61f2",
+                "etcm2-local:0e174dbdd8517d767a33cc3d7c4d4fd5e910fdae8fb38cd95dc71f70b964f55b",
+                "etcm2-local:cabf372d0f8773722288ab3d193f97eed7226500fa7dba940bccb72f465b7b7b",
+                "etcm2-local:6ef210f4cc2ef5e6025c6e4433105b64a3c3be023d9158b7727925c5c0e8e534",
+                "etcm2-local:ac5230bfbd8c100b6f46f49a8c0ce304bbcd5e1008f354908d0fcd9f8be98b75",
+                "etcm2-local:75857edc701c64f9fe9d70df474ccc980c05d3200aded82f83b04279028c35da",
+                "etcm2-local:7ad32645480657dc0635174f582834286cbf89974a57a301a04998e50b55c24e",
+                "etcm2-local:195b8e8fdca18075712af0943a78eb197f1a7bcd8d37f25ef4872e54960d83f4",
+                "etcm2-local:f64c35bf87ef164fb8eb4c114df9decd506cd6ac0e9fa88a467de024a4f15809",
+                "etcm2-local:419e115cc70591f68909e7b20234b0c3426607379c2a0131b49d0ce57a979789",
+                "etcm2-local:9d9156d20139b6653b8d84fecffb33b472f857990dd067b6bfcaff1881963575",
+                "etcm2-local:3541bcb705743e440289f187b2363f6d45cab05162d53569fbe411d5fd4cdf6d",
+                "etcm2-local:9ae2526c7154fa266b81cd7c46ae011d7601b1d915084ab6dc30a10e27ed921b",
+                "etcm2-local:e806ba10583c7fe112ab92696f93b33707fa7111ebc79e55eb8894717e5b5aae"
+              ]
+            }
+          ],
+          "complete_result_set_checked": true
+        }
+      ],
+      "error": "TimeoutError: Timeout 10000ms exceeded while waiting for event \"response\""
+    },
+    {
+      "id": "TCM-CAND-MULTI_STEP-02",
+      "browser_status": "failed",
+      "human_review": "pending",
+      "task_status": "pending_human_review",
+      "stages": [
+        {
+          "filters": {
+            "family": "Ranunculaceae",
+            "properties": "Cold"
+          },
+          "count": 32,
+          "requests": [
+            {
+              "query": {
+                "family": [
+                  "Ranunculaceae"
+                ],
+                "properties": [
+                  "Cold"
+                ],
+                "limit": [
+                  "20"
+                ],
+                "offset": [
+                  "0"
+                ]
+              },
+              "offset": 0,
+              "source_ids": [
+                "etcm2-local:deacba07ed1af193a1cd316875e591c69e9d42712efa43bce5d77caece5da993",
+                "etcm2-local:5ecef10b62acdb37913a670c5915475ca414be50b4e32a342c03ea51ec946e18",
+                "etcm2-local:89e7c2cfc4cf1bf0307887b6662a33dfb12ee38a5c886f10a8b1ffd2b7fb4d14",
+                "etcm2-local:567a5139df69f82c0ba7cc96711245bb3431eb882eaecbc3c9ef6fd81cb3a229",
+                "etcm2-local:6e8a72c75f7fff15bd3117d7ddb4eb735333fd9347b8e60bd797a6c66a7e83ef",
+                "etcm2-local:44cc9529f4e80f6edf6c8772dc21a2909e889dd47732cd0dc236b81ea51b436f",
+                "etcm2-local:d698a1e16b24e4529cefaacede020cbd663f6b3827457570d54d90bdfcd0a767",
+                "etcm2-local:db3408336067983984ec8659e9ded424cfdcea5d398d6fa94b68a581b74e68a8",
+                "etcm2-local:d4ce03e48526ec40667a35d7485066f1e7eb968db5263cfb2d5fb7d965556447",
+                "etcm2-local:b8182a1fa681a792142320076c1b52be66faebfa9aae85e4cf403b3420fb8a81",
+                "etcm2-local:d29ae7cc113aac7a7894ee7777e7c181d60f11c7ca662a07a36c714a9e13b62c",
+                "etcm2-local:d706ca85d040c0de74d27b175a3295eb68902f91e471fc6d0271e5c88827deee",
+                "etcm2-local:2e3d6236f11686680f9a2835e68b79ad954f72d16e4814007a62ebfc0db06f19",
+                "etcm2-local:b9c3b4f6109886cf469e86649206bc35bb2c0a44bb502f5bcdef259dc5164da5",
+                "etcm2-local:949440976a754a227ce4e23b7913e184a398dfbf854b5f10e16cd867eccdf9e2",
+                "etcm2-local:69436314b03b980a2223cfa39c7f64fff7643e833caf91647a2d4d641d65aac2",
+                "etcm2-local:f7da6d40977f454631131b006cd17248631af8bbe19d6957dee67937c7a9ad14",
+                "etcm2-local:a53011556dfe6f9740c884f12e31fa488e0481039c3d7d2f80f48c890a979993",
+                "etcm2-local:7610caa3e6b529b2a29c3f0382a35b61fa09f51cd713f6c94ccac57c6df40456",
+                "etcm2-local:bcc8c90a1332e5dc1ba4cbce65d18b0990b8fbde7822c96f919a6089f250dd63"
+              ]
+            },
+            {
+              "query": {
+                "family": [
+                  "Ranunculaceae"
+                ],
+                "properties": [
+                  "Cold"
+                ],
+                "limit": [
+                  "20"
+                ],
+                "offset": [
+                  "20"
+                ],
+                "dataset_version": [
+                  "local-2026-10-10"
+                ]
+              },
+              "offset": 20,
+              "source_ids": [
+                "etcm2-local:c2f8d99cbc4955090f5c178e0e80b6dfe18608254872efcaad211074d6c1f7c7",
+                "etcm2-local:5be8fdf69fffef2c4b474c996a17c5f34f37915c3ce52573b61dbcf0d928192a",
+                "etcm2-local:bb4379acb326c59c26c81a6dea4d14541d26e7876da221a750d4ce6a9a0ec393",
+                "etcm2-local:ab8c07ad79f6161b8638baa7a84e72e79e58dc080d784e24282cb65d40dd2f4a",
+                "etcm2-local:bac8fbfed515f1b9443f7f17e21dad53ef204b7af4c0bec16ad4b1edf2ceb656",
+                "etcm2-local:c76701ef297f4ba31ddffd5f967858209c1674eb90ccae8e4487b88c19234070",
+                "etcm2-local:07f7fc101c78fbb3b9bc29b9b7dfc20e4e96e76c50ddbda84923ea81c8e67d05",
+                "etcm2-local:507e94eaa14a37d8e57f2a34e5a03e64c69dfe91597599e28f2291c1dff63820",
+                "etcm2-local:ce2b60f316983d5d17006a71c50de681e4f1373732f37b1f85826a76d9352ab1",
+                "etcm2-local:cb66699aede0b6a39aa17236f2d9a51d29103574c76b31830189a1a418045410",
+                "etcm2-local:c22c1071d52cb91d0b78f67523c7ac225eaffa4da81755da3808ef29a185778a",
+                "etcm2-local:0de4f9971e49ce2945c118464f3f72fe13ef3d0efabf0e45d6f1c3d15048e0b1"
+              ]
+            }
+          ],
+          "complete_result_set_checked": true
+        },
+        {
+          "filters": {
+            "family": "Ranunculaceae",
+            "properties": "Cold",
+            "medicinal_part": "Rhizome"
+          },
+          "count": 18,
+          "requests": [
+            {
+              "query": {
+                "family": [
+                  "Ranunculaceae"
+                ],
+                "properties": [
+                  "Cold"
+                ],
+                "medicinal_part": [
+                  "Rhizome"
+                ],
+                "limit": [
+                  "20"
+                ],
+                "offset": [
+                  "0"
+                ]
+              },
+              "offset": 0,
+              "source_ids": [
+                "etcm2-local:89e7c2cfc4cf1bf0307887b6662a33dfb12ee38a5c886f10a8b1ffd2b7fb4d14",
+                "etcm2-local:567a5139df69f82c0ba7cc96711245bb3431eb882eaecbc3c9ef6fd81cb3a229",
+                "etcm2-local:b8182a1fa681a792142320076c1b52be66faebfa9aae85e4cf403b3420fb8a81",
+                "etcm2-local:d29ae7cc113aac7a7894ee7777e7c181d60f11c7ca662a07a36c714a9e13b62c",
+                "etcm2-local:d706ca85d040c0de74d27b175a3295eb68902f91e471fc6d0271e5c88827deee",
+                "etcm2-local:b9c3b4f6109886cf469e86649206bc35bb2c0a44bb502f5bcdef259dc5164da5",
+                "etcm2-local:69436314b03b980a2223cfa39c7f64fff7643e833caf91647a2d4d641d65aac2",
+                "etcm2-local:f7da6d40977f454631131b006cd17248631af8bbe19d6957dee67937c7a9ad14",
+                "etcm2-local:7610caa3e6b529b2a29c3f0382a35b61fa09f51cd713f6c94ccac57c6df40456",
+                "etcm2-local:bcc8c90a1332e5dc1ba4cbce65d18b0990b8fbde7822c96f919a6089f250dd63",
+                "etcm2-local:c2f8d99cbc4955090f5c178e0e80b6dfe18608254872efcaad211074d6c1f7c7",
+                "etcm2-local:bb4379acb326c59c26c81a6dea4d14541d26e7876da221a750d4ce6a9a0ec393",
+                "etcm2-local:bac8fbfed515f1b9443f7f17e21dad53ef204b7af4c0bec16ad4b1edf2ceb656",
+                "etcm2-local:c76701ef297f4ba31ddffd5f967858209c1674eb90ccae8e4487b88c19234070",
+                "etcm2-local:07f7fc101c78fbb3b9bc29b9b7dfc20e4e96e76c50ddbda84923ea81c8e67d05",
+                "etcm2-local:ce2b60f316983d5d17006a71c50de681e4f1373732f37b1f85826a76d9352ab1",
+                "etcm2-local:c22c1071d52cb91d0b78f67523c7ac225eaffa4da81755da3808ef29a185778a",
+                "etcm2-local:0de4f9971e49ce2945c118464f3f72fe13ef3d0efabf0e45d6f1c3d15048e0b1"
+              ]
+            }
+          ],
+          "complete_result_set_checked": true
+        }
+      ],
+      "error": "TimeoutError: Timeout 10000ms exceeded while waiting for event \"response\""
+    },
+    {
+      "id": "TCM-CAND-MULTI_STEP-03",
+      "browser_status": "failed",
+      "human_review": "pending",
+      "task_status": "pending_human_review",
+      "stages": [
+        {
+          "filters": {
+            "meridians": "Kidney",
+            "medicinal_part": "Bark"
+          },
+          "count": 16,
+          "requests": [
+            {
+              "query": {
+                "meridians": [
+                  "Kidney"
+                ],
+                "medicinal_part": [
+                  "Bark"
+                ],
+                "limit": [
+                  "20"
+                ],
+                "offset": [
+                  "0"
+                ]
+              },
+              "offset": 0,
+              "source_ids": [
+                "etcm2-local:7be1a33ec87a022cafacaf725dbb35c61dd7f06c94a12da5d6dd32c7e049d155",
+                "etcm2-local:f8cb2013551427f78bb4da54ca23b4c580c71c4106d4c28a4bca8338be2f3c91",
+                "etcm2-local:b3bd1bc3b2ac51cbff45b658ddb60c950045e3d8c1671b0a5a802ba8c4807d04",
+                "etcm2-local:f8acdba226cc69a83b623ac13ff08f53136f18630860ee9981e79472db13c3e5",
+                "etcm2-local:f4a7b4eca438191bb17655e58e12e21c8d517d8c9d32c968a4303ea2b540115b",
+                "etcm2-local:293b0b4243afb16e9d61cd01d5c245e9954d0d280c09cb5d1f8eaced391ecc79",
+                "etcm2-local:6f6bec75e049e866df2cc8fcad161df7ee4167c74c32a62de818aec0331311a2",
+                "etcm2-local:4a8867a31c762b9f0c13ab05624a8fe96dd9685a784f1dc9bf0c33ac2596fdb2",
+                "etcm2-local:ca7c02fdcc888721c26c73977e602ab0c8eb1c5947b1a9debe297d60f7fe8681",
+                "etcm2-local:b505df36d35c14d98104d86303c59382cf5a5674dd46d2a671819a5ba2ad6573",
+                "etcm2-local:c5e34f158ae8bda9f0c79f9b531322a66f4a79b5f6f1ea905df2d8f103681226",
+                "etcm2-local:0845319ea50d9b35d9974c27d6c19a085bc81fe9c32352a5fdaf718307b844c9",
+                "etcm2-local:ca38cd22ade2fbd299ff1cbc6e342503986fb150d4950defd003a3b2961ceafb",
+                "etcm2-local:5c6345e0759470fc3c310833241b1f959ad0cd8f8ade87f9912033ab15562e7d",
+                "etcm2-local:d6893d5af5af39a88b13b402752e7917c8a4133ab2522ee7eac8d399e7bdb365",
+                "etcm2-local:c6d3ec4bd3daf996b1030631d29d6c75adae5b088d786681dc65192cf32b924d"
+              ]
+            }
+          ],
+          "complete_result_set_checked": true
+        },
+        {
+          "filters": {
+            "meridians": "Kidney",
+            "medicinal_part": "Bark",
+            "properties": "Warm"
+          },
+          "count": 7,
+          "requests": [
+            {
+              "query": {
+                "meridians": [
+                  "Kidney"
+                ],
+                "medicinal_part": [
+                  "Bark"
+                ],
+                "properties": [
+                  "Warm"
+                ],
+                "limit": [
+                  "20"
+                ],
+                "offset": [
+                  "0"
+                ]
+              },
+              "offset": 0,
+              "source_ids": [
+                "etcm2-local:b3bd1bc3b2ac51cbff45b658ddb60c950045e3d8c1671b0a5a802ba8c4807d04",
+                "etcm2-local:f8acdba226cc69a83b623ac13ff08f53136f18630860ee9981e79472db13c3e5",
+                "etcm2-local:293b0b4243afb16e9d61cd01d5c245e9954d0d280c09cb5d1f8eaced391ecc79",
+                "etcm2-local:c5e34f158ae8bda9f0c79f9b531322a66f4a79b5f6f1ea905df2d8f103681226",
+                "etcm2-local:ca38cd22ade2fbd299ff1cbc6e342503986fb150d4950defd003a3b2961ceafb",
+                "etcm2-local:d6893d5af5af39a88b13b402752e7917c8a4133ab2522ee7eac8d399e7bdb365",
+                "etcm2-local:c6d3ec4bd3daf996b1030631d29d6c75adae5b088d786681dc65192cf32b924d"
+              ]
+            }
+          ],
+          "complete_result_set_checked": true
+        }
+      ],
+      "error": "TimeoutError: Timeout 10000ms exceeded while waiting for event \"response\""
+    }
+  ],
+  "evidence_notice_checks": [
+    {
+      "id": "TCM-CAND-SPARSE_EVIDENCE-06",
+      "browser_status": "passed",
+      "scientific_conclusions": "not_verified",
+      "disclaimer_visible": true,
+      "pmid_display_state": "missing",
+      "no_inferred_paper_content_checked": false
+    },
+    {
+      "id": "TCM-CAND-SPARSE_EVIDENCE-07",
+      "browser_status": "passed",
+      "scientific_conclusions": "not_verified",
+      "disclaimer_visible": true,
+      "pmid_display_state": "present",
+      "no_inferred_paper_content_checked": false
+    },
+    {
+      "id": "TCM-CAND-SPARSE_EVIDENCE-08",
+      "browser_status": "passed",
+      "scientific_conclusions": "not_verified",
+      "disclaimer_visible": true,
+      "pmid_display_state": "missing",
+      "no_inferred_paper_content_checked": false
+    },
+    {
+      "id": "TCM-CAND-SPARSE_EVIDENCE-09",
+      "browser_status": "passed",
+      "scientific_conclusions": "not_verified",
+      "disclaimer_visible": true,
+      "pmid_display_state": "present",
+      "no_inferred_paper_content_checked": false
+    },
+    {
+      "id": "TCM-CAND-SPARSE_EVIDENCE-10",
+      "browser_status": "passed",
+      "scientific_conclusions": "not_verified",
+      "disclaimer_visible": true,
+      "pmid_display_state": "present",
+      "no_inferred_paper_content_checked": false
+    }
+  ],
+  "human_signoff": false,
+  "task_completion_rate": null,
+  "external_page_requests": [],
+  "source_code_sha256": {
+    "tcm/api.py": "e6272e811a70afb2829c985dc340eeb6b2d2110daa6b8fe28936f7236b8c80b6",
+    "tcm/web.html": "e5fe3564e796458e7df5413d1dd534324730fca7ad6c40f91e3658d308bc450a",
+    "scripts/verify_tcm_task_ui.py": "04dd16f1d20b211d52cd434240f972afa9ca173cacb9736fe5f132a903e89455"
+  },
+  "limitations": [
+    "Browser automation is not human review or scientific validation.",
+    "Returning means scrolling to the still-visible results; browser Back/reload/persistence not tested."
+  ],
+  "browser_version": "153.0.8010.12",
+  "inputs_unchanged": true,
+  "summary": {
+    "ui_cases": 3,
+    "notice_cases": 5,
+    "passed": 5,
+    "failed": 3
+  },
+  "status": "failed"
+}
