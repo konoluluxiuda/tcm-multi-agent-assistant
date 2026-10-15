@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-16",
+  "compose_sha256": "139551c5ae1acb0e5aa439acc64e0f1c392ff73f0723b72a176c874d16c3a72d",
+  "static_structure_validation": "passed",
+  "docker_compose_validation": "not_run",
+  "container_restart_validation": "not_run",
+  "reason": "Docker CLI reports WSL 2 integration is not enabled.",
+  "docker_hub_image_published": false,
+  "actual_restart_evidence": "browser_fixture.json and browser_snapshot.json use temporary Uvicorn and Chromium processes, not containers."
+}

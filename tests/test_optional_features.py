@@ -68,7 +68,9 @@ class OptionalFeatureIntegrationTests(unittest.TestCase):
     def setUp(self):
         from langchain_core.messages import AIMessage
         from langchain_core.runnables import RunnableLambda
-        from langgraph.checkpoint.memory import MemorySaver
+        from agents.conversation_store import ConversationStore
+        temp = tempfile.TemporaryDirectory()
+        self.addCleanup(temp.cleanup)
         self.selected = 'CONVERSATION_AGENT'
         self.conversation = RunnableLambda(lambda _: AIMessage(content='offline test reply'))
         decision = RunnableLambda(lambda _: AIMessage(content='{"agent":"'+self.selected+'","confidence":1.0,"reasoning":"test"}'))
@@ -78,7 +80,7 @@ class OptionalFeatureIntegrationTests(unittest.TestCase):
             def check_output(self, output, query, chat_history=''): return output
         cfg = self.Config()
         cfg.agent_decision.llm = decision; cfg.conversation.llm = self.conversation
-        for item in (patch.object(self.ad,'config',cfg), patch.object(self.ad,'memory',MemorySaver()),
+        for item in (patch.object(self.ad,'config',cfg), patch.object(self.ad,'memory',ConversationStore(Path(temp.name) / 'memory.sqlite3')),
                      patch.object(self.ad,'LocalGuardrails',Guard)):
             item.start(); self.addCleanup(item.stop)
         self.cfg = cfg

@@ -1,4 +1,5 @@
 import os
+from contextlib import asynccontextmanager
 import uuid
 import tempfile
 from typing import Dict, Union, Optional, List
@@ -17,13 +18,25 @@ import uvicorn
 
 from config import Config
 from agents.agent_decision import process_query
+from agents import agent_decision as agent_runtime
+from agents.conversation_store import MemoryUnavailable, ConversationConflict, SessionExpired
+from agents.runtime import session_turn
+from features import env_bool
+from tcm.chat import execute_turn
 from source_access import SourceCatalog, PrivateArtifacts, create_source_router
 
 # Load configuration
 config = Config()
 
+@asynccontextmanager
+async def lifespan(application):
+    # Validate storage and purge expired payloads before accepting requests.
+    agent_runtime.memory.purge_expired()
+    yield
+
+
 # Initialize FastAPI app
-app = FastAPI(title="Multi-Agent Medical Chatbot", version="2.0")
+app = FastAPI(title="Multi-Agent Medical Chatbot", version="2.0", lifespan=lifespan)
 
 # Set up directories
 UPLOAD_FOLDER = "uploads/backend"
@@ -134,6 +147,62 @@ async def index(request: Request):
     """Serve the main HTML page"""
     return templates.TemplateResponse(request=request, name="index.html", context={"features": config.features.as_dict()})
 
+def session_cookie(value):
+    store = agent_runtime.memory
+    if store.valid_cookie(value):
+        try:
+            store.load(value)
+            return value
+        except SessionExpired:
+            pass
+    return store.new_cookie()
+
+
+def set_session_cookie(response, value):
+    response.set_cookie(key="session_id", value=value, httponly=True, samesite="lax",
+                        max_age=agent_runtime.memory.ttl_seconds, secure=env_bool('CHAT_COOKIE_SECURE'))
+
+
+@app.exception_handler(MemoryUnavailable)
+async def memory_unavailable(request, exc):
+    return JSONResponse(status_code=503, content={"detail": "会话存储暂不可用，未切换到临时记忆。请检查存储配置。"})
+
+
+@app.exception_handler(ConversationConflict)
+async def memory_conflict(request, exc):
+    return JSONResponse(status_code=409, content={"detail": "会话已被其他请求更新，请刷新后重试。"})
+
+
+@app.exception_handler(SessionExpired)
+async def memory_expired(request, exc):
+    return JSONResponse(status_code=410, content={"detail": "会话已清除或过期，请刷新后重新开始。"})
+
+
+@app.get('/conversation')
+def conversation(response: Response, session_id: Optional[str] = Cookie(None)):
+    session_id = session_cookie(session_id)
+    with session_turn(session_id):
+        snapshot = agent_runtime.memory.load(session_id)
+        result = {"messages": [{"role": "user" if m.type == "human" else "assistant", "content": m.content}
+                               for m in snapshot.messages if m.type in ('human', 'ai')],
+                  "retention_days": agent_runtime.memory.ttl_seconds / 86400}
+        if snapshot.tcm_context:
+            result['tcm'], _ = execute_turn({'followup': True, 'field': 'source'}, snapshot.tcm_context)
+    set_session_cookie(response, session_id)
+    response.headers['Cache-Control'] = 'private, no-store'
+    return result
+
+
+@app.delete('/conversation')
+def clear_conversation(response: Response, session_id: Optional[str] = Cookie(None)):
+    if agent_runtime.memory.valid_cookie(session_id):
+        with session_turn(session_id):
+            agent_runtime.memory.delete(session_id)
+    set_session_cookie(response, agent_runtime.memory.new_cookie())
+    response.headers['Cache-Control'] = 'private, no-store'
+    return {"status": "cleared"}
+
+
 @app.get("/health")
 def health_check():
     """Health check endpoint for Docker health checks"""
@@ -147,15 +216,14 @@ def chat(
 ):
     """Process user text query through the multi-agent system."""
     # Generate session ID for cookie if it doesn't exist
-    if not session_id:
-        session_id = str(uuid.uuid4())
+    session_id = session_cookie(session_id)
     
     try:
         response_data = process_query(request.query, session_id=session_id)
         response_text = response_data['messages'][-1].content
         
         # Set session cookie
-        response.set_cookie(key="session_id", value=session_id, httponly=True, samesite="lax")
+        set_session_cookie(response, session_id)
 
         # Check if the agent is skin lesion segmentation and find the image path
         result = {
@@ -170,6 +238,8 @@ def chat(
                 response.status_code = 503
                 result["status"] = "unavailable"
         return result
+    except (MemoryUnavailable, ConversationConflict, SessionExpired):
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -206,8 +276,7 @@ async def upload_image(
         )
     
     # Generate session ID for cookie if it doesn't exist
-    if not session_id:
-        session_id = str(uuid.uuid4())
+    session_id = session_cookie(session_id)
     
     # Save file securely
     filename = secure_filename(f"{uuid.uuid4()}_{image.filename}")
@@ -221,7 +290,7 @@ async def upload_image(
         response_text = response_data['messages'][-1].content
 
         # Set session cookie
-        response.set_cookie(key="session_id", value=session_id, httponly=True, samesite="lax")
+        set_session_cookie(response, session_id)
 
         # Check if the agent is skin lesion segmentation and find the image path
         result = {
@@ -234,6 +303,8 @@ async def upload_image(
             result['result_image'] = artifact_url
 
         return result
+    except (MemoryUnavailable, ConversationConflict, SessionExpired):
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     finally:
@@ -248,12 +319,11 @@ def validate_medical_output(
 ):
     """Handle human validation for medical AI outputs."""
     # Generate session ID for cookie if it doesn't exist
-    if not session_id:
-        session_id = str(uuid.uuid4())
+    session_id = session_cookie(session_id)
 
     try:
         # Set session cookie
-        response.set_cookie(key="session_id", value=session_id, httponly=True, samesite="lax")
+        set_session_cookie(response, session_id)
         
         # Re-run the agent decision system with the validation input
         validation_query = f"Validation result: {validation_result}"
@@ -275,6 +345,8 @@ def validate_medical_output(
                 "message": "**Output requires further review:**",
                 "response": response_data['messages'][-1].content
             }
+    except (MemoryUnavailable, ConversationConflict, SessionExpired):
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

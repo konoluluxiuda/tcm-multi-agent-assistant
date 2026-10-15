@@ -1,0 +1,298 @@
+{
+  "created_at": "2026-10-15T17:19:41.242048+00:00",
+  "method": "main FastAPI /chat via in-process ASGI; distinct cookie jars for distinct sessions",
+  "suite_sha256": "5de95e2a6136f11974d9aaef7c1f40e3a4987a671bd1a3511ddcd111b4660dd8",
+  "database_sha256": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+  "human_signoff": false,
+  "task_completion_rate": null,
+  "interpretation": "Machine checks of previously planned future targets; frozen capability_status is historical and unchanged.",
+  "cases": [
+    {
+      "id": "TCM-CAND-MULTI_STEP-04",
+      "frozen_capability_status": "unsupported",
+      "target_checked": "future_target",
+      "turns": [
+        {
+          "session": "A",
+          "query": "查询 BoHe 的科名",
+          "latency_seconds": 0.151568,
+          "http_status": 200,
+          "body": {
+            "status": "success",
+            "response": "找到一条药材来源记录，请查看资料卡。来源内容尚未核验，不代表临床结论。",
+            "agent": "TCM_HERB_AGENT",
+            "tcm": {
+              "status": "ok",
+              "dataset_version": "local-2026-10-10",
+              "records": [
+                {
+                  "source_record_id": "etcm2-local:b06f59e4d94a99a55b2d5d019aeb6230eeab10544394d6a7241323a3a3790856",
+                  "source": {
+                    "source_namespace": "etcm2-local",
+                    "dataset_version": "local-2026-10-10",
+                    "relative_file_path": "etcm_herbs/BoHe.json",
+                    "file_sha256": "f8ab7f670575dff5cfcaa1183275e22feae0903547b7c9faacd729495a8b5d38",
+                    "section_id": "base_information",
+                    "normalization_rule_version": 1,
+                    "review_status": "unverified"
+                  },
+                  "warnings": [
+                    "source_content_unverified",
+                    "chinese_names_unmapped",
+                    "relations_not_imported"
+                  ],
+                  "fields": {
+                    "name_pinyin": {
+                      "state": "present",
+                      "value": "BoHe",
+                      "source": {
+                        "source_namespace": "etcm2-local",
+                        "dataset_version": "local-2026-10-10",
+                        "relative_file_path": "etcm_herbs/BoHe.json",
+                        "file_sha256": "f8ab7f670575dff5cfcaa1183275e22feae0903547b7c9faacd729495a8b5d38",
+                        "section_id": "base_information",
+                        "normalization_rule_version": 1,
+                        "review_status": "unverified",
+                        "json_pointer": "/data/0/value/0/value",
+                        "raw_field_key": "Herb Name in Pinyin",
+                        "raw_value": "BoHe"
+                      }
+                    },
+                    "family": {
+                      "state": "present",
+                      "value": "Labiatae",
+                      "source": {
+                        "source_namespace": "etcm2-local",
+                        "dataset_version": "local-2026-10-10",
+                        "relative_file_path": "etcm_herbs/BoHe.json",
+                        "file_sha256": "f8ab7f670575dff5cfcaa1183275e22feae0903547b7c9faacd729495a8b5d38",
+                        "section_id": "base_information",
+                        "normalization_rule_version": 1,
+                        "review_status": "unverified",
+                        "json_pointer": "/data/0/value/3/value",
+                        "raw_field_key": "Family",
+                        "raw_value": "Labiatae"
+                      }
+                    }
+                  }
+                }
+              ],
+              "warnings": [
+                "source_content_unverified",
+                "chinese_names_unmapped"
+              ],
+              "total_record_count": 1,
+              "returned_record_count": 1,
+              "truncated": false,
+              "message": "找到一条药材来源记录，请查看资料卡。来源内容尚未核验，不代表临床结论。",
+              "requested_fields": [
+                "family"
+              ],
+              "followup": false
+            }
+          }
+        },
+        {
+          "session": "A",
+          "query": "刚才那味药的来源在哪？",
+          "latency_seconds": 0.084892,
+          "http_status": 200,
+          "body": {
+            "status": "success",
+            "response": "找到一条药材来源记录，请查看资料卡。来源内容尚未核验，不代表临床结论。",
+            "agent": "TCM_HERB_AGENT",
+            "tcm": {
+              "status": "ok",
+              "dataset_version": "local-2026-10-10",
+              "records": [
+                {
+                  "source_record_id": "etcm2-local:b06f59e4d94a99a55b2d5d019aeb6230eeab10544394d6a7241323a3a3790856",
+                  "source": {
+                    "source_namespace": "etcm2-local",
+                    "dataset_version": "local-2026-10-10",
+                    "relative_file_path": "etcm_herbs/BoHe.json",
+                    "file_sha256": "f8ab7f670575dff5cfcaa1183275e22feae0903547b7c9faacd729495a8b5d38",
+                    "section_id": "base_information",
+                    "normalization_rule_version": 1,
+                    "review_status": "unverified"
+                  },
+                  "warnings": [
+                    "source_content_unverified",
+                    "chinese_names_unmapped",
+                    "relations_not_imported"
+                  ],
+                  "fields": {
+                    "name_pinyin": {
+                      "state": "present",
+                      "value": "BoHe",
+                      "source": {
+                        "source_namespace": "etcm2-local",
+                        "dataset_version": "local-2026-10-10",
+                        "relative_file_path": "etcm_herbs/BoHe.json",
+                        "file_sha256": "f8ab7f670575dff5cfcaa1183275e22feae0903547b7c9faacd729495a8b5d38",
+                        "section_id": "base_information",
+                        "normalization_rule_version": 1,
+                        "review_status": "unverified",
+                        "json_pointer": "/data/0/value/0/value",
+                        "raw_field_key": "Herb Name in Pinyin",
+                        "raw_value": "BoHe"
+                      }
+                    },
+                    "family": {
+                      "state": "present",
+                      "value": "Labiatae",
+                      "source": {
+                        "source_namespace": "etcm2-local",
+                        "dataset_version": "local-2026-10-10",
+                        "relative_file_path": "etcm_herbs/BoHe.json",
+                        "file_sha256": "f8ab7f670575dff5cfcaa1183275e22feae0903547b7c9faacd729495a8b5d38",
+                        "section_id": "base_information",
+                        "normalization_rule_version": 1,
+                        "review_status": "unverified",
+                        "json_pointer": "/data/0/value/3/value",
+                        "raw_field_key": "Family",
+                        "raw_value": "Labiatae"
+                      }
+                    }
+                  }
+                }
+              ],
+              "warnings": [
+                "source_content_unverified",
+                "chinese_names_unmapped"
+              ],
+              "total_record_count": 1,
+              "returned_record_count": 1,
+              "truncated": false,
+              "message": "找到一条药材来源记录，请查看资料卡。来源内容尚未核验，不代表临床结论。",
+              "requested_fields": [
+                "family"
+              ],
+              "followup": true
+            }
+          }
+        }
+      ],
+      "machine_status": "passed"
+    },
+    {
+      "id": "TCM-CAND-MULTI_STEP-05",
+      "frozen_capability_status": "unsupported",
+      "target_checked": "future_target",
+      "turns": [
+        {
+          "session": "A",
+          "query": "查询 DangGui 的科名",
+          "latency_seconds": 0.07155,
+          "http_status": 200,
+          "body": {
+            "status": "success",
+            "response": "找到一条药材来源记录，请查看资料卡。来源内容尚未核验，不代表临床结论。",
+            "agent": "TCM_HERB_AGENT",
+            "tcm": {
+              "status": "ok",
+              "dataset_version": "local-2026-10-10",
+              "records": [
+                {
+                  "source_record_id": "etcm2-local:5ad46aec5cc45d5022155a8967a8c1193f4955d1873bfd8ecdf9021dc258dd8e",
+                  "source": {
+                    "source_namespace": "etcm2-local",
+                    "dataset_version": "local-2026-10-10",
+                    "relative_file_path": "etcm_herbs/DangGui.json",
+                    "file_sha256": "46c03d4594839102f1fa6a324f85b92769a93d86901d243a4373f41083c08f1f",
+                    "section_id": "base_information",
+                    "normalization_rule_version": 1,
+                    "review_status": "unverified"
+                  },
+                  "warnings": [
+                    "source_content_unverified",
+                    "chinese_names_unmapped",
+                    "relations_not_imported"
+                  ],
+                  "fields": {
+                    "name_pinyin": {
+                      "state": "present",
+                      "value": "DangGui",
+                      "source": {
+                        "source_namespace": "etcm2-local",
+                        "dataset_version": "local-2026-10-10",
+                        "relative_file_path": "etcm_herbs/DangGui.json",
+                        "file_sha256": "46c03d4594839102f1fa6a324f85b92769a93d86901d243a4373f41083c08f1f",
+                        "section_id": "base_information",
+                        "normalization_rule_version": 1,
+                        "review_status": "unverified",
+                        "json_pointer": "/data/0/value/0/value",
+                        "raw_field_key": "Herb Name in Pinyin",
+                        "raw_value": "DangGui"
+                      }
+                    },
+                    "family": {
+                      "state": "present",
+                      "value": "Apiaceae",
+                      "source": {
+                        "source_namespace": "etcm2-local",
+                        "dataset_version": "local-2026-10-10",
+                        "relative_file_path": "etcm_herbs/DangGui.json",
+                        "file_sha256": "46c03d4594839102f1fa6a324f85b92769a93d86901d243a4373f41083c08f1f",
+                        "section_id": "base_information",
+                        "normalization_rule_version": 1,
+                        "review_status": "unverified",
+                        "json_pointer": "/data/0/value/3/value",
+                        "raw_field_key": "Family",
+                        "raw_value": "Apiaceae"
+                      }
+                    }
+                  }
+                }
+              ],
+              "warnings": [
+                "source_content_unverified",
+                "chinese_names_unmapped"
+              ],
+              "total_record_count": 1,
+              "returned_record_count": 1,
+              "truncated": false,
+              "message": "找到一条药材来源记录，请查看资料卡。来源内容尚未核验，不代表临床结论。",
+              "requested_fields": [
+                "family"
+              ],
+              "followup": false
+            }
+          }
+        },
+        {
+          "session": "B",
+          "query": "它的部位呢？",
+          "latency_seconds": 0.103481,
+          "http_status": 200,
+          "body": {
+            "status": "success",
+            "response": "当前会话没有已选药材，请先用 /herb 加药材名称或来源 ID 查询。",
+            "agent": "TCM_HERB_AGENT",
+            "tcm": {
+              "status": "clarify_entity",
+              "message": "当前会话没有已选药材，请先用 /herb 加药材名称或来源 ID 查询。",
+              "records": [],
+              "total_record_count": 0,
+              "returned_record_count": 0,
+              "truncated": false
+            }
+          }
+        }
+      ],
+      "machine_status": "passed"
+    }
+  ],
+  "source_code_sha256": {
+    "tcm/chat.py": "8a3d5926179fc09aaf348ac298616e542a2f70103b80ce28560ddc47174e731e",
+    "agents/agent_decision.py": "5e251eedf29a81a94b57838c687de8db2ab8f5d90f479dd02a1e6abea9303f95",
+    "agents/conversation_store.py": "3b55b3be895d1e4384b057a3a3125cfb7c7e9137f94be6a0ba6b097bc1a0ba7f",
+    "app.py": "e0140abe4f0a24f182b0b856b1e60244a1224355dbf1b83a6d8f77bdfd87412b",
+    "scripts/eval_tcm_chat_tasks.py": "f43f1e8dfa499b8c2e2df6e9528d5242272b14b8f05028452e2e5bf5d8029a22"
+  },
+  "network_attempts": 0,
+  "model_attempts": 0,
+  "sqlite_unchanged": true,
+  "suite_unchanged": true,
+  "status": "passed"
+}

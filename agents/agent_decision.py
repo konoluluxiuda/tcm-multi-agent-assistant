@@ -17,7 +17,7 @@ from langgraph.graph import MessagesState, StateGraph, END
 import os, getpass
 from agents.guardrails.local_guardrails import LocalGuardrails
 
-from langgraph.checkpoint.memory import MemorySaver
+from agents.conversation_store import ConversationStore
 
 import threading
 
@@ -28,8 +28,8 @@ from tcm.chat import HerbContext, parse_request, execute_turn
 # Load configuration
 config = Config()
 
-# Initialize memory
-memory = MemorySaver()
+# Completed-turn snapshots survive application restarts.
+memory = ConversationStore.from_env()
 
 # One owner for the local vector DB. Threads serialize RAG work in this process.
 rag_runtime = SharedRAG()
@@ -735,7 +735,7 @@ def create_agent_graph():
     # workflow.add_edge("human_validation", END)
     
     # Compile the graph
-    return workflow.compile(checkpointer=memory)
+    return workflow.compile()
 
 
 def init_agent_state() -> AgentState:
@@ -779,10 +779,11 @@ def _process_query(query: Union[str, Dict], thread_config: Dict) -> Dict:
     # cv2.imwrite("./assets/graph.png", decoded)
     # print("Graph flowchart saved in assets.")
     
-    # Initialize state
+    # Read only the last committed turn, not partially completed graph execution.
+    session_id = thread_config["configurable"]["thread_id"]
+    snapshot = memory.load(session_id)
     state = init_agent_state()
-    # Keep only this explicit session slot across turns; transient tool output is reset.
-    state.pop("tcm_context")
+    state["tcm_context"] = snapshot.tcm_context
     
     # Add the current query
     state["current_input"] = query
@@ -791,7 +792,7 @@ def _process_query(query: Union[str, Dict], thread_config: Dict) -> Dict:
     if isinstance(query, dict):
         query = query.get("text", "") + ", user uploaded an image for diagnosis."
     
-    state["messages"] = [HumanMessage(content=query)]
+    state["messages"] = snapshot.messages + [HumanMessage(content=query)]
 
     result = graph.invoke(state, thread_config)
     # print("######### DEBUG 4:", result)
@@ -799,9 +800,8 @@ def _process_query(query: Union[str, Dict], thread_config: Dict) -> Dict:
 
     # Keep history to reasonable size (ANOTHER OPTION: summarize and store before truncating history)
     if len(result["messages"]) > config.max_conversation_history:  # Keep last config.max_conversation_history messages
-        expired = result["messages"][:-config.max_conversation_history]
-        graph.update_state(thread_config, {"messages": [RemoveMessage(id=m.id) for m in expired]})
         result["messages"] = result["messages"][-config.max_conversation_history:]
+    memory.save(session_id, result["messages"], result.get("tcm_context"), revision=snapshot.revision)
 
     # visualize conversation history in console
     for m in result["messages"]:
@@ -813,7 +813,7 @@ def _process_query(query: Union[str, Dict], thread_config: Dict) -> Dict:
 def process_query(query: Union[str, Dict], conversation_history=None, *, session_id=None) -> Dict:
     """Run a turn in its own session; omitted IDs create isolated one-shot calls.
 
-    History lives in process memory and is lost on restart. Client-supplied
+    Completed turns live in SQLite and survive restart. Client-supplied
     history is intentionally not trusted as server-side state.
     """
     with session_turn(session_id) as thread_config:

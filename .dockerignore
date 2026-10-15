@@ -12,3 +12,8 @@ uploads/
 var/
 
 .venv-tcm/
+
+# Local conversation/source databases and SQLite auxiliary files
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm

@@ -97,7 +97,7 @@ class ChatGraphTests(ChatFixture, unittest.TestCase):
         import agents.agent_decision as ad
         from langchain_core.messages import AIMessage
         from langchain_core.runnables import RunnableLambda
-        from langgraph.checkpoint.memory import MemorySaver
+        from agents.conversation_store import ConversationStore
         self.ad = ad
         self.model_calls = []
         def model(_):
@@ -105,7 +105,7 @@ class ChatGraphTests(ChatFixture, unittest.TestCase):
             raise AssertionError('TCM branch called a language model')
         def guard(*_):
             raise AssertionError('TCM branch called model guardrails')
-        patches = [patch.object(ad, 'memory', MemorySaver()),
+        patches = [patch.object(ad, 'memory', ConversationStore(self.root / 'memory.sqlite3')),
                    patch.object(ad.config.agent_decision, 'llm', RunnableLambda(model)),
                    patch.object(ad.config.conversation, 'llm', RunnableLambda(model)),
                    patch.object(ad.LocalGuardrails, 'check_input', guard),
@@ -232,3 +232,45 @@ class ChatGraphTests(ChatFixture, unittest.TestCase):
         self.assertEqual(failure['tcm_result']['status'], 'database_unavailable')
         self.assertIsNone(failure['tcm_context'])
         self.assertEqual(self.turn('它的科名呢？')['tcm_result']['status'], 'clarify_entity')
+
+    def test_completed_turn_recovers_after_store_reopen_and_failed_turn_does_not_commit(self):
+        from agents.conversation_store import ConversationStore
+        first = self.turn('查询 BaiBu 的科名')
+        path = self.ad.memory.path
+        with patch.object(self.ad, 'memory', ConversationStore(path)):
+            restored = self.turn('刚才那味药的来源在哪？')
+            self.assertEqual(restored['tcm_context'], first['tcm_context'])
+            self.assertEqual(restored['tcm_result']['records'][0]['fields']['family']['value'], 'FixtureFamily')
+            revision = self.ad.memory.load('A').revision
+            with self.assertRaises(AssertionError): self.turn('ordinary query needs mocked model')
+            self.assertEqual(self.ad.memory.load('A').revision, revision)
+            self.assertEqual(self.turn('它的科名呢？')['tcm_result']['status'], 'ok')
+
+    def test_history_cookie_delete_and_replayed_cookie_cannot_restore_memory(self):
+        from fastapi.testclient import TestClient
+        import app
+        with TestClient(app.app) as a, TestClient(app.app) as b:
+            self.assertEqual(a.get('/conversation').json()['messages'], [])
+            cookie = a.cookies['session_id']
+            response = a.post('/chat', json={'query': '查询 BaiBu 的科名'})
+            self.assertIn('Max-Age=', response.headers['set-cookie'])
+            history = a.get('/conversation')
+            self.assertEqual(history.headers['cache-control'], 'private, no-store')
+            self.assertEqual(len(history.json()['messages']), 2)
+            self.assertEqual(history.json()['tcm']['status'], 'ok')
+            self.assertEqual(b.get('/conversation').json()['messages'], [])
+            self.assertEqual(a.delete('/conversation').status_code, 200)
+            self.assertNotEqual(a.cookies['session_id'], cookie)
+            a.cookies.clear()
+            a.cookies.set('session_id', cookie)
+            self.assertEqual(a.get('/conversation').json()['messages'], [])
+            self.assertEqual(a.post('/chat', json={'query': '它的部位呢？'}).json()['tcm']['status'], 'clarify_entity')
+
+    def test_memory_failure_is_503_and_does_not_silently_use_empty_history(self):
+        from fastapi.testclient import TestClient
+        from agents.conversation_store import MemoryUnavailable
+        import app
+        with patch.object(self.ad.memory, 'load', side_effect=MemoryUnavailable('private database path')), TestClient(app.app) as client:
+            result = client.post('/chat', json={'query': '/herb BaiBu'})
+            self.assertEqual(result.status_code, 503)
+            self.assertNotIn('private database path', result.text)

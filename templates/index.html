@@ -269,7 +269,7 @@
                         </ul>
                     </div>
                     <button id="clear-chat" class="btn btn-outline-danger w-100 mt-3">
-                        <i class="fas fa-trash me-2"></i> Clear Conversation
+                        <i class="fas fa-trash me-2"></i> 清除会话与已保存记忆
                     </button>
                 </div>
             </div>
@@ -285,6 +285,7 @@
                         <small class="text-muted">{% if features.image_analysis.available %}Upload medical images or ask health-related questions{% else %}Ask text questions · image analysis is disabled{% endif %}</small>
                     </div>
                     
+                    <small id="memory-status" class="text-muted px-3" role="status">正在恢复已保存会话…</small>
                     <div id="chat-body" class="chat-body">
                         <div class="message assistant-message">
                             <div class="agent-tag">System</div>
@@ -1008,7 +1009,7 @@
         let currentAudio = null;  // Store a single audio instance
         let selectedVoiceId = '21m00Tcm4TlvDq8ikWAM'; // Default voice ID (Rachel)
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             const chatBody = document.getElementById('chat-body');
             const chatForm = document.getElementById('chat-form');
             const messageInput = document.getElementById('message-input');
@@ -1040,9 +1041,44 @@
                 console.error('Web Audio API is not supported in this browser');
             }
             
-            // We only maintain display messages
             let displayMessages = [];
-            
+            let busy = false;
+            const memoryStatus = document.getElementById('memory-status');
+            function setBusy(value) {
+                busy = value;
+                messageInput.disabled = value;
+                chatForm.querySelector('[type="submit"]').disabled = value;
+                clearChatBtn.disabled = value;
+            }
+            function chooseSource(sourceId) {
+                messageInput.value = '/herb ' + sourceId;
+                chatForm.requestSubmit();
+            }
+            setBusy(true);
+            try {
+                const response = await fetch('/conversation', {credentials: 'include', cache: 'no-store'});
+                if (!response.ok) throw new Error('无法恢复会话，请检查存储后刷新。');
+                const history = await response.json();
+                for (const message of history.messages) {
+                    const node = document.createElement('div');
+                    node.className = 'message ' + (message.role === 'user' ? 'user-message' : 'assistant-message');
+                    node.textContent = typeof message.content === 'string' ? message.content : JSON.stringify(message.content);
+                    chatBody.appendChild(node);
+                }
+                if (history.tcm) {
+                    const card = document.createElement('div');
+                    card.className = 'message assistant-message';
+                    renderHerbResult(card, history.tcm, chooseSource);
+                    chatBody.appendChild(card);
+                }
+                memoryStatus.textContent = '会话已自动保存，闲置 ' + history.retention_days + ' 天后过期；清除会话会删除已保存记忆。';
+                chatBody.scrollTop = chatBody.scrollHeight;
+                setBusy(false);
+            } catch (error) {
+                memoryStatus.textContent = error.message;
+                // Keep inputs disabled: don't imply that storage failure is an empty conversation.
+            }
+
             // Auto-resize textarea
             messageInput.addEventListener('input', function() {
                 this.style.height = 'auto';
@@ -1071,24 +1107,31 @@
                 previewImage.src = '';
             });
             
-            // Clear chat (only visual)
-            clearChatBtn.addEventListener('click', function() {
-                displayMessages = [];
-                chatBody.innerHTML = `
-                    <div class="message assistant-message">
-                        <div class="agent-tag">System</div>
-                        <p>Hello! I'm your medical assistant. You can ask me health-related questions{% if features.image_analysis.available %} or upload medical images for analysis{% endif %}.</p>
-                    </div>
-                `;
+            clearChatBtn.addEventListener('click', async function() {
+                if (busy) return;
+                setBusy(true);
+                try {
+                    const response = await fetch('/conversation', {method: 'DELETE', credentials: 'include'});
+                    if (!response.ok) throw new Error('清除失败，请重试。');
+                    displayMessages = [];
+                    chatBody.replaceChildren();
+                    memoryStatus.textContent = '已删除服务器保存的会话记忆，当前为新会话。';
+                } catch (error) {
+                    memoryStatus.textContent = error.message;
+                } finally {
+                    setBusy(false);
+                }
             });
-            
+
             // Handle form submission
             chatForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
+                if (busy) return;
                 
                 // Get message from input or transcribed text
                 const message = messageInput.value.trim();
                 if (!message && !imageUpload.files.length) return;
+                setBusy(true);
                 
                 // Store image data if available
                 let imageDataUrl = null;
@@ -1161,9 +1204,10 @@
                     }
                     
                     const data = await response.json();
+                    if (!response.ok && !data.tcm) throw new Error(data.detail || '请求未完成');
                     
                     // Remove thinking indicator
-                    chatBody.removeChild(thinkingElement);
+                    thinkingElement.remove();
                     
                     // Add response to chat
                     const assistantMessageElement = document.createElement('div');
@@ -1332,7 +1376,7 @@
                 } catch (error) {
                     console.error("Error:", error);
                     // Remove thinking indicator
-                    chatBody.removeChild(thinkingElement);
+                    thinkingElement.remove();
                     
                     // Add error message
                     const errorElement = document.createElement('div');
@@ -1342,6 +1386,9 @@
                         <p class="text-danger">Sorry, there was an error processing your request. Please try again.</p>
                     `;
                     chatBody.appendChild(errorElement);
+                    memoryStatus.textContent = error.message;
+                } finally {
+                    setBusy(false);
                 }
                 
                 // Scroll to bottom again

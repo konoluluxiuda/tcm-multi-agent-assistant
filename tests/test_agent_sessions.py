@@ -3,6 +3,8 @@ import contextlib
 import importlib.util
 import io
 import unittest
+import tempfile
+from pathlib import Path
 from unittest.mock import patch
 
 @unittest.skipUnless(importlib.util.find_spec('langgraph'), 'requires container dependencies')
@@ -12,13 +14,16 @@ class AgentSessionTests(unittest.TestCase):
         import agents.agent_decision as ad
         from langchain_core.messages import AIMessage
         from langchain_core.runnables import RunnableLambda
-        from langgraph.checkpoint.memory import MemorySaver
+        from agents.conversation_store import ConversationStore
         cls.ad = ad
-        cls.MemorySaver = MemorySaver
+        cls.ConversationStore = ConversationStore
         cls.decision = RunnableLambda(lambda _: AIMessage(content='{"agent":"CONVERSATION_AGENT","confidence":1.0,"reasoning":"test"}'))
         cls.conversation = RunnableLambda(lambda prompt: AIMessage(content='HERB-74291' if 'HERB-74291' in str(prompt) else 'UNKNOWN'))
 
     def setUp(self):
+        temp = tempfile.TemporaryDirectory()
+        self.addCleanup(temp.cleanup)
+        self.store = self.ConversationStore(Path(temp.name) / "memory.sqlite3")
         self.history_seen = []
         seen = self.history_seen
         class Guard:
@@ -27,7 +32,7 @@ class AgentSessionTests(unittest.TestCase):
             def check_output(self, output, query, chat_history=''):
                 seen.append(chat_history)
                 return output
-        self.patches = [patch.object(self.ad,'memory',self.MemorySaver()),
+        self.patches = [patch.object(self.ad,'memory',self.store),
                         patch.object(self.ad,'LocalGuardrails',Guard),
                         patch.object(self.ad.config.agent_decision,'llm',self.decision),
                         patch.object(self.ad.config.conversation,'llm',self.conversation),
@@ -52,5 +57,5 @@ class AgentSessionTests(unittest.TestCase):
 
     def test_checkpoint_history_really_trimmed(self):
         for i in range(4): self.run_turn('hello '+str(i),'bounded')
-        snapshot=self.ad.create_agent_graph().get_state({'configurable':{'thread_id':'bounded'}})
-        self.assertLessEqual(len(snapshot.values['messages']),4)
+        snapshot=self.store.load('bounded')
+        self.assertLessEqual(len(snapshot.messages),4)

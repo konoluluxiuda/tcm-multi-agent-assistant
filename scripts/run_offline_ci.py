@@ -9,6 +9,7 @@ import socket
 import subprocess
 import sys
 import unittest
+import tempfile
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,7 +41,9 @@ def worker(path, output):
         raise RuntimeError('Network access forbidden in offline regression')
 
     # Patch before loading tests. ASGI TestClient uses in-process transport.
-    with patch.object(dotenv, 'load_dotenv', return_value=False), \
+    with tempfile.TemporaryDirectory(prefix='tcm-test-memory-') as memory_dir, \
+         patch.dict(os.environ, {'CHAT_MEMORY_DB': str(Path(memory_dir) / 'memory.sqlite3')}), \
+         patch.object(dotenv, 'load_dotenv', return_value=False), \
          patch.object(socket.socket, 'connect', deny_network), \
          patch.object(socket.socket, 'connect_ex', deny_network), \
          patch.object(socket.socket, 'sendto', deny_network), \

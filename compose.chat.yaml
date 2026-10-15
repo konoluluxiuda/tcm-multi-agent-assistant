@@ -1,0 +1,28 @@
+# Main chat service. Original source documents and provider settings remain external.
+name: tcm-chat
+services:
+  chat:
+    image: tcm-medical-chat:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "127.0.0.1:7860:8000"
+    environment:
+      CHAT_MEMORY_DB: /app-memory/conversations.sqlite3
+      CHAT_MEMORY_TTL_DAYS: ${CHAT_MEMORY_TTL_DAYS:-30}
+      TCM_DB: /herb-data/herbs.sqlite3
+      TCM_DATASET_VERSION: ${TCM_DATASET_VERSION:-local-2026-10-10}
+    volumes:
+      - chat-memory:/app-memory
+      - type: bind
+        source: ./var/tcm/herbs.sqlite3
+        target: /herb-data/herbs.sqlite3
+        read_only: true
+        bind:
+          create_host_path: false
+    init: true
+volumes:
+  chat-memory:

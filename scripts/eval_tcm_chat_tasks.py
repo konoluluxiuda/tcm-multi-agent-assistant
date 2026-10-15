@@ -15,6 +15,7 @@ import socket
 import subprocess
 import sys
 import time
+import tempfile
 from unittest.mock import patch
 
 from scripts.run_offline_ci import ROOT, test_environment
@@ -92,7 +93,7 @@ def run_worker(suite_path, database, output):
               'human_signoff': False, 'task_completion_rate': None,
               'interpretation': 'Machine checks of previously planned future targets; frozen capability_status is historical and unchanged.',
               'cases': [], 'source_code_sha256': {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
-                 for name in ['tcm/chat.py', 'agents/agent_decision.py', 'app.py', 'scripts/eval_tcm_chat_tasks.py']}}
+                 for name in ['tcm/chat.py', 'agents/agent_decision.py', 'agents/conversation_store.py', 'app.py', 'scripts/eval_tcm_chat_tasks.py']}}
     import dotenv
     with ExitStack() as stack:
         stack.enter_context(patch.object(dotenv, 'load_dotenv', return_value=False))
@@ -103,10 +104,11 @@ def run_worker(suite_path, database, output):
                                                    'TCM_DATASET_VERSION': suite['dataset_version']}))
         from fastapi.testclient import TestClient
         from langchain_core.runnables import RunnableLambda
-        from langgraph.checkpoint.memory import MemorySaver
+        from agents.conversation_store import ConversationStore
         from agents import agent_decision as ad
         import app
-        stack.enter_context(patch.object(ad, 'memory', MemorySaver()))
+        temporary = stack.enter_context(tempfile.TemporaryDirectory())
+        stack.enter_context(patch.object(ad, 'memory', ConversationStore(Path(temporary) / 'memory.sqlite3')))
         for target in [ad.config.agent_decision, ad.config.conversation]:
             stack.enter_context(patch.object(target, 'llm', RunnableLambda(forbid_model)))
         stack.enter_context(patch.object(ad.LocalGuardrails, 'check_input', forbid_model))

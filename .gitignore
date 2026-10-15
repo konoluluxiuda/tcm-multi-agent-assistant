@@ -196,3 +196,8 @@ data/*.bak_*/
 *.pth
 # Optional lightweight TCM virtual environment
 .venv-tcm/
+
+# Local conversation/source databases and SQLite auxiliary files
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm

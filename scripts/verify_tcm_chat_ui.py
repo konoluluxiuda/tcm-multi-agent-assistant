@@ -56,11 +56,12 @@ def verify(database, output, server_python, executable):
                   'human_signoff': False, 'task_completion_rate': None,
                   'cases': [], 'page_errors': [], 'blocked_external_requests': [],
                   'source_code_sha256': {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
-                    for name in ['tcm/chat.py', 'agents/agent_decision.py', 'app.py', 'templates/index.html',
+                    for name in ['tcm/chat.py', 'agents/agent_decision.py', 'agents/conversation_store.py', 'app.py', 'templates/index.html',
                                  'scripts/verify_tcm_chat_ui.py']}}
         env = test_environment()
         env['TCM_DB'] = str(database.resolve())
         env['TCM_DATASET_VERSION'] = ''
+        env['CHAT_MEMORY_DB'] = str(temporary / 'memory.sqlite3')
         with socket.socket() as sock:
             sock.bind(('127.0.0.1', 0))
             port = sock.getsockname()[1]
@@ -156,6 +157,7 @@ def verify(database, output, server_python, executable):
                         report['cases'].append({'case': 'explicit_clear', 'status': 'passed'})
                         submit('/herb BaiBu', 'ok')
                         first_cookie = page.context.cookies()[0]['value']
+                        primary_page = page
                         fresh = browser.new_context(viewport={'width': 1280, 'height': 900})
                         page = fresh.new_page()
                         page.route('**/*', guard)
@@ -167,6 +169,54 @@ def verify(database, output, server_python, executable):
                         assert fresh.cookies()[0]['value'] != first_cookie
                         fresh.close()
                         report['cases'].append({'case': 'separate_browser_session_clarifies', 'status': 'passed'})
+                        page = primary_page
+                        submit('查询 BaiBu 的科名', 'ok')
+                        state_path = temporary / 'browser-state.json'
+                        page.context.storage_state(path=str(state_path))
+                        saved_state = json.loads(state_path.read_text())
+                        assert saved_state['cookies'][0]['expires'] > time.time()
+                        browser.close()
+
+                        def restart_server():
+                            nonlocal server
+                            server.terminate()
+                            server.wait(timeout=10)
+                            server = subprocess.Popen([str(server_python), '-m', 'scripts.verify_tcm_chat_ui',
+                                '--serve', str(sock.fileno())], cwd=ROOT, env=env,
+                                pass_fds=(sock.fileno(),), stdout=log, stderr=log)
+                            deadline = time.monotonic() + 20
+                            with httpx.Client(trust_env=False, timeout=.5) as ready_client:
+                                while True:
+                                    try:
+                                        if ready_client.get(url + '/health').status_code == 200: break
+                                    except httpx.HTTPError: pass
+                                    if server.poll() is not None or time.monotonic() > deadline:
+                                        raise RuntimeError('Restarted main app did not become ready')
+                                    time.sleep(.1)
+
+                        restart_server()
+                        browser = pw.chromium.launch(**options)
+                        restored = browser.new_context(storage_state=str(state_path), viewport={'width':1280, 'height':900})
+                        page = restored.new_page()
+                        page.route('**/*', guard)
+                        page.on('pageerror', lambda error: report['page_errors'].append(str(error)))
+                        page.goto(url)
+                        page.locator('[data-tcm-status="ok"]').wait_for()
+                        assert '查询 BaiBu 的科名' in page.locator('#chat-body').inner_text()
+                        _, body = submit('它的科名呢？', 'ok')
+                        assert body['tcm']['records'][0]['source_record_id'] == initial_record['source_record_id']
+                        report['cases'].append({'case': 'service_and_browser_process_restart_recovers_history_and_entity', 'status': 'passed'})
+                        with page.expect_response(lambda r: r.url == url + '/conversation' and r.request.method == 'DELETE') as deletion:
+                            page.locator('#clear-chat').click()
+                        assert deletion.value.status == 200
+                        page.wait_for_function('() => document.querySelectorAll("#chat-body .message").length === 0')
+                        restart_server()
+                        page.reload()
+                        page.wait_for_function('() => !document.getElementById("message-input").disabled')
+                        assert '查询 BaiBu 的科名' not in page.locator('#chat-body').inner_text()
+                        assert page.locator('.herb-source-card').count() == 0
+                        submit('它的科名呢？', 'clarify_entity')
+                        report['cases'].append({'case': 'deleted_history_stays_deleted_after_restart', 'status': 'passed'})
                         assert not report['page_errors'], report['page_errors']
                         browser.close()
                     assert hashlib.sha256(database.read_bytes()).hexdigest() == initial
