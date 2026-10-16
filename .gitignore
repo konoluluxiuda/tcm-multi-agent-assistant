@@ -201,3 +201,6 @@ data/*.bak_*/
 *.sqlite3
 *.sqlite3-wal
 *.sqlite3-shm
+
+# User-provided pharmacopoeia scans stay local
+/data/《中国药典》*.pdf

@@ -1,0 +1,165 @@
+{
+  "kind": "local_ocr_engineering_pilot",
+  "review_status": "ai_visual_transcription_pending_human_review",
+  "date": "2026-10-16",
+  "source_pdf_authenticity_verified": false,
+  "dataset_version": "local-2026-10-10",
+  "documents": {
+    "full": {
+      "path": "data/《中国药典》2025年版 一部 全本.pdf",
+      "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+      "printed_pages": {
+        "51": 3,
+        "76": 28,
+        "77": 29
+      },
+      "edition_claim": "2025年版一部，按扉页标注，来源真实性未核验"
+    },
+    "high": {
+      "path": "data/《中国药典》2025年版 一部.pdf",
+      "sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+      "printed_pages": {
+        "24": 3,
+        "25": 4
+      },
+      "edition_claim": "2025年版一部，按封面标注，来源真实性未核验"
+    }
+  },
+  "normalization": "Unicode NFKC and remove whitespace only; punctuation differences still fail.",
+  "scope": "Four manually selected herb regions; not automatic entity mapping or full document segmentation.",
+  "cases": [
+    {
+      "id": "YiZhiHuangHua",
+      "name_zh_candidate": "一枝黄花",
+      "etcm_source_record_id": "etcm2-local:d72fa1d80e243a830468878d29804bad5c8e9a786646d37a7080752e0894e64a",
+      "mapping_status": "ai_visual_candidate_pending_human_review",
+      "segments": [
+        {
+          "document": "high",
+          "pdf_page": 24,
+          "column": "left",
+          "y_range": [
+            0.1,
+            0.96
+          ]
+        },
+        {
+          "document": "high",
+          "pdf_page": 24,
+          "column": "right",
+          "y_range": [
+            0.09,
+            0.5
+          ]
+        }
+      ],
+      "expected_fragments": {
+        "name": "一枝黄花",
+        "latin_drug_name": "SOLIDAGINIS HERBA",
+        "medicinal_part_fragment": "干燥全草",
+        "properties_meridians": "辛、苦，凉。归肺、肝经。",
+        "quantity_fragment": "9～15g"
+      }
+    },
+    {
+      "id": "DingGongTeng",
+      "name_zh_candidate": "丁公藤",
+      "etcm_source_record_id": "etcm2-local:0a9f31f20f923c4dfe570f967a830576f338cc912e62de3b9c2756515ec4fc28",
+      "mapping_status": "ai_visual_candidate_pending_human_review",
+      "segments": [
+        {
+          "document": "high",
+          "pdf_page": 24,
+          "column": "right",
+          "y_range": [
+            0.51,
+            0.96
+          ]
+        },
+        {
+          "document": "high",
+          "pdf_page": 25,
+          "column": "left",
+          "y_range": [
+            0.09,
+            0.8
+          ]
+        }
+      ],
+      "expected_fragments": {
+        "name": "丁公藤",
+        "latin_drug_name": "ERYCIBES CAULIS",
+        "medicinal_part_fragment": "干燥藤茎",
+        "properties_meridians": "辛，温；有小毒。归肝、脾、胃经。",
+        "quantity_fragment": "3～6g",
+        "caution_fragment": "孕妇禁用"
+      }
+    },
+    {
+      "id": "DaFuPi",
+      "name_zh_candidate": "大腹皮",
+      "etcm_source_record_id": "etcm2-local:52b4392a9139c2e94559b7a3831a1965d0a8250139ea418d3465c7644a780966",
+      "mapping_status": "ai_visual_candidate_pending_human_review",
+      "segments": [
+        {
+          "document": "full",
+          "pdf_page": 76,
+          "column": "left",
+          "y_range": [
+            0.78,
+            0.96
+          ]
+        },
+        {
+          "document": "full",
+          "pdf_page": 76,
+          "column": "right",
+          "y_range": [
+            0.09,
+            0.95
+          ]
+        }
+      ],
+      "expected_fragments": {
+        "name": "大腹皮",
+        "latin_drug_name": "ARECAE PERICARPIUM",
+        "medicinal_part_fragment": "干燥果皮",
+        "properties_meridians": "辛，微温。归脾、胃、大肠、小肠经。",
+        "quantity_fragment": "5～10g"
+      }
+    },
+    {
+      "id": "ShanMaiDong",
+      "name_zh_candidate": "山麦冬",
+      "etcm_source_record_id": "etcm2-local:46a09e57990d35163fec9205892e88b8235a019f2b079f1ae10a27f1de096ea1",
+      "mapping_status": "ai_visual_candidate_pending_human_review",
+      "segments": [
+        {
+          "document": "full",
+          "pdf_page": 77,
+          "column": "left",
+          "y_range": [
+            0.1,
+            0.96
+          ]
+        },
+        {
+          "document": "full",
+          "pdf_page": 77,
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.18
+          ]
+        }
+      ],
+      "expected_fragments": {
+        "name": "山麦冬",
+        "latin_drug_name": "LIRIOPES RADIX",
+        "medicinal_part_fragment": "干燥块根",
+        "properties_meridians": "甘、微苦，微寒。归心、肺、胃经。",
+        "quantity_fragment": "9～15g"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1012 @@
+{
+  "kind": "local_ocr_engineering_pilot",
+  "review_status": "ai_visual_transcription_pending_human_review",
+  "human_signoff": false,
+  "suite_sha256": "84fbaafe28d91fd5651a6c88a557071f205d5c3afdafe52590eeda59724ee675",
+  "code_sha256": "127842de00bc288bf241e57ebe96760ed2da62c918b9bf88c0927cdf8aa71d56",
+  "models": {
+    "ch_PP-OCRv4_rec_infer.onnx": "48fc40f24f6d2a207a2b1091d3437eb3cc3eb6b676dc3ef9c37384005483683b",
+    "ch_ppocr_mobile_v2.0_cls_infer.onnx": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c",
+    "ch_PP-OCRv4_det_infer.onnx": "d2a7720d45a54257208b1e13e36a8479894cb74155a5efe29462512d42f49da9"
+  },
+  "versions": {
+    "rapidocr-onnxruntime": "1.4.4",
+    "onnxruntime": "1.31.0",
+    "PyMuPDF": "1.28.2",
+    "numpy": "2.5.4",
+    "opencv-python": "5.0.0.93"
+  },
+  "settings": {
+    "render_dpi": 240,
+    "column_split": 0.5,
+    "threads": 2,
+    "det_limit_side_len": 960,
+    "onnx_telemetry": "disabled"
+  },
+  "pages": [
+    {
+      "key": "full-51-left",
+      "source": {
+        "path": "data/《中国药典》2025年版 一部 全本.pdf",
+        "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+        "printed_pages": {
+          "51": 3,
+          "76": 28,
+          "77": 29
+        },
+        "edition_claim": "2025年版一部，按扉页标注，来源真实性未核验"
+      },
+      "pdf_page": 51,
+      "printed_page": 3,
+      "column": "left",
+      "elapsed_seconds": 5.021,
+      "line_count": 45,
+      "mean_model_confidence": 0.9683898703221752
+    },
+    {
+      "key": "full-51-right",
+      "source": {
+        "path": "data/《中国药典》2025年版 一部 全本.pdf",
+        "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+        "printed_pages": {
+          "51": 3,
+          "76": 28,
+          "77": 29
+        },
+        "edition_claim": "2025年版一部，按扉页标注，来源真实性未核验"
+      },
+      "pdf_page": 51,
+      "printed_page": 3,
+      "column": "right",
+      "elapsed_seconds": 4.224,
+      "line_count": 45,
+      "mean_model_confidence": 0.9738406649361245
+    },
+    {
+      "key": "full-76-left",
+      "source": {
+        "path": "data/《中国药典》2025年版 一部 全本.pdf",
+        "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+        "printed_pages": {
+          "51": 3,
+          "76": 28,
+          "77": 29
+        },
+        "edition_claim": "2025年版一部，按扉页标注，来源真实性未核验"
+      },
+      "pdf_page": 76,
+      "printed_page": 28,
+      "column": "left",
+      "elapsed_seconds": 3.655,
+      "line_count": 42,
+      "mean_model_confidence": 0.9646871215859982
+    },
+    {
+      "key": "full-76-right",
+      "source": {
+        "path": "data/《中国药典》2025年版 一部 全本.pdf",
+        "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+        "printed_pages": {
+          "51": 3,
+          "76": 28,
+          "77": 29
+        },
+        "edition_claim": "2025年版一部，按扉页标注，来源真实性未核验"
+      },
+      "pdf_page": 76,
+      "printed_page": 28,
+      "column": "right",
+      "elapsed_seconds": 4.205,
+      "line_count": 48,
+      "mean_model_confidence": 0.9719910879826753
+    },
+    {
+      "key": "full-77-left",
+      "source": {
+        "path": "data/《中国药典》2025年版 一部 全本.pdf",
+        "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+        "printed_pages": {
+          "51": 3,
+          "76": 28,
+          "77": 29
+        },
+        "edition_claim": "2025年版一部，按扉页标注，来源真实性未核验"
+      },
+      "pdf_page": 77,
+      "printed_page": 29,
+      "column": "left",
+      "elapsed_seconds": 4.034,
+      "line_count": 45,
+      "mean_model_confidence": 0.9728595890593394
+    },
+    {
+      "key": "full-77-right",
+      "source": {
+        "path": "data/《中国药典》2025年版 一部 全本.pdf",
+        "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+        "printed_pages": {
+          "51": 3,
+          "76": 28,
+          "77": 29
+        },
+        "edition_claim": "2025年版一部，按扉页标注，来源真实性未核验"
+      },
+      "pdf_page": 77,
+      "printed_page": 29,
+      "column": "right",
+      "elapsed_seconds": 4.17,
+      "line_count": 44,
+      "mean_model_confidence": 0.9760807196786144
+    },
+    {
+      "key": "high-24-left",
+      "source": {
+        "path": "data/《中国药典》2025年版 一部.pdf",
+        "sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+        "printed_pages": {
+          "24": 3,
+          "25": 4
+        },
+        "edition_claim": "2025年版一部，按封面标注，来源真实性未核验"
+      },
+      "pdf_page": 24,
+      "printed_page": 3,
+      "column": "left",
+      "elapsed_seconds": 4.184,
+      "line_count": 44,
+      "mean_model_confidence": 0.9855995124451843
+    },
+    {
+      "key": "high-24-right",
+      "source": {
+        "path": "data/《中国药典》2025年版 一部.pdf",
+        "sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+        "printed_pages": {
+          "24": 3,
+          "25": 4
+        },
+        "edition_claim": "2025年版一部，按封面标注，来源真实性未核验"
+      },
+      "pdf_page": 24,
+      "printed_page": 3,
+      "column": "right",
+      "elapsed_seconds": 3.774,
+      "line_count": 44,
+      "mean_model_confidence": 0.9786469503923512
+    },
+    {
+      "key": "high-25-left",
+      "source": {
+        "path": "data/《中国药典》2025年版 一部.pdf",
+        "sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+        "printed_pages": {
+          "24": 3,
+          "25": 4
+        },
+        "edition_claim": "2025年版一部，按封面标注，来源真实性未核验"
+      },
+      "pdf_page": 25,
+      "printed_page": 4,
+      "column": "left",
+      "elapsed_seconds": 3.889,
+      "line_count": 44,
+      "mean_model_confidence": 0.9812185075255347
+    },
+    {
+      "key": "high-25-right",
+      "source": {
+        "path": "data/《中国药典》2025年版 一部.pdf",
+        "sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+        "printed_pages": {
+          "24": 3,
+          "25": 4
+        },
+        "edition_claim": "2025年版一部，按封面标注，来源真实性未核验"
+      },
+      "pdf_page": 25,
+      "printed_page": 4,
+      "column": "right",
+      "elapsed_seconds": 5.072,
+      "line_count": 48,
+      "mean_model_confidence": 0.9856290558258861
+    }
+  ],
+  "cases": [
+    {
+      "id": "YiZhiHuangHua",
+      "etcm_source_record_id": "etcm2-local:d72fa1d80e243a830468878d29804bad5c8e9a786646d37a7080752e0894e64a",
+      "mapping_status": "ai_visual_candidate_pending_human_review",
+      "checks": [
+        {
+          "field": "name",
+          "expected_fragment": "一枝黄花",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9975223690271378,
+              "pdf_box": [
+                [
+                  130.5,
+                  99.0
+                ],
+                [
+                  202.8,
+                  100.8
+                ],
+                [
+                  202.5,
+                  114.0
+                ],
+                [
+                  130.2,
+                  112.2
+                ]
+              ],
+              "center_y_fraction": 0.12663495838287753,
+              "source_key": "high-24-left"
+            }
+          ]
+        },
+        {
+          "field": "latin_drug_name",
+          "expected_fragment": "SOLIDAGINIS HERBA",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9975655190646648,
+              "pdf_box": [
+                [
+                  106.2,
+                  139.8
+                ],
+                [
+                  227.1,
+                  139.8
+                ],
+                [
+                  227.1,
+                  148.5
+                ],
+                [
+                  106.2,
+                  148.5
+                ]
+              ],
+              "center_y_fraction": 0.17140309155766945,
+              "source_key": "high-24-left"
+            }
+          ]
+        },
+        {
+          "field": "medicinal_part_fragment",
+          "expected_fragment": "干燥全草",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9926671556064061,
+              "pdf_box": [
+                [
+                  48.0,
+                  186.6
+                ],
+                [
+                  227.1,
+                  186.9
+                ],
+                [
+                  227.1,
+                  195.6
+                ],
+                [
+                  48.0,
+                  195.3
+                ]
+              ],
+              "center_y_fraction": 0.2272294887039239,
+              "source_key": "high-24-left"
+            }
+          ]
+        },
+        {
+          "field": "properties_meridians",
+          "expected_fragment": "辛、苦，凉。归肺、肝经。",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9952326009148046,
+              "pdf_box": [
+                [
+                  323.9,
+                  333.0
+                ],
+                [
+                  481.1,
+                  333.0
+                ],
+                [
+                  481.1,
+                  341.7
+                ],
+                [
+                  323.9,
+                  341.7
+                ]
+              ],
+              "center_y_fraction": 0.4011296076099881,
+              "source_key": "high-24-right"
+            }
+          ]
+        },
+        {
+          "field": "quantity_fragment",
+          "expected_fragment": "9～15g",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9905889722017142,
+              "pdf_box": [
+                [
+                  323.9,
+                  378.6
+                ],
+                [
+                  420.5,
+                  380.4
+                ],
+                [
+                  420.2,
+                  390.3
+                ],
+                [
+                  323.9,
+                  388.5
+                ]
+              ],
+              "center_y_fraction": 0.45713436385255646,
+              "source_key": "high-24-right"
+            }
+          ]
+        }
+      ],
+      "matched": 5,
+      "total": 5
+    },
+    {
+      "id": "DingGongTeng",
+      "etcm_source_record_id": "etcm2-local:0a9f31f20f923c4dfe570f967a830576f338cc912e62de3b9c2756515ec4fc28",
+      "mapping_status": "ai_visual_candidate_pending_human_review",
+      "checks": [
+        {
+          "field": "name",
+          "expected_fragment": "丁公藤",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.999388853708903,
+              "pdf_box": [
+                [
+                  392.6,
+                  443.1
+                ],
+                [
+                  458.9,
+                  443.1
+                ],
+                [
+                  458.9,
+                  455.7
+                ],
+                [
+                  392.6,
+                  455.7
+                ]
+              ],
+              "center_y_fraction": 0.5343638525564803,
+              "source_key": "high-24-right"
+            }
+          ]
+        },
+        {
+          "field": "latin_drug_name",
+          "expected_fragment": "ERYCIBES CAULIS",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9742534478505452,
+              "pdf_box": [
+                [
+                  373.7,
+                  481.8
+                ],
+                [
+                  478.1,
+                  481.8
+                ],
+                [
+                  478.1,
+                  490.8
+                ],
+                [
+                  373.7,
+                  490.8
+                ]
+              ],
+              "center_y_fraction": 0.5782401902497027,
+              "source_key": "high-24-right"
+            }
+          ]
+        },
+        {
+          "field": "medicinal_part_fragment",
+          "expected_fragment": "干燥藤茎",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9977330499225192,
+              "pdf_box": [
+                [
+                  307.4,
+                  529.8
+                ],
+                [
+                  545.0,
+                  528.9
+                ],
+                [
+                  545.0,
+                  537.9
+                ],
+                [
+                  307.4,
+                  538.8
+                ]
+              ],
+              "center_y_fraction": 0.6347800237812128,
+              "source_key": "high-24-right"
+            }
+          ]
+        },
+        {
+          "field": "properties_meridians",
+          "expected_fragment": "辛，温；有小毒。归肝、脾、胃经。",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9937268858370574,
+              "pdf_box": [
+                [
+                  68.7,
+                  578.1
+                ],
+                [
+                  256.8,
+                  578.4
+                ],
+                [
+                  256.8,
+                  587.1
+                ],
+                [
+                  68.7,
+                  586.8
+                ]
+              ],
+              "center_y_fraction": 0.6927467300832343,
+              "source_key": "high-25-left"
+            }
+          ]
+        },
+        {
+          "field": "quantity_fragment",
+          "expected_fragment": "3～6g",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9824238777160644,
+              "pdf_box": [
+                [
+                  68.1,
+                  624.9
+                ],
+                [
+                  270.3,
+                  624.9
+                ],
+                [
+                  270.3,
+                  633.6
+                ],
+                [
+                  68.1,
+                  633.6
+                ]
+              ],
+              "center_y_fraction": 0.7482164090368609,
+              "source_key": "high-25-left"
+            }
+          ]
+        },
+        {
+          "field": "caution_fragment",
+          "expected_fragment": "孕妇禁用",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9977375223086431,
+              "pdf_box": [
+                [
+                  67.5,
+                  640.5
+                ],
+                [
+                  287.7,
+                  639.9
+                ],
+                [
+                  287.7,
+                  648.6
+                ],
+                [
+                  67.5,
+                  649.2
+                ]
+              ],
+              "center_y_fraction": 0.7664090368608798,
+              "source_key": "high-25-left"
+            }
+          ]
+        }
+      ],
+      "matched": 6,
+      "total": 6
+    },
+    {
+      "id": "DaFuPi",
+      "etcm_source_record_id": "etcm2-local:52b4392a9139c2e94559b7a3831a1965d0a8250139ea418d3465c7644a780966",
+      "mapping_status": "ai_visual_candidate_pending_human_review",
+      "checks": [
+        {
+          "field": "name",
+          "expected_fragment": "大腹皮",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9987284541130066,
+              "pdf_box": [
+                [
+                  144.9,
+                  662.4
+                ],
+                [
+                  210.9,
+                  662.4
+                ],
+                [
+                  210.9,
+                  675.6
+                ],
+                [
+                  144.9,
+                  675.6
+                ]
+              ],
+              "center_y_fraction": 0.7919746577265625,
+              "source_key": "full-76-left"
+            }
+          ]
+        },
+        {
+          "field": "latin_drug_name",
+          "expected_fragment": "ARECAE PERICARPIUM",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9963879515143002,
+              "pdf_box": [
+                [
+                  111.3,
+                  701.4
+                ],
+                [
+                  245.4,
+                  702.0
+                ],
+                [
+                  245.4,
+                  711.0
+                ],
+                [
+                  111.0,
+                  710.4
+                ]
+              ],
+              "center_y_fraction": 0.8360127104431965,
+              "source_key": "full-76-left"
+            }
+          ]
+        },
+        {
+          "field": "medicinal_part_fragment",
+          "expected_fragment": "干燥果皮",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.94274277008813,
+              "pdf_box": [
+                [
+                  77.7,
+                  732.3
+                ],
+                [
+                  296.4,
+                  733.2
+                ],
+                [
+                  296.4,
+                  741.9
+                ],
+                [
+                  77.7,
+                  741.0
+                ]
+              ],
+              "center_y_fraction": 0.8725927058449167,
+              "source_key": "full-76-left"
+            }
+          ]
+        },
+        {
+          "field": "properties_meridians",
+          "expected_fragment": "辛，微温。归脾、胃、大肠、小肠经。",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.973667191962401,
+              "pdf_box": [
+                [
+                  331.8900146484375,
+                  719.4
+                ],
+                [
+                  526.8900146484375,
+                  719.7
+                ],
+                [
+                  526.8900146484375,
+                  728.4
+                ],
+                [
+                  331.5900146484375,
+                  728.1
+                ]
+              ],
+              "center_y_fraction": 0.85696630004224,
+              "source_key": "full-76-right"
+            }
+          ]
+        },
+        {
+          "field": "quantity_fragment",
+          "expected_fragment": "5～10g",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.965621122947106,
+              "pdf_box": [
+                [
+                  331.8900146484375,
+                  764.1
+                ],
+                [
+                  426.6900146484375,
+                  765.6
+                ],
+                [
+                  426.6900146484375,
+                  774.6
+                ],
+                [
+                  331.5900146484375,
+                  773.1
+                ]
+              ],
+              "center_y_fraction": 0.9107708563855469,
+              "source_key": "full-76-right"
+            }
+          ]
+        }
+      ],
+      "matched": 5,
+      "total": 5
+    },
+    {
+      "id": "ShanMaiDong",
+      "etcm_source_record_id": "etcm2-local:46a09e57990d35163fec9205892e88b8235a019f2b079f1ae10a27f1de096ea1",
+      "mapping_status": "ai_visual_candidate_pending_human_review",
+      "checks": [
+        {
+          "field": "name",
+          "expected_fragment": "山麦冬",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.999654491742452,
+              "pdf_box": [
+                [
+                  137.7,
+                  98.4
+                ],
+                [
+                  202.2,
+                  98.4
+                ],
+                [
+                  202.2,
+                  110.7
+                ],
+                [
+                  137.7,
+                  110.7
+                ]
+              ],
+              "center_y_fraction": 0.12376823686892693,
+              "source_key": "full-77-left"
+            }
+          ]
+        },
+        {
+          "field": "latin_drug_name",
+          "expected_fragment": "LIRIOPES RADIX",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9961456152109,
+              "pdf_box": [
+                [
+                  122.1,
+                  135.9
+                ],
+                [
+                  217.2,
+                  136.5
+                ],
+                [
+                  217.2,
+                  145.5
+                ],
+                [
+                  122.1,
+                  144.9
+                ]
+              ],
+              "center_y_fraction": 0.16656328003307524,
+              "source_key": "full-77-left"
+            }
+          ]
+        },
+        {
+          "field": "medicinal_part_fragment",
+          "expected_fragment": "干燥块根",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9696446043072324,
+              "pdf_box": [
+                [
+                  53.7,
+                  197.4
+                ],
+                [
+                  286.5,
+                  197.1
+                ],
+                [
+                  286.5,
+                  206.1
+                ],
+                [
+                  53.7,
+                  206.4
+                ]
+              ],
+              "center_y_fraction": 0.23883540687045438,
+              "source_key": "full-77-left"
+            }
+          ]
+        },
+        {
+          "field": "properties_meridians",
+          "expected_fragment": "甘、微苦，微寒。归心、肺、胃经。",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.9698739440544791,
+              "pdf_box": [
+                [
+                  70.2,
+                  761.1
+                ],
+                [
+                  256.2,
+                  761.1
+                ],
+                [
+                  256.2,
+                  769.8
+                ],
+                [
+                  70.2,
+                  769.8
+                ]
+              ],
+              "center_y_fraction": 0.9061539637620288,
+              "source_key": "full-77-left"
+            }
+          ]
+        },
+        {
+          "field": "quantity_fragment",
+          "expected_fragment": "9～15g",
+          "matched": true,
+          "supporting_lines": [
+            {
+              "score": 0.970067024230957,
+              "pdf_box": [
+                [
+                  322.2900146484375,
+                  111.3
+                ],
+                [
+                  418.2900146484375,
+                  112.5
+                ],
+                [
+                  417.9900146484375,
+                  122.7
+                ],
+                [
+                  322.2900146484375,
+                  121.5
+                ]
+              ],
+              "center_y_fraction": 0.13850677870554232,
+              "source_key": "full-77-right"
+            }
+          ]
+        }
+      ],
+      "matched": 5,
+      "total": 5
+    }
+  ],
+  "source_pdf_authenticity_verified": false,
+  "limitations": [
+    "Manual regions and reference fragments; no full-document extraction or clinical validation.",
+    "OCR confidence is model confidence, not empirical character accuracy.",
+    "No production ingestion or canonical Chinese entity mapping."
+  ],
+  "whole_page_baseline": {
+    "document": "high",
+    "pdf_page": 24,
+    "printed_page": 3,
+    "line_count": 85,
+    "column_switches": 79,
+    "elapsed_seconds": 10.632
+  },
+  "same_page_source_comparison": [
+    {
+      "document": "high",
+      "pdf_page": 24,
+      "printed_page": 3,
+      "matched": 5,
+      "total": 5
+    },
+    {
+      "document": "full",
+      "pdf_page": 51,
+      "printed_page": 3,
+      "matched": 5,
+      "total": 5
+    }
+  ],
+  "network_attempts": 0,
+  "sources_unchanged": true,
+  "summary": {
+    "herbs": 4,
+    "matched_fragments": 21,
+    "total_fragments": 21,
+    "ocr_accuracy": null,
+    "business_task_completion_rate": null
+  },
+  "raw_ocr_location": "var/pharmacopoeia_ocr_sample/final/ (local, ignored)",
+  "experiment_date": "2026-10-16",
+  "etcm_database_sha256": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+  "runtime_seconds_sum": 52.86,
+  "etcm_fields_modified": false,
+  "posthoc_diagnostics": [
+    {
+      "source_key": "full-76-left",
+      "pdf_page": 76,
+      "printed_page": 28,
+      "expected_visual_fragment": "Dafupi",
+      "observed_ocr_fragment": "dnpa",
+      "model_line_confidence": 0.5852873474359512,
+      "pdf_box": [
+        [
+          163.2,
+          683.1
+        ],
+        [
+          193.5,
+          683.1
+        ],
+        [
+          193.5,
+          694.8
+        ],
+        [
+          163.2,
+          694.8
+        ]
+      ],
+      "meaning": "Pinyin heading incorrectly recognized; not evaluated by the 21 fragment checks.",
+      "status": "posthoc_ai_visual_observation_pending_human_review"
+    },
+    {
+      "source_key": "full-77-left",
+      "pdf_page": 77,
+      "printed_page": 29,
+      "expected_visual_fragment": "spicata",
+      "observed_ocr_fragment": "spicala",
+      "model_line_confidence": 0.9616644943461699,
+      "pdf_box": [
+        [
+          70.2,
+          166.5
+        ],
+        [
+          286.8,
+          167.1
+        ],
+        [
+          286.8,
+          176.7
+        ],
+        [
+          69.9,
+          176.1
+        ]
+      ],
+      "meaning": "Botanical epithet substitution; do not auto-correct from ETCM.",
+      "status": "posthoc_ai_visual_observation_pending_human_review"
+    },
+    {
+      "source_key": "full-77-left",
+      "pdf_page": 77,
+      "printed_page": 29,
+      "expected_visual_fragment": "短葶",
+      "observed_ocr_fragment": "短亭",
+      "model_line_confidence": 0.9533216411417181,
+      "pdf_box": [
+        [
+          52.8,
+          181.8
+        ],
+        [
+          285.9,
+          181.5
+        ],
+        [
+          285.9,
+          191.4
+        ],
+        [
+          52.8,
+          191.7
+        ]
+      ],
+      "meaning": "Source plant Chinese name character substitution.",
+      "status": "posthoc_ai_visual_observation_pending_human_review"
+    }
+  ]
+}
