@@ -1,0 +1,161 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "case": "YiZhiHuangHua",
+      "field": "latin_drug_name",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "YiZhiHuangHua",
+      "field": "medicinal_part",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "YiZhiHuangHua",
+      "field": "properties_meridians",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "YiZhiHuangHua",
+      "field": "usage",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "DingGongTeng",
+      "field": "latin_drug_name",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "DingGongTeng",
+      "field": "medicinal_part",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "DingGongTeng",
+      "field": "properties_meridians",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "DingGongTeng",
+      "field": "usage",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "DingGongTeng",
+      "field": "cautions",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "DaFuPi",
+      "field": "latin_drug_name",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "DaFuPi",
+      "field": "medicinal_part",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "DaFuPi",
+      "field": "properties_meridians",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "DaFuPi",
+      "field": "usage",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "ShanMaiDong",
+      "field": "latin_drug_name",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "ShanMaiDong",
+      "field": "medicinal_part",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "ShanMaiDong",
+      "field": "properties_meridians",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "ShanMaiDong",
+      "field": "usage",
+      "check": "prior_reference_fragment_and_provenance",
+      "passed": true
+    },
+    {
+      "case": "YiZhiHuangHua",
+      "field": "cautions",
+      "check": "missing_is_not_negative_clinical_fact",
+      "passed": true
+    },
+    {
+      "case": "DaFuPi",
+      "field": "cautions",
+      "check": "missing_is_not_negative_clinical_fact",
+      "passed": true
+    },
+    {
+      "case": "ShanMaiDong",
+      "field": "cautions",
+      "check": "missing_is_not_negative_clinical_fact",
+      "passed": true
+    },
+    {
+      "case": "DaFuPi",
+      "check": "bad_pinyin_quarantined_not_corrected",
+      "passed": true
+    },
+    {
+      "case": "ShanMaiDong",
+      "check": "bad_taxon_quarantined_not_corrected",
+      "passed": true
+    },
+    {
+      "case": "ShanMaiDong",
+      "check": "cross_column_field_has_both_evidence_columns",
+      "passed": true
+    },
+    {
+      "case": "DingGongTeng",
+      "check": "cross_page_entry_caution_is_from_page_four",
+      "passed": true
+    },
+    {
+      "case": "unknown",
+      "check": "no_implicit_entity",
+      "passed": true
+    }
+  ],
+  "total": 25,
+  "passed": 25,
+  "human_signoff": false,
+  "business_task_completion_rate": null,
+  "clinical_truth_verified": false,
+  "candidates_sha256": "0535badbad1cbc0fbbfb27f4603b11906e1e09dec3e625ce02943b6e82b6f30d",
+  "reference_sha256": "84fbaafe28d91fd5651a6c88a557071f205d5c3afdafe52590eeda59724ee675",
+  "code_sha256": {
+    "tcm/pharmacopoeia.py": "1b60e910178eb3ca88439b8a5b24c7bfa96806d3b49105604d2dd58e11a039bf",
+    "scripts/eval_pharmacopoeia_candidates.py": "0574e947cf09a119092b957b22d9a35964c850fdb6913948ea0c6a0191bc930e"
+  }
+}

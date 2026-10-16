@@ -1,0 +1,48 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self';script-src 'unsafe-inline';style-src 'unsafe-inline';img-src 'self';connect-src 'self'">
+<title>药典 OCR 字段复核</title>
+<style>body{max-width:1000px;margin:28px auto;padding:0 18px;font:16px/1.6 sans-serif;color:#182b37;background:#f5f7f8}section,article{background:white;border:1px solid #cbd5dc;padding:18px;margin:16px 0;border-radius:8px}input,select,button{font:inherit;padding:8px;margin:5px;max-width:90%}pre{white-space:pre-wrap;overflow-wrap:anywhere}img{max-width:100%;border:1px solid #bbb}.warning{color:#a33412}code{overflow-wrap:anywhere}summary{cursor:pointer}</style>
+<h1>药典 OCR 字段候选</h1>
+<p>仅四味药的试验数据。区域为人工划定，内容和药名对应均待人类核对；不会写回正式药材库。</p>
+<section><form id="query"><label>药材 <input id="name" value="一枝黄花" list="names"></label><datalist id="names"></datalist><label>字段 <select id="field"></select></label><button id="search" disabled>查找候选</button></form><p id="status" role="status">读取本地资料…</p></section>
+<div id="result"></div>
+<script>
+const labels={origin:'来源原文',medicinal_part:'药用部位候选',pinyin:'拼音原始识别',latin_drug_name:'拉丁药材名（非植物学名）',properties_meridians:'性味与归经',efficacy_indications:'功能与主治',usage:'用法与用量（原文候选）',cautions:'注意',storage:'贮藏'};
+const byId=id=>document.getElementById(id), norm=s=>s.replace(/\s+/g,'').toLowerCase();
+let data;
+function add(parent,tag,text){const el=document.createElement(tag);el.textContent=text;parent.append(el);return el;}
+function lookup(){
+ const root=byId('result');root.replaceChildren();
+ const term=norm(byId('name').value),field=byId('field').value;
+ const matches=data.records.filter(r=>[r.id,r.name_zh_candidate,r.etcm_source_record_id].some(v=>norm(v)===term));
+ if(matches.length!==1){byId('status').textContent=matches.length?'同名候选不唯一，请使用来源ID。':'未找到所选试验药材。';return;}
+ const record=matches[0],value=record.fields[field];
+ byId('status').textContent='字段查询完成：未审核候选';
+ const card=add(root,'article','');card.dataset.field=field;card.dataset.reviewStatus=record.review_status;
+ add(card,'h2',record.name_zh_candidate+' · '+labels[field]);
+ add(card,'p',record.review_status==='quarantined'?'存在阻断异常，已隔离，不能直接采用。':'候选待人工复核，尚未批准。').className='warning';
+ add(card,'code',record.etcm_source_record_id);
+ const issues=document.createElement('details');card.append(issues);add(issues,'summary','查看异常与核对事项（'+record.issues.length+'项）');add(issues,'pre',JSON.stringify(record.issues,null,2));
+ if(value.state!=='candidate'){add(card,'p',value.message);card.dataset.fieldState=value.state;return;}
+ card.dataset.fieldState='candidate';
+ value.occurrences.forEach((occ,index)=>{
+  const section=add(card,'section','');add(section,'h3','原文候选 '+(index+1));add(section,'pre',occ.raw_text);
+  add(section,'p','结束边界：'+occ.end_boundary+'；人工核对：待完成');
+  const details=document.createElement('details');section.append(details);add(details,'summary','展开原图与出处');
+  for(const preview of occ.previews||[]){
+   const source=data.documents[preview.document];
+   add(details,'p',source.path+' · PDF第'+preview.pdf_page+'页 · 印刷第'+preview.printed_page+'页');
+   add(details,'code','SHA-256: '+preview.source_sha256);
+   if(/^assets\/[A-Za-z0-9_-]+\.png$/.test(preview.image)){const image=document.createElement('img');image.src=preview.image;image.alt='原图裁剪，红框为OCR行证据';image.loading='lazy';details.append(image);}
+  }
+  add(details,'pre',JSON.stringify(occ.evidence,null,2));
+ });
+}
+byId('query').addEventListener('submit',e=>{e.preventDefault();lookup();});
+fetch('candidates.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('无法读取资料');return r.json();}).then(value=>{
+ data=value;for(const [key,label]of Object.entries(labels)){const el=add(byId('field'),'option',label);el.value=key;}
+ for(const record of data.records){const option=add(byId('names'),'option',record.name_zh_candidate);option.value=record.name_zh_candidate;}
+ byId('search').disabled=false;lookup();
+}).catch(error=>{byId('status').textContent=error.message+'；请通过本地HTTP服务打开此页。';});
+</script></html>

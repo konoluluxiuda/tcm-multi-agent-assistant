@@ -1,0 +1,327 @@
+{
+  "date": "2026-10-17",
+  "human_signoff": false,
+  "production_ingested": false,
+  "business_task_completion_rate": null,
+  "candidates_sha256": "0535badbad1cbc0fbbfb27f4603b11906e1e09dec3e625ce02943b6e82b6f30d",
+  "reference_sha256": "84fbaafe28d91fd5651a6c88a557071f205d5c3afdafe52590eeda59724ee675",
+  "flags_sha256": "84d85a7b9e5a158856a10f73e0532c34efd991e23237b8794a2002b63dcccd03",
+  "source_pdfs_unchanged": true,
+  "ocr_inputs_sha256": {
+    "high-24-left.json": "ea6220fdeac8f9b5ccb5f4c5aaaff1c495af956616cab742f92a1b0fa618d071",
+    "high-24-right.json": "61baadb0ca251d9f2f7e10cb5c0aad04676a8cc0e0801b9bd3481bf5290931ab",
+    "high-25-left.json": "326e47486c987fc73a50b09af2c08f8038990ac00426de08d994d02a2be43f14",
+    "full-76-left.json": "857f56cba16f1aa881514e5926d2a60be6c0ec1d19b118c2fa9f9eb1c9fccd14",
+    "full-76-right.json": "9ea4832047e267e84766f0e48ce3484ba7b4a203275d8eb5e43dbc446295b8fa",
+    "full-77-left.json": "1926aa795abcfa299f05f5e0982778ae87efcf82da7d5a4524f9b0a561e3f749",
+    "full-77-right.json": "4aefeadf584134663ad4dad9233834f2fb54bd34274d260ebac66995e8d6d70a"
+  },
+  "source_documents": {
+    "full": {
+      "path": "data/《中国药典》2025年版 一部 全本.pdf",
+      "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+      "printed_pages": {
+        "51": 3,
+        "76": 28,
+        "77": 29
+      },
+      "edition_claim": "2025年版一部，按扉页标注，来源真实性未核验"
+    },
+    "high": {
+      "path": "data/《中国药典》2025年版 一部.pdf",
+      "sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+      "printed_pages": {
+        "24": 3,
+        "25": 4
+      },
+      "edition_claim": "2025年版一部，按封面标注，来源真实性未核验"
+    }
+  },
+  "code_sha256": {
+    "tcm/pharmacopoeia.py": "1b60e910178eb3ca88439b8a5b24c7bfa96806d3b49105604d2dd58e11a039bf",
+    "tcm/pharmacopoeia_review.html": "292c85ceabd038f2a5eb34836e982dcbe4aa8bf256f66b4a24694c6fa012a341",
+    "scripts/build_pharmacopoeia_candidates.py": "0a5897dfd83d0f2986e3698a19e64e3ced3a101e2def02d68d81f3301f174716",
+    "scripts/query_pharmacopoeia_candidates.py": "acff88d0ec77f6c0acf9a0e5c13a070a0ea8cdf5a81b332fbc921da4a34654b1"
+  },
+  "summary": {
+    "records": 4,
+    "fields": 36,
+    "candidate_fields": 33,
+    "not_observed_fields": 3,
+    "quarantined": 3,
+    "pending_human_review": 1,
+    "source_crops": 33
+  },
+  "records": [
+    {
+      "id": "YiZhiHuangHua",
+      "etcm_source_record_id": "etcm2-local:d72fa1d80e243a830468878d29804bad5c8e9a786646d37a7080752e0894e64a",
+      "review_status": "quarantined",
+      "fields": {
+        "origin": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "properties_meridians": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "efficacy_indications": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "usage": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "cautions": {
+          "state": "not_observed_in_selected_ocr",
+          "occurrences": 0
+        },
+        "storage": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "medicinal_part": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "pinyin": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "latin_drug_name": {
+          "state": "candidate",
+          "occurrences": 1
+        }
+      },
+      "issues": [
+        {
+          "code": "field_end_requires_review",
+          "field": "storage",
+          "blocking": false
+        },
+        {
+          "code": "visual_ocr_review_flag",
+          "field": null,
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "DingGongTeng",
+      "etcm_source_record_id": "etcm2-local:0a9f31f20f923c4dfe570f967a830576f338cc912e62de3b9c2756515ec4fc28",
+      "review_status": "pending_human_review",
+      "fields": {
+        "origin": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "properties_meridians": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "efficacy_indications": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "usage": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "cautions": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "storage": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "medicinal_part": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "pinyin": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "latin_drug_name": {
+          "state": "candidate",
+          "occurrences": 1
+        }
+      },
+      "issues": [
+        {
+          "code": "field_end_requires_review",
+          "field": "storage",
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "DaFuPi",
+      "etcm_source_record_id": "etcm2-local:52b4392a9139c2e94559b7a3831a1965d0a8250139ea418d3465c7644a780966",
+      "review_status": "quarantined",
+      "fields": {
+        "origin": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "properties_meridians": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "efficacy_indications": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "usage": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "cautions": {
+          "state": "not_observed_in_selected_ocr",
+          "occurrences": 0
+        },
+        "storage": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "medicinal_part": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "pinyin": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "latin_drug_name": {
+          "state": "candidate",
+          "occurrences": 1
+        }
+      },
+      "issues": [
+        {
+          "code": "field_end_requires_review",
+          "field": "storage",
+          "blocking": false
+        },
+        {
+          "code": "pinyin_identity_mismatch",
+          "field": "pinyin",
+          "blocking": true
+        },
+        {
+          "code": "visual_ocr_review_flag",
+          "field": null,
+          "blocking": true
+        },
+        {
+          "code": "visual_ocr_review_flag",
+          "field": null,
+          "blocking": true
+        },
+        {
+          "code": "low_confidence_field_evidence",
+          "field": null,
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "ShanMaiDong",
+      "etcm_source_record_id": "etcm2-local:46a09e57990d35163fec9205892e88b8235a019f2b079f1ae10a27f1de096ea1",
+      "review_status": "quarantined",
+      "fields": {
+        "origin": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "properties_meridians": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "efficacy_indications": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "usage": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "cautions": {
+          "state": "not_observed_in_selected_ocr",
+          "occurrences": 0
+        },
+        "storage": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "medicinal_part": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "pinyin": {
+          "state": "candidate",
+          "occurrences": 1
+        },
+        "latin_drug_name": {
+          "state": "candidate",
+          "occurrences": 1
+        }
+      },
+      "issues": [
+        {
+          "code": "field_end_requires_review",
+          "field": "storage",
+          "blocking": false
+        },
+        {
+          "code": "visual_ocr_review_flag",
+          "field": null,
+          "blocking": true
+        },
+        {
+          "code": "visual_ocr_review_flag",
+          "field": null,
+          "blocking": true
+        }
+      ]
+    }
+  ],
+  "preview_sha256": {
+    "assets/YiZhiHuangHua-origin-0-high-24.png": "9df9772ec368a8ce7113fde8d25100da101ddcc8e7d35591c9fc4cddb27f40b1",
+    "assets/YiZhiHuangHua-properties_meridians-0-high-24.png": "939499e5a5f26252ad79c1b1b8749975627532de7a2f3bbbf6df34c1d3e2521d",
+    "assets/YiZhiHuangHua-efficacy_indications-0-high-24.png": "8b62fb264e63430d8c0cb9e9c3338f3241b9b886f0ab46ecfe6b047cfa34cb54",
+    "assets/YiZhiHuangHua-usage-0-high-24.png": "e9a948102977e0f300ec8017722e1106567f3f211e71fe0289af12a115392b05",
+    "assets/YiZhiHuangHua-storage-0-high-24.png": "6e44f1b4daf39e7621835dd200aea260f4db09f3f1149b1fcc0e76f14b451af6",
+    "assets/YiZhiHuangHua-medicinal_part-0-high-24.png": "9df9772ec368a8ce7113fde8d25100da101ddcc8e7d35591c9fc4cddb27f40b1",
+    "assets/YiZhiHuangHua-pinyin-0-high-24.png": "7629e07451896224c9b8c247e92ef02ba13add920420c2e5c445c2db6967ff27",
+    "assets/YiZhiHuangHua-latin_drug_name-0-high-24.png": "358d5e5cab47c4105ed8c79a54862b864a523bb4f679ed8e9f96b9afe751f36a",
+    "assets/DingGongTeng-origin-0-high-24.png": "18707b7f4a5e64e15ed9cfe3d3218e301b7be0f4ae65e14a59f3dd1052181ebd",
+    "assets/DingGongTeng-properties_meridians-0-high-25.png": "724c2bb47ff02b59c4f400fdd656aee3f65f9ec0f9aa8032b323ac5d986f6551",
+    "assets/DingGongTeng-efficacy_indications-0-high-25.png": "150bf1611f07169d159f987521edfef1c889d1e35148b2e57348aa1cc7470bbd",
+    "assets/DingGongTeng-usage-0-high-25.png": "99dfe83769abd3f9724d6f27891c75a06d6e2c667eddaf6c77938591a514fb0d",
+    "assets/DingGongTeng-cautions-0-high-25.png": "c4377c65b2f6bf0d369ba823c7c95c54ecda014c9a95b4ee5c19fb639963e95c",
+    "assets/DingGongTeng-storage-0-high-25.png": "6b674e35a4a13fb8f7dbf93172046c8990b2ee88867be3643bf8725128ee1cea",
+    "assets/DingGongTeng-medicinal_part-0-high-24.png": "18707b7f4a5e64e15ed9cfe3d3218e301b7be0f4ae65e14a59f3dd1052181ebd",
+    "assets/DingGongTeng-pinyin-0-high-24.png": "484f7f0cd13ff645c1c804ab5f3e77bf7c56d1c44f9a539a54325b491b747c5a",
+    "assets/DingGongTeng-latin_drug_name-0-high-24.png": "0d5d7fd19395af74e560263e075dc26b3cddd427b625c611aeb37714cd8b2fa9",
+    "assets/DaFuPi-origin-0-full-76.png": "1f79f8df2b0c2d1d5423d7449af28c0246c94ca0cf623810e31f71a542838466",
+    "assets/DaFuPi-properties_meridians-0-full-76.png": "686aec9d3a655eecc60685e51d3a84c8bb379fcc677ad78ec381064ca58695ce",
+    "assets/DaFuPi-efficacy_indications-0-full-76.png": "bfbd7da0e94fc2f37fcda88e8f9e1cbf9d8de81221afd1a46a2be059e9f9bb56",
+    "assets/DaFuPi-usage-0-full-76.png": "21fbd93b003cbc017cfcc402e6f738856d8035c41bbc34df0b2731edf227401f",
+    "assets/DaFuPi-storage-0-full-76.png": "ab7909c5659bd8826882ff2a63fa60c1ec0143d7d8471bd9d592866c90eddaf7",
+    "assets/DaFuPi-medicinal_part-0-full-76.png": "1f79f8df2b0c2d1d5423d7449af28c0246c94ca0cf623810e31f71a542838466",
+    "assets/DaFuPi-pinyin-0-full-76.png": "96bf9ec14ea809098f8864558556333cfc717727877d809838f740ccf92b14aa",
+    "assets/DaFuPi-latin_drug_name-0-full-76.png": "3971348afa96ee2f73cd5428e0179c3e7dfb0736b3ecd3ccea88412cbd2fd9a3",
+    "assets/ShanMaiDong-origin-0-full-77.png": "59dafeef1b5aba7e00240ff336844199cf2eba87f2bb90e5c2e4c839e5e4258f",
+    "assets/ShanMaiDong-properties_meridians-0-full-77.png": "919068de7fe567228640daec62a8d904372d843003cbff63d77300efe0e2320c",
+    "assets/ShanMaiDong-efficacy_indications-0-full-77.png": "87efc54a6ed76abcbeb4ba0b99aea855b6c20d5c0cfa73ee478ede15fb2e17df",
+    "assets/ShanMaiDong-usage-0-full-77.png": "8ab16f0bc1a8ea80410c7f924ffbfbbb175ffd517adc6f3ce60ff824ecc49600",
+    "assets/ShanMaiDong-storage-0-full-77.png": "89ce5af520193efa75e820bb1674443800b62ffba466492a42dd46420329f82c",
+    "assets/ShanMaiDong-medicinal_part-0-full-77.png": "59dafeef1b5aba7e00240ff336844199cf2eba87f2bb90e5c2e4c839e5e4258f",
+    "assets/ShanMaiDong-pinyin-0-full-77.png": "e141dc7a4b66f550794b4a38674006da4f1510a0c2a92a61ee44507165333848",
+    "assets/ShanMaiDong-latin_drug_name-0-full-77.png": "95fe14ac8950f1c67b955d84d778b490b5a8df99f6dd66ef969c03224146459c"
+  }
+}

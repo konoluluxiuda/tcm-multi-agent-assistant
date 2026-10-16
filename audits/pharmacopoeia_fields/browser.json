@@ -1,0 +1,43 @@
+{
+  "human_signoff": false,
+  "checks": [
+    {
+      "case": "field_card_and_original_crop",
+      "status": "passed"
+    },
+    {
+      "case": "cross_page_entry_caution_source",
+      "status": "passed"
+    },
+    {
+      "case": "quarantine_preserves_taxon_error",
+      "status": "passed"
+    },
+    {
+      "case": "quarantine_preserves_pinyin_error",
+      "status": "passed"
+    },
+    {
+      "case": "missing_does_not_become_no_contraindication",
+      "status": "passed"
+    },
+    {
+      "case": "unknown_entity_no_stale_card",
+      "status": "passed"
+    },
+    {
+      "case": "ocr_html_is_literal_text",
+      "status": "passed"
+    }
+  ],
+  "page_errors": [],
+  "blocked_external_requests": [],
+  "candidates_sha256": "0535badbad1cbc0fbbfb27f4603b11906e1e09dec3e625ce02943b6e82b6f30d",
+  "code_sha256": {
+    "tcm/pharmacopoeia_review.html": "292c85ceabd038f2a5eb34836e982dcbe4aa8bf256f66b4a24694c6fa012a341",
+    "scripts/build_pharmacopoeia_candidates.py": "0a5897dfd83d0f2986e3698a19e64e3ced3a101e2def02d68d81f3301f174716",
+    "scripts/verify_pharmacopoeia_review.py": "13e2b4375c98806724ca8c40bc0a653659489e7e1dfd2ed2c6a519735558a8f1"
+  },
+  "browser_version": "153.0.8010.12",
+  "status": "passed"
+}

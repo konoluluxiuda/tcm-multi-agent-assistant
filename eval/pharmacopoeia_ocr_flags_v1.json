@@ -1,0 +1,37 @@
+[
+  {
+    "case_id": "DaFuPi",
+    "source_key": "full-76-left",
+    "observed_fragment": "dnpa",
+    "visual_reference": "Dafupi",
+    "review_status": "ai_visual_pending_human_review"
+  },
+  {
+    "case_id": "ShanMaiDong",
+    "source_key": "full-77-left",
+    "observed_fragment": "spicala",
+    "visual_reference": "spicata",
+    "review_status": "ai_visual_pending_human_review"
+  },
+  {
+    "case_id": "ShanMaiDong",
+    "source_key": "full-77-left",
+    "observed_fragment": "短亭",
+    "visual_reference": "短葶",
+    "review_status": "ai_visual_pending_human_review"
+  },
+  {
+    "case_id": "YiZhiHuangHua",
+    "source_key": "high-24-right",
+    "observed_fragment": "疮疗",
+    "visual_reference": "疮疖",
+    "review_status": "ai_visual_pending_human_review"
+  },
+  {
+    "case_id": "DaFuPi",
+    "source_key": "full-76-right",
+    "observed_fragment": "院",
+    "visual_reference": "脘",
+    "review_status": "ai_visual_pending_human_review"
+  }
+]
