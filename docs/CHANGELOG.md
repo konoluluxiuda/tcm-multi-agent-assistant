@@ -1,5 +1,11 @@
 # 开发变更记录
 
+## 2026-10-18：研究工具版本推送与远程回归验收
+
+- 已将主图显式研究工具、CI PDF依赖修复及大纲更新提交为bc27ce8，并推送origin/main；未上传PDF、数据库、会话凭证或密钥。
+- GitHub Python3.11.17离线回归运行39097002274成功：33模块、309项全部通过，原8项PDF预览检查正常执行；依赖一致性检查和报告上传成功。见[远程验收](https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/39097002274)与[audit](../audits/ci_dependency_fix_20261018/report.json)。下方“尚未推送”为当时诊断记录，已由本条验收更新。
+- 大纲M0-01/06恢复勾选，下一开发项为M2-05本地单药证据清单导出；容器运行验收和Docker Hub发布尚未完成。
+
 ## 2026-10-18：修复GitHub离线回归的PDF依赖遗漏
 
 - 已推送91d1955触发Offline regression运行39093022901：32模块中31通过，298项测试中290通过、8项PDF预览检查因缺少PyMuPDF/Pillow被跳过；由于跳过即失败的规则，唯一regression任务返回失败。Docker构建运行39093022902成功。
