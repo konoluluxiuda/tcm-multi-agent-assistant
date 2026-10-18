@@ -1,0 +1,30 @@
+{
+  "prior_b227f35_digest_unchanged": true,
+  "natural_routing_and_workspace_modules_verified": true,
+  "status": "published_and_verified",
+  "published_date": "2026-10-19",
+  "docker_hub_account": "8n1eld",
+  "reference": "8n1eld/tcm-research-assistant:d0d3bc3",
+  "digest": "sha256:488329638faa83f3d5aec1a75cff8ad4601ef42dbdb231c117c55a391e930578",
+  "platform": "linux/amd64",
+  "image_bytes": 407878410,
+  "source_commit": "d0d3bc30e3182ce12eab95774d2b260bf9f82d9b",
+  "ci_commit": "cb16678be012453a2bcedfbd2f07766501840540",
+  "source_tree_sha256": "93c130374f3b6a3191b15182c6912c262b2a6725d350ccabffd501af4c2a5794",
+  "clean_source_build": true,
+  "manifest_verified_from_docker_hub": true,
+  "pull_by_digest_verified": true,
+  "pulled_image_probe": {
+    "uid": 10001,
+    "private_payload_absent": true,
+    "pubmed_evidence_backup_modules_present": true,
+    "pdf_preview_dependencies": true
+  },
+  "old_tag_digest_unchanged": true,
+  "old_tag_digest": "sha256:aa143dff36c6baa7a513fd4e8c237e201c288fb9826535b1a01ab8d0697214ff",
+  "latest_written": false,
+  "docker_hub_url": "https://hub.docker.com/r/8n1eld/tcm-research-assistant",
+  "container_acceptance": "audits/research_workspaces_v1/report.json",
+  "clinical_accuracy_evaluated": false,
+  "human_signoff": false
+}

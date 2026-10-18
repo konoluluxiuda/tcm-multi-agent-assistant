@@ -1,0 +1,110 @@
+[
+  {
+    "id": 39145489787,
+    "name": "Offline regression",
+    "head_sha": "cb16678be012453a2bcedfbd2f07766501840540",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/39145489787",
+    "jobs": [
+      {
+        "name": "regression",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Install regression dependencies",
+            "conclusion": "success"
+          },
+          {
+            "name": "Check dependency consistency",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run offline regressions (skips fail)",
+            "conclusion": "success"
+          },
+          {
+            "name": "Keep reports and per-module logs",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 39145489730,
+    "name": "Docker Image CI",
+    "head_sha": "cb16678be012453a2bcedfbd2f07766501840540",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/39145489730",
+    "jobs": [
+      {
+        "name": "build",
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Build the research image from an allowlisted context",
+            "conclusion": "success"
+          },
+          {
+            "name": "Verify preview dependencies and absence of private payload",
+            "conclusion": "success"
+          },
+          {
+            "name": "Keep build provenance",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ]
+      }
+    ]
+  }
+]

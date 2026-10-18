@@ -56,4 +56,4 @@ docker compose -p tcm-research-next -f compose.research.yaml up -d --no-build ch
 
 公开[验收元数据](../audits/natural_routing_v1/report.json)、[容器记录](../audits/natural_routing_v1/container_acceptance.json)、[构建](../audits/natural_routing_v1/build.json)和[离线回归](../audits/natural_routing_v1/offline_ci.json)不包含正文、Cookie或密钥。截图仅存忽略的 `var/natural_routing_v1/container/`。
 
-本增量未push或发布Hub。Hub当前发布仍为b227f35，不含本轮自然语言和统计能力；重新启动7873时须明确选择上述新本地镜像。
+后续2026-10-19已推送并发布[Hub版本d0d3bc3](releases/RESEARCH_D0D3BC3.md)，包含本轮自然语言、实时概览及三个页签；7873运行该版本相同内容。上述03238f8命令保留初次本地验收的复现含义，当前启动方法见新发布记录。
