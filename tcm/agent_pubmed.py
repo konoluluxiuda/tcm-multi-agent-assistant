@@ -42,7 +42,9 @@ def context_from(snapshot):
 
 
 def status_result(status, message, data=None):
+    from tcm.research_objects import scope_signals
     return {'status': status, 'message': message, 'tool_result': data,
+            'object_scope_checks': [scope_signals(a) for a in data['articles'][:5]] if data else [],
             'llm_calls': 0, 'workflow': 'langgraph_explicit_pubmed_tool'}
 
 

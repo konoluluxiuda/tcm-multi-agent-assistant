@@ -2,7 +2,7 @@ import os
 from contextlib import asynccontextmanager
 import uuid
 import tempfile
-from typing import Dict, Union, Optional, List
+from typing import Dict, Union, Optional, List, Literal
 import glob
 import threading
 import time
@@ -151,11 +151,23 @@ class SpeechRequest(BaseModel):
     voice_id: str = "EXAMPLE_VOICE_ID"  # Default voice ID
 
 
+class ObjectReviewRequest(BaseModel):
+    model_config = {'extra': 'forbid'}
+    pmid: str = Field(pattern=r'^[1-9][0-9]*$', max_length=20)
+    kind: Literal['unknown','raw_herb','processed_herb','formula','extract','constituent']
+    relation: Literal['unverified','possibly_related','scope_differs','same_object_claimed']
+    source_field: Literal['title','abstract']
+    abstract_index: Optional[int] = Field(default=None, ge=0, lt=100, strict=True)
+    quote: str = Field(min_length=12, max_length=300)
+
+
 class EvidenceReportRequest(BaseModel):
     model_config = {'extra': 'forbid'}
     question: str = Field(min_length=1, max_length=500)
     index_sha256: str = Field(pattern=r'^[a-f0-9]{64}$')
     run_id: str = Field(pattern=r'^[a-f0-9]{32}$')
+    object_review_target: Optional[str] = Field(default=None, min_length=1, max_length=500)
+    object_reviews: List[ObjectReviewRequest] = Field(default_factory=list, max_length=5)
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
@@ -248,6 +260,11 @@ def research_ready():
         return JSONResponse(status_code=503, content={'status': 'not_ready', 'reason': 'research_unavailable'})
 
 
+@app.get('/research-objects.js')
+def research_object_script():
+    return FileResponse(Path(__file__).parent / 'tcm/research_objects.js', media_type='application/javascript')
+
+
 @app.get('/research-workspaces.js')
 def research_workspaces_script():
     return FileResponse(Path(__file__).parent / 'tcm/research_workspaces.js', media_type='application/javascript')
@@ -324,7 +341,12 @@ def evidence_report(body: EvidenceReportRequest, request: Request,
             service = research_runtime.get_service()
             if service is None:
                 return JSONResponse(status_code=503, content={'error': '药典研究工具未启用。'})
-            content = export_bundle(service, body.question, body.index_sha256, result['tool_result'], context['snapshot_sha256'])
+            if body.object_reviews or body.object_review_target is not None:
+                content = export_bundle(service, body.question, body.index_sha256, result['tool_result'],
+                                        context['snapshot_sha256'], object_reviews=[r.model_dump() for r in body.object_reviews],
+                                        object_review_target=body.object_review_target)
+            else:
+                content = export_bundle(service, body.question, body.index_sha256, result['tool_result'], context['snapshot_sha256'])
             latest = agent_runtime.memory.load(session_id)
             if latest.revision != snapshot.revision:
                 raise ConversationConflict('Conversation changed during export')
@@ -334,7 +356,7 @@ def evidence_report(body: EvidenceReportRequest, request: Request,
     except SnapshotChanged:
         return JSONResponse(status_code=409, content={'error': '资料快照已改变，请重新检索后导出。'})
     except ValueError:
-        return JSONResponse(status_code=400, content={'error': '请明确单味药材和药典字段后再导出。'})
+        return JSONResponse(status_code=400, content={'error': '请明确单味药材和药典字段；如有对象标注，请核对当前查询、文献和原文摘录。'})
     except (OSError, sqlite3.Error, KeyError, TypeError):
         return JSONResponse(status_code=503, content={'error': '证据清单暂不可用，未补造内容。'})
 

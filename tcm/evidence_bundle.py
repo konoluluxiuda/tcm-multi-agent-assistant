@@ -7,6 +7,7 @@ from tcm.agent_pubmed import _hash
 from tcm.mineru_pharmacopoeia import digest
 from tcm.mineru_report import export_report, literal
 from tcm.mineru_research import SnapshotChanged
+from tcm.research_objects import VERSION, KINDS, RELATIONS, scope_signals, validate_reviews
 
 FLAG_LABELS = {'retracted': '已撤稿（来源标注）', 'retraction_notice': '撤稿通知',
                'has_erratum': '存在更正通知', 'erratum_notice': '更正通知',
@@ -24,7 +25,7 @@ FLAG_LABELS = {'retracted': '已撤稿（来源标注）', 'retraction_notice': 
                'doi_marked_invalid_by_source': '来源将DOI标为无效'}
 
 
-def export_bundle(service, question, index_sha, pubmed, pubmed_sha):
+def export_bundle(service, question, index_sha, pubmed, pubmed_sha, *, object_reviews=None, object_review_target=None):
     if not isinstance(pubmed_sha, str) or not re.fullmatch('[a-f0-9]{64}', pubmed_sha):
         raise ValueError('Expected a batch hash')
     stored = {key: value for key, value in pubmed.items() if key not in ('run_id', 'replayed')}
@@ -34,11 +35,17 @@ def export_bundle(service, question, index_sha, pubmed, pubmed_sha):
         raise ValueError('Unsupported literature status')
     local = export_report(service, question, index_sha)
     articles = pubmed['articles'][:5]
+    reviews = validate_reviews(articles, [] if object_reviews is None else object_reviews, question, object_review_target)
+    review_by_pmid = {r['pmid']: r for r in reviews}
+    local_scope = service.search(question, method='name_field', k=5)
+    anchors = sorted({(h['entry_id'], h['name'], h['scope']) for h in local_scope['hits']})
+    if reviews and not anchors:
+        raise ValueError('No local source anchor for object annotations')
     lines = ['# 药典与现代文献证据清单', '',
              '> 由用户选择并列资料，研究对象对应关系尚未核验。传统记载与现代文献分别列出；'
              '未进行疗效归因、独立研究计数或临床质量评议。', '',
              f'- 生成时间（UTC）：{datetime.now(timezone.utc).isoformat()}',
-             '- 清单格式版本：1；未调用模型或外部网络。',
+             '- 清单格式版本：2；未调用模型或外部网络。',
              f'- 用户选择的药典查询：{literal(question)}',
              f'- 药典索引 SHA256：{literal(index_sha)}',
              f'- 文献批次：{literal(pubmed["run_id"])}',
@@ -46,8 +53,17 @@ def export_bundle(service, question, index_sha, pubmed, pubmed_sha):
              '- 药典为未人审研究候选；字段文字及定位保留在后半部分。',
              '- 文献部分导出书目、来源范围及核查标记；摘要正文留在文献卡和私有台账中，不随本清单导出。',
              '- 本清单不包含会话消息、Cookie、数据库路径或原始PDF。']
-    for filename in ('evidence_bundle.py', 'literature_evidence.py'):
+    for filename in ('evidence_bundle.py', 'literature_evidence.py', 'research_objects.py'):
         lines.append(f'- {literal(filename)} SHA256：{digest(Path(__file__).with_name(filename))}')
+    lines += ['', '## 研究对象核对：范围与来源锚点', '',
+              f'- 对象核对规则：{VERSION}；信号只表示原文提到相关词，不认定实际干预对象。',
+              '- 对象身份核验：全部未完成；用户标注不是系统批准，不允许直接疗效归因。',
+              f'- 用户标注条数：{len(reviews)}；未标注的文献保持未知。',
+              '- 标注仅随本次文件导出，不修改会话、文献批次或全局实体映射。']
+    for entry_id, name, scope in anchors:
+        lines.append(f'- 药典锚点：{literal(name)}；entry_id={literal(entry_id)}；原始范围={literal(scope)}；索引={literal(index_sha)}')
+    if not anchors:
+        lines.append('- 当前查询没有可用字段锚点，不建立对象对应。')
     lines += ['', '## 现代文献：本次检索记录', '',
               f'- 原检索式：{literal(pubmed["query"])}',
               f'- 检索时间（UTC）：{literal(pubmed["retrieved_at"])}',
@@ -81,6 +97,26 @@ def export_bundle(service, question, index_sha, pubmed, pubmed_sha):
                   f'- 期刊及出版日期：{literal(article.get("journal", ""))}；{literal(article.get("publication_date", ""))}',
                   f'- 来源范围：{literal(article["evidence_scope"])}；未读取全文。',
                   f'- 出版类型（来源标注）：{literal(article.get("publication_types", []))}']
+        check = scope_signals(article)
+        lines += [f'- 对象范围规则：{VERSION}；当前分析，不改写历史批次。',
+                  '- 实际研究对象仍待人工核对；标题/摘要提到某词不代表该对象就是干预措施。']
+        for signal in check['signals']:
+            lines.append(f'- 原文线索（{literal(KINDS[signal["kind_hint"]])}）：{literal(signal["quote"])}；'
+                         f'{literal(signal["source_field"])}[{literal(signal["abstract_index"])}]；'
+                         f'字符区间[{signal["start"]},{signal["end"]})；来源文本SHA256={signal["source_sha256"]}')
+        if not check['signals']:
+            lines.append('- 未检出本规则覆盖的词；不能据此认定单药或对象一致。')
+        if check['truncated']:
+            lines.append('- 原文线索扫描已截断，未检查全部文本。')
+        review = review_by_pmid.get(pmid)
+        if review:
+            lines += [f'- 用户对象标注：{literal(KINDS[review["kind"]])}；{literal(RELATIONS[review["relation"]])}。',
+                      f'- 用户摘录（仅核对原文包含关系）：{literal(review["quote"])}',
+                      f'- 摘录来源：{literal(review["source_field"])}[{literal(review["abstract_index"])}]；'
+                      f'字符区间[{review["source_start"]},{review["source_end"]})；来源文本SHA256={review["source_sha256"]}；摘录SHA256={review["quote_sha256"]}',
+                      '- 用户主张未验证，不构成对象一致证明、质量批准或临床结论。']
+            if review['scope_warning']:
+                lines.append('- 所标对象属于炮制品/复方/提取物/成分范围，不能直接视作所选原药材等价对象。')
         assessment = article.get('assessment')
         if assessment:
             lines += [f'- 标注版本：{literal(assessment["version"])}；未质量评议。',

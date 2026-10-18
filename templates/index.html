@@ -229,6 +229,9 @@
         .workspace-form input, .workspace-form select { width: 100%; min-width: 0; box-sizing: border-box; padding: 7px; }
         .workspace-form button, .workspace-actions button { padding: 7px 12px; }
         .workspace-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+        .object-review fieldset { min-width: 0; margin: 10px 0; padding: 8px; }
+        .object-review select { max-width: 100%; width: 100%; box-sizing: border-box; }
+        .object-review label { display: block; }
         .workspace-note { font-size: .9rem; margin: 8px 0 0; color: #526171; }
         @media (max-width: 480px) { .research-workspaces { padding: 12px; } .workspace-panel { max-height: 240px; } }
     </style>
@@ -420,6 +423,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
     <script src="/research-evidence.js"></script>
+    {% if pubmed_enabled %}<script src="/research-objects.js"></script>{% endif %}
     {% if research_tools_only and natural_routing_enabled %}<script src="/research-workspaces.js"></script>{% endif %}
     <script>
         function renderPubmedResult(container,result){
@@ -459,6 +463,16 @@
                 }
                 if(article.abstract.length){const details=el('details','');details.append(el('summary','查看来源摘要'));
                     for(const section of article.abstract)details.append(el('h4',section.label||'摘要'),el('pre',section.text));card.append(details)}
+                const objectCheck=(result.object_scope_checks||[]).find(check=>check.pmid===article.pmid);
+                if(objectCheck){
+                    const scope=el('details','');scope.className='object-scope-signals';scope.append(el('summary','研究对象原文线索（待核对）'));
+                    scope.append(el('p','仅标出原文提到的词，不判定实际干预对象、对象一致或疗效归属。'));
+                    const labels={raw_herb:'单味原药材',processed_herb:'炮制品/饮片',formula:'复方/组合',extract:'提取物',constituent:'成分'};
+                    for(const signal of objectCheck.signals)scope.append(el('p',(labels[signal.kind_hint]||signal.kind_hint)+'线索：'+signal.quote+'；来源：'+signal.source_field+(signal.abstract_index===null?'':' 段'+(signal.abstract_index+1))));
+                    if(!objectCheck.signals.length)scope.append(el('p','未检出规则覆盖的词，不能据此认定单药或对象一致。'));
+                    if(objectCheck.truncated)scope.append(el('p','扫描已截断，尚未检查全部文本。'));
+                    card.append(scope);
+                }
                 container.append(card);
             }
             const disclaimer=el('a','NCBI免责声明与版权说明');disclaimer.href='https://www.ncbi.nlm.nih.gov/About/disclaimer.html';disclaimer.target='_blank';disclaimer.rel='noopener noreferrer';container.append(disclaimer);
@@ -469,14 +483,16 @@
                 const label=el('label','药典查询：');const input=el('input','');input.name='local_question';input.required=true;input.maxLength=500;input.placeholder='例如：黄芪的功效';input.className='form-control';label.append(input);
                 const button=el('button','下载证据清单');button.type='submit';button.className='btn btn-outline-primary mt-2';
                 const status=el('p','');status.setAttribute('role','status');form.append(label,button,status);details.append(form);container.append(details);
+                const objectReview=window.ResearchObjectReview?.mount(form,input,data.articles||[]);
                 form.addEventListener('submit',async event=>{
                     event.preventDefault();button.disabled=true;status.textContent='正在核对资料并生成清单…';
                     try{
+                        const annotations=objectReview?.collect()||{};
                         const readiness=await fetch('/ready/research',{credentials:'include',cache:'no-store'});
                         if(!readiness.ok)throw new Error('药典工具或来源暂不可用，请核对配置。');
                         const source=await readiness.json();
                         const response=await fetch('/api/evidence/report',{method:'POST',credentials:'include',cache:'no-store',
-                            headers:{'Content-Type':'application/json'},body:JSON.stringify({question:input.value,index_sha256:source.index_sha256,run_id:data.run_id})});
+                            headers:{'Content-Type':'application/json'},body:JSON.stringify({question:input.value.trim(),index_sha256:source.index_sha256,run_id:data.run_id,...annotations})});
                         if(!response.ok){const error=await response.json();throw new Error(error.error||error.detail||'导出失败，请重新检索后重试。')}
                         const url=URL.createObjectURL(await response.blob());const link=document.createElement('a');link.href=url;link.download='tcm-research-evidence.md';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
                         status.textContent='证据清单已下载；请分别核对药典来源和文献记录。';
