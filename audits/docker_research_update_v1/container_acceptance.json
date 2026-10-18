@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "checks": [
+    "isolated_nonroot_readonly_image_and_sources_without_private_payload",
+    "default_off_does_not_create_literature_database_or_call_provider",
+    "existing_herb_pharmacopoeia_preview_export_and_restrictions",
+    "opt_in_real_pubmed_query_without_tavily_or_model_credentials",
+    "v1_to_v2_backup_migration_history_unchanged_and_doi_index_used",
+    "combined_download_bound_to_session_and_sources_without_history_write",
+    "real_browser_download_mobile_and_cookie_namespaces",
+    "actual_restart_recovers_cookie_batch_flags_and_combined_export",
+    "actual_recreation_keeps_named_volume_signing_key_and_literature",
+    "deleted_session_does_not_revive_after_restart",
+    "synthetic_seed_removed_from_preview_catalog",
+    "all_three_original_services_unchanged_and_healthy"
+  ],
+  "page_errors": [],
+  "restarts": 2,
+  "recreations": 2,
+  "docker_hub_published": false,
+  "clinical_quality_evaluated": false,
+  "image": "tcm-research-chat:b227f35",
+  "image_id": "sha256:4e30ccfcc06141321df9fb68470119c48e904905bf762fc65d13e2505c972d4d",
+  "image_bytes": 407827706,
+  "source_revision": "b227f35e2f2b92e76aadaeb17989c8842194f320",
+  "source_tree_sha256": "74c005662185ef22c3cf5284aadb2021c07fa5b222b7acf5547900bc08622c3f",
+  "url": "http://127.0.0.1:7873",
+  "cookie_name": "research_chat_next_session",
+  "memory_volume": "tcm-research-next_research-memory",
+  "pubmed_enabled": true,
+  "live_pmids": [
+    "41184148",
+    "39849152",
+    "41763617",
+    "19504468",
+    "29546832"
+  ],
+  "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+  "report_sha256": "63f023a090e0653745c746292c24078fdf00e1b466628502beed0723c649b33c"
+}

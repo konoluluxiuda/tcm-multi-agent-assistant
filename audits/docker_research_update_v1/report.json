@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "date": "2026-10-18",
+  "scope": "local isolated Docker acceptance; no Hub publication or remote CI",
+  "offline_tests": 401,
+  "offline_modules": 41,
+  "container_check_groups": 12,
+  "restarts": 2,
+  "recreations": 2,
+  "source_revision": "b227f35e2f2b92e76aadaeb17989c8842194f320",
+  "image": "tcm-research-chat:b227f35",
+  "image_runtime_sources_match_current_workspace": true,
+  "original_services_unchanged": true,
+  "first_attempt": "Application checks passed through deletion; fixture cleanup failed with Python quoting SyntaxError. Corrected host script and reran against a fresh isolated test volume. Only the successful rerun is the acceptance receipt.",
+  "private_artifacts_published": false,
+  "docker_hub_published": false,
+  "git_pushed": false,
+  "clinical_quality_evaluated": false
+}

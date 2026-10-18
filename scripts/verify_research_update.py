@@ -189,7 +189,7 @@ print(hashlib.sha256(raw.encode()).hexdigest())'''
 d=sqlite3.connect(os.environ['PUBMED_DB']);d.execute('PRAGMA foreign_keys=ON')
 with d:
  d.execute('DELETE FROM run_articles WHERE run_id=?',('a'*32,));d.execute('DELETE FROM search_runs WHERE id=?',('a'*32,))
- d.execute('DELETE FROM articles WHERE pmid=? AND json_extract(payload,\'$.title\')=?',('123','FixtureLegacy'))
+ d.execute("DELETE FROM articles WHERE pmid=? AND json_extract(payload,'$.title')=?",('123','FixtureLegacy'))
 assert d.execute('PRAGMA foreign_key_check').fetchall()==[]
 print('fixture_removed')'''
             assert docker('exec','-i',NAME,'python','-',code=cleanup)=='fixture_removed'
@@ -206,6 +206,9 @@ print('fixture_removed')'''
                       url=URL,cookie_name=COOKIE,memory_volume=volume,pubmed_enabled=True,
                       live_pmids=[a['pmid'] for a in batch['articles']],index_sha256=receipt['index_sha256'],
                       report_sha256=hashlib.sha256((output/'evidence.md').read_bytes()).hexdigest())
+    except Exception as exc:
+        report.update(status='failed', failure_type=type(exc).__name__)
+        raise
     finally:
         (output/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     return report
