@@ -18,6 +18,12 @@
 
 </div>
 
+## 中草药研究版本
+
+当前研究镜像：`8n1eld/tcm-research-assistant:b227f35`，约408 MB，支持药典证据与原页、ETCM结构化查询、PubMed显式检索、并列证据清单和SQLite持久会话。本机已验收入口为 http://127.0.0.1:7873/ 。镜像不携带资料，运行需本地只读挂载，详见[新版部署与发布记录](docs/releases/RESEARCH_B227F35.md)、[建设大纲](docs/TCM_PROJECT_ROADMAP.md)。此版本用于研究辅助，药典与文献对象对应关系尚待核验。
+
+下文保留原医疗项目的介绍和完整部署说明；精简研究版本请使用上面的专用部署文档。
+
 ----
 
 > [!IMPORTANT]  

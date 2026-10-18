@@ -53,3 +53,5 @@ RESEARCH_IMAGE=tcm-research-chat:pubmed-local ENABLE_PUBMED=1 docker compose -f 
 文献接口/数据模型详见 [第一阶段](PUBMED_LITERATURE.md)。M3-07[会话在线备份与隔离恢复](MEMORY_BACKUP.md)已完成本机手动运维范围，但不包含本独立文献台账。文献库首次打开v1会先备份再升级为v2，旧批次内容保持不变，详见[迁移手册](PUBMED_EVIDENCE.md)。M4-04a受限组合清单已交付，下一步新版Docker整体验收；研究对象核验、人工判重、临床质量评议和综合解释仍待完成。
 
 2026-10-18部署增量：b227f35本地镜像已通过12组容器验收，7873已启用PubMed、迁移和组合下载；原7872与Hub45f3c8d保持不变。当前部署状态及启停方法以[新版本地记录](releases/RESEARCH_B227F35_LOCAL.md)为准。
+
+2026-10-18发布增量：[b227f35已发布Docker Hub](releases/RESEARCH_B227F35.md)，Git推送、远程回归/构建、远程摘要及拉取复验完成；7873运行同一镜像内容。

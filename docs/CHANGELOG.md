@@ -1,5 +1,11 @@
 # 开发变更记录
 
+## 2026-10-18：推送并发布PubMed研究镜像b227f35
+
+- 已推送b227f35和6e6e8ce到origin/main；6e6e8ce的远程离线回归、Docker构建及内容检查均成功。实际镜像仍来自干净源提交b227f35，两提交运行文件指纹一致。
+- 确认凭证账号8n1eld后发布8n1eld/tcm-research-assistant:b227f35，约408 MB、linux/amd64；核对远程摘要并按摘要拉取复验，非root、新功能模块和预览依赖正常，未包含私有资料。旧45f3c8d摘要不变，未写latest。
+- 7873继续运行已验收的同一镜像，原三容器未重启；更新发布手册、大纲和仅元数据审计。下一业务任务M4-04b研究对象核验，正式多用户准入及临床质量仍未完成。见[发布记录](releases/RESEARCH_B227F35.md)及[审计](../audits/docker_release_b227f35/release.json)。
+
 ## 2026-10-18：新版PubMed Docker本地构建与整体验收
 
 - 将前述代码整理为本地干净提交b227f35，构建tcm-research-chat:b227f35，约408 MB；仅传送运行文件白名单，不包含资料、密钥或用户数据库。
