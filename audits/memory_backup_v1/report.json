@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "date": "2026-10-18",
+  "scope": "M3-07 local online backup and isolated restore; manual retention operations only",
+  "base_revision": "7ef973a4e12ebeaec7f332f4e2d005d9cf71a5e3",
+  "working_tree_changes": true,
+  "offline": {
+    "status": "passed",
+    "total": 376,
+    "modules": 39,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "live_drill": {
+    "status": "passed",
+    "scope": "online backup of running research memory; isolated restore only",
+    "live_container_restarted": false,
+    "live_database_replaced": false,
+    "checks": [
+      "dedicated_active_and_deleted_api_sessions_created",
+      "online_backup_includes_signing_key_and_tombstones",
+      "isolated_restore_accepts_old_cookie_and_keeps_deletion",
+      "new_api_process_restores_history_and_rechecks_real_sources",
+      "original_service_still_running_with_original_session"
+    ],
+    "schema_version": 1,
+    "ttl_seconds": 2592000,
+    "retention_days": 7,
+    "backup_sha256": "f4da34a679f5da53ce4d447d1a987ed9f33b64d620ce00e78dd406c47b4f428e",
+    "restore_integrity_validated": true,
+    "expired_on_restore": 0
+  },
+  "source_sha256": {
+    "agents/memory_backup.py": "ae06239779ade2b0c9e6cda3d8e7feaee111d6650f200aafad4598b48e09ead6",
+    "scripts/backup_memory.py": "6a332a16a87e03748eac35a1533483e3ffef9d425529702ad9c74267306376a3",
+    "scripts/verify_memory_backup.py": "672a20895410ca9563c1a8048ef2daed2c87666b8a5ca6e1775da8475585b60b",
+    "tests/test_memory_backup.py": "d57643de465b101f897d3e62d655a2de504ec491d9ed97047a0fde29bfe7a806"
+  },
+  "privacy": {
+    "database_files_public": false,
+    "session_tokens_public": false,
+    "signing_key_public": false,
+    "actual_artifacts": "ignored var directory; directory 0700 and files 0600"
+  },
+  "limits": [
+    "No live database replacement, schema migration, image update or Hub push",
+    "Backup validity defaults to 7 days; physical cleanup remains manual",
+    "Pre-deletion backups may contain later-deleted messages; no cross-backup deletion journal",
+    "No scheduler, encryption, off-site replication or failover automation",
+    "Only conversation database; source corpora and PubMed ledger require separate recovery",
+    "SHA256 detects corruption, not malicious replacement by a trusted local operator"
+  ]
+}

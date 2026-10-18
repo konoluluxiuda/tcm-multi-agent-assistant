@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "scope": "online backup of running research memory; isolated restore only",
+  "live_container_restarted": false,
+  "live_database_replaced": false,
+  "checks": [
+    "dedicated_active_and_deleted_api_sessions_created",
+    "online_backup_includes_signing_key_and_tombstones",
+    "isolated_restore_accepts_old_cookie_and_keeps_deletion",
+    "new_api_process_restores_history_and_rechecks_real_sources",
+    "original_service_still_running_with_original_session"
+  ],
+  "schema_version": 1,
+  "ttl_seconds": 2592000,
+  "retention_days": 7,
+  "backup_sha256": "f4da34a679f5da53ce4d447d1a987ed9f33b64d620ce00e78dd406c47b4f428e",
+  "restore_integrity_validated": true,
+  "expired_on_restore": 0
+}

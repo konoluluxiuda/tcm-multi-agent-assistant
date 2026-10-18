@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "real_pharmacopoeia": true,
+  "real_pubmed": true,
+  "llm_calls": 0,
+  "local_query": "黄芪的功效",
+  "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+  "literature_query": "Astragalus membranaceus[Title/Abstract] AND randomized controlled trial[Publication Type]",
+  "literature_retrieved_at": "2026-10-18T14:26:20.904858+00:00",
+  "pmids": [
+    "41184148",
+    "39849152",
+    "41763617",
+    "19504468",
+    "29546832"
+  ],
+  "report_bytes": 10005,
+  "report_sha256": "1d84a8d1c87e5dfb1d79b5180acf0790b4bbc20343cfd0bb6770f45bcf8a2c1a",
+  "export_duration_ms": 72.68,
+  "checks": [
+    "selected_batch_and_source_index_bound",
+    "physical_page_and_source_hash_preserved",
+    "real_pmids_in_bibliography",
+    "unverified_entity_mapping_explicit",
+    "no_cookie_or_private_path",
+    "export_does_not_change_history",
+    "stale_source_rejected",
+    "other_session_rejected"
+  ],
+  "private_report_public": false
+}

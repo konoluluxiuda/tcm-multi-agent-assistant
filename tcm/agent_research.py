@@ -81,5 +81,6 @@ def split_contexts(context):
     return context, None  # Legacy completed-turn snapshots need no database migration.
 
 
-def pack_contexts(herb, research):
-    return {'kind': 'agent_contexts_v1', 'herb': herb, 'research': research} if research is not None else herb
+def pack_contexts(herb, research, pubmed=None):
+    return {'kind': 'agent_contexts_v1', 'herb': herb, 'research': research,
+            'pubmed': pubmed} if research is not None or pubmed is not None else herb

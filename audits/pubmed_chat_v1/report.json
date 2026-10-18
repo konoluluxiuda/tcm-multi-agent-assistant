@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-18",
+  "status": "passed",
+  "scope": "M4-02b source and local graph/API/browser acceptance; not image release or evidence appraisal",
+  "base_revision": "7ef973a4e12ebeaec7f332f4e2d005d9cf71a5e3",
+  "working_tree_changes": true,
+  "offline": {
+    "status": "passed",
+    "modules": 38,
+    "total": 363,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "synthetic_literature": true,
+    "llm_calls": 0,
+    "actual_server_restarts": 1,
+    "checks": [
+      "evidence_scope_links_and_html_as_text",
+      "same_session_local_replay",
+      "browser_session_isolation",
+      "actual_process_restart_restores_cards",
+      "clear_does_not_reuse_previous_batch",
+      "zero_results_and_upstream_error_visible",
+      "delete_session_removes_replay_reference",
+      "mobile_layout"
+    ],
+    "page_errors": []
+  },
+  "live_api": {
+    "status": "passed",
+    "real_pubmed": true,
+    "llm_calls": 0,
+    "query": "Astragalus membranaceus[Title/Abstract] AND randomized controlled trial[Publication Type]",
+    "retrieved_at": "2026-10-18T13:03:50.916544+00:00",
+    "total_count": 37,
+    "returned": 5,
+    "duration_ms": 3016.34,
+    "pmids": [
+      "41184148",
+      "39849152",
+      "41763617",
+      "19504468",
+      "29546832"
+    ],
+    "checks": [
+      "real_graph_and_api_search",
+      "same_session_replay",
+      "conversation_restore_without_abstract_in_messages",
+      "second_cookie_has_no_run",
+      "delete_removes_focus"
+    ]
+  },
+  "compose": {
+    "parsed": true,
+    "default_enabled": false,
+    "database_path": "/app-memory/pubmed.sqlite3"
+  },
+  "source_sha256": {
+    "tcm/agent_pubmed.py": "5f078d89845122d6f1e56385dd440351ab873632932bb0fcbdea3361b4522b5a",
+    "tcm/agent_research.py": "8efa0e70726013f1833e4c4c8a7450e69f620b26797a50ea9ce7e43db6166c18",
+    "agents/agent_decision.py": "fae813239ca4e473da9aaa97d2432e1a75530defd504be38daec05e8f74a355b",
+    "app.py": "4f87891881b4dbf5ad4b7f96df4a66c1855250edadb286f82acac4869f5e188c",
+    "templates/index.html": "ba91ecd1fdb020488f8ba2befed78810cd78e7d9ecb56b7a7b190df97b385185",
+    "tests/test_agent_pubmed.py": "1b30782cd371b7db3b0697a44a5f664cba3fdbabe080d081623c39e76c982ef4",
+    "scripts/verify_pubmed_chat_ui.py": "c9a4ce6bf22b9c57e7faf0e8252d2accd09e571a668367d2bc15ccddef18438b",
+    "compose.research.yaml": "42a5e90d1f4817d7179d3ff00a00933b77dee59b05bbb1eb2cf355d57a800b09",
+    "Dockerfile.research": "b772ae9328df132611755c7592cbb61b154a20880ac63f270152c7e15df14a94"
+  },
+  "limits": [
+    "Default off; current 45f3c8d image has no PubMed tool",
+    "No image rebuild, container replacement or Hub push this turn",
+    "No full text or clinical evidence quality assessment",
+    "No cross-PMID deduplication or withdrawal/correction handling",
+    "Session deletion removes messages and focus, not literature ledger",
+    "Literature ledger remains local-private; ownership/retention/deletion policy needed before multiuser deployment",
+    "Per-process admission/rate limiting only",
+    "Browser blocks external CDN; not a full external-style visual acceptance"
+  ]
+}

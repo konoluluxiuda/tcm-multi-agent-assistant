@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "real_pubmed": true,
+  "query": "19717156[PMID] OR 27326436[PMID] OR 28321512[PMID] OR 28405767[PMID]",
+  "retrieved_at": "2026-10-18T14:00:33.443293+00:00",
+  "duration_ms": 3056.94,
+  "records": [
+    {
+      "pmid": "28321512",
+      "flags": [
+        "has_erratum"
+      ],
+      "relation_types": [
+        "ErratumIn"
+      ]
+    },
+    {
+      "pmid": "27326436",
+      "flags": [
+        "retraction_notice"
+      ],
+      "relation_types": [
+        "RetractionOf"
+      ]
+    },
+    {
+      "pmid": "19717156",
+      "flags": [
+        "retracted"
+      ],
+      "relation_types": [
+        "RetractionIn"
+      ]
+    },
+    {
+      "pmid": "28405767",
+      "flags": [
+        "erratum_notice"
+      ],
+      "relation_types": [
+        "ErratumFor"
+      ]
+    }
+  ],
+  "migration": {
+    "from": 1,
+    "to": 2,
+    "private_v1_backup_verified": true,
+    "legacy_batches_byte_identical": true,
+    "doi_index_used": true,
+    "original_source_untouched": true
+  },
+  "graph_checks": [
+    "live_api_metadata_flags",
+    "offline_replay_keeps_flags",
+    "no_abstract_in_message_history"
+  ],
+  "llm_calls": 0
+}

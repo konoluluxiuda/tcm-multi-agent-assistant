@@ -11,8 +11,11 @@ services:
       ENABLE_IMAGE_ANALYSIS: "0"
       ENABLE_SPEECH: "0"
       ENABLE_WEB_SEARCH: "0"
+      # Opt-in network literature tool; multi-process deployments need shared limiting.
+      ENABLE_PUBMED: ${ENABLE_PUBMED:-0}
+      PUBMED_DB: /app-memory/pubmed.sqlite3
       CHAT_MEMORY_DB: /app-memory/conversations.sqlite3
-      CHAT_COOKIE_NAME: research_chat_session
+      CHAT_COOKIE_NAME: ${RESEARCH_COOKIE_NAME:-research_chat_session}
       CHAT_MEMORY_TTL_DAYS: "30"
       PHARMACOPOEIA_INDEX: /research-index
       PHARMACOPOEIA_PDF_HIGH: /research-sources/high.pdf

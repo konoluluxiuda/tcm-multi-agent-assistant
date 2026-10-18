@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-18",
+  "status": "passed",
+  "scope": "M4-03 source metadata and conservative identity candidates; M3-08a literature migration only",
+  "base_revision": "7ef973a4e12ebeaec7f332f4e2d005d9cf71a5e3",
+  "working_tree_changes": true,
+  "offline": {
+    "status": "passed",
+    "total": 391,
+    "modules": 40,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "synthetic_literature": true,
+    "llm_calls": 0,
+    "actual_server_restarts": 1,
+    "checks": [
+      "evidence_scope_links_and_html_as_text",
+      "same_session_local_replay",
+      "source_relationship_flags_and_links",
+      "cross_batch_doi_candidate_without_merge",
+      "identity_flags_survive_historical_replay",
+      "browser_session_isolation",
+      "actual_process_restart_restores_cards",
+      "clear_does_not_reuse_previous_batch",
+      "zero_results_and_upstream_error_visible",
+      "delete_session_removes_replay_reference",
+      "legacy_unchecked_batch_is_not_claimed_safe",
+      "mobile_layout"
+    ],
+    "page_errors": []
+  },
+  "real_api_and_migration": {
+    "status": "passed",
+    "real_pubmed": true,
+    "query": "19717156[PMID] OR 27326436[PMID] OR 28321512[PMID] OR 28405767[PMID]",
+    "retrieved_at": "2026-10-18T14:00:33.443293+00:00",
+    "duration_ms": 3056.94,
+    "records": [
+      {
+        "pmid": "28321512",
+        "flags": [
+          "has_erratum"
+        ],
+        "relation_types": [
+          "ErratumIn"
+        ]
+      },
+      {
+        "pmid": "27326436",
+        "flags": [
+          "retraction_notice"
+        ],
+        "relation_types": [
+          "RetractionOf"
+        ]
+      },
+      {
+        "pmid": "19717156",
+        "flags": [
+          "retracted"
+        ],
+        "relation_types": [
+          "RetractionIn"
+        ]
+      },
+      {
+        "pmid": "28405767",
+        "flags": [
+          "erratum_notice"
+        ],
+        "relation_types": [
+          "ErratumFor"
+        ]
+      }
+    ],
+    "migration": {
+      "from": 1,
+      "to": 2,
+      "private_v1_backup_verified": true,
+      "legacy_batches_byte_identical": true,
+      "doi_index_used": true,
+      "original_source_untouched": true
+    },
+    "graph_checks": [
+      "live_api_metadata_flags",
+      "offline_replay_keeps_flags",
+      "no_abstract_in_message_history"
+    ],
+    "llm_calls": 0
+  },
+  "annotation_version": "pubmed_metadata_v1",
+  "source_sha256": {
+    "tcm/literature_evidence.py": "089d89a19091c52c3ed6084b23d3aa07d39a283bc22fb752230d9b3d35c4310a",
+    "tcm/literature_store.py": "d29a397544cb9dd5bc5f8fc9930ee740ad4c5b2c2b6ae6187d65086130d2903f",
+    "tcm/pubmed.py": "d4ac0658cd556dad2db3ba9a866351e2806af5fecec447ba2ee608c3abb80361",
+    "tcm/agent_pubmed.py": "54fcd4482ae27a503425963a26a81de843475f6b5bdbae48b5004293ca6f1b6e",
+    "scripts/search_pubmed.py": "0dab100eaabd4e22b89f7db7a1370f0a1ce16368454a5994f7ee2eb057092f8f",
+    "scripts/verify_pubmed_chat_ui.py": "894ddca67fdfb05dbdb506448017ff2dd657de0ed2b89ee1c46879684d981d8b",
+    "templates/index.html": "6991b12ac24d256a67f3975dace692c3c3fac19d45525bf5efb89007b4f3f40b",
+    "tests/test_literature_evidence.py": "0294912a0c3b28c55fbdb3bcb6906bab54d644a7174a1fabd5b88c9919215e2f"
+  },
+  "limits": [
+    "No full-text retrieval or evidence quality appraisal",
+    "No automatic DOI-based merge, title similarity or cross-database entity matching",
+    "DOI candidates cover this batch and locally seen catalog only",
+    "Unknown/missing metadata is not evidence of article safety",
+    "Historical batches not refreshed or reclassified",
+    "Only literature DB schema upgraded in isolated copy; conversation DB remains v1",
+    "No running original DB upgrade, image rebuild, deployment or Hub publication",
+    "Migration backups private and manually retained/removed; no automatic downgrade",
+    "Browser blocks CDN; not full external-style visual acceptance"
+  ]
+}

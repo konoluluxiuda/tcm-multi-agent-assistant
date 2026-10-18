@@ -230,6 +230,7 @@
                     <div class="agent-info"><h6>可用功能</h6>
                         <p>输入 /research 查询药典字段、追问出处并导出证据清单。</p>
                         <p>输入 /herb 查询结构化药材资料。会话可在服务重启后恢复，也可随时清除。</p>
+                        {% if pubmed_enabled %}<p>输入 /pubmed 加明确检索式查文献；/pubmed-last 回看本会话批次。摘要与药典记载分开展示。</p>{% endif %}
                         <p>资料未人工审核。此部署不提供通用聊天或旧医学 RAG。</p>
                     </div>
                     {% else %}
@@ -323,6 +324,7 @@
                                     </div>
                                 </div>
                                 <small class="d-block text-muted">药材资料：输入 /herb 加拼音、拉丁名、英文名或来源 ID。中文名映射暂不支持。选定后可问“它的药用部位是什么？”，输入 /herb-clear 清除选择。</small>
+                                {% if pubmed_enabled %}<small class="d-block text-muted">现代文献：/pubmed Astragalus membranaceus[Title/Abstract]；/pubmed-last 回看；/pubmed-clear 清除文献焦点。清除会话不删除独立文献台账。</small>{% endif %}
                                 <textarea id="message-input" class="form-control message-input" rows="1" placeholder="药材：/herb BaiBu；药典：/research 甘草的功效"></textarea>
                             </div>
                             
@@ -339,6 +341,70 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
     <script src="/research-evidence.js"></script>
+    <script>
+        function renderPubmedResult(container,result){
+            container.classList.add('research-result');container.dataset.pubmedStatus=result.status;
+            const el=(tag,text)=>{const node=document.createElement(tag);node.textContent=text;return node};
+            container.append(el('h2','PubMed现代文献'),el('p',result.message));
+            const data=result.tool_result;if(!data)return;
+            container.append(el('p','检索式：'+data.query),el('p','检索时间：'+data.retrieved_at+'；状态：'+data.status+'；总命中：'+(data.total_count??'未知')));
+            if(data.replayed)container.append(el('p','本地历史批次回放，未重新联网检索。'));
+            if(data.error_code)container.append(el('p','错误类型：'+data.error_code));
+            if(data.missing_pmids?.length)container.append(el('p','缺失PMID：'+data.missing_pmids.join('、')));
+            if(data.query_translation)container.append(el('p','PubMed解释：'+data.query_translation));
+            if(data.warnings&&Object.keys(data.warnings).length)container.append(el('p','检索提示：'+JSON.stringify(data.warnings)));
+            for(const article of data.articles||[]){
+                const card=el('article','');card.className='pubmed-article';
+                card.append(el('h3',article.title),el('p',article.journal+' · '+article.publication_date),
+                    el('p','来源范围：'+(article.evidence_scope==='abstract'?'摘要':'仅元数据')+'；未读取全文'),
+                    el('p','出版类型（来源标注，未经质量评议）：'+article.publication_types.join('、')));
+                const link=el('a','PMID '+article.pmid);link.href='https://pubmed.ncbi.nlm.nih.gov/'+encodeURIComponent(article.pmid)+'/';link.target='_blank';link.rel='noopener noreferrer';card.append(link);
+                if(article.doi){const doiKey=article.identity?article.identity.doi_key:article.doi;
+                    if(doiKey){const doi=el('a',' DOI '+article.doi);doi.href='https://doi.org/'+encodeURIComponent(doiKey);doi.target='_blank';doi.rel='noopener noreferrer';card.append(doi)}
+                    else card.append(el('span',' DOI '+article.doi+'（标识待核对）'))}
+                const assessment=article.assessment;
+                const flagLabels={retracted:'已撤稿（来源标注）',retraction_notice:'撤稿通知，非原始研究',has_erratum:'存在更正通知',erratum_notice:'更正通知，非原始研究',has_expression_of_concern:'存在关注声明',expression_of_concern_notice:'关注声明通知',corrected_and_republished_in:'原文已更正重发',corrected_and_republished_from:'更正重发版本',retracted_and_republished_in:'原文已撤稿并重发',retracted_and_republished_from:'由撤稿原文重发的新版本',updated_in:'存在更新版本',update_of:'更新版本',republished_in:'存在重发版本',republished_from:'重发版本',duplicate_publication_source_label:'来源标注重复发表',corrected_republication_source_label:'来源标注更正重发',doi_identifier_conflict:'同一记录的DOI存在冲突',unrecognized_doi:'DOI格式未识别'};
+                if(assessment){
+                    flagLabels.doi_marked_invalid_by_source='来源将部分DOI标为无效，未用于查重';
+                    card.append(el('p','研究类型（来源标注，未评议）：'+(assessment.study_types.join('、')||'未分类')),
+                        el('p','对象索引（不是效果判断）：'+(assessment.population_indexing.join('、')||'未标注')));
+                    const notice=el('p',assessment.flags.length?'需要核对：'+assessment.flags.map(f=>flagLabels[f]||f).join('；'):'本次返回元数据未见已识别关系提示；不保证没有更正或撤稿。');notice.className='notice';card.append(notice);
+                }else card.append(el('p','旧批次未记录本版关系核查，不能判断有无撤稿或更正；请重新检索。'));
+                if(article.identity?.same_doi_other_pmids?.length){const notice=el('p','相同DOI的其他PMID：'+article.identity.same_doi_other_pmids.join('、')+'；待核对，保留全部记录，不可直接计为独立研究。');notice.className='notice';card.append(notice)}
+                if(article.identity?.alerts?.length)card.append(el('p','身份或版本提示：'+article.identity.alerts.map(a=>a==='doi_changed_for_pmid'?'同PMID的DOI发生变化':a==='pmid_version_changed'?'PMID版本发生变化':a).join('；')+'，请核对历史批次。'));
+                for(const relation of article.relations||[]){
+                    const row=el('p','来源关系 '+relation.ref_type+'：'+relation.ref_source+(relation.note?'；'+relation.note:''));
+                    if(relation.pmid){const related=el('a',' PMID '+relation.pmid);related.href='https://pubmed.ncbi.nlm.nih.gov/'+encodeURIComponent(relation.pmid)+'/';related.target='_blank';related.rel='noopener noreferrer';row.append(related)}
+                    else row.append(el('span','（来源未提供有效PMID）'));card.append(row);
+                }
+                if(article.abstract.length){const details=el('details','');details.append(el('summary','查看来源摘要'));
+                    for(const section of article.abstract)details.append(el('h4',section.label||'摘要'),el('pre',section.text));card.append(details)}
+                container.append(card);
+            }
+            const disclaimer=el('a','NCBI免责声明与版权说明');disclaimer.href='https://www.ncbi.nlm.nih.gov/About/disclaimer.html';disclaimer.target='_blank';disclaimer.rel='noopener noreferrer';container.append(disclaimer);
+            if({{ combined_report_enabled|tojson }}&&data.run_id){
+                const details=el('details','');details.append(el('summary','导出药典＋文献证据清单'));
+                details.append(el('p','填写含明确药名和字段的药典查询。两组资料由你选择并列，研究对象对应关系尚未核验；文献部分导出书目和核查标记。'));
+                const form=el('form','');form.className='evidence-bundle-form';
+                const label=el('label','药典查询：');const input=el('input','');input.name='local_question';input.required=true;input.maxLength=500;input.placeholder='例如：黄芪的功效';input.className='form-control';label.append(input);
+                const button=el('button','下载证据清单');button.type='submit';button.className='btn btn-outline-primary mt-2';
+                const status=el('p','');status.setAttribute('role','status');form.append(label,button,status);details.append(form);container.append(details);
+                form.addEventListener('submit',async event=>{
+                    event.preventDefault();button.disabled=true;status.textContent='正在核对资料并生成清单…';
+                    try{
+                        const readiness=await fetch('/ready/research',{credentials:'include',cache:'no-store'});
+                        if(!readiness.ok)throw new Error('药典工具或来源暂不可用，请核对配置。');
+                        const source=await readiness.json();
+                        const response=await fetch('/api/evidence/report',{method:'POST',credentials:'include',cache:'no-store',
+                            headers:{'Content-Type':'application/json'},body:JSON.stringify({question:input.value,index_sha256:source.index_sha256,run_id:data.run_id})});
+                        if(!response.ok){const error=await response.json();throw new Error(error.error||error.detail||'导出失败，请重新检索后重试。')}
+                        const url=URL.createObjectURL(await response.blob());const link=document.createElement('a');link.href=url;link.download='tcm-research-evidence.md';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+                        status.textContent='证据清单已下载；请分别核对药典来源和文献记录。';
+                    }catch(error){status.textContent=error.message}finally{button.disabled=false}
+                });
+            }
+        }
+    </script>
     <script>
         function el(tag,text,cls){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node}
         function renderResearchResult(container,result){
@@ -1100,6 +1166,10 @@
                     const card = document.createElement('div');card.className='message assistant-message';
                     renderResearchResult(card,history.research);chatBody.appendChild(card);
                 }
+                if (history.pubmed) {
+                    const card=document.createElement('div');card.className='message assistant-message';
+                    renderPubmedResult(card,history.pubmed);chatBody.appendChild(card);
+                }
                 memoryStatus.textContent = '会话已自动保存，闲置 ' + history.retention_days + ' 天后过期；清除会话会删除已保存记忆。';
                 chatBody.scrollTop = chatBody.scrollHeight;
                 setBusy(false);
@@ -1233,7 +1303,7 @@
                     }
                     
                     const data = await response.json();
-                    if (!response.ok && !data.tcm && !data.research) throw new Error(data.detail || '请求未完成');
+                    if (!response.ok && !data.tcm && !data.research && !data.pubmed) throw new Error(data.detail || '请求未完成');
                     
                     // Remove thinking indicator
                     thinkingElement.remove();
@@ -1246,7 +1316,7 @@
                     const cleanText = removeMarkdown(data.response);
                     
                     // Build HTML content for the response with audio controls
-                    let assistantHtml = (data.tcm || data.research) ? '' : `
+                    let assistantHtml = (data.tcm || data.research || data.pubmed) ? '' : `
                         <div class="agent-tag">${data.agent}</div>
                         <div>${marked.parse(data.response)}</div>
                         <div class="audio-controls mt-2">
@@ -1295,7 +1365,9 @@
                         }
                     }
                     
-                    if (data.research) {
+                    if (data.pubmed) {
+                        renderPubmedResult(assistantMessageElement,data.pubmed);
+                    } else if (data.research) {
                         renderResearchResult(assistantMessageElement,data.research);
                     } else if (data.tcm) {
                         renderHerbResult(assistantMessageElement, data.tcm, sourceId => {

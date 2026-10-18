@@ -1,0 +1,81 @@
+{
+  "scope": "M4-02a standalone CLI and SQLite ledger; not chat integration, evidence appraisal or Docker release",
+  "status": "passed",
+  "date": "2026-10-18",
+  "base_revision": "7ef973a4e12ebeaec7f332f4e2d005d9cf71a5e3",
+  "working_tree_changes": true,
+  "offline": {
+    "status": "passed",
+    "total": 352,
+    "modules": 37,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "live_positive": {
+    "query": "Astragalus membranaceus[Title/Abstract] AND randomized controlled trial[Publication Type]",
+    "retrieved_at": "2026-10-18T12:49:39.511980+00:00",
+    "status": "ok",
+    "total_count": 37,
+    "returned": 3,
+    "duration_ms": 2565.09,
+    "identifiers": [
+      {
+        "pmid": "41184148",
+        "doi": "10.4111/icu.20250025",
+        "evidence_scope": "abstract",
+        "full_text_retrieved": false
+      },
+      {
+        "pmid": "39849152",
+        "doi": "10.1038/s41598-025-87474-x",
+        "evidence_scope": "abstract",
+        "full_text_retrieved": false
+      },
+      {
+        "pmid": "41763617",
+        "doi": "10.1016/j.jep.2026.121444",
+        "evidence_scope": "abstract",
+        "full_text_retrieved": false
+      }
+    ],
+    "response_sha256": {
+      "esearch.fcgi": "d111790f5fbb2864fcfd2d4cd5985fcf9437ded9c1f3ed12ba9e09da815eb5a3",
+      "efetch.fcgi": "cf93011a700aa52b60d63ba81c8a05b3fa9d4f484b4a20a736626d4e038b8f4f"
+    }
+  },
+  "live_zero": {
+    "query": "1900:1900[Date - Publication] AND 2026:2026[Date - Publication]",
+    "retrieved_at": "2026-10-18T12:49:33.327050+00:00",
+    "status": "no_results",
+    "total_count": 0,
+    "duration_ms": 1232.97,
+    "response_sha256": {
+      "esearch.fcgi": "197add85f7fbf5e41c484248ca2b9d1c13bc7e6078e3338da9a5cf4791eb94c5"
+    }
+  },
+  "persistence": {
+    "new_process_replay_equal": true,
+    "integrity_check": "ok",
+    "foreign_key_violations": 0,
+    "table_counts": {
+      "articles": 3,
+      "search_runs": 2,
+      "run_articles": 3
+    }
+  },
+  "source_sha256": {
+    "tcm/pubmed.py": "b844e3fce9cdc1df06fc11e65acbf43ac69f5f2448b3d29ddced3c238755e20d",
+    "tcm/literature_store.py": "5675389c9d1274ad1ad37a9fc0090af1568e2674c5d4a6b1bdff0aa81256d778",
+    "scripts/search_pubmed.py": "1763e33e70955f45a2b415d8efd1d0f53d3fc0340600e9c2ac7367a2c189a16c",
+    "tests/test_pubmed.py": "9b80e7faedf4d279f1a1c5643f65ed43014ccd0dc850ab1af2671ffe3bb8e920"
+  },
+  "limits": [
+    "No relevance or clinical quality assessment",
+    "No full text retrieved",
+    "No DOI cross-PMID merging",
+    "No existing-database upgrade or backup implementation",
+    "No chat, deployment or Docker update",
+    "Per-process request spacing only; no shared multi-process rate limiter",
+    "Raw provider responses not archived; hashes and parsed snapshots only"
+  ]
+}

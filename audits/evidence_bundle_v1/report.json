@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-18",
+  "status": "passed",
+  "scope": "M4-04a user-selected parallel inventory of pharmacopoeia query and current PubMed batch; not clinical synthesis",
+  "base_revision": "7ef973a4e12ebeaec7f332f4e2d005d9cf71a5e3",
+  "working_tree_changes": true,
+  "offline": {
+    "status": "passed",
+    "total": 401,
+    "modules": 41,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "synthetic_literature": true,
+    "llm_calls": 0,
+    "actual_server_restarts": 1,
+    "checks": [
+      "evidence_scope_links_and_html_as_text",
+      "same_session_local_replay",
+      "source_relationship_flags_and_links",
+      "combined_private_download_keeps_history_and_sources",
+      "cross_batch_doi_candidate_without_merge",
+      "old_card_export_rejected_after_batch_switch",
+      "identity_flags_survive_historical_replay",
+      "browser_session_isolation",
+      "actual_process_restart_restores_cards",
+      "combined_export_after_actual_restart",
+      "clear_does_not_reuse_previous_batch",
+      "zero_results_and_upstream_error_visible",
+      "delete_session_removes_replay_reference",
+      "legacy_unchecked_batch_is_not_claimed_safe",
+      "mobile_layout"
+    ],
+    "page_errors": []
+  },
+  "live": {
+    "status": "passed",
+    "real_pharmacopoeia": true,
+    "real_pubmed": true,
+    "llm_calls": 0,
+    "local_query": "黄芪的功效",
+    "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+    "literature_query": "Astragalus membranaceus[Title/Abstract] AND randomized controlled trial[Publication Type]",
+    "literature_retrieved_at": "2026-10-18T14:26:20.904858+00:00",
+    "pmids": [
+      "41184148",
+      "39849152",
+      "41763617",
+      "19504468",
+      "29546832"
+    ],
+    "report_bytes": 10005,
+    "report_sha256": "1d84a8d1c87e5dfb1d79b5180acf0790b4bbc20343cfd0bb6770f45bcf8a2c1a",
+    "export_duration_ms": 72.68,
+    "checks": [
+      "selected_batch_and_source_index_bound",
+      "physical_page_and_source_hash_preserved",
+      "real_pmids_in_bibliography",
+      "unverified_entity_mapping_explicit",
+      "no_cookie_or_private_path",
+      "export_does_not_change_history",
+      "stale_source_rejected",
+      "other_session_rejected"
+    ],
+    "private_report_public": false
+  },
+  "source_sha256": {
+    "tcm/evidence_bundle.py": "b833ffb4cca011ace1edd274acacf34f8ffc7c494ef82bb81cce5a9905fa5123",
+    "app.py": "1d50ea26c1587edfe2ed50b8cc0cf370f8c5671c99a10ced0f5427e7e30e5005",
+    "templates/index.html": "1100a50a736600b75bca854ea00a0ed517bb531ddc96078c3b672f1f2d749cc6",
+    "tests/test_evidence_bundle.py": "5117cc3ac3d54b68faec81ffa68df4f2bb11df25446db5bf3cdbc71e60b5f0c1",
+    "scripts/verify_pubmed_chat_ui.py": "08f030aaf5e2850b0c5e09574d937a7d0967a5b0b982a062e813c27a082bc499"
+  },
+  "limits": [
+    "Research objects are explicitly not verified equivalent; no automatic herb/formula/component mapping",
+    "No clinical conclusions, quality appraisal or independent-study count",
+    "Literature metadata only in file; no abstract/full text, PDF or images packaged",
+    "Only selected pharmacopoeia query and current session PubMed run; no ETCM or arbitrary historical batch export",
+    "At most 5 bibliography records and existing bounded local query; source errors/missing fields retained",
+    "No new chat messages, reports or literature runs stored by export",
+    "Browser blocks CDN; not full external-style visual acceptance",
+    "Actual report private under var; only metadata copied into public audits",
+    "No Docker rebuild, running service replacement, git push or image publication"
+  ]
+}

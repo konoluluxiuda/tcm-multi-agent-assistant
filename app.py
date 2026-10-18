@@ -12,7 +12,7 @@ from pathlib import Path
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Depends, Request, Response, Cookie
 from fastapi.responses import JSONResponse, HTMLResponse, FileResponse, Response as BinaryResponse
 from fastapi.templating import Jinja2Templates
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 import uvicorn
 
@@ -24,6 +24,7 @@ from agents.runtime import session_turn
 from features import env_bool, session_cookie_name
 from tcm.chat import execute_turn, parse_request as parse_herb_request
 from tcm.agent_research import split_contexts, runtime as research_runtime, parse_request as parse_research_request
+from tcm.agent_pubmed import context_from as pubmed_context_from, runtime as pubmed_runtime, parse_request as parse_pubmed_request
 from tcm.mineru_research import SnapshotChanged
 from source_access import SourceCatalog, PrivateArtifacts, create_source_router
 
@@ -101,7 +102,7 @@ def feature_error(name):
 @app.middleware('http')
 async def enforce_features(request: Request, call_next):
     if (env_bool('RESEARCH_TOOLS_ONLY') and request.method in ('POST', 'PUT', 'PATCH', 'DELETE')
-            and request.url.path not in ('/chat', '/conversation')):
+            and request.url.path not in ('/chat', '/conversation', '/api/evidence/report')):
         return JSONResponse(status_code=403, content={'detail': '此部署仅支持药材与药典研究工具及会话管理。'})
     # Check before parsing upload bodies or invoking optional clients.
     feature = {'/upload': 'image_analysis', '/transcribe': 'speech', '/generate-speech': 'speech'}.get(request.url.path)
@@ -148,11 +149,20 @@ class SpeechRequest(BaseModel):
     text: str
     voice_id: str = "EXAMPLE_VOICE_ID"  # Default voice ID
 
+
+class EvidenceReportRequest(BaseModel):
+    model_config = {'extra': 'forbid'}
+    question: str = Field(min_length=1, max_length=500)
+    index_sha256: str = Field(pattern=r'^[a-f0-9]{64}$')
+    run_id: str = Field(pattern=r'^[a-f0-9]{32}$')
+
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     """Serve the main HTML page"""
     return templates.TemplateResponse(request=request, name="index.html", context={
-        "features": config.features.as_dict(), "research_tools_only": env_bool('RESEARCH_TOOLS_ONLY')})
+        "features": config.features.as_dict(), "research_tools_only": env_bool('RESEARCH_TOOLS_ONLY'),
+        "pubmed_enabled": env_bool('ENABLE_PUBMED'),
+        "combined_report_enabled": env_bool('ENABLE_PUBMED') and env_bool('ENABLE_PHARMACOPOEIA_RESEARCH')})
 
 def session_cookie(value):
     store = agent_runtime.memory
@@ -198,6 +208,9 @@ def conversation(response: Response, session_id: Optional[str] = Cookie(None, al
             result['tcm'], _ = execute_turn({'followup': True, 'field': 'source'}, herb_context)
         if research_context:
             result['research'], _ = research_runtime.execute({'question': '出处呢'}, research_context)
+        pubmed_context = pubmed_context_from(snapshot.tcm_context)
+        if pubmed_context:
+            result['pubmed'], _ = pubmed_runtime.execute({'action': 'last'}, pubmed_context)
     set_session_cookie(response, session_id)
     response.headers['Cache-Control'] = 'private, no-store'
     return result
@@ -281,6 +294,44 @@ def research_report(request: Request, q: str, snapshot: str):
     except (OSError, sqlite3.Error, KeyError, TypeError):
         return JSONResponse(status_code=503, content={'error': '研究证据导出暂不可用，未补造内容。'})
 
+@app.post('/api/evidence/report')
+def evidence_report(body: EvidenceReportRequest, request: Request,
+                    session_id: Optional[str] = Cookie(None, alias=SESSION_COOKIE_NAME)):
+    from tcm.evidence_bundle import export_bundle
+    import sqlite3
+    if request.query_params:
+        return JSONResponse(status_code=400, content={'error': '导出不接受附加查询参数。'})
+    if not agent_runtime.memory.valid_cookie(session_id):
+        return JSONResponse(status_code=401, content={'error': '请先在本会话检索文献。'})
+    try:
+        with session_turn(session_id):
+            snapshot = agent_runtime.memory.load(session_id)
+            context = pubmed_context_from(snapshot.tcm_context)
+            if not context or context.get('run_id') != body.run_id:
+                return JSONResponse(status_code=409, content={'error': '当前会话未选定该文献批次，请重新检索。'})
+            result, _ = pubmed_runtime.execute({'action': 'last'}, context)
+            if result['status'] in ('pubmed_disabled', 'pubmed_busy', 'pubmed_unavailable'):
+                return JSONResponse(status_code=503, content={'error': '文献工具或存储暂不可用。'})
+            if result['tool_result'] is None:
+                return JSONResponse(status_code=409, content={'error': '文献批次失效，请重新检索。'})
+            service = research_runtime.get_service()
+            if service is None:
+                return JSONResponse(status_code=503, content={'error': '药典研究工具未启用。'})
+            content = export_bundle(service, body.question, body.index_sha256, result['tool_result'], context['snapshot_sha256'])
+            latest = agent_runtime.memory.load(session_id)
+            if latest.revision != snapshot.revision:
+                raise ConversationConflict('Conversation changed during export')
+        return BinaryResponse(content.encode('utf-8'), media_type='text/markdown; charset=utf-8',
+                              headers={'Cache-Control': 'private, no-store', 'X-Content-Type-Options': 'nosniff',
+                                       'Content-Disposition': 'attachment; filename="tcm-research-evidence.md"'})
+    except SnapshotChanged:
+        return JSONResponse(status_code=409, content={'error': '资料快照已改变，请重新检索后导出。'})
+    except ValueError:
+        return JSONResponse(status_code=400, content={'error': '请明确单味药材和药典字段后再导出。'})
+    except (OSError, sqlite3.Error, KeyError, TypeError):
+        return JSONResponse(status_code=503, content={'error': '证据清单暂不可用，未补造内容。'})
+
+
 @app.post("/chat")
 def chat(
     request: QueryRequest, 
@@ -289,8 +340,8 @@ def chat(
 ):
     """Process user text query through the multi-agent system."""
     if (env_bool('RESEARCH_TOOLS_ONLY') and parse_herb_request(request.query) is None
-            and parse_research_request(request.query) is None):
-        raise HTTPException(status_code=403, detail='此部署仅支持药材资料与药典研究工具；请使用 /herb 或 /research 查询。')
+            and parse_research_request(request.query) is None and parse_pubmed_request(request.query) is None):
+        raise HTTPException(status_code=403, detail='此部署仅支持显式工具；请使用 /herb、/research 或已启用的 /pubmed 查询。')
     # Generate session ID for cookie if it doesn't exist
     session_id = session_cookie(session_id)
     
@@ -317,6 +368,16 @@ def chat(
             result['research'] = response_data['research_result']
             if result['research']['status'] in ('research_disabled', 'research_unavailable'):
                 response.status_code = 503
+                result['status'] = 'unavailable'
+        if response_data.get('pubmed_result') is not None:
+            result['pubmed'] = response_data['pubmed_result']
+            status = result['pubmed']['status']
+            response.status_code = {'invalid_query': 400, 'pubmed_disabled': 503, 'pubmed_busy': 503,
+                                    'pubmed_unavailable': 503, 'snapshot_unavailable': 409,
+                                    'error': 502}.get(status, 200)
+            if status == 'partial_fetch':
+                result['status'] = 'partial'
+            elif response.status_code != 200:
                 result['status'] = 'unavailable'
         return result
     except (MemoryUnavailable, ConversationConflict, SessionExpired):
