@@ -33,6 +33,20 @@ M4-04b1先提供按需核对入口，不批准药典与文献实体一致，不�
 
 ## 已验证与后续
 
-新增11项单元/真实API测试，完整43模块426项禁网回归通过；临时7874预览8组真实浏览器检查通过，含实际文献与标注文件、错误摘录、旧查询、其他Cookie、非法批准字段、移动端和刷新。首次浏览器验收仅因脚本对页面拒绝的勾选操作使用了check而失败，改为click后重跑通过。实际容器交付在本轮完成后另记。
+新增11项单元/真实API测试，完整43模块426项禁网回归通过；临时7874预览8组真实浏览器检查通过，含实际文献与标注文件、错误摘录、旧查询、其他Cookie、非法批准字段、移动端和刷新。首次浏览器验收仅因脚本对页面拒绝的勾选操作使用了check而失败，改为click后重跑通过。后续已从干净提交bd40e73构建约408 MB镜像并装到7873，实际容器8组浏览器与3组部署恢复检查通过，旧批次兼容回放、不改写来源和实际重启恢复通过。原三个容器保持不变。
 
 需要进一步建设的内容包括：有来源的规范实体与基原/部位/炮制范围、专家判定及所有权、持久审核台账、独立真实案例质量评测和对象关系结论。当前只证明工程约束与可追溯性，没有测量对象识别准确率或临床证据质量。
+
+## 当前本地交付
+
+刷新 **http://127.0.0.1:7873/** 使用对象原文线索和可选标注。当前镜像为 `tcm-research-chat:bd40e73`，沿用原命名卷和 `research_chat_next_session` Cookie。临时7874预览已停止。
+
+```bash
+RESEARCH_IMAGE=tcm-research-chat:bd40e73 RESEARCH_PORT=7873 \
+RESEARCH_COOKIE_NAME=research_chat_next_session ENABLE_PUBMED=1 ENABLE_NATURAL_ROUTING=1 \
+docker compose -p tcm-research-next -f compose.research.yaml up -d --no-build chat
+```
+
+常规停止使用 `docker compose -p tcm-research-next -f compose.research.yaml stop chat`，不要down -v删除会话及文献卷。恢复已发布版本时，将镜像参数改为 `8n1eld/tcm-research-assistant:d0d3bc3` 并保留其他参数和卷；旧版不显示新增对象线索，但本轮没有改变文献或会话Schema。
+
+新功能仅本地验收，未push或发布Hub；Hub仍为d0d3bc3。公开[总验收](../audits/research_objects_v1/report.json)、[构建](../audits/research_objects_v1/build.json)、[容器恢复](../audits/research_objects_v1/container_deployment.json)和[容器浏览器](../audits/research_objects_v1/container_browser.json)仅元数据。实际下载和截图只存忽略的var目录；没有把药典正文、摘要、用户标注、Cookie或密钥放入公开审计。

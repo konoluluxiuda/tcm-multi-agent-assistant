@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "checks": [
+    "real_batch_scope_hints_are_separate_from_identity_and_survive_reload",
+    "annotation_requires_an_explicit_local_query",
+    "quoted_annotation_download_is_bound_to_query_source_and_current_batch_without_history_write",
+    "changing_local_query_discards_stale_annotation_selection",
+    "source_selector_preserves_abstract_section_identity_and_resets_quote",
+    "fabricated_quote_stale_query_approval_field_and_other_cookie_are_rejected",
+    "mobile_annotation_controls_do_not_overflow",
+    "reload_keeps_source_scope_hints_but_does_not_persist_user_annotations"
+  ],
+  "url": "http://127.0.0.1:7873",
+  "page_errors": [],
+  "clinical_quality_evaluated": false,
+  "object_identity_approved": false,
+  "annotated_export_sha256": "0531b46d5fcc6424dd1f8cb2c61a488d47bf8adc053d52cac767666f96233f84",
+  "article_count": 5
+}

@@ -22,6 +22,8 @@
 
 当前研究镜像：`8n1eld/tcm-research-assistant:d0d3bc3`，约408 MB，支持数据概览、药材与药典、现代文献三个页签，以及受限自然语言查询、原页证据、组合清单和SQLite持久会话。本机入口为 http://127.0.0.1:7873/ 。镜像已发布并完成远程CI、摘要和拉取复验；运行仍需本地只读资料挂载，详见[新版发布与部署](docs/releases/RESEARCH_D0D3BC3.md)、[工作区说明](docs/RESEARCH_WORKSPACES.md)和[建设大纲](docs/TCM_PROJECT_ROADMAP.md)。页签共用一个任务，药典与文献对象对应关系尚待核验。
 
+本机后续增量：7873已装入 `tcm-research-chat:bd40e73`，提供[对象原文线索与可选用户标注](docs/RESEARCH_OBJECT_REVIEW.md)。新增量尚未push或发布Hub，不自动核验实体一致。
+
 下文保留原医疗项目的介绍和完整部署说明；精简研究版本请使用上面的专用部署文档。
 
 ----

@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "checks": [
+    "old_literature_batch_is_replayed_with_new_scope_checks_without_rewriting_sources",
+    "actual_restart_recovers_the_same_committed_task",
+    "all_three_original_services_unchanged_and_healthy"
+  ],
+  "docker_hub_published": false,
+  "url": "http://127.0.0.1:7873",
+  "image": "tcm-research-chat:bd40e73",
+  "image_id": "sha256:a429fe6b6e0f14334705b697ef11f9cc847cd80d846811e34e4f0778a129dfbd",
+  "source_commit": "bd40e73f2944e029d7a9cdfce1cb06b7116e99f8",
+  "source_tree_sha256": "dd8ecc913a24962b1cc2aa5ab6f1c69aae1c2dd103abf0b178ce39e7f499ead8",
+  "memory_volume_preserved": true,
+  "actual_restarts": 1
+}
