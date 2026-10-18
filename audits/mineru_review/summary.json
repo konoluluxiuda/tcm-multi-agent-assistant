@@ -1,0 +1,39 @@
+{
+  "kind": "mineru_risk_and_control_visual_review",
+  "human_signoff": false,
+  "production_ingested": false,
+  "selection_v1_sha256": "57abcd767c09eac1c8314c78d275b71d2d88da67be8a8100f1f2497117471089",
+  "selection_v2_sha256": "08b4481cd667b364ec61838f3c1fe6084fc401f8fa7c14093c351320305e0894",
+  "cases_sha256": "bb771748577fb5b39a19c8c2cf02f32ece49cd50dbc14434036b175ccb3ec6eb",
+  "decisions_sha256": "7b54f43a37f570d7f2c249a6f14e56cf7d1361d545f08b92104f2d142175b3f5",
+  "correction_drafts_sha256": "30e244bcab9f642b6d4ed2674e0364b99d5155152ec2c6c5e8925e07b5179cdf",
+  "flagged_cases_reviewed": 26,
+  "control_cases_reviewed": 14,
+  "flagged_primary_triage_counts": {
+    "title_text_omitted": 5,
+    "source_plant_name_differs_from_drug_name": 9,
+    "equation_context_review": 4,
+    "title_ocr_discrepancy": 3,
+    "footer_artifact": 1,
+    "origin_paragraph_absent_in_source": 1,
+    "caption_body_mixed": 1,
+    "source_name_ocr_discrepancy": 1,
+    "terminal_tail_observed": 1
+  },
+  "control_title_discrepancies": [
+    "mineru-herb-0422"
+  ],
+  "control_selected_clinical_fields": 44,
+  "control_dose_fields_checked": 14,
+  "control_numeric_dose_discrepancies_observed": 0,
+  "control_end_boundaries_checked": 14,
+  "cross_upload_joins_checked": 4,
+  "new_ocr_pages": 0,
+  "correction_drafts_not_applied": 11,
+  "notes": [
+    "AI visual checks are not human signoff or an independent gold benchmark.",
+    "No full-book character accuracy, clinical correctness or boundary recall claim.",
+    "Internal title/source agreement missed a correlated OCR error in the unflagged control.",
+    "Source PDF provenance is preserved; PDF authenticity is not certified."
+  ]
+}

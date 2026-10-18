@@ -1,0 +1,200 @@
+{
+  "kind": "sanitized_candidate_inventory",
+  "human_signoff": false,
+  "metrics": {
+    "entries": 10,
+    "bounded_entries": 8,
+    "open_entries": 2,
+    "leading_continuation_groups": 0
+  },
+  "entries": [
+    {
+      "id": "cc7bb48a6525c5b33d7428f7",
+      "name_zh_candidate": "一枝黄花",
+      "document": "high",
+      "pdf_page": 24,
+      "column": "left",
+      "end_boundary": "next_title",
+      "sections": [
+        {
+          "scope": "monograph",
+          "line_count": 50
+        },
+        {
+          "scope": "prepared_slices",
+          "line_count": 13
+        }
+      ]
+    },
+    {
+      "id": "c7274bc30ce1e0b64acee47c",
+      "name_zh_candidate": "丁公藤",
+      "document": "high",
+      "pdf_page": 24,
+      "column": "right",
+      "end_boundary": "next_title",
+      "sections": [
+        {
+          "scope": "monograph",
+          "line_count": 45
+        },
+        {
+          "scope": "prepared_slices",
+          "line_count": 14
+        }
+      ]
+    },
+    {
+      "id": "ddbf021949a8ecd87a3d2c7d",
+      "name_zh_candidate": "丁香",
+      "document": "high",
+      "pdf_page": 25,
+      "column": "left",
+      "end_boundary": "next_title",
+      "sections": [
+        {
+          "scope": "monograph",
+          "line_count": 43
+        },
+        {
+          "scope": "prepared_slices",
+          "line_count": 9
+        }
+      ]
+    },
+    {
+      "id": "60f05e8067f63f0dd75a9677",
+      "name_zh_candidate": "八角茴香",
+      "document": "high",
+      "pdf_page": 26,
+      "column": "left",
+      "end_boundary": "next_title",
+      "sections": [
+        {
+          "scope": "monograph",
+          "line_count": 61
+        }
+      ]
+    },
+    {
+      "id": "34ce1fc541180f99fd7e252c",
+      "name_zh_candidate": "人工牛黄",
+      "document": "high",
+      "pdf_page": 26,
+      "column": "right",
+      "end_boundary": "source_or_page_gap",
+      "sections": [
+        {
+          "scope": "monograph",
+          "line_count": 102
+        },
+        {
+          "scope": "appendix_standard",
+          "line_count": 29
+        },
+        {
+          "scope": "appendix_standard",
+          "line_count": 34
+        },
+        {
+          "scope": "appendix_standard",
+          "line_count": 57
+        },
+        {
+          "scope": "appendix_standard",
+          "line_count": 31
+        },
+        {
+          "scope": "appendix_standard",
+          "line_count": 37
+        }
+      ]
+    },
+    {
+      "id": "e0574532715983d7c2908b75",
+      "name_zh_candidate": "大蓟炭",
+      "document": "full",
+      "pdf_page": 76,
+      "column": "left",
+      "end_boundary": "next_title",
+      "sections": [
+        {
+          "scope": "monograph",
+          "line_count": 33
+        }
+      ]
+    },
+    {
+      "id": "ed245c588c53dc0dce5144a6",
+      "name_zh_candidate": "大腹皮",
+      "document": "full",
+      "pdf_page": 76,
+      "column": "left",
+      "end_boundary": "next_title",
+      "sections": [
+        {
+          "scope": "monograph",
+          "line_count": 33
+        },
+        {
+          "scope": "prepared_slices",
+          "line_count": 21
+        }
+      ]
+    },
+    {
+      "id": "d6ea66222b711a2dd30c1558",
+      "name_zh_candidate": "山麦冬",
+      "document": "full",
+      "pdf_page": 77,
+      "column": "left",
+      "end_boundary": "next_title",
+      "sections": [
+        {
+          "scope": "monograph",
+          "line_count": 39
+        },
+        {
+          "scope": "prepared_slices",
+          "line_count": 9
+        }
+      ]
+    },
+    {
+      "id": "3462b3628b3df37e8c7856f8",
+      "name_zh_candidate": "山豆根",
+      "document": "full",
+      "pdf_page": 77,
+      "column": "right",
+      "end_boundary": "next_title",
+      "sections": [
+        {
+          "scope": "monograph",
+          "line_count": 49
+        },
+        {
+          "scope": "prepared_slices",
+          "line_count": 13
+        }
+      ]
+    },
+    {
+      "id": "947b0acb061de25c9e5886ba",
+      "name_zh_candidate": "山茱萸",
+      "document": "full",
+      "pdf_page": 78,
+      "column": "left",
+      "end_boundary": "batch_end",
+      "sections": [
+        {
+          "scope": "monograph",
+          "line_count": 66
+        },
+        {
+          "scope": "prepared_slices",
+          "line_count": 3
+        }
+      ]
+    }
+  ]
+}

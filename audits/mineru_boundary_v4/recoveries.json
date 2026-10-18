@@ -1,0 +1,86 @@
+[
+  {
+    "new_entry_id": "mineru-herb-cc161d3c9f5314bbde7ae70d",
+    "name": "木棉花",
+    "old_owner_id": "mineru-herb-0091",
+    "old_owner_name": "木通",
+    "chapter_pages": [
+      65
+    ],
+    "source_pdf_page": 86,
+    "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+    "title_block_ids": [
+      "part-001-100:2420",
+      "part-001-100:2421"
+    ],
+    "image": "木棉花-title.png",
+    "image_sha256": "b47cde466c36941f99b5c12e3666934fab28fc784d0dfdb42d678f62daf710ac",
+    "review_status": "ai_title_and_end_checked_pending_human_signoff",
+    "human_signoff": false,
+    "new_title_and_end_observed": true
+  },
+  {
+    "new_entry_id": "mineru-herb-320264d64082d8680a1fc1cd",
+    "name": "白头翁",
+    "old_owner_id": "mineru-herb-0151",
+    "old_owner_name": "白术",
+    "chapter_pages": [
+      109,
+      110
+    ],
+    "source_pdf_page": 130,
+    "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+    "title_block_ids": [
+      "part-101-200:322",
+      "part-101-200:323"
+    ],
+    "image": "白头翁-title.png",
+    "image_sha256": "935323c0cbde9763d20d32fe18d79d2fe776234098875bd211a69d0114f91b87",
+    "review_status": "ai_title_and_end_checked_pending_human_signoff",
+    "human_signoff": false,
+    "new_title_and_end_observed": true
+  },
+  {
+    "new_entry_id": "mineru-herb-b5dc1fb03ed429c54e7f0c5a",
+    "name": "半边莲",
+    "old_owner_id": "mineru-herb-0174",
+    "old_owner_name": "玄参",
+    "chapter_pages": [
+      123,
+      124
+    ],
+    "source_pdf_page": 144,
+    "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+    "title_block_ids": [
+      "part-101-200:889",
+      "part-101-200:890",
+      "part-101-200:891"
+    ],
+    "image": "半边莲-title.png",
+    "image_sha256": "ecee35a764b9dd16e32dce5bc494ae9bf089fb04e8c68a2e754b3047ebfec6f2",
+    "review_status": "ai_title_and_end_checked_pending_human_signoff",
+    "human_signoff": false,
+    "new_title_and_end_observed": true
+  },
+  {
+    "new_entry_id": "mineru-herb-aef397fd438086c9bce5d3f6",
+    "name": "满山红",
+    "old_owner_id": "mineru-herb-0570",
+    "old_owner_name": "矮地茶",
+    "chapter_pages": [
+      386,
+      387
+    ],
+    "source_pdf_page": 407,
+    "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+    "title_block_ids": [
+      "part-301-400:3214",
+      "part-301-400:3215"
+    ],
+    "image": "满山红-title.png",
+    "image_sha256": "069002cbcd56e5e267677722427ad790caace82db9032d0006625d8a09d2c816",
+    "review_status": "ai_title_and_end_checked_pending_human_signoff",
+    "human_signoff": false,
+    "new_title_and_end_observed": true
+  }
+]

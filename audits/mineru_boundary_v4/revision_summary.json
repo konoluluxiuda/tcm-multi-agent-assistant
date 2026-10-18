@@ -1,0 +1,20 @@
+{
+  "kind": "mineru_research_revisions",
+  "schema_version": 2,
+  "status": "ai_revisions_applied_to_research_view",
+  "human_signoff": false,
+  "production_ingested": false,
+  "new_ocr_pages": 0,
+  "entries": 616,
+  "overlay_proposals": 11,
+  "active_overlays": 11,
+  "revised_entries": 11,
+  "source_entries_sha256": "74fb0be3381a654069f0f097730e32f404b588b025e76034eb49ac5e7a486861",
+  "source_blocks_sha256": "a1eed2cb59097eb7b404b638b868f6aea5859ffc2749a07101f3007cb63f6001",
+  "ledger_sha256": "d9868bb9ffe81ca5ebcf927d1e9fa5bacba0e338a1b5126f399c0525fbddfada",
+  "research_view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+  "original_view_sha256": "8a51a80f8bfcea2c33e81e67a484c16316b529c4c3e6da740da5e8b764f32a66",
+  "source_rebase_sha256": "c3c2521f97a0e0b91ee44a3b1b2d523caff587942064863d4c8cfe6bf542f90d",
+  "revision_code_sha256": "eeb614db294bbb31942ae4be33a7911a4800dc1e24c9a2c5c160be5a3bd93cf3",
+  "builder_code_sha256": "16c645acafc9871f796d849084483093d1e8490c64f922a10494e821fdc9f3f3"
+}

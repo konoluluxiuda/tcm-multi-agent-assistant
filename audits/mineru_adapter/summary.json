@@ -1,0 +1,41 @@
+{
+  "kind": "mineru_pharmacopoeia_candidates",
+  "adapter_version": 1,
+  "status": "completed_pending_quality_review",
+  "human_signoff": false,
+  "production_ingested": false,
+  "new_ocr_pages": 0,
+  "import_manifest_sha256": "e84aae54961086e80625e2b8e244615f2ddc8516bdbfd76a8a2224145f8fe62e",
+  "verified_import_files": 144,
+  "page_map_sha256": "bc2c311d732c5bc398ecbc5f2274b02df2d3c91bec82c9b03edba3def83b8d80",
+  "metrics": {
+    "entries": 612,
+    "pages": 413,
+    "blocks": 15812,
+    "assigned_blocks": 14568,
+    "orphan_blocks": 0,
+    "margin_blocks": 1244,
+    "cross_page_entries": 357,
+    "cross_part_entries": 4,
+    "flagged_entries": 26,
+    "flag_counts": {
+      "pinyin_title_not_observed": 5,
+      "title_source_near_match_requires_review": 13,
+      "equation_requires_context_review": 4,
+      "suspected_footer_image_excluded_from_fields": 1,
+      "origin_opener_not_observed": 1,
+      "figure_caption_contains_field_heading": 1,
+      "latin_title_not_observed": 2,
+      "spans_columns_requires_review": 1,
+      "terminal_boundary_not_independently_verified": 1
+    }
+  },
+  "images_linked": 111,
+  "field_exclusions": 1,
+  "adapter_code_sha256": "706fb8c9833cdc502a27c0de02e29d0c17f7dcf9c7e1e522f4d3445a0b94e31c",
+  "builder_code_sha256": "247651e1264d311073f0c0ebe7c70b06c38e83f670a039d70f7b55cd745da56d",
+  "entries_sha256": "4f20f526f1026d467755deff9f04b8bfe0cecd49eb4de8e094879a2f184f51ff",
+  "blocks_sha256": "8b6ee8041ce2a6bf5a67cebe5bec53a1149815c89e8da1fc78d71bfdfe53855b",
+  "ordering_policy": "chapter_page_then_left_column_then_right_column_then_top_y",
+  "elapsed_seconds": 0.732
+}

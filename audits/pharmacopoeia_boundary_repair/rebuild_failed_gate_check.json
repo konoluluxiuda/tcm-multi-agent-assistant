@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "test_fixture": "one source page marked as no-start negative reference",
+  "exit_code": 2,
+  "regression_status": "completed_with_boundary_failures",
+  "failure_report_preserved": true
+}

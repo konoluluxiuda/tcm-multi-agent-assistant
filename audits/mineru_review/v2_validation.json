@@ -1,0 +1,11 @@
+{
+  "tests_passed": 42,
+  "raw_blocks_unchanged": true,
+  "changed_entry_ids": [
+    "mineru-herb-0568"
+  ],
+  "wide_table_field_after_fix": "检查",
+  "deterministic_v2_replay": true,
+  "human_signoff": false,
+  "production_ingested": false
+}

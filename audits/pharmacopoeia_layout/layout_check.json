@@ -1,0 +1,133 @@
+{
+  "kind": "chapter_specific_layout_spot_check",
+  "human_signoff": false,
+  "whole_file_layout_classification": null,
+  "whole_book_layout_coverage": null,
+  "source_checks": {
+    "full": {
+      "expected_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+      "actual_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+    },
+    "high": {
+      "expected_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+      "actual_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2"
+    }
+  },
+  "observations": [
+    {
+      "document": "high",
+      "pdf_page": 24,
+      "chapter_type": "herb_monographs",
+      "layout_observed": "two_column",
+      "preview_sha256": "80f51ce1c0d2cf45ac304fd4c78d3866bb07511c1ac8509336b849908b8ee9d4",
+      "method": "AI visual inspection of PDF rendering",
+      "human_signoff": false
+    },
+    {
+      "document": "full",
+      "pdf_page": 51,
+      "chapter_type": "herb_monographs",
+      "layout_observed": "two_column",
+      "preview_sha256": "483aa32bd124730dc10a99c04c2606e751ffc25c4646d961286dbebe9bf8cd8b",
+      "method": "AI visual inspection of PDF rendering",
+      "human_signoff": false
+    },
+    {
+      "document": "high",
+      "pdf_page": 218,
+      "chapter_type": "herb_monographs",
+      "layout_observed": "two_column",
+      "preview_sha256": "0cfb2dc07c191065e01b2ce4e87eed6ed458d4719c01f8327a000f6a33048192",
+      "method": "AI visual inspection of PDF rendering",
+      "human_signoff": false
+    },
+    {
+      "document": "full",
+      "pdf_page": 247,
+      "chapter_type": "herb_monographs",
+      "layout_observed": "two_column",
+      "preview_sha256": "51569538ceb22296944ac93401e56e47a63dc5bd3d0beed38d580f6dcd7c00d2",
+      "method": "AI visual inspection of PDF rendering",
+      "human_signoff": false
+    },
+    {
+      "document": "high",
+      "pdf_page": 12,
+      "chapter_type": "general_notices",
+      "layout_observed": "single_column",
+      "preview_sha256": "ffc1a09a4c7cca381af573ee82a12c4bcc2cf568b5beccf4e39a81e5b8518bd4",
+      "method": "AI visual inspection of PDF rendering",
+      "human_signoff": false
+    },
+    {
+      "document": "full",
+      "pdf_page": 1,
+      "chapter_type": "cover",
+      "layout_observed": "title_page",
+      "preview_sha256": "ee6adfd212007464bf75eedf69b654e52857424ba8e9db462366eeab4338be23",
+      "method": "AI visual inspection of PDF rendering",
+      "human_signoff": false
+    },
+    {
+      "document": "full",
+      "pdf_page": 49,
+      "chapter_type": "herb_section_divider",
+      "layout_observed": "title_page",
+      "preview_sha256": "0dd45d792c8a63812905b39ff2c19c0faa04203a0e6cb28421b3901b33e0e4a1",
+      "method": "AI visual inspection of PDF rendering",
+      "human_signoff": false
+    },
+    {
+      "document": "full",
+      "pdf_page": 465,
+      "chapter_type": "extracts_section_divider",
+      "layout_observed": "title_page",
+      "preview_sha256": "600ce4b98ffa16498ccbe027ece056b9521feb5db86856a880e7cfe5d9e209cd",
+      "method": "AI visual inspection of PDF rendering",
+      "human_signoff": false
+    },
+    {
+      "document": "full",
+      "pdf_page": 467,
+      "chapter_type": "plant_oils_and_extracts",
+      "layout_observed": "two_column",
+      "preview_sha256": "d52594dc1fe0ae6122a73afda5253d1f3cab73b7676f494679711516273a15e1",
+      "method": "AI visual inspection of PDF rendering",
+      "human_signoff": false
+    },
+    {
+      "document": "full",
+      "pdf_page": 1030,
+      "chapter_type": "formulations",
+      "layout_observed": "two_column",
+      "preview_sha256": "d9bd805eaee9285173543741dbace8871f6aac38c710f1994a672f97b58372b6",
+      "method": "AI visual inspection of PDF rendering",
+      "human_signoff": false
+    },
+    {
+      "document": "full",
+      "pdf_page": 2057,
+      "chapter_type": "latin_index",
+      "layout_observed": "two_column",
+      "preview_sha256": "ece6722b0af29cf286368fbd5b1e65834b97402e5d3238e2f2fb1ee2d3f54c82",
+      "method": "AI visual inspection of PDF rendering",
+      "human_signoff": false
+    }
+  ],
+  "supported_extraction_profile": "herb_monographs_two_column_v1",
+  "inspection_only_chapters": [
+    "general_notices",
+    "plant_oils_and_extracts",
+    "formulations",
+    "latin_index",
+    "cover",
+    "section_dividers"
+  ],
+  "routing": "Prefer high for overlapping herb monographs after page checks; use full for verified omissions and chapters absent from high.",
+  "limitations": [
+    "Sample inspection is not a complete layout audit.",
+    "Explicit plan declarations are not an automatic layout detector.",
+    "Same column count does not imply the same entry schema.",
+    "No new OCR inference or production ingestion performed in this check."
+  ]
+}

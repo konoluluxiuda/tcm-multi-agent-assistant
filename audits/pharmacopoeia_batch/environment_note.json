@@ -1,0 +1,7 @@
+{
+  "initial_offline_ci": "interrupted after existing Starlette TestClient hung in sandbox",
+  "final_offline_ci": "same network-blocking runner, outside sandbox; see offline_ci.json",
+  "external_provider_calls": 0,
+  "original_cached_ocr_model_fingerprints": "not_recorded",
+  "native_ocr_model_fingerprints": "recorded_in_private_recipe.json"
+}

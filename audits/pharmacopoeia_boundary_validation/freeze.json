@@ -1,0 +1,256 @@
+{
+  "kind": "frozen_rule_boundary_experiment",
+  "human_signoff": false,
+  "sources_sha256": {
+    "tcm/pharmacopoeia_segmentation.py": "0c34edb7cc098cd223e621adaef9361d835109278af5d5a9bbe80b0f566375b9",
+    "tcm/pharmacopoeia.py": "e42972de65d96fc81f192abb4462d85a0bd16c51a89083de3f92d2305dd755d2",
+    "scripts/batch_pharmacopoeia_pdf.py": "e09bcf2766a0220d91d74f08567cc417c9c90148bc52a0a31f9f512e49cf876a",
+    "scripts/benchmark_pharmacopoeia_pdf.py": "c11a96fe1ffe8a0e0a5688608f15d81dd8772365f6458d8727c62eeecc1228e9"
+  },
+  "page_selection_before_ocr": true,
+  "pages": [
+    {
+      "document": "high",
+      "pdf_page": 30,
+      "printed_page": 9,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 31,
+      "printed_page": 10,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 32,
+      "printed_page": 11,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 33,
+      "printed_page": 12,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 34,
+      "printed_page": 13,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 35,
+      "printed_page": 14,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 36,
+      "printed_page": 15,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 37,
+      "printed_page": 16,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 38,
+      "printed_page": 17,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 39,
+      "printed_page": 18,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 200,
+      "printed_page": 181,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 201,
+      "printed_page": 182,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 202,
+      "printed_page": 183,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 203,
+      "printed_page": 184,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 204,
+      "printed_page": 185,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 205,
+      "printed_page": 186,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 206,
+      "printed_page": 187,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 207,
+      "printed_page": 188,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 208,
+      "printed_page": 189,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 209,
+      "printed_page": 190,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 420,
+      "printed_page": 401,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 421,
+      "printed_page": 402,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 422,
+      "printed_page": 403,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 423,
+      "printed_page": 404,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 424,
+      "printed_page": 405,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 425,
+      "printed_page": 406,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 426,
+      "printed_page": 407,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 427,
+      "printed_page": 408,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 428,
+      "printed_page": 409,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 429,
+      "printed_page": 410,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    }
+  ],
+  "rule_changes_during_validation": false,
+  "plan_sha256": "8cef29fdc5b74d28e0072f7e2aaaa15e8a0cbdda083f722a4969bf9afd256e8a",
+  "visual_reference_sha256": "09d93b4188d4fff97fa2d6d1281ef68e01a65861f1497e6a977845fbe7b61f28"
+}

@@ -1,0 +1,634 @@
+{
+  "actor_type": "ai",
+  "human_signoff": false,
+  "comparison_sha256": "d76b642e467b40fcd04ca187bd1116916b958607fc2cafad56693c3f8aefd42c",
+  "fields": [
+    {
+      "case_id": "YiZhiHuangHua",
+      "field": "origin",
+      "comparison": "normalized_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "6754835c1c9a6011c1ca96fff19089cc0b33d464d2e5c4671469289a7dee1ccf",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/YiZhiHuangHua-origin-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "73f2a1ab69fbcdfde50e2a7b5272482c46525e04295b2e6cb9fb33c45522aa58"
+        }
+      ]
+    },
+    {
+      "case_id": "YiZhiHuangHua",
+      "field": "properties_meridians",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "8a2e390b969fa56ca8ae3ce6e0d384e52d6c826ba2dbcf1fd357cb5e9f6d0c00",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/YiZhiHuangHua-properties_meridians-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "f8bac06ba1f33688803c87c574dba36f2f268078a529259628e3e7285df5d50d"
+        }
+      ]
+    },
+    {
+      "case_id": "YiZhiHuangHua",
+      "field": "efficacy_indications",
+      "comparison": "text_difference",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "da8976a8dce6f052f67812572392c4b8a2ce509a19ab75c0528eb033c8ce0b06",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/YiZhiHuangHua-efficacy_indications-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "120ba2969f67674273f10d934a38441f56e813f9d22b2fbc06e7dff72201b362"
+        }
+      ]
+    },
+    {
+      "case_id": "YiZhiHuangHua",
+      "field": "usage",
+      "comparison": "normalized_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "e2fc8ca8e5b2bf4c032f217d0a940eb289ff5d6d81b213c30c56594ed76ae654",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/YiZhiHuangHua-usage-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "7dbae79ec52c71ce287b0f4e81c4a9685b3784f64fa038754e9c587cb2cfb332"
+        }
+      ]
+    },
+    {
+      "case_id": "YiZhiHuangHua",
+      "field": "cautions",
+      "comparison": "both_unavailable",
+      "ai_transcription_present": false,
+      "ai_transcription_sha256": null,
+      "scoped_missing_observation": "not_observed_in_selected_region",
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/YiZhiHuangHua-region-0.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "2cdecc3004575f579ad9f9dfc519d025dedc1be6ef2fae7873020217c4738b64"
+        },
+        {
+          "image": "assets/YiZhiHuangHua-region-1.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "f25784090a85f2e132896759ed6bf72e969bc5242cb2ae62b983d8a83fb2ed49"
+        }
+      ]
+    },
+    {
+      "case_id": "YiZhiHuangHua",
+      "field": "storage",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "c23957ca8779e28fdef7c5165ebcf853b7d5a2999377c98138b9d6ed620e5d75",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/YiZhiHuangHua-storage-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "fd78f25c15bf6fd3734343699788725023af40b9dff0889e0e5f0e69a74dcca2"
+        }
+      ]
+    },
+    {
+      "case_id": "YiZhiHuangHua",
+      "field": "medicinal_part",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "ccbeb9260f2000b5b6830cb729f1425e1e5cf417e140303b1205cf268468048f",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/YiZhiHuangHua-medicinal_part-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "73f2a1ab69fbcdfde50e2a7b5272482c46525e04295b2e6cb9fb33c45522aa58"
+        }
+      ]
+    },
+    {
+      "case_id": "YiZhiHuangHua",
+      "field": "pinyin",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "f69fd6652b377ca93dbac5e44f6eda22c68f0a6c7fec76605635cb711520e0ff",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/YiZhiHuangHua-pinyin-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "5704bbb721494eea4cf1d048f84dbd32fc759ed3266b2de4e8e5ff42507d0349"
+        }
+      ]
+    },
+    {
+      "case_id": "YiZhiHuangHua",
+      "field": "latin_drug_name",
+      "comparison": "normalized_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "19843983b419696efb0ce1f0816063e6e88e80a687e49624d1d31fadf7f9e9c1",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/YiZhiHuangHua-latin_drug_name-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "161f2af0eb99eed99425d4617353806f01302eb54196d15829080f9a97876b61"
+        }
+      ]
+    },
+    {
+      "case_id": "DingGongTeng",
+      "field": "origin",
+      "comparison": "text_difference",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "7f5ae51fe1f6c0fb31ad13422853a79ac67f662aa9bb36fa0c1b394ed3fe35a2",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DingGongTeng-origin-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "b7550a9d3192e95fe46f8e32ea63ad4fcb9c3d9b0e23acd8e6a16f4ec1069b04"
+        }
+      ]
+    },
+    {
+      "case_id": "DingGongTeng",
+      "field": "properties_meridians",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "b733b5e428ff33073c7516f3b09fa3ec7682c3f5d0e11886879a766116d2884b",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DingGongTeng-properties_meridians-high-25.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "138e24708389365a02b3224a33a175cc6ab6b85df86faa8fcb3070747da83284"
+        }
+      ]
+    },
+    {
+      "case_id": "DingGongTeng",
+      "field": "efficacy_indications",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "c27642f16b5aab0ade1c08f87e7b2c13a0eefe79884d2bc7a915e0b6529d2aea",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DingGongTeng-efficacy_indications-high-25.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "7fdf7f117eba911fc77b243f6da705b43dcebc0082fdec0455ab3846813c4738"
+        }
+      ]
+    },
+    {
+      "case_id": "DingGongTeng",
+      "field": "usage",
+      "comparison": "normalized_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "9f6a2cd4d6f098684ff57f819a032de1f3d35f8971a516aa263d0205aab69533",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DingGongTeng-usage-high-25.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "89027cbd87c765f6442bb20455ec729d5e2b49ac96566eaad62bfed14d538e8a"
+        }
+      ]
+    },
+    {
+      "case_id": "DingGongTeng",
+      "field": "cautions",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "64cb373be2e00990df30a9618993873ad696029bcdcdf2dec71474987dea9fbd",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DingGongTeng-cautions-high-25.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "703b3ebaa098279cd9c2daf5bf62f8c25b836c27bab229cb2e1ebe548403475f"
+        }
+      ]
+    },
+    {
+      "case_id": "DingGongTeng",
+      "field": "storage",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "c23957ca8779e28fdef7c5165ebcf853b7d5a2999377c98138b9d6ed620e5d75",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DingGongTeng-storage-high-25.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "369221d3e40d3a4afe803cc209e2f6b1157c3b72d239a66f98ac2afa8c565209"
+        }
+      ]
+    },
+    {
+      "case_id": "DingGongTeng",
+      "field": "medicinal_part",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "e6657e4d9596f43696badf028cb89c8195d5c2621b24bad2587ad41653a63e1d",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DingGongTeng-medicinal_part-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "b7550a9d3192e95fe46f8e32ea63ad4fcb9c3d9b0e23acd8e6a16f4ec1069b04"
+        }
+      ]
+    },
+    {
+      "case_id": "DingGongTeng",
+      "field": "pinyin",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "051eed619d3e447ae6e790aa75f42f2f158666a30cc1dfde28c5556d004ceef0",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DingGongTeng-pinyin-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "333adb95feb9c91cea0fd544aa848360f68abdc4dbbb941b405bf638d9a234df"
+        }
+      ]
+    },
+    {
+      "case_id": "DingGongTeng",
+      "field": "latin_drug_name",
+      "comparison": "normalized_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "5b4c3efa488a5dfb82ad99dda1b5c3c60776ff86d43901c944d61d8f454dac77",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DingGongTeng-latin_drug_name-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "effa0c01c3a82e2fde17e489df5abdbb0a4ef9d6593a9ed5c73d7dc7ce1724e6"
+        }
+      ]
+    },
+    {
+      "case_id": "DaFuPi",
+      "field": "origin",
+      "comparison": "text_difference",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "7d74eefbc2ae89e428905aee7e85d072e2ff7fea6a5204517519879df2e73d60",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DaFuPi-origin-full-76.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "acabf9ff381aba1491f6bdb6f5f1e6c186ac1064b0100b120a4c2775b6bc28eb"
+        }
+      ]
+    },
+    {
+      "case_id": "DaFuPi",
+      "field": "properties_meridians",
+      "comparison": "text_difference",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "489106850a6e27ca4388ffcc63b060358f665ce4151067633d62a7c4f7abee2b",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DaFuPi-properties_meridians-full-76.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "7c42cfb3171627cf78ae12f11d49a2409ab3c44d51441b8807ea276315caf2ef"
+        }
+      ]
+    },
+    {
+      "case_id": "DaFuPi",
+      "field": "efficacy_indications",
+      "comparison": "text_difference",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "9c1c925f4ed7e1bf07168b9aa49cfeaf869107f3ece37d556adfb51078d2db05",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DaFuPi-efficacy_indications-full-76.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "40d52a9fea9ab4e6ffa2476277b8f7ece4a2eb2acdb6c045b0b62f4014772a1d"
+        }
+      ]
+    },
+    {
+      "case_id": "DaFuPi",
+      "field": "usage",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "d637d73d9db29ca30eb2dec64fdfb454f13e2b981de3604cbc553399803a5751",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DaFuPi-usage-full-76.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "3200405499834bf2983692d215414c13152eb672997e1efcbe5fa83965ede7d1"
+        }
+      ]
+    },
+    {
+      "case_id": "DaFuPi",
+      "field": "cautions",
+      "comparison": "both_unavailable",
+      "ai_transcription_present": false,
+      "ai_transcription_sha256": null,
+      "scoped_missing_observation": "not_observed_in_selected_region",
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DaFuPi-region-0.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "dbb3b23005878ca5faee7fb720ea7758774ff56746fe4bab1bcb7d9670347e06"
+        },
+        {
+          "image": "assets/DaFuPi-region-1.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "e21b0b7b1c82569544a560db1b976142d6daa1f079461c43da0b539979465589"
+        }
+      ]
+    },
+    {
+      "case_id": "DaFuPi",
+      "field": "storage",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "c23957ca8779e28fdef7c5165ebcf853b7d5a2999377c98138b9d6ed620e5d75",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DaFuPi-storage-full-76.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "a8545275ed598d814762f89662e65911cb9b6a1143c8ad2f7e797c8466c767d9"
+        }
+      ]
+    },
+    {
+      "case_id": "DaFuPi",
+      "field": "medicinal_part",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "1b500de239cdf2b128e30b62008dcaa3b1092ceb0d9fef669c21b33a15d4c263",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DaFuPi-medicinal_part-full-76.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "acabf9ff381aba1491f6bdb6f5f1e6c186ac1064b0100b120a4c2775b6bc28eb"
+        }
+      ]
+    },
+    {
+      "case_id": "DaFuPi",
+      "field": "pinyin",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "fb8109526c4726f38efe8391b06af91f34da31692932f324704c2978c3b9b76a",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DaFuPi-pinyin-full-76.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "7947e6faaf37d65283d10580cdb0a8837b7284287e37bac72b0fd16c0e38da77"
+        }
+      ]
+    },
+    {
+      "case_id": "DaFuPi",
+      "field": "latin_drug_name",
+      "comparison": "normalized_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "3598fd823e98a421f10636720ce3ee62d75235499d85aa897769748899670fe8",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/DaFuPi-latin_drug_name-full-76.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "badaeaa69334e666769be13f11faef7a855cc521c18b8da4a99ea70c202b68d1"
+        }
+      ]
+    },
+    {
+      "case_id": "ShanMaiDong",
+      "field": "origin",
+      "comparison": "text_difference",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "8fca634c7484f1dedf589b3718a19cea2e12d9c13e7b588e39447fb3b1d2b01b",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/ShanMaiDong-origin-full-77.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "d47a5d3134d46c8763cf31ba8f5d7c78f65638504f23f8457c04256a1d5a5ca1"
+        }
+      ]
+    },
+    {
+      "case_id": "ShanMaiDong",
+      "field": "properties_meridians",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "76fb2b940be471b4fa2bec2eef7bd93e5335257f6ca3790bd89e4bc8d5cd18da",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/ShanMaiDong-properties_meridians-full-77.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "2bdbe525a51281dd62f7a3942339a8f224776dae04d31f4efc2732616fa1c034"
+        }
+      ]
+    },
+    {
+      "case_id": "ShanMaiDong",
+      "field": "efficacy_indications",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "0bce27d959390f869220b9f58f854644557de09f091eaf15f6801e48ce5cca0d",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/ShanMaiDong-efficacy_indications-full-77.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "35b14f426465686228f52c3aa5df37c63019624e3a0b87ed83ec1aa2872580d3"
+        }
+      ]
+    },
+    {
+      "case_id": "ShanMaiDong",
+      "field": "usage",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "e2fc8ca8e5b2bf4c032f217d0a940eb289ff5d6d81b213c30c56594ed76ae654",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/ShanMaiDong-usage-full-77.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "0f060cb17be0cb0eb891dd974978b50a84754a7e0998a02df4cbdb83483f2b6c"
+        }
+      ]
+    },
+    {
+      "case_id": "ShanMaiDong",
+      "field": "cautions",
+      "comparison": "both_unavailable",
+      "ai_transcription_present": false,
+      "ai_transcription_sha256": null,
+      "scoped_missing_observation": "not_observed_in_selected_region",
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/ShanMaiDong-region-0.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "d00dbf87ffbf1c7ca17227a6141440f93a1723c5ed7b4c10a9503225b1c96367"
+        },
+        {
+          "image": "assets/ShanMaiDong-region-1.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "060706eb50c43f612101d9574771551a0180bb070ee33cfb33a0bd74a17c3f30"
+        }
+      ]
+    },
+    {
+      "case_id": "ShanMaiDong",
+      "field": "storage",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "c195cae04c1dce9a3db93a5aa369a87e3731445a50552a64f7dca34adb28c31a",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/ShanMaiDong-storage-full-77.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "4c1a7cb6509320ecbb1b0c37f43f65371e9c515604dc927869a5483a9fd9ed60"
+        }
+      ]
+    },
+    {
+      "case_id": "ShanMaiDong",
+      "field": "medicinal_part",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "b3b6d1adb070e6417cb57a0dcd534eaf4bd2c02722958fb31cbc54bab25fcead",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/ShanMaiDong-medicinal_part-full-77.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "d47a5d3134d46c8763cf31ba8f5d7c78f65638504f23f8457c04256a1d5a5ca1"
+        }
+      ]
+    },
+    {
+      "case_id": "ShanMaiDong",
+      "field": "pinyin",
+      "comparison": "exact_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "93b93c6fd0937274484c299d71155b747e15e561b5899b6ca2d60fc86637f82f",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/ShanMaiDong-pinyin-full-77.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "a2876a962f2442deafb671737c786a1f69de1208e8c75427ae18b26a80b9ff7d"
+        }
+      ]
+    },
+    {
+      "case_id": "ShanMaiDong",
+      "field": "latin_drug_name",
+      "comparison": "normalized_agreement",
+      "ai_transcription_present": true,
+      "ai_transcription_sha256": "d65016f8191f74b785182fb8d76fc2fb0d7ff0477d7c3fbffc30902fc5318ad1",
+      "scoped_missing_observation": null,
+      "human_review": "pending",
+      "reference_text_is_null": true,
+      "sources": [
+        {
+          "image": "assets/ShanMaiDong-latin_drug_name-full-77.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "5b0e94cf3bb6860b03036575349604e171d79d445920ad145e85bd3edec19703"
+        }
+      ]
+    }
+  ]
+}

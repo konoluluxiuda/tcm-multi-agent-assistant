@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>本草证据 · MinerU 研究检索</title>
+<style>
+:root{color-scheme:light;font-family:system-ui,sans-serif;color:#20382e;background:#f3f5f0}*{box-sizing:border-box}body{max-width:1160px;margin:auto;padding:28px 20px}h1{font-size:30px;margin:8px 0}p{line-height:1.7}.eyebrow{font-size:13px;letter-spacing:2px;color:#517363}.notice{border-left:4px solid #b17c29;background:#fff6e4;padding:14px 18px}.muted{color:#57675e;font-size:14px}form,article{background:white;border:1px solid #d9e0d8;border-radius:12px;padding:20px;margin:20px 0}form{display:flex;gap:12px;flex-wrap:wrap;align-items:end}label{display:grid;gap:8px;font-size:14px}.question{flex:1;min-width:180px}input,select,button{font:inherit;min-height:44px;padding:10px;border:1px solid #b7c6b9;border-radius:6px}input{width:100%}button{background:#245840;color:white;cursor:pointer}button:disabled{opacity:.55;cursor:wait}h2{font-size:21px;margin:0 0 10px}h3{font-size:15px}pre{font:15px/1.8 system-ui;white-space:pre-wrap;overflow-wrap:anywhere;margin:0;background:#f6f7f3;padding:14px;border-radius:6px}.texts{display:grid;grid-template-columns:1fr 1fr;gap:16px}.badge{display:inline-block;background:#fff2d8;color:#785414;border-radius:4px;padding:3px 8px;font-size:13px}.meta{overflow-wrap:anywhere}details{margin-top:16px;border-top:1px solid #e0e5de;padding-top:12px}summary{cursor:pointer}.citation{margin-top:12px;padding:12px;border:1px solid #dfe5dd;border-radius:6px}.citation button{background:white;color:#245840;margin-top:8px}img{display:block;width:100%;height:auto;margin-top:12px}#status{min-height:24px}a{color:#245840}@media(max-width:650px){body{padding:18px 12px}.texts{grid-template-columns:1fr}form{padding:14px}form>label,form>button{width:100%}}
+</style>
+<p><a href="/chat">进入研究聊天 →</a></p>
+<div class="eyebrow">TCM · SOURCE EVIDENCE</div><h1>本草证据研究台</h1>
+<p class="muted">查看药材字段、OCR 原文与 AI 修订，逐条回到原 PDF 核对。</p>
+<p class="notice">全部为未人工审核的研究候选。AI 修订不等于人工确认。本页仅检索与展示证据，不生成诊疗建议，未接入正式聊天知识库。</p>
+<p id="batch" class="muted">正在校验数据快照……</p>
+<form id="form"><label class="question">研究问题<input id="q" maxlength="500" placeholder="例如：木棉花的用量；秦艽的功效" required></label><label>检索方式<select id="method"><option value="name_field">药名＋字段定位</option><option value="bm25">BM25 全文检索</option></select></label><button id="search" disabled>检索证据</button></form>
+<p class="muted">药名＋字段定位适合单味药的明确问题；BM25 用于探索，可能召回其他药材。未检出不能解释为“没有禁忌”或“没有作用”。</p>
+<p id="status" role="status" aria-live="polite"></p><div id="results"></div><div id="unresolved"></div>
+<script src="/research-evidence.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const statuses={candidates:'已找到研究候选，请核对原页。',empty_query:'请输入问题。',no_match:'未检出匹配结果。',name_not_resolved:'未识别到药名，请使用当前候选药名。',multiple_names:'识别到多个药名，请分别查询。',ambiguous_name:'药名对应多个条目，需要进一步核对。',field_not_resolved:'未识别到字段，请明确查询功效、用量、来源等。',field_not_observed:'该条目未检出所需字段，不能推断其内容。',ambiguous_field:'同一条目有重复字段，可能涉及炮制品，请核对各自原文范围。'};
+Object.assign(statuses,{variant_scope_unresolved:'炮制品范围未解析，不能直接使用母药字段。',reference_unresolved:'字段内容不完整或引用尚未展开，查询未完成。',partial_evidence:'部分字段不完整，仅展示可用候选；查询尚未完成。'});
+function el(tag,text,cls){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n}
+async function fetchJSON(url){const response=await fetch(url);const data=await response.json();if(!response.ok)throw new Error(data.error||'服务不可用');return data}
+let serial=0;
+$('form').addEventListener('submit',async event=>{event.preventDefault();const token=++serial;$('results').replaceChildren();$('unresolved').replaceChildren();$('status').textContent='检索中……';$('search').disabled=true;
+ try{const data=await fetchJSON('/api/search?'+new URLSearchParams({q:$('q').value,method:$('method').value,k:5}));if(token!==serial)return;
+ const incomplete=(data.unresolved_evidence||[]).length;
+ $('status').textContent=(statuses[data.status]||data.status)+` 共展示 ${data.hits.length} 个有效候选字段。`+(incomplete?` 另有 ${incomplete} 个未完成片段。`:'')+(data.field_occurrences>data.hits.length+incomplete?` 该查询共有 ${data.field_occurrences} 个字段，本页仅展示前 5 个来源。`:'');
+ if(data.names&&data.status==='multiple_names')$('status').textContent+=' '+data.names.join('、');
+ $('results').replaceChildren(...data.hits.map(render));
+ const pending=$('unresolved');
+ if(data.related_entries?.length){pending.append(el('h2','相关母条目来源（不代表指定炮制品）'));
+  for(const entry of data.related_entries){const card=el('article');card.append(el('h3',entry.name),el('p','仅供核对母条目标题，不能替代当前炮制品查询。','notice'));citations(card,entry,'title_evidence','母条目标题原页');pending.append(card)}
+ }
+ if(data.unresolved_evidence?.length){pending.append(el('h2','未完成查询的来源片段'));
+  for(const hit of data.unresolved_evidence){const card=render(hit);card.prepend(el('p','查询未完成：'+(hit.incomplete_reason==='reference_unresolved'?'引用尚未展开。':'字段只有标题，正文未观察到。'),'notice'));
+   if(hit.reference_target_candidate)card.append(el('p','原文引用目标候选：'+hit.reference_target_candidate+'；尚未核对关联，不自动复制内容。'));
+   if(hit.reference_witness){card.append(el('h3','相邻引用提示原文（独立证据）'),el('pre',hit.reference_witness.raw_text));citations(card,hit.reference_witness,'evidence','引用提示原页')}
+   pending.append(card)}
+ }
+ }catch(error){if(token===serial){$('results').replaceChildren();$('unresolved').replaceChildren();$('status').textContent=error.message}}
+ finally{if(token===serial)$('search').disabled=false}
+});
+fetchJSON('/api/info').then(data=>{$('batch').textContent=`当前快照：${data.entries} 个候选条目 · ${data.chunks} 个可检索字段 · 索引 ${data.index_sha256.slice(0,16)}… · 人工确认：未完成`;$('search').disabled=false}).catch(error=>{$('batch').textContent=error.message});
+</script>
+</html>

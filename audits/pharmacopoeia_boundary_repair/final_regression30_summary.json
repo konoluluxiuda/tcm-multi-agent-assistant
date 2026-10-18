@@ -1,0 +1,39 @@
+{
+  "kind": "verified_ocr_resegmentation",
+  "status": "completed",
+  "human_signoff": false,
+  "source_batch": "/home/zry/workspace/Multi-Agent-Medical-Assistant/var/pharmacopoeia_boundary_validation_v1/batch",
+  "source_plan_sha256": "8cef29fdc5b74d28e0072f7e2aaaa15e8a0cbdda083f722a4969bf9afd256e8a",
+  "source_state_sha256": "45d2427ca9cfb7d3ca8d2a71481d6fe11311f441c710cbabbf45110792c81338",
+  "source_recipe_sha256": "87882b9d277d1c6cea87f208a169eb34aca2aca53daffaa0b0e62e12a6766c7c",
+  "source_entries_sha256": "e8bb6fdc1c30eb761a609ed71365b6870ce21eb84671663165a9db8e2f5ffcca",
+  "new_ocr_pages": 0,
+  "verified_pages": 30,
+  "parser_code_sha256": "208e4f3b8a8922563e24601b6e831905e22b25b6acde6f6e127a17365e15a198",
+  "field_extractor_code_sha256": "e42972de65d96fc81f192abb4462d85a0bd16c51a89083de3f92d2305dd755d2",
+  "entries_sha256": "7678deba93c34e6c11753b96807d0ea72491e7433f7605cc359bb2814a857573",
+  "segmentation": {
+    "entries": 44,
+    "bounded_entries": 41,
+    "open_entries": 3,
+    "leading_continuation_groups": 2
+  },
+  "source_unresolved_entries": 3,
+  "requires_source_review": 6,
+  "boundary_regression_status": "completed_without_observed_boundary_failures",
+  "resegmenter_code_sha256": "8d57617d1314606c87b679e0acacc30bda87c7321248280945f07eb820b85b52",
+  "boundary_regression_counts": {
+    "pages": 30,
+    "reference_starts": 44,
+    "detected_starts": 44,
+    "location_matches": 44,
+    "missed_starts": 0,
+    "unexpected_starts": 0,
+    "ambiguous_reference_starts": 0,
+    "name_differences_among_matches": 5,
+    "entries_exposed_to_missed_title": 0,
+    "cross_block_entries": 0,
+    "cross_page_entries": 22,
+    "open_entries": 3
+  }
+}

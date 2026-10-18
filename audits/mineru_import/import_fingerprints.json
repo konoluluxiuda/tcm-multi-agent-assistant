@@ -1,0 +1,9 @@
+{
+  "kind": "mineru_import_artifact_fingerprints",
+  "import_manifest_sha256": "e84aae54961086e80625e2b8e244615f2ddc8516bdbfd76a8a2224145f8fe62e",
+  "image_index_sha256": "f8be95fcead4831189c6e392caf086c65de93465980d03985fa38bf9635682cb",
+  "source_preserved": true,
+  "raw_result_directory": "var/mineru_import/2026-10-17",
+  "raw_files_excluded_from_git": true,
+  "recognition_accuracy_evaluated": false
+}

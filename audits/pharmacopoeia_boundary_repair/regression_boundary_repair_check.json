@@ -1,0 +1,81 @@
+{
+  "kind": "exact_line_boundary_regression",
+  "status": "passed",
+  "baseline_exception_queue_sha256": "51cc06febbb272485ce4c0a3a6b48090bc8051f935666e8092a8a61d7ca6f05f",
+  "repaired_entries_sha256": "9c1c1e38cca6c1ef735222c618a39cbf062b6e8214e71314a4b71f6d47c87228",
+  "human_signoff": false,
+  "checks": [
+    {
+      "pdf_page": 38,
+      "visual_name_unapproved": "干漆",
+      "recovered_entry_id": "78e064993c608d38ff316d8c",
+      "observed_name_unchanged": true,
+      "previous_owner_no_longer_contains_title": true,
+      "source_status": "unresolved_missing_source_opener",
+      "identity_status": "unverified_ocr"
+    },
+    {
+      "pdf_page": 39,
+      "visual_name_unapproved": "土贝母",
+      "recovered_entry_id": "ca34917af842c3200a723e15",
+      "observed_name_unchanged": true,
+      "previous_owner_no_longer_contains_title": true,
+      "source_status": "unresolved_missing_source_opener",
+      "identity_status": "unresolved"
+    },
+    {
+      "pdf_page": 205,
+      "visual_name_unapproved": "体外培育牛黄",
+      "recovered_entry_id": "f18894e4127c8dc1749009ee",
+      "observed_name_unchanged": true,
+      "previous_owner_no_longer_contains_title": true,
+      "source_status": "unreviewed_source_candidate",
+      "identity_status": "unverified_ocr"
+    },
+    {
+      "pdf_page": 422,
+      "visual_name_unapproved": "僵蚕",
+      "recovered_entry_id": "cc753bb4875a0a4f39fee37f",
+      "observed_name_unchanged": true,
+      "previous_owner_no_longer_contains_title": true,
+      "source_status": "unresolved_missing_source_opener",
+      "identity_status": "unverified_ocr"
+    },
+    {
+      "pdf_page": 423,
+      "visual_name_unapproved": "薤白",
+      "recovered_entry_id": "8068d53c1e4d2d18324952bd",
+      "observed_name_unchanged": true,
+      "previous_owner_no_longer_contains_title": true,
+      "source_status": "unreviewed_source_candidate",
+      "identity_status": "unresolved"
+    },
+    {
+      "pdf_page": 427,
+      "visual_name_unapproved": "藏菖蒲",
+      "recovered_entry_id": "093f82d370199a023a00ea31",
+      "observed_name_unchanged": true,
+      "previous_owner_no_longer_contains_title": true,
+      "source_status": "unreviewed_source_candidate",
+      "identity_status": "unverified_ocr"
+    },
+    {
+      "pdf_page": 428,
+      "visual_name_unapproved": "藁本",
+      "recovered_entry_id": "da6ccbd741f598c48b345e72",
+      "observed_name_unchanged": true,
+      "previous_owner_no_longer_contains_title": true,
+      "source_status": "unreviewed_source_candidate",
+      "identity_status": "unresolved"
+    },
+    {
+      "pdf_page": 429,
+      "visual_name_unapproved": "翼首草",
+      "recovered_entry_id": "9b3fd9a0ed84cd874df63cdd",
+      "observed_name_unchanged": true,
+      "previous_owner_no_longer_contains_title": true,
+      "source_status": "unreviewed_source_candidate",
+      "identity_status": "unverified_ocr"
+    }
+  ]
+}

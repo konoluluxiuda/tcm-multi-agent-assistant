@@ -1,0 +1,1344 @@
+{
+  "status": "ai_original_scan_anchor_spotchecked",
+  "human_signoff": false,
+  "independent_gold": false,
+  "reference_sha256": "9f5f1baa6cea6ef87a79303348cb58c8887a99bfd4b456b6fab5ae6fa451a225",
+  "reviewed_contact_sheets": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "unique_crops": 43,
+  "scope": "Title identity and first field evidence anchor only; not full-field OCR or clinical correctness.",
+  "findings": [
+    {
+      "case_ids": [
+        "challenge-08",
+        "challenge-24"
+      ],
+      "finding": "地黄字段同时包含鲜地黄/生地黄范围；单一字段命中不能证明已完成剂型范围消歧。"
+    },
+    {
+      "case_ids": [
+        "challenge-37"
+      ],
+      "finding": "炙甘草原页用法/注意/贮藏共用同甘草；检出字段标签不等于已检出完整独立用量，需要显式跨条目引用解析。"
+    },
+    {
+      "case_ids": [
+        "challenge-33",
+        "challenge-34",
+        "challenge-35"
+      ],
+      "finding": "Source titles visibly contain Gancao, Huangqi and Dangshen; pinyin lookup expectations have title evidence."
+    }
+  ],
+  "crop_provenance": [
+    {
+      "case_id": "challenge-01",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-001-100:3361",
+        "chapter_page": 89,
+        "source": {
+          "chapter_pdf_page": 89,
+          "source_document": "high",
+          "source_pdf_page": 110,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 91,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 89
+        },
+        "bbox_0_1000": [
+          233,
+          398,
+          329,
+          416
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-01.png",
+      "image_sha256": "82870c6fdcfd4f73714605ba07372da73fed81ab7365e47f929aae73015a1f92"
+    },
+    {
+      "case_id": "challenge-01",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-001-100:3388",
+        "chapter_page": 90,
+        "source": {
+          "chapter_pdf_page": 90,
+          "source_document": "high",
+          "source_pdf_page": 111,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 92,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 90
+        },
+        "bbox_0_1000": [
+          75,
+          142,
+          485,
+          193
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 79
+      },
+      "image": "var/mineru_challenge_v1/anchor-02.png",
+      "image_sha256": "b149380310a95b29a847ed8ef05d1e64b83bf1ea27abd123794e2debb7a59986"
+    },
+    {
+      "case_id": "challenge-02",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-001-100:3389",
+        "chapter_page": 90,
+        "source": {
+          "chapter_pdf_page": 90,
+          "source_document": "high",
+          "source_pdf_page": 111,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 92,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 90
+        },
+        "bbox_0_1000": [
+          107,
+          198,
+          275,
+          211
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 13
+      },
+      "image": "var/mineru_challenge_v1/anchor-03.png",
+      "image_sha256": "cc28ad0b0e18a91c26380df3a79329c53b2b6ab5c81fbca4ef186c8f6954e648"
+    },
+    {
+      "case_id": "challenge-03",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-301-400:798",
+        "chapter_page": 321,
+        "source": {
+          "chapter_pdf_page": 321,
+          "source_document": "high",
+          "source_pdf_page": 342,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 323,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第301-400页.pdf",
+          "upload_part_page": 21
+        },
+        "bbox_0_1000": [
+          668,
+          821,
+          761,
+          838
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-04.png",
+      "image_sha256": "61eb1d3d0d88244d1b005287af98c7784ea1053dc22b2efaa02f23b09923ee5d"
+    },
+    {
+      "case_id": "challenge-03",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-301-400:838",
+        "chapter_page": 323,
+        "source": {
+          "chapter_pdf_page": 323,
+          "source_document": "high",
+          "source_pdf_page": 344,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 325,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第301-400页.pdf",
+          "upload_part_page": 23
+        },
+        "bbox_0_1000": [
+          73,
+          302,
+          487,
+          370
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 109
+      },
+      "image": "var/mineru_challenge_v1/anchor-05.png",
+      "image_sha256": "a12cc266c4f45beb2377e7ed408ec46efd13e4c3564e152400fcb99d2bc83335"
+    },
+    {
+      "case_id": "challenge-04",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-301-400:839",
+        "chapter_page": 323,
+        "source": {
+          "chapter_pdf_page": 323,
+          "source_document": "high",
+          "source_pdf_page": 344,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 325,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第301-400页.pdf",
+          "upload_part_page": 23
+        },
+        "bbox_0_1000": [
+          104,
+          376,
+          275,
+          388
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 13
+      },
+      "image": "var/mineru_challenge_v1/anchor-06.png",
+      "image_sha256": "e2ceec4e39390fb0c219f68893e45afd233f203934711739bf81f3e566480902"
+    },
+    {
+      "case_id": "challenge-05",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-201-300:3855",
+        "chapter_page": 300,
+        "source": {
+          "chapter_pdf_page": 300,
+          "source_document": "high",
+          "source_pdf_page": 321,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 302,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第201-300页.pdf",
+          "upload_part_page": 100
+        },
+        "bbox_0_1000": [
+          240,
+          650,
+          334,
+          669
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-07.png",
+      "image_sha256": "094d8a325331aa6038d9e1294b1d11b356b9ba9e3993033b51f5c84b863f6e07"
+    },
+    {
+      "case_id": "challenge-05",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-201-300:3877",
+        "chapter_page": 300,
+        "source": {
+          "chapter_pdf_page": 300,
+          "source_document": "high",
+          "source_pdf_page": 321,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 302,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第201-300页.pdf",
+          "upload_part_page": 100
+        },
+        "bbox_0_1000": [
+          512,
+          899,
+          919,
+          952
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 59
+      },
+      "image": "var/mineru_challenge_v1/anchor-08.png",
+      "image_sha256": "230ce59ff19c9811001b1c59b5652572624a5f56fd744d9b42a5243c9df2761d"
+    },
+    {
+      "case_id": "challenge-06",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-301-400:0",
+        "chapter_page": 301,
+        "source": {
+          "chapter_pdf_page": 301,
+          "source_document": "high",
+          "source_pdf_page": 322,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 303,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第301-400页.pdf",
+          "upload_part_page": 1
+        },
+        "bbox_0_1000": [
+          115,
+          96,
+          284,
+          109
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 13
+      },
+      "image": "var/mineru_challenge_v1/anchor-09.png",
+      "image_sha256": "7e3d019938a40d050fed1764d494d803dbbe39ff4b1c9e89dc513da993b0d4b6"
+    },
+    {
+      "case_id": "challenge-07",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-101-200:1178",
+        "chapter_page": 130,
+        "source": {
+          "chapter_pdf_page": 130,
+          "source_document": "high",
+          "source_pdf_page": 151,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 132,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 30
+        },
+        "bbox_0_1000": [
+          668,
+          652,
+          757,
+          670
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-10.png",
+      "image_sha256": "162b86f0c498d911c56bf4c98bea07d52f5ff31de6da9e1b98c2ba8bd16e977e"
+    },
+    {
+      "case_id": "challenge-07",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:1214",
+        "chapter_page": 131,
+        "source": {
+          "chapter_pdf_page": 131,
+          "source_document": "high",
+          "source_pdf_page": 152,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 133,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 31
+        },
+        "bbox_0_1000": [
+          510,
+          609,
+          922,
+          642
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 50
+      },
+      "image": "var/mineru_challenge_v1/anchor-11.png",
+      "image_sha256": "839ca30f4ded7b61b666ef98cb541768115a92a0a4f752f7cb69d736b1af1e1d"
+    },
+    {
+      "case_id": "challenge-08",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:1216",
+        "chapter_page": 131,
+        "source": {
+          "chapter_pdf_page": 131,
+          "source_document": "high",
+          "source_pdf_page": 152,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 133,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 31
+        },
+        "bbox_0_1000": [
+          542,
+          702,
+          781,
+          715
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 18
+      },
+      "image": "var/mineru_challenge_v1/anchor-12.png",
+      "image_sha256": "13a6072550f93b627751fc285d540d24f8f81928e0746209da3a869bac43a99d"
+    },
+    {
+      "case_id": "challenge-09",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-101-200:3363",
+        "chapter_page": 187,
+        "source": {
+          "chapter_pdf_page": 187,
+          "source_document": "high",
+          "source_pdf_page": 208,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 189,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 87
+        },
+        "bbox_0_1000": [
+          129,
+          231,
+          442,
+          292
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-13.png",
+      "image_sha256": "6d5d73c23d075e3756ccb7d634e965a2712d9991d94affc18a81b49953e79259"
+    },
+    {
+      "case_id": "challenge-09",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:3395",
+        "chapter_page": 188,
+        "source": {
+          "chapter_pdf_page": 188,
+          "source_document": "high",
+          "source_pdf_page": 209,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 190,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 88
+        },
+        "bbox_0_1000": [
+          80,
+          180,
+          480,
+          212
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 44
+      },
+      "image": "var/mineru_challenge_v1/anchor-14.png",
+      "image_sha256": "ac3e8061378eb95e8a200331011015ad35700ac958e7e55edd5fede5cf9f91b7"
+    },
+    {
+      "case_id": "challenge-10",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:3396",
+        "chapter_page": 188,
+        "source": {
+          "chapter_pdf_page": 188,
+          "source_document": "high",
+          "source_pdf_page": 209,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 190,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 88
+        },
+        "bbox_0_1000": [
+          110,
+          217,
+          268,
+          231
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 12
+      },
+      "image": "var/mineru_challenge_v1/anchor-15.png",
+      "image_sha256": "69bd224ff325fdd8f4ee3641cb3410f69ac7e878d507b2c20c3af49bde8df653"
+    },
+    {
+      "case_id": "challenge-11",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-101-200:953",
+        "chapter_page": 125,
+        "source": {
+          "chapter_pdf_page": 125,
+          "source_document": "high",
+          "source_pdf_page": 146,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 127,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 25
+        },
+        "bbox_0_1000": [
+          236,
+          379,
+          331,
+          397
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-16.png",
+      "image_sha256": "a72468a2f1b8d4394194e076ca0065e6e06028b81b7bc5cdd52f01f5363042aa"
+    },
+    {
+      "case_id": "challenge-11",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:968",
+        "chapter_page": 125,
+        "source": {
+          "chapter_pdf_page": 125,
+          "source_document": "high",
+          "source_pdf_page": 146,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 127,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 25
+        },
+        "bbox_0_1000": [
+          507,
+          286,
+          915,
+          337
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 70
+      },
+      "image": "var/mineru_challenge_v1/anchor-17.png",
+      "image_sha256": "ae4c26335a8b16aec703be13d6c660784492aa50a8428fa9ffa031f26e23f6fe"
+    },
+    {
+      "case_id": "challenge-12",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:969",
+        "chapter_page": 125,
+        "source": {
+          "chapter_pdf_page": 125,
+          "source_document": "high",
+          "source_pdf_page": 146,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 127,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 25
+        },
+        "bbox_0_1000": [
+          509,
+          341,
+          915,
+          373
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 41
+      },
+      "image": "var/mineru_challenge_v1/anchor-18.png",
+      "image_sha256": "41aa5f578d7622220d1869aed1550538dfd6789a1e1a87007830ce93003c0647"
+    },
+    {
+      "case_id": "challenge-13",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-201-300:137",
+        "chapter_page": 205,
+        "source": {
+          "chapter_pdf_page": 205,
+          "source_document": "high",
+          "source_pdf_page": 226,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 207,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第201-300页.pdf",
+          "upload_part_page": 5
+        },
+        "bbox_0_1000": [
+          240,
+          780,
+          331,
+          797
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-19.png",
+      "image_sha256": "ca3a00d0d705ba1f1f49a57e3c3c1d497cb95b6d4c81151e795463a3f4bb9bae"
+    },
+    {
+      "case_id": "challenge-13",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-201-300:181",
+        "chapter_page": 206,
+        "source": {
+          "chapter_pdf_page": 206,
+          "source_document": "high",
+          "source_pdf_page": 227,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 208,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第201-300页.pdf",
+          "upload_part_page": 6
+        },
+        "bbox_0_1000": [
+          512,
+          263,
+          917,
+          332
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 79
+      },
+      "image": "var/mineru_challenge_v1/anchor-20.png",
+      "image_sha256": "fb5ed88ce468dc40cf3a12061e659a7a7e6dac5835a100b6962acbe29d8c0f89"
+    },
+    {
+      "case_id": "challenge-14",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-201-300:182",
+        "chapter_page": 206,
+        "source": {
+          "chapter_pdf_page": 206,
+          "source_document": "high",
+          "source_pdf_page": 227,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 208,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第201-300页.pdf",
+          "upload_part_page": 6
+        },
+        "bbox_0_1000": [
+          542,
+          336,
+          789,
+          350
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 19
+      },
+      "image": "var/mineru_challenge_v1/anchor-21.png",
+      "image_sha256": "af6afb833b731d6e31db398bbe95d8509b44f093ab03793176f7e98a4cddfceb"
+    },
+    {
+      "case_id": "challenge-15",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-001-100:1076",
+        "chapter_page": 29,
+        "source": {
+          "chapter_pdf_page": 29,
+          "source_document": "high",
+          "source_pdf_page": 50,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 31,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 29
+        },
+        "bbox_0_1000": [
+          236,
+          376,
+          331,
+          393
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-22.png",
+      "image_sha256": "facb85bac374d827d7f2986caddf24667f5290670fdca4c28aee7fe75c505fc4"
+    },
+    {
+      "case_id": "challenge-15",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-001-100:1103",
+        "chapter_page": 29,
+        "source": {
+          "chapter_pdf_page": 29,
+          "source_document": "high",
+          "source_pdf_page": 50,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 31,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 29
+        },
+        "bbox_0_1000": [
+          512,
+          649,
+          919,
+          701
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 81
+      },
+      "image": "var/mineru_challenge_v1/anchor-23.png",
+      "image_sha256": "5ef7e40c19314e8415492fc0b8eae3f6e5dbc501358d05e47445ca2d73ba9d6a"
+    },
+    {
+      "case_id": "challenge-16",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-001-100:1104",
+        "chapter_page": 29,
+        "source": {
+          "chapter_pdf_page": 29,
+          "source_document": "high",
+          "source_pdf_page": 50,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 31,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 29
+        },
+        "bbox_0_1000": [
+          542,
+          705,
+          717,
+          718
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 14
+      },
+      "image": "var/mineru_challenge_v1/anchor-24.png",
+      "image_sha256": "da0bb4028b854219081961b11c0622f7c127210cbf0fbcbaba971b65142a7e99"
+    },
+    {
+      "case_id": "challenge-17",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-001-100:1523",
+        "chapter_page": 41,
+        "source": {
+          "chapter_pdf_page": 41,
+          "source_document": "high",
+          "source_pdf_page": 62,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 43,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 41
+        },
+        "bbox_0_1000": [
+          668,
+          834,
+          761,
+          852
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-25.png",
+      "image_sha256": "4cd7f49058a75e54141cd77120529b6cf2f0c92691c9363fab90557e37df9a3e"
+    },
+    {
+      "case_id": "challenge-17",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-001-100:1558",
+        "chapter_page": 42,
+        "source": {
+          "chapter_pdf_page": 42,
+          "source_document": "high",
+          "source_pdf_page": 63,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 44,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 42
+        },
+        "bbox_0_1000": [
+          510,
+          797,
+          917,
+          848
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 57
+      },
+      "image": "var/mineru_challenge_v1/anchor-26.png",
+      "image_sha256": "c01f514c884022d43a98a8cb948f93a3fe080086325b05534346a05856c23cb3"
+    },
+    {
+      "case_id": "challenge-18",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-001-100:1559",
+        "chapter_page": 42,
+        "source": {
+          "chapter_pdf_page": 42,
+          "source_document": "high",
+          "source_pdf_page": 63,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 44,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 42
+        },
+        "bbox_0_1000": [
+          539,
+          853,
+          707,
+          866
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 13
+      },
+      "image": "var/mineru_challenge_v1/anchor-27.png",
+      "image_sha256": "79af53c9e0f0c4f48e6c996386b513b823a1460c573c7177b5467800640c658a"
+    },
+    {
+      "case_id": "challenge-19",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-101-200:2295",
+        "chapter_page": 159,
+        "source": {
+          "chapter_pdf_page": 159,
+          "source_document": "high",
+          "source_pdf_page": 180,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 161,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 59
+        },
+        "bbox_0_1000": [
+          628,
+          118,
+          800,
+          180
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-28.png",
+      "image_sha256": "4cf7578b279b106e52eadbb1da0624566d23bcf8fcaece9ee3d16e6e95a2c499"
+    },
+    {
+      "case_id": "challenge-19",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:2325",
+        "chapter_page": 160,
+        "source": {
+          "chapter_pdf_page": 160,
+          "source_document": "high",
+          "source_pdf_page": 181,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 162,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 60
+        },
+        "bbox_0_1000": [
+          82,
+          649,
+          489,
+          699
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 60
+      },
+      "image": "var/mineru_challenge_v1/anchor-29.png",
+      "image_sha256": "4b2b2862ce3de9a6197b9fc26bd64590db1017b137db1d8a71455da3046616b5"
+    },
+    {
+      "case_id": "challenge-20",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:2326",
+        "chapter_page": 160,
+        "source": {
+          "chapter_pdf_page": 160,
+          "source_document": "high",
+          "source_pdf_page": 181,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 162,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 60
+        },
+        "bbox_0_1000": [
+          112,
+          703,
+          280,
+          715
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 13
+      },
+      "image": "var/mineru_challenge_v1/anchor-30.png",
+      "image_sha256": "1484dff96c0a553eaeace0043a7c16b2ee6d3355d4b03d18003f17699683a9b0"
+    },
+    {
+      "case_id": "challenge-21",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-001-100:3391",
+        "chapter_page": 90,
+        "source": {
+          "chapter_pdf_page": 90,
+          "source_document": "high",
+          "source_pdf_page": 111,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 92,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 90
+        },
+        "bbox_0_1000": [
+          107,
+          234,
+          315,
+          248
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 14
+      },
+      "image": "var/mineru_challenge_v1/anchor-31.png",
+      "image_sha256": "3239c1665a17ca770c7d7f2a9e883ec0dc12a2e32b7a0fa857d6e7921a715faf"
+    },
+    {
+      "case_id": "challenge-22",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-301-400:837",
+        "chapter_page": 323,
+        "source": {
+          "chapter_pdf_page": 323,
+          "source_document": "high",
+          "source_pdf_page": 344,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 325,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第301-400页.pdf",
+          "upload_part_page": 23
+        },
+        "bbox_0_1000": [
+          102,
+          282,
+          368,
+          297
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 18
+      },
+      "image": "var/mineru_challenge_v1/anchor-32.png",
+      "image_sha256": "ad76671f0001614744a04708cbeedb283f32d30d1133121e0da20422e892d620"
+    },
+    {
+      "case_id": "challenge-25",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:3397",
+        "chapter_page": 188,
+        "source": {
+          "chapter_pdf_page": 188,
+          "source_document": "high",
+          "source_pdf_page": 209,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 190,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 88
+        },
+        "bbox_0_1000": [
+          110,
+          235,
+          285,
+          249
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 12
+      },
+      "image": "var/mineru_challenge_v1/anchor-33.png",
+      "image_sha256": "ff7e6cc047f66eb936bbb12a3991d01c8ab11275a1fabc4a5086fab7d017f9bd"
+    },
+    {
+      "case_id": "challenge-26",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:970",
+        "chapter_page": 125,
+        "source": {
+          "chapter_pdf_page": 125,
+          "source_document": "high",
+          "source_pdf_page": 146,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 127,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 25
+        },
+        "bbox_0_1000": [
+          510,
+          376,
+          915,
+          409
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 33
+      },
+      "image": "var/mineru_challenge_v1/anchor-34.png",
+      "image_sha256": "68806fd63220eba4efaff46b3532d51e58c35f8ef7674a1947d581a0b9632eaf"
+    },
+    {
+      "case_id": "challenge-28",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-001-100:1078",
+        "chapter_page": 29,
+        "source": {
+          "chapter_pdf_page": 29,
+          "source_document": "high",
+          "source_pdf_page": 50,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 31,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 29
+        },
+        "bbox_0_1000": [
+          80,
+          458,
+          487,
+          564
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 159
+      },
+      "image": "var/mineru_challenge_v1/anchor-35.png",
+      "image_sha256": "596e2aeed320d6211c30af54016acffd93b5ac1d32165a1289dbfe8dd4b4f50d"
+    },
+    {
+      "case_id": "challenge-37",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-001-100:3392",
+        "chapter_page": 90,
+        "source": {
+          "chapter_pdf_page": 90,
+          "source_document": "high",
+          "source_pdf_page": 111,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 92,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 90
+        },
+        "bbox_0_1000": [
+          223,
+          291,
+          341,
+          310
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-36.png",
+      "image_sha256": "d10412a16b782a08ecbbe684b01f21903eac818a2a000fdfcbf526f9c6a787aa"
+    },
+    {
+      "case_id": "challenge-37",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-001-100:3403",
+        "chapter_page": 90,
+        "source": {
+          "chapter_pdf_page": 90,
+          "source_document": "high",
+          "source_pdf_page": 111,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 92,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第001-100页.pdf",
+          "upload_part_page": 90
+        },
+        "bbox_0_1000": [
+          112,
+          652,
+          403,
+          665
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 7
+      },
+      "image": "var/mineru_challenge_v1/anchor-37.png",
+      "image_sha256": "2012f3be76b3b889f11a7eb941ac10138bf37f9fb91b6d96fbaf224a705d0150"
+    },
+    {
+      "case_id": "challenge-42",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-101-200:997",
+        "chapter_page": 126,
+        "source": {
+          "chapter_pdf_page": 126,
+          "source_document": "high",
+          "source_pdf_page": 147,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 128,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 26
+        },
+        "bbox_0_1000": [
+          225,
+          329,
+          342,
+          347
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-38.png",
+      "image_sha256": "6112f4b9dbdbc30c7e1710f3f3ff70ffd934040167b4cf367a54fb3577402a89"
+    },
+    {
+      "case_id": "challenge-42",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:1007",
+        "chapter_page": 126,
+        "source": {
+          "chapter_pdf_page": 126,
+          "source_document": "high",
+          "source_pdf_page": 147,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 128,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 26
+        },
+        "bbox_0_1000": [
+          542,
+          198,
+          707,
+          212
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 12
+      },
+      "image": "var/mineru_challenge_v1/anchor-39.png",
+      "image_sha256": "df09658517458f57f2ec5acab175f98eedaa06831bf980909abf4bb9b82621cc"
+    },
+    {
+      "case_id": "challenge-43",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-101-200:972",
+        "chapter_page": 125,
+        "source": {
+          "chapter_pdf_page": 125,
+          "source_document": "high",
+          "source_pdf_page": 146,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 127,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 25
+        },
+        "bbox_0_1000": [
+          653,
+          470,
+          769,
+          488
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-40.png",
+      "image_sha256": "307127f7113a0f772f02aa79800a0bdd8f85fb416a2129b4a7913cd27060c546"
+    },
+    {
+      "case_id": "challenge-43",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:990",
+        "chapter_page": 126,
+        "source": {
+          "chapter_pdf_page": 126,
+          "source_document": "high",
+          "source_pdf_page": 147,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 128,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 26
+        },
+        "bbox_0_1000": [
+          107,
+          236,
+          270,
+          249
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 12
+      },
+      "image": "var/mineru_challenge_v1/anchor-41.png",
+      "image_sha256": "10f1eda087e357a53a0dd632544e21f8af3c9ae29ecaf00da147ce10d7e4f854"
+    },
+    {
+      "case_id": "challenge-44",
+      "kind": "title",
+      "citation": {
+        "block_id": "part-101-200:1219",
+        "chapter_page": 131,
+        "source": {
+          "chapter_pdf_page": 131,
+          "source_document": "high",
+          "source_pdf_page": 152,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 133,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 31
+        },
+        "bbox_0_1000": [
+          658,
+          813,
+          778,
+          831
+        ],
+        "asset_paths": [],
+        "block_type": "text"
+      },
+      "image": "var/mineru_challenge_v1/anchor-42.png",
+      "image_sha256": "3f1563fa58b0c41ad9dffaa036653972c460ed49571f69d20a4b4615f41fda03"
+    },
+    {
+      "case_id": "challenge-44",
+      "kind": "field",
+      "citation": {
+        "block_id": "part-101-200:1240",
+        "chapter_page": 132,
+        "source": {
+          "chapter_pdf_page": 132,
+          "source_document": "high",
+          "source_pdf_page": 153,
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "expected_printed_page": 134,
+          "observed_printed_page": null,
+          "printed_label_status": "expected_sequence_not_individually_verified",
+          "upload_part": "药材和饮片_第101-200页.pdf",
+          "upload_part_page": 32
+        },
+        "bbox_0_1000": [
+          110,
+          762,
+          278,
+          776
+        ],
+        "asset_paths": [],
+        "block_type": "text",
+        "start": 0,
+        "end": 13
+      },
+      "image": "var/mineru_challenge_v1/anchor-43.png",
+      "image_sha256": "00f26b7490cc33596f204823993491a3e887110c27435f3ca3f41712156d15a9"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "kind": "pre_ocr_ai_visual_title_reference",
+  "human_signoff": false,
+  "frozen_before_ocr": true,
+  "independent_from_ocr_outputs": true,
+  "independent_human_reference": false,
+  "selection": "Four new pages not used in v4 repair. Same-assistant source-image labels, no independent expert signoff.",
+  "scope": "Coarse page/column correspondence only; mineral and processed monographs included.",
+  "pages": [
+    {
+      "document": "high",
+      "pdf_page": 120,
+      "printed_page": 101,
+      "block": "new_v4",
+      "layout": "two_column",
+      "image_sha256": "119cfd0dae36e8fbc19db453c985e4d7c0f98f1113a60e3bdd306aa2e83e8aa3",
+      "titles": [
+        {
+          "name": "石膏",
+          "column": "left",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        },
+        {
+          "name": "煅石膏",
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 121,
+      "printed_page": 102,
+      "block": "new_v4",
+      "layout": "two_column",
+      "image_sha256": "f6ed093a8a7cbe50f84fc1de32af61c3f59a11873300641412488b7732679272",
+      "titles": [
+        {
+          "name": "布渣叶",
+          "column": "left",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        },
+        {
+          "name": "龙胆",
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 122,
+      "printed_page": 103,
+      "block": "new_v4",
+      "layout": "two_column",
+      "image_sha256": "5a84dcf3fd07f9df13082c0b63c5dcbc9038524b6eb912da2561c17e44846036",
+      "titles": [
+        {
+          "name": "龙眼肉",
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.65
+          ]
+        },
+        {
+          "name": "龙脷叶",
+          "column": "right",
+          "y_range": [
+            0.65,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 123,
+      "printed_page": 104,
+      "block": "new_v4",
+      "layout": "two_column",
+      "image_sha256": "34642306d4a4d9c65f6b0117bc0980f7aee80424c0e8f92aaf784930b604584e",
+      "titles": [
+        {
+          "name": "平贝母",
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "unit_tests": 94,
+  "question_count": 50,
+  "retrieval_runs": 2,
+  "per_case_results_repeatable_excluding_latency": true,
+  "source_crop_rebuild_sha_identical": 43,
+  "unchanged_sha256": {
+    "var/mineru_retrieval_v2/research.sqlite3": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+    "var/mineru_revisions_v2/research_view.json": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+    "var/tcm/herbs.sqlite3": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+    "tcm/mineru_retrieval.py": "4f7baf88a479750692e1385818e644171a95d9470fe7d36e69aac218a32ca195"
+  },
+  "production_ingested": false,
+  "human_gold": false,
+  "clinical_correctness_evaluated": false
+}

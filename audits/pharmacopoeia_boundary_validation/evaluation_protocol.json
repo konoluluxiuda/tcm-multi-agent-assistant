@@ -1,0 +1,11 @@
+{
+  "kind": "boundary_evaluation_protocol_frozen_before_ocr_output_inspection",
+  "evaluator_sha256": {
+    "tcm/pharmacopoeia_boundary_eval.py": "26c6e9566e2e75c22a6b018b812b27877ec7a4ac71e04d5f459776f0dd5754ee",
+    "scripts/eval_pharmacopoeia_boundaries.py": "ed3528f934a530e0477770d0b59a41a2386b883016751ccd923fcfa2b1204e08"
+  },
+  "primary_reference": "eval/pharmacopoeia_boundary_visual_v2.json",
+  "reference_sha256": "f1bd0c0996131bc1b801382a11884bf46adcb76e2f75ff55eaa4a329f8e2f2d2",
+  "note": "Coarse page/column correspondence, unique bipartite matches; name differences reported separately. No percentage accuracy claim. Missing title retained inside prior entry quarantines owner. Original thumbnail-position reference retained separately.",
+  "human_signoff": false
+}

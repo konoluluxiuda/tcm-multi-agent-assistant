@@ -1,0 +1,219 @@
+{
+  "engine": "paddle",
+  "suite_sha256": "a7901bea761db41bd25dd654641ab7ed59de61df9301d4235372fd2ffd6574e0",
+  "prepared_sha256": "dc96f79374db8042554eedaf53067d08dad9484e3c59cb277f018bf3f64cba3b",
+  "code_sha256": "0508a9e5365b72fe416da75ca7c1652d8f48d701afad2094ccc71bb335ddcef8",
+  "status": "completed",
+  "pages": [
+    {
+      "key": "high-24",
+      "seconds": 74.748,
+      "lines": 90,
+      "blocks": 30
+    },
+    {
+      "key": "high-25",
+      "seconds": 76.348,
+      "lines": 93,
+      "blocks": 39
+    },
+    {
+      "key": "full-51",
+      "seconds": 64.316,
+      "lines": 90,
+      "blocks": 30
+    },
+    {
+      "key": "full-76",
+      "seconds": 61.042,
+      "lines": 90,
+      "blocks": 39
+    },
+    {
+      "key": "full-77",
+      "seconds": 63.911,
+      "lines": 90,
+      "blocks": 33
+    },
+    {
+      "key": "high-48",
+      "seconds": 72.75,
+      "lines": 90,
+      "blocks": 39
+    },
+    {
+      "key": "high-49",
+      "seconds": 71.838,
+      "lines": 97,
+      "blocks": 37
+    },
+    {
+      "key": "full-78",
+      "seconds": 63.598,
+      "lines": 97,
+      "blocks": 37
+    },
+    {
+      "key": "high-218",
+      "seconds": 81.736,
+      "lines": 93,
+      "blocks": 30
+    },
+    {
+      "key": "full-247",
+      "seconds": 68.288,
+      "lines": 93,
+      "blocks": 30
+    },
+    {
+      "key": "high-434",
+      "seconds": 36.588,
+      "lines": 34,
+      "blocks": 18
+    },
+    {
+      "key": "full-463",
+      "seconds": 34.13,
+      "lines": 34,
+      "blocks": 18
+    },
+    {
+      "key": "full-49",
+      "seconds": 18.213,
+      "lines": 1,
+      "blocks": 1
+    },
+    {
+      "key": "full-50",
+      "seconds": 18.869,
+      "lines": 0,
+      "blocks": 0
+    },
+    {
+      "key": "full-52",
+      "seconds": 64.8,
+      "lines": 93,
+      "blocks": 39
+    },
+    {
+      "key": "full-464",
+      "seconds": 17.823,
+      "lines": 0,
+      "blocks": 0
+    },
+    {
+      "key": "full-465",
+      "seconds": 18.188,
+      "lines": 1,
+      "blocks": 1
+    },
+    {
+      "key": "full-466",
+      "seconds": 18.459,
+      "lines": 0,
+      "blocks": 0
+    },
+    {
+      "key": "full-1030",
+      "seconds": 69.249,
+      "lines": 98,
+      "blocks": 24
+    },
+    {
+      "key": "full-2057",
+      "seconds": 30.771,
+      "lines": 26,
+      "blocks": 6
+    }
+  ],
+  "human_signoff": false,
+  "ocr_character_accuracy": null,
+  "reading_order_accuracy": null,
+  "business_task_completion_rate": null,
+  "settings": {
+    "device": "cpu",
+    "threads": 2,
+    "render_dpi": 240,
+    "rapidocr_fixed_half_columns": false,
+    "paddle_detection_long_side_max": 960,
+    "paddle_recognition_batch_size": 4,
+    "paddle_enable_mkldnn": false,
+    "optional_table_formula_chart_seal": false
+  },
+  "versions": {
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.0",
+    "paddlex": "3.7.2"
+  },
+  "initialization_seconds": 4.355,
+  "model_fingerprints": {
+    "official_models/PP-DocBlockLayout/config.json": "77b3ed49207f2e36f3973c59c23343b4d26ce993749f15b69452fc04941658d7",
+    "official_models/PP-DocBlockLayout/inference.json": "abea237f1e53d3dc3bf7ea1321dfebe78552a6070e567dfc94028b622fd575e8",
+    "official_models/PP-DocBlockLayout/inference.pdiparams": "0ab733dcabfee41517b68b37fde4c696129b88096a93f8b9d8feaa43c27c8942",
+    "official_models/PP-DocBlockLayout/inference.yml": "3d3d5035825b1a2de3348c646e463798d85b9f8c7c5155a81757172261036e1b",
+    "official_models/PP-DocLayout_plus-L/config.json": "adc92346e7ecc5d54dc9ed224c754c9237f56e5d88b0c9208db08cb315d66c09",
+    "official_models/PP-DocLayout_plus-L/inference.json": "99bd09c0a1b9e88d35c65c305b91711d98055fc94b4a6eecd50da02e04729384",
+    "official_models/PP-DocLayout_plus-L/inference.pdiparams": "24ca3e2e442164505e250deef59f7ee9a54ea12dd32875c9cd6155d959dc97da",
+    "official_models/PP-DocLayout_plus-L/inference.yml": "d60f782a16f96afb27e8280399899a94c3e9ffc694ffb2f913ea00af1c522f1e",
+    "official_models/PP-OCRv5_server_det/config.json": "436bf19010fe3879477e8599a870a0ec8ccd14ca39056805ec4ed20ab318ec04",
+    "official_models/PP-OCRv5_server_det/inference.json": "af5876933d8806a1b50d895867e0781e135cd92ff37381992828fc8d1b842d28",
+    "official_models/PP-OCRv5_server_det/inference.pdiparams": "183146fe9d9910352f68482f623bcbbb9fa7b9e8fa1463b9ad288cef00524d2d",
+    "official_models/PP-OCRv5_server_det/inference.yml": "28fb721efc3634fc8aa677e474b9602cb815a91cf569ef357a7a553d7b3ce685",
+    "official_models/PP-OCRv5_server_rec/config.json": "6a780e213d7a830058ae1b6899c62cc13ca9c1f0f04ae39a27ebb2610fae7c51",
+    "official_models/PP-OCRv5_server_rec/inference.json": "8e6e12e5d42531840310977fffb58165bf889fc5061408c5a8afdb6985f47fcb",
+    "official_models/PP-OCRv5_server_rec/inference.pdiparams": "63853f062a5f4089befc16f565a68277618e0da5cb45468b49d11079de0ada77",
+    "official_models/PP-OCRv5_server_rec/inference.yml": "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d"
+  },
+  "blocked_network_attempts": 0,
+  "legacy_fragment_checks": [
+    {
+      "id": "YiZhiHuangHua",
+      "status": "executed",
+      "fields": {
+        "name": true,
+        "latin_drug_name": true,
+        "medicinal_part_fragment": true,
+        "properties_meridians": true,
+        "quantity_fragment": true
+      }
+    },
+    {
+      "id": "DingGongTeng",
+      "status": "executed",
+      "fields": {
+        "name": true,
+        "latin_drug_name": true,
+        "medicinal_part_fragment": true,
+        "properties_meridians": true,
+        "quantity_fragment": true,
+        "caution_fragment": true
+      }
+    },
+    {
+      "id": "DaFuPi",
+      "status": "executed",
+      "fields": {
+        "name": true,
+        "latin_drug_name": true,
+        "medicinal_part_fragment": true,
+        "properties_meridians": false,
+        "quantity_fragment": true
+      }
+    },
+    {
+      "id": "ShanMaiDong",
+      "status": "executed",
+      "fields": {
+        "name": true,
+        "latin_drug_name": true,
+        "medicinal_part_fragment": true,
+        "properties_meridians": true,
+        "quantity_fragment": true
+      }
+    }
+  ],
+  "completed_pages": 20,
+  "total_pages": 20,
+  "page_processing_seconds": 1025.665,
+  "process_peak_rss_mib": 4535.8
+}

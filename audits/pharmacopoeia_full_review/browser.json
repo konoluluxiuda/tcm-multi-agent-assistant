@@ -1,0 +1,55 @@
+{
+  "human_signoff": false,
+  "checks": [
+    {
+      "case": "four_herbs_36_unreviewed_field_slots",
+      "status": "passed"
+    },
+    {
+      "case": "ai_drafts_keep_ocr_and_human_references_separate",
+      "status": "passed"
+    },
+    {
+      "case": "missing_observations_stay_scoped_and_not_negative_safety_claims",
+      "status": "passed"
+    },
+    {
+      "case": "footer_excluded_from_origin_with_retained_evidence",
+      "status": "passed"
+    },
+    {
+      "case": "difference_filter_and_character_highlights",
+      "status": "passed"
+    },
+    {
+      "case": "continued_herb_caution_source_image",
+      "status": "passed"
+    },
+    {
+      "case": "missing_cautions_and_full_region_fallback",
+      "status": "passed"
+    },
+    {
+      "case": "blank_reference_template_download_bound_to_artifact",
+      "status": "passed"
+    },
+    {
+      "case": "mobile_no_horizontal_page_overflow",
+      "status": "passed"
+    },
+    {
+      "case": "ocr_markup_remains_literal_text",
+      "status": "passed"
+    },
+    {
+      "case": "failed_load_has_no_stale_cards",
+      "status": "passed"
+    }
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "comparison_sha256": "d76b642e467b40fcd04ca187bd1116916b958607fc2cafad56693c3f8aefd42c",
+  "html_sha256": "12e66f0c6182a39c5ab3d4d4533ba8def69ede7f71fd5cf80d4d93f1d5e44b18",
+  "status": "passed",
+  "browser_version": "153.0.8010.12"
+}

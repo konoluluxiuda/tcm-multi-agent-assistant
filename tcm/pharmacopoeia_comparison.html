@@ -1,0 +1,71 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self';script-src 'unsafe-inline';style-src 'unsafe-inline';img-src 'self';connect-src 'self'">
+<title>药典双引擎字段复核</title>
+<style>
+body{max-width:1180px;margin:24px auto;padding:0 16px;font:16px/1.6 sans-serif;background:#f4f6f8;color:#192d3c}article,section{background:white;padding:18px;margin:16px 0;border:1px solid #c9d2da;border-radius:8px}.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}.alternative{min-width:0;border-top:3px solid #a13232}.alternative.paddle{border-color:#314fad}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}mark{background:#fff0a8;color:inherit}img{max-width:100%;border:1px solid #aaa}code{overflow-wrap:anywhere}.warning{color:#974019}select,button{font:inherit;padding:6px;margin:6px}summary{cursor:pointer}a{color:#235e92}@media(max-width:700px){.pair{grid-template-columns:1fr}}
+</style>
+<h1>四味药 · 双引擎字段复核</h1>
+<p>仅本地试验候选，药名对应和内容均待人工核对。高亮表示字符差异，不判断哪个正确；一致也不表示已核实。所选区域未观察到注意项，不表示无禁忌。</p>
+<section><label>药材 <select id="herb" disabled></select></label><label><input id="differences" type="checkbox">只看差异或缺失</label>
+<p id="status" role="status">正在读取资料…</p><a id="template" href="review_template.json" download>下载空白人工转录模板</a><p>模板中的参考文本和审核人保持空白；本页不提交审核、不写入知识库。</p></section>
+<div id="regions"></div><div id="fields"></div>
+<script>
+const labels={origin:'来源原文',medicinal_part:'药用部位候选',pinyin:'拼音',latin_drug_name:'拉丁药材名（非植物学名）',properties_meridians:'性味与归经',efficacy_indications:'功能与主治',usage:'用法与用量',cautions:'注意',storage:'贮藏'};
+const states={exact_agreement:'原始文字一致 · 仍待审',normalized_agreement:'归一化后一致 · 仍待审',text_difference:'文字有差异',presence_difference:'一侧未提取到候选',occurrence_count_difference:'候选次数不同',both_unavailable:'两侧均未提取到候选'};
+const byId=id=>document.getElementById(id);let data;
+function add(root,tag,text){const el=document.createElement(tag);el.textContent=text;root.append(el);return el;}
+function preview(root,p){
+ add(root,'p',p.document+' · PDF第'+p.pdf_page+'页 · 印刷第'+p.printed_page+'页');
+ add(root,'code','源PDF SHA-256: '+p.source_sha256);
+ if(/^assets\/[A-Za-z0-9_-]+\.png$/.test(p.image)){const im=document.createElement('img');im.src=p.image;im.loading='lazy';im.alt='原图裁剪：红框RapidOCR，蓝框Paddle，重叠处可能覆盖';root.append(im);}
+}
+function render(){
+ byId('fields').replaceChildren();byId('regions').replaceChildren();
+ const record=data.records.find(r=>r.id===byId('herb').value);if(!record)return;
+ const all=record.fields,chosen=byId('differences').checked?all.filter(f=>!['exact_agreement','normalized_agreement'].includes(f.comparison)):all;
+ byId('status').textContent=record.name_zh_candidate+'：展示'+chosen.length+'/'+all.length+'个字段；全部待人工复核，已批准0项。';
+ const region=add(byId('regions'),'details','');add(region,'summary','展开完整的人工选定区域（可检查漏提取内容）');
+ record.region_previews.forEach(p=>preview(region,p));
+ const issues=add(byId('regions'),'details','');add(issues,'summary','查看边界与抽取异常');add(issues,'pre',JSON.stringify(record.extraction_issues,null,2));
+ for(const field of chosen){
+  const article=add(byId('fields'),'article','');article.dataset.field=field.key;article.dataset.comparison=field.comparison;
+  add(article,'h2',labels[field.key]+' · '+states[field.comparison]);add(article,'p','人工参考文本：尚未转录；审核：待完成。').className='warning';
+  const pair=add(article,'div','');pair.className='pair';
+  for(const engine of ['rapidocr','paddle']){
+   const value=field.engines[engine],col=add(pair,'div','');col.className='alternative '+engine;col.dataset.engine=engine;
+   add(col,'h3',engine==='rapidocr'?'RapidOCR 分栏':'PP-StructureV3');
+   if(!value.occurrences.length){add(col,'p',value.message||data.missing_message);continue;}
+   const pre=add(col,'pre','');for(const segment of field.diff[engine]){add(pre,segment.changed?'mark':'span',segment.text);}
+   add(col,'p','候选次数：'+value.occurrences.length+'；状态：'+value.state);
+   const evidence=add(col,'details','');add(evidence,'summary','原始候选与坐标证据');add(evidence,'pre',JSON.stringify(value.occurrences,null,2));
+  }
+  if(field.ai_visual_draft){
+   const draft=add(article,'section','');draft.className='ai-draft';
+   add(draft,'h3','AI原图转录草案 · 尚未人工审核');
+   add(draft,'pre',field.ai_visual_draft.draft_text);
+   add(draft,'p','这份草案不是标准答案，也未替换双方OCR或人工参考文本。').className='warning';
+   for(const note of field.ai_visual_draft.notes)add(draft,'p',note);
+  }
+  if(field.ai_visual_observation){
+   const observation=add(article,'section','');observation.className='ai-observation';
+   add(observation,'h3','AI原图观察 · 所选区域未观察到此项');
+   add(observation,'p',field.ai_visual_observation.message).className='warning';
+   add(observation,'p','这是有限区域的待审核观察，没有转录成“无禁忌”或空白参考答案。');
+  }
+  const sources=add(article,'details','');sources.className='sources';add(sources,'summary','展开双方原图出处（红RapidOCR / 蓝Paddle）');
+  if(!field.previews.length)add(sources,'p','没有字段证据框，请展开上方完整选定区域核对；缺失不等于原书没有记载。');
+  field.previews.forEach(p=>preview(sources,p));
+ }
+ const exclusions=record.excluded_margin_lines||{};
+ if(Object.values(exclusions).some(items=>items.length)){
+  const excluded=add(byId('regions'),'details','');excluded.className='excluded-lines';
+  add(excluded,'summary','查看已排除的页边页码（保留原始证据）');add(excluded,'pre',JSON.stringify(exclusions,null,2));
+ }
+}
+byId('herb').addEventListener('change',render);byId('differences').addEventListener('change',render);
+fetch('comparison.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('读取失败');return r.json();}).then(value=>{
+ data=value;for(const record of data.records){const o=add(byId('herb'),'option',record.name_zh_candidate);o.value=record.id;}
+ byId('herb').disabled=false;render();
+}).catch(()=>{byId('fields').replaceChildren();byId('status').textContent='无法读取资料，请通过本地HTTP服务打开并检查生成文件。';});
+</script></html>

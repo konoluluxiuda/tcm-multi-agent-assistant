@@ -1,0 +1,44 @@
+{
+  "kind": "post_evaluation_origin_omission_image_check",
+  "human_signoff": false,
+  "result": "Origin first lines are visible in PDF images but absent from the saved RapidOCR lines on these three pages.",
+  "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+  "pages": [
+    {
+      "pdf_page": 38,
+      "column": "right",
+      "clip_xy_fractions": [
+        0.5,
+        0.17,
+        0.98,
+        0.25
+      ],
+      "render_dpi": 240,
+      "image_sha256": "ea7689eaf17034e2bfea4fe2d8c381ffc500cd1aaff22dd1f89d9506a2ee225e"
+    },
+    {
+      "pdf_page": 39,
+      "column": "right",
+      "clip_xy_fractions": [
+        0.5,
+        0.35,
+        0.98,
+        0.44
+      ],
+      "render_dpi": 240,
+      "image_sha256": "51a4503ca5dd93753683121fe69d2a89e4fc3dfe0b568d35c31331f20dfe8f2b"
+    },
+    {
+      "pdf_page": 422,
+      "column": "right",
+      "clip_xy_fractions": [
+        0.5,
+        0.88,
+        0.98,
+        0.96
+      ],
+      "render_dpi": 240,
+      "image_sha256": "cde9628d4774f5b2074955cd9ad3c615c007705e31ecf3e0b721d2ad220b1613"
+    }
+  ]
+}

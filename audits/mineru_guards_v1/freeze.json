@@ -1,0 +1,20 @@
+{
+  "question_sha256": "27db5b42cb3972a47ac1ec9bb2e48b749ad610c051ecf77da785d85665b6f00a",
+  "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+  "retriever_sha256": "c910efbbe50d9ea5135196c834a6a45b1f1d00523ece373f00bdd3a81e07e860",
+  "questions": 50,
+  "groups": {
+    "canonical": 20,
+    "field_paraphrase": 8,
+    "name_variant": 8,
+    "out_of_scope": 6,
+    "processed_variant": 8
+  },
+  "retrieval_outputs_inspected": false,
+  "human_gold": false,
+  "guards_sha256": "4f6675eefa56c933f050dd1eadba9b54b13408138efc7ae8edaa40ac53f183ed",
+  "experiment_kind": "known_failure_regression_not_new_blind_test",
+  "baseline_freeze_sha256": "5e8a0542d43087915795667ed0497da7cbef2d58309b72714afcd458ef2e44eb",
+  "baseline_path": "audits/mineru_challenge_v1/freeze.json",
+  "development_note": "Final regression recipe; exploratory development freezes and reports retained only under var/mineru_guards_v1."
+}

@@ -1,0 +1,99 @@
+{
+  "kind": "pre_ocr_ai_visual_title_reference",
+  "human_signoff": false,
+  "frozen_before_ocr": true,
+  "independent_from_ocr_outputs": true,
+  "independent_human_reference": false,
+  "selection": "Four fresh pages after v5 freeze; same-assistant image labels pending human review.",
+  "scope": "Coarse page/column title correspondence only. Prior 42 pages excluded.",
+  "pages": [
+    {
+      "document": "high",
+      "pdf_page": 150,
+      "printed_page": 131,
+      "block": "new_v5",
+      "layout": "two_column",
+      "image_sha256": "ff634b6343a1e5734d4c46057f64b3c75cb1f43829df5642f85e12dfe01f0a41",
+      "titles": [
+        {
+          "name": "地枫皮",
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.45
+          ]
+        },
+        {
+          "name": "地肤子",
+          "column": "right",
+          "y_range": [
+            0.45,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 151,
+      "printed_page": 132,
+      "block": "new_v5",
+      "layout": "two_column",
+      "image_sha256": "819ff02ffdf130939c3ee3e034cda2e62bfbeb653acab0c3edd63094fc9fc84d",
+      "titles": [
+        {
+          "name": "地骨皮",
+          "column": "left",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        },
+        {
+          "name": "地黄",
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 152,
+      "printed_page": 133,
+      "block": "new_v5",
+      "layout": "two_column",
+      "image_sha256": "2e655858741cdf353da57d655b593b719d8d03c602a2c4ff26d8e42b60b9e0ba",
+      "titles": [
+        {
+          "name": "熟地黄",
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 153,
+      "printed_page": 134,
+      "block": "new_v5",
+      "layout": "two_column",
+      "image_sha256": "605966d870567cb29d785ddc50e460d6e7f27b0c457872258e4a869e00c8c7c4",
+      "titles": [
+        {
+          "name": "地榆",
+          "column": "left",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    }
+  ]
+}

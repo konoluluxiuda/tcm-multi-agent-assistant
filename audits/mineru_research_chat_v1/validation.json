@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "research_unit_tests": 120,
+  "core_compatibility_tests": 30,
+  "research_chat_browser_checks": 8,
+  "original_research_ui_browser_checks": 12,
+  "new_chat_tests": 16,
+  "new_codec_compatibility_tests": 1,
+  "actual_server_restarts": 1,
+  "actual_browser_restarts": 1,
+  "llm_calls": 0,
+  "new_langgraph_workflow": false,
+  "production_ingested": false,
+  "human_gold": false,
+  "clinical_correctness_evaluated": false,
+  "unchanged_source_sha256": {
+    "var/mineru_retrieval_v2/research.sqlite3": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+    "var/mineru_revisions_v2/research_view.json": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+    "var/tcm/herbs.sqlite3": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+    "data/《中国药典》2025年版 一部.pdf": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+    "data/《中国药典》2025年版 一部 全本.pdf": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+  },
+  "code_sha256": {
+    "agents/conversation_store.py": "921a778565114a55c35c186e0ad1c4fc060e288a9b0ab2f361fe01c211c7bcfa",
+    "tcm/mineru_chat.py": "68fc46a7a4d90930d1144ebc80ecf406fd1b734575ad872adc9ec9243d0860eb",
+    "tcm/mineru_chat.html": "fd915953427c4257327eedd0dfb728791d1d86279e12a29290e92dd0c78c351f",
+    "tcm/mineru_research.py": "b252a45b7fec4540a776eced4b57ce5e2792cbfc2de6d976f43b3ea3685ab37b",
+    "tcm/mineru_research.html": "93ebc6e0f1643e70a8c2d339cf6881d229004f805e21b3d9c94e9666410df8fa",
+    "tcm/mineru_evidence.js": "c72d3c6d5920c887d593c5bec16fded2c04ce6fec3c9d5d612bb0ac48d75abce",
+    "scripts/serve_mineru_research.py": "db6d3d33fc95fc67352c13c060d6c8b22f1ba3fb91d03e6068e1101c9a3bc34f",
+    "scripts/verify_mineru_chat.py": "b940573e790a06553f04fde28c0df6a95de27ab0d3fe9d2ce6e04ae23b0c93b0",
+    "scripts/verify_mineru_research.py": "333e42b8c6bbb93b62dee3928a5ed4bae8006cbf5a96a123fd25173d97afb9fd",
+    "tests/test_mineru_chat.py": "8f5ab9dffa8a19b645a48b5bd4e6bd0595465bb354e786d2e5daf1c05a47f1ea",
+    "tests/test_conversation_store.py": "2201156211d740cc7aa4840b46b917b037571ebd3f2712c64e59b84c5cf062b4"
+  }
+}

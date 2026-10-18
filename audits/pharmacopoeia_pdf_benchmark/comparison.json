@@ -1,0 +1,380 @@
+{
+  "kind": "engineering_parser_comparison",
+  "suite_sha256": "a7901bea761db41bd25dd654641ab7ed59de61df9301d4235372fd2ffd6574e0",
+  "input_identity_verified": true,
+  "human_signoff": false,
+  "source_pdf_authenticity_verified": false,
+  "reference_status": "ai_visual_pending_human_review",
+  "ocr_character_accuracy": null,
+  "reading_order_accuracy": null,
+  "business_task_completion_rate": null,
+  "runs": [
+    {
+      "engine": "rapidocr",
+      "report_sha256": "819f92fd18ae64721deea2a9f4263e4db20097fe825886004eb26441f81079e3",
+      "runner_sha256": "062d62efb8a6e4ca403a8710be95c29d3fb12961c768dc309aee6c61b7c876e8",
+      "versions": {
+        "rapidocr-onnxruntime": "1.4.4",
+        "onnxruntime": "1.31.0"
+      },
+      "settings": {
+        "device": "cpu",
+        "threads": 2,
+        "render_dpi": 240,
+        "rapidocr_fixed_half_columns": true,
+        "optional_table_formula_chart_seal": false
+      },
+      "completed_pages": 20,
+      "page_processing_seconds": 154.171,
+      "process_peak_rss_mib": null,
+      "blocked_network_attempts": 0,
+      "legacy_fragments": {
+        "matched": 21,
+        "total": 21
+      },
+      "posthoc_flags": [
+        {
+          "flag_index": 0,
+          "case_id": "DaFuPi",
+          "reference_fragment_present_in_region": true,
+          "previous_error_fragment_present_in_region": false
+        },
+        {
+          "flag_index": 1,
+          "case_id": "ShanMaiDong",
+          "reference_fragment_present_in_region": false,
+          "previous_error_fragment_present_in_region": true
+        },
+        {
+          "flag_index": 2,
+          "case_id": "ShanMaiDong",
+          "reference_fragment_present_in_region": false,
+          "previous_error_fragment_present_in_region": true
+        },
+        {
+          "flag_index": 3,
+          "case_id": "YiZhiHuangHua",
+          "reference_fragment_present_in_region": false,
+          "previous_error_fragment_present_in_region": false
+        },
+        {
+          "flag_index": 4,
+          "case_id": "DaFuPi",
+          "reference_fragment_present_in_region": false,
+          "previous_error_fragment_present_in_region": true
+        }
+      ],
+      "page_statistics": [
+        {
+          "key": "high-24",
+          "seconds": 12.896,
+          "lines": 88,
+          "blocks": 0
+        },
+        {
+          "key": "high-25",
+          "seconds": 11.548,
+          "lines": 90,
+          "blocks": 0
+        },
+        {
+          "key": "full-51",
+          "seconds": 12.105,
+          "lines": 90,
+          "blocks": 0
+        },
+        {
+          "key": "full-76",
+          "seconds": 10.159,
+          "lines": 90,
+          "blocks": 0
+        },
+        {
+          "key": "full-77",
+          "seconds": 10.804,
+          "lines": 89,
+          "blocks": 0
+        },
+        {
+          "key": "high-48",
+          "seconds": 11.161,
+          "lines": 86,
+          "blocks": 0
+        },
+        {
+          "key": "high-49",
+          "seconds": 10.283,
+          "lines": 93,
+          "blocks": 0
+        },
+        {
+          "key": "full-78",
+          "seconds": 10.2,
+          "lines": 96,
+          "blocks": 0
+        },
+        {
+          "key": "high-218",
+          "seconds": 10.713,
+          "lines": 92,
+          "blocks": 0
+        },
+        {
+          "key": "full-247",
+          "seconds": 11.189,
+          "lines": 91,
+          "blocks": 0
+        },
+        {
+          "key": "high-434",
+          "seconds": 5.281,
+          "lines": 32,
+          "blocks": 0
+        },
+        {
+          "key": "full-463",
+          "seconds": 4.114,
+          "lines": 33,
+          "blocks": 0
+        },
+        {
+          "key": "full-49",
+          "seconds": 1.803,
+          "lines": 2,
+          "blocks": 0
+        },
+        {
+          "key": "full-50",
+          "seconds": 1.679,
+          "lines": 0,
+          "blocks": 0
+        },
+        {
+          "key": "full-52",
+          "seconds": 10.417,
+          "lines": 92,
+          "blocks": 0
+        },
+        {
+          "key": "full-464",
+          "seconds": 1.847,
+          "lines": 0,
+          "blocks": 0
+        },
+        {
+          "key": "full-465",
+          "seconds": 1.726,
+          "lines": 2,
+          "blocks": 0
+        },
+        {
+          "key": "full-466",
+          "seconds": 1.748,
+          "lines": 0,
+          "blocks": 0
+        },
+        {
+          "key": "full-1030",
+          "seconds": 11.186,
+          "lines": 96,
+          "blocks": 0
+        },
+        {
+          "key": "full-2057",
+          "seconds": 3.312,
+          "lines": 47,
+          "blocks": 0
+        }
+      ]
+    },
+    {
+      "engine": "paddle",
+      "report_sha256": "ae8974387f96978a24b6220eb992e8ed321202dde1cf5913ea2a7f33f2b4d4d3",
+      "runner_sha256": "0508a9e5365b72fe416da75ca7c1652d8f48d701afad2094ccc71bb335ddcef8",
+      "versions": {
+        "paddleocr": "3.7.0",
+        "paddlepaddle": "3.3.0",
+        "paddlex": "3.7.2"
+      },
+      "settings": {
+        "device": "cpu",
+        "threads": 2,
+        "render_dpi": 240,
+        "rapidocr_fixed_half_columns": false,
+        "paddle_detection_long_side_max": 960,
+        "paddle_recognition_batch_size": 4,
+        "paddle_enable_mkldnn": false,
+        "optional_table_formula_chart_seal": false
+      },
+      "completed_pages": 20,
+      "page_processing_seconds": 1025.665,
+      "process_peak_rss_mib": 4535.8,
+      "blocked_network_attempts": 0,
+      "legacy_fragments": {
+        "matched": 20,
+        "total": 21
+      },
+      "posthoc_flags": [
+        {
+          "flag_index": 0,
+          "case_id": "DaFuPi",
+          "reference_fragment_present_in_region": true,
+          "previous_error_fragment_present_in_region": false
+        },
+        {
+          "flag_index": 1,
+          "case_id": "ShanMaiDong",
+          "reference_fragment_present_in_region": true,
+          "previous_error_fragment_present_in_region": false
+        },
+        {
+          "flag_index": 2,
+          "case_id": "ShanMaiDong",
+          "reference_fragment_present_in_region": true,
+          "previous_error_fragment_present_in_region": true
+        },
+        {
+          "flag_index": 3,
+          "case_id": "YiZhiHuangHua",
+          "reference_fragment_present_in_region": false,
+          "previous_error_fragment_present_in_region": true
+        },
+        {
+          "flag_index": 4,
+          "case_id": "DaFuPi",
+          "reference_fragment_present_in_region": true,
+          "previous_error_fragment_present_in_region": false
+        }
+      ],
+      "page_statistics": [
+        {
+          "key": "high-24",
+          "seconds": 74.748,
+          "lines": 90,
+          "blocks": 30
+        },
+        {
+          "key": "high-25",
+          "seconds": 76.348,
+          "lines": 93,
+          "blocks": 39
+        },
+        {
+          "key": "full-51",
+          "seconds": 64.316,
+          "lines": 90,
+          "blocks": 30
+        },
+        {
+          "key": "full-76",
+          "seconds": 61.042,
+          "lines": 90,
+          "blocks": 39
+        },
+        {
+          "key": "full-77",
+          "seconds": 63.911,
+          "lines": 90,
+          "blocks": 33
+        },
+        {
+          "key": "high-48",
+          "seconds": 72.75,
+          "lines": 90,
+          "blocks": 39
+        },
+        {
+          "key": "high-49",
+          "seconds": 71.838,
+          "lines": 97,
+          "blocks": 37
+        },
+        {
+          "key": "full-78",
+          "seconds": 63.598,
+          "lines": 97,
+          "blocks": 37
+        },
+        {
+          "key": "high-218",
+          "seconds": 81.736,
+          "lines": 93,
+          "blocks": 30
+        },
+        {
+          "key": "full-247",
+          "seconds": 68.288,
+          "lines": 93,
+          "blocks": 30
+        },
+        {
+          "key": "high-434",
+          "seconds": 36.588,
+          "lines": 34,
+          "blocks": 18
+        },
+        {
+          "key": "full-463",
+          "seconds": 34.13,
+          "lines": 34,
+          "blocks": 18
+        },
+        {
+          "key": "full-49",
+          "seconds": 18.213,
+          "lines": 1,
+          "blocks": 1
+        },
+        {
+          "key": "full-50",
+          "seconds": 18.869,
+          "lines": 0,
+          "blocks": 0
+        },
+        {
+          "key": "full-52",
+          "seconds": 64.8,
+          "lines": 93,
+          "blocks": 39
+        },
+        {
+          "key": "full-464",
+          "seconds": 17.823,
+          "lines": 0,
+          "blocks": 0
+        },
+        {
+          "key": "full-465",
+          "seconds": 18.188,
+          "lines": 1,
+          "blocks": 1
+        },
+        {
+          "key": "full-466",
+          "seconds": 18.459,
+          "lines": 0,
+          "blocks": 0
+        },
+        {
+          "key": "full-1030",
+          "seconds": 69.249,
+          "lines": 98,
+          "blocks": 24
+        },
+        {
+          "key": "full-2057",
+          "seconds": 30.771,
+          "lines": 26,
+          "blocks": 6
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Purposive sample includes blank pages and duplicate content across sources.",
+    "Single-pass timing with different pipelines and no controlled background workload; not a throughput benchmark.",
+    "Posthoc token presence in a herb region is not proof of correction in the same sentence.",
+    "Compare complete pipelines, not an isolated recognition model.",
+    "First RapidOCR run did not record peak RSS."
+  ]
+}

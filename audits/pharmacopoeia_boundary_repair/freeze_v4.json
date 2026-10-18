@@ -1,0 +1,48 @@
+{
+  "kind": "repair_v4_new_page_freeze",
+  "human_signoff": false,
+  "sources_sha256": {
+    "tcm/pharmacopoeia_segmentation.py": "2fe77748b742bbcfa8a612f84fda3b638320aed8997e6f38edb5ac494f3c2d97",
+    "tcm/pharmacopoeia.py": "e42972de65d96fc81f192abb4462d85a0bd16c51a89083de3f92d2305dd755d2",
+    "scripts/batch_pharmacopoeia_pdf.py": "e09bcf2766a0220d91d74f08567cc417c9c90148bc52a0a31f9f512e49cf876a",
+    "scripts/benchmark_pharmacopoeia_pdf.py": "c11a96fe1ffe8a0e0a5688608f15d81dd8772365f6458d8727c62eeecc1228e9"
+  },
+  "page_selection_before_ocr": true,
+  "rule_changes_during_validation": false,
+  "plan_sha256": "6fba111005fae62d87962c2e9e6e83e0063f3de59bf630c87400b7c899126568",
+  "visual_reference_sha256": "6e7c22f88eea987b0a8fa27baf5e03879d38d0424764b9caab1b41acc3d86d0d",
+  "pages": [
+    {
+      "document": "high",
+      "pdf_page": 120,
+      "printed_page": 101,
+      "stage": "v4_new_validation",
+      "layout": "two_column",
+      "block": "new_v4"
+    },
+    {
+      "document": "high",
+      "pdf_page": 121,
+      "printed_page": 102,
+      "stage": "v4_new_validation",
+      "layout": "two_column",
+      "block": "new_v4"
+    },
+    {
+      "document": "high",
+      "pdf_page": 122,
+      "printed_page": 103,
+      "stage": "v4_new_validation",
+      "layout": "two_column",
+      "block": "new_v4"
+    },
+    {
+      "document": "high",
+      "pdf_page": 123,
+      "printed_page": 104,
+      "stage": "v4_new_validation",
+      "layout": "two_column",
+      "block": "new_v4"
+    }
+  ]
+}

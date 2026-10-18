@@ -111,6 +111,13 @@ class ConversationStore:
 
     def load(self, session_id):
         from langchain_core.messages import messages_from_dict
+        return self._load(session_id, messages_from_dict)
+
+    def load_serialized(self, session_id):
+        """Read JSON message dictionaries without importing model/framework dependencies."""
+        return self._load(session_id, lambda messages: messages)
+
+    def _load(self, session_id, decode):
         with self.connection() as con:
             row = con.execute('SELECT revision,payload,updated_at,deleted FROM conversations WHERE key=?',
                               (self.key(session_id),)).fetchone()
@@ -128,12 +135,19 @@ class ConversationStore:
             obj = json.loads(raw)
             if obj['version'] != 1:
                 raise MemoryUnavailable('Unsupported conversation payload')
-            return ConversationSnapshot(revision, messages_from_dict(obj['messages']), obj['tcm_context'])
+            return ConversationSnapshot(revision, decode(obj['messages']), obj['tcm_context'])
 
     def save(self, session_id, messages, tcm_context, *, revision):
         from langchain_core.messages import messages_to_dict
+        return self._save(session_id, messages, tcm_context, revision, messages_to_dict)
+
+    def save_serialized(self, session_id, messages, context, *, revision):
+        """Persist the same versioned JSON envelope for a dependency-free tool workflow."""
+        return self._save(session_id, messages, context, revision, lambda values: values)
+
+    def _save(self, session_id, messages, tcm_context, revision, encode):
         with self.connection() as con:
-            payload = json.dumps({'version': 1, 'messages': messages_to_dict(messages),
+            payload = json.dumps({'version': 1, 'messages': encode(messages),
                                   'tcm_context': tcm_context}, ensure_ascii=False, allow_nan=False)
             key, now = self.key(session_id), self.clock()
             if revision == 0:

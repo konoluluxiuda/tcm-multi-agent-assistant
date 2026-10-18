@@ -1,0 +1,180 @@
+{
+  "kind": "frozen_rule_boundary_evaluation",
+  "status": "completed_without_observed_boundary_failures",
+  "human_signoff": false,
+  "reference_authority": "AI_visual_pending_human_review",
+  "scope": "Observed title-start correspondence on purposive pages; not full-text accuracy or a generalization estimate.",
+  "counts": {
+    "pages": 4,
+    "reference_starts": 6,
+    "detected_starts": 6,
+    "location_matches": 6,
+    "missed_starts": 0,
+    "unexpected_starts": 0,
+    "ambiguous_reference_starts": 0,
+    "name_differences_among_matches": 0,
+    "entries_exposed_to_missed_title": 0,
+    "cross_block_entries": 0,
+    "cross_page_entries": 3,
+    "open_entries": 1
+  },
+  "matched_starts": [
+    {
+      "reference": {
+        "name": "地枫皮",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.45
+        ],
+        "document": "high",
+        "pdf_page": 150,
+        "block": "new_v5",
+        "id": "high-150-0"
+      },
+      "prediction": {
+        "id": "810831edf3f11f9baba535e3",
+        "name": "地枫皮",
+        "document": "high",
+        "pdf_page": 150,
+        "column": "right",
+        "center_y_fraction": 0.13213266761768902
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "地肤子",
+        "column": "right",
+        "y_range": [
+          0.45,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 150,
+        "block": "new_v5",
+        "id": "high-150-1"
+      },
+      "prediction": {
+        "id": "f2720ea330b0e0e5e8e455b7",
+        "name": "地肤子",
+        "document": "high",
+        "pdf_page": 150,
+        "column": "right",
+        "center_y_fraction": 0.6890156918687589
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "地骨皮",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 151,
+        "block": "new_v5",
+        "id": "high-151-0"
+      },
+      "prediction": {
+        "id": "f4413bf145737eb295a64996",
+        "name": "地骨皮",
+        "document": "high",
+        "pdf_page": 151,
+        "column": "left",
+        "center_y_fraction": 0.7926176890156919
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "地黄",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 151,
+        "block": "new_v5",
+        "id": "high-151-1"
+      },
+      "prediction": {
+        "id": "f1ebaec2f20d5a8a04f3108d",
+        "name": "地黄",
+        "document": "high",
+        "pdf_page": 151,
+        "column": "right",
+        "center_y_fraction": 0.6626248216833095
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "熟地黄",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 152,
+        "block": "new_v5",
+        "id": "high-152-0"
+      },
+      "prediction": {
+        "id": "8106ea60f081dfb6407e3d26",
+        "name": "熟地黄",
+        "document": "high",
+        "pdf_page": 152,
+        "column": "right",
+        "center_y_fraction": 0.8232881597717547
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "地榆",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 153,
+        "block": "new_v5",
+        "id": "high-153-0"
+      },
+      "prediction": {
+        "id": "568b01266e13c03e2a0e09dd",
+        "name": "地榆",
+        "document": "high",
+        "pdf_page": 153,
+        "column": "left",
+        "center_y_fraction": 0.8482524964336662
+      },
+      "name_matches": true
+    }
+  ],
+  "missed_starts": [],
+  "unexpected_starts": [],
+  "ambiguous_starts": [],
+  "cross_block_entry_ids": [],
+  "quarantine_entry_ids": [],
+  "ocr_character_accuracy": null,
+  "clinical_accuracy": null,
+  "field_scope_accuracy": null,
+  "observed_source_page_gaps": [],
+  "engineering_integrity_status": "passed",
+  "inputs": {
+    "freeze_sha256": "33bac584431f1b9f5dc4d9da96bc5f09e60d7aaa840e4e83b4c3e4dd088b9a77",
+    "plan_sha256": "629226956239c06318d4eff917aba3ec3bfe0d0ba51eda5a684177e03560a930",
+    "reference_sha256": "5a52ca45ae50c1e28cd1c92ad07cc6c8968d931d95b166ea8de9f906b2e8d180",
+    "entries_sha256": "7a1c504483570aa8cc1c1ac37a1ff39b5daaa2fdf49c69c7135b34939f894dbf",
+    "recipe_sha256": "87882b9d277d1c6cea87f208a169eb34aca2aca53daffaa0b0e62e12a6766c7c",
+    "evaluator_code_sha256": "ed3528f934a530e0477770d0b59a41a2386b883016751ccd923fcfa2b1204e08",
+    "evaluation_module_sha256": "b1b975ff26fb022c19d9784dee3254edc7f10791fdff09089dc58239d2025abe"
+  }
+}

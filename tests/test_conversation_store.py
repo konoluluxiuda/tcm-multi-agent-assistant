@@ -87,3 +87,9 @@ class ConversationStoreTests(unittest.TestCase):
             self.assertEqual(con.execute('SELECT count(*) FROM conversations').fetchone()[0], 1)
             payload = json.loads(con.execute('SELECT payload FROM conversations').fetchone()[0])
             self.assertEqual(payload['messages'], [])
+
+    def test_serialized_messages_remain_compatible_with_existing_codec(self):
+        self.store.save_serialized('A', [{'type': 'human', 'data': {'content': 'fixture'}}], None, revision=0)
+        self.assertEqual(self.store.load('A').messages[0].content, 'fixture')
+        self.store.save('A', self.messages, None, revision=1)
+        self.assertEqual(self.store.load_serialized('A').messages[0]['data']['content'], self.messages[0].content)

@@ -1,0 +1,61 @@
+{
+  "kind": "posthoc_failure_diagnostics",
+  "affects_original_21_fragment_denominator": false,
+  "human_signoff": false,
+  "observations": [
+    {
+      "engine": "rapidocr",
+      "page_key": "high-24",
+      "image_sha256": "6b0565b9fa6a6de26a2ff69312fec8ca59574b06f6a8afa6ef763fe76d6a6a7a",
+      "observed_fragment": "疮肿毒",
+      "visual_reference_fragment": "疮疖肿毒",
+      "pdf_box": [
+        [
+          307.0967741935484,
+          365.0131954350927
+        ],
+        [
+          429.15574596774195,
+          365.0131954350927
+        ],
+        [
+          429.15574596774195,
+          372.8113409415121
+        ],
+        [
+          307.0967741935484,
+          372.8113409415121
+        ]
+      ],
+      "line_model_confidence": 0.9961755275726318,
+      "review_status": "ai_visual_pending_human_review"
+    },
+    {
+      "engine": "paddle_bounded_no_mkldnn",
+      "page_key": "full-77",
+      "image_sha256": "aea9dda9a1c3bbf382aabff7b3c2641095bf0c28c7c0f3eb1decbd4e5bd3770a",
+      "observed_fragment": "mucari",
+      "visual_reference_fragment": "muscari",
+      "pdf_box": [
+        [
+          51.28980874802068,
+          179.38386058807373
+        ],
+        [
+          287.6428455517651,
+          179.38386058807373
+        ],
+        [
+          287.6428455517651,
+          191.0828080177307
+        ],
+        [
+          51.28980874802068,
+          191.0828080177307
+        ]
+      ],
+      "line_model_confidence": 0.9073804020881653,
+      "review_status": "ai_visual_pending_human_review"
+    }
+  ]
+}

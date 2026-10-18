@@ -1,0 +1,129 @@
+{
+  "kind": "frozen_engineering_parser_comparison",
+  "review_status": "reference_transcription_pending_human_review",
+  "source_manifest": "eval/pharmacopoeia_ocr_sample_v1.json",
+  "render_dpi": 240,
+  "selection": "Purposive engineering coverage, not random sampling or clinical validation. Unknown printed pages remain null.",
+  "pages": [
+    {
+      "document": "high",
+      "pdf_page": 24,
+      "printed_page": 3,
+      "purpose": "existing_herbs_cross_column"
+    },
+    {
+      "document": "high",
+      "pdf_page": 25,
+      "printed_page": 4,
+      "purpose": "existing_herb_continuation"
+    },
+    {
+      "document": "full",
+      "pdf_page": 51,
+      "printed_page": 3,
+      "purpose": "paired_lower_resolution"
+    },
+    {
+      "document": "full",
+      "pdf_page": 76,
+      "printed_page": 28,
+      "purpose": "missing_in_high_source"
+    },
+    {
+      "document": "full",
+      "pdf_page": 77,
+      "printed_page": 29,
+      "purpose": "missing_in_high_source"
+    },
+    {
+      "document": "high",
+      "pdf_page": 48,
+      "printed_page": 27,
+      "purpose": "before_confirmed_gap"
+    },
+    {
+      "document": "high",
+      "pdf_page": 49,
+      "printed_page": 30,
+      "purpose": "after_confirmed_gap"
+    },
+    {
+      "document": "full",
+      "pdf_page": 78,
+      "printed_page": 30,
+      "purpose": "paired_gap_boundary"
+    },
+    {
+      "document": "high",
+      "pdf_page": 218,
+      "printed_page": 199,
+      "purpose": "paired_middle"
+    },
+    {
+      "document": "full",
+      "pdf_page": 247,
+      "printed_page": 199,
+      "purpose": "paired_middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 434,
+      "printed_page": 415,
+      "purpose": "paired_end_of_herb_section"
+    },
+    {
+      "document": "full",
+      "pdf_page": 463,
+      "printed_page": 415,
+      "purpose": "paired_end_of_herb_section"
+    },
+    {
+      "document": "full",
+      "pdf_page": 49,
+      "printed_page": null,
+      "purpose": "section_separator"
+    },
+    {
+      "document": "full",
+      "pdf_page": 50,
+      "printed_page": null,
+      "purpose": "blank_control"
+    },
+    {
+      "document": "full",
+      "pdf_page": 52,
+      "printed_page": null,
+      "purpose": "adjacent_continuation_candidate"
+    },
+    {
+      "document": "full",
+      "pdf_page": 464,
+      "printed_page": null,
+      "purpose": "blank_control"
+    },
+    {
+      "document": "full",
+      "pdf_page": 465,
+      "printed_page": null,
+      "purpose": "next_section_separator"
+    },
+    {
+      "document": "full",
+      "pdf_page": 466,
+      "printed_page": null,
+      "purpose": "next_section_content_candidate"
+    },
+    {
+      "document": "full",
+      "pdf_page": 1030,
+      "printed_page": 982,
+      "purpose": "formulated_medicine"
+    },
+    {
+      "document": "full",
+      "pdf_page": 2057,
+      "printed_page": null,
+      "purpose": "latin_index"
+    }
+  ]
+}

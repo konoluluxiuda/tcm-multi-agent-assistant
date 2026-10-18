@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "kind": "v4_new_page_validation",
+  "source_manifest": "eval/pharmacopoeia_ocr_sample_v1.json",
+  "documents": {
+    "full": {
+      "path": "data/《中国药典》2025年版 一部 全本.pdf",
+      "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+    },
+    "high": {
+      "path": "data/《中国药典》2025年版 一部.pdf",
+      "sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2"
+    }
+  },
+  "render_dpi": 240,
+  "selection": "Fresh contiguous four-page block after v4 code freeze. Prior 30+8 pages are development regression only.",
+  "pages": [
+    {
+      "document": "high",
+      "pdf_page": 120,
+      "printed_page": 101,
+      "stage": "v4_new_validation",
+      "layout": "two_column",
+      "block": "new_v4"
+    },
+    {
+      "document": "high",
+      "pdf_page": 121,
+      "printed_page": 102,
+      "stage": "v4_new_validation",
+      "layout": "two_column",
+      "block": "new_v4"
+    },
+    {
+      "document": "high",
+      "pdf_page": 122,
+      "printed_page": 103,
+      "stage": "v4_new_validation",
+      "layout": "two_column",
+      "block": "new_v4"
+    },
+    {
+      "document": "high",
+      "pdf_page": 123,
+      "printed_page": 104,
+      "stage": "v4_new_validation",
+      "layout": "two_column",
+      "block": "new_v4"
+    }
+  ],
+  "plan_version": 1,
+  "chapter_profile": "herb_monographs_two_column_v1",
+  "layout_review_status": "ai_visual_sample_check_pending_human_signoff"
+}

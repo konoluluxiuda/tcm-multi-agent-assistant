@@ -1,0 +1,158 @@
+{
+  "kind": "mineru_adapter_validation",
+  "human_signoff": false,
+  "quality_acceptance": false,
+  "tests_passed": 37,
+  "deterministic_replay": true,
+  "changed_import_rejected_before_output": true,
+  "field_offsets_and_ownership_valid": true,
+  "cross_part_entries": {
+    "龙胆": [
+      100,
+      101
+    ],
+    "灵芝": [
+      200,
+      201,
+      202
+    ],
+    "党参": [
+      300,
+      301
+    ],
+    "墨旱莲": [
+      400,
+      401
+    ]
+  },
+  "known_failure_cases": [
+    {
+      "expected_name": "干漆",
+      "chapter_page": 15,
+      "entry_id": "mineru-herb-0018",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "土贝母",
+      "chapter_page": 16,
+      "entry_id": "mineru-herb-0020",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "体外培育牛黄",
+      "chapter_page": 184,
+      "entry_id": "mineru-herb-0267",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "僵蚕",
+      "chapter_page": 401,
+      "entry_id": "mineru-herb-0594",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "薤白",
+      "chapter_page": 402,
+      "entry_id": "mineru-herb-0596",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "藏菖蒲",
+      "chapter_page": 406,
+      "entry_id": "mineru-herb-0602",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "藁本",
+      "chapter_page": 407,
+      "entry_id": "mineru-herb-0603",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "翼首草",
+      "chapter_page": 408,
+      "entry_id": "mineru-herb-0605",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "三七",
+      "chapter_page": 11,
+      "entry_id": "mineru-herb-0012",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "槲寄生",
+      "chapter_page": 399,
+      "entry_id": "mineru-herb-0590",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "天然冰片",
+      "chapter_page": 60,
+      "entry_id": "mineru-herb-0085",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "急性子",
+      "chapter_page": 282,
+      "entry_id": "mineru-herb-0413",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "煅石膏",
+      "chapter_page": 99,
+      "entry_id": "mineru-herb-0137",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    },
+    {
+      "expected_name": "龙脷叶",
+      "chapter_page": 101,
+      "entry_id": "mineru-herb-0141",
+      "boundary_recovered": true,
+      "title_matches_expected": false,
+      "flags": [
+        "title_source_near_match_requires_review"
+      ]
+    },
+    {
+      "expected_name": "平贝母",
+      "chapter_page": 102,
+      "entry_id": "mineru-herb-0142",
+      "boundary_recovered": true,
+      "title_matches_expected": true,
+      "flags": []
+    }
+  ],
+  "known_failure_reference_role": "development_regression_not_independent_gold",
+  "limits": [
+    "No full-book boundary reference",
+    "No numeric, dose or medical correctness validation",
+    "Unflagged entries are not quality-approved"
+  ]
+}

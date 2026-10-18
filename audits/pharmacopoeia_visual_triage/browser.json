@@ -1,0 +1,51 @@
+{
+  "human_signoff": false,
+  "checks": [
+    {
+      "case": "four_herbs_36_unreviewed_field_slots",
+      "status": "passed"
+    },
+    {
+      "case": "six_ai_drafts_keep_ocr_and_human_references_separate",
+      "status": "passed"
+    },
+    {
+      "case": "footer_excluded_from_origin_with_retained_evidence",
+      "status": "passed"
+    },
+    {
+      "case": "difference_filter_and_character_highlights",
+      "status": "passed"
+    },
+    {
+      "case": "continued_herb_caution_source_image",
+      "status": "passed"
+    },
+    {
+      "case": "missing_cautions_and_full_region_fallback",
+      "status": "passed"
+    },
+    {
+      "case": "blank_reference_template_download_bound_to_artifact",
+      "status": "passed"
+    },
+    {
+      "case": "mobile_no_horizontal_page_overflow",
+      "status": "passed"
+    },
+    {
+      "case": "ocr_markup_remains_literal_text",
+      "status": "passed"
+    },
+    {
+      "case": "failed_load_has_no_stale_cards",
+      "status": "passed"
+    }
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "comparison_sha256": "2975d191c0799877d443009a37a361a6a1f6b0dcbd29b539747ff0830eea2c61",
+  "html_sha256": "99152b3a8eeba62706e2cd53a069c0a08c5b6935e9cd43252fb8d8c9f57be495",
+  "status": "passed",
+  "browser_version": "153.0.8010.12"
+}

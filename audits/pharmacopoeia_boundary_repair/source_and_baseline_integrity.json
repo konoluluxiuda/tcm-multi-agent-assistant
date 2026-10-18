@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "checks": {
+    "full": {
+      "expected": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+      "actual": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+    },
+    "high": {
+      "expected": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+      "actual": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2"
+    },
+    "etcm_database": {
+      "expected": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+      "actual": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec"
+    },
+    "original30": {
+      "expected": "e8bb6fdc1c30eb761a609ed71365b6870ce21eb84671663165a9db8e2f5ffcca",
+      "actual": "e8bb6fdc1c30eb761a609ed71365b6870ce21eb84671663165a9db8e2f5ffcca"
+    },
+    "failed_v3_8": {
+      "expected": "815428e9474c15f231c7123d2660c6bcc35b2abd38cbe86ab7f6455638580990",
+      "actual": "815428e9474c15f231c7123d2660c6bcc35b2abd38cbe86ab7f6455638580990"
+    },
+    "failed_v4_4": {
+      "expected": "711777960fc47b8bb18ecb5243dbbb79751e84f25e412fd4b7ac01905c8db9e2",
+      "actual": "711777960fc47b8bb18ecb5243dbbb79751e84f25e412fd4b7ac01905c8db9e2"
+    }
+  }
+}

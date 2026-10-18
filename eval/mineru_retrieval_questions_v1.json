@@ -1,0 +1,202 @@
+{
+  "version": 1,
+  "author": "AI_authored_not_collected_user_queries",
+  "reference_status": "pending_original_scan_spotcheck",
+  "independent_human_gold": false,
+  "selection_note": "20 new questions frozen before retrieval implementation; 4 abstention and 4 known-failure regressions reported separately. No ranking retuning on these results.",
+  "k": 5,
+  "cases": [
+    {
+      "id": "new-01",
+      "group": "new_question_pilot",
+      "question": "黄柏来自什么植物，药用部位是什么？",
+      "expected_name": "黄柏",
+      "expected_field": "origin"
+    },
+    {
+      "id": "new-02",
+      "group": "new_question_pilot",
+      "question": "黄柏应当怎样贮藏？",
+      "expected_name": "黄柏",
+      "expected_field": "贮藏"
+    },
+    {
+      "id": "new-03",
+      "group": "new_question_pilot",
+      "question": "白术的功效与主治有哪些？",
+      "expected_name": "白术",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "new-04",
+      "group": "new_question_pilot",
+      "question": "药典中白术的用量是多少？",
+      "expected_name": "白术",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "new-05",
+      "group": "new_question_pilot",
+      "question": "当归的性味和归经是什么？",
+      "expected_name": "当归",
+      "expected_field": "性味与归经"
+    },
+    {
+      "id": "new-06",
+      "group": "new_question_pilot",
+      "question": "当归的用法用量如何记载？",
+      "expected_name": "当归",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "new-07",
+      "group": "new_question_pilot",
+      "question": "丹参的主要功效是什么？",
+      "expected_name": "丹参",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "new-08",
+      "group": "new_question_pilot",
+      "question": "丹参有什么配伍禁忌？",
+      "expected_name": "丹参",
+      "expected_field": "注意"
+    },
+    {
+      "id": "new-09",
+      "group": "new_question_pilot",
+      "question": "桔梗的性味和归经是什么？",
+      "expected_name": "桔梗",
+      "expected_field": "性味与归经"
+    },
+    {
+      "id": "new-10",
+      "group": "new_question_pilot",
+      "question": "桔梗可以用于哪些病证？",
+      "expected_name": "桔梗",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "new-11",
+      "group": "new_question_pilot",
+      "question": "陈皮该怎样保存？",
+      "expected_name": "陈皮",
+      "expected_field": "贮藏"
+    },
+    {
+      "id": "new-12",
+      "group": "new_question_pilot",
+      "question": "陈皮以植物的哪个部位入药？",
+      "expected_name": "陈皮",
+      "expected_field": "origin"
+    },
+    {
+      "id": "new-13",
+      "group": "new_question_pilot",
+      "question": "茯苓的功能主治是什么？",
+      "expected_name": "茯苓",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "new-14",
+      "group": "new_question_pilot",
+      "question": "茯苓的用量是多少克？",
+      "expected_name": "茯苓",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "new-15",
+      "group": "new_question_pilot",
+      "question": "枸杞子的性味是什么？",
+      "expected_name": "枸杞子",
+      "expected_field": "性味与归经"
+    },
+    {
+      "id": "new-16",
+      "group": "new_question_pilot",
+      "question": "枸杞子的用法与用量是什么？",
+      "expected_name": "枸杞子",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "new-17",
+      "group": "new_question_pilot",
+      "question": "桑叶归哪几条经？",
+      "expected_name": "桑叶",
+      "expected_field": "性味与归经"
+    },
+    {
+      "id": "new-18",
+      "group": "new_question_pilot",
+      "question": "桑叶有什么功效？",
+      "expected_name": "桑叶",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "new-19",
+      "group": "new_question_pilot",
+      "question": "薄荷的煎服量如何记载？",
+      "expected_name": "薄荷",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "new-20",
+      "group": "new_question_pilot",
+      "question": "薄荷应如何存放？",
+      "expected_name": "薄荷",
+      "expected_field": "贮藏"
+    },
+    {
+      "id": "negative-01",
+      "group": "abstention",
+      "question": "火星仙草有什么功效？",
+      "expected_status": "name_not_resolved"
+    },
+    {
+      "id": "negative-02",
+      "group": "abstention",
+      "question": "黄柏今天的市场价格是多少？",
+      "expected_status": "field_not_resolved"
+    },
+    {
+      "id": "negative-03",
+      "group": "abstention",
+      "question": "比较白术和茯苓的差异。",
+      "expected_status": "multiple_names"
+    },
+    {
+      "id": "negative-04",
+      "group": "abstention",
+      "question": "白术的注意事项有哪些？",
+      "expected_status": "field_not_observed"
+    },
+    {
+      "id": "regression-01",
+      "group": "known_failure_regression",
+      "question": "秦艽的用量是多少？",
+      "expected_name": "秦艽",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "regression-02",
+      "group": "known_failure_regression",
+      "question": "龙脷叶有什么功效？",
+      "expected_name": "龙脷叶",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "regression-03",
+      "group": "known_failure_regression",
+      "question": "金银花的水分检查要求是什么？",
+      "expected_name": "金银花",
+      "expected_field": "检查"
+    },
+    {
+      "id": "regression-04",
+      "group": "known_failure_regression",
+      "question": "麝香的用法与用量如何记载？",
+      "expected_name": "麝香",
+      "expected_field": "用法与用量"
+    }
+  ]
+}

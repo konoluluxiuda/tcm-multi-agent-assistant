@@ -1,0 +1,24 @@
+{
+  "kind": "unreviewed_dual_engine_fields",
+  "records": 4,
+  "field_slots": 36,
+  "comparison_counts": {
+    "normalized_agreement": 7,
+    "exact_agreement": 20,
+    "text_difference": 6,
+    "both_unavailable": 3
+  },
+  "source_crops": 33,
+  "region_crops": 8,
+  "excluded_margin_lines": 2,
+  "comparison_sha256": "7b89178268dbabde2548ca647d442efd2b60345c095a7aa3b6c6c06388b240c3",
+  "review_template_sha256": "73e65592a8d7203cb975de32e69b2ee1af44a24619da9119fdfd8f39b219a20d",
+  "source_pdfs_unchanged": true,
+  "human_signoff": false,
+  "approved_fields": 0,
+  "reference_transcriptions_completed": 0,
+  "input_reports": {
+    "rapidocr": "819f92fd18ae64721deea2a9f4263e4db20097fe825886004eb26441f81079e3",
+    "paddle": "ae8974387f96978a24b6220eb992e8ed321202dde1cf5913ea2a7f33f2b4d4d3"
+  }
+}

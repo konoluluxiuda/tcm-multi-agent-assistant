@@ -24,7 +24,7 @@ def normalize(value):
     return ''.join(value.split()).casefold()
 
 
-def extract_fields(lines):
+def extract_fields(lines, *, source_openers=('本品为',)):
     """Split on all bracket headings, including headings we don't export."""
     fields = {key: {'state': MISSING, 'message': MISSING_MESSAGE, 'occurrences': []}
               for key in (*FIELDS.values(), 'medicinal_part', 'pinyin', 'latin_drug_name')}
@@ -53,7 +53,7 @@ def extract_fields(lines):
     for line in lines:
         if HEAD.search(line['text']): break
         intro.append(line)
-    start = next((i for i,l in enumerate(intro) if '本品为' in l['text']), None)
+    start = next((i for i,l in enumerate(intro) if any(opener in l['text'] for opener in source_openers)), None)
     if start is not None:
         origin = intro[start:]
         add('origin', '\n'.join(l['text'] for l in origin), origin)

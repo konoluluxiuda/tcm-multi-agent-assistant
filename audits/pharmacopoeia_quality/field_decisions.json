@@ -1,0 +1,503 @@
+{
+  "human_signoff": false,
+  "policy_sha256": "f3101fd993657a2dd9deb5cf0d2a80e0271e58555f6cd0edf64948c66c39f772",
+  "source_comparison_sha256": "7b89178268dbabde2548ca647d442efd2b60345c095a7aa3b6c6c06388b240c3",
+  "ai_visual_drafts_used_for_quality_decisions": false,
+  "fields": [
+    {
+      "id": "YiZhiHuangHua:origin",
+      "case_id": "YiZhiHuangHua",
+      "field": "origin",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "normalized_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "YiZhiHuangHua:properties_meridians",
+      "case_id": "YiZhiHuangHua",
+      "field": "properties_meridians",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "YiZhiHuangHua:efficacy_indications",
+      "case_id": "YiZhiHuangHua",
+      "field": "efficacy_indications",
+      "machine_status": "review_required",
+      "review_priority": "P2",
+      "reasons": [
+        "engine_disagreement"
+      ],
+      "comparison": "text_difference",
+      "eligible_for_research_preview": false,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "YiZhiHuangHua:usage",
+      "case_id": "YiZhiHuangHua",
+      "field": "usage",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "normalized_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "YiZhiHuangHua:cautions",
+      "case_id": "YiZhiHuangHua",
+      "field": "cautions",
+      "machine_status": "not_available",
+      "review_priority": null,
+      "reasons": [
+        "not_observed_not_a_negative_safety_claim"
+      ],
+      "comparison": "both_unavailable",
+      "eligible_for_research_preview": false,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "YiZhiHuangHua:storage",
+      "case_id": "YiZhiHuangHua",
+      "field": "storage",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [
+        "manual_region_end"
+      ],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "YiZhiHuangHua:medicinal_part",
+      "case_id": "YiZhiHuangHua",
+      "field": "medicinal_part",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "YiZhiHuangHua:pinyin",
+      "case_id": "YiZhiHuangHua",
+      "field": "pinyin",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "YiZhiHuangHua:latin_drug_name",
+      "case_id": "YiZhiHuangHua",
+      "field": "latin_drug_name",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "normalized_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": true
+    },
+    {
+      "id": "DingGongTeng:origin",
+      "case_id": "DingGongTeng",
+      "field": "origin",
+      "machine_status": "review_required",
+      "review_priority": "P1",
+      "reasons": [
+        "engine_disagreement",
+        "mixed_script_in_latin_word"
+      ],
+      "comparison": "text_difference",
+      "eligible_for_research_preview": false,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DingGongTeng:properties_meridians",
+      "case_id": "DingGongTeng",
+      "field": "properties_meridians",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DingGongTeng:efficacy_indications",
+      "case_id": "DingGongTeng",
+      "field": "efficacy_indications",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DingGongTeng:usage",
+      "case_id": "DingGongTeng",
+      "field": "usage",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "normalized_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DingGongTeng:cautions",
+      "case_id": "DingGongTeng",
+      "field": "cautions",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": true
+    },
+    {
+      "id": "DingGongTeng:storage",
+      "case_id": "DingGongTeng",
+      "field": "storage",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [
+        "manual_region_end"
+      ],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": true
+    },
+    {
+      "id": "DingGongTeng:medicinal_part",
+      "case_id": "DingGongTeng",
+      "field": "medicinal_part",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DingGongTeng:pinyin",
+      "case_id": "DingGongTeng",
+      "field": "pinyin",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DingGongTeng:latin_drug_name",
+      "case_id": "DingGongTeng",
+      "field": "latin_drug_name",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "normalized_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DaFuPi:origin",
+      "case_id": "DaFuPi",
+      "field": "origin",
+      "machine_status": "review_required",
+      "review_priority": "P1",
+      "reasons": [
+        "engine_disagreement"
+      ],
+      "comparison": "text_difference",
+      "eligible_for_research_preview": false,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DaFuPi:properties_meridians",
+      "case_id": "DaFuPi",
+      "field": "properties_meridians",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [
+        "single_terminal_full_stop_difference"
+      ],
+      "comparison": "text_difference",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DaFuPi:efficacy_indications",
+      "case_id": "DaFuPi",
+      "field": "efficacy_indications",
+      "machine_status": "review_required",
+      "review_priority": "P2",
+      "reasons": [
+        "engine_disagreement"
+      ],
+      "comparison": "text_difference",
+      "eligible_for_research_preview": false,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DaFuPi:usage",
+      "case_id": "DaFuPi",
+      "field": "usage",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DaFuPi:cautions",
+      "case_id": "DaFuPi",
+      "field": "cautions",
+      "machine_status": "not_available",
+      "review_priority": null,
+      "reasons": [
+        "not_observed_not_a_negative_safety_claim"
+      ],
+      "comparison": "both_unavailable",
+      "eligible_for_research_preview": false,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DaFuPi:storage",
+      "case_id": "DaFuPi",
+      "field": "storage",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [
+        "manual_region_end"
+      ],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DaFuPi:medicinal_part",
+      "case_id": "DaFuPi",
+      "field": "medicinal_part",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DaFuPi:pinyin",
+      "case_id": "DaFuPi",
+      "field": "pinyin",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "DaFuPi:latin_drug_name",
+      "case_id": "DaFuPi",
+      "field": "latin_drug_name",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "normalized_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "ShanMaiDong:origin",
+      "case_id": "ShanMaiDong",
+      "field": "origin",
+      "machine_status": "review_required",
+      "review_priority": "P1",
+      "reasons": [
+        "engine_disagreement"
+      ],
+      "comparison": "text_difference",
+      "eligible_for_research_preview": false,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "ShanMaiDong:properties_meridians",
+      "case_id": "ShanMaiDong",
+      "field": "properties_meridians",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "ShanMaiDong:efficacy_indications",
+      "case_id": "ShanMaiDong",
+      "field": "efficacy_indications",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": true
+    },
+    {
+      "id": "ShanMaiDong:usage",
+      "case_id": "ShanMaiDong",
+      "field": "usage",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": true
+    },
+    {
+      "id": "ShanMaiDong:cautions",
+      "case_id": "ShanMaiDong",
+      "field": "cautions",
+      "machine_status": "not_available",
+      "review_priority": null,
+      "reasons": [
+        "not_observed_not_a_negative_safety_claim"
+      ],
+      "comparison": "both_unavailable",
+      "eligible_for_research_preview": false,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "ShanMaiDong:storage",
+      "case_id": "ShanMaiDong",
+      "field": "storage",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [
+        "manual_region_end"
+      ],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "ShanMaiDong:medicinal_part",
+      "case_id": "ShanMaiDong",
+      "field": "medicinal_part",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    },
+    {
+      "id": "ShanMaiDong:pinyin",
+      "case_id": "ShanMaiDong",
+      "field": "pinyin",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "exact_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": true
+    },
+    {
+      "id": "ShanMaiDong:latin_drug_name",
+      "case_id": "ShanMaiDong",
+      "field": "latin_drug_name",
+      "machine_status": "machine_checks_passed",
+      "review_priority": null,
+      "reasons": [],
+      "comparison": "normalized_agreement",
+      "eligible_for_research_preview": true,
+      "human_review": "pending",
+      "human_signoff": false,
+      "sampled": false
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "tests_passed": 65,
+  "index_replay_sha256_identical": true,
+  "reference_pdf_sha256_verified": true,
+  "reference_crop_hashes_verified": 24,
+  "index_is_separate_from_production_db": true,
+  "raw_question_sha256": "e22595f1984af35466b0261eabc63b41d7d779a0fe747722810b036f429d9e89",
+  "ranking_retuned_after_measurement": false,
+  "metric_note": "Initial measurement preserved; checked report excludes duplicate reference fields from unambiguous-top1 counts. Ranking, questions, index and references unchanged.",
+  "human_gold": false,
+  "production_ingested": false
+}

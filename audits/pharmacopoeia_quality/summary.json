@@ -1,0 +1,22 @@
+{
+  "field_slots": 36,
+  "machine_status_counts": {
+    "machine_checks_passed": 28,
+    "review_required": 5,
+    "not_available": 3
+  },
+  "review_queue_count": 5,
+  "sample_count": 6,
+  "human_reference_fields_completed": 0,
+  "approved_fields": 0,
+  "character_accuracy": null,
+  "manual_workload_reduction": null,
+  "batch_sha256": "788fff9274e1520f95a123d5ce56ae1e7d84d6ea08ed5d6f7b3dfc87c6687fe3",
+  "policy_id": "pharmacopoeia-research-qc-v1",
+  "policy_sha256": "f3101fd993657a2dd9deb5cf0d2a80e0271e58555f6cd0edf64948c66c39f772",
+  "source_comparison_sha256": "7b89178268dbabde2548ca647d442efd2b60345c095a7aa3b6c6c06388b240c3",
+  "human_signoff": false,
+  "ai_visual_drafts_used_for_quality_decisions": false,
+  "index_engine": "SQLite FTS5 trigram; short-query substring fallback",
+  "allowed_use": "unreviewed_research_source_excerpt_only"
+}

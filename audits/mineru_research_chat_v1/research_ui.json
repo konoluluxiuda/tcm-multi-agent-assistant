@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "checks": [
+    "current_snapshot_and_unreviewed_status",
+    "recovered_heading_and_original_pdf_preview",
+    "supplemental_full_pdf_source_is_not_high_pdf_offset",
+    "raw_and_ai_revised_names_remain_unreviewed",
+    "raw_and_revised_field_texts_displayed_separately",
+    "failed_queries_clear_previous_evidence",
+    "bm25_exploratory_search_available",
+    "unresolved_preparation_has_no_hits_and_parent_title_only",
+    "unexpanded_reference_retains_both_original_source_fragments",
+    "unknown_compound_name_does_not_resolve_known_substring",
+    "invalid_requests_and_arbitrary_file_access_rejected",
+    "text_safety_and_mobile_layout"
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "human_signoff": false,
+  "clinical_accuracy_evaluated": false,
+  "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+  "view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+  "entries": 616,
+  "chunks": 8654,
+  "browser_version": "153.0.8010.12"
+}

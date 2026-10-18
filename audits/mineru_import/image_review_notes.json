@@ -1,0 +1,39 @@
+{
+  "kind": "unapproved_image_inspection_notes",
+  "images_deleted": false,
+  "notes": [
+    {
+      "image_number": 36,
+      "path": "part-101-200/images/898d90fb38c29d5907d230ddd8eaeba2255504e6c7263e77b295144802a7d5ab.jpg",
+      "chapter_pdf_page": 143,
+      "image_sha256": "9e10d9c43f184bfc9057233c770ea8021637a7982bc61d49f4c76aaac4bc7069",
+      "code": "suspected_footer_scan_artifact",
+      "observation": "唯一普通image类型裁图位于页面底部，视觉上疑似扫描杂物；建议后续检索排除，保留原图。",
+      "reviewer": "AI_visual_and_metadata_inspection",
+      "human_signoff": false,
+      "original_unchanged": true
+    },
+    {
+      "image_number": 89,
+      "path": "part-301-400/images/1a90931141addb32d397860155d7a04903bcdd498adc81772a2333d7b8f3cb03.jpg",
+      "chapter_pdf_page": 337,
+      "image_sha256": "77caafba524b9b8ea9b6de285b03cfcd3bdd1020ca29850419603d3b86f31cb0",
+      "code": "formula_fragment_requires_context",
+      "observation": "此裁图为含量计算表达式片段，不能脱离周围段落作为完整公式使用。",
+      "reviewer": "AI_visual_and_metadata_inspection",
+      "human_signoff": false,
+      "original_unchanged": true
+    },
+    {
+      "image_number": 65,
+      "path": "part-201-300/images/649bfe90a9a190c5774c12266f17dd77b7b343b0dc1d3bf18075d0e9252145c4.jpg",
+      "chapter_pdf_page": 237,
+      "image_sha256": "edd92a6dea3ad1a61eb7c3b684ec952bf8773da8612e692cd6e0aeb01cc5fb90",
+      "code": "chart_caption_contains_body_fields",
+      "observation": "content_list色谱图chart_caption同时包含【检查】及灰分等正文文字，说明图注与正文边界需核对。",
+      "reviewer": "AI_visual_and_metadata_inspection",
+      "human_signoff": false,
+      "original_unchanged": true
+    }
+  ]
+}

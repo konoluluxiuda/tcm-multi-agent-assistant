@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "kind": "bounded_batch_pilot",
+  "source_manifest": "eval/pharmacopoeia_ocr_sample_v1.json",
+  "documents": {
+    "full": {
+      "path": "data/《中国药典》2025年版 一部 全本.pdf",
+      "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+    },
+    "high": {
+      "path": "data/《中国药典》2025年版 一部.pdf",
+      "sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2"
+    }
+  },
+  "render_dpi": 240,
+  "selection": "Purposive engineering pilot; no independent accuracy claim. Printed page numbers manually viewed, pending human signoff.",
+  "pages": [
+    {
+      "document": "high",
+      "pdf_page": 24,
+      "printed_page": 3,
+      "stage": "development",
+      "reuse_result_sha256": "01927f1b5178eb3bf329fb3738dc1fcc193a8ef9e89980116df3355e3b16c5ae"
+    },
+    {
+      "document": "high",
+      "pdf_page": 25,
+      "printed_page": 4,
+      "stage": "development",
+      "reuse_result_sha256": "5fb2e3ea7759b2b3d385a2d1b168b88355238bbbc2ce30f2a2ea25cbeeb46319"
+    },
+    {
+      "document": "high",
+      "pdf_page": 26,
+      "printed_page": 5,
+      "stage": "new_exploratory"
+    },
+    {
+      "document": "high",
+      "pdf_page": 27,
+      "printed_page": 6,
+      "stage": "new_exploratory"
+    },
+    {
+      "document": "high",
+      "pdf_page": 28,
+      "printed_page": 7,
+      "stage": "new_exploratory"
+    },
+    {
+      "document": "high",
+      "pdf_page": 29,
+      "printed_page": 8,
+      "stage": "new_exploratory"
+    },
+    {
+      "document": "full",
+      "pdf_page": 76,
+      "printed_page": 28,
+      "stage": "development",
+      "reuse_result_sha256": "01520c26938d577ddf600221731adfe7266e27bf13a51c552445207c5766a783"
+    },
+    {
+      "document": "full",
+      "pdf_page": 77,
+      "printed_page": 29,
+      "stage": "development",
+      "reuse_result_sha256": "c236f84dde895ca00ef377d5e10bd8b4bb6156ba9cd7aa7656be0e1aee5b362e"
+    },
+    {
+      "document": "full",
+      "pdf_page": 78,
+      "printed_page": 30,
+      "stage": "development",
+      "reuse_result_sha256": "4442297dbe9cd1b10533a2e79ed6ab0f30bf178a7aeaf5dea939e3031196bfda"
+    }
+  ]
+}

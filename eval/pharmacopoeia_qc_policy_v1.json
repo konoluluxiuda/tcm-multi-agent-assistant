@@ -1,0 +1,10 @@
+{
+  "policy_id": "pharmacopoeia-research-qc-v1",
+  "minimum_line_confidence": 0.9,
+  "allow_single_terminal_full_stop_difference": true,
+  "sample_per_stratum": 1,
+  "sampling_seed": "2026-10-17-v1",
+  "suspended_source_sha256": [],
+  "suspended_strata": [],
+  "allowed_use": "unreviewed_research_source_excerpt_only"
+}

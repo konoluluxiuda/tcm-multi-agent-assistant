@@ -1,0 +1,199 @@
+{
+  "kind": "unresolved_evidence_after_boundary_repair",
+  "human_signoff": false,
+  "scope": "Automatic title/source flags only; high-confidence spelling errors can remain outside this queue. No candidate is clinically approved or canonically mapped.",
+  "records": [
+    {
+      "group": "30",
+      "id": "7cb2de73e372f31f821cf2b4",
+      "name_zh_candidate": "三冏七",
+      "start": {
+        "document": "high",
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "identity_status": "unresolved",
+      "pinyin_status": "unverified_ocr",
+      "source_status": "unreviewed_source_candidate",
+      "title_flags": [
+        "low_confidence_title_identity"
+      ],
+      "review_status": "requires_source_review",
+      "canonical_entity_mapping": null,
+      "human_signoff": false
+    },
+    {
+      "group": "30",
+      "id": "78e064993c608d38ff316d8c",
+      "name_zh_candidate": "干漆",
+      "start": {
+        "document": "high",
+        "pdf_page": 38,
+        "column": "right"
+      },
+      "identity_status": "unverified_ocr",
+      "pinyin_status": "unverified_ocr",
+      "source_status": "unresolved_missing_source_opener",
+      "title_flags": [
+        "origin_opener_not_observed"
+      ],
+      "review_status": "requires_source_review",
+      "canonical_entity_mapping": null,
+      "human_signoff": false
+    },
+    {
+      "group": "30",
+      "id": "ca34917af842c3200a723e15",
+      "name_zh_candidate": "士贝母",
+      "start": {
+        "document": "high",
+        "pdf_page": 39,
+        "column": "right"
+      },
+      "identity_status": "unresolved",
+      "pinyin_status": "unverified_ocr",
+      "source_status": "unresolved_missing_source_opener",
+      "title_flags": [
+        "low_confidence_title_identity",
+        "origin_opener_not_observed"
+      ],
+      "review_status": "requires_source_review",
+      "canonical_entity_mapping": null,
+      "human_signoff": false
+    },
+    {
+      "group": "30",
+      "id": "cc753bb4875a0a4f39fee37f",
+      "name_zh_candidate": "僵蚕",
+      "start": {
+        "document": "high",
+        "pdf_page": 422,
+        "column": "right"
+      },
+      "identity_status": "unverified_ocr",
+      "pinyin_status": "unverified_ocr",
+      "source_status": "unresolved_missing_source_opener",
+      "title_flags": [
+        "origin_opener_not_observed"
+      ],
+      "review_status": "requires_source_review",
+      "canonical_entity_mapping": null,
+      "human_signoff": false
+    },
+    {
+      "group": "30",
+      "id": "8068d53c1e4d2d18324952bd",
+      "name_zh_candidate": "白",
+      "start": {
+        "document": "high",
+        "pdf_page": 423,
+        "column": "right"
+      },
+      "identity_status": "unresolved",
+      "pinyin_status": "unverified_ocr",
+      "source_status": "unreviewed_source_candidate",
+      "title_flags": [
+        "short_chinese_title_identity_unresolved"
+      ],
+      "review_status": "requires_source_review",
+      "canonical_entity_mapping": null,
+      "human_signoff": false
+    },
+    {
+      "group": "30",
+      "id": "da6ccbd741f598c48b345e72",
+      "name_zh_candidate": "本",
+      "start": {
+        "document": "high",
+        "pdf_page": 428,
+        "column": "left"
+      },
+      "identity_status": "unresolved",
+      "pinyin_status": "unverified_ocr",
+      "source_status": "unreviewed_source_candidate",
+      "title_flags": [
+        "short_chinese_title_identity_unresolved"
+      ],
+      "review_status": "requires_source_review",
+      "canonical_entity_mapping": null,
+      "human_signoff": false
+    },
+    {
+      "group": "8",
+      "id": "96e967e2ec1b50c1192f8419",
+      "name_zh_candidate": "云芝",
+      "start": {
+        "document": "high",
+        "pdf_page": 82,
+        "column": "left"
+      },
+      "identity_status": "unverified_ocr",
+      "pinyin_status": "unverified_ocr",
+      "source_status": "unresolved_missing_source_opener",
+      "title_flags": [
+        "origin_opener_not_observed"
+      ],
+      "review_status": "requires_source_review",
+      "canonical_entity_mapping": null,
+      "human_signoff": false
+    },
+    {
+      "group": "8",
+      "id": "6cb529fd32e6ce61379b45bc",
+      "name_zh_candidate": "急性子",
+      "start": {
+        "document": "high",
+        "pdf_page": 303,
+        "column": "left"
+      },
+      "identity_status": "unresolved",
+      "pinyin_status": "unresolved_ocr",
+      "source_status": "unreviewed_source_candidate",
+      "title_flags": [
+        "pinyin_pattern_unresolved",
+        "low_confidence_title_identity"
+      ],
+      "review_status": "requires_source_review",
+      "canonical_entity_mapping": null,
+      "human_signoff": false
+    },
+    {
+      "group": "8",
+      "id": "0d219833d231fab5f2cf30ba",
+      "name_zh_candidate": "姜黄",
+      "start": {
+        "document": "high",
+        "pdf_page": 303,
+        "column": "right"
+      },
+      "identity_status": "unresolved",
+      "pinyin_status": "unverified_ocr",
+      "source_status": "unreviewed_source_candidate",
+      "title_flags": [
+        "low_confidence_title_identity"
+      ],
+      "review_status": "requires_source_review",
+      "canonical_entity_mapping": null,
+      "human_signoff": false
+    },
+    {
+      "group": "4",
+      "id": "b10b7dabb47cacb1c4943ba6",
+      "name_zh_candidate": null,
+      "start": {
+        "document": "high",
+        "pdf_page": 123,
+        "column": "right"
+      },
+      "identity_status": "unresolved",
+      "pinyin_status": "unverified_ocr",
+      "source_status": "unreviewed_source_candidate",
+      "title_flags": [
+        "chinese_title_not_observed"
+      ],
+      "review_status": "requires_source_review",
+      "canonical_entity_mapping": null,
+      "human_signoff": false
+    }
+  ]
+}

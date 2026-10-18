@@ -1,0 +1,26 @@
+{
+  "plan_sha256": "063f1c14ac04ac73dae84bec4c64984f4fe85db105225152481a46b6efba5f14",
+  "recipe_sha256": "87882b9d277d1c6cea87f208a169eb34aca2aca53daffaa0b0e62e12a6766c7c",
+  "cached_pages": 0,
+  "imported_pages": 0,
+  "new_ocr_pages": 8,
+  "kind": "bounded_batch_ocr_run",
+  "runner_code_sha256": "e09bcf2766a0220d91d74f08567cc417c9c90148bc52a0a31f9f512e49cf876a",
+  "status": "completed",
+  "completed_pages": 8,
+  "planned_pages": 8,
+  "pending_pages": [],
+  "failed_pages": [],
+  "segmentation": {
+    "entries": 12,
+    "bounded_entries": 10,
+    "open_entries": 2,
+    "leading_continuation_groups": 1
+  },
+  "entries_sha256": "815428e9474c15f231c7123d2660c6bcc35b2abd38cbe86ab7f6455638580990",
+  "human_signoff": false,
+  "blocked_python_network_attempts": 0,
+  "elapsed_seconds": 92.397,
+  "ocr_character_accuracy": null,
+  "boundary_accuracy": null
+}

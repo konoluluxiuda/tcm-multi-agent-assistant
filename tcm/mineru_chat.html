@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>本草研究对话</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#20382e;background:#f3f5f0}*{box-sizing:border-box}body{max-width:1080px;margin:auto;padding:24px 18px}a{color:#245840}h1{font-size:28px}h2{font-size:21px}h3{font-size:16px}p{line-height:1.7}.notice{padding:14px;background:#fff6e4;border-left:4px solid #b17c29}.muted{font-size:14px;color:#596b60}.toolbar,form{display:flex;gap:12px;align-items:center;flex-wrap:wrap}button,input{font:inherit;min-height:44px;border:1px solid #b7c6b9;border-radius:6px;padding:10px}button{background:#245840;color:white;cursor:pointer}button:disabled{opacity:.5;cursor:wait}.secondary{color:#245840;background:white}form{position:sticky;bottom:0;background:#f3f5f0;padding:16px 0;border-top:1px solid #ccd7ca}label{flex:1;min-width:160px}input{width:100%;background:white}article{background:white;border:1px solid #d9e0d8;border-radius:10px;padding:18px;margin:14px 0;overflow-wrap:anywhere}.user{background:#e6eee4;margin-left:12%}.assistant{margin-right:8%}.role{font-size:12px;color:#5c7565}.texts{display:grid;grid-template-columns:1fr 1fr;gap:16px}pre{font:15px/1.8 system-ui;white-space:pre-wrap;overflow-wrap:anywhere;background:#f6f7f3;padding:12px;border-radius:5px}.badge{display:inline-block;background:#fff2d8;color:#785414;padding:4px 8px;font-size:13px}details{margin-top:12px;border-top:1px solid #dfe5dd;padding-top:10px}summary{cursor:pointer}.citation{border:1px solid #dfe5dd;border-radius:6px;padding:12px;margin-top:10px}.citation button{background:white;color:#245840}img{width:100%;height:auto;display:block;margin-top:12px}#status{min-height:26px}@media(max-width:650px){.texts{grid-template-columns:1fr}body{padding:16px 12px}.toolbar button{flex:1}.user,.assistant{margin-left:0;margin-right:0}form button{width:100%}}
+</style>
+<p><a href="/">← 返回证据研究台</a></p><h1>本草研究对话</h1>
+<p class="notice">查询已收录的药典字段，逐条查看原页。内容未人工审核；范围不明或引用未展开时会提示查询未完成，不补写诊疗结论。</p>
+<div class="toolbar"><span id="focus" class="muted">正在恢复会话……</span><button id="reload" class="secondary" type="button">重新加载会话</button><button id="clear" class="secondary" type="button" disabled>清除本会话</button></div>
+<p id="retention" class="muted"></p>
+<p class="muted">可先问“甘草的功效”，再问“它的用量”或“出处呢”。更换药材请明确写出药名。</p>
+<div id="history" aria-live="polite"></div><p id="status" role="status"></p><div id="evidence"></div>
+<form id="form"><label><input id="question" maxlength="500" required aria-label="研究问题" placeholder="输入药名和问题，例如：甘草的功效"></label><button id="send" disabled>发送</button></form>
+<script src="/research-evidence.js"></script>
+<script>
+const $=id=>document.getElementById(id);let revision=0,ready=false,busy=false;
+function el(tag,text,cls){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node}
+function controls(){for(const id of ['send','clear'])$(id).disabled=busy||!ready;$('reload').disabled=busy}
+function focus(name){$('focus').textContent=name?'当前药材：'+name:'当前未选择药材'}
+function message(role,text){const card=el('article',undefined,role);card.append(el('div',role==='user'?'你':'研究助手','role'),el('p',text));$('history').append(card)}
+async function api(path,options){const response=await fetch(path,{credentials:'same-origin',...options});const result=await response.json();if(!response.ok)throw new Error(result.error||'研究服务暂不可用');return result}
+function evidence(data){const box=$('evidence');box.replaceChildren();if(!data)return;
+ if(data.hits.length){box.append(el('h2','本轮候选证据'));for(const hit of data.hits)box.append(render(hit))}
+ if(data.related_entries?.length){box.append(el('h2','相关母条目（不代表指定炮制品）'));for(const entry of data.related_entries){const card=el('article');card.append(el('h3',entry.name),el('p','仅供核对标题，不能替代当前查询。','notice'));citations(card,entry,'title_evidence','母条目标题原页');box.append(card)}}
+ if(data.unresolved_evidence?.length){box.append(el('h2','未完成查询的来源片段'));for(const hit of data.unresolved_evidence){const card=render(hit);card.prepend(el('p','此片段正文缺失或引用尚未展开，不作为完整字段结果。','notice'));if(hit.reference_witness){card.append(el('h3','相邻引用提示原文'),el('pre',hit.reference_witness.raw_text));citations(card,hit.reference_witness,'evidence','引用提示原页')}box.append(card)}}
+}
+async function restore(){busy=true;controls();$('status').textContent='正在恢复会话……';$('evidence').replaceChildren();try{const data=await api('/api/research/conversation');revision=data.revision;$('history').replaceChildren();for(const item of data.messages)message(item.role,item.content);focus(data.focus_name);$('retention').textContent=`保留最近 20 条消息，闲置 ${data.retention_days} 天后过期。清除会话会删除已存内容。`;ready=true;$('status').textContent=data.context_stale?'来源版本已改变，请明确药名重新查询。':data.messages.length?'已恢复对话；追问会重新检索当前来源。':'可以开始研究查询。'}catch(error){ready=false;$('status').textContent=error.message}finally{busy=false;controls()}}
+$('form').addEventListener('submit',async event=>{event.preventDefault();if(busy||!ready)return;const question=$('question').value;busy=true;controls();$('status').textContent='正在检索来源……';$('evidence').replaceChildren();try{const data=await api('/api/research/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question,revision})});revision=data.revision;message('user',question);message('assistant',data.message);focus(data.focus_name);$('status').textContent=data.message;evidence(data.tool_result);$('question').value=''}catch(error){$('status').textContent=error.message}finally{busy=false;controls()}});
+$('reload').addEventListener('click',restore);
+$('clear').addEventListener('click',async()=>{if(busy)return;busy=true;controls();try{await api('/api/research/conversation',{method:'DELETE'});revision=0;$('history').replaceChildren();$('evidence').replaceChildren();$('question').value='';focus(null);$('status').textContent='已清除本会话，可重新开始。'}catch(error){$('status').textContent=error.message}finally{busy=false;controls()}});
+restore();
+</script></html>

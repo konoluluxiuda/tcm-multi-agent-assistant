@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "unit_tests": 104,
+  "browser_checks": 12,
+  "guard_smoke_checks": 13,
+  "human_gold": false,
+  "clinical_correctness_evaluated": false,
+  "production_ingested": false,
+  "source_files_unchanged_sha256": {
+    "var/mineru_retrieval_v2/research.sqlite3": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+    "var/mineru_revisions_v2/research_view.json": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+    "var/tcm/herbs.sqlite3": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+    "data/《中国药典》2025年版 一部.pdf": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+    "data/《中国药典》2025年版 一部 全本.pdf": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+  },
+  "code_sha256": {
+    "tcm/mineru_guards.py": "4f6675eefa56c933f050dd1eadba9b54b13408138efc7ae8edaa40ac53f183ed",
+    "tcm/mineru_retrieval.py": "c910efbbe50d9ea5135196c834a6a45b1f1d00523ece373f00bdd3a81e07e860",
+    "tcm/mineru_research.html": "da3bef25f831af78d96b3d00319f43e00b13c3dafbd7c61580948e2f518345b2",
+    "tests/test_mineru_guards.py": "3e6ac6112b5ef6ef69c227c9014111b8caf567b52abb21d6f21d8e40fda43cab",
+    "scripts/verify_mineru_research.py": "07ded2f5ac64b185277f44f4be45b509c99aac405597d17308f155292a0ff709",
+    "scripts/eval_mineru_challenge.py": "dd454dd291958118b2767a1b705bfb87c4ad45b46be691a6baa282a593ea6a61"
+  }
+}

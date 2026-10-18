@@ -1,0 +1,38 @@
+{
+  "kind": "mineru_origin_page_equivalence_check",
+  "status": "passed",
+  "pages_verified": 413,
+  "note": "PDF container byte hashes differ; every page matches content operators, image payloads/masks/resource properties, geometry and rotation. No claim of binary-identical PDFs.",
+  "batches": [
+    {
+      "part": "part-001-100",
+      "pages": 100,
+      "pdf_container_hash_matches": false,
+      "all_page_content_resources_and_geometry_match": true
+    },
+    {
+      "part": "part-101-200",
+      "pages": 100,
+      "pdf_container_hash_matches": false,
+      "all_page_content_resources_and_geometry_match": true
+    },
+    {
+      "part": "part-201-300",
+      "pages": 100,
+      "pdf_container_hash_matches": false,
+      "all_page_content_resources_and_geometry_match": true
+    },
+    {
+      "part": "part-301-400",
+      "pages": 100,
+      "pdf_container_hash_matches": false,
+      "all_page_content_resources_and_geometry_match": true
+    },
+    {
+      "part": "part-401-413",
+      "pages": 13,
+      "pdf_container_hash_matches": false,
+      "all_page_content_resources_and_geometry_match": true
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "engine": "rapidocr",
+  "suite_sha256": "a7901bea761db41bd25dd654641ab7ed59de61df9301d4235372fd2ffd6574e0",
+  "prepared_sha256": "dc96f79374db8042554eedaf53067d08dad9484e3c59cb277f018bf3f64cba3b",
+  "code_sha256": "062d62efb8a6e4ca403a8710be95c29d3fb12961c768dc309aee6c61b7c876e8",
+  "status": "completed",
+  "pages": [
+    {
+      "key": "high-24",
+      "seconds": 12.896,
+      "lines": 88,
+      "blocks": 0
+    },
+    {
+      "key": "high-25",
+      "seconds": 11.548,
+      "lines": 90,
+      "blocks": 0
+    },
+    {
+      "key": "full-51",
+      "seconds": 12.105,
+      "lines": 90,
+      "blocks": 0
+    },
+    {
+      "key": "full-76",
+      "seconds": 10.159,
+      "lines": 90,
+      "blocks": 0
+    },
+    {
+      "key": "full-77",
+      "seconds": 10.804,
+      "lines": 89,
+      "blocks": 0
+    },
+    {
+      "key": "high-48",
+      "seconds": 11.161,
+      "lines": 86,
+      "blocks": 0
+    },
+    {
+      "key": "high-49",
+      "seconds": 10.283,
+      "lines": 93,
+      "blocks": 0
+    },
+    {
+      "key": "full-78",
+      "seconds": 10.2,
+      "lines": 96,
+      "blocks": 0
+    },
+    {
+      "key": "high-218",
+      "seconds": 10.713,
+      "lines": 92,
+      "blocks": 0
+    },
+    {
+      "key": "full-247",
+      "seconds": 11.189,
+      "lines": 91,
+      "blocks": 0
+    },
+    {
+      "key": "high-434",
+      "seconds": 5.281,
+      "lines": 32,
+      "blocks": 0
+    },
+    {
+      "key": "full-463",
+      "seconds": 4.114,
+      "lines": 33,
+      "blocks": 0
+    },
+    {
+      "key": "full-49",
+      "seconds": 1.803,
+      "lines": 2,
+      "blocks": 0
+    },
+    {
+      "key": "full-50",
+      "seconds": 1.679,
+      "lines": 0,
+      "blocks": 0
+    },
+    {
+      "key": "full-52",
+      "seconds": 10.417,
+      "lines": 92,
+      "blocks": 0
+    },
+    {
+      "key": "full-464",
+      "seconds": 1.847,
+      "lines": 0,
+      "blocks": 0
+    },
+    {
+      "key": "full-465",
+      "seconds": 1.726,
+      "lines": 2,
+      "blocks": 0
+    },
+    {
+      "key": "full-466",
+      "seconds": 1.748,
+      "lines": 0,
+      "blocks": 0
+    },
+    {
+      "key": "full-1030",
+      "seconds": 11.186,
+      "lines": 96,
+      "blocks": 0
+    },
+    {
+      "key": "full-2057",
+      "seconds": 3.312,
+      "lines": 47,
+      "blocks": 0
+    }
+  ],
+  "human_signoff": false,
+  "ocr_character_accuracy": null,
+  "reading_order_accuracy": null,
+  "business_task_completion_rate": null,
+  "settings": {
+    "device": "cpu",
+    "threads": 2,
+    "render_dpi": 240,
+    "rapidocr_fixed_half_columns": true,
+    "optional_table_formula_chart_seal": false
+  },
+  "versions": {
+    "rapidocr-onnxruntime": "1.4.4",
+    "onnxruntime": "1.31.0"
+  },
+  "initialization_seconds": 0.773,
+  "blocked_network_attempts": 0,
+  "legacy_fragment_checks": [
+    {
+      "id": "YiZhiHuangHua",
+      "status": "executed",
+      "fields": {
+        "name": true,
+        "latin_drug_name": true,
+        "medicinal_part_fragment": true,
+        "properties_meridians": true,
+        "quantity_fragment": true
+      }
+    },
+    {
+      "id": "DingGongTeng",
+      "status": "executed",
+      "fields": {
+        "name": true,
+        "latin_drug_name": true,
+        "medicinal_part_fragment": true,
+        "properties_meridians": true,
+        "quantity_fragment": true,
+        "caution_fragment": true
+      }
+    },
+    {
+      "id": "DaFuPi",
+      "status": "executed",
+      "fields": {
+        "name": true,
+        "latin_drug_name": true,
+        "medicinal_part_fragment": true,
+        "properties_meridians": true,
+        "quantity_fragment": true
+      }
+    },
+    {
+      "id": "ShanMaiDong",
+      "status": "executed",
+      "fields": {
+        "name": true,
+        "latin_drug_name": true,
+        "medicinal_part_fragment": true,
+        "properties_meridians": true,
+        "quantity_fragment": true
+      }
+    }
+  ],
+  "completed_pages": 20,
+  "total_pages": 20
+}

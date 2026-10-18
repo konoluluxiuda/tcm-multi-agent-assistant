@@ -1,0 +1,358 @@
+{
+  "kind": "frozen_rule_boundary_evaluation",
+  "status": "completed_without_observed_boundary_failures",
+  "human_signoff": false,
+  "reference_authority": "AI_visual_pending_human_review",
+  "scope": "Observed title-start correspondence on purposive pages; not full-text accuracy or a generalization estimate.",
+  "counts": {
+    "pages": 8,
+    "reference_starts": 14,
+    "detected_starts": 14,
+    "location_matches": 14,
+    "missed_starts": 0,
+    "unexpected_starts": 0,
+    "ambiguous_reference_starts": 0,
+    "name_differences_among_matches": 0,
+    "entries_exposed_to_missed_title": 0,
+    "cross_block_entries": 0,
+    "cross_page_entries": 5,
+    "open_entries": 2
+  },
+  "matched_starts": [
+    {
+      "reference": {
+        "name": "天麻",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 80,
+        "block": "new_a",
+        "id": "high-80-0"
+      },
+      "prediction": {
+        "id": "afc0283dbfedef631137822d",
+        "name": "天麻",
+        "document": "high",
+        "pdf_page": 80,
+        "column": "left",
+        "center_y_fraction": 0.24750356633380885
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "天葵子",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 81,
+        "block": "new_a",
+        "id": "high-81-0"
+      },
+      "prediction": {
+        "id": "26399abcbb928085294941c9",
+        "name": "天葵子",
+        "document": "high",
+        "pdf_page": 81,
+        "column": "left",
+        "center_y_fraction": 0.5737442109013181
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "天然冰片（右旋龙脑）",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 81,
+        "block": "new_a",
+        "id": "high-81-1"
+      },
+      "prediction": {
+        "id": "737b05e6121c7e63c755f8f1",
+        "name": "天然冰片(右旋龙脑)",
+        "document": "high",
+        "pdf_page": 81,
+        "column": "right",
+        "center_y_fraction": 0.4429996437477734
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "云芝",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 82,
+        "block": "new_a",
+        "id": "high-82-0"
+      },
+      "prediction": {
+        "id": "96e967e2ec1b50c1192f8419",
+        "name": "云芝",
+        "document": "high",
+        "pdf_page": 82,
+        "column": "left",
+        "center_y_fraction": 0.6982014388489208
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "木瓜",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 83,
+        "block": "new_a",
+        "id": "high-83-0"
+      },
+      "prediction": {
+        "id": "4e0af7d4bb58a8b99208f5c4",
+        "name": "木瓜",
+        "document": "high",
+        "pdf_page": 83,
+        "column": "left",
+        "center_y_fraction": 0.1264265335235378
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "木芙蓉叶",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 83,
+        "block": "new_a",
+        "id": "high-83-1"
+      },
+      "prediction": {
+        "id": "c4403b97707a7281c9006c92",
+        "name": "木芙蓉叶",
+        "document": "high",
+        "pdf_page": 83,
+        "column": "right",
+        "center_y_fraction": 0.44026390870185445
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "禹州漏芦",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 300,
+        "block": "new_b",
+        "id": "high-300-0"
+      },
+      "prediction": {
+        "id": "da6c505a60e7bf6569e1527b",
+        "name": "禹州漏芦",
+        "document": "high",
+        "pdf_page": 300,
+        "column": "left",
+        "center_y_fraction": 0.1228601997146933
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "禹余粮",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 300,
+        "block": "new_b",
+        "id": "high-300-1"
+      },
+      "prediction": {
+        "id": "a7e530eab708a16041d80267",
+        "name": "禹余粮",
+        "document": "high",
+        "pdf_page": 300,
+        "column": "right",
+        "center_y_fraction": 0.41654778887303856
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "胆南星",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.43
+        ],
+        "document": "high",
+        "pdf_page": 301,
+        "block": "new_b",
+        "id": "high-301-0"
+      },
+      "prediction": {
+        "id": "f4eaa4b0b480027280093aaa",
+        "name": "胆南星",
+        "document": "high",
+        "pdf_page": 301,
+        "column": "left",
+        "center_y_fraction": 0.21799215406562056
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "胖大海",
+        "column": "left",
+        "y_range": [
+          0.43,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 301,
+        "block": "new_b",
+        "id": "high-301-1"
+      },
+      "prediction": {
+        "id": "b13ed37b38894e659336868b",
+        "name": "胖大海",
+        "document": "high",
+        "pdf_page": 301,
+        "column": "left",
+        "center_y_fraction": 0.6141226818830243
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "独一味",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 301,
+        "block": "new_b",
+        "id": "high-301-2"
+      },
+      "prediction": {
+        "id": "09b370c90efcc0ef3035c5a6",
+        "name": "独一味",
+        "document": "high",
+        "pdf_page": 301,
+        "column": "right",
+        "center_y_fraction": 0.4649607703281027
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "独活",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 302,
+        "block": "new_b",
+        "id": "high-302-0"
+      },
+      "prediction": {
+        "id": "2a4ed4c67518986aeaa74a13",
+        "name": "独活",
+        "document": "high",
+        "pdf_page": 302,
+        "column": "left",
+        "center_y_fraction": 0.8104493580599145
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "急性子",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 303,
+        "block": "new_b",
+        "id": "high-303-0"
+      },
+      "prediction": {
+        "id": "6cb529fd32e6ce61379b45bc",
+        "name": "急性子",
+        "document": "high",
+        "pdf_page": 303,
+        "column": "left",
+        "center_y_fraction": 0.2583808844507846
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "姜黄",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 303,
+        "block": "new_b",
+        "id": "high-303-1"
+      },
+      "prediction": {
+        "id": "0d219833d231fab5f2cf30ba",
+        "name": "姜黄",
+        "document": "high",
+        "pdf_page": 303,
+        "column": "right",
+        "center_y_fraction": 0.6595934379457918
+      },
+      "name_matches": true
+    }
+  ],
+  "missed_starts": [],
+  "unexpected_starts": [],
+  "ambiguous_starts": [],
+  "cross_block_entry_ids": [],
+  "quarantine_entry_ids": [],
+  "ocr_character_accuracy": null,
+  "clinical_accuracy": null,
+  "field_scope_accuracy": null,
+  "observed_source_page_gaps": [],
+  "evaluation_role": "known_failure_regression",
+  "independent_validation": false,
+  "reference_sha256": "4e371ac6d3a32075a1510d119671bdb7a27ae9bcde47663325ae28dae0982ec3",
+  "baseline_entries_sha256": "815428e9474c15f231c7123d2660c6bcc35b2abd38cbe86ab7f6455638580990"
+}

@@ -1,0 +1,50 @@
+{
+  "batch_sha256": "788fff9274e1520f95a123d5ce56ae1e7d84d6ea08ed5d6f7b3dfc87c6687fe3",
+  "human_signoff": false,
+  "seed": "2026-10-17-v1",
+  "sample_per_stratum": 1,
+  "samples": [
+    {
+      "id": "YiZhiHuangHua:latin_drug_name",
+      "case_id": "YiZhiHuangHua",
+      "field": "latin_drug_name",
+      "stratum": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2|identity",
+      "machine_status": "machine_checks_passed"
+    },
+    {
+      "id": "DingGongTeng:cautions",
+      "case_id": "DingGongTeng",
+      "field": "cautions",
+      "stratum": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2|safety",
+      "machine_status": "machine_checks_passed"
+    },
+    {
+      "id": "DingGongTeng:storage",
+      "case_id": "DingGongTeng",
+      "field": "storage",
+      "stratum": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2|description",
+      "machine_status": "machine_checks_passed"
+    },
+    {
+      "id": "ShanMaiDong:efficacy_indications",
+      "case_id": "ShanMaiDong",
+      "field": "efficacy_indications",
+      "stratum": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5|description",
+      "machine_status": "machine_checks_passed"
+    },
+    {
+      "id": "ShanMaiDong:usage",
+      "case_id": "ShanMaiDong",
+      "field": "usage",
+      "stratum": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5|safety",
+      "machine_status": "machine_checks_passed"
+    },
+    {
+      "id": "ShanMaiDong:pinyin",
+      "case_id": "ShanMaiDong",
+      "field": "pinyin",
+      "stratum": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5|identity",
+      "machine_status": "machine_checks_passed"
+    }
+  ]
+}

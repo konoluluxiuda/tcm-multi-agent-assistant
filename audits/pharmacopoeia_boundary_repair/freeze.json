@@ -1,0 +1,80 @@
+{
+  "kind": "repair_v3_new_page_freeze",
+  "human_signoff": false,
+  "sources_sha256": {
+    "tcm/pharmacopoeia_segmentation.py": "e4bb4de8c7a371ad4ab473a525c7fd2d7f6889b906d4ea3f13fdc81bc6c7c232",
+    "tcm/pharmacopoeia.py": "e42972de65d96fc81f192abb4462d85a0bd16c51a89083de3f92d2305dd755d2",
+    "scripts/batch_pharmacopoeia_pdf.py": "e09bcf2766a0220d91d74f08567cc417c9c90148bc52a0a31f9f512e49cf876a",
+    "scripts/benchmark_pharmacopoeia_pdf.py": "c11a96fe1ffe8a0e0a5688608f15d81dd8772365f6458d8727c62eeecc1228e9"
+  },
+  "page_selection_before_ocr": true,
+  "rule_changes_during_validation": false,
+  "plan_sha256": "063f1c14ac04ac73dae84bec4c64984f4fe85db105225152481a46b6efba5f14",
+  "visual_reference_sha256": "4e371ac6d3a32075a1510d119671bdb7a27ae9bcde47663325ae28dae0982ec3",
+  "pages": [
+    {
+      "document": "high",
+      "pdf_page": 80,
+      "printed_page": 61,
+      "stage": "post_repair_new_validation",
+      "layout": "two_column",
+      "block": "new_a"
+    },
+    {
+      "document": "high",
+      "pdf_page": 81,
+      "printed_page": 62,
+      "stage": "post_repair_new_validation",
+      "layout": "two_column",
+      "block": "new_a"
+    },
+    {
+      "document": "high",
+      "pdf_page": 82,
+      "printed_page": 63,
+      "stage": "post_repair_new_validation",
+      "layout": "two_column",
+      "block": "new_a"
+    },
+    {
+      "document": "high",
+      "pdf_page": 83,
+      "printed_page": 64,
+      "stage": "post_repair_new_validation",
+      "layout": "two_column",
+      "block": "new_a"
+    },
+    {
+      "document": "high",
+      "pdf_page": 300,
+      "printed_page": 281,
+      "stage": "post_repair_new_validation",
+      "layout": "two_column",
+      "block": "new_b"
+    },
+    {
+      "document": "high",
+      "pdf_page": 301,
+      "printed_page": 282,
+      "stage": "post_repair_new_validation",
+      "layout": "two_column",
+      "block": "new_b"
+    },
+    {
+      "document": "high",
+      "pdf_page": 302,
+      "printed_page": 283,
+      "stage": "post_repair_new_validation",
+      "layout": "two_column",
+      "block": "new_b"
+    },
+    {
+      "document": "high",
+      "pdf_page": 303,
+      "printed_page": 284,
+      "stage": "post_repair_new_validation",
+      "layout": "two_column",
+      "block": "new_b"
+    }
+  ]
+}

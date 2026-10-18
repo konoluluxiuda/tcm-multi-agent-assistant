@@ -1,0 +1,641 @@
+{
+  "kind": "sanitized_boundary_candidate_inventory",
+  "human_signoff": false,
+  "entries": [
+    {
+      "id": "fac6d7e943923f513fe0d6fd",
+      "name_zh_candidate": "人参",
+      "start": {
+        "document": "high",
+        "pdf_page": 30,
+        "column": "left"
+      },
+      "pdf_pages": [
+        30,
+        31
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "e2498b39596ee6c70cc95ac5",
+      "name_zh_candidate": "人参叶",
+      "start": {
+        "document": "high",
+        "pdf_page": 31,
+        "column": "right"
+      },
+      "pdf_pages": [
+        31,
+        32
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "088db9c976c62564e0959dcf",
+      "name_zh_candidate": "儿茶",
+      "start": {
+        "document": "high",
+        "pdf_page": 32,
+        "column": "left"
+      },
+      "pdf_pages": [
+        32
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "ece1321243cb188ebdbc23b0",
+      "name_zh_candidate": "九里香",
+      "start": {
+        "document": "high",
+        "pdf_page": 32,
+        "column": "right"
+      },
+      "pdf_pages": [
+        32,
+        33
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "cecfde834454db728df2b316",
+      "name_zh_candidate": "九香虫",
+      "start": {
+        "document": "high",
+        "pdf_page": 33,
+        "column": "left"
+      },
+      "pdf_pages": [
+        33
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "490a9cf33485837d62d548ad",
+      "name_zh_candidate": "刀豆",
+      "start": {
+        "document": "high",
+        "pdf_page": 33,
+        "column": "right"
+      },
+      "pdf_pages": [
+        33,
+        34
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "7cb2de73e372f31f821cf2b4",
+      "name_zh_candidate": "三冏七",
+      "start": {
+        "document": "high",
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "pdf_pages": [
+        34
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "6ff5335d9938575f87b12ead",
+      "name_zh_candidate": "三白草",
+      "start": {
+        "document": "high",
+        "pdf_page": 35,
+        "column": "left"
+      },
+      "pdf_pages": [
+        35
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "0f64e355c58aade04734bd8a",
+      "name_zh_candidate": "三棱",
+      "start": {
+        "document": "high",
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "pdf_pages": [
+        35,
+        36
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "861cf9cd6dcf3e32ff3d0ed3",
+      "name_zh_candidate": "三颗针",
+      "start": {
+        "document": "high",
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "pdf_pages": [
+        36
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "f5eb7f415342581c7400776c",
+      "name_zh_candidate": "干姜",
+      "start": {
+        "document": "high",
+        "pdf_page": 37,
+        "column": "left"
+      },
+      "pdf_pages": [
+        37
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "9aa5a43264f245a0cf6b924e",
+      "name_zh_candidate": "炮姜",
+      "start": {
+        "document": "high",
+        "pdf_page": 37,
+        "column": "right"
+      },
+      "pdf_pages": [
+        37,
+        38
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "d6688729cec3140ff70342c3",
+      "name_zh_candidate": "土木香",
+      "start": {
+        "document": "high",
+        "pdf_page": 38,
+        "column": "right"
+      },
+      "pdf_pages": [
+        38,
+        39
+      ],
+      "end_boundary": "source_or_page_gap",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "0f5231648a40821f1f37d059",
+      "name_zh_candidate": "两头尖",
+      "start": {
+        "document": "high",
+        "pdf_page": 200,
+        "column": "left"
+      },
+      "pdf_pages": [
+        200
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph"
+      ]
+    },
+    {
+      "id": "1c5d5ec46177ccca17e89de1",
+      "name_zh_candidate": "两面针",
+      "start": {
+        "document": "high",
+        "pdf_page": 200,
+        "column": "right"
+      },
+      "pdf_pages": [
+        200,
+        201
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph"
+      ]
+    },
+    {
+      "id": "d676f0afc67d3f2c4291d0cc",
+      "name_zh_candidate": "连钱草",
+      "start": {
+        "document": "high",
+        "pdf_page": 201,
+        "column": "right"
+      },
+      "pdf_pages": [
+        201,
+        202
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "79f0a15190d948aa4f9b526c",
+      "name_zh_candidate": "连翘",
+      "start": {
+        "document": "high",
+        "pdf_page": 202,
+        "column": "right"
+      },
+      "pdf_pages": [
+        202,
+        203
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph"
+      ]
+    },
+    {
+      "id": "ff40e16b5cb2d8bf63aaae3a",
+      "name_zh_candidate": "吴茱萸",
+      "start": {
+        "document": "high",
+        "pdf_page": 203,
+        "column": "left"
+      },
+      "pdf_pages": [
+        203,
+        204
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "5e05e4ec84de2d6eb3b1b268",
+      "name_zh_candidate": "牡丹皮",
+      "start": {
+        "document": "high",
+        "pdf_page": 204,
+        "column": "left"
+      },
+      "pdf_pages": [
+        204
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "6c0c14dd6ed50e4514a2c65b",
+      "name_zh_candidate": "牡荆叶",
+      "start": {
+        "document": "high",
+        "pdf_page": 204,
+        "column": "right"
+      },
+      "pdf_pages": [
+        204,
+        205
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph"
+      ]
+    },
+    {
+      "id": "204df42691904140f756557f",
+      "name_zh_candidate": "牡蛎",
+      "start": {
+        "document": "high",
+        "pdf_page": 205,
+        "column": "left"
+      },
+      "pdf_pages": [
+        205,
+        206,
+        207,
+        208
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices",
+        "appendix_standard",
+        "appendix_standard",
+        "appendix_standard"
+      ]
+    },
+    {
+      "id": "b9c8339fd6ec8a26d942c4d8",
+      "name_zh_candidate": "何首乌",
+      "start": {
+        "document": "high",
+        "pdf_page": 208,
+        "column": "left"
+      },
+      "pdf_pages": [
+        208,
+        209
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "18df77794be2b869adc07c1f",
+      "name_zh_candidate": "制何首乌",
+      "start": {
+        "document": "high",
+        "pdf_page": 209,
+        "column": "left"
+      },
+      "pdf_pages": [
+        209
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph"
+      ]
+    },
+    {
+      "id": "aff7bf7c4e0d713cf31bb03f",
+      "name_zh_candidate": "伸筋草",
+      "start": {
+        "document": "high",
+        "pdf_page": 209,
+        "column": "right"
+      },
+      "pdf_pages": [
+        209
+      ],
+      "end_boundary": "source_or_page_gap",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "b33bf9248fbae6463815163f",
+      "name_zh_candidate": "寄生",
+      "start": {
+        "document": "high",
+        "pdf_page": 420,
+        "column": "right"
+      },
+      "pdf_pages": [
+        420,
+        421
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "df31e7348c344000c01caec3",
+      "name_zh_candidate": "暴马子皮",
+      "start": {
+        "document": "high",
+        "pdf_page": 421,
+        "column": "left"
+      },
+      "pdf_pages": [
+        421
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph"
+      ]
+    },
+    {
+      "id": "a1f97c8f9c345caff241b251",
+      "name_zh_candidate": "墨旱莲",
+      "start": {
+        "document": "high",
+        "pdf_page": 421,
+        "column": "right"
+      },
+      "pdf_pages": [
+        421,
+        422
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "7ae2d1be6ca8c9437a2f022a",
+      "name_zh_candidate": "稻芽",
+      "start": {
+        "document": "high",
+        "pdf_page": 422,
+        "column": "right"
+      },
+      "pdf_pages": [
+        422,
+        423
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "7b3149d72566fc97bd95d9c1",
+      "name_zh_candidate": "鹤虱",
+      "start": {
+        "document": "high",
+        "pdf_page": 423,
+        "column": "left"
+      },
+      "pdf_pages": [
+        423,
+        424
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph"
+      ]
+    },
+    {
+      "id": "cc2c05bc2231c17ab6076761",
+      "name_zh_candidate": "薏苡仁",
+      "start": {
+        "document": "high",
+        "pdf_page": 424,
+        "column": "left"
+      },
+      "pdf_pages": [
+        424,
+        425
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "360b882b0e8ad3bd6385ee38",
+      "name_zh_candidate": "薄荷",
+      "start": {
+        "document": "high",
+        "pdf_page": 425,
+        "column": "left"
+      },
+      "pdf_pages": [
+        425
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "8b1d52265479ac9ecc57ee47",
+      "name_zh_candidate": "颠茄草",
+      "start": {
+        "document": "high",
+        "pdf_page": 425,
+        "column": "right"
+      },
+      "pdf_pages": [
+        425,
+        426
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph"
+      ]
+    },
+    {
+      "id": "f603394c7c6c2f18e2920c79",
+      "name_zh_candidate": "橘红",
+      "start": {
+        "document": "high",
+        "pdf_page": 426,
+        "column": "right"
+      },
+      "pdf_pages": [
+        426,
+        427
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "a090158cddf8fba60ce73d25",
+      "name_zh_candidate": "橘核",
+      "start": {
+        "document": "high",
+        "pdf_page": 427,
+        "column": "left"
+      },
+      "pdf_pages": [
+        427,
+        428
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices",
+        "prepared_slices",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "2626b929bf5e65f6aae5cef8",
+      "name_zh_candidate": "檀香",
+      "start": {
+        "document": "high",
+        "pdf_page": 428,
+        "column": "right"
+      },
+      "pdf_pages": [
+        428,
+        429
+      ],
+      "end_boundary": "next_title",
+      "scopes": [
+        "monograph",
+        "prepared_slices",
+        "prepared_slices"
+      ]
+    },
+    {
+      "id": "ce24dc8529bfbc9e85c9e767",
+      "name_zh_candidate": "藕节",
+      "start": {
+        "document": "high",
+        "pdf_page": 429,
+        "column": "right"
+      },
+      "pdf_pages": [
+        429
+      ],
+      "end_boundary": "batch_end",
+      "scopes": [
+        "monograph"
+      ]
+    }
+  ]
+}

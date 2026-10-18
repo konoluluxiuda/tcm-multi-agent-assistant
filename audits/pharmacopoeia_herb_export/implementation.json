@@ -1,0 +1,8 @@
+{
+  "exporter_sha256": "cd7010839dda0725fedf8c9434da1f6de7c4355542647239649fab143f1b9924",
+  "plan_sha256": "86c4fb45131cc4cf60e240886c828ff19a2e502afb9f0b2cac84ef656ef34554",
+  "pymupdf_version": "1.28.2",
+  "output_directory": "var/pharmacopoeia_herbs_pdf",
+  "verification": "All 1239 page instances across 7 PDFs matched selected original pages; no OCR or image resampling.",
+  "external_upload_performed": false
+}

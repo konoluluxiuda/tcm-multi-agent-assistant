@@ -1,0 +1,37 @@
+{
+  "kind": "ai_visual_boundary_reference",
+  "human_signoff": false,
+  "frozen_before_new_page_ocr": true,
+  "pages": [
+    {
+      "document": "high",
+      "pdf_page": 26,
+      "titles": [
+        {
+          "name": "八角茴香",
+          "column": "left"
+        },
+        {
+          "name": "人工牛黄",
+          "column": "right"
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 27,
+      "titles": []
+    },
+    {
+      "document": "high",
+      "pdf_page": 28,
+      "titles": []
+    },
+    {
+      "document": "high",
+      "pdf_page": 29,
+      "titles": []
+    }
+  ],
+  "note": "Visual inspection of 100dpi previews; appendix quality-standard titles are not independent monographs. Exploratory engineering reference, not human truth."
+}

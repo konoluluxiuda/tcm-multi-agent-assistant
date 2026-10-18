@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "verified_files": 9,
+  "last_two_run_output_sha256": [
+    "119b054aeeebcb563b0fb74f93dcabbaf6d346ae1aee62568eddbb745b9ad43e",
+    "119b054aeeebcb563b0fb74f93dcabbaf6d346ae1aee62568eddbb745b9ad43e"
+  ],
+  "identical": true,
+  "cache_corruption_and_retry_negative_tests": "tests/test_pharmacopoeia_segmentation.py"
+}

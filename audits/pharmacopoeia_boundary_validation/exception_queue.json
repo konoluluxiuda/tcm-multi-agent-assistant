@@ -1,0 +1,196 @@
+{
+  "kind": "post_evaluation_AI_failure_diagnosis",
+  "human_signoff": false,
+  "report_sha256": "c96d42a8065b7bdde71ed6726ab3446733a8344afe468845a8c2333f774dd117",
+  "counts": {
+    "missing_source_lines": 3,
+    "unsupported_source_openers": 3,
+    "omitted_title_characters": 2,
+    "affected_containing_candidates": 7,
+    "additional_title_identity_differences": 2,
+    "distinct_candidates_requiring_review": 9
+  },
+  "relation_to_primary_report": "Primary evaluator confirms only exact visual-name OCR evidence (5 owners); post-evaluation image/OCR diagnosis also follows 土→士 and omitted 薤/藁 titles, finding 7 distinct contaminated owners. No frozen rule or primary report modified.",
+  "production_ingestion_performed": false,
+  "exceptions": [
+    {
+      "kind": "missed_monograph_start",
+      "document": "high",
+      "pdf_page": 38,
+      "column": "right",
+      "visual_name_pending_human_review": "干漆",
+      "observed_ocr_title": "干漆",
+      "diagnosis": "missing_origin_first_line",
+      "containing_candidate": {
+        "id": "9aa5a43264f245a0cf6b924e",
+        "name_zh_candidate": "炮姜",
+        "title_line_index": 49,
+        "title_score": 0.9419023394584656,
+        "title_y": 0.1235734664764622
+      },
+      "human_signoff": false,
+      "action": "withhold_containing_candidate_until_boundary_repair_and_recheck"
+    },
+    {
+      "kind": "missed_monograph_start",
+      "document": "high",
+      "pdf_page": 39,
+      "column": "right",
+      "visual_name_pending_human_review": "土贝母",
+      "observed_ocr_title": "士贝母",
+      "diagnosis": "missing_origin_first_line_and_title_substitution",
+      "containing_candidate": {
+        "id": "d6688729cec3140ff70342c3",
+        "name_zh_candidate": "土木香",
+        "title_line_index": 59,
+        "title_score": 0.8419971863428751,
+        "title_y": 0.30822039942938656
+      },
+      "human_signoff": false,
+      "action": "withhold_containing_candidate_until_boundary_repair_and_recheck"
+    },
+    {
+      "kind": "missed_monograph_start",
+      "document": "high",
+      "pdf_page": 205,
+      "column": "right",
+      "visual_name_pending_human_review": "体外培育牛黄",
+      "observed_ocr_title": "体外培育牛黄",
+      "diagnosis": "unsupported_source_opener_本品以",
+      "containing_candidate": {
+        "id": "204df42691904140f756557f",
+        "name_zh_candidate": "牡蛎",
+        "title_line_index": 79,
+        "title_score": 0.9973397453625997,
+        "title_y": 0.7364479315263909
+      },
+      "human_signoff": false,
+      "action": "withhold_containing_candidate_until_boundary_repair_and_recheck"
+    },
+    {
+      "kind": "missed_monograph_start",
+      "document": "high",
+      "pdf_page": 422,
+      "column": "right",
+      "visual_name_pending_human_review": "僵蚕",
+      "observed_ocr_title": "僵蚕",
+      "diagnosis": "missing_origin_first_line",
+      "containing_candidate": {
+        "id": "7ae2d1be6ca8c9437a2f022a",
+        "name_zh_candidate": "稻芽",
+        "title_line_index": 87,
+        "title_score": 0.9593951404094696,
+        "title_y": 0.8402282453637662
+      },
+      "human_signoff": false,
+      "action": "withhold_containing_candidate_until_boundary_repair_and_recheck"
+    },
+    {
+      "kind": "missed_monograph_start",
+      "document": "high",
+      "pdf_page": 423,
+      "column": "right",
+      "visual_name_pending_human_review": "薤白",
+      "observed_ocr_title": "白",
+      "diagnosis": "title_character_omission",
+      "containing_candidate": {
+        "id": "7b3149d72566fc97bd95d9c1",
+        "name_zh_candidate": "鹤虱",
+        "title_line_index": 62,
+        "title_score": 0.9999127388000488,
+        "title_y": 0.43035268970431056
+      },
+      "human_signoff": false,
+      "action": "withhold_containing_candidate_until_boundary_repair_and_recheck"
+    },
+    {
+      "kind": "missed_monograph_start",
+      "document": "high",
+      "pdf_page": 427,
+      "column": "right",
+      "visual_name_pending_human_review": "藏菖蒲",
+      "observed_ocr_title": "藏菖蒲",
+      "diagnosis": "unsupported_source_opener_本品系",
+      "containing_candidate": {
+        "id": "a090158cddf8fba60ce73d25",
+        "name_zh_candidate": "橘核",
+        "title_line_index": 49,
+        "title_score": 0.9467679262161255,
+        "title_y": 0.17742510699001424
+      },
+      "human_signoff": false,
+      "action": "withhold_containing_candidate_until_boundary_repair_and_recheck"
+    },
+    {
+      "kind": "missed_monograph_start",
+      "document": "high",
+      "pdf_page": 428,
+      "column": "left",
+      "visual_name_pending_human_review": "藁本",
+      "observed_ocr_title": "本",
+      "diagnosis": "title_character_omission",
+      "containing_candidate": {
+        "id": "a090158cddf8fba60ce73d25",
+        "name_zh_candidate": "橘核",
+        "title_line_index": 1,
+        "title_score": 0.9993276596069336,
+        "title_y": 0.12820970042796004
+      },
+      "human_signoff": false,
+      "action": "withhold_containing_candidate_until_boundary_repair_and_recheck"
+    },
+    {
+      "kind": "missed_monograph_start",
+      "document": "high",
+      "pdf_page": 429,
+      "column": "left",
+      "visual_name_pending_human_review": "翼首草",
+      "observed_ocr_title": "翼首草",
+      "diagnosis": "unsupported_source_opener_本品系",
+      "containing_candidate": {
+        "id": "2626b929bf5e65f6aae5cef8",
+        "name_zh_candidate": "檀香",
+        "title_line_index": 5,
+        "title_score": 0.9998733401298523,
+        "title_y": 0.2211126961483595
+      },
+      "human_signoff": false,
+      "action": "withhold_containing_candidate_until_boundary_repair_and_recheck"
+    },
+    {
+      "kind": "title_identity_difference",
+      "document": "high",
+      "pdf_page": 34,
+      "column": "left",
+      "visual_name_pending_human_review": "三七",
+      "observed_ocr_title": "三冏七",
+      "candidate_id": "7cb2de73e372f31f821cf2b4",
+      "title_score": 0.8093646566073099,
+      "human_signoff": false,
+      "action": "source_image_review_do_not_autocorrect_or_map_entity"
+    },
+    {
+      "kind": "title_identity_difference",
+      "document": "high",
+      "pdf_page": 420,
+      "column": "right",
+      "visual_name_pending_human_review": "槲寄生",
+      "observed_ocr_title": "寄生",
+      "candidate_id": "b33bf9248fbae6463815163f",
+      "title_score": 0.9993146359920502,
+      "human_signoff": false,
+      "action": "source_image_review_do_not_autocorrect_or_map_entity"
+    }
+  ],
+  "withhold_candidate_ids": [
+    "204df42691904140f756557f",
+    "2626b929bf5e65f6aae5cef8",
+    "7ae2d1be6ca8c9437a2f022a",
+    "7b3149d72566fc97bd95d9c1",
+    "7cb2de73e372f31f821cf2b4",
+    "9aa5a43264f245a0cf6b924e",
+    "a090158cddf8fba60ce73d25",
+    "b33bf9248fbae6463815163f",
+    "d6688729cec3140ff70342c3"
+  ]
+}

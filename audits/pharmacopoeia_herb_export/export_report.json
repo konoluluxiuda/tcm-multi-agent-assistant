@@ -1,0 +1,106 @@
+{
+  "kind": "verified_local_herb_chapter_export",
+  "status": "passed",
+  "plan_sha256": "86c4fb45131cc4cf60e240886c828ff19a2e502afb9f0b2cac84ef656ef34554",
+  "source_documents": {
+    "full": {
+      "path": "data/《中国药典》2025年版 一部 全本.pdf",
+      "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+    },
+    "high": {
+      "path": "data/《中国药典》2025年版 一部.pdf",
+      "sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2"
+    }
+  },
+  "chapter_pages": 413,
+  "known_supplement_pages": [
+    {
+      "source": "full",
+      "pdf_page": 76,
+      "printed_page": 28
+    },
+    {
+      "source": "full",
+      "pdf_page": 77,
+      "printed_page": 29
+    }
+  ],
+  "products": [
+    {
+      "role": "preferred",
+      "file": "药材和饮片_高清补页版.pdf",
+      "pages": 413,
+      "bytes": 481443708,
+      "sha256": "71455d200ae2a04a46f65e5561c10f5b0430a26867d64b3a9eb10d73f23c951b",
+      "verified_against_source_pages": 413
+    },
+    {
+      "role": "reference",
+      "file": "药材和饮片_全本原扫描版.pdf",
+      "pages": 413,
+      "bytes": 50160500,
+      "sha256": "203d74a35f92b6d2ae69f05a953937147fd07f5727142406a6df4c8a6c49524c",
+      "verified_against_source_pages": 413
+    },
+    {
+      "role": "upload_part",
+      "file": "上传分卷/药材和饮片_第001-100页.pdf",
+      "pages": 100,
+      "chapter_first_page": 1,
+      "chapter_last_page": 100,
+      "bytes": 117607311,
+      "sha256": "839dd79b1138dbb4f3f624c5ec0e78fd2c92e1b11560b101e2ae985d5ba1532e",
+      "verified_against_source_pages": 100
+    },
+    {
+      "role": "upload_part",
+      "file": "上传分卷/药材和饮片_第101-200页.pdf",
+      "pages": 100,
+      "chapter_first_page": 101,
+      "chapter_last_page": 200,
+      "bytes": 119302490,
+      "sha256": "92b1d979ad0db18b53b406d18a0d3f7c723c72602e687dad761c243aca1147e1",
+      "verified_against_source_pages": 100
+    },
+    {
+      "role": "upload_part",
+      "file": "上传分卷/药材和饮片_第201-300页.pdf",
+      "pages": 100,
+      "chapter_first_page": 201,
+      "chapter_last_page": 300,
+      "bytes": 120822971,
+      "sha256": "7af31c9bbbb49363c5c495327258b0bd005cc10ed6cffed247edf183ef9d97ed",
+      "verified_against_source_pages": 100
+    },
+    {
+      "role": "upload_part",
+      "file": "上传分卷/药材和饮片_第301-400页.pdf",
+      "pages": 100,
+      "chapter_first_page": 301,
+      "chapter_last_page": 400,
+      "bytes": 110487498,
+      "sha256": "54f19eef04b4574d3cccd4fdbd72d643636283f10f4e698318799ea57264b561",
+      "verified_against_source_pages": 100
+    },
+    {
+      "role": "upload_part",
+      "file": "上传分卷/药材和饮片_第401-413页.pdf",
+      "pages": 13,
+      "chapter_first_page": 401,
+      "chapter_last_page": 413,
+      "bytes": 13223146,
+      "sha256": "2311e6bfccb65c21d8fd0623f447cac16ae14e6147c6bf65290cea5ee549b44e",
+      "verified_against_source_pages": 13
+    }
+  ],
+  "page_map_sha256": "bc2c311d732c5bc398ecbc5f2274b02df2d3c91bec82c9b03edba3def83b8d80",
+  "verification": "Every exported page: content stream hashes, image payload hashes/placements, media/crop geometry and rotation equal the selected source page.",
+  "scan_resampling": false,
+  "ocr_performed": false,
+  "external_upload_performed": false,
+  "printed_page_labels_fully_verified": false,
+  "source_authenticity_verified": false,
+  "human_signoff": false,
+  "completeness_note": "Known two-page gap repaired; remaining page order follows source PDFs. Expected printed labels are not a full page-by-page completeness certification.",
+  "cross_part_note": "Upload parts split pages, not monographs. Use page_map to restore chapter order and continue entries across part boundaries."
+}

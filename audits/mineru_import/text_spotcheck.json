@@ -1,0 +1,128 @@
+{
+  "scope": "purposive_spotcheck_of_previously_problematic_titles_not_random_accuracy_evaluation",
+  "review_status": "ai_checked_pending_human_signoff",
+  "total": 15,
+  "matching_titles": 14,
+  "cases": [
+    {
+      "expected_title": "干漆",
+      "chapter_page": 15,
+      "part": "part-001-100",
+      "page_idx": 14,
+      "observed_title": "干漆",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "土贝母",
+      "chapter_page": 16,
+      "part": "part-001-100",
+      "page_idx": 15,
+      "observed_title": "土贝母",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "体外培育牛黄",
+      "chapter_page": 184,
+      "part": "part-101-200",
+      "page_idx": 83,
+      "observed_title": "体外培育牛黄",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "僵蚕",
+      "chapter_page": 401,
+      "part": "part-401-413",
+      "page_idx": 0,
+      "observed_title": "僵 蚕",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "薤白",
+      "chapter_page": 402,
+      "part": "part-401-413",
+      "page_idx": 1,
+      "observed_title": "薤 白",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "藏菖蒲",
+      "chapter_page": 406,
+      "part": "part-401-413",
+      "page_idx": 5,
+      "observed_title": "藏 菖蒲",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "藁本",
+      "chapter_page": 407,
+      "part": "part-401-413",
+      "page_idx": 6,
+      "observed_title": "藁 本",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "翼首草",
+      "chapter_page": 408,
+      "part": "part-401-413",
+      "page_idx": 7,
+      "observed_title": "翼首草",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "三七",
+      "chapter_page": 11,
+      "part": "part-001-100",
+      "page_idx": 10,
+      "observed_title": "三七 Sanqi NOTOGINSENG RADIX ET RHIZOMA",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "槲寄生",
+      "chapter_page": 399,
+      "part": "part-301-400",
+      "page_idx": 98,
+      "observed_title": "槲寄生",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "天然冰片",
+      "chapter_page": 60,
+      "part": "part-001-100",
+      "page_idx": 59,
+      "observed_title": "天然冰片(右旋龙脑) Tianranbingpian BORNEOLUM",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "急性子",
+      "chapter_page": 282,
+      "part": "part-201-300",
+      "page_idx": 81,
+      "observed_title": "急性子",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "煅石膏",
+      "chapter_page": 99,
+      "part": "part-001-100",
+      "page_idx": 98,
+      "observed_title": "煅 石膏",
+      "title_matches_after_whitespace_normalization": true
+    },
+    {
+      "expected_title": "龙脷叶",
+      "chapter_page": 101,
+      "part": "part-101-200",
+      "page_idx": 0,
+      "observed_title": "龙 腺 叶",
+      "title_matches_after_whitespace_normalization": false
+    },
+    {
+      "expected_title": "平贝母",
+      "chapter_page": 102,
+      "part": "part-101-200",
+      "page_idx": 1,
+      "observed_title": "平贝母",
+      "title_matches_after_whitespace_normalization": true
+    }
+  ]
+}

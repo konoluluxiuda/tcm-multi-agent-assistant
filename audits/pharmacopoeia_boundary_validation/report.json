@@ -1,0 +1,1053 @@
+{
+  "kind": "frozen_rule_boundary_evaluation",
+  "status": "completed_with_boundary_failures",
+  "human_signoff": false,
+  "reference_authority": "AI_visual_pending_human_review",
+  "scope": "Observed title-start correspondence on purposive pages; not full-text accuracy or a generalization estimate.",
+  "counts": {
+    "pages": 30,
+    "reference_starts": 44,
+    "detected_starts": 36,
+    "location_matches": 36,
+    "missed_starts": 8,
+    "unexpected_starts": 0,
+    "ambiguous_reference_starts": 0,
+    "name_differences_among_matches": 2,
+    "entries_exposed_to_missed_title": 5,
+    "cross_block_entries": 0,
+    "cross_page_entries": 23,
+    "open_entries": 3
+  },
+  "matched_starts": [
+    {
+      "reference": {
+        "name": "人参",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 30,
+        "block": "early",
+        "id": "high-30-0"
+      },
+      "prediction": {
+        "id": "fac6d7e943923f513fe0d6fd",
+        "name": "人参",
+        "document": "high",
+        "pdf_page": 30,
+        "column": "left",
+        "center_y_fraction": 0.12731811697574894
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "人参叶",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 31,
+        "block": "early",
+        "id": "high-31-0"
+      },
+      "prediction": {
+        "id": "e2498b39596ee6c70cc95ac5",
+        "name": "人参叶",
+        "document": "high",
+        "pdf_page": 31,
+        "column": "right",
+        "center_y_fraction": 0.12738970588235293
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "儿茶",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 32,
+        "block": "early",
+        "id": "high-32-0"
+      },
+      "prediction": {
+        "id": "088db9c976c62564e0959dcf",
+        "name": "儿茶",
+        "document": "high",
+        "pdf_page": 32,
+        "column": "left",
+        "center_y_fraction": 0.5635699001426534
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "九里香",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 32,
+        "block": "early",
+        "id": "high-32-1"
+      },
+      "prediction": {
+        "id": "ece1321243cb188ebdbc23b0",
+        "name": "九里香",
+        "document": "high",
+        "pdf_page": 32,
+        "column": "right",
+        "center_y_fraction": 0.6365014265335235
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "九香虫",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 33,
+        "block": "early",
+        "id": "high-33-0"
+      },
+      "prediction": {
+        "id": "cecfde834454db728df2b316",
+        "name": "九香虫",
+        "document": "high",
+        "pdf_page": 33,
+        "column": "left",
+        "center_y_fraction": 0.5276390870185449
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "刀豆",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 33,
+        "block": "early",
+        "id": "high-33-1"
+      },
+      "prediction": {
+        "id": "490a9cf33485837d62d548ad",
+        "name": "刀豆",
+        "document": "high",
+        "pdf_page": 33,
+        "column": "right",
+        "center_y_fraction": 0.6738587731811697
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "三七",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 34,
+        "block": "early",
+        "id": "high-34-0"
+      },
+      "prediction": {
+        "id": "7cb2de73e372f31f821cf2b4",
+        "name": "三冏七",
+        "document": "high",
+        "pdf_page": 34,
+        "column": "left",
+        "center_y_fraction": 0.425641940085592
+      },
+      "name_matches": false
+    },
+    {
+      "reference": {
+        "name": "三白草",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 35,
+        "block": "early",
+        "id": "high-35-0"
+      },
+      "prediction": {
+        "id": "6ff5335d9938575f87b12ead",
+        "name": "三白草",
+        "document": "high",
+        "pdf_page": 35,
+        "column": "left",
+        "center_y_fraction": 0.13010021474588404
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "三棱",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 35,
+        "block": "early",
+        "id": "high-35-1"
+      },
+      "prediction": {
+        "id": "0f64e355c58aade04734bd8a",
+        "name": "三棱",
+        "document": "high",
+        "pdf_page": 35,
+        "column": "right",
+        "center_y_fraction": 0.5742662848962061
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "三颗针",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 36,
+        "block": "early",
+        "id": "high-36-0"
+      },
+      "prediction": {
+        "id": "861cf9cd6dcf3e32ff3d0ed3",
+        "name": "三颗针",
+        "document": "high",
+        "pdf_page": 36,
+        "column": "left",
+        "center_y_fraction": 0.6986447931526392
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "干姜",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 37,
+        "block": "early",
+        "id": "high-37-0"
+      },
+      "prediction": {
+        "id": "f5eb7f415342581c7400776c",
+        "name": "干姜",
+        "document": "high",
+        "pdf_page": 37,
+        "column": "left",
+        "center_y_fraction": 0.125
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "炮姜",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 37,
+        "block": "early",
+        "id": "high-37-1"
+      },
+      "prediction": {
+        "id": "9aa5a43264f245a0cf6b924e",
+        "name": "炮姜",
+        "document": "high",
+        "pdf_page": 37,
+        "column": "right",
+        "center_y_fraction": 0.8674460431654677
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "土木香",
+        "column": "right",
+        "y_range": [
+          0.478,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 38,
+        "block": "early",
+        "id": "high-38-1"
+      },
+      "prediction": {
+        "id": "d6688729cec3140ff70342c3",
+        "name": "土木香",
+        "document": "high",
+        "pdf_page": 38,
+        "column": "right",
+        "center_y_fraction": 0.7993937232524965
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "两头尖",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 200,
+        "block": "middle",
+        "id": "high-200-0"
+      },
+      "prediction": {
+        "id": "0f5231648a40821f1f37d059",
+        "name": "两头尖",
+        "document": "high",
+        "pdf_page": 200,
+        "column": "left",
+        "center_y_fraction": 0.3300676879230495
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "两面针",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 200,
+        "block": "middle",
+        "id": "high-200-1"
+      },
+      "prediction": {
+        "id": "1c5d5ec46177ccca17e89de1",
+        "name": "两面针",
+        "document": "high",
+        "pdf_page": 200,
+        "column": "right",
+        "center_y_fraction": 0.6572853580334876
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "连钱草",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 201,
+        "block": "middle",
+        "id": "high-201-0"
+      },
+      "prediction": {
+        "id": "d676f0afc67d3f2c4291d0cc",
+        "name": "连钱草",
+        "document": "high",
+        "pdf_page": 201,
+        "column": "right",
+        "center_y_fraction": 0.4211840228245364
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "连翘",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 202,
+        "block": "middle",
+        "id": "high-202-0"
+      },
+      "prediction": {
+        "id": "79f0a15190d948aa4f9b526c",
+        "name": "连翘",
+        "document": "high",
+        "pdf_page": 202,
+        "column": "right",
+        "center_y_fraction": 0.12838801711840228
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "吴茱萸",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 203,
+        "block": "middle",
+        "id": "high-203-0"
+      },
+      "prediction": {
+        "id": "ff40e16b5cb2d8bf63aaae3a",
+        "name": "吴茱萸",
+        "document": "high",
+        "pdf_page": 203,
+        "column": "left",
+        "center_y_fraction": 0.7172788873038517
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "牡丹皮",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 204,
+        "block": "middle",
+        "id": "high-204-0"
+      },
+      "prediction": {
+        "id": "5e05e4ec84de2d6eb3b1b268",
+        "name": "牡丹皮",
+        "document": "high",
+        "pdf_page": 204,
+        "column": "left",
+        "center_y_fraction": 0.3166904422253923
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "牡荆叶",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 204,
+        "block": "middle",
+        "id": "high-204-1"
+      },
+      "prediction": {
+        "id": "6c0c14dd6ed50e4514a2c65b",
+        "name": "牡荆叶",
+        "document": "high",
+        "pdf_page": 204,
+        "column": "right",
+        "center_y_fraction": 0.6260699001426534
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "牡蛎",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 205,
+        "block": "middle",
+        "id": "high-205-0"
+      },
+      "prediction": {
+        "id": "204df42691904140f756557f",
+        "name": "牡蛎",
+        "document": "high",
+        "pdf_page": 205,
+        "column": "left",
+        "center_y_fraction": 0.33131241084165475
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "何首乌",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 208,
+        "block": "middle",
+        "id": "high-208-0"
+      },
+      "prediction": {
+        "id": "b9c8339fd6ec8a26d942c4d8",
+        "name": "何首乌",
+        "document": "high",
+        "pdf_page": 208,
+        "column": "left",
+        "center_y_fraction": 0.24108416547788875
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "制何首乌",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 209,
+        "block": "middle",
+        "id": "high-209-0"
+      },
+      "prediction": {
+        "id": "18df77794be2b869adc07c1f",
+        "name": "制何首乌",
+        "document": "high",
+        "pdf_page": 209,
+        "column": "left",
+        "center_y_fraction": 0.3016226818830242
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "伸筋草",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 209,
+        "block": "middle",
+        "id": "high-209-1"
+      },
+      "prediction": {
+        "id": "aff7bf7c4e0d713cf31bb03f",
+        "name": "伸筋草",
+        "document": "high",
+        "pdf_page": 209,
+        "column": "right",
+        "center_y_fraction": 0.3906027104136947
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "槲寄生",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 420,
+        "block": "late",
+        "id": "high-420-0"
+      },
+      "prediction": {
+        "id": "b33bf9248fbae6463815163f",
+        "name": "寄生",
+        "document": "high",
+        "pdf_page": 420,
+        "column": "right",
+        "center_y_fraction": 0.19855563480741797
+      },
+      "name_matches": false
+    },
+    {
+      "reference": {
+        "name": "暴马子皮",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 421,
+        "block": "late",
+        "id": "high-421-0"
+      },
+      "prediction": {
+        "id": "df31e7348c344000c01caec3",
+        "name": "暴马子皮",
+        "document": "high",
+        "pdf_page": 421,
+        "column": "left",
+        "center_y_fraction": 0.7043997149982187
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "墨旱莲",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 421,
+        "block": "late",
+        "id": "high-421-1"
+      },
+      "prediction": {
+        "id": "a1f97c8f9c345caff241b251",
+        "name": "墨旱莲",
+        "document": "high",
+        "pdf_page": 421,
+        "column": "right",
+        "center_y_fraction": 0.7048450302814392
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "稻芽",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.514
+        ],
+        "document": "high",
+        "pdf_page": 422,
+        "block": "late",
+        "id": "high-422-0"
+      },
+      "prediction": {
+        "id": "7ae2d1be6ca8c9437a2f022a",
+        "name": "稻芽",
+        "document": "high",
+        "pdf_page": 422,
+        "column": "right",
+        "center_y_fraction": 0.12196861626248218
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "鹤虱",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 423,
+        "block": "late",
+        "id": "high-423-0"
+      },
+      "prediction": {
+        "id": "7b3149d72566fc97bd95d9c1",
+        "name": "鹤虱",
+        "document": "high",
+        "pdf_page": 423,
+        "column": "left",
+        "center_y_fraction": 0.839864624153901
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "薏苡仁",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 424,
+        "block": "late",
+        "id": "high-424-0"
+      },
+      "prediction": {
+        "id": "cc2c05bc2231c17ab6076761",
+        "name": "薏苡仁",
+        "document": "high",
+        "pdf_page": 424,
+        "column": "left",
+        "center_y_fraction": 0.32471469329529246
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "薄荷",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 425,
+        "block": "late",
+        "id": "high-425-0"
+      },
+      "prediction": {
+        "id": "360b882b0e8ad3bd6385ee38",
+        "name": "薄荷",
+        "document": "high",
+        "pdf_page": 425,
+        "column": "left",
+        "center_y_fraction": 0.1813323833273958
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "颠茄草",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 425,
+        "block": "late",
+        "id": "high-425-1"
+      },
+      "prediction": {
+        "id": "8b1d52265479ac9ecc57ee47",
+        "name": "颠茄草",
+        "document": "high",
+        "pdf_page": 425,
+        "column": "right",
+        "center_y_fraction": 0.8070894193088706
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "橘红",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 426,
+        "block": "late",
+        "id": "high-426-0"
+      },
+      "prediction": {
+        "id": "f603394c7c6c2f18e2920c79",
+        "name": "橘红",
+        "document": "high",
+        "pdf_page": 426,
+        "column": "right",
+        "center_y_fraction": 0.21843794579172607
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "橘核",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 427,
+        "block": "late",
+        "id": "high-427-0"
+      },
+      "prediction": {
+        "id": "a090158cddf8fba60ce73d25",
+        "name": "橘核",
+        "document": "high",
+        "pdf_page": 427,
+        "column": "left",
+        "center_y_fraction": 0.36340941512125535
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "檀香",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 428,
+        "block": "late",
+        "id": "high-428-1"
+      },
+      "prediction": {
+        "id": "2626b929bf5e65f6aae5cef8",
+        "name": "檀香",
+        "document": "high",
+        "pdf_page": 428,
+        "column": "right",
+        "center_y_fraction": 0.3642118402282454
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "藕节",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 429,
+        "block": "late",
+        "id": "high-429-1"
+      },
+      "prediction": {
+        "id": "ce24dc8529bfbc9e85c9e767",
+        "name": "藕节",
+        "document": "high",
+        "pdf_page": 429,
+        "column": "right",
+        "center_y_fraction": 0.49839514978601995
+      },
+      "name_matches": true
+    }
+  ],
+  "missed_starts": [
+    {
+      "reference": {
+        "name": "干漆",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.478
+        ],
+        "document": "high",
+        "pdf_page": 38,
+        "block": "early",
+        "id": "high-38-0"
+      },
+      "containing_entries": [
+        {
+          "entry_id": "9aa5a43264f245a0cf6b924e",
+          "entry_name": "炮姜",
+          "retained_title_line_indexes": [
+            49
+          ]
+        }
+      ],
+      "found_in_leading_continuation": false,
+      "impact": "cross_entry_mixing"
+    },
+    {
+      "reference": {
+        "name": "土贝母",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 39,
+        "block": "early",
+        "id": "high-39-0"
+      },
+      "containing_entries": [],
+      "found_in_leading_continuation": false,
+      "impact": "unresolved_missing_start"
+    },
+    {
+      "reference": {
+        "name": "体外培育牛黄",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 205,
+        "block": "middle",
+        "id": "high-205-1"
+      },
+      "containing_entries": [
+        {
+          "entry_id": "204df42691904140f756557f",
+          "entry_name": "牡蛎",
+          "retained_title_line_indexes": [
+            79
+          ]
+        }
+      ],
+      "found_in_leading_continuation": false,
+      "impact": "cross_entry_mixing"
+    },
+    {
+      "reference": {
+        "name": "僵蚕",
+        "column": "right",
+        "y_range": [
+          0.514,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 422,
+        "block": "late",
+        "id": "high-422-1"
+      },
+      "containing_entries": [
+        {
+          "entry_id": "7ae2d1be6ca8c9437a2f022a",
+          "entry_name": "稻芽",
+          "retained_title_line_indexes": [
+            87
+          ]
+        }
+      ],
+      "found_in_leading_continuation": false,
+      "impact": "cross_entry_mixing"
+    },
+    {
+      "reference": {
+        "name": "薤白",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 423,
+        "block": "late",
+        "id": "high-423-1"
+      },
+      "containing_entries": [],
+      "found_in_leading_continuation": false,
+      "impact": "unresolved_missing_start"
+    },
+    {
+      "reference": {
+        "name": "藏菖蒲",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 427,
+        "block": "late",
+        "id": "high-427-1"
+      },
+      "containing_entries": [
+        {
+          "entry_id": "a090158cddf8fba60ce73d25",
+          "entry_name": "橘核",
+          "retained_title_line_indexes": [
+            49
+          ]
+        }
+      ],
+      "found_in_leading_continuation": false,
+      "impact": "cross_entry_mixing"
+    },
+    {
+      "reference": {
+        "name": "藁本",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 428,
+        "block": "late",
+        "id": "high-428-0"
+      },
+      "containing_entries": [],
+      "found_in_leading_continuation": false,
+      "impact": "unresolved_missing_start"
+    },
+    {
+      "reference": {
+        "name": "翼首草",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 429,
+        "block": "late",
+        "id": "high-429-0"
+      },
+      "containing_entries": [
+        {
+          "entry_id": "2626b929bf5e65f6aae5cef8",
+          "entry_name": "檀香",
+          "retained_title_line_indexes": [
+            5
+          ]
+        }
+      ],
+      "found_in_leading_continuation": false,
+      "impact": "cross_entry_mixing"
+    }
+  ],
+  "unexpected_starts": [],
+  "ambiguous_starts": [],
+  "cross_block_entry_ids": [],
+  "quarantine_entry_ids": [
+    "204df42691904140f756557f",
+    "2626b929bf5e65f6aae5cef8",
+    "7ae2d1be6ca8c9437a2f022a",
+    "9aa5a43264f245a0cf6b924e",
+    "a090158cddf8fba60ce73d25"
+  ],
+  "ocr_character_accuracy": null,
+  "clinical_accuracy": null,
+  "field_scope_accuracy": null,
+  "observed_source_page_gaps": [],
+  "engineering_integrity_status": "passed",
+  "inputs": {
+    "freeze_sha256": "e99dce70625a8d65b33739d13b7166a597e4747b07bdadc0075df32dc1756091",
+    "plan_sha256": "8cef29fdc5b74d28e0072f7e2aaaa15e8a0cbdda083f722a4969bf9afd256e8a",
+    "reference_sha256": "f1bd0c0996131bc1b801382a11884bf46adcb76e2f75ff55eaa4a329f8e2f2d2",
+    "entries_sha256": "e8bb6fdc1c30eb761a609ed71365b6870ce21eb84671663165a9db8e2f5ffcca",
+    "recipe_sha256": "87882b9d277d1c6cea87f208a169eb34aca2aca53daffaa0b0e62e12a6766c7c",
+    "evaluator_code_sha256": "ed3528f934a530e0477770d0b59a41a2386b883016751ccd923fcfa2b1204e08",
+    "evaluation_module_sha256": "26c6e9566e2e75c22a6b018b812b27877ec7a4ac71e04d5f459776f0dd5754ee"
+  }
+}

@@ -1,0 +1,203 @@
+{
+  "kind": "pre_ocr_ai_visual_title_reference",
+  "human_signoff": false,
+  "frozen_before_ocr": true,
+  "independent_from_ocr_outputs": true,
+  "independent_human_reference": false,
+  "selection": "Fresh pages after v3 repair; visually inspected after rule freeze without changing rules.",
+  "scope": "Coarse page/column title correspondence, not full-text or pixel-accurate boundaries. Same-assistant AI visual labels pending human review.",
+  "pages": [
+    {
+      "document": "high",
+      "pdf_page": 80,
+      "printed_page": 61,
+      "block": "new_a",
+      "layout": "two_column",
+      "image_sha256": "0a10a4e347b9c8e036886da51eda5cdbc46d01aa1e54ca39e69d69eeeba07f14",
+      "titles": [
+        {
+          "name": "天麻",
+          "column": "left",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 81,
+      "printed_page": 62,
+      "block": "new_a",
+      "layout": "two_column",
+      "image_sha256": "c3f4a829d84688c067bc432a6f2d3063dc12b8858a4ea3a5819eaa1cac9c64af",
+      "titles": [
+        {
+          "name": "天葵子",
+          "column": "left",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        },
+        {
+          "name": "天然冰片（右旋龙脑）",
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 82,
+      "printed_page": 63,
+      "block": "new_a",
+      "layout": "two_column",
+      "image_sha256": "f231e5d8f96b340ddc65b820e474a0aea4d1beb57c5c0d5f0599a793347d342a",
+      "titles": [
+        {
+          "name": "云芝",
+          "column": "left",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 83,
+      "printed_page": 64,
+      "block": "new_a",
+      "layout": "two_column",
+      "image_sha256": "0447ff7111cb9598615e81f35d971fb112a3b657b12998d64ccb9095b90d0c25",
+      "titles": [
+        {
+          "name": "木瓜",
+          "column": "left",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        },
+        {
+          "name": "木芙蓉叶",
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 300,
+      "printed_page": 281,
+      "block": "new_b",
+      "layout": "two_column",
+      "image_sha256": "bf633e1448a7b44612de28fc0b480b010d0879d8234513e4bd54fda923948d61",
+      "titles": [
+        {
+          "name": "禹州漏芦",
+          "column": "left",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        },
+        {
+          "name": "禹余粮",
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 301,
+      "printed_page": 282,
+      "block": "new_b",
+      "layout": "two_column",
+      "image_sha256": "9be2c9f3e0768e7950c953f91e9591712a930ee7180f126a4d348af51faba446",
+      "titles": [
+        {
+          "name": "胆南星",
+          "column": "left",
+          "y_range": [
+            0.08,
+            0.43
+          ]
+        },
+        {
+          "name": "胖大海",
+          "column": "left",
+          "y_range": [
+            0.43,
+            0.965
+          ]
+        },
+        {
+          "name": "独一味",
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 302,
+      "printed_page": 283,
+      "block": "new_b",
+      "layout": "two_column",
+      "image_sha256": "aa60160ac9dbf3aed52ec72d6fd9fc8f1f88c6c06db8fdf370906287695622e5",
+      "titles": [
+        {
+          "name": "独活",
+          "column": "left",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    },
+    {
+      "document": "high",
+      "pdf_page": 303,
+      "printed_page": 284,
+      "block": "new_b",
+      "layout": "two_column",
+      "image_sha256": "248db33a0a9d6a309870ecd4f2db0e8d16e733da7cb59af7a8423146a2fdb465",
+      "titles": [
+        {
+          "name": "急性子",
+          "column": "left",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        },
+        {
+          "name": "姜黄",
+          "column": "right",
+          "y_range": [
+            0.08,
+            0.965
+          ]
+        }
+      ]
+    }
+  ]
+}

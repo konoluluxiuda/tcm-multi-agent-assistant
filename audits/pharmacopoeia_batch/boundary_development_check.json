@@ -1,0 +1,56 @@
+{
+  "kind": "post_fix_development_check",
+  "human_signoff": false,
+  "reference_sha256": "4f8a6186f097f8422bf3ee1cdb6d7e57558edd734ecefd15b9b68b3ab7ae3755",
+  "checks": [
+    {
+      "document": "high",
+      "pdf_page": 26,
+      "expected": [
+        {
+          "name": "八角茴香",
+          "column": "left"
+        },
+        {
+          "name": "人工牛黄",
+          "column": "right"
+        }
+      ],
+      "actual": [
+        {
+          "name": "八角茴香",
+          "column": "left"
+        },
+        {
+          "name": "人工牛黄",
+          "column": "right"
+        }
+      ],
+      "matches": true
+    },
+    {
+      "document": "high",
+      "pdf_page": 27,
+      "expected": [],
+      "actual": [],
+      "matches": true
+    },
+    {
+      "document": "high",
+      "pdf_page": 28,
+      "expected": [],
+      "actual": [],
+      "matches": true
+    },
+    {
+      "document": "high",
+      "pdf_page": 29,
+      "expected": [],
+      "actual": [],
+      "matches": true
+    }
+  ],
+  "initial_failure": "人工牛黄 uses 本品由; version 1 missed it and merged it into 八角茴香.",
+  "independent_holdout": false,
+  "boundary_accuracy": null
+}

@@ -1,0 +1,15 @@
+{
+  "question_sha256": "27db5b42cb3972a47ac1ec9bb2e48b749ad610c051ecf77da785d85665b6f00a",
+  "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+  "retriever_sha256": "4f7baf88a479750692e1385818e644171a95d9470fe7d36e69aac218a32ca195",
+  "questions": 50,
+  "groups": {
+    "canonical": 20,
+    "field_paraphrase": 8,
+    "name_variant": 8,
+    "out_of_scope": 6,
+    "processed_variant": 8
+  },
+  "retrieval_outputs_inspected": false,
+  "human_gold": false
+}

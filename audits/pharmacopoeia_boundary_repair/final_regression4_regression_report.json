@@ -1,0 +1,197 @@
+{
+  "kind": "frozen_rule_boundary_evaluation",
+  "status": "completed_without_observed_boundary_failures",
+  "human_signoff": false,
+  "reference_authority": "AI_visual_pending_human_review",
+  "scope": "Observed title-start correspondence on purposive pages; not full-text accuracy or a generalization estimate.",
+  "counts": {
+    "pages": 4,
+    "reference_starts": 7,
+    "detected_starts": 7,
+    "location_matches": 7,
+    "missed_starts": 0,
+    "unexpected_starts": 0,
+    "ambiguous_reference_starts": 0,
+    "name_differences_among_matches": 3,
+    "entries_exposed_to_missed_title": 0,
+    "cross_block_entries": 0,
+    "cross_page_entries": 3,
+    "open_entries": 1
+  },
+  "matched_starts": [
+    {
+      "reference": {
+        "name": "石膏",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 120,
+        "block": "new_v4",
+        "id": "high-120-0"
+      },
+      "prediction": {
+        "id": "dd7a89b4bd5a9adc72afaf2c",
+        "name": "石膏",
+        "document": "high",
+        "pdf_page": 120,
+        "column": "left",
+        "center_y_fraction": 0.6817047075606277
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "煅石膏",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 120,
+        "block": "new_v4",
+        "id": "high-120-1"
+      },
+      "prediction": {
+        "id": "12dcf52141b05f3582b6ce59",
+        "name": "石膏",
+        "document": "high",
+        "pdf_page": 120,
+        "column": "right",
+        "center_y_fraction": 0.6262482168330957
+      },
+      "name_matches": false
+    },
+    {
+      "reference": {
+        "name": "布渣叶",
+        "column": "left",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 121,
+        "block": "new_v4",
+        "id": "high-121-0"
+      },
+      "prediction": {
+        "id": "25284502e625f9db10f8bd35",
+        "name": "布渣叶",
+        "document": "high",
+        "pdf_page": 121,
+        "column": "left",
+        "center_y_fraction": 0.22550765942287138
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "龙胆",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 121,
+        "block": "new_v4",
+        "id": "high-121-1"
+      },
+      "prediction": {
+        "id": "27183ad98dd014b8a3327134",
+        "name": "龙胆",
+        "document": "high",
+        "pdf_page": 121,
+        "column": "right",
+        "center_y_fraction": 0.3368364802280014
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "龙眼肉",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.65
+        ],
+        "document": "high",
+        "pdf_page": 122,
+        "block": "new_v4",
+        "id": "high-122-0"
+      },
+      "prediction": {
+        "id": "23081eefb1c98f58f654baa6",
+        "name": "龙眼肉",
+        "document": "high",
+        "pdf_page": 122,
+        "column": "right",
+        "center_y_fraction": 0.1326676176890157
+      },
+      "name_matches": true
+    },
+    {
+      "reference": {
+        "name": "龙脷叶",
+        "column": "right",
+        "y_range": [
+          0.65,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 122,
+        "block": "new_v4",
+        "id": "high-122-1"
+      },
+      "prediction": {
+        "id": "279c8d271e886c738b73286c",
+        "name": "龙叶",
+        "document": "high",
+        "pdf_page": 122,
+        "column": "right",
+        "center_y_fraction": 0.776123395149786
+      },
+      "name_matches": false
+    },
+    {
+      "reference": {
+        "name": "平贝母",
+        "column": "right",
+        "y_range": [
+          0.08,
+          0.965
+        ],
+        "document": "high",
+        "pdf_page": 123,
+        "block": "new_v4",
+        "id": "high-123-0"
+      },
+      "prediction": {
+        "id": "b10b7dabb47cacb1c4943ba6",
+        "name": null,
+        "document": "high",
+        "pdf_page": 123,
+        "column": "right",
+        "center_y_fraction": 0.15192582025677606
+      },
+      "name_matches": false
+    }
+  ],
+  "missed_starts": [],
+  "unexpected_starts": [],
+  "ambiguous_starts": [],
+  "cross_block_entry_ids": [],
+  "quarantine_entry_ids": [],
+  "ocr_character_accuracy": null,
+  "clinical_accuracy": null,
+  "field_scope_accuracy": null,
+  "observed_source_page_gaps": [],
+  "evaluation_role": "known_failure_regression",
+  "independent_validation": false,
+  "reference_sha256": "6e7c22f88eea987b0a8fa27baf5e03879d38d0424764b9caab1b41acc3d86d0d",
+  "baseline_entries_sha256": "711777960fc47b8bb18ecb5243dbbb79751e84f25e412fd4b7ac01905c8db9e2"
+}

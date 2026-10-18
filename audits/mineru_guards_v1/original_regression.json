@@ -1,0 +1,1430 @@
+{
+  "kind": "mineru_lexical_retrieval_baseline",
+  "status": "completed_with_observed_limitations",
+  "parameters": {
+    "tokenizer": "nfkc_lower_cjk_unigrams_bigrams_latin_words",
+    "bm25_weights": [
+      3.0,
+      2.0,
+      1.0
+    ],
+    "max_query_chars": 500,
+    "default_k": 5,
+    "max_k": 20,
+    "appendices_in_routed_search": false
+  },
+  "questions_sha256": "e22595f1984af35466b0261eabc63b41d7d779a0fe747722810b036f429d9e89",
+  "reference_sha256": "fa1806d8359fa4be616339e98d41f18dff9ff0f4d72ce570c7df5db083b03dad",
+  "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+  "view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+  "evaluation_code_sha256": "900ff726f55d4c534988c84682cf6e7f13b692291ef6ba7a1df56d4e44d86627",
+  "index_startup_including_hash_ms": 28.525620000436902,
+  "results": {
+    "bm25": {
+      "new_question_pilot": {
+        "total": 20,
+        "evidence_hit_at_5": 0.9,
+        "mrr_at_5": 0.85,
+        "reference_anchor_hit_at_5": 0.9,
+        "top1_reference_hits": 16,
+        "unambiguous_top1_lookups": 7,
+        "ambiguous_fields": 0,
+        "mean_query_ms": 11.06751973311475,
+        "p95_query_ms": 17.05470000160858
+      },
+      "abstention": {
+        "total": 4,
+        "correct_abstentions": 0,
+        "mean_query_ms": 9.544573666062206,
+        "p95_query_ms": 11.330861998430919
+      },
+      "known_failure_regression": {
+        "total": 4,
+        "evidence_hit_at_5": 1.0,
+        "mrr_at_5": 1.0,
+        "reference_anchor_hit_at_5": 1.0,
+        "top1_reference_hits": 4,
+        "unambiguous_top1_lookups": 3,
+        "ambiguous_fields": 0,
+        "mean_query_ms": 12.876564083247407,
+        "p95_query_ms": 15.91293400269933
+      }
+    },
+    "name_field": {
+      "new_question_pilot": {
+        "total": 20,
+        "evidence_hit_at_5": 1.0,
+        "mrr_at_5": 1.0,
+        "reference_anchor_hit_at_5": 1.0,
+        "top1_reference_hits": 20,
+        "unambiguous_top1_lookups": 20,
+        "ambiguous_fields": 0,
+        "mean_query_ms": 0.24454806710612806,
+        "p95_query_ms": 0.3679009969346225
+      },
+      "abstention": {
+        "total": 4,
+        "correct_abstentions": 4,
+        "mean_query_ms": 0.13287141518958379,
+        "p95_query_ms": 0.18293400353286415
+      },
+      "known_failure_regression": {
+        "total": 4,
+        "evidence_hit_at_5": 1.0,
+        "mrr_at_5": 1.0,
+        "reference_anchor_hit_at_5": 1.0,
+        "top1_reference_hits": 4,
+        "unambiguous_top1_lookups": 4,
+        "ambiguous_fields": 0,
+        "mean_query_ms": 0.31114050034375396,
+        "p95_query_ms": 0.3807460016105324
+      }
+    }
+  },
+  "provenance_failures": [],
+  "human_gold": false,
+  "clinical_correctness_evaluated": false,
+  "external_calls": 0,
+  "llm_calls": 0,
+  "embedding_calls": 0,
+  "new_ocr_pages": 0,
+  "latency_scope": "warm in-process queries; 3 timed repetitions after initial query; excludes CLI startup and JSON printing",
+  "runtime": {
+    "python": "3.13.5",
+    "sqlite": "3.45.3",
+    "os": "Linux"
+  },
+  "limitations": [
+    "Locations proposed from corpus then checked against original scan crops; not blind annotations.",
+    "Coarse source regions verify first evidence anchor, not full-field character accuracy.",
+    "Questions authored by AI, not collected user questions."
+  ],
+  "cases": [
+    {
+      "case_id": "new-01",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:000",
+        "mineru-herb-3a9a2496cddb83287410ac6a:field:000",
+        "mineru-herb-c802003b15ded10b72efb773:field:010"
+      ],
+      "query_median_ms": 16.722073996788822,
+      "query_samples_ms": [
+        16.84079699771246,
+        16.722073996788822,
+        14.260390002164058
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-c802003b15ded10b72efb773:field:000",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "new-02",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019",
+        "mineru-herb-3a9a2496cddb83287410ac6a:field:022",
+        "mineru-herb-4b161ad9a3f346f326786998:field:012",
+        "mineru-herb-7abbfa0daa49eb1d026ba870:field:015",
+        "mineru-herb-72e49e389a6e4db22386d6f0:field:018"
+      ],
+      "query_median_ms": 7.723999995505437,
+      "query_samples_ms": [
+        7.7162159941508435,
+        7.723999995505437,
+        8.229289000155404
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-c802003b15ded10b72efb773:field:019",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-03",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:016",
+        "mineru-herb-ee3ae74f74ccc242a4e132c7:field:018",
+        "mineru-herb-fcdd96c4c674b5cbc33448f6:field:015",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:010",
+        "mineru-herb-01a39719ee0759f45557f5df:field:009"
+      ],
+      "query_median_ms": 13.708202000998426,
+      "query_samples_ms": [
+        14.052890001039486,
+        13.708202000998426,
+        12.155600001278799
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-b411d013f6ad7cd93372ad36:field:016",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-04",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:017",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:009",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:004",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:013"
+      ],
+      "query_median_ms": 14.774438997847028,
+      "query_samples_ms": [
+        14.497225995000917,
+        14.774438997847028,
+        15.614980002283119
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-b411d013f6ad7cd93372ad36:field:017",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "new-05",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:016",
+        "mineru-herb-4b161ad9a3f346f326786998:field:009",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:000",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ],
+      "query_median_ms": 12.11292499647243,
+      "query_samples_ms": [
+        12.11292499647243,
+        11.682938005833421,
+        13.088138002785854
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-91438c2bd1cb594a95c13128:field:016",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "new-06",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:018",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:011",
+        "mineru-herb-839b2c25c719208fb4817784:field:013",
+        "mineru-herb-ea09ad6a4f3da403bf6895d0:field:009",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:010"
+      ],
+      "query_median_ms": 16.599045004113577,
+      "query_samples_ms": [
+        16.599045004113577,
+        17.27768700220622,
+        15.554821999103297
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-91438c2bd1cb594a95c13128:field:018",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-07",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020",
+        "mineru-herb-286aad7a798a996040ceaa27:field:017",
+        "mineru-herb-286aad7a798a996040ceaa27:field:000"
+      ],
+      "query_median_ms": 9.427581993804779,
+      "query_samples_ms": [
+        10.042927002359647,
+        9.427581993804779,
+        9.326389998022933
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-286aad7a798a996040ceaa27:field:020",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "new-08",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-22d8a043036d52e275d4fddb:field:009",
+        "mineru-herb-f803424d6b79263143d7c76c:field:015",
+        "mineru-herb-286aad7a798a996040ceaa27:field:017"
+      ],
+      "query_median_ms": 4.557061001833063,
+      "query_samples_ms": [
+        4.557061001833063,
+        4.478916001971811,
+        4.621140004019253
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-286aad7a798a996040ceaa27:field:022",
+      "rank": null,
+      "evidence_hit_at_k": false,
+      "reference_anchor_hit_at_k": false,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": false,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "new-09",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:012",
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:000",
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:009"
+      ],
+      "query_median_ms": 12.389469004119746,
+      "query_samples_ms": [
+        11.667785001918674,
+        12.944636997417547,
+        12.389469004119746
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-41712cd9798e3e8fd3b8f699:field:012",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "new-10",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:013",
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:014",
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:009"
+      ],
+      "query_median_ms": 10.943398003291804,
+      "query_samples_ms": [
+        11.095180998381693,
+        9.975122004107106,
+        10.943398003291804
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-41712cd9798e3e8fd3b8f699:field:013",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "new-11",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:012",
+        "mineru-herb-916607a51c9876e39d1acf59:field:005",
+        "mineru-herb-916607a51c9876e39d1acf59:field:010"
+      ],
+      "query_median_ms": 4.706147003162187,
+      "query_samples_ms": [
+        4.952852999849711,
+        4.706147003162187,
+        4.22415099455975
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-916607a51c9876e39d1acf59:field:013",
+      "rank": null,
+      "evidence_hit_at_k": false,
+      "reference_anchor_hit_at_k": false,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": false,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "new-12",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:000",
+        "mineru-herb-916607a51c9876e39d1acf59:field:007",
+        "mineru-herb-916607a51c9876e39d1acf59:field:012"
+      ],
+      "query_median_ms": 13.09832699917024,
+      "query_samples_ms": [
+        13.09832699917024,
+        12.917335996462498,
+        13.73271900229156
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-916607a51c9876e39d1acf59:field:000",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "new-13",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-fc6326476287a7c75a14deb0:field:006",
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:013",
+        "mineru-herb-a7261a51c5f8d5d19f16f14e:field:013",
+        "mineru-herb-ccea3c94ba28183ef85fc1e5:field:012",
+        "mineru-herb-fc6326476287a7c75a14deb0:field:000"
+      ],
+      "query_median_ms": 9.851178001554217,
+      "query_samples_ms": [
+        10.49834299919894,
+        9.851178001554217,
+        9.478074993239716
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-a967b4d1c53114248a6d2c62:field:013",
+      "rank": 2,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": false,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "new-14",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-a7261a51c5f8d5d19f16f14e:field:014",
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:014",
+        "mineru-herb-fc6326476287a7c75a14deb0:field:007",
+        "mineru-herb-fc6326476287a7c75a14deb0:field:000"
+      ],
+      "query_median_ms": 13.550274998124223,
+      "query_samples_ms": [
+        13.550274998124223,
+        14.413737997529097,
+        12.322399001277518
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-a967b4d1c53114248a6d2c62:field:014",
+      "rank": 2,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": false,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "new-15",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:006",
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:008",
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:009",
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:004",
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:003"
+      ],
+      "query_median_ms": 12.534086999949068,
+      "query_samples_ms": [
+        12.976688005437609,
+        12.534086999949068,
+        12.089812000340316
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-bea7ca461574003ae23b3a1e:field:006",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-16",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:008",
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:006",
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:009",
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:004",
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:003"
+      ],
+      "query_median_ms": 18.027507001534104,
+      "query_samples_ms": [
+        17.05470000160858,
+        18.027507001534104,
+        18.421285996737424
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-bea7ca461574003ae23b3a1e:field:008",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-17",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:008",
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:011",
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:010",
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:006",
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:000"
+      ],
+      "query_median_ms": 6.364205997670069,
+      "query_samples_ms": [
+        6.364205997670069,
+        5.7950670015998185,
+        7.214974000817165
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-2cca123266aa9cc511ef3c0f:field:008",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-18",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:009",
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:011",
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:010",
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:006",
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:000"
+      ],
+      "query_median_ms": 8.855075000610668,
+      "query_samples_ms": [
+        9.042026002134662,
+        7.56017399544362,
+        8.855075000610668
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-2cca123266aa9cc511ef3c0f:field:009",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-19",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-b83aa9d35ae5055a36946197:field:013",
+        "mineru-herb-b83aa9d35ae5055a36946197:field:008",
+        "mineru-herb-1a1e238a0978f66204fb7f64:field:006",
+        "mineru-herb-eac4dab91e3c7a919acf6c2d:field:008"
+      ],
+      "query_median_ms": 11.062000994570553,
+      "query_samples_ms": [
+        11.062000994570553,
+        10.337500003515743,
+        12.292072999116499
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-b83aa9d35ae5055a36946197:field:013",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "new-20",
+      "group": "new_question_pilot",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-b83aa9d35ae5055a36946197:field:014",
+        "mineru-herb-b83aa9d35ae5055a36946197:field:007",
+        "mineru-herb-b83aa9d35ae5055a36946197:field:013",
+        "mineru-herb-b83aa9d35ae5055a36946197:field:011"
+      ],
+      "query_median_ms": 5.75489299808396,
+      "query_samples_ms": [
+        4.883814995991997,
+        5.958492998615839,
+        5.75489299808396
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-b83aa9d35ae5055a36946197:field:014",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "negative-01",
+      "group": "abstention",
+      "method": "bm25",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-f4935487d64df27e3bd8104f:field:001",
+        "mineru-herb-c0cd41f9ff92a36875832c88:field:001",
+        "mineru-herb-cd8b3574f51fe5a177f7c3fb:field:001",
+        "mineru-herb-b9a48676a6b84e52497882c5:field:009",
+        "mineru-herb-b9a48676a6b84e52497882c5:field:005"
+      ],
+      "query_median_ms": 8.001221001904923,
+      "query_samples_ms": [
+        8.001221001904923,
+        7.611098997585941,
+        8.410749993345235
+      ],
+      "provenance_consistent_with_view": true,
+      "correct_abstention": false,
+      "expected_status": "name_not_resolved"
+    },
+    {
+      "case_id": "negative-02",
+      "group": "abstention",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-3a9a2496cddb83287410ac6a:field:004",
+        "mineru-herb-c802003b15ded10b72efb773:field:004"
+      ],
+      "query_median_ms": 11.330861998430919,
+      "query_samples_ms": [
+        11.330861998430919,
+        10.619930995744653,
+        11.88803999684751
+      ],
+      "provenance_consistent_with_view": true,
+      "correct_abstention": false,
+      "expected_status": "field_not_resolved"
+    },
+    {
+      "case_id": "negative-03",
+      "group": "abstention",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:011",
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:000",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:003",
+        "mineru-herb-fc6326476287a7c75a14deb0:field:000"
+      ],
+      "query_median_ms": 9.003613005916122,
+      "query_samples_ms": [
+        9.795277001103386,
+        9.003613005916122,
+        8.525967998139095
+      ],
+      "provenance_consistent_with_view": true,
+      "correct_abstention": false,
+      "expected_status": "multiple_names"
+    },
+    {
+      "case_id": "negative-04",
+      "group": "abstention",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-ee3ae74f74ccc242a4e132c7:field:020",
+        "mineru-herb-c906f3cb7d9fcd5975a22cc7:field:017",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:010",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:004"
+      ],
+      "query_median_ms": 9.674013999756426,
+      "query_samples_ms": [
+        9.674013999756426,
+        10.426856999401934,
+        9.247252004570328
+      ],
+      "provenance_consistent_with_view": true,
+      "correct_abstention": false,
+      "expected_status": "field_not_observed"
+    },
+    {
+      "case_id": "regression-01",
+      "group": "known_failure_regression",
+      "method": "bm25",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-51c7ed52b7770d23540b8200:field:014",
+        "mineru-herb-51c7ed52b7770d23540b8200:field:008",
+        "mineru-herb-51c7ed52b7770d23540b8200:field:004"
+      ],
+      "query_median_ms": 13.03209199977573,
+      "query_samples_ms": [
+        13.931401001173072,
+        13.03209199977573,
+        12.678398998104967
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-51c7ed52b7770d23540b8200:field:014",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": false
+    },
+    {
+      "case_id": "regression-02",
+      "group": "known_failure_regression",
+      "method": "bm25",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-cad32bc15b7732595c2c1453:field:007",
+        "mineru-herb-cad32bc15b7732595c2c1453:field:009",
+        "mineru-herb-cad32bc15b7732595c2c1453:field:000",
+        "mineru-herb-cad32bc15b7732595c2c1453:field:008",
+        "mineru-herb-cad32bc15b7732595c2c1453:field:006"
+      ],
+      "query_median_ms": 8.321682995301671,
+      "query_samples_ms": [
+        8.321682995301671,
+        10.040072003903333,
+        8.294028993987013
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-cad32bc15b7732595c2c1453:field:007",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "regression-03",
+      "group": "known_failure_regression",
+      "method": "bm25",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-baa41eafc52d0933e14b3c95:field:004",
+        "mineru-herb-baa41eafc52d0933e14b3c95:field:008",
+        "mineru-herb-baa41eafc52d0933e14b3c95:field:009",
+        "mineru-herb-baa41eafc52d0933e14b3c95:field:006",
+        "mineru-herb-baa41eafc52d0933e14b3c95:field:000"
+      ],
+      "query_median_ms": 13.338228003703989,
+      "query_samples_ms": [
+        14.308360005088616,
+        12.599156994838268,
+        13.338228003703989
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-baa41eafc52d0933e14b3c95:field:004",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "regression-04",
+      "group": "known_failure_regression",
+      "method": "bm25",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-e2f0b026e6139226fd4150dc:field:010",
+        "mineru-herb-839b2c25c719208fb4817784:field:013",
+        "mineru-herb-ea09ad6a4f3da403bf6895d0:field:009",
+        "mineru-herb-429ece1beeeb1bece1abb97c:field:010",
+        "mineru-herb-478f7bd28fcd63c37b0f0688:field:019"
+      ],
+      "query_median_ms": 15.91293400269933,
+      "query_samples_ms": [
+        15.91293400269933,
+        15.641104000678752,
+        16.42130999971414
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-e2f0b026e6139226fd4150dc:field:010",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-01",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:000"
+      ],
+      "query_median_ms": 0.21793999621877447,
+      "query_samples_ms": [
+        0.26839399652089924,
+        0.21793999621877447,
+        0.2078809993690811
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-c802003b15ded10b72efb773:field:000",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-02",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ],
+      "query_median_ms": 0.19744099699892104,
+      "query_samples_ms": [
+        0.19744099699892104,
+        0.1808300003176555,
+        0.24928800121415406
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-c802003b15ded10b72efb773:field:019",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-03",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:016"
+      ],
+      "query_median_ms": 0.19748100021388382,
+      "query_samples_ms": [
+        0.1965789997484535,
+        0.23333799617830664,
+        0.19748100021388382
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-b411d013f6ad7cd93372ad36:field:016",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-04",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:017"
+      ],
+      "query_median_ms": 0.20843100355705246,
+      "query_samples_ms": [
+        0.2423249970888719,
+        0.20843100355705246,
+        0.20801999926334247
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-b411d013f6ad7cd93372ad36:field:017",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-05",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:016"
+      ],
+      "query_median_ms": 0.20863100507995114,
+      "query_samples_ms": [
+        0.20863100507995114,
+        0.19879300089087337,
+        0.24757500068517402
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-91438c2bd1cb594a95c13128:field:016",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-06",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:018"
+      ],
+      "query_median_ms": 0.18998699670191854,
+      "query_samples_ms": [
+        0.19818200235022232,
+        0.18998699670191854,
+        0.18531899695517495
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-91438c2bd1cb594a95c13128:field:018",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-07",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ],
+      "query_median_ms": 0.2578839994384907,
+      "query_samples_ms": [
+        0.2578839994384907,
+        0.3679009969346225,
+        0.2049750037258491
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-286aad7a798a996040ceaa27:field:020",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-08",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:022"
+      ],
+      "query_median_ms": 0.18737199570750818,
+      "query_samples_ms": [
+        0.18737199570750818,
+        0.17972800560528412,
+        0.3785010048886761
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-286aad7a798a996040ceaa27:field:022",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-09",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:012"
+      ],
+      "query_median_ms": 0.30845899891573936,
+      "query_samples_ms": [
+        0.24282599770231172,
+        0.30845899891573936,
+        0.3094409985351376
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-41712cd9798e3e8fd3b8f699:field:012",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-10",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:013"
+      ],
+      "query_median_ms": 0.2557100015110336,
+      "query_samples_ms": [
+        0.29598599940072745,
+        0.23843800590839237,
+        0.2557100015110336
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-41712cd9798e3e8fd3b8f699:field:013",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-11",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "query_median_ms": 0.18592900596559048,
+      "query_samples_ms": [
+        0.20198000129312277,
+        0.1855990049079992,
+        0.18592900596559048
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-916607a51c9876e39d1acf59:field:013",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-12",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:000"
+      ],
+      "query_median_ms": 0.19855299615301192,
+      "query_samples_ms": [
+        0.19872400298481807,
+        0.19415499991737306,
+        0.19855299615301192
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-916607a51c9876e39d1acf59:field:000",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-13",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:013"
+      ],
+      "query_median_ms": 0.19614800112321973,
+      "query_samples_ms": [
+        0.21237900364212692,
+        0.19614800112321973,
+        0.18547899526311085
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-a967b4d1c53114248a6d2c62:field:013",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-14",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:014"
+      ],
+      "query_median_ms": 0.27514700195752084,
+      "query_samples_ms": [
+        0.2703780046431348,
+        0.321774001349695,
+        0.27514700195752084
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-a967b4d1c53114248a6d2c62:field:014",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-15",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:006"
+      ],
+      "query_median_ms": 0.2798060013446957,
+      "query_samples_ms": [
+        0.31196600320981815,
+        0.2798060013446957,
+        0.2734640002017841
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-bea7ca461574003ae23b3a1e:field:006",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-16",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:008"
+      ],
+      "query_median_ms": 0.39357000059681013,
+      "query_samples_ms": [
+        0.39357000059681013,
+        0.4013939978904091,
+        0.27602900081546977
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-bea7ca461574003ae23b3a1e:field:008",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-17",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:008"
+      ],
+      "query_median_ms": 0.2270459954161197,
+      "query_samples_ms": [
+        0.19795200205408037,
+        0.2270459954161197,
+        0.26368500402895734
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-2cca123266aa9cc511ef3c0f:field:008",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-18",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:009"
+      ],
+      "query_median_ms": 0.3090210011578165,
+      "query_samples_ms": [
+        0.3206530018360354,
+        0.3090210011578165,
+        0.27244200464338064
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-2cca123266aa9cc511ef3c0f:field:009",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-19",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-b83aa9d35ae5055a36946197:field:013"
+      ],
+      "query_median_ms": 0.2906259978772141,
+      "query_samples_ms": [
+        0.29215899849077687,
+        0.2906259978772141,
+        0.24747499992372468
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-b83aa9d35ae5055a36946197:field:013",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "new-20",
+      "group": "new_question_pilot",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-b83aa9d35ae5055a36946197:field:014"
+      ],
+      "query_median_ms": 0.2102150028804317,
+      "query_samples_ms": [
+        0.22967100085224956,
+        0.2102150028804317,
+        0.18580899632070214
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-b83aa9d35ae5055a36946197:field:014",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "negative-01",
+      "group": "abstention",
+      "method": "name_field",
+      "status": "name_not_resolved",
+      "hit_ids": [],
+      "query_median_ms": 0.08922800043364987,
+      "query_samples_ms": [
+        0.08943799912231043,
+        0.08922800043364987,
+        0.08801499643595889
+      ],
+      "provenance_consistent_with_view": true,
+      "correct_abstention": true,
+      "expected_status": "name_not_resolved"
+    },
+    {
+      "case_id": "negative-02",
+      "group": "abstention",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "hit_ids": [],
+      "query_median_ms": 0.18293400353286415,
+      "query_samples_ms": [
+        0.16767499619163573,
+        0.19555699691409245,
+        0.18293400353286415
+      ],
+      "provenance_consistent_with_view": true,
+      "correct_abstention": true,
+      "expected_status": "field_not_resolved"
+    },
+    {
+      "case_id": "negative-03",
+      "group": "abstention",
+      "method": "name_field",
+      "status": "multiple_names",
+      "hit_ids": [],
+      "query_median_ms": 0.09098099690163508,
+      "query_samples_ms": [
+        0.09098099690163508,
+        0.0887869973666966,
+        0.092274000053294
+      ],
+      "provenance_consistent_with_view": true,
+      "correct_abstention": true,
+      "expected_status": "multiple_names"
+    },
+    {
+      "case_id": "negative-04",
+      "group": "abstention",
+      "method": "name_field",
+      "status": "field_not_observed",
+      "hit_ids": [],
+      "query_median_ms": 0.1688779957476072,
+      "query_samples_ms": [
+        0.17292499978793785,
+        0.1688779957476072,
+        0.16776499978732318
+      ],
+      "provenance_consistent_with_view": true,
+      "correct_abstention": true,
+      "expected_status": "field_not_observed"
+    },
+    {
+      "case_id": "regression-01",
+      "group": "known_failure_regression",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-51c7ed52b7770d23540b8200:field:014"
+      ],
+      "query_median_ms": 0.3426140028750524,
+      "query_samples_ms": [
+        0.3807460016105324,
+        0.329479000356514,
+        0.3426140028750524
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-51c7ed52b7770d23540b8200:field:014",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "regression-02",
+      "group": "known_failure_regression",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-cad32bc15b7732595c2c1453:field:007"
+      ],
+      "query_median_ms": 0.3312319968244992,
+      "query_samples_ms": [
+        0.5444429989438504,
+        0.3312319968244992,
+        0.2051859992207028
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-cad32bc15b7732595c2c1453:field:007",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "regression-03",
+      "group": "known_failure_regression",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-baa41eafc52d0933e14b3c95:field:004"
+      ],
+      "query_median_ms": 0.3041420059162192,
+      "query_samples_ms": [
+        0.3041420059162192,
+        0.3687029966386035,
+        0.24480000138282776
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-baa41eafc52d0933e14b3c95:field:004",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    },
+    {
+      "case_id": "regression-04",
+      "group": "known_failure_regression",
+      "method": "name_field",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-e2f0b026e6139226fd4150dc:field:010"
+      ],
+      "query_median_ms": 0.23381899518426508,
+      "query_samples_ms": [
+        0.20952300110366195,
+        0.23381899518426508,
+        0.23899900406831875
+      ],
+      "provenance_consistent_with_view": true,
+      "expected_chunk_id": "mineru-herb-e2f0b026e6139226fd4150dc:field:010",
+      "rank": 1,
+      "evidence_hit_at_k": true,
+      "reference_anchor_hit_at_k": true,
+      "reference_field_occurrences": 1,
+      "top1_reference_hit": true,
+      "unambiguous_top1_lookup": true
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "kind": "frozen_rule_boundary_validation",
+  "source_manifest": "eval/pharmacopoeia_ocr_sample_v1.json",
+  "documents": {
+    "full": {
+      "path": "data/《中国药典》2025年版 一部 全本.pdf",
+      "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+    },
+    "high": {
+      "path": "data/《中国药典》2025年版 一部.pdf",
+      "sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2"
+    }
+  },
+  "render_dpi": 240,
+  "selection": "Three purposive contiguous ten-page blocks (early, middle, late); not random sampling. Previously used pages excluded. AI visual references pending human review.",
+  "pages": [
+    {
+      "document": "high",
+      "pdf_page": 30,
+      "printed_page": 9,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 31,
+      "printed_page": 10,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 32,
+      "printed_page": 11,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 33,
+      "printed_page": 12,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 34,
+      "printed_page": 13,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 35,
+      "printed_page": 14,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 36,
+      "printed_page": 15,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 37,
+      "printed_page": 16,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 38,
+      "printed_page": 17,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 39,
+      "printed_page": 18,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "early"
+    },
+    {
+      "document": "high",
+      "pdf_page": 200,
+      "printed_page": 181,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 201,
+      "printed_page": 182,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 202,
+      "printed_page": 183,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 203,
+      "printed_page": 184,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 204,
+      "printed_page": 185,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 205,
+      "printed_page": 186,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 206,
+      "printed_page": 187,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 207,
+      "printed_page": 188,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 208,
+      "printed_page": 189,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 209,
+      "printed_page": 190,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "middle"
+    },
+    {
+      "document": "high",
+      "pdf_page": 420,
+      "printed_page": 401,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 421,
+      "printed_page": 402,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 422,
+      "printed_page": 403,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 423,
+      "printed_page": 404,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 424,
+      "printed_page": 405,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 425,
+      "printed_page": 406,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 426,
+      "printed_page": 407,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 427,
+      "printed_page": 408,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 428,
+      "printed_page": 409,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    },
+    {
+      "document": "high",
+      "pdf_page": 429,
+      "printed_page": 410,
+      "stage": "frozen_rule_validation",
+      "layout": "two_column",
+      "block": "late"
+    }
+  ],
+  "plan_version": 1,
+  "chapter_profile": "herb_monographs_two_column_v1",
+  "layout_review_status": "ai_visual_sample_check_pending_human_signoff"
+}

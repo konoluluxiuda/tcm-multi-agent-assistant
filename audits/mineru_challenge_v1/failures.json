@@ -1,0 +1,146 @@
+{
+  "observed_failures": [
+    {
+      "case_id": "challenge-23",
+      "question": "党参每次多少克？",
+      "status": "field_not_resolved",
+      "returned_names": [],
+      "priority": "P1"
+    },
+    {
+      "case_id": "challenge-24",
+      "question": "地黄有什么药效？",
+      "status": "field_not_resolved",
+      "returned_names": [],
+      "priority": "P1"
+    },
+    {
+      "case_id": "challenge-25",
+      "question": "何首乌的储藏条件？",
+      "status": "field_not_resolved",
+      "returned_names": [],
+      "priority": "P1"
+    },
+    {
+      "case_id": "challenge-26",
+      "question": "半夏的使用警示？",
+      "status": "field_not_resolved",
+      "returned_names": [],
+      "priority": "P1"
+    },
+    {
+      "case_id": "challenge-27",
+      "question": "附子的服用剂量？",
+      "status": "field_not_resolved",
+      "returned_names": [],
+      "priority": "P1"
+    },
+    {
+      "case_id": "challenge-28",
+      "question": "山药取自哪一部分？",
+      "status": "field_not_resolved",
+      "returned_names": [],
+      "priority": "P1"
+    },
+    {
+      "case_id": "challenge-31",
+      "question": "黃芪的功能与主治？",
+      "status": "name_not_resolved",
+      "returned_names": [],
+      "priority": "P1"
+    },
+    {
+      "case_id": "challenge-32",
+      "question": "黨參的功能与主治？",
+      "status": "name_not_resolved",
+      "returned_names": [],
+      "priority": "P1"
+    },
+    {
+      "case_id": "challenge-33",
+      "question": "Gancao的功能与主治？",
+      "status": "name_not_resolved",
+      "returned_names": [],
+      "priority": "P1"
+    },
+    {
+      "case_id": "challenge-34",
+      "question": "Huangqi的功能与主治？",
+      "status": "name_not_resolved",
+      "returned_names": [],
+      "priority": "P1"
+    },
+    {
+      "case_id": "challenge-35",
+      "question": "Ｄａｎｇｓｈｅｎ的功能与主治？",
+      "status": "name_not_resolved",
+      "returned_names": [],
+      "priority": "P1"
+    },
+    {
+      "case_id": "challenge-36",
+      "question": "何首烏的功能与主治？",
+      "status": "name_not_resolved",
+      "returned_names": [],
+      "priority": "P1"
+    },
+    {
+      "case_id": "challenge-38",
+      "question": "酒大黄的用法与用量是什么？",
+      "status": "candidates",
+      "returned_names": [
+        "大黄"
+      ],
+      "priority": "P0"
+    },
+    {
+      "case_id": "challenge-39",
+      "question": "醋香附的用法与用量是什么？",
+      "status": "candidates",
+      "returned_names": [
+        "香附"
+      ],
+      "priority": "P0"
+    },
+    {
+      "case_id": "challenge-40",
+      "question": "蜜麻黄的用法与用量是什么？",
+      "status": "candidates",
+      "returned_names": [
+        "麻黄"
+      ],
+      "priority": "P0"
+    },
+    {
+      "case_id": "challenge-41",
+      "question": "盐杜仲的用法与用量是什么？",
+      "status": "candidates",
+      "returned_names": [
+        "杜仲"
+      ],
+      "priority": "P0"
+    },
+    {
+      "case_id": "challenge-45",
+      "question": "火星灵芝草的功效是什么？",
+      "status": "candidates",
+      "returned_names": [
+        "灵芝"
+      ],
+      "priority": "P0"
+    }
+  ],
+  "additional_source_findings": [
+    {
+      "case_id": "challenge-37",
+      "priority": "P0",
+      "finding": "Field label matched but dosage is a cross-entry reference; complete answer not established."
+    },
+    {
+      "case_id": "challenge-08",
+      "priority": "P1",
+      "finding": "One field contains fresh and dried variant scopes; not a single-dose validation."
+    }
+  ],
+  "human_signoff": false
+}

@@ -1,0 +1,135 @@
+{
+  "kind": "mineru_import_inspection",
+  "status": "copied_verified_and_images_indexed",
+  "destination": "var/mineru_import/2026-10-17",
+  "source_preserved": true,
+  "copied_files": 144,
+  "copied_bytes": 563244043,
+  "image_files": 111,
+  "image_references": 111,
+  "parsed_page_coverage": 413,
+  "content_types": {
+    "text": 14457,
+    "footer": 5,
+    "header": 826,
+    "page_number": 413,
+    "table": 97,
+    "chart": 9,
+    "equation": 4,
+    "image": 1
+  },
+  "batches": [
+    {
+      "part": "part-001-100",
+      "parsed_pages": 100,
+      "image_files": 26,
+      "content_types": {
+        "text": 3449,
+        "footer": 2,
+        "header": 200,
+        "page_number": 100,
+        "table": 23,
+        "chart": 2,
+        "equation": 1
+      },
+      "origin_pdf_container_sha_matches_upload": false,
+      "origin_page_content_matches_upload": true,
+      "reported_parser_metadata": {
+        "_backend": "hybrid",
+        "_effort": "medium",
+        "_ocr_enable": true,
+        "_version_name": "3.4.4"
+      }
+    },
+    {
+      "part": "part-101-200",
+      "parsed_pages": 100,
+      "image_files": 30,
+      "content_types": {
+        "text": 3553,
+        "header": 200,
+        "page_number": 100,
+        "table": 25,
+        "image": 1,
+        "chart": 4
+      },
+      "origin_pdf_container_sha_matches_upload": false,
+      "origin_page_content_matches_upload": true,
+      "reported_parser_metadata": {
+        "_backend": "hybrid",
+        "_effort": "medium",
+        "_ocr_enable": true,
+        "_version_name": "3.4.4"
+      }
+    },
+    {
+      "part": "part-201-300",
+      "parsed_pages": 100,
+      "image_files": 24,
+      "content_types": {
+        "text": 3556,
+        "header": 200,
+        "page_number": 100,
+        "table": 23,
+        "footer": 1,
+        "chart": 1
+      },
+      "origin_pdf_container_sha_matches_upload": false,
+      "origin_page_content_matches_upload": true,
+      "reported_parser_metadata": {
+        "_backend": "hybrid",
+        "_effort": "medium",
+        "_ocr_enable": true,
+        "_version_name": "3.4.4"
+      }
+    },
+    {
+      "part": "part-301-400",
+      "parsed_pages": 100,
+      "image_files": 27,
+      "content_types": {
+        "text": 3435,
+        "header": 200,
+        "page_number": 100,
+        "table": 23,
+        "equation": 3,
+        "chart": 1,
+        "footer": 2
+      },
+      "origin_pdf_container_sha_matches_upload": false,
+      "origin_page_content_matches_upload": true,
+      "reported_parser_metadata": {
+        "_backend": "hybrid",
+        "_effort": "medium",
+        "_ocr_enable": true,
+        "_version_name": "3.4.4"
+      }
+    },
+    {
+      "part": "part-401-413",
+      "parsed_pages": 13,
+      "image_files": 4,
+      "content_types": {
+        "text": 464,
+        "table": 3,
+        "header": 26,
+        "page_number": 13,
+        "chart": 1
+      },
+      "origin_pdf_container_sha_matches_upload": false,
+      "origin_page_content_matches_upload": true,
+      "reported_parser_metadata": {
+        "_backend": "hybrid",
+        "_effort": "medium",
+        "_ocr_enable": true,
+        "_version_name": "3.4.4"
+      }
+    }
+  ],
+  "all_images_decodable": true,
+  "missing_image_references": 0,
+  "origin_pdf_container_hashes_match": false,
+  "origin_page_content_matches": true,
+  "recognition_accuracy_evaluated": false,
+  "production_import_performed": false
+}

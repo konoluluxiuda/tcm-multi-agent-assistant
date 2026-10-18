@@ -1,0 +1,93 @@
+[
+  {
+    "question": "酒大黄的用量",
+    "method": "name_field",
+    "status": "variant_scope_unresolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 0
+  },
+  {
+    "question": "酒大黄的用量",
+    "method": "bm25",
+    "status": "variant_scope_unresolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 0
+  },
+  {
+    "question": "醋香附的用量",
+    "method": "name_field",
+    "status": "variant_scope_unresolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 0
+  },
+  {
+    "question": "醋香附的用量",
+    "method": "bm25",
+    "status": "variant_scope_unresolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 0
+  },
+  {
+    "question": "蜜麻黄的用量",
+    "method": "name_field",
+    "status": "variant_scope_unresolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 0
+  },
+  {
+    "question": "蜜麻黄的用量",
+    "method": "bm25",
+    "status": "variant_scope_unresolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 0
+  },
+  {
+    "question": "盐杜仲的用量",
+    "method": "name_field",
+    "status": "variant_scope_unresolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 0
+  },
+  {
+    "question": "盐杜仲的用量",
+    "method": "bm25",
+    "status": "variant_scope_unresolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 0
+  },
+  {
+    "question": "火星灵芝草的功效",
+    "method": "name_field",
+    "status": "name_not_resolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 0
+  },
+  {
+    "question": "火星灵芝草的功效",
+    "method": "bm25",
+    "status": "name_not_resolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 0
+  },
+  {
+    "question": "炙甘草的用量",
+    "method": "name_field",
+    "status": "reference_unresolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 1
+  },
+  {
+    "question": "炙甘草的注意事项",
+    "method": "name_field",
+    "status": "reference_unresolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 1
+  },
+  {
+    "question": "法半夏的贮藏",
+    "method": "name_field",
+    "status": "reference_unresolved",
+    "valid_hits": 0,
+    "unresolved_fragments": 1
+  }
+]

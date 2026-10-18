@@ -1,0 +1,162 @@
+{
+  "kind": "engineering_run_history",
+  "runs": [
+    {
+      "plan_sha256": "ab104dca12dfb4390242f773c6918f37690885ee03d4145169d5e5460c6ae802",
+      "recipe_sha256": "87882b9d277d1c6cea87f208a169eb34aca2aca53daffaa0b0e62e12a6766c7c",
+      "cached_pages": 0,
+      "imported_pages": 5,
+      "new_ocr_pages": 2,
+      "kind": "bounded_batch_ocr_run",
+      "status": "partial",
+      "completed_pages": 7,
+      "planned_pages": 9,
+      "pending_pages": [
+        "high-28",
+        "high-29"
+      ],
+      "failed_pages": [],
+      "segmentation": {
+        "entries": 9,
+        "bounded_entries": 7,
+        "open_entries": 2,
+        "leading_continuation_groups": 0
+      },
+      "entries_sha256": "ece0d4b989ada4037fc7940aba4c39b8a9835b4730f23c0a3f6aab45731e68b4",
+      "human_signoff": false,
+      "blocked_python_network_attempts": 0,
+      "elapsed_seconds": 25.225,
+      "ocr_character_accuracy": null,
+      "boundary_accuracy": null
+    },
+    {
+      "plan_sha256": "ab104dca12dfb4390242f773c6918f37690885ee03d4145169d5e5460c6ae802",
+      "recipe_sha256": "87882b9d277d1c6cea87f208a169eb34aca2aca53daffaa0b0e62e12a6766c7c",
+      "cached_pages": 7,
+      "imported_pages": 0,
+      "new_ocr_pages": 2,
+      "kind": "bounded_batch_ocr_run",
+      "status": "completed",
+      "completed_pages": 9,
+      "planned_pages": 9,
+      "pending_pages": [],
+      "failed_pages": [],
+      "segmentation": {
+        "entries": 9,
+        "bounded_entries": 7,
+        "open_entries": 2,
+        "leading_continuation_groups": 0
+      },
+      "entries_sha256": "1b752fe498e12c2635145944826e134914472de7c9ab33c24f6ca487428d7b61",
+      "human_signoff": false,
+      "blocked_python_network_attempts": 0,
+      "elapsed_seconds": 23.509,
+      "ocr_character_accuracy": null,
+      "boundary_accuracy": null
+    },
+    {
+      "plan_sha256": "ab104dca12dfb4390242f773c6918f37690885ee03d4145169d5e5460c6ae802",
+      "recipe_sha256": "87882b9d277d1c6cea87f208a169eb34aca2aca53daffaa0b0e62e12a6766c7c",
+      "cached_pages": 9,
+      "imported_pages": 0,
+      "new_ocr_pages": 0,
+      "kind": "bounded_batch_ocr_run",
+      "status": "completed",
+      "completed_pages": 9,
+      "planned_pages": 9,
+      "pending_pages": [],
+      "failed_pages": [],
+      "segmentation": {
+        "entries": 10,
+        "bounded_entries": 8,
+        "open_entries": 2,
+        "leading_continuation_groups": 0
+      },
+      "entries_sha256": "af1bc0d3d223eb54341f551c5a907d2b9326eef2cd5789bc4edd85a0bc5657f4",
+      "human_signoff": false,
+      "blocked_python_network_attempts": 0,
+      "elapsed_seconds": 0.527,
+      "ocr_character_accuracy": null,
+      "boundary_accuracy": null
+    },
+    {
+      "plan_sha256": "ab104dca12dfb4390242f773c6918f37690885ee03d4145169d5e5460c6ae802",
+      "recipe_sha256": "87882b9d277d1c6cea87f208a169eb34aca2aca53daffaa0b0e62e12a6766c7c",
+      "cached_pages": 9,
+      "imported_pages": 0,
+      "new_ocr_pages": 0,
+      "kind": "bounded_batch_ocr_run",
+      "runner_code_sha256": "c8bdae0da1d45273847fdcd9bb5a0400a3333354665992ece34c693b33acc2fd",
+      "status": "completed",
+      "completed_pages": 9,
+      "planned_pages": 9,
+      "pending_pages": [],
+      "failed_pages": [],
+      "segmentation": {
+        "entries": 10,
+        "bounded_entries": 8,
+        "open_entries": 2,
+        "leading_continuation_groups": 0
+      },
+      "entries_sha256": "a1bd28f12dfa9bd71c0b90d923d8363a1a2f21cb1557a06e8ae751513baf3ad2",
+      "human_signoff": false,
+      "blocked_python_network_attempts": 0,
+      "elapsed_seconds": 0.519,
+      "ocr_character_accuracy": null,
+      "boundary_accuracy": null
+    },
+    {
+      "plan_sha256": "ab104dca12dfb4390242f773c6918f37690885ee03d4145169d5e5460c6ae802",
+      "recipe_sha256": "87882b9d277d1c6cea87f208a169eb34aca2aca53daffaa0b0e62e12a6766c7c",
+      "cached_pages": 9,
+      "imported_pages": 0,
+      "new_ocr_pages": 0,
+      "kind": "bounded_batch_ocr_run",
+      "runner_code_sha256": "c8bdae0da1d45273847fdcd9bb5a0400a3333354665992ece34c693b33acc2fd",
+      "status": "completed",
+      "completed_pages": 9,
+      "planned_pages": 9,
+      "pending_pages": [],
+      "failed_pages": [],
+      "segmentation": {
+        "entries": 10,
+        "bounded_entries": 8,
+        "open_entries": 2,
+        "leading_continuation_groups": 0
+      },
+      "entries_sha256": "119b054aeeebcb563b0fb74f93dcabbaf6d346ae1aee62568eddbb745b9ad43e",
+      "human_signoff": false,
+      "blocked_python_network_attempts": 0,
+      "elapsed_seconds": 0.543,
+      "ocr_character_accuracy": null,
+      "boundary_accuracy": null
+    },
+    {
+      "plan_sha256": "ab104dca12dfb4390242f773c6918f37690885ee03d4145169d5e5460c6ae802",
+      "recipe_sha256": "87882b9d277d1c6cea87f208a169eb34aca2aca53daffaa0b0e62e12a6766c7c",
+      "cached_pages": 9,
+      "imported_pages": 0,
+      "new_ocr_pages": 0,
+      "kind": "bounded_batch_ocr_run",
+      "runner_code_sha256": "c8bdae0da1d45273847fdcd9bb5a0400a3333354665992ece34c693b33acc2fd",
+      "status": "completed",
+      "completed_pages": 9,
+      "planned_pages": 9,
+      "pending_pages": [],
+      "failed_pages": [],
+      "segmentation": {
+        "entries": 10,
+        "bounded_entries": 8,
+        "open_entries": 2,
+        "leading_continuation_groups": 0
+      },
+      "entries_sha256": "119b054aeeebcb563b0fb74f93dcabbaf6d346ae1aee62568eddbb745b9ad43e",
+      "human_signoff": false,
+      "blocked_python_network_attempts": 0,
+      "elapsed_seconds": 0.518,
+      "ocr_character_accuracy": null,
+      "boundary_accuracy": null
+    }
+  ],
+  "note": "Early runs predate the 本品由 opener fix. Final two use identical final parser."
+}

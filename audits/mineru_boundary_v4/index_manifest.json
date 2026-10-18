@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "parameters": {
+    "tokenizer": "nfkc_lower_cjk_unigrams_bigrams_latin_words",
+    "bm25_weights": [
+      3.0,
+      2.0,
+      1.0
+    ],
+    "max_query_chars": 500,
+    "default_k": 5,
+    "max_k": 20,
+    "appendices_in_routed_search": false
+  },
+  "view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+  "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+  "entries": 616,
+  "chunks": 8654,
+  "index_bytes": 46284800,
+  "max_field_chars": 3558,
+  "research_only": true,
+  "production_ingested": false,
+  "human_signoff": false,
+  "build_seconds": 1.4989,
+  "code_sha256": {
+    "retriever": "4f7baf88a479750692e1385818e644171a95d9470fe7d36e69aac218a32ca195",
+    "builder": "e54ac7ba14822d78de9e113f446611b9bcde24b180060ba7afc58e2319822073"
+  }
+}

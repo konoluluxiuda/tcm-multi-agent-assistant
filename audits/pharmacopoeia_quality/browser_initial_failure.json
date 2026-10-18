@@ -1,0 +1,16 @@
+{
+  "status": "failed",
+  "human_signoff": false,
+  "checks": [
+    {
+      "case": "quality_counts_exception_queue_and_sampling",
+      "status": "passed"
+    }
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "batch_sha256": "4a369c996c42fc19f9460b766254250f9cc1d147bf5cab1b97132d2d9b76ac72",
+  "html_sha256": "11f4cbf3fa29070b8fe8436cde4e1671de3b8b6440e100fc31f2abc6fbe1b80b",
+  "browser_version": "153.0.8010.12",
+  "error": "Error: Page.wait_for_function: EvalError: Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'unsafe-inline'\".\n\n    at eval (<anonymous>)\n    at predicate (eval at evaluate (:311:30), <anonymous>:4:60)\n    at next (eval at evaluate (:311:30), <anonymous>:29:33)"
+}

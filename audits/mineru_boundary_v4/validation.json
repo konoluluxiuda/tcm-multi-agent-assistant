@@ -1,0 +1,73 @@
+{
+  "tests_passed": 78,
+  "recovered_titles": 4,
+  "source_stable_ids_verified": 612,
+  "old_title_entries_matched": 612,
+  "new_candidates": 616,
+  "raw_blocks_sha256_unchanged": true,
+  "raw_block_owners_conserved": 14568,
+  "caption_elements_conserved": 18,
+  "source_rebased_overlays": 11,
+  "all_overlay_disable_equals_original_view": true,
+  "parser_revision_index_replay_shas_identical": true,
+  "single_field_smoke_queries": [
+    {
+      "name": "木通",
+      "entry_id": "mineru-herb-f63d2cb6f71a5abadf7eadb8",
+      "status": "candidates",
+      "hits": 1
+    },
+    {
+      "name": "木棉花",
+      "entry_id": "mineru-herb-cc161d3c9f5314bbde7ae70d",
+      "status": "candidates",
+      "hits": 1
+    },
+    {
+      "name": "白术",
+      "entry_id": "mineru-herb-b411d013f6ad7cd93372ad36",
+      "status": "candidates",
+      "hits": 1
+    },
+    {
+      "name": "白头翁",
+      "entry_id": "mineru-herb-320264d64082d8680a1fc1cd",
+      "status": "candidates",
+      "hits": 1
+    },
+    {
+      "name": "玄参",
+      "entry_id": "mineru-herb-a719d5ba38015d6d19184b8c",
+      "status": "candidates",
+      "hits": 1
+    },
+    {
+      "name": "半边莲",
+      "entry_id": "mineru-herb-b5dc1fb03ed429c54e7f0c5a",
+      "status": "candidates",
+      "hits": 1
+    },
+    {
+      "name": "矮地茶",
+      "entry_id": "mineru-herb-f28cd6ac081554047ac4cb56",
+      "status": "candidates",
+      "hits": 1
+    },
+    {
+      "name": "满山红",
+      "entry_id": "mineru-herb-aef397fd438086c9bce5d3f6",
+      "status": "candidates",
+      "hits": 1
+    }
+  ],
+  "original_questions_unchanged": true,
+  "ranking_recipe_changed": false,
+  "human_signoff": false,
+  "production_ingested": false,
+  "new_ocr_pages": 0,
+  "limits": [
+    "Four title/end visual checks are AI posthoc source checks, not independent human gold.",
+    "Narrow title-hint scan does not prove absence of other OCR or segmentation failures.",
+    "Reusing the original questions is repair regression, not a new blind evaluation."
+  ]
+}

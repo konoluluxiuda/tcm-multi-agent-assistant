@@ -1,0 +1,33 @@
+{
+  "blocking_data_issue": {
+    "entry_id": "mineru-herb-0151",
+    "name": "白术",
+    "issue": "missing_heading_level_caused_white_pulsatilla_monograph_merge",
+    "source_document": "high",
+    "source_pdf_page": 130,
+    "chapter_page": 109,
+    "missed_title": "白头翁",
+    "raw_title_block_id": "part-101-200:322",
+    "raw_latin_block_id": "part-101-200:323",
+    "origin_block_id": "part-101-200:324",
+    "cause": "Both title text blocks lack text_level; v3 title_at requires text_level.",
+    "image_sha256": "ce92a0a42be2b2c363cba3b7f1578831088ae13c1c111e518fe0a654dead8e7e",
+    "human_signoff": false,
+    "production_eligible": false
+  },
+  "bm25_missing_top5": [
+    "new-08",
+    "new-11"
+  ],
+  "bm25_wrong_top1_related_herbs": [
+    "new-13",
+    "new-14"
+  ],
+  "routing_limitations": [
+    "Single-entity queries and preset field intents only.",
+    "A substring match is not alias resolution or identity verification.",
+    "Independent 禁忌 labels and other unmapped headings need additional coverage.",
+    "Field boundaries may include following unlabeled notes."
+  ],
+  "next_priority": "Repair headings without text_level using source/geometry evidence, add regression and fresh validation; rebase revisions with stable identities before rebuilding index."
+}

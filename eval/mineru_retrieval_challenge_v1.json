@@ -1,0 +1,371 @@
+{
+  "version": 1,
+  "created_date": "2026-10-18",
+  "author": "AI_authored_not_collected_user_queries",
+  "human_gold": false,
+  "clinical_correctness_evaluated": false,
+  "k": 5,
+  "freeze_note": "Questions and desired behaviors frozen before inspecting challenge retrieval outputs. Target names are research lookup hypotheses, not clinical synonym claims. Do not tune on this first run or remove unresolvable references.",
+  "cases": [
+    {
+      "id": "challenge-01",
+      "group": "canonical",
+      "question": "甘草的功能与主治是什么？",
+      "expected_name": "甘草",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "challenge-02",
+      "group": "canonical",
+      "question": "甘草的用法与用量是什么？",
+      "expected_name": "甘草",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "challenge-03",
+      "group": "canonical",
+      "question": "黄芪的功能与主治是什么？",
+      "expected_name": "黄芪",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "challenge-04",
+      "group": "canonical",
+      "question": "黄芪的用法与用量是什么？",
+      "expected_name": "黄芪",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "challenge-05",
+      "group": "canonical",
+      "question": "党参的功能与主治是什么？",
+      "expected_name": "党参",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "challenge-06",
+      "group": "canonical",
+      "question": "党参的用法与用量是什么？",
+      "expected_name": "党参",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "challenge-07",
+      "group": "canonical",
+      "question": "地黄的功能与主治是什么？",
+      "expected_name": "地黄",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "challenge-08",
+      "group": "canonical",
+      "question": "地黄的用法与用量是什么？",
+      "expected_name": "地黄",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "challenge-09",
+      "group": "canonical",
+      "question": "何首乌的功能与主治是什么？",
+      "expected_name": "何首乌",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "challenge-10",
+      "group": "canonical",
+      "question": "何首乌的用法与用量是什么？",
+      "expected_name": "何首乌",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "challenge-11",
+      "group": "canonical",
+      "question": "半夏的功能与主治是什么？",
+      "expected_name": "半夏",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "challenge-12",
+      "group": "canonical",
+      "question": "半夏的用法与用量是什么？",
+      "expected_name": "半夏",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "challenge-13",
+      "group": "canonical",
+      "question": "附子的功能与主治是什么？",
+      "expected_name": "附子",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "challenge-14",
+      "group": "canonical",
+      "question": "附子的用法与用量是什么？",
+      "expected_name": "附子",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "challenge-15",
+      "group": "canonical",
+      "question": "山药的功能与主治是什么？",
+      "expected_name": "山药",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "challenge-16",
+      "group": "canonical",
+      "question": "山药的用法与用量是什么？",
+      "expected_name": "山药",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "challenge-17",
+      "group": "canonical",
+      "question": "川芎的功能与主治是什么？",
+      "expected_name": "川芎",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "challenge-18",
+      "group": "canonical",
+      "question": "川芎的用法与用量是什么？",
+      "expected_name": "川芎",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "challenge-19",
+      "group": "canonical",
+      "question": "红花的功能与主治是什么？",
+      "expected_name": "红花",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "challenge-20",
+      "group": "canonical",
+      "question": "红花的用法与用量是什么？",
+      "expected_name": "红花",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "challenge-21",
+      "group": "field_paraphrase",
+      "question": "甘草怎么保存？",
+      "expected_name": "甘草",
+      "expected_field": "贮藏"
+    },
+    {
+      "id": "challenge-22",
+      "group": "field_paraphrase",
+      "question": "黄芪入哪些经？",
+      "expected_name": "黄芪",
+      "expected_field": "性味与归经"
+    },
+    {
+      "id": "challenge-23",
+      "group": "field_paraphrase",
+      "question": "党参每次多少克？",
+      "expected_name": "党参",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "challenge-24",
+      "group": "field_paraphrase",
+      "question": "地黄有什么药效？",
+      "expected_name": "地黄",
+      "expected_field": "功能与主治"
+    },
+    {
+      "id": "challenge-25",
+      "group": "field_paraphrase",
+      "question": "何首乌的储藏条件？",
+      "expected_name": "何首乌",
+      "expected_field": "贮藏"
+    },
+    {
+      "id": "challenge-26",
+      "group": "field_paraphrase",
+      "question": "半夏的使用警示？",
+      "expected_name": "半夏",
+      "expected_field": "注意"
+    },
+    {
+      "id": "challenge-27",
+      "group": "field_paraphrase",
+      "question": "附子的服用剂量？",
+      "expected_name": "附子",
+      "expected_field": "用法与用量"
+    },
+    {
+      "id": "challenge-28",
+      "group": "field_paraphrase",
+      "question": "山药取自哪一部分？",
+      "expected_name": "山药",
+      "expected_field": "origin"
+    },
+    {
+      "id": "challenge-29",
+      "group": "name_variant",
+      "question": "甘 草的功能与主治？",
+      "expected_name": "甘草",
+      "expected_field": "功能与主治",
+      "mapping_status": "hypothesis_pending_source_title_check"
+    },
+    {
+      "id": "challenge-30",
+      "group": "name_variant",
+      "question": "黄 芪的功能与主治？",
+      "expected_name": "黄芪",
+      "expected_field": "功能与主治",
+      "mapping_status": "hypothesis_pending_source_title_check"
+    },
+    {
+      "id": "challenge-31",
+      "group": "name_variant",
+      "question": "黃芪的功能与主治？",
+      "expected_name": "黄芪",
+      "expected_field": "功能与主治",
+      "mapping_status": "hypothesis_pending_source_title_check"
+    },
+    {
+      "id": "challenge-32",
+      "group": "name_variant",
+      "question": "黨參的功能与主治？",
+      "expected_name": "党参",
+      "expected_field": "功能与主治",
+      "mapping_status": "hypothesis_pending_source_title_check"
+    },
+    {
+      "id": "challenge-33",
+      "group": "name_variant",
+      "question": "Gancao的功能与主治？",
+      "expected_name": "甘草",
+      "expected_field": "功能与主治",
+      "mapping_status": "hypothesis_pending_source_title_check"
+    },
+    {
+      "id": "challenge-34",
+      "group": "name_variant",
+      "question": "Huangqi的功能与主治？",
+      "expected_name": "黄芪",
+      "expected_field": "功能与主治",
+      "mapping_status": "hypothesis_pending_source_title_check"
+    },
+    {
+      "id": "challenge-35",
+      "group": "name_variant",
+      "question": "Ｄａｎｇｓｈｅｎ的功能与主治？",
+      "expected_name": "党参",
+      "expected_field": "功能与主治",
+      "mapping_status": "hypothesis_pending_source_title_check"
+    },
+    {
+      "id": "challenge-36",
+      "group": "name_variant",
+      "question": "何首烏的功能与主治？",
+      "expected_name": "何首乌",
+      "expected_field": "功能与主治",
+      "mapping_status": "hypothesis_pending_source_title_check"
+    },
+    {
+      "id": "challenge-37",
+      "group": "processed_variant",
+      "question": "炙甘草的用法与用量是什么？",
+      "expected_name": "炙甘草",
+      "expected_field": "用法与用量",
+      "requirement": "Only exact processed-variant evidence is acceptable; parent or other variant requires abstention or explicit ambiguity."
+    },
+    {
+      "id": "challenge-38",
+      "group": "processed_variant",
+      "question": "酒大黄的用法与用量是什么？",
+      "expected_name": "酒大黄",
+      "expected_field": "用法与用量",
+      "requirement": "Only exact processed-variant evidence is acceptable; parent or other variant requires abstention or explicit ambiguity."
+    },
+    {
+      "id": "challenge-39",
+      "group": "processed_variant",
+      "question": "醋香附的用法与用量是什么？",
+      "expected_name": "醋香附",
+      "expected_field": "用法与用量",
+      "requirement": "Only exact processed-variant evidence is acceptable; parent or other variant requires abstention or explicit ambiguity."
+    },
+    {
+      "id": "challenge-40",
+      "group": "processed_variant",
+      "question": "蜜麻黄的用法与用量是什么？",
+      "expected_name": "蜜麻黄",
+      "expected_field": "用法与用量",
+      "requirement": "Only exact processed-variant evidence is acceptable; parent or other variant requires abstention or explicit ambiguity."
+    },
+    {
+      "id": "challenge-41",
+      "group": "processed_variant",
+      "question": "盐杜仲的用法与用量是什么？",
+      "expected_name": "盐杜仲",
+      "expected_field": "用法与用量",
+      "requirement": "Only exact processed-variant evidence is acceptable; parent or other variant requires abstention or explicit ambiguity."
+    },
+    {
+      "id": "challenge-42",
+      "group": "processed_variant",
+      "question": "姜半夏的用法与用量是什么？",
+      "expected_name": "姜半夏",
+      "expected_field": "用法与用量",
+      "requirement": "Only exact processed-variant evidence is acceptable; parent or other variant requires abstention or explicit ambiguity."
+    },
+    {
+      "id": "challenge-43",
+      "group": "processed_variant",
+      "question": "法半夏的用法与用量是什么？",
+      "expected_name": "法半夏",
+      "expected_field": "用法与用量",
+      "requirement": "Only exact processed-variant evidence is acceptable; parent or other variant requires abstention or explicit ambiguity."
+    },
+    {
+      "id": "challenge-44",
+      "group": "processed_variant",
+      "question": "熟地黄的用法与用量是什么？",
+      "expected_name": "熟地黄",
+      "expected_field": "用法与用量",
+      "requirement": "Only exact processed-variant evidence is acceptable; parent or other variant requires abstention or explicit ambiguity."
+    },
+    {
+      "id": "challenge-45",
+      "group": "out_of_scope",
+      "question": "火星灵芝草的功效是什么？",
+      "expected_status": "name_not_resolved"
+    },
+    {
+      "id": "challenge-46",
+      "group": "out_of_scope",
+      "question": "甘草今天的批发价格？",
+      "expected_status": "field_not_resolved"
+    },
+    {
+      "id": "challenge-47",
+      "group": "out_of_scope",
+      "question": "比较甘草和黄芪的用量。",
+      "expected_status": "multiple_names"
+    },
+    {
+      "id": "challenge-48",
+      "group": "out_of_scope",
+      "question": "我头痛该用甘草还是附子治疗？",
+      "expected_status": "multiple_names"
+    },
+    {
+      "id": "challenge-49",
+      "group": "out_of_scope",
+      "question": "请给我开一个治疗失眠的方子。",
+      "expected_status": "name_not_resolved"
+    },
+    {
+      "id": "challenge-50",
+      "group": "out_of_scope",
+      "question": "党参的厂家电话是多少？",
+      "expected_status": "field_not_resolved"
+    }
+  ]
+}

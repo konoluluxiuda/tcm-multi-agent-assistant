@@ -1,0 +1,31 @@
+{
+  "tests_passed": 56,
+  "raw_ocr_blocks_unchanged": 15812,
+  "entry_title_and_block_ownership_unchanged": 612,
+  "caption_elements_recovered": 18,
+  "caption_characters_preserved_exactly_once": 780,
+  "body_paragraphs_recovered": 6,
+  "revised_research_entries": 11,
+  "active_overlays": 11,
+  "overlay_kinds": {
+    "replace_name": 4,
+    "replace_span": 2,
+    "add_title_lines": 5
+  },
+  "single_overlay_disable_changes_only_target_entry": true,
+  "all_overlays_disable_matches_original_view_sha": true,
+  "numeric_doses_unchanged_by_overlays": true,
+  "v3_and_revision_replays_identical": true,
+  "changed_evidence_rejected_before_output": true,
+  "changed_corpus_rejected_before_output": true,
+  "human_signoff": false,
+  "production_ingested": false,
+  "new_ocr_pages": 0,
+  "original_scan_spotcheck": {
+    "chapter_page": 237,
+    "source_document": "high",
+    "source_pdf_page": 258,
+    "image_sha256": "e079adce42c0cef6c7d446bb486ba81a1ff9ccf01e7e4f7951cbbc4502c4223e",
+    "review": "AI_visual_only_not_full_book_gold"
+  }
+}

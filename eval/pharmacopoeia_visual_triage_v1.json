@@ -1,0 +1,109 @@
+{
+  "kind": "ai_visual_field_diagnostics",
+  "actor_type": "ai",
+  "human_signoff": false,
+  "base_comparison_sha256": "7b89178268dbabde2548ca647d442efd2b60345c095a7aa3b6c6c06388b240c3",
+  "diagnostics": [
+    {
+      "case_id": "YiZhiHuangHua",
+      "field": "efficacy_indications",
+      "diagnosis": "漏字及形近字",
+      "review_status": "ai_visual_draft_pending_human_review",
+      "notes": [
+        "原图为“疮疖肿毒”；RapidOCR漏“疖”，Paddle把“疖”识别为“疗”。"
+      ],
+      "sources": [
+        {
+          "image": "assets/YiZhiHuangHua-efficacy_indications-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "120ba2969f67674273f10d934a38441f56e813f9d22b2fbc06e7dff72201b362"
+        }
+      ]
+    },
+    {
+      "case_id": "DingGongTeng",
+      "field": "origin",
+      "diagnosis": "拉丁属名混入希腊字母",
+      "review_status": "ai_visual_draft_pending_human_review",
+      "notes": [
+        "原图属名为Erycibe；Paddle的Erγcibe含希腊字母γ，不能按外观近似视为正确。",
+        "拉丁词间空白为便于阅读的转录排版，不覆盖原始OCR。"
+      ],
+      "sources": [
+        {
+          "image": "assets/DingGongTeng-origin-high-24.png",
+          "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+          "image_sha256": "b7550a9d3192e95fe46f8e32ea63ad4fcb9c3d9b0e23acd8e6a16f4ec1069b04"
+        }
+      ]
+    },
+    {
+      "case_id": "DaFuPi",
+      "field": "origin",
+      "diagnosis": "漏标点及页脚混入",
+      "review_status": "ai_visual_draft_pending_human_review",
+      "notes": [
+        "原图在“干燥果皮”和末尾“大腹毛”后有句号；RapidOCR漏标点。",
+        "原页脚·28·不是来源内容；新版按已知页码及底部位置排除，保留排除证据。"
+      ],
+      "sources": [
+        {
+          "image": "assets/DaFuPi-origin-full-76.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "acabf9ff381aba1491f6bdb6f5f1e6c186ac1064b0100b120a4c2775b6bc28eb"
+        }
+      ]
+    },
+    {
+      "case_id": "DaFuPi",
+      "field": "properties_meridians",
+      "diagnosis": "句末标点缺失",
+      "review_status": "ai_visual_draft_pending_human_review",
+      "notes": [
+        "原图句末有句号；Paddle漏末尾句号，暂未观察到该差异涉及其他字词。"
+      ],
+      "sources": [
+        {
+          "image": "assets/DaFuPi-properties_meridians-full-76.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "7c42cfb3171627cf78ae12f11d49a2409ab3c44d51441b8807ea276315caf2ef"
+        }
+      ]
+    },
+    {
+      "case_id": "DaFuPi",
+      "field": "efficacy_indications",
+      "diagnosis": "中文形近字",
+      "review_status": "ai_visual_draft_pending_human_review",
+      "notes": [
+        "原图为“脘腹胀闷”；RapidOCR识别为“院腹胀闷”。"
+      ],
+      "sources": [
+        {
+          "image": "assets/DaFuPi-efficacy_indications-full-76.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "40d52a9fea9ab4e6ffa2476277b8f7ece4a2eb2acdb6c045b0b62f4014772a1d"
+        }
+      ]
+    },
+    {
+      "case_id": "ShanMaiDong",
+      "field": "origin",
+      "diagnosis": "学名错字及中文漏字",
+      "review_status": "ai_visual_draft_pending_human_review",
+      "notes": [
+        "RapidOCR把spicata识别为spicala，并漏“短葶”中的“葶”；Paddle把muscari识别为mucari。",
+        "图中署名按Baily照录，不根据外部学名习惯改成其他拼写；括号及拉丁词间空白为转录排版，原图可复查。"
+      ],
+      "sources": [
+        {
+          "image": "assets/ShanMaiDong-origin-full-77.png",
+          "source_sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+          "image_sha256": "d47a5d3134d46c8763cf31ba8f5d7c78f65638504f23f8457c04256a1d5a5ca1"
+        }
+      ]
+    }
+  ],
+  "human_reference_fields_completed": 0,
+  "approved_fields": 0
+}

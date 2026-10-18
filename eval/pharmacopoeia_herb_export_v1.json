@@ -1,0 +1,61 @@
+{
+  "kind": "herb_and_prepared_slices_chapter_export",
+  "schema_version": 1,
+  "documents": {
+    "full": {
+      "path": "data/《中国药典》2025年版 一部 全本.pdf",
+      "sha256": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+    },
+    "high": {
+      "path": "data/《中国药典》2025年版 一部.pdf",
+      "sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2"
+    }
+  },
+  "preferred_ranges": [
+    {
+      "document": "high",
+      "first_pdf_page": 24,
+      "last_pdf_page": 48
+    },
+    {
+      "document": "full",
+      "first_pdf_page": 76,
+      "last_pdf_page": 77
+    },
+    {
+      "document": "high",
+      "first_pdf_page": 49,
+      "last_pdf_page": 434
+    }
+  ],
+  "reference_ranges": [
+    {
+      "document": "full",
+      "first_pdf_page": 51,
+      "last_pdf_page": 463
+    }
+  ],
+  "expected_pages": 413,
+  "expected_first_printed_page": 3,
+  "observed_printed_pages": {
+    "high": {
+      "24": 3,
+      "48": 27,
+      "49": 30,
+      "218": 199,
+      "434": 415
+    },
+    "full": {
+      "51": 3,
+      "76": 28,
+      "77": 29,
+      "247": 199,
+      "463": 415
+    }
+  },
+  "part_pages": 100,
+  "max_part_bytes": 180000000,
+  "scope": "Only the 药材和饮片 body; excludes cover, notices, section divider/blank pages, plant oils/extracts, formulations and indexes.",
+  "completeness_note": "Known two-page gap repaired; remaining page order follows source PDFs. Expected printed labels are not a full page-by-page completeness certification.",
+  "human_signoff": false
+}

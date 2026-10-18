@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "checks": {
+    "full": {
+      "expected": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+      "actual": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+    },
+    "high": {
+      "expected": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+      "actual": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2"
+    },
+    "etcm_database": {
+      "expected": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+      "actual": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec"
+    }
+  }
+}

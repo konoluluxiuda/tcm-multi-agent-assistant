@@ -1,0 +1,680 @@
+{
+  "decisions": [
+    {
+      "entry_id": "mineru-herb-0009",
+      "name_zh_candidate": "九里香",
+      "group": "flagged",
+      "primary_triage": "title_text_omitted",
+      "issues": [
+        "missing_pinyin_or_latin"
+      ],
+      "notes": [
+        "原图有拼音；荆芥穗炭、黄山药原图另有拉丁名，v1/v2候选未保留这些标题行。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0034",
+      "name_zh_candidate": "大蓟炭",
+      "group": "flagged",
+      "primary_triage": "title_text_omitted",
+      "issues": [
+        "missing_pinyin_or_latin"
+      ],
+      "notes": [
+        "原图有拼音；荆芥穗炭、黄山药原图另有拉丁名，v1/v2候选未保留这些标题行。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0051",
+      "name_zh_candidate": "川木通",
+      "group": "flagged",
+      "primary_triage": "source_plant_name_differs_from_drug_name",
+      "issues": [],
+      "notes": [
+        "原图支持药名与来源植物名分别出现；该近似名称提示本身不是识别错误。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0121",
+      "name_zh_candidate": "水蛭",
+      "group": "flagged",
+      "primary_triage": "equation_context_review",
+      "issues": [],
+      "notes": [
+        "已查看原图公式；这是表达式/上下文检查，不是数值验算。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0138",
+      "name_zh_candidate": "布渣叶",
+      "group": "flagged",
+      "primary_triage": "source_plant_name_differs_from_drug_name",
+      "issues": [],
+      "notes": [
+        "原图支持药名与来源植物名分别出现；该近似名称提示本身不是识别错误。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0141",
+      "name_zh_candidate": "龙腺叶",
+      "group": "flagged",
+      "primary_triage": "title_ocr_discrepancy",
+      "issues": [
+        "title_ocr_discrepancy"
+      ],
+      "notes": [
+        "原图标题读作龙脷叶；候选为龙腺叶。保留原文，另记待核实提案。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0195",
+      "name_zh_candidate": "西红花",
+      "group": "flagged",
+      "primary_triage": "source_plant_name_differs_from_drug_name",
+      "issues": [],
+      "notes": [
+        "原图支持药名与来源植物名分别出现；该近似名称提示本身不是识别错误。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0203",
+      "name_zh_candidate": "虫白蜡",
+      "group": "flagged",
+      "primary_triage": "source_plant_name_differs_from_drug_name",
+      "issues": [],
+      "notes": [
+        "原图支持药名与来源植物名分别出现；该近似名称提示本身不是识别错误。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0205",
+      "name_zh_candidate": "肉豆蔻",
+      "group": "flagged",
+      "primary_triage": "footer_artifact",
+      "issues": [],
+      "notes": [
+        "原图裁剪显示页脚扫描杂物；保留原块、排除字段的处理合理。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0221",
+      "name_zh_candidate": "冰片(合成龙脑)",
+      "group": "flagged",
+      "primary_triage": "origin_paragraph_absent_in_source",
+      "issues": [],
+      "notes": [
+        "原图标题后直接为性状；未见独立来源段，不能据规则缺项补造。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0284",
+      "name_zh_candidate": "没药",
+      "group": "flagged",
+      "primary_triage": "title_text_omitted",
+      "issues": [
+        "missing_pinyin_or_latin"
+      ],
+      "notes": [
+        "原图有拼音；荆芥穗炭、黄山药原图另有拉丁名，v1/v2候选未保留这些标题行。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0308",
+      "name_zh_candidate": "苦地丁",
+      "group": "flagged",
+      "primary_triage": "source_plant_name_differs_from_drug_name",
+      "issues": [],
+      "notes": [
+        "原图支持药名与来源植物名分别出现；该近似名称提示本身不是识别错误。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0316",
+      "name_zh_candidate": "枫香脂",
+      "group": "flagged",
+      "primary_triage": "source_plant_name_differs_from_drug_name",
+      "issues": [],
+      "notes": [
+        "原图支持药名与来源植物名分别出现；该近似名称提示本身不是识别错误。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0339",
+      "name_zh_candidate": "金银花",
+      "group": "flagged",
+      "primary_triage": "caption_body_mixed",
+      "issues": [
+        "caption_body_mixed"
+      ],
+      "notes": [
+        "检查及含量测定正文被并入图表caption，原始文字仍在，但现有字段边界不完整。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0361",
+      "name_zh_candidate": "荆芥穗炭",
+      "group": "flagged",
+      "primary_triage": "title_text_omitted",
+      "issues": [
+        "missing_pinyin_or_latin"
+      ],
+      "notes": [
+        "原图有拼音；荆芥穗炭、黄山药原图另有拉丁名，v1/v2候选未保留这些标题行。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0374",
+      "name_zh_candidate": "葫芦巴",
+      "group": "flagged",
+      "primary_triage": "title_ocr_discrepancy",
+      "issues": [
+        "title_ocr_discrepancy"
+      ],
+      "notes": [
+        "原图标题读作胡芦巴；候选为葫芦巴。保留原文，另记待核实提案。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0416",
+      "name_zh_candidate": "首乌藤",
+      "group": "flagged",
+      "primary_triage": "source_plant_name_differs_from_drug_name",
+      "issues": [],
+      "notes": [
+        "原图支持药名与来源植物名分别出现；该近似名称提示本身不是识别错误。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0474",
+      "name_zh_candidate": "黄山药",
+      "group": "flagged",
+      "primary_triage": "title_text_omitted",
+      "issues": [
+        "missing_pinyin_or_latin"
+      ],
+      "notes": [
+        "原图有拼音；荆芥穗炭、黄山药原图另有拉丁名，v1/v2候选未保留这些标题行。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0496",
+      "name_zh_candidate": "银杏叶",
+      "group": "flagged",
+      "primary_triage": "equation_context_review",
+      "issues": [
+        "formula_fragment_requires_adjacent_text"
+      ],
+      "notes": [
+        "已查看原图公式；这是表达式/上下文检查，不是数值验算。",
+        "公式因换行分成正文与片段，不能把李素含量片段独立检索。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0504",
+      "name_zh_candidate": "麻黄根",
+      "group": "flagged",
+      "primary_triage": "source_plant_name_differs_from_drug_name",
+      "issues": [],
+      "notes": [
+        "原图支持药名与来源植物名分别出现；该近似名称提示本身不是识别错误。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0509",
+      "name_zh_candidate": "鹿衔草",
+      "group": "flagged",
+      "primary_triage": "source_plant_name_differs_from_drug_name",
+      "issues": [],
+      "notes": [
+        "原图支持药名与来源植物名分别出现；该近似名称提示本身不是识别错误。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0521",
+      "name_zh_candidate": "绵萆薤",
+      "group": "flagged",
+      "primary_triage": "title_ocr_discrepancy",
+      "issues": [
+        "title_ocr_discrepancy"
+      ],
+      "notes": [
+        "原图标题读作绵萆薢；候选为绵萆薤。保留原文，另记待核实提案。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0552",
+      "name_zh_candidate": "滑石粉",
+      "group": "flagged",
+      "primary_triage": "equation_context_review",
+      "issues": [],
+      "notes": [
+        "已查看原图公式；这是表达式/上下文检查，不是数值验算。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0568",
+      "name_zh_candidate": "蜂蜜",
+      "group": "flagged",
+      "primary_triage": "equation_context_review",
+      "issues": [
+        "wide_table_order_fixed_in_v2"
+      ],
+      "notes": [
+        "已查看原图公式；这是表达式/上下文检查，不是数值验算。",
+        "原图表格横跨双栏。v1误归功能与主治；v2按跨栏表格分区后归检查。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0576",
+      "name_zh_candidate": "榼藤子",
+      "group": "flagged",
+      "primary_triage": "source_name_ocr_discrepancy",
+      "issues": [
+        "source_name_ocr_discrepancy"
+      ],
+      "notes": [
+        "药名标题与原图为榼藤子，来源识别出现楢藤子。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0612",
+      "name_zh_candidate": "麝香",
+      "group": "flagged",
+      "primary_triage": "terminal_tail_observed",
+      "issues": [
+        "administration_word_ocr_discrepancy"
+      ],
+      "notes": [
+        "原图末尾有贮藏段，尚不构成整章独立完整性认证；用法字段中原图多入被识别为多人。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0057",
+      "name_zh_candidate": "川射干",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0084",
+      "name_zh_candidate": "天葵子",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0139",
+      "name_zh_candidate": "龙胆",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields",
+        "both_sides_of_upload_boundary"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0164",
+      "name_zh_candidate": "瓜子金",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0280",
+      "name_zh_candidate": "羌活",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0287",
+      "name_zh_candidate": "灵芝",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields",
+        "both_sides_of_upload_boundary"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0407",
+      "name_zh_candidate": "禹州漏芦",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0422",
+      "name_zh_candidate": "秦芫",
+      "group": "control",
+      "primary_triage": "title_ocr_discrepancy",
+      "issues": [
+        "title_ocr_discrepancy"
+      ],
+      "notes": [
+        "原图标题读作秦艽；候选为秦芫。保留原文，另记待核实提案。"
+      ],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0440",
+      "name_zh_candidate": "党参",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields",
+        "both_sides_of_upload_boundary"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0445",
+      "name_zh_candidate": "射干",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0523",
+      "name_zh_candidate": "款冬花",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0592",
+      "name_zh_candidate": "墨旱莲",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields",
+        "both_sides_of_upload_boundary"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0605",
+      "name_zh_candidate": "翼首草",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    },
+    {
+      "entry_id": "mineru-herb-0607",
+      "name_zh_candidate": "覆盆子",
+      "group": "control",
+      "primary_triage": "no_discrepancy_observed_in_checked_scope",
+      "issues": [],
+      "notes": [],
+      "checked_scope": [
+        "title_and_origin_preview",
+        "end_and_next_title",
+        "selected_clinical_fields"
+      ],
+      "reviewer": "AI_original_scan_visual_check",
+      "human_signoff": false,
+      "production_eligible": false
+    }
+  ]
+}

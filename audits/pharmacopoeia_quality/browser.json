@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "human_signoff": false,
+  "checks": [
+    {
+      "case": "quality_counts_exception_queue_and_sampling",
+      "status": "passed"
+    },
+    {
+      "case": "two_character_query_returns_unreviewed_source_excerpt",
+      "status": "passed"
+    },
+    {
+      "case": "continued_herb_original_page_citation",
+      "status": "passed"
+    },
+    {
+      "case": "held_and_missing_fields_not_answered_or_promoted_by_ai",
+      "status": "passed"
+    },
+    {
+      "case": "trigram_chinese_search",
+      "status": "passed"
+    },
+    {
+      "case": "exact_herb_keyword_routes_to_candidate_metadata",
+      "status": "passed"
+    },
+    {
+      "case": "invalid_queries_and_file_exposure_blocked",
+      "status": "passed"
+    },
+    {
+      "case": "mobile_no_horizontal_page_overflow",
+      "status": "passed"
+    },
+    {
+      "case": "changed_policy_refuses_stale_index_and_clears_results",
+      "status": "passed"
+    },
+    {
+      "case": "database_unchanged_after_requests",
+      "status": "passed"
+    }
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "batch_sha256": "788fff9274e1520f95a123d5ce56ae1e7d84d6ea08ed5d6f7b3dfc87c6687fe3",
+  "html_sha256": "f160165ed059d23d4c4d04f414995852aa13c3876b79c72dc57ac46e1a75597b",
+  "browser_version": "153.0.8010.12"
+}

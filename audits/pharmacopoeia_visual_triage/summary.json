@@ -1,0 +1,18 @@
+{
+  "base_comparison_sha256": "7b89178268dbabde2548ca647d442efd2b60345c095a7aa3b6c6c06388b240c3",
+  "actor_type": "ai",
+  "human_signoff": false,
+  "draft_fields": 6,
+  "human_reference_fields_completed": 0,
+  "approved_fields": 0,
+  "comparison_sha256": "2975d191c0799877d443009a37a361a6a1f6b0dcbd29b539747ff0830eea2c61",
+  "proposal_sha256": "b520a2ab9f461af7fc1ab6957e0bafb58b767b41f6be46ea185ddc33ce64350c",
+  "source_pdf_authenticity_verified": false,
+  "excluded_margin_lines": 2,
+  "review_template_sha256": "bd480981e2bd0c1c69d8fa6378c069b746280088551b5ef2ec7df256a74bb6dc",
+  "code_sha256": {
+    "tcm/pharmacopoeia_comparison.py": "08a8e6bf370310b6621cb1d2c2256d60c544de872e011b61f968eb412c9a319e",
+    "tcm/pharmacopoeia_comparison.html": "99152b3a8eeba62706e2cd53a069c0a08c5b6935e9cd43252fb8d8c9f57be495",
+    "scripts/build_pharmacopoeia_visual_drafts.py": "ac62c0e555292d289b71edf3988c5e5e660242516a4d3f228e3479eff35d4a67"
+  }
+}
