@@ -1,0 +1,17 @@
+{
+  "commit": "45f3c8d9d19d3833d9d4018ff3b1ece927a863ae",
+  "offline_url": "https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/39111270540",
+  "docker_url": "https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/39111270656",
+  "offline": {
+    "conclusion": "success",
+    "modules": 36,
+    "tests": 337,
+    "deployment_tests_passed": true
+  },
+  "docker": {
+    "conclusion": "success",
+    "allowlisted_build": true,
+    "payload_check": true,
+    "provenance_upload": true
+  }
+}

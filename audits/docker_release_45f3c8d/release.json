@@ -1,0 +1,26 @@
+{
+  "status": "published_and_verified",
+  "published_date": "2026-10-18",
+  "docker_hub_account": "8n1eld",
+  "repository": "8n1eld/tcm-research-assistant",
+  "tag": "45f3c8d",
+  "reference": "8n1eld/tcm-research-assistant:45f3c8d",
+  "digest": "sha256:aa143dff36c6baa7a513fd4e8c237e201c288fb9826535b1a01ab8d0697214ff",
+  "platform": "linux/amd64",
+  "image_bytes": 407736593,
+  "source_commit": "45f3c8d9d19d3833d9d4018ff3b1ece927a863ae",
+  "source_tree_sha256": "858c4d75640d7ddaa967a2f41a3f56b60eef991ff1963fba1b5df3516c0e0736",
+  "clean_source_build": true,
+  "manifest_verified_from_docker_hub": true,
+  "pull_by_digest_verified": true,
+  "pulled_image_probe": {
+    "uid": 10001,
+    "python": "3.11.17",
+    "private_payload_absent": true,
+    "pdf_preview_dependency": true
+  },
+  "docker_hub_url": "https://hub.docker.com/r/8n1eld/tcm-research-assistant",
+  "scope": "Deterministic /research and structured /herb tools; private source files remain external mounts.",
+  "human_signoff": false,
+  "clinical_accuracy_evaluated": false
+}

@@ -11,11 +11,21 @@
 | 原药材查询容器 | http://127.0.0.1:7863/ | 保留 |
 | 主应用本机预览 | http://127.0.0.1:7871/ | 不属于 Docker 端口 |
 
-容器内部端口是 **8000**，本机通过 **7872** 访问。当前验收镜像为 `tcm-research-chat:27e0ea5-docker-local`，约 408 MB；标签基于父提交，包含本轮未提交工作树，实际内容以构建记录中的镜像 ID 和源文件 SHA256 为准。新镜像仅在本机，未发布到 Docker Hub。
+容器内部端口是 **8000**，本机通过 **7872** 访问。已从干净提交构建并发布 **`8n1eld/tcm-research-assistant:45f3c8d`**，约408 MB，平台为 `linux/amd64`；已核对远程摘要并按摘要拉取复验。最初的工作树验收镜像保留在历史审计中，不作为本次发布来源，见 [发布记录](releases/RESEARCH_45F3C8D.md)。
 
 ## 构建与启动
 
 在项目根目录执行，需要 Docker Desktop/Engine 正常运行：
+
+使用已发布镜像：
+
+```bash
+docker pull 8n1eld/tcm-research-assistant:45f3c8d
+RESEARCH_IMAGE=8n1eld/tcm-research-assistant:45f3c8d \
+docker compose -f compose.research.yaml up -d --no-build
+```
+
+从工作区自行构建：
 
 ```bash
 python -m scripts.build_research_image --tag tcm-research-chat:local
@@ -77,6 +87,6 @@ python -m scripts.verify_research_container \
 
 验收覆盖非 root/只读挂载、镜像不含私有载荷、来源不可用时拒绝就绪、主图查询、会话与 Cookie 名称隔离、原页图像、下载、ETCM 兼容、范围/引用保护、真实重启与重建恢复、删除后重启及浏览器移动端；10 组容器检查通过，摘要见 [容器验收](../audits/docker_research_v1/validation.json)。新增 6 项部署契约测试，完整离线回归 337 项通过。
 
-Docker Image CI 已改为通过同一白名单脚本构建精简研究镜像，检查预览依赖和私有载荷缺失，并保存构建指纹。该工作流只构建、不发布；本次提交包含此修改，远程运行以对应提交结果为准。私有资料挂载和重启验收只在本机执行，不伪装成 CI 已验证。
+Docker Image CI 已通过同一白名单脚本构建精简研究镜像，检查预览依赖和私有载荷缺失，并保存构建指纹；提交45f3c8d的构建及337项离线回归均成功。该工作流只构建、不发布，本次Hub上传另按用户指令执行。私有资料挂载和重启验收只在本机执行，不伪装成 CI 已验证。
 
-本轮未发布镜像、未迁移旧容器和用户会话；账户权限、备份恢复、服务容量及药典人工质量验收仍未完成，M5 不因此整体勾选完成。后续发布需要从提交后的代码重新构建、验收，再给 `8n1eld` 账户下的镜像确定发布标签。
+本次仅发布精简研究镜像，未迁移旧容器和用户会话；账户权限、备份恢复、服务容量及药典人工质量验收仍未完成，M5 不因此整体勾选完成。发布源提交、镜像摘要和拉取复核见 [发布记录](releases/RESEARCH_45F3C8D.md)。

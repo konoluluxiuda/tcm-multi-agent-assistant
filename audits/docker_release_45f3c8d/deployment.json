@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "image_id": "sha256:aa143dff36c6baa7a513fd4e8c237e201c288fb9826535b1a01ab8d0697214ff",
+  "tag": "tcm-research-chat:45f3c8d",
+  "source_revision": "45f3c8d9d19d3833d9d4018ff3b1ece927a863ae",
+  "working_tree_dirty_at_build": false,
+  "source_tree_sha256": "858c4d75640d7ddaa967a2f41a3f56b60eef991ff1963fba1b5df3516c0e0736",
+  "same_runtime_fingerprints_as_full_container_acceptance": true,
+  "new_commit_image_deployed": true,
+  "existing_signed_session_and_focus_survived_recreation": true,
+  "temporary_test_session_cleared": true,
+  "old_containers_unchanged": true,
+  "docker_hub_published": false
+}
