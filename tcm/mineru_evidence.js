@@ -8,7 +8,7 @@ function citations(card,hit,kind,label){
   box.append(el('p',`${printed} · 来源 SHA256：${s.source_sha256.slice(0,16)}…`, 'muted meta'));
   const button=el('button','查看原页');button.type='button';
   button.addEventListener('click',async()=>{button.disabled=true;button.textContent='加载原页……';
-   try{const response=await fetch('/api/page?'+new URLSearchParams({chunk:hit.chunk_id,kind,index:i}));
+   try{const response=await fetch((card.dataset.pageEndpoint||'/api/page')+'?'+new URLSearchParams({chunk:hit.chunk_id,kind,index:i}));
     if(!response.ok){const data=await response.json();throw new Error(data.error||'原页加载失败')}
     const blob=await response.blob(),url=URL.createObjectURL(blob),image=el('img');image.alt=`${source}物理第 ${s.source_pdf_page} 页，红框为证据定位`;
     image.onload=()=>URL.revokeObjectURL(url);image.onerror=()=>{URL.revokeObjectURL(url);image.remove();button.disabled=false;button.textContent='图片解码失败，点击重试'};image.src=url;box.append(image);button.remove();

@@ -28,6 +28,56 @@ FOLLOWUP = re.compile(r'^(它|这味药|刚才那味药|刚才的药材)')
 SOURCE_QUERY = {'出处呢', '出处', '查看原页', '看看出处', '证据呢'}
 
 
+class ResearchTool:
+    """Stateless tool turn shared by standalone and main-agent workflows."""
+    def __init__(self, service):
+        self.service = service
+        root = Path(__file__).parent
+        self.binding = {'kind': 'mineru_research_chat_v1', 'index_sha256': service.receipt['index_sha256'],
+                        'view_sha256': service.receipt['view_sha256'],
+                        'retriever_sha256': digest(root / 'mineru_retrieval.py'),
+                        'guards_sha256': digest(root / 'mineru_guards.py')}
+
+    def valid_context(self, context):
+        return (isinstance(context, dict) and all(context.get(k) == v for k, v in self.binding.items())
+                and isinstance(context.get('name'), str) and 1 <= len(context['name']) <= 200
+                and (context.get('last_question') is None or isinstance(context['last_question'], str)
+                     and len(context['last_question']) <= 500))
+
+    def execute(self, question, context):
+        if not isinstance(question, str) or not question.strip() or len(question) > 500:
+            raise ValueError("Question must contain 1–500 characters")
+        self.service.check()
+        stripped = question.strip()
+        is_source = stripped.rstrip('？?。！!') in SOURCE_QUERY
+        followup = bool(FOLLOWUP.match(stripped)) or is_source
+        result, resolved = None, stripped
+        if followup and not context:
+            status = 'clarify_entity'
+        elif followup and not self.valid_context(context):
+            status = 'context_stale'
+        elif is_source and not context.get('last_question'):
+            status = 'field_not_resolved'
+        else:
+            if is_source:
+                resolved = context['last_question']
+            elif followup:
+                resolved = FOLLOWUP.sub(context['name'], stripped, count=1)
+            result = self.service.search(resolved, method='name_field', k=5)
+            status = result['status']
+        new_context = context if is_source and status == 'field_not_resolved' and result is None else None
+        if result and status == 'candidates' and len({h['name'] for h in result['hits']}) == 1:
+            new_context = {**self.binding, 'name': result['hits'][0]['name'], 'last_question': resolved}
+        elif result and status == 'field_not_resolved' and len(result.get('names', [])) == 1:
+            if normalized(stripped) == normalized(result['names'][0]):
+                new_context = {**self.binding, 'name': result['names'][0], 'last_question': None}
+        message = MESSAGES.get(status, "当前无法完成查询，请明确药名和字段。")
+        return {"status": status, "message": message, "tool_result": result,
+                "focus_name": new_context["name"] if new_context else None, "followup": followup,
+                "resolved_question": resolved if result else None, "research_only": True,
+                "human_signoff": False, "llm_calls": 0, "workflow": "deterministic_research_tool_router"}, new_context
+
+
 class ResearchChat:
     def __init__(self, service, database, *, ttl_seconds=30 * 86400):
         self.service = service
@@ -47,11 +97,8 @@ class ResearchChat:
             elif marker != ('mineru_research_chat_v1',):
                 raise MemoryUnavailable('Unsupported research conversation schema')
         self.store.purge_expired()
-        root = Path(__file__).parent
-        self.binding = {'kind': 'mineru_research_chat_v1', 'index_sha256': service.receipt['index_sha256'],
-                        'view_sha256': service.receipt['view_sha256'],
-                        'retriever_sha256': digest(root / 'mineru_retrieval.py'),
-                        'guards_sha256': digest(root / 'mineru_guards.py')}
+        self.tool = ResearchTool(service)
+        self.binding = self.tool.binding
 
     def session(self, cookie):
         if self.store.valid_cookie(cookie):
@@ -63,10 +110,7 @@ class ResearchChat:
         return self.store.new_cookie()
 
     def valid_context(self, context):
-        return (isinstance(context, dict) and all(context.get(k) == v for k, v in self.binding.items())
-                and isinstance(context.get('name'), str) and 1 <= len(context['name']) <= 200
-                and (context.get('last_question') is None or isinstance(context['last_question'], str)
-                     and len(context['last_question']) <= 500))
+        return self.tool.valid_context(context)
 
     def load(self, cookie):
         snapshot = self.store.load_serialized(cookie)
@@ -100,41 +144,14 @@ class ResearchChat:
             from agents.conversation_store import ConversationConflict
             if snapshot.revision != revision:
                 raise ConversationConflict('Reload conversation before retrying')
-            context = snapshot.tcm_context
-            stripped = question.strip()
-            is_source = stripped.rstrip('？?。！!') in SOURCE_QUERY
-            followup = bool(FOLLOWUP.match(stripped)) or is_source
-            result, resolved = None, stripped
-            if followup and not context:
-                status = 'clarify_entity'
-            elif followup and not self.valid_context(context):
-                status = 'context_stale'
-            elif is_source and not context.get('last_question'):
-                status = 'field_not_resolved'
-            else:
-                if is_source:
-                    resolved = context['last_question']
-                elif followup:
-                    resolved = FOLLOWUP.sub(context['name'], stripped, count=1)
-                result = self.service.search(resolved, method='name_field', k=5)
-                status = result['status']
-            new_context = context if is_source and status == 'field_not_resolved' and result is None else None
-            if result and status == 'candidates' and len({h['name'] for h in result['hits']}) == 1:
-                new_context = {**self.binding, 'name': result['hits'][0]['name'], 'last_question': resolved}
-            elif result and status == 'field_not_resolved' and len(result.get('names', [])) == 1:
-                if normalized(stripped) == normalized(result['names'][0]):
-                    new_context = {**self.binding, 'name': result['names'][0], 'last_question': None}
-            message = MESSAGES.get(status, '当前无法完成查询，请明确药名和字段。')
+            result, new_context = self.tool.execute(question, snapshot.tcm_context)
+            message = result["message"]
             # Store user text and fixed summaries only, never raw OCR or candidate quotations.
             messages = snapshot.messages + [{'type': 'human', 'data': {'content': question}},
                                              {'type': 'ai', 'data': {'content': message}}]
             self.service.check()
             self.store.save_serialized(cookie, messages[-20:], new_context, revision=revision)
-            return {'status': status, 'message': message, 'tool_result': result,
-                    'revision': revision + 1, 'focus_name': new_context['name'] if new_context else None,
-                    'followup': followup, 'resolved_question': resolved if result else None,
-                    'research_only': True, 'human_signoff': False, 'llm_calls': 0,
-                    'workflow': 'deterministic_research_tool_router'}
+            return {**result, "revision": revision + 1}
 
     def delete(self, cookie):
         with session_turn(cookie):

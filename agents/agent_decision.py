@@ -23,6 +23,8 @@ import threading
 
 from config import Config
 from tcm.chat import HerbContext, parse_request, execute_turn
+from tcm.agent_research import parse_request as parse_research_request, runtime as research_runtime
+from tcm.agent_research import split_contexts, pack_contexts
 
 
 # Load configuration
@@ -114,6 +116,9 @@ class AgentState(MessagesState):
     tcm_request: Optional[Dict]
     tcm_result: Optional[Dict]
     tcm_context: Optional[HerbContext]
+    research_request: Optional[Dict]
+    research_result: Optional[Dict]
+    research_context: Optional[Dict]
 
 
 class AgentDecision(TypedDict):
@@ -164,10 +169,15 @@ def create_agent_graph():
         elif isinstance(current_input, dict):
             input_text = current_input.get("text", "")
         
+        research_request = parse_research_request(current_input)
+        if research_request is not None:
+            return {'research_request': research_request, 'tcm_context': None,
+                    'has_image': False, 'image_type': None, 'bypass_routing': False}
+        state = {**state, 'research_context': None}
         tcm_request = parse_request(current_input)
         if tcm_request is not None:
             return {"tcm_request": tcm_request, "has_image": False,
-                    "image_type": None, "bypass_routing": False}
+                    "image_type": None, "bypass_routing": False, 'research_context': None}
 
         # An unrelated turn ends the explicit herb focus, even if a guardrail blocks it.
         state = {**state, "tcm_context": None}
@@ -207,6 +217,8 @@ def create_agent_graph():
     
     def check_if_bypassing(state: AgentState) -> str:
         """Check if we should bypass normal routing due to guardrails."""
+        if state.get('research_request') is not None:
+            return 'PHARMACOPOEIA_RESEARCH_AGENT'
         if state.get("tcm_request") is not None:
             return "TCM_HERB_AGENT"
         if state.get("disabled_feature"):
@@ -220,6 +232,13 @@ def create_agent_graph():
         message = AIMessage(content=result["message"])
         return {"tcm_result": result, "tcm_context": context, "agent_name": "TCM_HERB_AGENT",
                 "output": message, "messages": [message], "needs_human_validation": False}
+
+    def run_research_agent(state: AgentState) -> Dict:
+        result, context = research_runtime.execute(state['research_request'], state.get('research_context'))
+        message = AIMessage(content=result['message'])
+        return {'research_result': result, 'research_context': context, 'tcm_context': None,
+                'agent_name': 'PHARMACOPOEIA_RESEARCH_AGENT', 'output': message,
+                'messages': [message], 'needs_human_validation': False}
 
     def route_to_agent(state: AgentState) -> Dict:
         """Make decision about which agent should handle the query."""
@@ -681,6 +700,8 @@ def create_agent_graph():
     # Define the edges (workflow connections)
     workflow.add_node("TCM_HERB_AGENT", run_tcm_herb_agent)
     workflow.add_edge("TCM_HERB_AGENT", END)
+    workflow.add_node('PHARMACOPOEIA_RESEARCH_AGENT', run_research_agent)
+    workflow.add_edge('PHARMACOPOEIA_RESEARCH_AGENT', END)
     workflow.set_entry_point("analyze_input")
     # workflow.add_edge("analyze_input", "route_to_agent")
     # Add conditional routing for guardrails bypass
@@ -691,7 +712,8 @@ def create_agent_graph():
             "feature_unavailable": "feature_unavailable",
             "apply_guardrails": "apply_guardrails",
             "route_to_agent": "route_to_agent",
-            "TCM_HERB_AGENT": "TCM_HERB_AGENT"
+            "TCM_HERB_AGENT": "TCM_HERB_AGENT",
+            'PHARMACOPOEIA_RESEARCH_AGENT': 'PHARMACOPOEIA_RESEARCH_AGENT'
         }
     )
     
@@ -755,6 +777,9 @@ def init_agent_state() -> AgentState:
         "tcm_request": None,
         "tcm_result": None,
         "tcm_context": None,
+        'research_request': None,
+        'research_result': None,
+        'research_context': None,
         "next": ""
     }
 
@@ -783,7 +808,7 @@ def _process_query(query: Union[str, Dict], thread_config: Dict) -> Dict:
     session_id = thread_config["configurable"]["thread_id"]
     snapshot = memory.load(session_id)
     state = init_agent_state()
-    state["tcm_context"] = snapshot.tcm_context
+    state['tcm_context'], state['research_context'] = split_contexts(snapshot.tcm_context)
     
     # Add the current query
     state["current_input"] = query
@@ -801,7 +826,7 @@ def _process_query(query: Union[str, Dict], thread_config: Dict) -> Dict:
     # Keep history to reasonable size (ANOTHER OPTION: summarize and store before truncating history)
     if len(result["messages"]) > config.max_conversation_history:  # Keep last config.max_conversation_history messages
         result["messages"] = result["messages"][-config.max_conversation_history:]
-    memory.save(session_id, result["messages"], result.get("tcm_context"), revision=snapshot.revision)
+    memory.save(session_id, result["messages"], pack_contexts(result.get('tcm_context'), result.get('research_context')), revision=snapshot.revision)
 
     # visualize conversation history in console
     for m in result["messages"]:

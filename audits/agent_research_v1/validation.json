@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "distinct_engineering_tests": 161,
+  "main_research_browser_checks": 6,
+  "legacy_herb_browser_checks": 13,
+  "standalone_research_browser_checks": 8,
+  "main_service_restart_tested": true,
+  "llm_calls_on_research_branch": 0,
+  "actual_local_main_smoke_queries": 3,
+  "clinical_correctness_evaluated": false,
+  "human_signoff": false,
+  "docker_image_rebuilt": false,
+  "source_files_unchanged_sha256": {
+    "var/mineru_retrieval_v2/research.sqlite3": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+    "var/mineru_revisions_v2/research_view.json": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+    "var/tcm/herbs.sqlite3": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+    "data/《中国药典》2025年版 一部.pdf": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+    "data/《中国药典》2025年版 一部 全本.pdf": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+  },
+  "code_sha256": {
+    "tcm/agent_research.py": "842c132d55d68ab64adf74396e9f44b3aefb1e42ce61ec383b7949b4d97dd2bb",
+    "tcm/mineru_chat.py": "77116ff0fb42897b77463026237a3268e885ba7f63d479b4bf286fe0d4b95a35",
+    "tcm/mineru_evidence.js": "ea1938ad18982dbbb37b2919b3bff95dd9cc96b8d33bca4daedd11a96b7ed24f",
+    "agents/agent_decision.py": "a59ea5ce7ea27b35b9db18559552fdd85de03269f9635a6e535fde198f0be1b3",
+    "app.py": "3cce202e514b8fc652b59851b46648830b4750d4630de06e5b8a482aacb16066",
+    "templates/index.html": "2d553ed29089cfaa13ac1b858af95214dda45af97579bf52d2d942f6313559f4",
+    "tests/test_agent_research.py": "d010dcf6e7528c5a6863e99e28821c142414804aff19b24e85abe7b432b77377",
+    "scripts/verify_agent_research_ui.py": "48df40d9289a65f7d0b920631d8b9794c4258844e7b63a5c6983a8413f4c7d81",
+    "requirements-research-preview.txt": "782f49df39dad8bfd8293d12d8cf6e8781358039a59c6f830b8a82ca7de12d40"
+  }
+}

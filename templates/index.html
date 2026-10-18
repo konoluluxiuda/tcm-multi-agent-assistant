@@ -212,6 +212,9 @@
             background-color: #f0f0f0;
         }
     </style>
+<style>
+.research-result article{border:1px solid #d6e0d5;border-radius:8px;padding:12px;margin:12px 0;overflow-wrap:anywhere}.research-result h2{font-size:19px}.research-result h3{font-size:16px}.research-result .texts{display:grid;grid-template-columns:1fr 1fr;gap:12px}.research-result pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.7 system-ui;background:#f6f7f3;padding:10px}.research-result img{display:block;max-width:100%;height:auto;margin-top:10px}.research-result .notice{padding:10px;background:#fff6e4;border-left:4px solid #b17c29}.research-result .muted{font-size:13px;color:#596b60}.research-result summary{cursor:pointer}.research-result .citation{padding:10px;border:1px solid #dfe5dd;margin-top:8px}@media(max-width:650px){.research-result .texts{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
     <div class="container-fluid py-4">
@@ -312,7 +315,7 @@
                                     </div>
                                 </div>
                                 <small class="d-block text-muted">药材资料：输入 /herb 加拼音、拉丁名、英文名或来源 ID。中文名映射暂不支持。选定后可问“它的药用部位是什么？”，输入 /herb-clear 清除选择。</small>
-                                <textarea id="message-input" class="form-control message-input" rows="1" placeholder="药材查询示例：/herb BaiBu"></textarea>
+                                <textarea id="message-input" class="form-control message-input" rows="1" placeholder="药材：/herb BaiBu；药典：/research 甘草的功效"></textarea>
                             </div>
                             
                             <button type="submit" class="btn btn-primary rounded-circle ms-2" style="width: 40px; height: 40px;">
@@ -327,7 +330,20 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="/research-evidence.js"></script>
     <script>
+        function el(tag,text,cls){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node}
+        function renderResearchResult(container,result){
+            container.classList.add('research-result');container.dataset.researchStatus=result.status;
+            container.append(el('strong','药典研究工具 · 未人工审核'),el('p',result.message));
+            if(result.focus_name)container.append(el('p','当前研究药材：'+result.focus_name));
+            const data=result.tool_result;if(!data)return;
+            function append(hit,notice){const card=render(hit);card.dataset.pageEndpoint='/api/research/page';if(notice)card.prepend(el('p',notice,'notice'));
+                if(hit.reference_witness){const witness=el('section');witness.dataset.pageEndpoint='/api/research/page';witness.append(el('h3','相邻引用提示原文'),el('pre',hit.reference_witness.raw_text));citations(witness,hit.reference_witness,'evidence','引用提示原页');card.append(witness)}container.append(card)}
+            for(const hit of data.hits||[])append(hit);
+            for(const hit of data.unresolved_evidence||[])append(hit,'查询未完成：正文缺失或引用尚未展开，此片段不作为完整字段结果。');
+            for(const entry of data.related_entries||[]){const card=el('article');card.dataset.pageEndpoint='/api/research/page';card.append(el('h3',entry.name),el('p','相关母条目，仅供核对，不能替代指定炮制品。','notice'));citations(card,entry,'title_evidence','母条目原页');container.append(card)}
+        }
 
         // let mediaRecorder;
         // let audioChunks = [];
@@ -1071,6 +1087,10 @@
                     renderHerbResult(card, history.tcm, chooseSource);
                     chatBody.appendChild(card);
                 }
+                if (history.research) {
+                    const card = document.createElement('div');card.className='message assistant-message';
+                    renderResearchResult(card,history.research);chatBody.appendChild(card);
+                }
                 memoryStatus.textContent = '会话已自动保存，闲置 ' + history.retention_days + ' 天后过期；清除会话会删除已保存记忆。';
                 chatBody.scrollTop = chatBody.scrollHeight;
                 setBusy(false);
@@ -1204,7 +1224,7 @@
                     }
                     
                     const data = await response.json();
-                    if (!response.ok && !data.tcm) throw new Error(data.detail || '请求未完成');
+                    if (!response.ok && !data.tcm && !data.research) throw new Error(data.detail || '请求未完成');
                     
                     // Remove thinking indicator
                     thinkingElement.remove();
@@ -1217,7 +1237,7 @@
                     const cleanText = removeMarkdown(data.response);
                     
                     // Build HTML content for the response with audio controls
-                    let assistantHtml = data.tcm ? '' : `
+                    let assistantHtml = (data.tcm || data.research) ? '' : `
                         <div class="agent-tag">${data.agent}</div>
                         <div>${marked.parse(data.response)}</div>
                         <div class="audio-controls mt-2">
@@ -1266,7 +1286,9 @@
                         }
                     }
                     
-                    if (data.tcm) {
+                    if (data.research) {
+                        renderResearchResult(assistantMessageElement,data.research);
+                    } else if (data.tcm) {
                         renderHerbResult(assistantMessageElement, data.tcm, sourceId => {
                             messageInput.value = '/herb ' + sourceId;
                             chatForm.requestSubmit();

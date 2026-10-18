@@ -1,0 +1,60 @@
+{
+  "status": "passed",
+  "research_side_total": 120,
+  "new_agent_tests": 11,
+  "existing_core_tests": 30,
+  "distinct_total": 161,
+  "core_modules": [
+    {
+      "module": "test_agent_research.py",
+      "status": "passed",
+      "total": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_chat.py",
+      "status": "passed",
+      "total": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_conversation_store.py",
+      "status": "passed",
+      "total": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_agent_sessions.py",
+      "status": "passed",
+      "total": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_tcm_chat.py",
+      "status": "passed",
+      "total": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "note": "The 16 mineru_chat tests are already included in the research-side 120; do not double count."
+}

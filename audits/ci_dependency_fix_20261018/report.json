@@ -1,0 +1,38 @@
+{
+  "cause": "Mandatory synthetic PDF preview tests skipped because CI dependencies omitted PyMuPDF and Pillow.",
+  "failed_commit": "91d19551bcc60a96b46de589fc5824195f9cf245",
+  "failed_run_url": "https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/39093022901",
+  "failed_job": 117573573907,
+  "remote_test_total": 298,
+  "remote_assertion_failures": 0,
+  "remote_errors": 0,
+  "remote_skipped": 8,
+  "failed_test_module": "test_mineru_research.py",
+  "docker_build_run": "https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/39093022902",
+  "docker_build_conclusion": "success",
+  "dependency_fix": [
+    "pymupdf==1.28.2",
+    "pillow==11.1.0"
+  ],
+  "requirements_ci_sha256": "8c340162bb5171475c961909a1c76f9cd153cf4408461c2cf1c4d028c152f14d",
+  "local_rechecks": [
+    {
+      "scope": "pushed_snapshot_recheck.json",
+      "python": "3.12.3",
+      "passed": 298,
+      "skipped": 0,
+      "network_attempts": 0
+    },
+    {
+      "scope": "current_workspace_recheck.json",
+      "python": "3.12.3",
+      "passed": 309,
+      "skipped": 0,
+      "network_attempts": 0
+    }
+  ],
+  "pip_check": "passed",
+  "github_python": "3.11",
+  "local_python_note": "Clean Python 3.12 venv; remote rerun still required after push.",
+  "github_fix_pushed": false
+}

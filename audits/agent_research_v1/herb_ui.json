@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "synthetic": true,
+  "database_sha256": "8d11b7a9f2b28e768ad2cac2011117d5db2dfa46f5c2251e86dfab38de5cbb21",
+  "human_signoff": false,
+  "task_completion_rate": null,
+  "cases": [
+    {
+      "case": "name_lookup_provenance",
+      "status": "passed"
+    },
+    {
+      "case": "ambiguity_then_source_choice",
+      "status": "passed"
+    },
+    {
+      "case": "unsupported_name_mapping",
+      "status": "passed"
+    },
+    {
+      "case": "not_found",
+      "status": "passed"
+    },
+    {
+      "case": "invalid_query",
+      "status": "passed"
+    },
+    {
+      "case": "source_and_user_html_literal",
+      "status": "passed"
+    },
+    {
+      "case": "followup_field_and_provenance",
+      "status": "passed"
+    },
+    {
+      "case": "named_field_then_source_followup",
+      "status": "passed"
+    },
+    {
+      "case": "ambiguity_blocks_old_focus_then_choice",
+      "status": "passed"
+    },
+    {
+      "case": "explicit_clear",
+      "status": "passed"
+    },
+    {
+      "case": "separate_browser_session_clarifies",
+      "status": "passed"
+    },
+    {
+      "case": "service_and_browser_process_restart_recovers_history_and_entity",
+      "status": "passed"
+    },
+    {
+      "case": "deleted_history_stays_deleted_after_restart",
+      "status": "passed"
+    }
+  ],
+  "page_errors": [],
+  "blocked_external_requests": [
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js",
+    "https://img.icons8.com/fluency/48/chromatography.png",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js",
+    "https://img.icons8.com/fluency/48/chromatography.png",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js",
+    "https://img.icons8.com/fluency/48/chromatography.png",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js",
+    "https://img.icons8.com/fluency/48/chromatography.png"
+  ],
+  "source_code_sha256": {
+    "tcm/chat.py": "8a3d5926179fc09aaf348ac298616e542a2f70103b80ce28560ddc47174e731e",
+    "agents/agent_decision.py": "a59ea5ce7ea27b35b9db18559552fdd85de03269f9635a6e535fde198f0be1b3",
+    "agents/conversation_store.py": "921a778565114a55c35c186e0ad1c4fc060e288a9b0ab2f361fe01c211c7bcfa",
+    "app.py": "3cce202e514b8fc652b59851b46648830b4750d4630de06e5b8a482aacb16066",
+    "templates/index.html": "2d553ed29089cfaa13ac1b858af95214dda45af97579bf52d2d942f6313559f4",
+    "scripts/verify_tcm_chat_ui.py": "cd359c9b0ef1e62b2ada463f61baf57f76754a929b6e3dca15c1d1c90bf1c654"
+  },
+  "browser_version": "153.0.8010.12"
+}

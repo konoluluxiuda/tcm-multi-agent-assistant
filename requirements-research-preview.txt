@@ -1,0 +1,4 @@
+# Optional original-PDF previews for the opt-in main-chat research tool.
+# Keep Pillow aligned with requirements.txt; no OCR models are needed.
+pymupdf==1.28.2
+pillow==11.1.0

@@ -10,7 +10,7 @@ from io import BytesIO
 from pathlib import Path
 
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Depends, Request, Response, Cookie
-from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.responses import JSONResponse, HTMLResponse, FileResponse, Response as BinaryResponse
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 
@@ -23,6 +23,8 @@ from agents.conversation_store import MemoryUnavailable, ConversationConflict, S
 from agents.runtime import session_turn
 from features import env_bool
 from tcm.chat import execute_turn
+from tcm.agent_research import split_contexts, runtime as research_runtime
+from tcm.mineru_research import SnapshotChanged
 from source_access import SourceCatalog, PrivateArtifacts, create_source_router
 
 # Load configuration
@@ -186,8 +188,11 @@ def conversation(response: Response, session_id: Optional[str] = Cookie(None)):
         result = {"messages": [{"role": "user" if m.type == "human" else "assistant", "content": m.content}
                                for m in snapshot.messages if m.type in ('human', 'ai')],
                   "retention_days": agent_runtime.memory.ttl_seconds / 86400}
-        if snapshot.tcm_context:
-            result['tcm'], _ = execute_turn({'followup': True, 'field': 'source'}, snapshot.tcm_context)
+        herb_context, research_context = split_contexts(snapshot.tcm_context)
+        if herb_context:
+            result['tcm'], _ = execute_turn({'followup': True, 'field': 'source'}, herb_context)
+        if research_context:
+            result['research'], _ = research_runtime.execute({'question': '出处呢'}, research_context)
     set_session_cookie(response, session_id)
     response.headers['Cache-Control'] = 'private, no-store'
     return result
@@ -207,6 +212,32 @@ def clear_conversation(response: Response, session_id: Optional[str] = Cookie(No
 def health_check():
     """Health check endpoint for Docker health checks"""
     return {"status": "healthy"}
+
+
+@app.get('/research-evidence.js')
+def research_evidence_script():
+    return FileResponse(Path(__file__).parent / 'tcm/mineru_evidence.js', media_type='text/javascript')
+
+
+@app.get('/api/research/page')
+def research_page(request: Request, chunk: str, kind: str = 'evidence', index: int = 0):
+    pairs = list(request.query_params.multi_items())
+    if set(request.query_params) - {'chunk', 'kind', 'index'} or len(pairs) != len(request.query_params):
+        return JSONResponse(status_code=400, content={'error': '无效的证据参数。'})
+    try:
+        service = research_runtime.get_service()
+        if service is None:
+            return JSONResponse(status_code=503, content={'error': '药典研究工具未启用。'})
+        return BinaryResponse(service.preview(chunk, kind, index), media_type='image/png',
+                              headers={'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff'})
+    except SnapshotChanged:
+        return JSONResponse(status_code=409, content={'error': '研究来源已改变，请校验并重启服务。'})
+    except LookupError:
+        return JSONResponse(status_code=404, content={'error': '证据未找到。'})
+    except ValueError:
+        return JSONResponse(status_code=400, content={'error': '无效的证据参数或来源不匹配。'})
+    except (OSError, ImportError):
+        return JSONResponse(status_code=503, content={'error': '原页预览暂不可用，请检查PDF依赖及来源。'})
 
 @app.post("/chat")
 def chat(
@@ -237,6 +268,11 @@ def chat(
             if result["tcm"]["status"] in ("database_unavailable", "dataset_not_found"):
                 response.status_code = 503
                 result["status"] = "unavailable"
+        if response_data.get('research_result') is not None:
+            result['research'] = response_data['research_result']
+            if result['research']['status'] in ('research_disabled', 'research_unavailable'):
+                response.status_code = 503
+                result['status'] = 'unavailable'
         return result
     except (MemoryUnavailable, ConversationConflict, SessionExpired):
         raise
