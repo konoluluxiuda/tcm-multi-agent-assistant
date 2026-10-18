@@ -6,7 +6,7 @@ from agents.conversation_store import ConversationStore, SessionExpired
 from agents.conversation_store import MemoryUnavailable
 from agents.runtime import session_turn
 from tcm.mineru_pharmacopoeia import digest
-from tcm.mineru_retrieval import normalized
+from tcm.mineru_retrieval import name_key
 
 MESSAGES = {
     'candidates': '已检出未人工审核的字段候选，请查看证据并核对原页。',
@@ -69,7 +69,7 @@ class ResearchTool:
         if result and status == 'candidates' and len({h['name'] for h in result['hits']}) == 1:
             new_context = {**self.binding, 'name': result['hits'][0]['name'], 'last_question': resolved}
         elif result and status == 'field_not_resolved' and len(result.get('names', [])) == 1:
-            if normalized(stripped) == normalized(result['names'][0]):
+            if name_key(stripped) == name_key(result['names'][0]):
                 new_context = {**self.binding, 'name': result['names'][0], 'last_question': None}
         message = MESSAGES.get(status, "当前无法完成查询，请明确药名和字段。")
         return {"status": status, "message": message, "tool_result": result,

@@ -120,6 +120,21 @@ def verify(output, server_python, executable):
                 download.value.save_as(str(output / 'reference.md'))
                 assert '同甘草' in (output / 'reference.md').read_text()
                 passed('scope_and_reference_exports_preserve_incomplete_status')
+                card, result = submit('/research 黃芪的服用剂量', 'candidates')
+                assert result['focus_name'] == '黄芪'
+                assert '药名字形：黃芪 → 黄芪' in card.inner_text()
+                assert '字段：剂量 → 用法与用量' in card.inner_text()
+                with page.expect_download() as download:
+                    card.locator('[data-evidence-export]').click()
+                download.value.save_as(str(output / 'query_interpretation.md'))
+                text = (output / 'query_interpretation.md').read_text()
+                assert '黃芪 → 黄芪' in text and '剂量 → 用法与用量' in text
+                card, result = submit('/research 它每次多少克', 'candidates')
+                assert result['resolved_question'] == '黄芪每次多少克'
+                passed('glyph_and_field_paraphrase_trace_survives_followup_and_export')
+                submit('/research 酒黃芪的服用剂量', 'variant_scope_unresolved')
+                submit('/research Huangqi的功效', 'name_not_resolved')
+                passed('new_query_forms_keep_processed_scope_and_pinyin_abstention')
                 submit('/research', 'invalid_query')
                 submit('/research-clear', 'context_cleared')
                 passed('scope_reference_and_command_errors_never_call_model')

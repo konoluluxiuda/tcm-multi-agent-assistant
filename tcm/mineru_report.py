@@ -90,6 +90,14 @@ def export_report(service, question, snapshot):
              f'- 查询保护版本：{literal(data["guard_version"])}', '- 导出格式版本：1']
     for name in ('mineru_retrieval.py', 'mineru_guards.py', 'mineru_report.py'):
         lines.append(f'- {literal(name)} SHA256：{digest(Path(__file__).with_name(name))}')
+    interpretation = data.get('query_interpretation', {})
+    if interpretation:
+        lines.append(f'- 查询解析规则版本：{interpretation["version"]}')
+        for item in interpretation.get('name_forms', []):
+            if item['rule'] == 'script_variant':
+                lines.append(f'- 药名字形定位：{literal(item["query_form"])} → {literal(item["indexed_name"])}（不作为别名或药理等价关系）')
+        for item in interpretation.get('field_matches', []):
+            lines.append(f'- 字段定位：{literal(item["query_term"])} → {literal(item["field"])}')
     lines += ['', '## 范围、缺失与限制', '',
               '- 未检出不等于没有该作用、注意事项或禁忌。',
               '- 不跨条目补齐引用，不将母药内容替代指定炮制品，不自动合并重复字段。',

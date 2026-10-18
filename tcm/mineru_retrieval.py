@@ -13,20 +13,28 @@ PARAMETERS = {'tokenizer': 'nfkc_lower_cjk_unigrams_bigrams_latin_words',
               'bm25_weights': [3.0, 2.0, 1.0], 'max_query_chars': 500,
               'default_k': 5, 'max_k': 20, 'appendices_in_routed_search': False}
 INTENTS = {
-    'origin': ('来源', '药用部位', '入药部位', '哪个部位', '什么植物', '来自'),
+    'origin': ('来源', '药用部位', '入药部位', '哪个部位', '什么植物', '来自', '取自哪一部分', '取自哪个部分'),
     '性味与归经': ('性味', '归经', '归哪', '入哪些经'),
-    '功能与主治': ('功能', '主治', '功效', '作用', '用于', '病证'),
-    '用法与用量': ('用法', '用量', '用多少', '用几克', '煎服量'),
-    '注意': ('注意', '禁忌', '禁用', '慎用', '不宜'),
-    '贮藏': ('贮藏', '储存', '保存', '存放'),
+    '功能与主治': ('功能', '主治', '功效', '作用', '用于', '病证', '药效'),
+    '用法与用量': ('用法', '用量', '用多少', '用几克', '煎服量', '多少克', '每次几克', '剂量'),
+    '注意': ('注意', '禁忌', '禁用', '慎用', '不宜', '使用警示', '使用警告'),
+    '贮藏': ('贮藏', '储存', '保存', '存放', '储藏'),
     '炮制': ('炮制', '怎么加工'),
     '性状': ('性状', '外观'),
     '鉴别': ('鉴别',), '检查': ('检查',), '含量测定': ('含量测定',),
 }
+# Deliberately finite glyph pairs, not medical aliases or a pinyin dictionary.
+# Query-only: do not change normalized()/terms() or the frozen FTS index recipe.
+NAME_SCRIPT_PAIRS = {'黃': '黄', '黨': '党', '參': '参', '烏': '乌'}
+QUERY_RULE_VERSION = 1
 
 
 def normalized(text):
     return ''.join(unicodedata.normalize('NFKC', text).lower().split())
+
+
+def name_key(text):
+    return normalized(text).translate(str.maketrans(NAME_SCRIPT_PAIRS))
 
 
 def terms(text):
@@ -42,10 +50,10 @@ def terms(text):
 
 def name_spans(query, names):
     """Prefer longest overlapping names, but retain separately mentioned entities."""
-    text = normalized(query)
+    text = name_key(query)
     spans = []
     for name in names:
-        value = normalized(name)
+        value = name_key(name)
         if len(value) < 2:
             continue
         start = 0
@@ -90,19 +98,20 @@ class ResearchRetriever:
         result = {'method': method, 'question': question, 'status': 'candidates', 'hits': [],
                   'research_only': True, 'human_signoff': False, 'answer_generated': False,
                   'guard_version': GUARD_VERSION,
-                  'view_sha256': self.receipt['view_sha256']}
+                  'view_sha256': self.receipt['view_sha256'],
+                  'query_interpretation': {'version': QUERY_RULE_VERSION, 'name_forms': [], 'field_matches': []}}
         if not question.strip() and not (name and field):
             return {**result, 'status': 'empty_query'}
         if method == 'bm25' and (name is not None or field is not None):
             raise ValueError('Explicit filters require name_field mode')
         if (name is not None and not isinstance(name, str)) or (field is not None and not isinstance(field, str)):
             raise ValueError('Name and field must be text')
-        checked_names, variants, rejected = context_check(normalized(name or question),
-            name_spans(name or question, self.names),
+        query_names = name_spans(name or question, self.names)
+        checked_names, variants, rejected = context_check(normalized(name or question), query_names,
             field_words=[word for aliases in INTENTS.values() for word in aliases])
         if name:
-            # Explicit filters require exact names; no fuzzy or parent-name substitution.
-            checked_names = [n for n in self.names if normalized(n) == normalized(name)]
+            # Exact glyph-normalized names only; no fuzzy or parent-name substitution.
+            checked_names = [n for n in self.names if name_key(n) == name_key(name)]
         if variants:
             return {**result, 'status': 'variant_scope_unresolved', 'lookup_complete': False,
                     'requested_variants': variants,
@@ -111,6 +120,11 @@ class ResearchRetriever:
         if rejected:
             return {**result, 'status': 'name_not_resolved', 'lookup_complete': False,
                     'message': '药名上下文无法确认，请明确使用候选药名查询。'}
+        result['query_interpretation']['name_forms'] = [
+            {'query_form': normalized(name or question)[a:b], 'indexed_name': n,
+             'rule': 'script_variant' if normalized(name or question)[a:b] != normalized(n)
+                     else 'exact_or_nfkc_whitespace'}
+            for a, b, n in query_names if n in checked_names]
         if method == 'bm25':
             if name is not None or field is not None:
                 raise ValueError('Explicit filters require name_field mode')
@@ -127,6 +141,9 @@ class ResearchRetriever:
             if not names:
                 return {**result, 'status': 'name_not_resolved'}
             if len(names) > 1:
+                if len({name_key(n) for n in names}) == 1:
+                    return {**result, 'status': 'ambiguous_name', 'names': names,
+                            'message': '字形归一化匹配多个来源药名，不能自动合并或选择。'}
                 return {**result, 'status': 'multiple_names', 'names': names}
             entry_ids = [r[0] for r in self.connection.execute('SELECT entry_id FROM entries WHERE name=?', (names[0],))]
             if len(entry_ids) > 1:
@@ -135,6 +152,9 @@ class ResearchRetriever:
                 labels = [field] if field in INTENTS or field == '性味' else []
             else:
                 labels = [label for label, aliases in INTENTS.items() if any(a in normalized(question) for a in aliases)]
+                result['query_interpretation']['field_matches'] = [
+                    {'query_term': alias, 'field': label}
+                    for label, aliases in INTENTS.items() for alias in aliases if alias in normalized(question)]
             if not labels:
                 return {**result, 'status': 'field_not_resolved', 'names': names}
             if '性味与归经' in labels:

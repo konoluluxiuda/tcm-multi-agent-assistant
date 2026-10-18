@@ -1,0 +1,2284 @@
+{
+  "status": "completed_with_observed_limitations",
+  "questions": 50,
+  "question_sha256": "27db5b42cb3972a47ac1ec9bb2e48b749ad610c051ecf77da785d85665b6f00a",
+  "reference_sha256": "9f5f1baa6cea6ef87a79303348cb58c8887a99bfd4b456b6fab5ae6fa451a225",
+  "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+  "retriever_sha256": "e4f9035a8b5ffb60b6c075415d60ac3ecee22e0ca7910d7923015575fabfb549",
+  "guards_sha256": "4f6675eefa56c933f050dd1eadba9b54b13408138efc7ae8edaa40ac53f183ed",
+  "evaluation_code_sha256": "dd454dd291958118b2767a1b705bfb87c4ad45b46be691a6baa282a593ea6a61",
+  "scoring_code_sha256": "92a5f98370dacf444c3a49fd3076613c936560b57ae0f00fe2ec147528098f64",
+  "human_gold": false,
+  "clinical_correctness_evaluated": false,
+  "external_calls": 0,
+  "llm_calls": 0,
+  "embedding_calls": 0,
+  "limits": [
+    "Source spans are proposed from the same parsed corpus used by retrieval.",
+    "Title/field spotchecks do not certify complete OCR or clinical correctness.",
+    "Variant guards test non-substitution behavior, not medical dose equivalence."
+  ],
+  "groups": {
+    "bm25": {
+      "canonical": {
+        "total": 20,
+        "evidence_cases": 20,
+        "target_hit_at_5_count": 20,
+        "target_top1_count": 11,
+        "mrr_at_5": 0.7375,
+        "behavior_cases": 0,
+        "behavior_passed": 0,
+        "status_counts": {
+          "partial_evidence": 3,
+          "candidates": 17
+        }
+      },
+      "field_paraphrase": {
+        "total": 8,
+        "evidence_cases": 8,
+        "target_hit_at_5_count": 3,
+        "target_top1_count": 1,
+        "mrr_at_5": 0.25,
+        "behavior_cases": 0,
+        "behavior_passed": 0,
+        "status_counts": {
+          "candidates": 4,
+          "partial_evidence": 4
+        }
+      },
+      "name_variant": {
+        "total": 8,
+        "evidence_cases": 8,
+        "target_hit_at_5_count": 4,
+        "target_top1_count": 1,
+        "mrr_at_5": 0.28125,
+        "behavior_cases": 0,
+        "behavior_passed": 0,
+        "status_counts": {
+          "partial_evidence": 7,
+          "candidates": 1
+        }
+      },
+      "out_of_scope": {
+        "total": 6,
+        "evidence_cases": 0,
+        "target_hit_at_5_count": 0,
+        "target_top1_count": 0,
+        "mrr_at_5": null,
+        "behavior_cases": 6,
+        "behavior_passed": 1,
+        "status_counts": {
+          "name_not_resolved": 1,
+          "partial_evidence": 3,
+          "candidates": 2
+        }
+      },
+      "processed_variant": {
+        "total": 8,
+        "evidence_cases": 4,
+        "target_hit_at_5_count": 3,
+        "target_top1_count": 3,
+        "mrr_at_5": 0.75,
+        "behavior_cases": 4,
+        "behavior_passed": 4,
+        "status_counts": {
+          "partial_evidence": 2,
+          "variant_scope_unresolved": 4,
+          "candidates": 2
+        }
+      }
+    },
+    "name_field": {
+      "canonical": {
+        "total": 20,
+        "evidence_cases": 20,
+        "target_hit_at_5_count": 20,
+        "target_top1_count": 20,
+        "mrr_at_5": 1.0,
+        "behavior_cases": 0,
+        "behavior_passed": 0,
+        "status_counts": {
+          "candidates": 20
+        }
+      },
+      "field_paraphrase": {
+        "total": 8,
+        "evidence_cases": 8,
+        "target_hit_at_5_count": 8,
+        "target_top1_count": 8,
+        "mrr_at_5": 1.0,
+        "behavior_cases": 0,
+        "behavior_passed": 0,
+        "status_counts": {
+          "candidates": 8
+        }
+      },
+      "name_variant": {
+        "total": 8,
+        "evidence_cases": 8,
+        "target_hit_at_5_count": 5,
+        "target_top1_count": 5,
+        "mrr_at_5": 0.625,
+        "behavior_cases": 0,
+        "behavior_passed": 0,
+        "status_counts": {
+          "candidates": 5,
+          "name_not_resolved": 3
+        }
+      },
+      "out_of_scope": {
+        "total": 6,
+        "evidence_cases": 0,
+        "target_hit_at_5_count": 0,
+        "target_top1_count": 0,
+        "mrr_at_5": null,
+        "behavior_cases": 6,
+        "behavior_passed": 6,
+        "status_counts": {
+          "name_not_resolved": 2,
+          "field_not_resolved": 2,
+          "multiple_names": 2
+        }
+      },
+      "processed_variant": {
+        "total": 8,
+        "evidence_cases": 4,
+        "target_hit_at_5_count": 3,
+        "target_top1_count": 3,
+        "mrr_at_5": 0.75,
+        "behavior_cases": 4,
+        "behavior_passed": 4,
+        "status_counts": {
+          "reference_unresolved": 1,
+          "variant_scope_unresolved": 4,
+          "candidates": 3
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "case_id": "challenge-01",
+      "group": "canonical",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-437e1b2929713ce81430b720:field:007",
+        "mineru-herb-34aa9ec74498c63a17d1e706:field:012",
+        "mineru-herb-b03be91af30a5cca0855186f:field:007",
+        "mineru-herb-38c9399eabfa077ba01a4c04:field:005"
+      ],
+      "returned_names": [
+        "小通草",
+        "炙甘草",
+        "甘草",
+        "翼首草"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 2,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.5,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 19.69093400020938
+    },
+    {
+      "case_id": "challenge-02",
+      "group": "canonical",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-34aa9ec74498c63a17d1e706:field:013",
+        "mineru-herb-437e1b2929713ce81430b720:field:000",
+        "mineru-herb-352a95330f001c7ff5ba1522:field:010",
+        "mineru-herb-368abc71867bc61567437a40:field:008"
+      ],
+      "returned_names": [
+        "余甘子",
+        "炉甘石",
+        "炙甘草",
+        "甘草"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 17.33896099995036
+    },
+    {
+      "case_id": "challenge-03",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-e52aada8b4fe718c2d567116:field:007",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-f2c0b191e4b47aa2d0a114d1:field:007",
+        "mineru-herb-f051ba866208f14cfb449476:field:011",
+        "mineru-herb-d967cb6d3b2617f7d34943e6:field:011"
+      ],
+      "returned_names": [
+        "炙红芪",
+        "炙黄芪",
+        "红芪",
+        "麻黄根",
+        "黄芪"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 2,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.5,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 14.625849000367452
+    },
+    {
+      "case_id": "challenge-04",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:013",
+        "mineru-herb-e52aada8b4fe718c2d567116:field:008",
+        "mineru-herb-e52aada8b4fe718c2d567116:field:000",
+        "mineru-herb-d967cb6d3b2617f7d34943e6:field:012",
+        "mineru-herb-f2c0b191e4b47aa2d0a114d1:field:008"
+      ],
+      "returned_names": [
+        "炙红芪",
+        "炙黄芪",
+        "红芪",
+        "黄芪"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 16.62341899918829
+    },
+    {
+      "case_id": "challenge-05",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-ecfeae3d3fd30cac0d2ee312:field:010",
+        "mineru-herb-dd86dbface93996013c40232:field:016",
+        "mineru-herb-cd15ae8cc84093b57fa4459d:field:008",
+        "mineru-herb-5215fcfd98a729c2d13e7cfb:field:014",
+        "mineru-herb-e5eba85b2fa1b1b5420599f3:field:011"
+      ],
+      "returned_names": [
+        "人参叶",
+        "党参",
+        "华山参",
+        "明党参",
+        "红参"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 2,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.5,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 12.138801999753923
+    },
+    {
+      "case_id": "challenge-06",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-dd86dbface93996013c40232:field:017",
+        "mineru-herb-ecfeae3d3fd30cac0d2ee312:field:011",
+        "mineru-herb-a719d5ba38015d6d19184b8c:field:014",
+        "mineru-herb-286aad7a798a996040ceaa27:field:021",
+        "mineru-herb-5215fcfd98a729c2d13e7cfb:field:015"
+      ],
+      "returned_names": [
+        "丹参",
+        "人参叶",
+        "党参",
+        "明党参",
+        "玄参"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 15.655797000363236
+    },
+    {
+      "case_id": "challenge-07",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c3b2d6d15102df0e955164c2:field:008",
+        "mineru-herb-c8dc913b247ceda3564ef536:field:013",
+        "mineru-herb-257417d6ef59f4065b17338c:field:012",
+        "mineru-herb-dc6c82f0d8758e4f6b240964:field:006",
+        "mineru-herb-df1e871ef0bce7558f1bcdba:field:018"
+      ],
+      "returned_names": [
+        "地枫皮",
+        "地榆",
+        "地锦草",
+        "地黄",
+        "熟地黄"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 2,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.5,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 13.626027000100294
+    },
+    {
+      "case_id": "challenge-08",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c8dc913b247ceda3564ef536:field:014",
+        "mineru-herb-c3b2d6d15102df0e955164c2:field:009",
+        "mineru-herb-97ddce87d2738efa555a974d:field:009",
+        "mineru-herb-62454d7b550827846094c45f:field:010",
+        "mineru-herb-dc6c82f0d8758e4f6b240964:field:007"
+      ],
+      "returned_names": [
+        "地枫皮",
+        "地骨皮",
+        "地黄",
+        "地龙",
+        "熟地黄"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 16.581360000600398
+    },
+    {
+      "case_id": "challenge-09",
+      "group": "canonical",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-839b2c25c719208fb4817784:field:012",
+        "mineru-herb-ea09ad6a4f3da403bf6895d0:field:008",
+        "mineru-herb-ea09ad6a4f3da403bf6895d0:field:000",
+        "mineru-herb-f16f9396ed7ddb779e8fc76c:field:013"
+      ],
+      "returned_names": [
+        "何首乌",
+        "制何首乌",
+        "首乌藤"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 13.181045000237646
+    },
+    {
+      "case_id": "challenge-10",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-839b2c25c719208fb4817784:field:013",
+        "mineru-herb-ea09ad6a4f3da403bf6895d0:field:009",
+        "mineru-herb-ea09ad6a4f3da403bf6895d0:field:000",
+        "mineru-herb-f16f9396ed7ddb779e8fc76c:field:014",
+        "mineru-herb-839b2c25c719208fb4817784:field:010"
+      ],
+      "returned_names": [
+        "何首乌",
+        "制何首乌",
+        "首乌藤"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 15.974089999872376
+    },
+    {
+      "case_id": "challenge-11",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-21fc3e6c979a4a819ea1aa94:field:007",
+        "mineru-herb-2edbd85194e7fdf04bf45199:field:007",
+        "mineru-herb-bc86cc8b469b7708c45d2e33:field:007",
+        "mineru-herb-526746f796513d2e88df4037:field:011",
+        "mineru-herb-b5dc1fb03ed429c54e7f0c5a:field:013"
+      ],
+      "returned_names": [
+        "半夏",
+        "半边莲",
+        "姜半夏",
+        "法半夏",
+        "清半夏"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 4,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.25,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 14.019569999618398
+    },
+    {
+      "case_id": "challenge-12",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-2edbd85194e7fdf04bf45199:field:008",
+        "mineru-herb-21fc3e6c979a4a819ea1aa94:field:008",
+        "mineru-herb-bc86cc8b469b7708c45d2e33:field:008",
+        "mineru-herb-526746f796513d2e88df4037:field:012",
+        "mineru-herb-2edbd85194e7fdf04bf45199:field:000"
+      ],
+      "returned_names": [
+        "半夏",
+        "姜半夏",
+        "法半夏",
+        "清半夏"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 4,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.25,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 15.836499999750231
+    },
+    {
+      "case_id": "challenge-13",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-ec4742f63fe116bfecc077eb:field:016",
+        "mineru-herb-cb3d01496c5ba6f34d0417a9:field:020",
+        "mineru-herb-fcfa2f74e05a2a9b558098bb:field:007",
+        "mineru-herb-9c72767a4e3b6f9bf98949b5:field:007",
+        "mineru-herb-f4a038c457ad3698b8b51610:field:007"
+      ],
+      "returned_names": [
+        "急性子",
+        "暴马子皮",
+        "焦栀子",
+        "白附子",
+        "附子"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 2,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.5,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 12.501058000452758
+    },
+    {
+      "case_id": "challenge-14",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-cb3d01496c5ba6f34d0417a9:field:021",
+        "mineru-herb-ec4742f63fe116bfecc077eb:field:017",
+        "mineru-herb-478f7bd28fcd63c37b0f0688:field:019",
+        "mineru-herb-46aaf0ab78ef823b655d1ae8:field:016",
+        "mineru-herb-835f5bea26bf322819351f06:field:009"
+      ],
+      "returned_names": [
+        "白附子",
+        "莲子",
+        "诃子",
+        "附子",
+        "香附"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 15.904138000223611
+    },
+    {
+      "case_id": "challenge-15",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-fd8636eed87ec106da000b38:field:007",
+        "mineru-herb-8e0a684e4da638c09fac537d:field:020",
+        "mineru-herb-aef397fd438086c9bce5d3f6:field:007",
+        "mineru-herb-a14894d9c7639c19a054011d:field:012",
+        "mineru-herb-34f809c0d49ee6afe6c483b3:field:007"
+      ],
+      "returned_names": [
+        "山奈",
+        "山药",
+        "常山",
+        "满山红",
+        "黄山药"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 2,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.5,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 14.194592999956512
+    },
+    {
+      "case_id": "challenge-16",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-8e0a684e4da638c09fac537d:field:021",
+        "mineru-herb-fd8636eed87ec106da000b38:field:008",
+        "mineru-herb-34f809c0d49ee6afe6c483b3:field:008",
+        "mineru-herb-a14894d9c7639c19a054011d:field:013",
+        "mineru-herb-105ca6da2f494e696c89af6b:field:017"
+      ],
+      "returned_names": [
+        "山奈",
+        "山楂",
+        "山药",
+        "常山",
+        "黄山药"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 17.578805000084685
+    },
+    {
+      "case_id": "challenge-17",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013",
+        "mineru-herb-a381e4702fc0106e12239f4c:field:015",
+        "mineru-herb-ce19a2a4576637fea52b2dd1:field:014",
+        "mineru-herb-281f77be246a5993604b7461:field:015",
+        "mineru-herb-26ba11b13e49f36e6c99c5d4:field:011"
+      ],
+      "returned_names": [
+        "川乌",
+        "川射干",
+        "川木香",
+        "川楝子",
+        "川芎"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 12.451533999410458
+    },
+    {
+      "case_id": "challenge-18",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:014",
+        "mineru-herb-31047fb41b5764ccc087a5a7:field:021",
+        "mineru-herb-a381e4702fc0106e12239f4c:field:016",
+        "mineru-herb-ce19a2a4576637fea52b2dd1:field:015",
+        "mineru-herb-b7a480fbc5b2d7d3d4da2358:field:012"
+      ],
+      "returned_names": [
+        "川射干",
+        "川木通",
+        "川木香",
+        "川牛膝",
+        "川芎"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 14.91065800018987
+    },
+    {
+      "case_id": "challenge-19",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-90f1ee671666e29785b6a019:field:007",
+        "mineru-herb-9c3ea4cbd8297c133a35abdc:field:006",
+        "mineru-herb-eac4dab91e3c7a919acf6c2d:field:007",
+        "mineru-herb-17371b65138103fb551ea690:field:013",
+        "mineru-herb-b78324f607621fe8f294280f:field:005"
+      ],
+      "returned_names": [
+        "凌霄花",
+        "水红花子",
+        "红花",
+        "红花龙胆",
+        "西红花"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 4,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.25,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 12.639439999475144
+    },
+    {
+      "case_id": "challenge-20",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-17371b65138103fb551ea690:field:014",
+        "mineru-herb-90f1ee671666e29785b6a019:field:008",
+        "mineru-herb-eac4dab91e3c7a919acf6c2d:field:008",
+        "mineru-herb-9c3ea4cbd8297c133a35abdc:field:007",
+        "mineru-herb-d967cb6d3b2617f7d34943e6:field:012"
+      ],
+      "returned_names": [
+        "水红花子",
+        "红芪",
+        "红花",
+        "红花龙胆",
+        "西红花"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 15.693741000177397
+    },
+    {
+      "case_id": "challenge-21",
+      "group": "field_paraphrase",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-3f95bb1f325e609241dbadaa:field:011",
+        "mineru-herb-9da1d52e73ca6257b43ad6b8:field:010",
+        "mineru-herb-fa5185dfbd8f73fea3217fec:field:009",
+        "mineru-herb-99364a8410f1ddb60feca9c1:field:014",
+        "mineru-herb-21637231247666d508c20a77:field:008"
+      ],
+      "returned_names": [
+        "人参",
+        "干漆",
+        "芒硝",
+        "菊花",
+        "马钱子粉"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 3.9051300000210176
+    },
+    {
+      "case_id": "challenge-22",
+      "group": "field_paraphrase",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:011",
+        "mineru-herb-e52aada8b4fe718c2d567116:field:006",
+        "mineru-herb-e52aada8b4fe718c2d567116:field:000"
+      ],
+      "returned_names": [
+        "炙黄芪",
+        "黄芪"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 6.941364999875077
+    },
+    {
+      "case_id": "challenge-23",
+      "group": "field_paraphrase",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-dd86dbface93996013c40232:field:009",
+        "mineru-herb-dd86dbface93996013c40232:field:000"
+      ],
+      "returned_names": [
+        "党参"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 6.432644000597065
+    },
+    {
+      "case_id": "challenge-24",
+      "group": "field_paraphrase",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-c3b2d6d15102df0e955164c2:field:001",
+        "mineru-herb-c8dc913b247ceda3564ef536:field:014"
+      ],
+      "returned_names": [
+        "地黄",
+        "熟地黄"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 9.864308000032906
+    },
+    {
+      "case_id": "challenge-25",
+      "group": "field_paraphrase",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-ea09ad6a4f3da403bf6895d0:field:000",
+        "mineru-herb-839b2c25c719208fb4817784:field:014",
+        "mineru-herb-ea09ad6a4f3da403bf6895d0:field:010",
+        "mineru-herb-ea09ad6a4f3da403bf6895d0:field:003"
+      ],
+      "returned_names": [
+        "何首乌",
+        "制何首乌"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 2,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.5,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 8.675858000060543
+    },
+    {
+      "case_id": "challenge-26",
+      "group": "field_paraphrase",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-526746f796513d2e88df4037:field:012",
+        "mineru-herb-21fc3e6c979a4a819ea1aa94:field:000",
+        "mineru-herb-2edbd85194e7fdf04bf45199:field:000",
+        "mineru-herb-bc86cc8b469b7708c45d2e33:field:000",
+        "mineru-herb-526746f796513d2e88df4037:field:005"
+      ],
+      "returned_names": [
+        "半夏",
+        "姜半夏",
+        "法半夏",
+        "清半夏"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 10.613445000672073
+    },
+    {
+      "case_id": "challenge-27",
+      "group": "field_paraphrase",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-ec4742f63fe116bfecc077eb:field:018",
+        "mineru-herb-cb3d01496c5ba6f34d0417a9:field:021",
+        "mineru-herb-cb3d01496c5ba6f34d0417a9:field:015",
+        "mineru-herb-ec4742f63fe116bfecc077eb:field:017",
+        "mineru-herb-ec4742f63fe116bfecc077eb:field:004"
+      ],
+      "returned_names": [
+        "白附子",
+        "附子"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 2,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.5,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 12.282444000447867
+    },
+    {
+      "case_id": "challenge-28",
+      "group": "field_paraphrase",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-8e0a684e4da638c09fac537d:field:005",
+        "mineru-herb-8e0a684e4da638c09fac537d:field:013",
+        "mineru-herb-8e0a684e4da638c09fac537d:field:009",
+        "mineru-herb-8e0a684e4da638c09fac537d:field:003",
+        "mineru-herb-8e0a684e4da638c09fac537d:field:015"
+      ],
+      "returned_names": [
+        "山药"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 10.063345000162371
+    },
+    {
+      "case_id": "challenge-29",
+      "group": "name_variant",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-437e1b2929713ce81430b720:field:007",
+        "mineru-herb-34aa9ec74498c63a17d1e706:field:012",
+        "mineru-herb-b03be91af30a5cca0855186f:field:007",
+        "mineru-herb-38c9399eabfa077ba01a4c04:field:005"
+      ],
+      "returned_names": [
+        "小通草",
+        "炙甘草",
+        "甘草",
+        "翼首草"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 2,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.5,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 11.946657000407868
+    },
+    {
+      "case_id": "challenge-30",
+      "group": "name_variant",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-e52aada8b4fe718c2d567116:field:007",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-f2c0b191e4b47aa2d0a114d1:field:007",
+        "mineru-herb-f051ba866208f14cfb449476:field:011",
+        "mineru-herb-d967cb6d3b2617f7d34943e6:field:011"
+      ],
+      "returned_names": [
+        "炙红芪",
+        "炙黄芪",
+        "红芪",
+        "麻黄根",
+        "黄芪"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 2,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.5,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 12.964595000084955
+    },
+    {
+      "case_id": "challenge-31",
+      "group": "name_variant",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-e52aada8b4fe718c2d567116:field:007",
+        "mineru-herb-f2c0b191e4b47aa2d0a114d1:field:007",
+        "mineru-herb-6c20120a342cf46d0469dafb:field:008",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "returned_names": [
+        "柿蒂",
+        "炙红芪",
+        "炙黄芪",
+        "黄芪"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 4,
+      "target_evidence_hit_at_5": true,
+      "target_top1": false,
+      "reciprocal_rank": 0.25,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 12.49184999960562
+    },
+    {
+      "case_id": "challenge-32",
+      "group": "name_variant",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-6c20120a342cf46d0469dafb:field:008",
+        "mineru-herb-f051ba866208f14cfb449476:field:011",
+        "mineru-herb-5cb39ae995437ce79a8e2399:field:010",
+        "mineru-herb-812db8df752f6bdf8bf307da:field:004"
+      ],
+      "returned_names": [
+        "巴豆",
+        "柿蒂",
+        "牡荆叶",
+        "麻黄根"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 13.107045000651851
+    },
+    {
+      "case_id": "challenge-33",
+      "group": "name_variant",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-6c20120a342cf46d0469dafb:field:008",
+        "mineru-herb-f051ba866208f14cfb449476:field:011",
+        "mineru-herb-5cb39ae995437ce79a8e2399:field:010",
+        "mineru-herb-812db8df752f6bdf8bf307da:field:004"
+      ],
+      "returned_names": [
+        "巴豆",
+        "柿蒂",
+        "牡荆叶",
+        "麻黄根"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 11.307157999908668
+    },
+    {
+      "case_id": "challenge-34",
+      "group": "name_variant",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-6c20120a342cf46d0469dafb:field:008",
+        "mineru-herb-f051ba866208f14cfb449476:field:011",
+        "mineru-herb-5cb39ae995437ce79a8e2399:field:010",
+        "mineru-herb-812db8df752f6bdf8bf307da:field:004"
+      ],
+      "returned_names": [
+        "巴豆",
+        "柿蒂",
+        "牡荆叶",
+        "麻黄根"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 11.716222999893944
+    },
+    {
+      "case_id": "challenge-35",
+      "group": "name_variant",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-6c20120a342cf46d0469dafb:field:008",
+        "mineru-herb-f051ba866208f14cfb449476:field:011",
+        "mineru-herb-5cb39ae995437ce79a8e2399:field:010",
+        "mineru-herb-812db8df752f6bdf8bf307da:field:004"
+      ],
+      "returned_names": [
+        "巴豆",
+        "柿蒂",
+        "牡荆叶",
+        "麻黄根"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 13.083587999972224
+    },
+    {
+      "case_id": "challenge-36",
+      "group": "name_variant",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-839b2c25c719208fb4817784:field:012",
+        "mineru-herb-ea09ad6a4f3da403bf6895d0:field:008",
+        "mineru-herb-b03be91af30a5cca0855186f:field:007",
+        "mineru-herb-f16f9396ed7ddb779e8fc76c:field:013"
+      ],
+      "returned_names": [
+        "何首乌",
+        "制何首乌",
+        "翼首草",
+        "首乌藤"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 13.942505000159144
+    },
+    {
+      "case_id": "challenge-37",
+      "group": "processed_variant",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-437e1b2929713ce81430b720:field:000",
+        "mineru-herb-34aa9ec74498c63a17d1e706:field:013"
+      ],
+      "returned_names": [
+        "炙甘草",
+        "甘草"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 17.50985299986496
+    },
+    {
+      "case_id": "challenge-38",
+      "group": "processed_variant",
+      "status": "variant_scope_unresolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "variant_scope_guard",
+      "behavior_passed": true,
+      "unqualified_parent_substitution": false,
+      "method": "bm25",
+      "query_ms": 9.0844249998554
+    },
+    {
+      "case_id": "challenge-39",
+      "group": "processed_variant",
+      "status": "variant_scope_unresolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "variant_scope_guard",
+      "behavior_passed": true,
+      "unqualified_parent_substitution": false,
+      "method": "bm25",
+      "query_ms": 8.877471000232617
+    },
+    {
+      "case_id": "challenge-40",
+      "group": "processed_variant",
+      "status": "variant_scope_unresolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "variant_scope_guard",
+      "behavior_passed": true,
+      "unqualified_parent_substitution": false,
+      "method": "bm25",
+      "query_ms": 8.334442999512248
+    },
+    {
+      "case_id": "challenge-41",
+      "group": "processed_variant",
+      "status": "variant_scope_unresolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "variant_scope_guard",
+      "behavior_passed": true,
+      "unqualified_parent_substitution": false,
+      "method": "bm25",
+      "query_ms": 9.694024000054924
+    },
+    {
+      "case_id": "challenge-42",
+      "group": "processed_variant",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-21fc3e6c979a4a819ea1aa94:field:008",
+        "mineru-herb-21fc3e6c979a4a819ea1aa94:field:000",
+        "mineru-herb-2edbd85194e7fdf04bf45199:field:008",
+        "mineru-herb-bc86cc8b469b7708c45d2e33:field:008",
+        "mineru-herb-526746f796513d2e88df4037:field:012"
+      ],
+      "returned_names": [
+        "半夏",
+        "姜半夏",
+        "法半夏",
+        "清半夏"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 15.779502000441425
+    },
+    {
+      "case_id": "challenge-43",
+      "group": "processed_variant",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-2edbd85194e7fdf04bf45199:field:008",
+        "mineru-herb-2edbd85194e7fdf04bf45199:field:000",
+        "mineru-herb-21fc3e6c979a4a819ea1aa94:field:008",
+        "mineru-herb-bc86cc8b469b7708c45d2e33:field:008",
+        "mineru-herb-526746f796513d2e88df4037:field:012"
+      ],
+      "returned_names": [
+        "半夏",
+        "姜半夏",
+        "法半夏",
+        "清半夏"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 15.777397999954701
+    },
+    {
+      "case_id": "challenge-44",
+      "group": "processed_variant",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-c3b2d6d15102df0e955164c2:field:009",
+        "mineru-herb-c3b2d6d15102df0e955164c2:field:000",
+        "mineru-herb-c8dc913b247ceda3564ef536:field:014"
+      ],
+      "returned_names": [
+        "地黄",
+        "熟地黄"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "bm25",
+      "query_ms": 16.727406000427436
+    },
+    {
+      "case_id": "challenge-45",
+      "group": "out_of_scope",
+      "status": "name_not_resolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "abstention",
+      "expected_status": "name_not_resolved",
+      "behavior_passed": true,
+      "method": "bm25",
+      "query_ms": 0.4027620007036603
+    },
+    {
+      "case_id": "challenge-46",
+      "group": "out_of_scope",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-15b3e4f7c66d8583295780e4:field:022",
+        "mineru-herb-437e1b2929713ce81430b720:field:000",
+        "mineru-herb-437e1b2929713ce81430b720:field:003",
+        "mineru-herb-34aa9ec74498c63a17d1e706:field:000"
+      ],
+      "returned_names": [
+        "巴戟天",
+        "炙甘草",
+        "甘草"
+      ],
+      "kind": "abstention",
+      "expected_status": "field_not_resolved",
+      "behavior_passed": false,
+      "method": "bm25",
+      "query_ms": 9.60845400004473
+    },
+    {
+      "case_id": "challenge-47",
+      "group": "out_of_scope",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-e52aada8b4fe718c2d567116:field:000",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:013",
+        "mineru-herb-e52aada8b4fe718c2d567116:field:008",
+        "mineru-herb-34aa9ec74498c63a17d1e706:field:013"
+      ],
+      "returned_names": [
+        "炙黄芪",
+        "甘草",
+        "黄芪"
+      ],
+      "kind": "abstention",
+      "expected_status": "multiple_names",
+      "behavior_passed": false,
+      "method": "bm25",
+      "query_ms": 15.068284000335552
+    },
+    {
+      "case_id": "challenge-48",
+      "group": "out_of_scope",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-cb3d01496c5ba6f34d0417a9:field:010",
+        "mineru-herb-ec4742f63fe116bfecc077eb:field:016",
+        "mineru-herb-cb3d01496c5ba6f34d0417a9:field:020",
+        "mineru-herb-4376c81135748faaca482a38:field:004",
+        "mineru-herb-34aa9ec74498c63a17d1e706:field:012"
+      ],
+      "returned_names": [
+        "甘草",
+        "白附子",
+        "草乌叶",
+        "附子"
+      ],
+      "kind": "abstention",
+      "expected_status": "multiple_names",
+      "behavior_passed": false,
+      "method": "bm25",
+      "query_ms": 12.779534999936004
+    },
+    {
+      "case_id": "challenge-49",
+      "group": "out_of_scope",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-835f5bea26bf322819351f06:field:008",
+        "mineru-herb-ae28f96b258b0a2efcf271b2:field:014",
+        "mineru-herb-fc3afbedf68d00ada49bfda0:field:012",
+        "mineru-herb-57eaa56b162cce9b196f19e8:field:006",
+        "mineru-herb-c48848dc49c51d70feeb58b2:field:007"
+      ],
+      "returned_names": [
+        "合欢花",
+        "柏子仁",
+        "石菖蒲",
+        "莲子",
+        "莲子心"
+      ],
+      "kind": "abstention",
+      "expected_status": "name_not_resolved",
+      "behavior_passed": false,
+      "method": "bm25",
+      "query_ms": 11.081571000431722
+    },
+    {
+      "case_id": "challenge-50",
+      "group": "out_of_scope",
+      "status": "partial_evidence",
+      "hit_ids": [
+        "mineru-herb-dd86dbface93996013c40232:field:000",
+        "mineru-herb-ecfeae3d3fd30cac0d2ee312:field:004"
+      ],
+      "returned_names": [
+        "党参",
+        "明党参"
+      ],
+      "kind": "abstention",
+      "expected_status": "field_not_resolved",
+      "behavior_passed": false,
+      "method": "bm25",
+      "query_ms": 10.437470000397298
+    },
+    {
+      "case_id": "challenge-01",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-34aa9ec74498c63a17d1e706:field:012"
+      ],
+      "returned_names": [
+        "甘草"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.9683719999884488
+    },
+    {
+      "case_id": "challenge-02",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-34aa9ec74498c63a17d1e706:field:013"
+      ],
+      "returned_names": [
+        "甘草"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.740253999538254
+    },
+    {
+      "case_id": "challenge-03",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "returned_names": [
+        "黄芪"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.7991630000105943
+    },
+    {
+      "case_id": "challenge-04",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:013"
+      ],
+      "returned_names": [
+        "黄芪"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.7264749992828001
+    },
+    {
+      "case_id": "challenge-05",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-dd86dbface93996013c40232:field:016"
+      ],
+      "returned_names": [
+        "党参"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.6671519995506969
+    },
+    {
+      "case_id": "challenge-06",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-dd86dbface93996013c40232:field:017"
+      ],
+      "returned_names": [
+        "党参"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.6049350004104781
+    },
+    {
+      "case_id": "challenge-07",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c8dc913b247ceda3564ef536:field:013"
+      ],
+      "returned_names": [
+        "地黄"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.6540780004797853
+    },
+    {
+      "case_id": "challenge-08",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c8dc913b247ceda3564ef536:field:014"
+      ],
+      "returned_names": [
+        "地黄"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.6160159991850378
+    },
+    {
+      "case_id": "challenge-09",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-839b2c25c719208fb4817784:field:012"
+      ],
+      "returned_names": [
+        "何首乌"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.609564000114915
+    },
+    {
+      "case_id": "challenge-10",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-839b2c25c719208fb4817784:field:013"
+      ],
+      "returned_names": [
+        "何首乌"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.8292889997392194
+    },
+    {
+      "case_id": "challenge-11",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-526746f796513d2e88df4037:field:011"
+      ],
+      "returned_names": [
+        "半夏"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.5937240002822364
+    },
+    {
+      "case_id": "challenge-12",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-526746f796513d2e88df4037:field:012"
+      ],
+      "returned_names": [
+        "半夏"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.5785550001746742
+    },
+    {
+      "case_id": "challenge-13",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-cb3d01496c5ba6f34d0417a9:field:020"
+      ],
+      "returned_names": [
+        "附子"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.6339789997582557
+    },
+    {
+      "case_id": "challenge-14",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-cb3d01496c5ba6f34d0417a9:field:021"
+      ],
+      "returned_names": [
+        "附子"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.688664000335848
+    },
+    {
+      "case_id": "challenge-15",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-8e0a684e4da638c09fac537d:field:020"
+      ],
+      "returned_names": [
+        "山药"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 1.0225349997199373
+    },
+    {
+      "case_id": "challenge-16",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-8e0a684e4da638c09fac537d:field:021"
+      ],
+      "returned_names": [
+        "山药"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.7020080001893803
+    },
+    {
+      "case_id": "challenge-17",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013"
+      ],
+      "returned_names": [
+        "川芎"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.5583470001511159
+    },
+    {
+      "case_id": "challenge-18",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:014"
+      ],
+      "returned_names": [
+        "川芎"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.6829829999333015
+    },
+    {
+      "case_id": "challenge-19",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-17371b65138103fb551ea690:field:013"
+      ],
+      "returned_names": [
+        "红花"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.5852780004715896
+    },
+    {
+      "case_id": "challenge-20",
+      "group": "canonical",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-17371b65138103fb551ea690:field:014"
+      ],
+      "returned_names": [
+        "红花"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.5515829998330446
+    },
+    {
+      "case_id": "challenge-21",
+      "group": "field_paraphrase",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-34aa9ec74498c63a17d1e706:field:015"
+      ],
+      "returned_names": [
+        "甘草"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.641734000055294
+    },
+    {
+      "case_id": "challenge-22",
+      "group": "field_paraphrase",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:011"
+      ],
+      "returned_names": [
+        "黄芪"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.5902169996261364
+    },
+    {
+      "case_id": "challenge-23",
+      "group": "field_paraphrase",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-dd86dbface93996013c40232:field:017"
+      ],
+      "returned_names": [
+        "党参"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.5746169999838457
+    },
+    {
+      "case_id": "challenge-24",
+      "group": "field_paraphrase",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c8dc913b247ceda3564ef536:field:013"
+      ],
+      "returned_names": [
+        "地黄"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.7780329997331137
+    },
+    {
+      "case_id": "challenge-25",
+      "group": "field_paraphrase",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-839b2c25c719208fb4817784:field:014"
+      ],
+      "returned_names": [
+        "何首乌"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.7726419999016798
+    },
+    {
+      "case_id": "challenge-26",
+      "group": "field_paraphrase",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-526746f796513d2e88df4037:field:013"
+      ],
+      "returned_names": [
+        "半夏"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.6082410000090022
+    },
+    {
+      "case_id": "challenge-27",
+      "group": "field_paraphrase",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-cb3d01496c5ba6f34d0417a9:field:021"
+      ],
+      "returned_names": [
+        "附子"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.5641079997076304
+    },
+    {
+      "case_id": "challenge-28",
+      "group": "field_paraphrase",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-8e0a684e4da638c09fac537d:field:000"
+      ],
+      "returned_names": [
+        "山药"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.5857280002601328
+    },
+    {
+      "case_id": "challenge-29",
+      "group": "name_variant",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-34aa9ec74498c63a17d1e706:field:012"
+      ],
+      "returned_names": [
+        "甘草"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.6584860002476489
+    },
+    {
+      "case_id": "challenge-30",
+      "group": "name_variant",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "returned_names": [
+        "黄芪"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.649829000394675
+    },
+    {
+      "case_id": "challenge-31",
+      "group": "name_variant",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "returned_names": [
+        "黄芪"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.5910590007260907
+    },
+    {
+      "case_id": "challenge-32",
+      "group": "name_variant",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-dd86dbface93996013c40232:field:016"
+      ],
+      "returned_names": [
+        "党参"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.5759400000897585
+    },
+    {
+      "case_id": "challenge-33",
+      "group": "name_variant",
+      "status": "name_not_resolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.34977199993591057
+    },
+    {
+      "case_id": "challenge-34",
+      "group": "name_variant",
+      "status": "name_not_resolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.3450329995757784
+    },
+    {
+      "case_id": "challenge-35",
+      "group": "name_variant",
+      "status": "name_not_resolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 2.625809000164736
+    },
+    {
+      "case_id": "challenge-36",
+      "group": "name_variant",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-839b2c25c719208fb4817784:field:012"
+      ],
+      "returned_names": [
+        "何首乌"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.5965179998383974
+    },
+    {
+      "case_id": "challenge-37",
+      "group": "processed_variant",
+      "status": "reference_unresolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "corpus_proposed_evidence",
+      "rank": null,
+      "target_evidence_hit_at_5": false,
+      "target_top1": false,
+      "reciprocal_rank": 0,
+      "returned_all_target_fields": false,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.7011469997451059
+    },
+    {
+      "case_id": "challenge-38",
+      "group": "processed_variant",
+      "status": "variant_scope_unresolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "variant_scope_guard",
+      "behavior_passed": true,
+      "unqualified_parent_substitution": false,
+      "method": "name_field",
+      "query_ms": 10.159966000173881
+    },
+    {
+      "case_id": "challenge-39",
+      "group": "processed_variant",
+      "status": "variant_scope_unresolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "variant_scope_guard",
+      "behavior_passed": true,
+      "unqualified_parent_substitution": false,
+      "method": "name_field",
+      "query_ms": 8.774786000685708
+    },
+    {
+      "case_id": "challenge-40",
+      "group": "processed_variant",
+      "status": "variant_scope_unresolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "variant_scope_guard",
+      "behavior_passed": true,
+      "unqualified_parent_substitution": false,
+      "method": "name_field",
+      "query_ms": 9.418464000191307
+    },
+    {
+      "case_id": "challenge-41",
+      "group": "processed_variant",
+      "status": "variant_scope_unresolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "variant_scope_guard",
+      "behavior_passed": true,
+      "unqualified_parent_substitution": false,
+      "method": "name_field",
+      "query_ms": 8.474147000015364
+    },
+    {
+      "case_id": "challenge-42",
+      "group": "processed_variant",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-21fc3e6c979a4a819ea1aa94:field:008"
+      ],
+      "returned_names": [
+        "姜半夏"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.6282189997364185
+    },
+    {
+      "case_id": "challenge-43",
+      "group": "processed_variant",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-2edbd85194e7fdf04bf45199:field:008"
+      ],
+      "returned_names": [
+        "法半夏"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.6059170000298764
+    },
+    {
+      "case_id": "challenge-44",
+      "group": "processed_variant",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c3b2d6d15102df0e955164c2:field:009"
+      ],
+      "returned_names": [
+        "熟地黄"
+      ],
+      "kind": "corpus_proposed_evidence",
+      "rank": 1,
+      "target_evidence_hit_at_5": true,
+      "target_top1": true,
+      "reciprocal_rank": 1.0,
+      "returned_all_target_fields": true,
+      "reference_field_occurrences": 1,
+      "method": "name_field",
+      "query_ms": 0.643306999336346
+    },
+    {
+      "case_id": "challenge-45",
+      "group": "out_of_scope",
+      "status": "name_not_resolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "abstention",
+      "expected_status": "name_not_resolved",
+      "behavior_passed": true,
+      "method": "name_field",
+      "query_ms": 0.35925000065617496
+    },
+    {
+      "case_id": "challenge-46",
+      "group": "out_of_scope",
+      "status": "field_not_resolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "abstention",
+      "expected_status": "field_not_resolved",
+      "behavior_passed": true,
+      "method": "name_field",
+      "query_ms": 0.4934640001010848
+    },
+    {
+      "case_id": "challenge-47",
+      "group": "out_of_scope",
+      "status": "multiple_names",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "abstention",
+      "expected_status": "multiple_names",
+      "behavior_passed": true,
+      "method": "name_field",
+      "query_ms": 0.3760409999813419
+    },
+    {
+      "case_id": "challenge-48",
+      "group": "out_of_scope",
+      "status": "multiple_names",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "abstention",
+      "expected_status": "multiple_names",
+      "behavior_passed": true,
+      "method": "name_field",
+      "query_ms": 0.4149449996475596
+    },
+    {
+      "case_id": "challenge-49",
+      "group": "out_of_scope",
+      "status": "name_not_resolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "abstention",
+      "expected_status": "name_not_resolved",
+      "behavior_passed": true,
+      "method": "name_field",
+      "query_ms": 0.4213440006424207
+    },
+    {
+      "case_id": "challenge-50",
+      "group": "out_of_scope",
+      "status": "field_not_resolved",
+      "hit_ids": [],
+      "returned_names": [],
+      "kind": "abstention",
+      "expected_status": "field_not_resolved",
+      "behavior_passed": true,
+      "method": "name_field",
+      "query_ms": 0.5539120002140407
+    }
+  ]
+}

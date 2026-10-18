@@ -114,6 +114,15 @@ def run(server_python, executable, output):
             page.wait_for_function('()=>!document.getElementById("send").disabled')
             page.screenshot(path=str(output / 'desktop.png'), full_page=True)
 
+            send('黃芪')
+            assert '当前药材：黄芪' in page.locator('#focus').inner_text()
+            send('它每次多少克')
+            assert '黄芪 · 用法与用量' in page.locator('#evidence').inner_text()
+            assert '字段：多少克 → 用法与用量' in page.locator('#evidence').inner_text()
+            send('黨參的药效')
+            assert '药名字形：黨參 → 党参' in page.locator('#evidence').inner_text()
+            passed('name_only_glyph_selection_and_field_paraphrase_followup')
+
             send('酒大黄的用量')
             assert '炮制品范围未解析' in page.locator('#status').inner_text()
             assert '不能替代' in page.locator('#evidence').inner_text()

@@ -26,6 +26,12 @@ function render(hit){const card=el('article');card.append(el('h2',`${hit.name} �
 }
 
 function exportEvidence(container,data){
+ const interpreted=data?.query_interpretation;
+ if(interpreted){const descriptions=[];
+  for(const item of interpreted.name_forms||[])if(item.rule==='script_variant')descriptions.push(`药名字形：${item.query_form} → ${item.indexed_name}`);
+  for(const item of interpreted.field_matches||[])if(item.query_term!==item.field)descriptions.push(`字段：${item.query_term} → ${item.field}`);
+  if(descriptions.length)container.append(el('p',[...new Set(descriptions)].join('；')+'。仅用于定位来源，不建立别名或药理等价关系。','muted'));
+ }
  const allowed=['candidates','partial_evidence','reference_unresolved','ambiguous_field','field_not_observed','variant_scope_unresolved'];
  if(!data||data.method!=='name_field'||!allowed.includes(data.status)||!/^[a-f0-9]{64}$/.test(data.index_sha256||''))return;
  const button=el('button','导出本轮证据 Markdown');button.type='button';button.dataset.evidenceExport='true';

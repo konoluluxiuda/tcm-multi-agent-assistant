@@ -1,0 +1,205 @@
+{
+  "status": "passed",
+  "engineering_tests": 331,
+  "skipped": 0,
+  "network_attempts": 0,
+  "main_browser_checks": 10,
+  "standalone_browser_checks": 11,
+  "llm_calls": 0,
+  "experiment_kind": "known_failure_regression_not_new_blind_test",
+  "human_signoff": false,
+  "clinical_accuracy_evaluated": false,
+  "docker_updated": false,
+  "git_state_at_validation": {
+    "committed": false,
+    "pushed": false
+  },
+  "comparison": {
+    "before": {
+      "canonical": {
+        "total": 20,
+        "evidence_cases": 20,
+        "target_hit_at_5_count": 20,
+        "target_top1_count": 20,
+        "mrr_at_5": 1.0,
+        "behavior_cases": 0,
+        "behavior_passed": 0,
+        "status_counts": {
+          "candidates": 20
+        }
+      },
+      "field_paraphrase": {
+        "total": 8,
+        "evidence_cases": 8,
+        "target_hit_at_5_count": 2,
+        "target_top1_count": 2,
+        "mrr_at_5": 0.25,
+        "behavior_cases": 0,
+        "behavior_passed": 0,
+        "status_counts": {
+          "candidates": 2,
+          "field_not_resolved": 6
+        }
+      },
+      "name_variant": {
+        "total": 8,
+        "evidence_cases": 8,
+        "target_hit_at_5_count": 2,
+        "target_top1_count": 2,
+        "mrr_at_5": 0.25,
+        "behavior_cases": 0,
+        "behavior_passed": 0,
+        "status_counts": {
+          "candidates": 2,
+          "name_not_resolved": 6
+        }
+      },
+      "out_of_scope": {
+        "total": 6,
+        "evidence_cases": 0,
+        "target_hit_at_5_count": 0,
+        "target_top1_count": 0,
+        "mrr_at_5": null,
+        "behavior_cases": 6,
+        "behavior_passed": 6,
+        "status_counts": {
+          "name_not_resolved": 2,
+          "field_not_resolved": 2,
+          "multiple_names": 2
+        }
+      },
+      "processed_variant": {
+        "total": 8,
+        "evidence_cases": 4,
+        "target_hit_at_5_count": 3,
+        "target_top1_count": 3,
+        "mrr_at_5": 0.75,
+        "behavior_cases": 4,
+        "behavior_passed": 4,
+        "status_counts": {
+          "reference_unresolved": 1,
+          "variant_scope_unresolved": 4,
+          "candidates": 3
+        }
+      }
+    },
+    "after": {
+      "canonical": {
+        "total": 20,
+        "evidence_cases": 20,
+        "target_hit_at_5_count": 20,
+        "target_top1_count": 20,
+        "mrr_at_5": 1.0,
+        "behavior_cases": 0,
+        "behavior_passed": 0,
+        "status_counts": {
+          "candidates": 20
+        }
+      },
+      "field_paraphrase": {
+        "total": 8,
+        "evidence_cases": 8,
+        "target_hit_at_5_count": 8,
+        "target_top1_count": 8,
+        "mrr_at_5": 1.0,
+        "behavior_cases": 0,
+        "behavior_passed": 0,
+        "status_counts": {
+          "candidates": 8
+        }
+      },
+      "name_variant": {
+        "total": 8,
+        "evidence_cases": 8,
+        "target_hit_at_5_count": 5,
+        "target_top1_count": 5,
+        "mrr_at_5": 0.625,
+        "behavior_cases": 0,
+        "behavior_passed": 0,
+        "status_counts": {
+          "candidates": 5,
+          "name_not_resolved": 3
+        }
+      },
+      "out_of_scope": {
+        "total": 6,
+        "evidence_cases": 0,
+        "target_hit_at_5_count": 0,
+        "target_top1_count": 0,
+        "mrr_at_5": null,
+        "behavior_cases": 6,
+        "behavior_passed": 6,
+        "status_counts": {
+          "name_not_resolved": 2,
+          "field_not_resolved": 2,
+          "multiple_names": 2
+        }
+      },
+      "processed_variant": {
+        "total": 8,
+        "evidence_cases": 4,
+        "target_hit_at_5_count": 3,
+        "target_top1_count": 3,
+        "mrr_at_5": 0.75,
+        "behavior_cases": 4,
+        "behavior_passed": 4,
+        "status_counts": {
+          "reference_unresolved": 1,
+          "variant_scope_unresolved": 4,
+          "candidates": 3
+        }
+      }
+    }
+  },
+  "known_unresolved": [
+    "Gancao",
+    "Huangqi",
+    "Dangshen",
+    "Cross-entry reference in 炙甘草 remains unexpanded."
+  ],
+  "source_files_unchanged_sha256": {
+    "var/mineru_retrieval_v2/research.sqlite3": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+    "var/mineru_revisions_v2/research_view.json": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+    "var/tcm/herbs.sqlite3": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+    "data/《中国药典》2025年版 一部.pdf": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+    "data/《中国药典》2025年版 一部 全本.pdf": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+  },
+  "code_sha256": {
+    "tcm/mineru_retrieval.py": "e4f9035a8b5ffb60b6c075415d60ac3ecee22e0ca7910d7923015575fabfb549",
+    "tcm/mineru_chat.py": "4c0bd19d5338c8ec0f7a13e219433e2d6d27beca469cddc515074fc704a29434",
+    "tcm/mineru_evidence.js": "ebf1b8d948d55915332b3ed0420f7822729c7290c555c7715d65552f28416019",
+    "tcm/mineru_report.py": "51568c69b4de103c8a88e25638936b22b99350b25486c532f67195293ce952b5",
+    "tests/test_mineru_query.py": "0decd9ef7ad9b0edd0499b2cbce08381dd12146eb3a465ad4d5a92ea1102fa20",
+    "scripts/verify_agent_research_ui.py": "abe5253aecd2505c0f077247925be140fd0ef33e00b7cbbbc02f87141e122147",
+    "scripts/verify_mineru_chat.py": "9b9430798efb9afcc4ac7ee0b24c9f3db0cb67bdd4a9ed5b43912d1b4693f5c0"
+  },
+  "local_preview_smoke": [
+    {
+      "question": "黃芪的服用剂量",
+      "status": "candidates"
+    },
+    {
+      "question": "黨參的药效",
+      "status": "candidates"
+    },
+    {
+      "question": "酒黃芪的服用剂量",
+      "status": "variant_scope_unresolved"
+    },
+    {
+      "question": "Huangqi的功效",
+      "status": "name_not_resolved"
+    },
+    {
+      "port": 7871,
+      "report": 200,
+      "interpretation_preserved": true
+    },
+    {
+      "port": 7869,
+      "report": 200,
+      "interpretation_preserved": true
+    }
+  ],
+  "preview_restarted_with_existing_memory": true
+}

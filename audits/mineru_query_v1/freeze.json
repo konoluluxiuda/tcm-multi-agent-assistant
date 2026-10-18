@@ -1,0 +1,22 @@
+{
+  "question_sha256": "27db5b42cb3972a47ac1ec9bb2e48b749ad610c051ecf77da785d85665b6f00a",
+  "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+  "retriever_sha256": "e4f9035a8b5ffb60b6c075415d60ac3ecee22e0ca7910d7923015575fabfb549",
+  "questions": 50,
+  "groups": {
+    "canonical": 20,
+    "field_paraphrase": 8,
+    "name_variant": 8,
+    "out_of_scope": 6,
+    "processed_variant": 8
+  },
+  "retrieval_outputs_inspected": true,
+  "human_gold": false,
+  "guards_sha256": "4f6675eefa56c933f050dd1eadba9b54b13408138efc7ae8edaa40ac53f183ed",
+  "experiment_kind": "known_failure_regression_not_new_blind_test",
+  "baseline_freeze_sha256": "98af79b280e1b935ade1ee12521a761cfb0980d708d6e48d6817eabf1caee750",
+  "baseline_path": "audits/mineru_guards_v1/challenge.json",
+  "development_note": "Known paraphrase/name-form failures used for bounded rules. No new blind or human accuracy claim; original questions/references/index remain unchanged.",
+  "baseline_freeze_path": "audits/mineru_guards_v1/freeze.json",
+  "baseline_evaluation_sha256": "ed46d0decde12d30000ed50a43558ceadd773046a5894028f4d9fec7e81b6b29"
+}

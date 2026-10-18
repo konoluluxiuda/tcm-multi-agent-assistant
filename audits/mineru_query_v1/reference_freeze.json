@@ -1,0 +1,8 @@
+{
+  "question_sha256": "27db5b42cb3972a47ac1ec9bb2e48b749ad610c051ecf77da785d85665b6f00a",
+  "reference_sha256": "9f5f1baa6cea6ef87a79303348cb58c8887a99bfd4b456b6fab5ae6fa451a225",
+  "source_view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+  "unique_source_crops": 43,
+  "retrieval_outputs_inspected": false,
+  "human_gold": false
+}
