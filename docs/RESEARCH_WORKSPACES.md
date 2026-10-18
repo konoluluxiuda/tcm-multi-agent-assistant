@@ -23,6 +23,22 @@
 
 查询进行中禁用表单控件避免重复提交；页签仍可切换。请求失败保留输入并提示查看任务记录。数量、标签和焦点名称用textContent显示，不执行资料中的HTML。工具兼容指令和示例收进可展开区域；研究界面使用中文标题和本地“发送”文字，字体图标或外部样式失效时仍能操作。
 
-当前临时7874预览通过11组真实浏览器验证，含真实文献与清单下载、显式ETCM/药典、草稿/焦点、刷新、键盘、移动端、合成恶意标签、失败恢复和清除。42模块415项严格离线回归通过。最终本地镜像及7873容器验收在本轮完成后另记；尚未push或发布新Hub版本。公开[浏览器记录](../audits/research_workspaces_v1/host_browser.json)和[离线回归](../audits/research_workspaces_v1/offline_ci.json)只含元数据，截图/下载保留忽略的var目录。浏览器阻断外部CDN，不等同于完整外部样式验收。
+当前临时7874预览通过11组真实浏览器验证，含真实文献与清单下载、显式ETCM/药典、草稿/焦点、刷新、键盘、移动端、合成恶意标签、失败恢复和清除。42模块415项严格离线回归通过。后续干净提交d0d3bc3构建约408 MB本地镜像，已更新7873，并在实际容器完成11组浏览器验收和3组部署/恢复检查；原卷、Cookie与提交消息保留，原三服务未改变。尚未push或发布新Hub版本。公开[浏览器记录](../audits/research_workspaces_v1/host_browser.json)和[离线回归](../audits/research_workspaces_v1/offline_ci.json)只含元数据，截图/下载保留忽略的var目录。浏览器阻断外部CDN，不等同于完整外部样式验收。
 
 后续按实际任务需要增加多任务归档、所有权或多用户服务，而不是将页签数量作为Agent能力指标。通用术语解释、研究对象核验与独立意图效果评测仍需各自的数据和验收。
+
+## 当前本地部署
+
+**http://127.0.0.1:7873/** 已运行 `tcm-research-chat:d0d3bc3`，可刷新页面使用新页签。命名卷仍为 `tcm-research-next_research-memory`，Cookie仍为 `research_chat_next_session`。临时7874主机预览验收后停止。
+
+在仓库根目录恢复当前本地版本：
+
+```bash
+RESEARCH_IMAGE=tcm-research-chat:d0d3bc3 RESEARCH_PORT=7873 \
+RESEARCH_COOKIE_NAME=research_chat_next_session ENABLE_PUBMED=1 ENABLE_NATURAL_ROUTING=1 \
+docker compose -p tcm-research-next -f compose.research.yaml up -d --no-build chat
+```
+
+常规停止用 `docker compose -p tcm-research-next -f compose.research.yaml stop chat`，不要使用 `down -v` 删除会话及文献卷。需要退回上版自然语言页面时，保留其余参数，将镜像改回本地 `tcm-research-chat:03238f8`；不需要删卷。
+
+公开[总验收](../audits/research_workspaces_v1/report.json)、[构建](../audits/research_workspaces_v1/build.json)、[容器部署恢复](../audits/research_workspaces_v1/container_deployment.json)和[容器浏览器](../audits/research_workspaces_v1/container_browser.json)只含元数据。截图和实际下载保留在忽略的var目录。Hub仍为b227f35，不包含自然语言/概览/页签增量；本轮没有推送Git或发布Hub。运行文件指纹与干净构建一致，后续文档及宿主验收脚本修正不改变镜像运行内容。

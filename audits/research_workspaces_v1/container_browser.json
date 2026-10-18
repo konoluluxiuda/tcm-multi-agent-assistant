@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "checks": [
+    "three_views_preserve_drafts_and_do_not_call_tools_or_change_server_state",
+    "keyboard_tabs_selection_and_single_visible_panel",
+    "live_overview_and_classifications_render_in_panel_without_overwriting_chat_draft",
+    "pharmacopoeia_form_routes_selected_name_and_field_and_keeps_draft",
+    "explicit_etcm_source_does_not_silently_apply_pharmacopoeia_fields",
+    "real_literature_form_and_combined_evidence_download",
+    "view_switch_and_reload_preserve_committed_task_and_literature_focus",
+    "mobile_width_and_desktop_panels",
+    "overview_source_values_remain_literal_text",
+    "request_failure_keeps_form_draft_and_reenables_controls",
+    "clear_session_resets_panels_and_backend_task_without_browser_errors"
+  ],
+  "page_errors": [],
+  "url": "http://127.0.0.1:7873",
+  "clinical_quality_evaluated": false,
+  "download_sha256": "d54e2750e8f28bd1e0c6a099fc9b8daf11f6adfb1a098fee8d1a917660451852"
+}

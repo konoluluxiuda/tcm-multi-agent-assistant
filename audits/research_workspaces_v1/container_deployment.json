@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "checks": [
+    "new_image_and_local_script_preserve_volume_cookie_messages_and_focus",
+    "actual_restart_recovers_the_same_committed_task",
+    "all_three_original_services_unchanged_and_healthy"
+  ],
+  "docker_hub_published": false,
+  "url": "http://127.0.0.1:7873",
+  "image": "tcm-research-chat:d0d3bc3",
+  "image_id": "sha256:488329638faa83f3d5aec1a75cff8ad4601ef42dbdb231c117c55a391e930578",
+  "source_commit": "d0d3bc30e3182ce12eab95774d2b260bf9f82d9b",
+  "source_tree_sha256": "93c130374f3b6a3191b15182c6912c262b2a6725d350ccabffd501af4c2a5794",
+  "memory_volume_preserved": true,
+  "actual_restarts": 1
+}

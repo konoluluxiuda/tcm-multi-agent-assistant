@@ -22,7 +22,7 @@
 
 当前研究镜像：`8n1eld/tcm-research-assistant:b227f35`，约408 MB，支持药典证据与原页、ETCM结构化查询、PubMed显式检索、并列证据清单和SQLite持久会话。本机已验收入口为 http://127.0.0.1:7873/ 。镜像不携带资料，运行需本地只读挂载，详见[新版部署与发布记录](docs/releases/RESEARCH_B227F35.md)、[建设大纲](docs/TCM_PROJECT_ROADMAP.md)。此版本用于研究辅助，药典与文献对象对应关系尚待核验。
 
-本地后续增量：7873已装入 `tcm-research-chat:03238f8`，支持“你能做什么”“有多少药材”和无需前缀的药典字段查询，见[自然语言入口说明](docs/NATURAL_ROUTING.md)；该增量尚未发布Hub。
+本地后续增量：7873已装入 `tcm-research-chat:d0d3bc3`，提供数据概览、药材与药典、现代文献三个页签，共用聊天并支持无需前缀的字段查询，见[工作区说明](docs/RESEARCH_WORKSPACES.md)和[自然语言入口](docs/NATURAL_ROUTING.md)；该增量尚未发布Hub。
 
 下文保留原医疗项目的介绍和完整部署说明；精简研究版本请使用上面的专用部署文档。
 

@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "scope": "three views over one research task; no multi-task archive or semantic model router",
+  "source_commit": "d0d3bc30e3182ce12eab95774d2b260bf9f82d9b",
+  "image": "tcm-research-chat:d0d3bc3",
+  "image_id": "sha256:488329638faa83f3d5aec1a75cff8ad4601ef42dbdb231c117c55a391e930578",
+  "image_bytes": 407878410,
+  "source_tree_sha256": "93c130374f3b6a3191b15182c6912c262b2a6725d350ccabffd501af4c2a5794",
+  "url": "http://127.0.0.1:7873",
+  "offline_tests": 415,
+  "offline_modules": 42,
+  "host_browser_groups": 11,
+  "container_browser_groups": 11,
+  "container_deployment_groups": 3,
+  "actual_restarts": 1,
+  "memory_volume_preserved": true,
+  "three_original_services_unchanged": true,
+  "git_pushed": false,
+  "docker_hub_published": false,
+  "clinical_quality_evaluated": false,
+  "private_artifacts_published": false
+}

@@ -142,7 +142,10 @@ def verify(image, output, browser_path):
             assert current['Id']==before['Id'] and current['State']['StartedAt']==before['State']['StartedAt']
             assert current['State'].get('Health',{}).get('Status')=='healthy'
         passed('all_three_original_services_unchanged_and_healthy')
-        build=json.loads((ROOT/'var/natural_routing_v1/build.json').read_text())
+        metadata=json.loads(docker('image','inspect',image))[0]
+        labels=metadata['Config']['Labels']
+        build={'base_revision':labels['org.opencontainers.image.revision'],
+               'source_tree_sha256':labels['io.tcm.source-tree-sha256']}
         report.update(status='passed',url=URL,image=image,image_id=inspect(NAME)['Image'],
                       source_revision=build['base_revision'],source_tree_sha256=build['source_tree_sha256'],
                       memory_volume_preserved=True,real_restarts=1,source_record_count=herbs['source_record_count'],
