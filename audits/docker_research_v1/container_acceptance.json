@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "checks": [
+    "healthy_nonroot_image_readonly_sources_named_memory_and_no_source_code_mount",
+    "pristine_image_contains_no_pdf_database_env_or_model_weights",
+    "missing_research_index_is_not_ready_without_leaking_paths",
+    "main_graph_query_session_isolation_original_page_and_markdown_export",
+    "scope_reference_pinyin_and_unsupported_routes_fail_explicitly",
+    "readonly_etcm_tool_still_works",
+    "actual_container_restart_restores_signed_session_and_research_focus",
+    "container_recreation_keeps_named_volume_cookie_secret_and_focus",
+    "clear_memory_remains_deleted_after_restart",
+    "real_container_browser_profile_evidence_image_download_and_mobile_layout"
+  ],
+  "page_errors": [],
+  "restarts": 2,
+  "recreations": 1,
+  "human_signoff": false,
+  "clinical_accuracy_evaluated": false,
+  "docker_hub_published": false,
+  "image_id": "sha256:fde301c8d4563b37acf164098e5d4750b0171efdb3480461d171bb2771bcf0fe",
+  "image_bytes": 407736632,
+  "memory_volume": "tcm-research_research-memory",
+  "source_tree_sha256": "858c4d75640d7ddaa967a2f41a3f56b60eef991ff1963fba1b5df3516c0e0736",
+  "protected_existing_containers_unchanged": true,
+  "ready": {
+    "status": "ready",
+    "research_only": true,
+    "human_signoff": false,
+    "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4"
+  }
+}

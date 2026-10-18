@@ -28,6 +28,7 @@ var/memory/conversations.sqlite3
 CHAT_MEMORY_DB=/绝对路径/private-memory/conversations.sqlite3
 CHAT_MEMORY_TTL_DAYS=30
 CHAT_COOKIE_SECURE=0
+CHAT_COOKIE_NAME=session_id
 ```
 
 默认闲置30天后过期，期限以最后一次成功对话写入为准。访问过期会话时清除其内容；启动时也清理过期内容。长时间不重启的服务可定期执行：
@@ -39,6 +40,8 @@ python -m scripts.manage_memory
 该命令仅打印清理数量，不输出聊天或凭证。HTTPS部署设置 `CHAT_COOKIE_SECURE=1`；本地HTTP保持0。改变数据库路径会切换到另一份会话与签名密钥，请勿把它当作迁移手段。
 
 浏览器凭证使用HttpOnly、SameSite=Lax及明确Max-Age，关闭浏览器后仍可保留。无痕模式、清除浏览器Cookie或换设备后，不能自动找到原会话。该版本仍为本地匿名使用，没有账号登录、跨设备同步或用户级长期档案；有效Cookie持有者可以访问对应会话。
+
+`CHAT_COOKIE_NAME` 默认仍为 `session_id`；同一主机的独立部署可使用不同名称，避免不同端口覆盖 Cookie。名称在启动时读取，须为字母开头、最多64位的ASCII字母/数字/下划线。改变名称不会迁移旧浏览器凭证；已运行的旧部署应保留原名称。
 
 ## Docker持久化
 
@@ -52,7 +55,9 @@ docker compose -f compose.chat.yaml up -d --build
 
 不使用Compose时，也必须将 `CHAT_MEMORY_DB` 指向已挂载的可写目录，不能只把数据库放在容器可写层。现有独立查询服务 `compose.tcm.yaml` 不变。
 
-**验证边界：** 当前WSL中Docker提示集成未启用，未执行本地容器构建/重启，也未发布Docker Hub镜像。本轮实际重启验证使用临时Uvicorn进程及真实Chromium进程；Compose文件仅做静态结构检查。
+**原始验收边界（2026-10-16）：** 当时WSL中Docker集成未启用，该轮只验证了临时Uvicorn/Chromium进程重启及Compose静态结构，未执行容器验收。
+
+**2026-10-18补充：** 已在独立7872研究部署以命名卷 `tcm-research_research-memory` 实测两次容器重启和一次删除重建；签名Cookie及研究焦点均恢复，清除后重启保持为空。新部署使用 `research_chat_session`，没有替换原7860容器或其存储。10组容器检查及337项离线回归通过，未发布镜像；见[精简研究部署](RESEARCH_DOCKER.md)。这仍是成功轮次快照，不是原生checkpoint中间节点续跑。
 
 ## 恢复、清除与一致性
 

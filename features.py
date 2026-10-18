@@ -1,6 +1,14 @@
 """Startup feature switches, without model or optional SDK imports."""
 import os
+import re
 from dataclasses import dataclass
+
+
+def session_cookie_name():
+    value = os.getenv('CHAT_COOKIE_NAME', 'session_id')
+    if not re.fullmatch(r'[A-Za-z][A-Za-z0-9_]{0,63}', value):
+        raise ValueError('CHAT_COOKIE_NAME must be a simple ASCII cookie name')
+    return value
 
 
 def env_bool(name, default=False):

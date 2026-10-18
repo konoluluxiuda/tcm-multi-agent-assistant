@@ -14,5 +14,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Build the research image from an allowlisted context
+      run: python -m scripts.build_research_image --tag tcm-research-chat:ci --receipt var/research-image-ci/build.json
+    - name: Verify preview dependencies and absence of private payload
+      run: |
+        docker run --rm --network none --entrypoint python tcm-research-chat:ci -c "from pathlib import Path; import importlib.util; p=Path('/app'); assert importlib.util.find_spec('pymupdf'); assert importlib.util.find_spec('PIL'); assert importlib.util.find_spec('torch') is None; assert not (p/'.env').exists(); assert not any(p.rglob('*.pdf')); assert not any(p.rglob('*.sqlite3')); assert not any(p.rglob('*.pth'))"
+    - name: Keep build provenance
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: research-image-${{ github.sha }}
+        path: var/research-image-ci/build.json
+        if-no-files-found: warn

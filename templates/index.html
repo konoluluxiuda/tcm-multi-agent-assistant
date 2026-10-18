@@ -224,8 +224,15 @@
                 <div class="sidebar">
                     <h5>
                         <i class="fas fa-robot me-2"></i>
-                        Medical Assistant
+                        {% if research_tools_only %}中草药证据研究{% else %}Medical Assistant{% endif %}
                     </h5>
+                    {% if research_tools_only %}
+                    <div class="agent-info"><h6>可用功能</h6>
+                        <p>输入 /research 查询药典字段、追问出处并导出证据清单。</p>
+                        <p>输入 /herb 查询结构化药材资料。会话可在服务重启后恢复，也可随时清除。</p>
+                        <p>资料未人工审核。此部署不提供通用聊天或旧医学 RAG。</p>
+                    </div>
+                    {% else %}
                     <div class="agent-info">
                         <h6>Available Agents</h6>
                         <ul class="list-unstyled">
@@ -271,6 +278,7 @@
                             <li><i class="fas fa-sync-alt me-2"></i> Seamless integration of agent responses</li>
                         </ul>
                     </div>
+                    {% endif %}
                     <button id="clear-chat" class="btn btn-outline-danger w-100 mt-3">
                         <i class="fas fa-trash me-2"></i> 清除会话与已保存记忆
                     </button>
@@ -283,16 +291,16 @@
                     <div class="chat-header">
                         <h5 class="mb-0">
                             <i class="fas fa-stethoscope me-2"></i>
-                            Multi-Agent Medical Assistant
+                            {% if research_tools_only %}中草药证据研究{% else %}Multi-Agent Medical Assistant{% endif %}
                         </h5>
-                        <small class="text-muted">{% if features.image_analysis.available %}Upload medical images or ask health-related questions{% else %}Ask text questions · image analysis is disabled{% endif %}</small>
+                        <small class="text-muted">{% if research_tools_only %}查询来源字段 · 核对原页 · 保存证据{% elif features.image_analysis.available %}Upload medical images or ask health-related questions{% else %}Ask text questions · image analysis is disabled{% endif %}</small>
                     </div>
                     
                     <small id="memory-status" class="text-muted px-3" role="status">正在恢复已保存会话…</small>
                     <div id="chat-body" class="chat-body">
                         <div class="message assistant-message">
                             <div class="agent-tag">System</div>
-                            <p>Hello! I'm your medical assistant. You can ask me health-related questions{% if features.image_analysis.available %} or upload medical images for analysis{% endif %}.</p>
+                            <p>{% if research_tools_only %}请先输入 /research 甘草的功效，再用 /research 它的用量 或 /research 出处呢 继续查询。{% else %}Hello! I'm your medical assistant. You can ask me health-related questions{% if features.image_analysis.available %} or upload medical images for analysis{% endif %}.{% endif %}</p>
                         </div>
                     </div>
                     

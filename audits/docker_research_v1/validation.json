@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "image_id": "sha256:fde301c8d4563b37acf164098e5d4750b0171efdb3480461d171bb2771bcf0fe",
+  "image_tag": "tcm-research-chat:27e0ea5-docker-local",
+  "image_bytes": 407736632,
+  "source_tree_sha256": "858c4d75640d7ddaa967a2f41a3f56b60eef991ff1963fba1b5df3516c0e0736",
+  "runtime_source_files_match_build": true,
+  "engineering_tests": 337,
+  "skipped": 0,
+  "network_attempts_in_offline_tests": 0,
+  "container_acceptance_checks": 10,
+  "actual_restarts": 2,
+  "actual_container_recreations": 1,
+  "cookie_namespace": "research_chat_session",
+  "sources_mounted_readonly": true,
+  "source_code_bind_mount": false,
+  "container_user_uid": 10001,
+  "local_address": "http://127.0.0.1:7872/",
+  "protected_existing_containers_unchanged": true,
+  "source_files_unchanged_sha256": {
+    "var/mineru_retrieval_v2/research.sqlite3": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+    "var/mineru_revisions_v2/research_view.json": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+    "var/tcm/herbs.sqlite3": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+    "data/《中国药典》2025年版 一部.pdf": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+    "data/《中国药典》2025年版 一部 全本.pdf": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+  },
+  "human_signoff": false,
+  "clinical_accuracy_evaluated": false,
+  "docker_hub_published": false,
+  "git_state_at_validation": {
+    "committed": false,
+    "pushed": false
+  },
+  "resolved_failures": [
+    {
+      "issue": "Building with the whole workspace context failed with open var/memory: permission denied.",
+      "resolution": "Temporary context with allowlisted runtime files; no permission change to old memory."
+    },
+    {
+      "issue": "Docker Desktop internal network left published 7872 absent in NetworkSettings.Ports.",
+      "resolution": "Ordinary bridge, loopback-only published port, deterministic tool-only app profile and dummy provider values."
+    }
+  ],
+  "limits": [
+    "Only explicit research and structured herb tools; general conversation, legacy medical RAG/CV/speech are disabled in this image.",
+    "Anonymous completed-turn SQLite memory; no account sync or native graph mid-node resume.",
+    "Local working-tree image, not a published release; CI workflow changes have not yet run remotely."
+  ],
+  "deployment_code_sha256": {
+    ".github/workflows/docker-image.yml": "485d47e8592895f254f5d33f58b7104b4370eb8a52c61b683702de324cb4b90d",
+    "Dockerfile.research": "ed3553e5a4876a9014b61cb9e197072b2c7b19b067190efd89cf12ddc58cf368",
+    "compose.research.yaml": "a07042e7d2870efc8c89259fddf5e5160d6d2cc8bf38b9728fbe8590a32b690a",
+    "constraints-research-chat.txt": "a12bf16ca55fc5ba5526982b9bf97565e0fa46c54aab2c4790aeb243458d19a8",
+    "requirements-research-chat.txt": "50a126d46635a2107cd6e722de26c6a527f8929e13c6d4f866ae8274efdd167d",
+    "app.py": "2d872de155f8d89d35d6a473eca42442cb45b04cbfe4e0b7e59d05dd3c603a15",
+    "features.py": "5d61432b779c35f6016a678fab3500dedd31c5c837a3ac8f16f038e30411d7bd",
+    "source_access.py": "54b3f0682f21b62d1aa81d1d63aec2c657a397afdea5e898d299d1d60fae3bac",
+    "templates/index.html": "7c7011db4f6a473895bcd14fad2a8c7782bd9adf837a9112ccc6fd3293dd5e84",
+    "scripts/build_research_image.py": "6051625da776ab398b8d23ee8119440d48ecfd121ed28cc362564c712b998625",
+    "scripts/verify_research_container.py": "240950ae9506bf3218e07f375c46a2f997713f819e39d2f2e17baf58e9c387c9",
+    "tests/test_research_deployment.py": "ca66945c2b23ce81e3c8dc414c6a62ac518a98028ed3205bbc48c43cfdfbc65e"
+  }
+}

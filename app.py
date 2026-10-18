@@ -21,14 +21,15 @@ from agents.agent_decision import process_query
 from agents import agent_decision as agent_runtime
 from agents.conversation_store import MemoryUnavailable, ConversationConflict, SessionExpired
 from agents.runtime import session_turn
-from features import env_bool
-from tcm.chat import execute_turn
-from tcm.agent_research import split_contexts, runtime as research_runtime
+from features import env_bool, session_cookie_name
+from tcm.chat import execute_turn, parse_request as parse_herb_request
+from tcm.agent_research import split_contexts, runtime as research_runtime, parse_request as parse_research_request
 from tcm.mineru_research import SnapshotChanged
 from source_access import SourceCatalog, PrivateArtifacts, create_source_router
 
 # Load configuration
 config = Config()
+SESSION_COOKIE_NAME = session_cookie_name()
 
 @asynccontextmanager
 async def lifespan(application):
@@ -53,7 +54,7 @@ for directory in [UPLOAD_FOLDER, FRONTEND_UPLOAD_FOLDER, SKIN_LESION_OUTPUT, SPE
 # Public sources are explicitly registered; private results are session snapshots.
 source_catalog = SourceCatalog(Path.cwd(), os.getenv('SOURCE_MANIFEST_PATH', 'resources/source_manifest.json'))
 private_artifacts = PrivateArtifacts()
-app.include_router(create_source_router(source_catalog, private_artifacts))
+app.include_router(create_source_router(source_catalog, private_artifacts, cookie_name=SESSION_COOKIE_NAME))
 image_request_lock = threading.Lock()
 
 
@@ -99,6 +100,9 @@ def feature_error(name):
 
 @app.middleware('http')
 async def enforce_features(request: Request, call_next):
+    if (env_bool('RESEARCH_TOOLS_ONLY') and request.method in ('POST', 'PUT', 'PATCH', 'DELETE')
+            and request.url.path not in ('/chat', '/conversation')):
+        return JSONResponse(status_code=403, content={'detail': '此部署仅支持药材与药典研究工具及会话管理。'})
     # Check before parsing upload bodies or invoking optional clients.
     feature = {'/upload': 'image_analysis', '/transcribe': 'speech', '/generate-speech': 'speech'}.get(request.url.path)
     if request.method == 'POST' and feature:
@@ -147,7 +151,8 @@ class SpeechRequest(BaseModel):
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     """Serve the main HTML page"""
-    return templates.TemplateResponse(request=request, name="index.html", context={"features": config.features.as_dict()})
+    return templates.TemplateResponse(request=request, name="index.html", context={
+        "features": config.features.as_dict(), "research_tools_only": env_bool('RESEARCH_TOOLS_ONLY')})
 
 def session_cookie(value):
     store = agent_runtime.memory
@@ -161,7 +166,7 @@ def session_cookie(value):
 
 
 def set_session_cookie(response, value):
-    response.set_cookie(key="session_id", value=value, httponly=True, samesite="lax",
+    response.set_cookie(key=SESSION_COOKIE_NAME, value=value, httponly=True, samesite="lax",
                         max_age=agent_runtime.memory.ttl_seconds, secure=env_bool('CHAT_COOKIE_SECURE'))
 
 
@@ -181,7 +186,7 @@ async def memory_expired(request, exc):
 
 
 @app.get('/conversation')
-def conversation(response: Response, session_id: Optional[str] = Cookie(None)):
+def conversation(response: Response, session_id: Optional[str] = Cookie(None, alias=SESSION_COOKIE_NAME)):
     session_id = session_cookie(session_id)
     with session_turn(session_id):
         snapshot = agent_runtime.memory.load(session_id)
@@ -199,7 +204,7 @@ def conversation(response: Response, session_id: Optional[str] = Cookie(None)):
 
 
 @app.delete('/conversation')
-def clear_conversation(response: Response, session_id: Optional[str] = Cookie(None)):
+def clear_conversation(response: Response, session_id: Optional[str] = Cookie(None, alias=SESSION_COOKIE_NAME)):
     if agent_runtime.memory.valid_cookie(session_id):
         with session_turn(session_id):
             agent_runtime.memory.delete(session_id)
@@ -212,6 +217,20 @@ def clear_conversation(response: Response, session_id: Optional[str] = Cookie(No
 def health_check():
     """Health check endpoint for Docker health checks"""
     return {"status": "healthy"}
+
+
+@app.get('/ready/research')
+def research_ready():
+    import sqlite3
+    try:
+        service = research_runtime.get_service()
+        if service is None:
+            return JSONResponse(status_code=503, content={'status': 'not_ready', 'reason': 'research_disabled'})
+        service.check()
+        return {'status': 'ready', 'research_only': True, 'human_signoff': False,
+                'index_sha256': service.receipt['index_sha256']}
+    except (SnapshotChanged, OSError, ValueError, sqlite3.Error, KeyError, TypeError):
+        return JSONResponse(status_code=503, content={'status': 'not_ready', 'reason': 'research_unavailable'})
 
 
 @app.get('/research-evidence.js')
@@ -266,9 +285,12 @@ def research_report(request: Request, q: str, snapshot: str):
 def chat(
     request: QueryRequest, 
     response: Response, 
-    session_id: Optional[str] = Cookie(None)
+    session_id: Optional[str] = Cookie(None, alias=SESSION_COOKIE_NAME)
 ):
     """Process user text query through the multi-agent system."""
+    if (env_bool('RESEARCH_TOOLS_ONLY') and parse_herb_request(request.query) is None
+            and parse_research_request(request.query) is None):
+        raise HTTPException(status_code=403, detail='此部署仅支持药材资料与药典研究工具；请使用 /herb 或 /research 查询。')
     # Generate session ID for cookie if it doesn't exist
     session_id = session_cookie(session_id)
     
@@ -307,7 +329,7 @@ async def upload_image(
     response: Response,
     image: UploadFile = File(...), 
     text: str = Form(""),
-    session_id: Optional[str] = Cookie(None)
+    session_id: Optional[str] = Cookie(None, alias=SESSION_COOKIE_NAME)
 ):
     """Process medical image uploads with optional text input."""
     from werkzeug.utils import secure_filename
@@ -374,7 +396,7 @@ def validate_medical_output(
     response: Response,
     validation_result: str = Form(...), 
     comments: Optional[str] = Form(None),
-    session_id: Optional[str] = Cookie(None)
+    session_id: Optional[str] = Cookie(None, alias=SESSION_COOKIE_NAME)
 ):
     """Handle human validation for medical AI outputs."""
     # Generate session ID for cookie if it doesn't exist

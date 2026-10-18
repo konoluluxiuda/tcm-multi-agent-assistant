@@ -1,0 +1,25 @@
+FROM python:3.11-slim@sha256:e88e9763f943ec1834f992a4b51e0f24500486803e8bc534e5767af9ea65f6ce
+WORKDIR /app
+ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+COPY requirements-tcm.txt requirements-research-preview.txt requirements-research-chat.txt constraints-research-chat.txt ./
+RUN pip install --no-cache-dir -r requirements-research-chat.txt && pip check
+# Allowlist code only. No source corpus, local .env, model weights or audit outputs.
+COPY app.py config.py features.py source_access.py ./
+COPY agents/*.py ./agents/
+COPY agents/guardrails/*.py ./agents/guardrails/
+COPY tcm/ ./tcm/
+COPY templates/ ./templates/
+COPY resources/source_manifest.json ./resources/source_manifest.json
+RUN useradd --uid 10001 --no-create-home appuser && \
+    mkdir -p /app-memory /app/uploads /app/data && chown 10001:10001 /app-memory
+ARG SOURCE_REVISION=unknown
+ARG SOURCE_TREE_SHA256=unknown
+LABEL org.opencontainers.image.revision=$SOURCE_REVISION io.tcm.source-tree-sha256=$SOURCE_TREE_SHA256
+ENV RESEARCH_TOOLS_ONLY=1 ENABLE_PHARMACOPOEIA_RESEARCH=1 \
+    ENABLE_IMAGE_ANALYSIS=0 ENABLE_SPEECH=0 ENABLE_WEB_SEARCH=0 \
+    CHAT_MEMORY_DB=/app-memory/conversations.sqlite3 CHAT_COOKIE_NAME=research_chat_session
+USER appuser
+EXPOSE 8000
+HEALTHCHECK --interval=15s --timeout=15s --start-period=60s --retries=3 \
+  CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready/research', timeout=12)" || exit 1
+CMD ["python", "-m", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]

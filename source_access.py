@@ -120,7 +120,7 @@ class PrivateArtifacts:
             return item[2]
 
 
-def create_source_router(catalog, artifacts):
+def create_source_router(catalog, artifacts, *, cookie_name='session_id'):
     from fastapi import APIRouter, Cookie, HTTPException
     from fastapi.responses import RedirectResponse, Response
     router = APIRouter()
@@ -144,7 +144,7 @@ def create_source_router(catalog, artifacts):
         return RedirectResponse('/sources/' + identifier, status_code=307)
 
     @router.get('/artifacts/{identifier}')
-    def private_artifact(identifier: str, session_id: str = Cookie(None)):
+    def private_artifact(identifier: str, session_id: str = Cookie(None, alias=cookie_name)):
         return asset_response(artifacts.read(identifier, session_id))
 
     return router

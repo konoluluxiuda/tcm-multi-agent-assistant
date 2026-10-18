@@ -65,7 +65,7 @@ python -m uvicorn app:app --host 127.0.0.1 --port 7871
 python -m pip install -r requirements-research-preview.txt
 ```
 
-该文件使用已验证的PyMuPDF 1.28.2及主项目锁定的Pillow 11.1.0，不安装OCR模型。未安装预览依赖时检索仍可运行，图片接口返回明确的不可用提示。本轮未修改Docker镜像或容器；容器启用还需自行在新镜像安装可选依赖、挂载两份PDF及索引为只读，并保留原会话卷。原始资料仍被Git和Docker构建忽略。
+该文件使用已验证的PyMuPDF 1.28.2及主项目锁定的Pillow 11.1.0，不安装OCR模型。未安装预览依赖时检索仍可运行，图片接口返回明确的不可用提示。原始接入轮次未修改Docker；现已另提供7872精简研究容器，包含预览依赖、只读来源挂载及独立持久卷，并通过真实重启/重建验收，见[Docker说明](RESEARCH_DOCKER.md)。原7860医疗容器未替换；原始资料不进入镜像或Git。
 
 ## 验证与复现
 

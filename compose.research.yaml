@@ -1,0 +1,70 @@
+name: tcm-research
+services:
+  chat:
+    image: ${RESEARCH_IMAGE:-tcm-research-chat:local}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${RESEARCH_PORT:-7872}:8000"
+    environment:
+      RESEARCH_TOOLS_ONLY: "1"
+      ENABLE_PHARMACOPOEIA_RESEARCH: "1"
+      ENABLE_IMAGE_ANALYSIS: "0"
+      ENABLE_SPEECH: "0"
+      ENABLE_WEB_SEARCH: "0"
+      CHAT_MEMORY_DB: /app-memory/conversations.sqlite3
+      CHAT_COOKIE_NAME: research_chat_session
+      CHAT_MEMORY_TTL_DAYS: "30"
+      PHARMACOPOEIA_INDEX: /research-index
+      PHARMACOPOEIA_PDF_HIGH: /research-sources/high.pdf
+      PHARMACOPOEIA_PDF_FULL: /research-sources/full.pdf
+      TCM_DB: /herb-data/herbs.sqlite3
+      TCM_DATASET_VERSION: ${TCM_DATASET_VERSION:-local-2026-10-10}
+      # SDK constructors require settings; these placeholders never reach a provider.
+      CHAT_MODEL: research-tools-only
+      CHAT_API_KEY: unused-local-placeholder
+      CHAT_BASE_URL: http://127.0.0.1:9/v1
+      EMBEDDING_MODEL: research-tools-only
+      EMBEDDING_API_KEY: unused-local-placeholder
+      EMBEDDING_BASE_URL: http://127.0.0.1:9/v1
+      EMBEDDING_DIM: "1024"
+      LANGCHAIN_TRACING_V2: "false"
+      LANGSMITH_TRACING: "false"
+    volumes:
+      - research-memory:/app-memory
+      - type: bind
+        source: ./var/mineru_retrieval_v2
+        target: /research-index
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./data/《中国药典》2025年版 一部.pdf
+        target: /research-sources/high.pdf
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./data/《中国药典》2025年版 一部 全本.pdf
+        target: /research-sources/full.pdf
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./var/tcm/herbs.sqlite3
+        target: /herb-data/herbs.sqlite3
+        read_only: true
+        bind:
+          create_host_path: false
+    read_only: true
+    tmpfs:
+      - /tmp:uid=10001,gid=10001,mode=1777
+      - /app/uploads:uid=10001,gid=10001,mode=0700
+      - /app/data:uid=10001,gid=10001,mode=0700
+    init: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    networks: [research-local]
+networks:
+  research-local: {}
+volumes:
+  research-memory:
