@@ -35,3 +35,25 @@ ETCM按当前 `TCM_DATASET_VERSION`（未指定则最新导入版本）在同一
 不能识别或同时涉及多个来源时应进一步明确任务，不生成疗效结论。停用工具和来源失效仍保留原503/来源核验；不将自然语言改进作为临床质量批准。
 
 后续优先收集真实失败问法，建立覆盖能力、统计、字段、概念、文献和跨源歧义的小型意图评测集。只有对照证明规则覆盖不足，再增加可选模型意图分类：仅输出允许的工具/参数，校验后执行；低确定度询问，模型不生成SQL，不参与来源事实补造。通用概念解释需要另行补充可引用术语资料。
+
+## 本地交付与验证（2026-10-18）
+
+源码提交 `03238f8`，从干净源码构建本地镜像 `tcm-research-chat:03238f8`，约408 MB；已装到 **http://127.0.0.1:7873/**。沿用原7873命名卷、签名Cookie及已有消息；实际镜像重建和重启恢复通过。原7860、7863、7872容器ID、启动时间及健康状态均保持不变。
+
+42模块415项严格离线回归通过，无跳过或网络尝试；9组实际容器验收通过，包括自然问法与追问、数据概览、会话隔离、能力说明不清焦点、真实PubMed、组合导出、重启恢复、浏览器按钮、移动端以及合成恶意分类标签的纯文本呈现。浏览器阻断外部CDN，不作为完整外部样式验收。
+
+本次实时统计：ETCM 2,076条有效来源记录，功效分类609条有值、1,467条缺失、27种不同原始值；药典616候选条目、8,654字段块。这些是当前版本统计，不是中药总种数或标准功效分类数量；中文解释与术语库仍待来源建设。
+
+复现本地预览：
+
+```bash
+RESEARCH_IMAGE=tcm-research-chat:03238f8 RESEARCH_PORT=7873 \
+RESEARCH_COOKIE_NAME=research_chat_next_session ENABLE_PUBMED=1 ENABLE_NATURAL_ROUTING=1 \
+docker compose -p tcm-research-next -f compose.research.yaml up -d --no-build chat
+```
+
+只停止容器可使用 `docker compose -p tcm-research-next -f compose.research.yaml stop chat`；不要用 `down -v` 删除资料卷。只需退回指令入口时将 `ENABLE_NATURAL_ROUTING=0` 随同上述参数重新启动，保留原数据卷。
+
+公开[验收元数据](../audits/natural_routing_v1/report.json)、[容器记录](../audits/natural_routing_v1/container_acceptance.json)、[构建](../audits/natural_routing_v1/build.json)和[离线回归](../audits/natural_routing_v1/offline_ci.json)不包含正文、Cookie或密钥。截图仅存忽略的 `var/natural_routing_v1/container/`。
+
+本增量未push或发布Hub。Hub当前发布仍为b227f35，不含本轮自然语言和统计能力；重新启动7873时须明确选择上述新本地镜像。

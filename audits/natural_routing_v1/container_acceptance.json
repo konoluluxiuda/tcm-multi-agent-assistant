@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "checks": [
+    "image_update_preserves_existing_volume_cookie_and_committed_history",
+    "natural_pharmacopoeia_fields_followups_source_and_session_isolation",
+    "live_inventory_raw_classification_missing_counts_and_capabilities_preserve_focus",
+    "concept_translation_and_mixed_sources_clarify_and_general_profile_stays_restricted",
+    "natural_real_pubmed_and_combined_export_after_inventory",
+    "actual_restart_recovers_session_and_offline_literature_snapshot",
+    "real_browser_navigation_inventory_and_mobile_width",
+    "source_classification_labels_are_literal_text_without_script_execution",
+    "all_three_original_services_unchanged_and_healthy"
+  ],
+  "docker_hub_published": false,
+  "clinical_quality_evaluated": false,
+  "url": "http://127.0.0.1:7873",
+  "image": "tcm-research-chat:03238f8",
+  "image_id": "sha256:e7f8c25a916d4a89c7f04cdfff24d84958eee806791380903b8a18ec673d75cd",
+  "source_revision": "03238f80ae8b5c19e547832d393bd5c0cca0fafd",
+  "source_tree_sha256": "eb764e524118dff5729b5e193c3cde23379647fb6455a271acbf5f28f3c2e4f4",
+  "memory_volume_preserved": true,
+  "real_restarts": 1,
+  "source_record_count": 2076,
+  "efficacy_present_records": 609,
+  "efficacy_missing_records": 1467,
+  "raw_efficacy_value_count": 27,
+  "pharmacopoeia_entries": 616,
+  "pharmacopoeia_chunks": 8654,
+  "page_errors": []
+}

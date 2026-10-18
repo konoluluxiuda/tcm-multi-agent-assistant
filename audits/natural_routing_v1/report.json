@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "date": "2026-10-18",
+  "scope": "bounded natural routing, source-backed inventory and lightweight navigation; no separate workspaces or general semantic model routing",
+  "source_commit": "03238f80ae8b5c19e547832d393bd5c0cca0fafd",
+  "image": "tcm-research-chat:03238f8",
+  "offline_tests": 415,
+  "offline_modules": 42,
+  "container_check_groups": 9,
+  "source_record_count": 2076,
+  "efficacy_present_records": 609,
+  "efficacy_missing_records": 1467,
+  "raw_efficacy_value_count": 27,
+  "pharmacopoeia_candidate_entries": 616,
+  "pharmacopoeia_field_chunks": 8654,
+  "memory_volume_preserved": true,
+  "original_three_services_unchanged": true,
+  "private_artifacts_published": false,
+  "docker_hub_published": false,
+  "git_pushed": false,
+  "clinical_quality_evaluated": false
+}
