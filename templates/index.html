@@ -1,10 +1,10 @@
 <!-- templates/index.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ 'zh-CN' if research_tools_only else 'en' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical Assistant</title>
+    <title>{{ '中草药证据研究' if research_tools_only else 'Medical Assistant' }}</title>
     <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/chromatography.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -211,6 +211,26 @@
         .message tr:hover {
             background-color: #f0f0f0;
         }
+        .research-workspace-layout { height: auto; min-height: 90vh; }
+        .research-workspace-layout .chat-body { min-height: 220px; max-height: 50vh; }
+        .research-workspace-layout #chat-form { display: flex; align-items: end; gap: 8px; }
+        .research-workspace-layout #chat-form > .flex-grow-1 { flex: 1; min-width: 0; }
+        .research-workspace-layout .message-input { width: 100%; box-sizing: border-box; min-height: 44px; padding: 8px; border-radius: 8px; }
+        .research-workspace-layout #chat-form > button[type="submit"] { flex-shrink: 0; white-space: nowrap; font-size: 13px; padding: 0; }
+        .research-workspaces { padding: 16px 20px; border-bottom: 1px solid #ddd; min-width: 0; }
+        .workspace-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .workspace-tabs button { padding: 8px 12px; border: 1px solid #a9b8c9; border-radius: 8px; background: white; color: #244365; cursor: pointer; }
+        .workspace-tabs button[aria-selected="true"] { background: #244365; color: white; }
+        .workspace-tabs button:focus-visible { outline: 3px solid #4389c9; outline-offset: 2px; }
+        .workspace-panel[hidden] { display: none !important; }
+        .workspace-panel { max-height: 280px; overflow: auto; overflow-wrap: anywhere; }
+        .workspace-form { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; }
+        .workspace-form label { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 170px; }
+        .workspace-form input, .workspace-form select { width: 100%; min-width: 0; box-sizing: border-box; padding: 7px; }
+        .workspace-form button, .workspace-actions button { padding: 7px 12px; }
+        .workspace-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+        .workspace-note { font-size: .9rem; margin: 8px 0 0; color: #526171; }
+        @media (max-width: 480px) { .research-workspaces { padding: 12px; } .workspace-panel { max-height: 240px; } }
     </style>
 <style>
 .research-result article{border:1px solid #d6e0d5;border-radius:8px;padding:12px;margin:12px 0;overflow-wrap:anywhere}.research-result h2{font-size:19px}.research-result h3{font-size:16px}.research-result .texts{display:grid;grid-template-columns:1fr 1fr;gap:12px}.research-result pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.7 system-ui;background:#f6f7f3;padding:10px}.research-result img{display:block;max-width:100%;height:auto;margin-top:10px}.research-result .notice{padding:10px;background:#fff6e4;border-left:4px solid #b17c29}.research-result .muted{font-size:13px;color:#596b60}.research-result summary{cursor:pointer}.research-result .citation{padding:10px;border:1px solid #dfe5dd;margin-top:8px}@media(max-width:650px){.research-result .texts{grid-template-columns:1fr}}
@@ -228,10 +248,16 @@
                     </h5>
                     {% if research_tools_only %}
                     <div class="agent-info"><h6>可用功能</h6>
+                        {% if natural_routing_enabled %}
+                        <p>使用功能页签查看资料概览、查询药材与药典、检索现代文献。</p>
+                        <p>下方聊天保留同一任务的记录与连续追问。切换页签不会自动查询或清除选择。</p>
+                        <p>资料需核对来源；本工具用于研究辅助，不提供个体化诊疗决策。</p>
+                        {% else %}
                         <p>{% if natural_routing_enabled %}可直接问“有多少药材”“黄芪有什么作用”，继续问“用量呢”“出处呢”。{% else %}输入 /research 查询药典字段、追问出处并导出证据清单。{% endif %}</p>
                         <p>输入 /herb 查询结构化药材资料。会话可在服务重启后恢复，也可随时清除。</p>
                         {% if pubmed_enabled %}<p>输入 /pubmed 加明确检索式查文献；/pubmed-last 回看本会话批次。摘要与药典记载分开展示。</p>{% endif %}
                         <p>资料未人工审核。此部署不提供通用聊天或旧医学 RAG。</p>
+                        {% endif %}
                     </div>
                     {% else %}
                     <div class="agent-info">
@@ -288,7 +314,7 @@
             
             <!-- Chat Container -->
             <div class="col-md-9">
-                <div class="chat-container">
+                <div class="chat-container{% if research_tools_only and natural_routing_enabled %} research-workspace-layout{% endif %}">
                     <div class="chat-header">
                         <h5 class="mb-0">
                             <i class="fas fa-stethoscope me-2"></i>
@@ -297,6 +323,46 @@
                         <small class="text-muted">{% if research_tools_only %}查询来源字段 · 核对原页 · 保存证据{% elif features.image_analysis.available %}Upload medical images or ask health-related questions{% else %}Ask text questions · image analysis is disabled{% endif %}</small>
                     </div>
                     
+                    {% if research_tools_only and natural_routing_enabled %}
+                    <section id="research-workspaces" class="research-workspaces" aria-label="研究工作区">
+                        <div class="workspace-tabs" role="tablist" aria-label="研究功能">
+                            <button type="button" role="tab" id="workspace-tab-overview" aria-controls="workspace-overview" aria-selected="true">数据概览</button>
+                            <button type="button" role="tab" id="workspace-tab-herbs" aria-controls="workspace-herbs" aria-selected="false" tabindex="-1">药材与药典</button>
+                            <button type="button" role="tab" id="workspace-tab-literature" aria-controls="workspace-literature" aria-selected="false" tabindex="-1">现代文献</button>
+                        </div>
+                        <section id="workspace-overview" class="workspace-panel" role="tabpanel" aria-labelledby="workspace-tab-overview">
+                            <p>了解当前资料覆盖范围。ETCM来源记录与药典候选条目分别统计，分类缺失会明确显示。</p>
+                            <div class="workspace-actions">
+                                <button type="button" data-workspace-control data-workspace-query="数据概览">更新数据概览</button>
+                                <button type="button" data-workspace-control data-workspace-query="你能做什么">查看能力说明</button>
+                            </div>
+                            <div data-overview-result aria-live="polite"><p>点击“更新数据概览”读取当前数量和分类。</p></div>
+                        </section>
+                        <section id="workspace-herbs" class="workspace-panel" role="tabpanel" aria-labelledby="workspace-tab-herbs" hidden>
+                            <form class="workspace-form" data-workspace-herb-form>
+                                <label>资料来源<select name="source" data-workspace-control><option value="research">中国药典条目</option><option value="herb">ETCM结构化记录</option></select></label>
+                                <label><span data-herb-name-label>药典中文药名</span><input name="herb_name" required maxlength="200" autocomplete="off" data-workspace-control></label>
+                                <label>药典字段<select name="field" data-workspace-control><option>功效</option><option>用量</option><option>来源</option><option>性味与归经</option><option>注意</option><option>炮制</option><option>贮藏</option></select></label>
+                                <button type="submit" data-workspace-control>查询资料</button>
+                            </form>
+                            <p class="workspace-note">药典字段候选需核对原页；ETCM返回来源记录的可用属性。查询后可在下方继续追问。两库中文名映射尚未核验。</p>
+                        </section>
+                        <section id="workspace-literature" class="workspace-panel" role="tabpanel" aria-labelledby="workspace-tab-literature" hidden>
+                            {% if not pubmed_enabled %}<p>当前未启用PubMed，文献查询不可用。</p>{% endif %}
+                            <fieldset {% if not pubmed_enabled %}disabled{% endif %}>
+                                <form class="workspace-form" data-workspace-literature-form>
+                                    <label>PubMed检索式<input name="term" required maxlength="2000" autocomplete="off" placeholder="英文/拉丁名或明确检索式" data-workspace-control></label>
+                                    <button type="submit" data-workspace-control>检索文献</button>
+                                </form>
+                                <div class="workspace-actions" style="margin-top:8px"><button type="button" data-workspace-control data-workspace-query="/pubmed-last">回看当前批次</button></div>
+                            </fieldset>
+                            <p class="workspace-note">只获取摘要及元数据。药典中文名不会自动填入检索式；对象对应未核验。取得文献后，可在下方卡片导出药典＋文献证据清单。</p>
+                        </section>
+                        <p class="workspace-note" data-workspace-status role="status">当前没有选择资料对象。</p>
+                        <p class="workspace-note" data-workspace-feedback role="status"></p>
+                    </section>
+                    {% endif %}
+
                     <small id="memory-status" class="text-muted px-3" role="status">正在恢复已保存会话…</small>
                     <div id="chat-body" class="chat-body">
                         <div class="message assistant-message">
@@ -323,6 +389,10 @@
                                         </button>
                                     </div>
                                 </div>
+                                {% if research_tools_only and natural_routing_enabled %}
+                                <p class="workspace-note">统一聊天：直接提问或连续追问；页签选择不会限制聊天的查询方向。</p>
+                                <details><summary>示例与兼容指令</summary>
+                                {% endif %}
                                 <small class="d-block text-muted">药材资料：输入 /herb 加拼音、拉丁名、英文名或来源 ID。中文名映射暂不支持。选定后可问“它的药用部位是什么？”，输入 /herb-clear 清除选择。</small>
                                 {% if pubmed_enabled %}<small class="d-block text-muted">现代文献：/pubmed Astragalus membranaceus[Title/Abstract]；/pubmed-last 回看；/pubmed-clear 清除文献焦点。清除会话不删除独立文献台账。</small>{% endif %}
                                 {% if natural_routing_enabled %}
@@ -333,11 +403,12 @@
                                     {% if pubmed_enabled %}<button type="button" class="btn btn-sm btn-outline-primary" data-research-question="在PubMed检索 Astragalus membranaceus[Title/Abstract]">现代文献</button>{% endif %}
                                 </nav>
                                 {% endif %}
+                                {% if research_tools_only and natural_routing_enabled %}</details>{% endif %}
                                 <textarea id="message-input" class="form-control message-input" rows="1" placeholder="{% if natural_routing_enabled %}例如：有哪些功效分类？黄芪有什么作用？{% else %}药材：/herb BaiBu；药典：/research 甘草的功效{% endif %}"></textarea>
                             </div>
                             
-                            <button type="submit" class="btn btn-primary rounded-circle ms-2" style="width: 40px; height: 40px;">
-                                <i class="fas fa-paper-plane"></i>
+                            <button type="submit" aria-label="发送消息" class="btn btn-primary rounded-circle ms-2" style="width: 40px; height: 40px;">
+                                {% if research_tools_only and natural_routing_enabled %}发送{% else %}<i class="fas fa-paper-plane"></i>{% endif %}
                             </button>
                         </form>
                     </div>
@@ -349,6 +420,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
     <script src="/research-evidence.js"></script>
+    {% if research_tools_only and natural_routing_enabled %}<script src="/research-workspaces.js"></script>{% endif %}
     <script>
         function renderPubmedResult(container,result){
             container.classList.add('research-result');container.dataset.pubmedStatus=result.status;
@@ -1143,8 +1215,18 @@
             let displayMessages = [];
             let busy = false;
             const memoryStatus = document.getElementById('memory-status');
+            const workspaces = window.ResearchWorkspaces?.mount({submit(query) {
+                if (busy) return false;
+                const draft = messageInput.value;
+                messageInput.value = query;
+                chatForm.requestSubmit();
+                messageInput.value = draft;
+                return true;
+            }});
+
             function setBusy(value) {
                 busy = value;
+                workspaces?.setBusy(value);
                 messageInput.disabled = value;
                 chatForm.querySelector('[type="submit"]').disabled = value;
                 clearChatBtn.disabled = value;
@@ -1178,6 +1260,7 @@
                     const card=document.createElement('div');card.className='message assistant-message';
                     renderPubmedResult(card,history.pubmed);chatBody.appendChild(card);
                 }
+                workspaces?.restore(history);
                 memoryStatus.textContent = '会话已自动保存，闲置 ' + history.retention_days + ' 天后过期；清除会话会删除已保存记忆。';
                 chatBody.scrollTop = chatBody.scrollHeight;
                 setBusy(false);
@@ -1229,6 +1312,7 @@
                     const response = await fetch('/conversation', {method: 'DELETE', credentials: 'include'});
                     if (!response.ok) throw new Error('清除失败，请重试。');
                     displayMessages = [];
+                    workspaces?.clear();
                     chatBody.replaceChildren();
                     memoryStatus.textContent = '已删除服务器保存的会话记忆，当前为新会话。';
                 } catch (error) {
@@ -1408,6 +1492,7 @@
                     }
                     if (!featureFlags.speech.available) assistantMessageElement.querySelectorAll('.audio-controls').forEach(el => el.remove());
                     chatBody.appendChild(assistantMessageElement);
+                    workspaces?.observe(data);
 
                     // Attach validation button events if human validation is required
                     if (data.agent.includes("HUMAN_VALIDATION")) {
@@ -1513,6 +1598,7 @@
                     // Add error message
                     const errorElement = document.createElement('div');
                     errorElement.className = 'message assistant-message';
+                    workspaces?.error();
                     errorElement.innerHTML = `
                         <div class="agent-tag">System</div>
                         <p class="text-danger">Sorry, there was an error processing your request. Please try again.</p>

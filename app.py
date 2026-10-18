@@ -248,6 +248,11 @@ def research_ready():
         return JSONResponse(status_code=503, content={'status': 'not_ready', 'reason': 'research_unavailable'})
 
 
+@app.get('/research-workspaces.js')
+def research_workspaces_script():
+    return FileResponse(Path(__file__).parent / 'tcm/research_workspaces.js', media_type='application/javascript')
+
+
 @app.get('/research-evidence.js')
 def research_evidence_script():
     return FileResponse(Path(__file__).parent / 'tcm/mineru_evidence.js', media_type='text/javascript')

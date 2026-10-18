@@ -101,13 +101,21 @@ def verify(image, output, browser_path):
                 page=context.new_page();page.on('pageerror',lambda e:errors.append(str(e)))
                 page.route('**/*',lambda r:r.continue_() if r.request.url.startswith(URL+'/') else r.abort())
                 page.goto(URL);page.wait_for_function('()=>!document.getElementById("message-input").disabled')
-                page.get_by_role('button',name='功能说明',exact=True).click()
-                assert page.locator('#message-input').input_value()=='你能做什么'
-                page.locator('#chat-form').evaluate('(f)=>f.requestSubmit()')
+                has_workspaces = page.locator('#research-workspaces').count() > 0
+                if has_workspaces:
+                    page.get_by_role('tab',name='数据概览',exact=True).click()
+                    page.get_by_role('button',name='查看能力说明',exact=True).click()
+                else:
+                    page.get_by_role('button',name='功能说明',exact=True).click()
+                    assert page.locator('#message-input').input_value()=='你能做什么'
+                    page.locator('#chat-form').evaluate('(f)=>f.requestSubmit()')
                 page.locator('[data-assistant-topic="capabilities"]').wait_for()
                 page.wait_for_function('()=>!document.getElementById("message-input").disabled')
-                page.get_by_role('button',name='数据概览',exact=True).click()
-                page.locator('#chat-form').evaluate('(f)=>f.requestSubmit()')
+                if has_workspaces:
+                    page.get_by_role('button',name='更新数据概览',exact=True).click()
+                else:
+                    page.get_by_role('button',name='数据概览',exact=True).click()
+                    page.locator('#chat-form').evaluate('(f)=>f.requestSubmit()')
                 card=page.locator('[data-assistant-topic="overview"]');card.wait_for()
                 assert '2076' in card.inner_text() and card.locator('li').count()==len(herbs['raw_efficacy_values'])
                 page.wait_for_function('()=>!document.getElementById("message-input").disabled')
