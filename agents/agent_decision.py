@@ -26,6 +26,8 @@ from tcm.chat import HerbContext, parse_request, execute_turn
 from tcm.agent_research import parse_request as parse_research_request, runtime as research_runtime
 from tcm.agent_research import split_contexts, pack_contexts
 from tcm.agent_pubmed import parse_request as parse_pubmed_request, runtime as pubmed_runtime, context_from as pubmed_context_from
+from tcm.assistant_router import resolve as resolve_tool_request
+from tcm.assistant_info import execute as execute_assistant_info
 
 
 # Load configuration
@@ -123,6 +125,9 @@ class AgentState(MessagesState):
     pubmed_request: Optional[Dict]
     pubmed_result: Optional[Dict]
     pubmed_context: Optional[Dict]
+    assistant_request: Optional[Dict]
+    assistant_result: Optional[Dict]
+    routing: Optional[Dict]
 
 
 class AgentDecision(TypedDict):
@@ -173,20 +178,21 @@ def create_agent_graph():
         elif isinstance(current_input, dict):
             input_text = current_input.get("text", "")
         
-        pubmed_request = parse_pubmed_request(current_input)
-        if pubmed_request is not None:
-            return {'pubmed_request': pubmed_request, 'tcm_context': None, 'research_context': None,
-                    'has_image': False, 'image_type': None, 'bypass_routing': False}
-        state = {**state, 'pubmed_context': None}
-        research_request = parse_research_request(current_input)
-        if research_request is not None:
-            return {'research_request': research_request, 'tcm_context': None, 'pubmed_context': None,
-                    'has_image': False, 'image_type': None, 'bypass_routing': False}
-        state = {**state, 'research_context': None}
-        tcm_request = parse_request(current_input)
-        if tcm_request is not None:
-            return {"tcm_request": tcm_request, "has_image": False,
-                    "image_type": None, "bypass_routing": False, 'research_context': None, 'pubmed_context': None}
+        selected = resolve_tool_request(current_input, herb_context=state.get('tcm_context'),
+                                        research_context=state.get('research_context'),
+                                        pubmed_context=state.get('pubmed_context'))
+        if selected is not None:
+            tool = selected['tool']
+            key = {'herb': 'tcm_request', 'research': 'research_request',
+                   'pubmed': 'pubmed_request', 'assistant': 'assistant_request'}[tool]
+            changes = {key: selected['request'], 'has_image': False, 'image_type': None,
+                       'bypass_routing': False, 'routing': {k: selected[k] for k in ('tool','reason','mode')}}
+            if tool != 'assistant':
+                for owner, context_key in [('herb','tcm_context'),('research','research_context'),('pubmed','pubmed_context')]:
+                    if owner != tool:
+                        changes[context_key] = None
+            return changes
+        state = {**state, 'research_context': None, 'pubmed_context': None}
 
         # An unrelated turn ends the explicit herb focus, even if a guardrail blocks it.
         state = {**state, "tcm_context": None}
@@ -226,6 +232,8 @@ def create_agent_graph():
     
     def check_if_bypassing(state: AgentState) -> str:
         """Check if we should bypass normal routing due to guardrails."""
+        if state.get('assistant_request') is not None:
+            return 'ASSISTANT_INFO_AGENT'
         if state.get('pubmed_request') is not None:
             return 'PUBMED_AGENT'
         if state.get('research_request') is not None:
@@ -238,6 +246,12 @@ def create_agent_graph():
             return "apply_guardrails"
         return "route_to_agent"
     
+    def run_assistant_info_agent(state: AgentState) -> Dict:
+        result = execute_assistant_info(state['assistant_request'])
+        message = AIMessage(content=result['message'])
+        return {'assistant_result': result, 'agent_name': 'ASSISTANT_INFO_AGENT',
+                'output': message, 'messages': [message], 'needs_human_validation': False}
+
     def run_tcm_herb_agent(state: AgentState) -> Dict:
         result, context = execute_turn(state["tcm_request"], state.get("tcm_context"))
         message = AIMessage(content=result["message"])
@@ -715,6 +729,8 @@ def create_agent_graph():
     workflow.add_node("apply_guardrails", apply_output_guardrails)
     
     # Define the edges (workflow connections)
+    workflow.add_node("ASSISTANT_INFO_AGENT", run_assistant_info_agent)
+    workflow.add_edge("ASSISTANT_INFO_AGENT", END)
     workflow.add_node("TCM_HERB_AGENT", run_tcm_herb_agent)
     workflow.add_edge("TCM_HERB_AGENT", END)
     workflow.add_node('PHARMACOPOEIA_RESEARCH_AGENT', run_research_agent)
@@ -731,6 +747,7 @@ def create_agent_graph():
             "feature_unavailable": "feature_unavailable",
             "apply_guardrails": "apply_guardrails",
             "route_to_agent": "route_to_agent",
+            "ASSISTANT_INFO_AGENT": "ASSISTANT_INFO_AGENT",
             "TCM_HERB_AGENT": "TCM_HERB_AGENT",
             'PHARMACOPOEIA_RESEARCH_AGENT': 'PHARMACOPOEIA_RESEARCH_AGENT',
             'PUBMED_AGENT': 'PUBMED_AGENT'
@@ -803,6 +820,9 @@ def init_agent_state() -> AgentState:
         'pubmed_request': None,
         'pubmed_result': None,
         'pubmed_context': None,
+        "assistant_request": None,
+        "assistant_result": None,
+        "routing": None,
         "next": ""
     }
 

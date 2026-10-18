@@ -1,0 +1,437 @@
+{
+  "status": "passed",
+  "python": "3.12.3",
+  "syntax_files": 154,
+  "total": 415,
+  "skipped": 0,
+  "modules": [
+    {
+      "module": "test_agent_pubmed.py",
+      "status": "passed",
+      "total": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_agent_research.py",
+      "status": "passed",
+      "total": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_agent_sessions.py",
+      "status": "passed",
+      "total": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_assistant_router.py",
+      "status": "passed",
+      "total": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_compare_rag.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_conversation_store.py",
+      "status": "passed",
+      "total": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_eval_tcm_chat_tasks.py",
+      "status": "passed",
+      "total": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_eval_tcm_tasks.py",
+      "status": "passed",
+      "total": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_evidence_bundle.py",
+      "status": "passed",
+      "total": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_literature_evidence.py",
+      "status": "passed",
+      "total": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_memory_backup.py",
+      "status": "passed",
+      "total": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_captions.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_challenge.py",
+      "status": "passed",
+      "total": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_chat.py",
+      "status": "passed",
+      "total": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_guards.py",
+      "status": "passed",
+      "total": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_heading_recovery.py",
+      "status": "passed",
+      "total": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_pharmacopoeia.py",
+      "status": "passed",
+      "total": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_query.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_report.py",
+      "status": "passed",
+      "total": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_research.py",
+      "status": "passed",
+      "total": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_retrieval.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_review_packet.py",
+      "status": "passed",
+      "total": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_mineru_revisions.py",
+      "status": "passed",
+      "total": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_offline_ci.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_optional_features.py",
+      "status": "passed",
+      "total": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_pharmacopoeia_boundary_eval.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_pharmacopoeia_candidates.py",
+      "status": "passed",
+      "total": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_pharmacopoeia_comparison.py",
+      "status": "passed",
+      "total": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_pharmacopoeia_pdf_benchmark.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_pharmacopoeia_quality.py",
+      "status": "passed",
+      "total": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_pharmacopoeia_segmentation.py",
+      "status": "passed",
+      "total": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_pubmed.py",
+      "status": "passed",
+      "total": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_deployment.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_runtime.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_source_access.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_task_candidates.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_tcm_ai_review.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_tcm_api.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_tcm_chat.py",
+      "status": "passed",
+      "total": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_tcm_golden.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_tcm_herbs.py",
+      "status": "passed",
+      "total": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_upload_privacy.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "full_snapshot_evaluation": {
+    "status": "not_run",
+    "reason": "requires private ETCM snapshot/database; separate local acceptance"
+  },
+  "live_provider_evaluation": {
+    "status": "not_run",
+    "reason": "offline regression uses deterministic substitutes"
+  }
+}

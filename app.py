@@ -26,6 +26,7 @@ from tcm.chat import execute_turn, parse_request as parse_herb_request
 from tcm.agent_research import split_contexts, runtime as research_runtime, parse_request as parse_research_request
 from tcm.agent_pubmed import context_from as pubmed_context_from, runtime as pubmed_runtime, parse_request as parse_pubmed_request
 from tcm.mineru_research import SnapshotChanged
+from tcm.assistant_router import resolve as resolve_tool_request
 from source_access import SourceCatalog, PrivateArtifacts, create_source_router
 
 # Load configuration
@@ -162,6 +163,7 @@ async def index(request: Request):
     return templates.TemplateResponse(request=request, name="index.html", context={
         "features": config.features.as_dict(), "research_tools_only": env_bool('RESEARCH_TOOLS_ONLY'),
         "pubmed_enabled": env_bool('ENABLE_PUBMED'),
+        "natural_routing_enabled": env_bool('ENABLE_NATURAL_ROUTING'),
         "combined_report_enabled": env_bool('ENABLE_PUBMED') and env_bool('ENABLE_PHARMACOPOEIA_RESEARCH')})
 
 def session_cookie(value):
@@ -339,9 +341,8 @@ def chat(
     session_id: Optional[str] = Cookie(None, alias=SESSION_COOKIE_NAME)
 ):
     """Process user text query through the multi-agent system."""
-    if (env_bool('RESEARCH_TOOLS_ONLY') and parse_herb_request(request.query) is None
-            and parse_research_request(request.query) is None and parse_pubmed_request(request.query) is None):
-        raise HTTPException(status_code=403, detail='此部署仅支持显式工具；请使用 /herb、/research 或已启用的 /pubmed 查询。')
+    if env_bool('RESEARCH_TOOLS_ONLY') and resolve_tool_request(request.query) is None:
+        raise HTTPException(status_code=403, detail='此部署支持资料查询。可问“你能做什么”“有多少药材”“黄芪有什么作用”；也保留 /herb、/research、/pubmed 指令。')
     # Generate session ID for cookie if it doesn't exist
     session_id = session_cookie(session_id)
     
@@ -359,6 +360,16 @@ def chat(
             "agent": response_data["agent_name"]
         }
         
+        if response_data.get('routing') is not None:
+            result['routing'] = response_data['routing']
+        if response_data.get('assistant_result') is not None:
+            result['assistant'] = response_data['assistant_result']
+            if result['assistant']['status'] == 'unavailable':
+                response.status_code = 503
+                result['status'] = 'unavailable'
+            elif result['assistant']['status'] == 'partial':
+                result['status'] = 'partial'
+
         if response_data.get("tcm_result") is not None:
             result["tcm"] = response_data["tcm_result"]
             if result["tcm"]["status"] in ("database_unavailable", "dataset_not_found"):

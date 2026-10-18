@@ -31,6 +31,7 @@ class ResearchService:
         retriever = ResearchRetriever(self.directory)
         try:
             self.receipt = retriever.receipt
+            self.names = frozenset(retriever.names)
             if self.receipt['human_signoff'] is not False or self.receipt['research_only'] is not True:
                 raise ValueError('Expected an unreviewed research index')
             self.source_hashes = {name: digest(path) for name, path in self.sources.items()}

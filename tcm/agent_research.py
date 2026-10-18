@@ -41,6 +41,14 @@ class ResearchRuntime:
         self.service = None
         self.key = None
 
+    def recognizes_name(self, text):
+        from tcm.mineru_retrieval import name_key
+        try:
+            service = self.get_service()
+            return service is not None and any(name_key(text) == name_key(n) for n in service.names)
+        except (OSError, ValueError, KeyError, TypeError, AttributeError, sqlite3.Error, SnapshotChanged):
+            return False
+
     def get_service(self):
         if not env_bool('ENABLE_PHARMACOPOEIA_RESEARCH'):
             return None
