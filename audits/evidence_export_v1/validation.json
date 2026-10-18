@@ -1,0 +1,60 @@
+{
+  "status": "passed",
+  "engineering_tests": 319,
+  "skipped": 0,
+  "network_attempts": 0,
+  "main_browser_checks": 8,
+  "standalone_browser_checks": 10,
+  "final_metadata_escape_recheck": {
+    "module": "test_mineru_report.py",
+    "status": "passed",
+    "total": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "expected_failures": 0,
+    "network_attempts": 0
+  },
+  "llm_calls": 0,
+  "human_signoff": false,
+  "docker_updated": false,
+  "scope": "One explicit name/field query, at most five chunks. Not a full monograph or literature report.",
+  "source_files_unchanged_sha256": {
+    "var/mineru_retrieval_v2/research.sqlite3": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+    "var/mineru_revisions_v2/research_view.json": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+    "var/tcm/herbs.sqlite3": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+    "data/《中国药典》2025年版 一部.pdf": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+    "data/《中国药典》2025年版 一部 全本.pdf": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5"
+  },
+  "code_sha256": {
+    "tcm/mineru_report.py": "e1f00352478f201f36be5a02a0f5a95e16f14bc9c89597c95ea42a52902e507b",
+    "tcm/mineru_research.py": "69da2adb2f8c5c02aa5b0988670e050dc3c38b39a8aa58b9426a550fd966f0f9",
+    "tcm/mineru_evidence.js": "6230782824ae633db5019550003b966560fbdef1a67d2142eac285ed3104b8dc",
+    "tcm/mineru_chat.html": "277b8189e77378918a0cf01112e35cc8eca19c4341422058b1499c8ea1ae51a5",
+    "tcm/mineru_research.html": "c9a128181e96d8b75f787184aab5c2fa7f7a4ae29ae160eccd3047dc405dd0c0",
+    "app.py": "b417e722d30a0f2bf0978703dce9a59cd619e00d77fef8048fd2b8033c47434d",
+    "templates/index.html": "f00ea5289bbf53642d1d12fcb1887280d0b760f3a870f6382510d239550b5bb9",
+    "tests/test_mineru_report.py": "f2b0978b9d82a184227c24e260405baa75a932b75f27e49da0a22e5a7ab2f58c",
+    "scripts/verify_agent_research_ui.py": "d6304f4316db7107fb26b78a364bbe9d1d496d9f55a55ab09eed189b6cb8112f",
+    "scripts/verify_mineru_chat.py": "8a86c377117f5d65421fe192ef662895fef79a5e1d9469c7fb677b82460580d1"
+  },
+  "local_preview_smoke": {
+    "7871": {
+      "homepage": 200,
+      "export": 200,
+      "raw_and_revision_preserved": true,
+      "bytes": 3122
+    },
+    "7869": {
+      "homepage": 200,
+      "export": 200,
+      "raw_and_revision_preserved": true,
+      "bytes": 3122
+    }
+  },
+  "preview_restarted_with_existing_memory": true,
+  "git_state_at_validation": {
+    "committed": false,
+    "pushed": false
+  }
+}

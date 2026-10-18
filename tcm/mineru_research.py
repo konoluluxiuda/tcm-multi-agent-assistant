@@ -75,7 +75,7 @@ class ResearchService:
         finally:
             retriever.close()
         self.check()
-        return result
+        return {**result, 'index_sha256': self.receipt['index_sha256']}
 
     def preview(self, chunk, kind, index):
         self.check()
@@ -126,6 +126,8 @@ def make_handler(service, chat=None):
                 self.send_header(name, value)
             if getattr(self, 'session_value', None):
                 self.send_header('Set-Cookie', f'research_session={self.session_value}; Path=/; HttpOnly; SameSite=Strict; Max-Age={chat.store.ttl_seconds}')
+            if kind.startswith('text/markdown'):
+                self.send_header('Content-Disposition', 'attachment; filename="tcm-evidence.md"')
             self.end_headers()
             self.wfile.write(body)
 
@@ -222,6 +224,7 @@ def make_handler(service, chat=None):
                     return
                 params = parse_qs(uri.query, keep_blank_values=True, max_num_fields=4)
                 allowed = {'/api/info': set(), '/api/search': {'q', 'method', 'k'},
+                           '/api/research/report': {'q', 'snapshot'},
                            '/api/page': {'chunk', 'kind', 'index'}}
                 if uri.path not in allowed:
                     self.send_json(404, {'error': 'Unknown endpoint'})
@@ -233,6 +236,10 @@ def make_handler(service, chat=None):
                     self.send_json(200, service.receipt)
                 elif uri.path == '/api/search':
                     self.send_json(200, service.search(values.get('q', ''), values.get('method', 'name_field'), int(values.get('k', '5'))))
+                elif uri.path == '/api/research/report':
+                    from tcm.mineru_report import export_report
+                    content = export_report(service, values.get('q', ''), values.get('snapshot', ''))
+                    self.send_bytes(200, content.encode('utf-8'), 'text/markdown; charset=utf-8')
                 else:
                     self.send_bytes(200, service.preview(values.get('chunk', ''), values.get('kind', 'evidence'), int(values.get('index', '0'))), 'image/png')
             except SnapshotChanged as error:

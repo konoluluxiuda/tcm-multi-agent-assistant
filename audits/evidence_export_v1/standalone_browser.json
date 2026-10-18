@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "checks": [
+    "followup_without_entity_clarifies",
+    "named_question_followup_and_original_source_preview",
+    "standalone_chat_download_and_export_snapshot_parameter_guards",
+    "research_table_download_keeps_original_and_revised_text",
+    "scope_and_reference_failures_cannot_reuse_previous_focus",
+    "separate_browser_session_isolation",
+    "client_history_invalid_revision_and_foreign_origin_rejected",
+    "server_and_browser_restart_restore_signed_session_and_followup",
+    "deletion_blocks_old_cookie_and_clears_focus",
+    "user_text_is_not_executed_and_mobile_layout_fits"
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "llm_calls": 0,
+  "human_signoff": false,
+  "clinical_correctness_evaluated": false,
+  "actual_server_restarts": 1,
+  "actual_browser_restarts": 1
+}

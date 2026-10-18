@@ -94,16 +94,32 @@ def verify(output, server_python, executable):
                 image = card.locator('img').first
                 page.wait_for_function('(im)=>im.complete&&im.naturalWidth>0', arg=image.element_handle())
                 passed('main_graph_explicit_tool_followup_and_original_pdf')
+                with page.expect_download() as download:
+                    card.locator('[data-evidence-export]').click()
+                download.value.save_as(str(output / 'followup.md'))
+                exported = (output / 'followup.md').read_text()
+                assert '甘草的用量' in exported and '仅记录本轮查询字段' in exported
+                assert '索引 SHA256' in exported and '全部未人工审核' in exported
+                passed('main_followup_markdown_download_preserves_resolved_query_and_source')
                 page.screenshot(path=str(output / 'desktop.png'), full_page=True)
 
                 other = browser.new_context(); other_page = page_for(other)
                 assert other_page.locator('[data-research-status]').count() == 0
                 other.close(); passed('main_session_isolation')
 
-                submit('/research 酒大黄的用量', 'variant_scope_unresolved')
+                card, _ = submit('/research 酒大黄的用量', 'variant_scope_unresolved')
+                with page.expect_download() as download:
+                    card.locator('[data-evidence-export]').click()
+                download.value.save_as(str(output / 'unresolved_scope.md'))
+                assert '没有可用于该炮制品的字段结果' in (output / 'unresolved_scope.md').read_text()
                 submit('/research 它的用量', 'clarify_entity')
                 card, _ = submit('/research 炙甘草的用量', 'reference_unresolved')
                 assert '同甘草' in card.inner_text()
+                with page.expect_download() as download:
+                    card.locator('[data-evidence-export]').click()
+                download.value.save_as(str(output / 'reference.md'))
+                assert '同甘草' in (output / 'reference.md').read_text()
+                passed('scope_and_reference_exports_preserve_incomplete_status')
                 submit('/research', 'invalid_query')
                 submit('/research-clear', 'context_cleared')
                 passed('scope_reference_and_command_errors_never_call_model')

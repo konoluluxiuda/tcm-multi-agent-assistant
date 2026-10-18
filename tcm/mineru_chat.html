@@ -20,6 +20,7 @@ function focus(name){$('focus').textContent=name?'当前药材：'+name:'当前�
 function message(role,text){const card=el('article',undefined,role);card.append(el('div',role==='user'?'你':'研究助手','role'),el('p',text));$('history').append(card)}
 async function api(path,options){const response=await fetch(path,{credentials:'same-origin',...options});const result=await response.json();if(!response.ok)throw new Error(result.error||'研究服务暂不可用');return result}
 function evidence(data){const box=$('evidence');box.replaceChildren();if(!data)return;
+ exportEvidence(box,data);
  if(data.hits.length){box.append(el('h2','本轮候选证据'));for(const hit of data.hits)box.append(render(hit))}
  if(data.related_entries?.length){box.append(el('h2','相关母条目（不代表指定炮制品）'));for(const entry of data.related_entries){const card=el('article');card.append(el('h3',entry.name),el('p','仅供核对标题，不能替代当前查询。','notice'));citations(card,entry,'title_evidence','母条目标题原页');box.append(card)}}
  if(data.unresolved_evidence?.length){box.append(el('h2','未完成查询的来源片段'));for(const hit of data.unresolved_evidence){const card=render(hit);card.prepend(el('p','此片段正文缺失或引用尚未展开，不作为完整字段结果。','notice'));if(hit.reference_witness){card.append(el('h3','相邻引用提示原文'),el('pre',hit.reference_witness.raw_text));citations(card,hit.reference_witness,'evidence','引用提示原页')}box.append(card)}}

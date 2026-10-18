@@ -27,6 +27,7 @@ $('form').addEventListener('submit',async event=>{event.preventDefault();const t
  $('status').textContent=(statuses[data.status]||data.status)+` 共展示 ${data.hits.length} 个有效候选字段。`+(incomplete?` 另有 ${incomplete} 个未完成片段。`:'')+(data.field_occurrences>data.hits.length+incomplete?` 该查询共有 ${data.field_occurrences} 个字段，本页仅展示前 5 个来源。`:'');
  if(data.names&&data.status==='multiple_names')$('status').textContent+=' '+data.names.join('、');
  $('results').replaceChildren(...data.hits.map(render));
+ exportEvidence($('results'),data);
  const pending=$('unresolved');
  if(data.related_entries?.length){pending.append(el('h2','相关母条目来源（不代表指定炮制品）'));
   for(const entry of data.related_entries){const card=el('article');card.append(el('h3',entry.name),el('p','仅供核对母条目标题，不能替代当前炮制品查询。','notice'));citations(card,entry,'title_evidence','母条目标题原页');pending.append(card)}

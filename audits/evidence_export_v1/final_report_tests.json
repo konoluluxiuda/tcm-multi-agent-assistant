@@ -1,0 +1,10 @@
+{
+  "module": "test_mineru_report.py",
+  "status": "passed",
+  "total": 10,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "expected_failures": 0,
+  "network_attempts": 0
+}

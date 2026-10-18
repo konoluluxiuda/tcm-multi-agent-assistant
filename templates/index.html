@@ -338,6 +338,7 @@
             container.append(el('strong','药典研究工具 · 未人工审核'),el('p',result.message));
             if(result.focus_name)container.append(el('p','当前研究药材：'+result.focus_name));
             const data=result.tool_result;if(!data)return;
+            exportEvidence(container,data);
             function append(hit,notice){const card=render(hit);card.dataset.pageEndpoint='/api/research/page';if(notice)card.prepend(el('p',notice,'notice'));
                 if(hit.reference_witness){const witness=el('section');witness.dataset.pageEndpoint='/api/research/page';witness.append(el('h3','相邻引用提示原文'),el('pre',hit.reference_witness.raw_text));citations(witness,hit.reference_witness,'evidence','引用提示原页');card.append(witness)}container.append(card)}
             for(const hit of data.hits||[])append(hit);

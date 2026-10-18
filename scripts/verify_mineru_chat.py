@@ -90,6 +90,28 @@ def run(server_python, executable, output):
             image = card.locator('img').first
             page.wait_for_function('(im)=>im.complete&&im.naturalWidth>0', arg=image.element_handle())
             passed('named_question_followup_and_original_source_preview')
+            with page.expect_download() as download:
+                page.locator('[data-evidence-export]').click()
+            download.value.save_as(str(output / 'followup.md'))
+            assert '甘草的用量' in (output / 'followup.md').read_text()
+            receipt = page.request.get(url + '/api/info').json()
+            params = {'q': '甘草的用量', 'snapshot': receipt['index_sha256']}
+            assert page.request.get(url + '/api/research/report', params=params).status == 200
+            assert page.request.get(url + '/api/research/report', params={**params, 'snapshot': '0'*64}).status == 409
+            assert page.request.get(url + '/api/research/report', params={**params, 'path': 'secret'}).status == 400
+            passed('standalone_chat_download_and_export_snapshot_parameter_guards')
+            page.goto(url)
+            page.wait_for_function('()=>!document.getElementById("search").disabled')
+            page.locator('#q').fill('麝香的用量'); page.locator('#search').click()
+            page.wait_for_function('()=>!document.getElementById("search").disabled')
+            with page.expect_download() as download:
+                page.locator('[data-evidence-export]').click()
+            download.value.save_as(str(output / 'research_table.md'))
+            exported = (output / 'research_table.md').read_text()
+            assert '多人丸散用' in exported and '多入丸散用' in exported
+            passed('research_table_download_keeps_original_and_revised_text')
+            page.goto(url + '/chat')
+            page.wait_for_function('()=>!document.getElementById("send").disabled')
             page.screenshot(path=str(output / 'desktop.png'), full_page=True)
 
             send('酒大黄的用量')

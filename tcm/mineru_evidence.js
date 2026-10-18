@@ -24,3 +24,18 @@ function render(hit){const card=el('article');card.append(el('h2',`${hit.name} �
  if(hit.raw_text===hit.text)card.append(el('p','本字段文本无 AI 修改；药名或其他字段可能存在修订。','muted'));
  citations(card,hit,'evidence','字段原页证据');citations(card,hit,'title_evidence','标题原页证据');return card;
 }
+
+function exportEvidence(container,data){
+ const allowed=['candidates','partial_evidence','reference_unresolved','ambiguous_field','field_not_observed','variant_scope_unresolved'];
+ if(!data||data.method!=='name_field'||!allowed.includes(data.status)||!/^[a-f0-9]{64}$/.test(data.index_sha256||''))return;
+ const button=el('button','导出本轮证据 Markdown');button.type='button';button.dataset.evidenceExport='true';
+ const note=el('p','仅导出本轮查询字段，保留未审核、缺失和范围限制。','muted');
+ button.addEventListener('click',async()=>{button.disabled=true;note.textContent='正在核对来源并导出……';
+  try{const response=await fetch('/api/research/report?'+new URLSearchParams({q:data.question,snapshot:data.index_sha256}));
+   if(!response.ok){const error=await response.json();throw new Error(error.error||'导出失败，请重新检索')}
+   const blob=await response.blob(),url=URL.createObjectURL(blob),link=el('a');link.href=url;link.download='tcm-evidence.md';
+   document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);
+   note.textContent='已导出本轮证据；未人工审核，请按页码核对原文。';
+  }catch(error){note.textContent=error.message}finally{button.disabled=false}
+ });container.append(button,note);
+}

@@ -239,6 +239,29 @@ def research_page(request: Request, chunk: str, kind: str = 'evidence', index: i
     except (OSError, ImportError):
         return JSONResponse(status_code=503, content={'error': '原页预览暂不可用，请检查PDF依赖及来源。'})
 
+
+@app.get('/api/research/report')
+def research_report(request: Request, q: str, snapshot: str):
+    from tcm.mineru_report import export_report
+    import sqlite3
+    if (set(request.query_params) != {'q', 'snapshot'}
+            or len(list(request.query_params.multi_items())) != 2):
+        return JSONResponse(status_code=400, content={'error': '无效的导出参数。'})
+    try:
+        service = research_runtime.get_service()
+        if service is None:
+            return JSONResponse(status_code=503, content={'error': '药典研究工具未启用。'})
+        content = export_report(service, q, snapshot)
+        return BinaryResponse(content.encode('utf-8'), media_type='text/markdown; charset=utf-8',
+                              headers={'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff',
+                                       'Content-Disposition': 'attachment; filename="tcm-evidence.md"'})
+    except SnapshotChanged:
+        return JSONResponse(status_code=409, content={'error': '研究来源或索引版本已改变，请重新检索后再导出。'})
+    except ValueError:
+        return JSONResponse(status_code=400, content={'error': '请使用当前索引，明确单味药材和字段后再导出。'})
+    except (OSError, sqlite3.Error, KeyError, TypeError):
+        return JSONResponse(status_code=503, content={'error': '研究证据导出暂不可用，未补造内容。'})
+
 @app.post("/chat")
 def chat(
     request: QueryRequest, 
