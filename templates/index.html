@@ -568,6 +568,20 @@
                     }
                     container.append(details);
                 }
+                const download=el('button','导出对比证据 Markdown');download.type='button';download.dataset.comparisonExport='true';
+                const status=el('p','仅导出本次对比字段，分别保留两味药的原文、缺失状态及出处。','muted');
+                download.addEventListener('click',async()=>{
+                    download.disabled=true;status.textContent='正在核对来源并导出对比证据……';
+                    try{
+                        const response=await fetch('/api/research/comparison-report?'+new URLSearchParams({q:result.resolved_question,snapshot:data.index_sha256}),{cache:'no-store'});
+                        if(!response.ok){const error=await response.json();throw Error(error.error||'对比导出未完成，请重新查询。')}
+                        const objectUrl=URL.createObjectURL(await response.blob()),link=el('a');
+                        link.href=objectUrl;link.download='tcm-comparison-evidence.md';document.body.append(link);link.click();link.remove();
+                        setTimeout(()=>URL.revokeObjectURL(objectUrl),1000);
+                        status.textContent='对比证据已下载；未生成疗效排序或替代建议。';
+                    }catch(error){status.textContent=error.message}finally{download.disabled=false}
+                });
+                container.append(download,status);
                 return;
             }
             exportEvidence(container,data);

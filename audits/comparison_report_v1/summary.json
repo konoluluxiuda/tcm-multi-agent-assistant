@@ -1,0 +1,50 @@
+{
+  "kind": "two_herb_comparison_evidence_export_v1",
+  "status": "source_verified",
+  "base_revision": "10bac3212d494f8d6f529ce8d410565466a69e85",
+  "working_tree_dirty": true,
+  "source_sha256": {
+    "app.py": "a1f991537b78edf05fb277b6499aa31cc1aecb732ca68573561c5cd210b39ead",
+    "tcm/comparison_report.py": "1b4b9249622f0304a2246fc890f5af29dbdbf02cba67b181476c749f9ca3f656",
+    "templates/index.html": "f36029f3ff4f3193bd72d76d547ef662ec7b2b3df229f6c4760a8ce61ceaba9e",
+    "tests/test_comparison_report.py": "c9479c9e271ff260a33251e6308a2aefb108f509328b15a94e1db3daa8c33686"
+  },
+  "offline": {
+    "modules": 73,
+    "total": 623,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "checks": [
+      "real_two_herb_two_field_download_preserves_originals_and_page_evidence",
+      "download_keeps_conversation_unchanged",
+      "partial_export_keeps_missing_fields_without_borrowing_other_herb_text",
+      "stale_export_shows_retry_guidance_and_restores_button_without_retry_loop",
+      "no_javascript_errors_or_external_model_requests",
+      "private_downloads_removed"
+    ],
+    "model_calls": 0,
+    "external_requests_allowed": 0,
+    "private_download_sha256": {
+      "private_comparison.md": "446029dadc4ddee46d4700d6718ae8e7f0e7fa562114f8e0899aae5bb5ec9c0b",
+      "private_partial.md": "121cd6d392e4056800679506f75055837ae27cc855206e2c01747a76454b1b3a"
+    }
+  },
+  "failure_preserved": "Initial test found that overall partial explanation was absent from the export; added overall message and retained initial failure.",
+  "scope": "Current-code re-query of a frozen source index, two herbs and at most two fields; original/source-view text and provenance; no synthesis.",
+  "limits": {
+    "herbs": 2,
+    "fields": 2,
+    "output_bytes": 3145728
+  },
+  "conversation_modified_by_export": false,
+  "sources_modified": false,
+  "git_committed_this_increment": false,
+  "docker_updated": false,
+  "remote_uploaded": false,
+  "model_calls": 0,
+  "external_source_disclosure": false,
+  "receipt_stage": "pre_commit_acceptance; source hashes identify tested working files"
+}

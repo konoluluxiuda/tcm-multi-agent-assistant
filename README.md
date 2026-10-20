@@ -1,5 +1,7 @@
 <div align="center">
 
+源码增量：药典两味药对比可[导出Markdown证据](docs/COMPARISON_EVIDENCE_EXPORT.md)，分别保留原文、缺失状态和原页定位；尚未进入Docker镜像。
+
 源码增量：支持[靶点反查药材来源](docs/TARGET_HERB_LOOKUP.md)，可问“CYP24A1关联哪些药材”，保留原始见证并进入具体药材来源；该增量尚未进入Docker镜像。
 
 源码增量：新增[聊天请求诊断](docs/CHAT_REQUEST_DIAGNOSTICS.md)，错误提示提供排查编号，记录固定工具类别、结果和耗时；该增量尚未进入本地Docker镜像。

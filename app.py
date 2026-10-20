@@ -394,6 +394,28 @@ def research_report(request: Request, q: str, snapshot: str):
     except (OSError, sqlite3.Error, KeyError, TypeError):
         return JSONResponse(status_code=503, content={'error': '研究证据导出暂不可用，未补造内容。'})
 
+@app.get('/api/research/comparison-report')
+def research_comparison_report(request: Request, q: str, snapshot: str):
+    from tcm.comparison_report import export_comparison
+    import sqlite3
+    if set(request.query_params) != {'q', 'snapshot'} or len(request.query_params.multi_items()) != 2:
+        return JSONResponse(status_code=400, content={'error': '无效的对比导出参数。'})
+    try:
+        service = research_runtime.get_service()
+        if service is None:
+            return JSONResponse(status_code=503, content={'error': '药典研究工具未启用。'})
+        content = export_comparison(service, q, snapshot)
+        return BinaryResponse(content.encode('utf-8'), media_type='text/markdown; charset=utf-8', headers={
+            'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff',
+            'Content-Disposition': 'attachment; filename="tcm-comparison-evidence.md"'})
+    except SnapshotChanged:
+        return JSONResponse(status_code=409, content={'error': '研究来源或索引已改变，请重新对比后导出。'})
+    except ValueError:
+        return JSONResponse(status_code=400, content={'error': '请明确两味药和最多两个字段，核对炮制品及来源范围后导出；文件不能超过3 MiB。'})
+    except (OSError, sqlite3.Error, KeyError, TypeError):
+        return JSONResponse(status_code=503, content={'error': '对比证据导出暂不可用，未补造内容。'})
+
+
 @app.post('/api/evidence/report')
 def evidence_report(body: EvidenceReportRequest, request: Request,
                     session_id: Optional[str] = Cookie(None, alias=SESSION_COOKIE_NAME)):
