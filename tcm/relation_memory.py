@@ -29,13 +29,13 @@ def capture(result):
     focus={'kind':'etcm_relation_focus_v1','query_kind':payload['kind'],'page':payload['page'],
            'dataset_version':payload['dataset_version'],'herb_source_fingerprint':meta['source_fingerprint'],
            'herb_sources':[]}
-    if payload['kind']=='target_ingredient':
+    if payload['kind'] in ('target_ingredient','target_herb'):
         focus['uniprot']=payload['target']['uniprot']
     else:
         for group in payload['groups']:
             record=group['options'][0]
             focus['herb_sources'].append({'source_record_id':record['source_record_id'],'file_sha256':record['source']['file_sha256']})
-    if payload['kind'] in ('target_ingredient','herb_target_paths'):focus['target_export_sha256']=target_fingerprint()
+    if payload['kind'] in ('target_ingredient','target_herb','herb_target_paths'):focus['target_export_sha256']=target_fingerprint()
     return focus
 
 
@@ -48,7 +48,7 @@ def valid(focus):
     if focus.get('dataset_version')!=meta['dataset_version'] or focus.get('herb_source_fingerprint')!=meta['source_fingerprint']:return False
     if os.getenv('TCM_DATASET_VERSION') and os.environ['TCM_DATASET_VERSION']!=focus['dataset_version']:return False
     sources=focus.get('herb_sources')
-    expected=0 if focus['query_kind']=='target_ingredient' else 2 if focus['query_kind']=='common_target' else 1
+    expected=0 if focus['query_kind'] in ('target_ingredient','target_herb') else 2 if focus['query_kind']=='common_target' else 1
     if not isinstance(sources,list) or len(sources)!=expected:return False
     if expected==0 and not re.fullmatch(r'[A-Z0-9]{6}(?:[A-Z0-9]{4})?',focus.get('uniprot','')):return False
     for source in sources:
@@ -56,7 +56,7 @@ def valid(focus):
         current=execute_request({'source_record_id':source['source_record_id']})
         if (current['status']!='ok' or current['dataset_version']!=focus['dataset_version'] or
                 current['records'][0]['source']['file_sha256']!=source.get('file_sha256')):return False
-    if focus['query_kind'] in ('target_ingredient','herb_target_paths'):
+    if focus['query_kind'] in ('target_ingredient','target_herb','herb_target_paths'):
         if focus.get('target_export_sha256')!=target_fingerprint():return False
     return True
 

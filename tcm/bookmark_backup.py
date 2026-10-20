@@ -39,15 +39,15 @@ def validate_item(item):
         require(all(sha(focus[k]) for k in ('index_sha256', 'view_sha256', 'retriever_sha256', 'guards_sha256')))
     elif payload['kind'] == 'relation':
         kind = focus.get('query_kind')
-        require(kind in ('ingredient', 'target', 'common_target', 'target_ingredient', 'herb_target_paths', 'disease'))
+        require(kind in ('ingredient', 'target', 'common_target', 'target_ingredient', 'herb_target_paths', 'disease', 'target_herb'))
         keys = {'kind', 'query_kind', 'page', 'dataset_version', 'herb_source_fingerprint', 'herb_sources'}
-        if kind == 'target_ingredient':keys.add('uniprot')
-        if kind in ('target_ingredient', 'herb_target_paths'):keys.add('target_export_sha256')
+        if kind in ('target_ingredient', 'target_herb'):keys.add('uniprot')
+        if kind in ('target_ingredient', 'target_herb', 'herb_target_paths'):keys.add('target_export_sha256')
         require(set(focus) == keys and focus['kind'] == 'etcm_relation_focus_v1')
         require(type(focus['page']) is int and 1 <= focus['page'] <= 1000)
         require(text(focus['dataset_version'], 1, 200) and sha(focus['herb_source_fingerprint']))
         sources = focus['herb_sources']
-        count = 0 if kind == 'target_ingredient' else 2 if kind == 'common_target' else 1
+        count = 0 if kind in ('target_ingredient', 'target_herb') else 2 if kind == 'common_target' else 1
         require(isinstance(sources, list) and len(sources) == count)
         for source in sources:
             require(isinstance(source, dict) and set(source) == {'source_record_id', 'file_sha256'})

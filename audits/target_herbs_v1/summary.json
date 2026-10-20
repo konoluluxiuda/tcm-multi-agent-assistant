@@ -1,0 +1,65 @@
+{
+  "kind": "target_herb_source_lookup_v1",
+  "status": "source_verified",
+  "base_revision": "0d65be4f2d56f752af382d1e25cf5c096391c2cb",
+  "working_tree_dirty": true,
+  "source_sha256": {
+    "tcm/target_herbs.py": "a17534f62df0a8b702cc71f46a529bca0ddd9b0be6e167941f6c98340815f849",
+    "tcm/relation_queries.py": "477229ac47030c600ba34b1998ee0ba9949567bd717ce12579cb908425b4231e",
+    "tcm/relation_memory.py": "2b17fc2971f00d6646bd46959b3ec7ad1c45a4a801617e3a9d753932dfabf3aa",
+    "tcm/bookmark_backup.py": "2c6c0c200e936e3567d0ed26e5b7902bec1eb8f7ab71c7c469727e726a8bd155",
+    "tcm/bookmark_report.py": "512513c476693475cf8823a797a0d1cd0e5688942a98603c1b197a68c0a7dfa7",
+    "tcm/assistant_info.py": "e3e06daca30ef6686f634bb1410531df8f5b7df794af3a65edc24cd76527fe91",
+    "templates/index.html": "265091eeada69afa1f8c433e63beae6d7acbe82a4fb5102ad7d0ea8815ce781c",
+    "tests/test_target_herbs.py": "5434df1c78dcb213c51882a3ca6dbffb9d5ab1713e944563e05fac76798f7bc1"
+  },
+  "offline": {
+    "modules": 72,
+    "total": 617,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "checks": [
+      "gene_resolves_to_exact_uniprot_and_19_source_records_with_boundary",
+      "source_drilldown_uses_exact_record_id_without_name_mapping",
+      "second_page_keeps_uniprot_and_distinct_source_ids",
+      "reload_restores_target_page_and_bookmark_preview_keeps_chat_focus",
+      "markdown_preserves_saved_page_source_witnesses_and_nonrecommendation_boundary",
+      "backup_retains_target_focus_without_raw_source_rows",
+      "bookmarks_remain_browser_owner_isolated",
+      "test_bookmarks_deleted_no_js_errors_or_model_requests"
+    ],
+    "model_calls": 0,
+    "external_requests_allowed": 0,
+    "private_download_sha256": {
+      "private_note.md": "b86255d610b1c98fd5a904dc301364dd227e8e669b38248eba48bbb44c48a2ae",
+      "private_backup.json": "2eab8dc52bd15b9e5036ddbcf3174df80c4662a2bcafe2e5d4e090e6e4c6ea72"
+    },
+    "test_downloads_removed": true
+  },
+  "local_source_sample": {
+    "status": "passed",
+    "gene": "CYP24A1",
+    "uniprot": "Q07973",
+    "total_herb_source_records": 19,
+    "returned_herb_source_records": 19,
+    "raw_witnesses_checked": 19,
+    "duration_ms_single_query": 32.83,
+    "count_basis": "Current source-declared UniProt groups; all 19 visible source witnesses checked against original JSON. Not medical validation or an independent accuracy score.",
+    "source_code_sha256": "a17534f62df0a8b702cc71f46a529bca0ddd9b0be6e167941f6c98340815f849",
+    "model_calls": 0,
+    "network_attempts": 0
+  },
+  "initial_issues_preserved": [
+    "First test expected an unescaped Markdown identifier; corrected the assertion to verify the existing export contract.",
+    "Initial SQL query plan scanned all relation edges; now resolve the unique target node once and use the existing node/edge index."
+  ],
+  "scope": "Audited target resolution; direct herb-table source-declared UniProt edges; record counts, not unique herbs or efficacy.",
+  "original_sources_modified": false,
+  "docker_updated": false,
+  "git_committed": false,
+  "remote_uploaded": false,
+  "model_calls": 0
+}

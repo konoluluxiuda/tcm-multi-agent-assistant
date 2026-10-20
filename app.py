@@ -29,6 +29,7 @@ from tcm.mineru_research import SnapshotChanged
 from tcm.assistant_router import resolve as resolve_tool_request
 from source_access import SourceCatalog, PrivateArtifacts, create_source_router
 from tcm.bookmark_api import create_router as create_bookmark_router, enabled as bookmarks_enabled
+from tcm.request_observability import install as install_chat_observability, mark as mark_chat_request
 
 # Load configuration
 config = Config()
@@ -115,6 +116,9 @@ async def enforce_features(request: Request, call_next):
         if error is not None:
             return error
     return await call_next(request)
+
+
+install_chat_observability(app)
 
 
 @app.get('/features')
@@ -204,16 +208,19 @@ def set_session_cookie(response, value):
 
 @app.exception_handler(MemoryUnavailable)
 async def memory_unavailable(request, exc):
+    mark_chat_request(request, error_kind='memory_unavailable')
     return JSONResponse(status_code=503, content={"detail": "会话存储暂不可用，未切换到临时记忆。请检查存储配置。"})
 
 
 @app.exception_handler(ConversationConflict)
 async def memory_conflict(request, exc):
+    mark_chat_request(request, error_kind='conversation_conflict')
     return JSONResponse(status_code=409, content={"detail": "会话已被其他请求更新，请刷新后重试。"})
 
 
 @app.exception_handler(SessionExpired)
 async def memory_expired(request, exc):
+    mark_chat_request(request, error_kind='session_expired')
     return JSONResponse(status_code=410, content={"detail": "会话已清除或过期，请刷新后重新开始。"})
 
 
@@ -434,10 +441,13 @@ def evidence_report(body: EvidenceReportRequest, request: Request,
 def chat(
     request: QueryRequest, 
     response: Response, 
+    http_request: Request,
     session_id: Optional[str] = Cookie(None, alias=SESSION_COOKIE_NAME)
 ):
     """Process user text query through the multi-agent system."""
+    mark_chat_request(http_request, phase='routing')
     selected = resolve_tool_request(request.query)
+    mark_chat_request(http_request, tool=selected['tool'] if selected else 'unknown')
     mode = request.answer_mode
     if selected and selected['tool'] == 'assistant' and selected['request'].get('topic') in ('overview', 'capabilities'):
         mode = 'auto'
@@ -452,8 +462,14 @@ def chat(
     session_id = session_cookie(session_id)
     
     try:
+        mark_chat_request(http_request, phase='execution')
         response_data = (process_query(request.query, session_id=session_id, task_mode='evidence')
                          if mode == 'evidence' else process_query(request.query, session_id=session_id))
+        mark_chat_request(http_request, phase='response')
+        tool = next((tool for key, tool in (('evidence_answer', 'evidence'), ('assistant_result', 'assistant'),
+                    ('tcm_result', 'herb'), ('research_result', 'research'), ('pubmed_result', 'pubmed'))
+                     if response_data.get(key) is not None), 'legacy')
+        mark_chat_request(http_request, tool=tool)
         response_text = response_data['messages'][-1].content
         
         # Set session cookie
@@ -468,6 +484,7 @@ def chat(
         
         if response_data.get('evidence_answer') is not None:
             result['evidence_answer'] = response_data['evidence_answer']
+            mark_chat_request(http_request, model_calls=result['evidence_answer'].get('model_calls'))
             if result['evidence_answer']['status'] in ('disabled', 'planning_failed', 'generation_failed', 'invalid_citations', 'invalid_support'):
                 result['status'] = 'unavailable'
                 response.status_code = 503 if result['evidence_answer']['status'] == 'disabled' else 502
@@ -506,11 +523,13 @@ def chat(
                 result['status'] = 'partial'
             elif response.status_code != 200:
                 result['status'] = 'unavailable'
+        http_request.state.chat_outcome = result['status'] if result['status'] in ('success', 'partial', 'unavailable') else 'success'
         return result
     except (MemoryUnavailable, ConversationConflict, SessionExpired):
         raise
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    except Exception:
+        mark_chat_request(http_request, error_kind='internal_error')
+        raise HTTPException(status_code=500, detail='请求处理失败，请保留请求编号以便排查；未自动重试。')
 
 @app.post("/upload")
 async def upload_image(

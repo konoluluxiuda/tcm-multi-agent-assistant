@@ -1,0 +1,48 @@
+{
+  "kind": "chat_request_diagnostics_v1",
+  "status": "source_verified",
+  "base_revision": "0d65be4f2d56f752af382d1e25cf5c096391c2cb",
+  "working_tree_dirty": true,
+  "source_sha256": {
+    "app.py": "daab2ed6346ce4dd913ff06c8179155be64beb55fbbe37e3d753af6370c92519",
+    "tcm/request_observability.py": "440850c263cddcac7bbe856f053cabf3f1664d905bf738fe71fbaaf92c30928f",
+    "templates/index.html": "d78a51e382446683d3d778c0b70d2719ca66f23954103c8b12b137510251bf68",
+    "tests/test_request_observability.py": "83102839f3fb23e9a44165ed305d55e7e9732fb5551c85cee92e081b0c5f5451"
+  },
+  "offline": {
+    "modules": 71,
+    "total": 611,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "checks": [
+      "real_500_shows_safe_message_and_same_server_request_id",
+      "409_message_is_literal_text_and_controls_recover",
+      "503_preserves_disabled_tool_card_with_request_id",
+      "non_json_error_retains_request_id_and_safe_status_message",
+      "network_failure_has_no_fabricated_server_request_id",
+      "no_javascript_errors_no_automatic_retries_and_input_reenabled"
+    ],
+    "external_requests_allowed": 0,
+    "model_calls": 0
+  },
+  "model_calls": 0,
+  "data_mode": "synthetic_faults_and_disabled_source_tools",
+  "external_source_disclosure": false,
+  "failures_preserved": [
+    "First routing-exception test failed because BaseHTTPMiddleware re-raised an already handled exception; replaced with pure ASGI middleware."
+  ],
+  "diagnostics_scope": "POST /chat only; server-generated request ID; time to response headers; fixed categories only; unknown model calls remain null.",
+  "not_claimed": [
+    "independent business accuracy",
+    "clinical validation",
+    "whole-application log sanitization",
+    "streaming response recovery",
+    "production capacity"
+  ],
+  "docker_updated": false,
+  "git_committed": false,
+  "remote_uploaded": false
+}

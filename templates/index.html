@@ -1239,6 +1239,39 @@
         function renderRelationQuery(container, result, send) {
             const data=result.relations;if(!data)return;
             function add(parent,tag,text){const node=document.createElement(tag);node.textContent=text;parent.append(node);return node}
+            if(data.kind==='target_herb'){
+                const panel=add(container,'section','');panel.dataset.relationQuery=data.kind;
+                add(panel,'p','仅反查当前药材来源列出的明确UniProt；不是药效排名或治疗推荐。已核对靶点目录覆盖 '+data.coverage_targets+' 个标识，未覆盖不等于没有关联。');
+                if(!data.data){
+                    for(const target of data.options){
+                        const choose=add(panel,'button',target.gene+' · '+target.uniprot+' · 反查此靶点');choose.type='button';
+                        choose.addEventListener('click',()=>send('/relations 靶点药材 '+target.uniprot));
+                    }
+                    if(data.options_truncated)add(panel,'p','只展示前20个候选，请使用明确UniProt。');
+                    return;
+                }
+                const target=data.target,page=data.data;
+                add(panel,'strong',target.gene+' · '+target.uniprot+' · '+target.name);
+                add(panel,'p','第 '+data.page+' 页 · 共 '+page.total+' 条不同药材来源记录（不是去重种数）');
+                if(!page.items.length)add(panel,'p',page.total?'本页没有记录，请返回前一页。':'当前药材来源未记录此靶点关联；不表示没有关联。');
+                for(const item of page.items){
+                    const row=add(panel,'article','');row.className='border rounded p-2 my-2';
+                    add(row,'strong',item.name+' · 部位：'+(item.medicinal_part||'未提供'));
+                    add(row,'p','此药材来源有 '+item.source_row_count+' 行记录该标识；本页提供 '+item.witnesses.length+' 行见证'+(item.witnesses_truncated?'，其余见证未展开。':'。'));
+                    add(row,'p','抓取完整性未保证；同名不同来源保留，未自动映射药典身份。');
+                    const view=add(row,'button','查看此来源的靶点');view.type='button';
+                    view.addEventListener('click',()=>send('/relations 靶点 '+item.source_record_id));
+                    const paths=add(row,'button','查看此来源的候选路径');paths.type='button';
+                    paths.addEventListener('click',()=>send('/relations 成分靶点 '+item.source_record_id));
+                    const proof=add(row,'details','');add(proof,'summary','原始靶点行、抓取状态与药材出处');
+                    add(proof,'pre',JSON.stringify(item,null,2)).style.whiteSpace='pre-wrap';
+                }
+                const previous=add(panel,'button','上一页');previous.type='button';previous.disabled=data.page<=1;
+                previous.addEventListener('click',()=>send('/relations 靶点药材 '+target.uniprot+' 第'+(data.page-1)+'页'));
+                const next=add(panel,'button','下一页');next.type='button';next.disabled=page.next_offset===null||data.page>=1000;
+                next.addEventListener('click',()=>send('/relations 靶点药材 '+target.uniprot+' 第'+(data.page+1)+'页'));
+                return;
+            }
             if(data.kind==='target_ingredient'){
                 const panel=add(container,'section','');panel.dataset.relationQuery=data.kind;
                 add(panel,'p','已核对目录覆盖 '+data.coverage_targets+' 个靶点；药材来源表有 '+data.reference_target_groups+' 个UniProt分组。未覆盖不等于没有关系。');
@@ -1700,6 +1733,8 @@
                 messageInput.value = '';
                 messageInput.style.height = 'auto';
                 
+                let failedRequestId = '';
+                let failureMessage = '连接或页面处理失败，请检查连接后重试；未自动重发。';
                 try {
                     let response;
                     
@@ -1732,8 +1767,23 @@
                         });
                     }
                     
+                    const requestId = response.headers.get('X-Request-ID') || '';
+                    failedRequestId = /^[a-f0-9]{32}$/.test(requestId) ? requestId : '';
+                    if (!response.ok) failureMessage = ({
+                        403: '此请求当前不可用，请查看已启用的查询范围。',
+                        409: '会话已被其他请求更新，请刷新后重试。',
+                        410: '会话已清除或过期，请刷新后重新开始。',
+                        422: '请求格式不符合要求，请检查输入。',
+                        500: '请求处理失败，请保留请求编号以便排查；未自动重试。',
+                        502: '模型或工具未能完成请求，请稍后重试。',
+                        503: '所需工具或存储暂不可用，请检查服务状态。'
+                    })[response.status] || '请求未完成，请稍后重试。';
                     const data = await response.json();
-                    if (!response.ok && !data.tcm && !data.research && !data.pubmed && !data.assistant && !data.evidence_answer) throw new Error(data.detail || '请求未完成');
+                    if (!response.ok && !data.tcm && !data.research && !data.pubmed && !data.assistant && !data.evidence_answer) {
+                        // Server messages are rendered as literal text, never as markup.
+                        if (typeof data.detail === 'string' && data.detail.length <= 500) failureMessage = data.detail;
+                        throw new Error('Request failed');
+                    }
                     
                     // Remove thinking indicator
                     thinkingElement.remove();
@@ -1839,6 +1889,12 @@
                         assistantMessageElement.innerHTML = assistantHtml;
                     }
                     if (!featureFlags.speech.available) assistantMessageElement.querySelectorAll('.audio-controls').forEach(el => el.remove());
+                    if ((!response.ok || data.status === 'partial') && failedRequestId) {
+                        const diagnostic = document.createElement('p');
+                        diagnostic.className = 'small text-muted request-diagnostic';
+                        diagnostic.textContent = '排查请求编号：' + failedRequestId;
+                        assistantMessageElement.append(diagnostic);
+                    }
                     chatBody.appendChild(assistantMessageElement);
                     workspaces?.observe(data);
 
@@ -1939,7 +1995,6 @@
                     previewContainer.style.display = 'none';
                     
                 } catch (error) {
-                    console.error("Error:", error);
                     // Remove thinking indicator
                     thinkingElement.remove();
                     
@@ -1949,10 +2004,17 @@
                     workspaces?.error();
                     errorElement.innerHTML = `
                         <div class="agent-tag">System</div>
-                        <p class="text-danger">Sorry, there was an error processing your request. Please try again.</p>
+                        <p class="text-danger"></p>
                     `;
+                    errorElement.querySelector('p').textContent = failureMessage;
+                    if (failedRequestId) {
+                        const diagnostic = document.createElement('p');
+                        diagnostic.className = 'small text-muted request-diagnostic';
+                        diagnostic.textContent = '排查请求编号：' + failedRequestId;
+                        errorElement.append(diagnostic);
+                    }
                     chatBody.appendChild(errorElement);
-                    memoryStatus.textContent = error.message;
+                    memoryStatus.textContent = failureMessage;
                 } finally {
                     setBusy(false);
                 }

@@ -7,7 +7,7 @@ import sqlite3
 from tcm.etcm_enrichment import connect, relations
 
 LABELS = {'ingredient': '成分', 'target': '靶点', 'common_target': '共同靶点', 'target_ingredient': '靶点成分',
-          'herb_target_paths': '成分靶点', 'disease': '疾病富集'}
+          'herb_target_paths': '成分靶点', 'disease': '疾病富集', 'target_herb': '靶点药材'}
 LIMIT = 20
 
 
@@ -34,7 +34,7 @@ def parse(text, *, explicit=False):
         request['page'] = int(page.group(1)) if len(page.group(1)) <= 4 else 0
         body = body[:page.start()].strip()
     if explicit:
-        match = re.fullmatch(r'(共同靶点|靶点成分|成分靶点|疾病富集|成分|靶点)\s+(.+)', body)
+        match = re.fullmatch(r'(共同靶点|靶点成分|靶点药材|成分靶点|疾病富集|成分|靶点)\s+(.+)', body)
         if not match:
             return {**request, 'error': 'invalid_query'}
         label, names = match.groups()
@@ -44,6 +44,9 @@ def parse(text, *, explicit=False):
         if rephrase:
             return parse('/relations 成分靶点 '+rephrase.group(1)+' 第'+str(request['page'])+'页',explicit=True)
         body = re.sub(r'^(?:请帮我|帮我|麻烦|请)?\s*(?:查询|查一下|查找|查|比较)?\s*', '', body)
+        reverse = re.fullmatch(r'(?:靶点\s*)?([A-Za-z0-9][A-Za-z0-9.-]{0,31})(?:关联哪些药材|关联的药材有哪些|有哪些关联药材|对应哪些药材)', body)
+        if reverse:
+            return parse('/relations 靶点药材 '+reverse.group(1)+' 第'+str(request['page'])+'页', explicit=True)
         disease = re.fullmatch(r'(.+?)(?:有哪些|有什么|的)(?:来源)?(?:疾病富集(?:记录)?|富集疾病(?:记录)?)(?:有哪些|是什么)?', body)
         if disease:
             return parse('/relations 疾病富集 '+disease.group(1)+' 第'+str(request['page'])+'页', explicit=True)
@@ -76,7 +79,7 @@ def parse(text, *, explicit=False):
     # Multiple names are not silently treated as a single herb.
     if label != '共同靶点' and re.search(r'[和与、|]', entities[0]):
         request['error'] = 'invalid_query'
-    if label == '靶点成分' and not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9.-]{0,31}', entities[0]):
+    if label in ('靶点成分', '靶点药材') and not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9.-]{0,31}', entities[0]):
         request['error'] = 'invalid_query'
     return request
 
@@ -129,6 +132,9 @@ def execute(request):
     if request['kind'] == 'target_ingredient':
         from tcm.target_ingredients import execute as execute_target_ingredients
         return execute_target_ingredients(request)
+    if request['kind'] == 'target_herb':
+        from tcm.target_herbs import execute as execute_target_herbs
+        return execute_target_herbs(request)
     path = os.getenv('ETCM_ENRICHMENT_DB')
     if not path:
         return {**result, 'status': 'unavailable', 'message': '本地ETCM关联目录未启用，不改用模型或联网补答。'}

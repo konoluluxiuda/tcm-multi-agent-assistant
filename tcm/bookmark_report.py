@@ -47,6 +47,9 @@ def export_note(item, runtime, *, include_note=False):
                       '未核验疾病身份或统计显著性，原始名称未自动翻译。', '',
                       '疾病表抓取状态（空列表表示来源未提供，不表示完整）：', '',
                       quoted(json.dumps(data.get('source_capture_status', []), ensure_ascii=False, indent=2)), '']
+        if data['kind'] == 'target_herb':
+            lines += ['靶点反查按药材来源记录计数，不是去重药材种数、药效排名或治疗推荐；'
+                      '每条最多3行见证，截断标记和来源抓取状态保留。', '']
         if rows.get('coverage'):
             lines += ['### 目录覆盖（不是检索召回率）', '',
                       quoted(json.dumps(rows['coverage'], ensure_ascii=False, indent=2)), '']
