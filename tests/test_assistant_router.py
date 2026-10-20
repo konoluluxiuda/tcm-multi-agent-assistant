@@ -34,6 +34,14 @@ class RouterTests(unittest.TestCase):
         self.assertEqual(resolve('什么是归经')['request']['topic'],'concept')
         self.assertEqual(resolve('黄芪的归经是什么')['tool'],'research')
 
+    def test_pinyin_or_latin_named_fields_choose_etcm_without_chinese_mapping(self):
+        for text in ('BaiZhu的药用部位','查询BaiZhu的归经','Scutellaria baicalensis的药性是什么'):
+            route=resolve(text)
+            self.assertEqual(route['tool'],'herb',text)
+            self.assertEqual(route['reason'],'structured_named_field_query')
+        self.assertEqual(resolve('白术的药用部位')['tool'],'research')
+        self.assertEqual(resolve('在ETCM查询白术的药用部位')['tool'],'herb')
+
     def test_legacy_parsers_and_explicit_overrides_are_preserved(self):
         self.assertEqual(resolve('/herb 黄芪的功效')['tool'],'herb')
         self.assertEqual(resolve('/research')['request'],{'error':'invalid_query'})
@@ -130,6 +138,24 @@ class GraphTests(unittest.TestCase):
         self.assertEqual(follow['research']['resolved_question'],'示例叶炭的用量')
         self.assertEqual(self.turn('出处呢').json()['research']['status'],'candidates')
 
+    def test_usage_paraphrase_reaches_real_graph_without_model_and_retains_focus(self):
+        for text in ('示例叶炭一般拿来干什么？', '示例叶炭能派上什么用场？',
+                     '示例叶炭的用途是什么？'):
+            response = self.turn(text)
+            self.assertEqual(response.status_code, 200)
+            result = response.json()
+            self.assertEqual(result['routing']['reason'], 'pharmacopoeia_usage_paraphrase')
+            self.assertEqual(result['research']['status'], 'candidates')
+            self.assertEqual(result['research']['tool_result']['hits'][0]['name'], '示例叶炭')
+            self.assertEqual(result['research']['llm_calls'], 0)
+            self.assertNotIn('evidence_answer', result)
+        self.assertEqual(self.turn('出处呢').json()['research']['status'], 'candidates')
+        self.assertEqual(self.turn('用量呢').json()['research']['status'], 'candidates')
+
+    def test_usage_paraphrase_with_disabled_source_returns_503_without_fallback(self):
+        with patch.object(self.ad.research_runtime, 'get_service', return_value=None):
+            self.assertEqual(self.turn('示例叶炭一般拿来干什么？').status_code, 503)
+
     def test_followups_are_isolated_and_summary_does_not_clear_active_focus(self):
         from fastapi.testclient import TestClient
         self.turn('示例叶炭的功效')
@@ -146,6 +172,35 @@ class GraphTests(unittest.TestCase):
         self.assertNotIn(str(self.root),str(data))
         self.assertEqual(self.turn('什么是归经').json()['assistant']['status'],'clarification_needed')
         self.assertEqual(self.turn('找黄芪相关文献').json()['assistant']['status'],'clarification_needed')
+
+    def test_comparison_routes_through_main_graph_without_model_and_clears_focus(self):
+        self.turn('示例叶炭的功效')
+        response=self.turn('比较示例叶和示例叶炭的功效与用量')
+        self.assertEqual(response.status_code,200)
+        result=response.json()
+        self.assertEqual(result['routing']['reason'],'pharmacopoeia_comparison')
+        self.assertEqual(result['research']['status'],'partial_evidence')
+        self.assertEqual(result['status'],'partial')
+        self.assertEqual(len(result['research']['tool_result']['comparison']['groups']),2)
+        self.assertNotIn('evidence_answer',result)
+        self.assertEqual(self.turn('用量呢').json()['research']['status'],'clarify_entity')
+
+    def test_etcm_named_query_followup_and_provenance_through_main_graph(self):
+        source=self.root/'herb-source';(source/'etcm_herbs').mkdir(parents=True)
+        (source/'etcm_herbs/Example.json').write_text(json.dumps({'code':1,'data':[
+            {'id':'base_information','value':[{'key':'Herb Name in Pinyin','value':'ExampleHerb'},
+                                            {'key':'Medicinal Part','value':'fixture-root'}]}]}))
+        database=self.root/'herbs.sqlite3';import_snapshot(source,database,'v1')
+        with patch.dict(os.environ,{'TCM_DB':str(database),'TCM_DATASET_VERSION':'v1'}):
+            result=self.turn('ExampleHerb的药用部位').json()
+            self.assertEqual(result['tcm']['status'],'ok')
+            record=result['tcm']['records'][0]
+            self.assertEqual(record['fields']['medicinal_part']['value'],'fixture-root')
+            self.assertEqual(record['fields']['medicinal_part']['source']['json_pointer'],'/data/0/value/1/value')
+            self.assertEqual(self.turn('它的药性呢').json()['tcm']['records'][0]['fields']['properties']['state'],'missing')
+            self.assertEqual(self.turn('出处呢').json()['tcm']['records'][0]['source_record_id'],record['source_record_id'])
+            self.assertEqual(self.turn('在ETCM查询ExampleHerb的药用部位').json()['routing']['reason'],'explicit_structured_source')
+            self.assertEqual(self.turn('/herb 白术').json()['tcm']['status'],'unsupported_name_mapping')
 
     def test_raw_category_values_stay_out_of_memory_and_inventory_is_live(self):
         source=self.root/'source';(source/'etcm_herbs').mkdir(parents=True)

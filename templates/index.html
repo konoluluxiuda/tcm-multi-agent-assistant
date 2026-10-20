@@ -366,6 +366,30 @@
                     </section>
                     {% endif %}
 
+                    {% if research_bookmarks_enabled %}
+                    <details id="research-bookmarks" class="px-3 py-2">
+                        <summary>研究收藏（持久保存）</summary>
+                        <p class="workspace-note">清空聊天不删除收藏。可导出备份，在清理Cookie或换浏览器后导入副本；个人笔记不会作为资料证据。</p>
+                        <p data-bookmark-focus class="workspace-note">正在读取可收藏的查询…</p>
+                        <form data-bookmark-form>
+                            <label>收藏标题<input name="title" maxlength="120" placeholder="留空使用查询名称" aria-label="新收藏标题"></label>
+                            <label style="display:block">个人笔记（不作为资料证据）<textarea name="note" maxlength="2000" aria-label="新收藏个人笔记" style="width:100%"></textarea></label>
+                            <button type="submit" disabled>收藏当前查询</button>
+                            <button type="button" data-bookmark-refresh>刷新收藏</button>
+                        </form>
+                        <div class="workspace-actions" style="margin-top:8px">
+                            <button type="button" data-bookmark-export>导出备份（含个人笔记）</button>
+                            <label>选择收藏备份<input type="file" data-bookmark-import-file accept="application/json,.json" aria-label="收藏备份文件"></label>
+                            <button type="button" data-bookmark-import>导入备份</button>
+                        </div>
+                        <p data-bookmark-status role="status" class="workspace-note"></p>
+                        <p data-bookmark-count class="workspace-note"></p>
+                        <div data-bookmark-list></div>
+                        <button type="button" data-bookmark-previous disabled>收藏上一页</button>
+                        <button type="button" data-bookmark-next disabled>收藏下一页</button>
+                        <div data-bookmark-preview></div>
+                    </details>
+                    {% endif %}
                     <small id="memory-status" class="text-muted px-3" role="status">正在恢复已保存会话…</small>
                     <div id="chat-body" class="chat-body">
                         <div class="message assistant-message">
@@ -403,10 +427,16 @@
                                     <button type="button" class="btn btn-sm btn-outline-primary" data-research-question="你能做什么">功能说明</button>
                                     <button type="button" class="btn btn-sm btn-outline-primary" data-research-question="收录了多少药材">数据概览</button>
                                     <button type="button" class="btn btn-sm btn-outline-primary" data-research-question="黄芪有什么作用">药典查询</button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary" data-research-question="比较白术和黄芪的功效与用量">药典对比</button>
                                     {% if pubmed_enabled %}<button type="button" class="btn btn-sm btn-outline-primary" data-research-question="在PubMed检索 Astragalus membranaceus[Title/Abstract]">现代文献</button>{% endif %}
                                 </nav>
                                 {% endif %}
                                 {% if research_tools_only and natural_routing_enabled %}</details>{% endif %}
+                                {% if evidence_assistant_enabled %}
+                                {% if evidence_auto_routing_enabled %}<p class="workspace-note" id="auto-intent-note">自动意图识别已开启：明确查询先走规则；未匹配的问题会调用模型，使用合成资料。无需勾选即可提问。</p>{% endif %}
+                                <label class="workspace-note"><input type="checkbox" id="evidence-answer-mode"> AI整理回答（调用模型，附来源；统计问题仍直接查询）</label>
+                                {% if evidence_assistant_synthetic %}<p class="workspace-note">AI模式当前仅使用合成资料，不读取或发送药典片段。测试示例：整理虚构示例草的功效与注意事项。</p>{% endif %}
+                                {% endif %}
                                 <textarea id="message-input" class="form-control message-input" rows="1" placeholder="{% if natural_routing_enabled %}例如：有哪些功效分类？黄芪有什么作用？{% else %}药材：/herb BaiBu；药典：/research 甘草的功效{% endif %}"></textarea>
                             </div>
                             
@@ -425,6 +455,7 @@
     <script src="/research-evidence.js"></script>
     {% if pubmed_enabled %}<script src="/research-objects.js"></script>{% endif %}
     {% if research_tools_only and natural_routing_enabled %}<script src="/research-workspaces.js"></script>{% endif %}
+    {% if research_bookmarks_enabled %}<script src="/research-bookmarks.js"></script>{% endif %}
     <script>
         function renderPubmedResult(container,result){
             container.classList.add('research-result');container.dataset.pubmedStatus=result.status;
@@ -508,6 +539,37 @@
             container.append(el('strong','药典研究工具 · 未人工审核'),el('p',result.message));
             if(result.focus_name)container.append(el('p','当前研究药材：'+result.focus_name));
             const data=result.tool_result;if(!data)return;
+            if(data.comparison){
+                container.dataset.researchComparison='true';
+                const comparison=data.comparison;
+                const scroll=el('div');scroll.style.overflowX='auto';
+                const table=el('table');table.className='table table-bordered';table.setAttribute('aria-label','药典字段原文对比');
+                const head=el('thead'),headRow=el('tr');headRow.append(el('th','字段'));
+                for(const group of comparison.groups)headRow.append(el('th',group.name));
+                head.append(headRow);table.append(head);
+                const body=el('tbody');
+                for(const field of comparison.fields){
+                    const row=el('tr');row.append(el('th',field));
+                    for(const group of comparison.groups){
+                        const cell=group.cells.find(c=>c.field===field),td=el('td');td.style.minWidth='240px';
+                        td.append(el('p',cell.message));
+                        for(const hit of cell.result.hits||[]){const text=el('div',hit.text);text.style.whiteSpace='pre-wrap';td.append(text)}
+                        row.append(td);
+                    }
+                    body.append(row);
+                }
+                table.append(body);scroll.append(table);container.append(scroll);
+                for(const group of comparison.groups){
+                    const details=el('details');details.append(el('summary',group.name+' · 来源与原页'));
+                    for(const cell of group.cells){
+                        details.append(el('h4',cell.field),el('p',cell.message));
+                        for(const hit of cell.result.hits||[]){const card=render(hit);card.dataset.pageEndpoint='/api/research/page';details.append(card)}
+                        for(const hit of cell.result.unresolved_evidence||[]){const card=render(hit);card.dataset.pageEndpoint='/api/research/page';card.prepend(el('p','查询未完成，此片段不能作为完整字段依据。','notice'));details.append(card)}
+                    }
+                    container.append(details);
+                }
+                return;
+            }
             exportEvidence(container,data);
             function append(hit,notice){const card=render(hit);card.dataset.pageEndpoint='/api/research/page';if(notice)card.prepend(el('p',notice,'notice'));
                 if(hit.reference_witness){const witness=el('section');witness.dataset.pageEndpoint='/api/research/page';witness.append(el('h3','相邻引用提示原文'),el('pre',hit.reference_witness.raw_text));citations(witness,hit.reference_witness,'evidence','引用提示原页');card.append(witness)}container.append(card)}
@@ -1140,6 +1202,166 @@
             
         //     return text;
         // }
+        function renderIngredientDetails(container,data){
+            function add(parent,tag,text){const node=document.createElement(tag);node.textContent=text;parent.append(node);return node}
+            add(container,'p',data.message);
+            if(!data.candidates.length)add(container,'p','没有匹配的本地成分文件候选。');
+            if(data.candidates_truncated)add(container,'p','候选文件超过3份，仅核对前三份，不自动选择。');
+            const labels={source_fields_consistent_not_verified:'名称、分子式和分子量一致，化学身份未验证',
+                source_fields_inconsistent:'来源字段冲突，未合并标识',insufficient_identity_fields:'身份字段不足，未合并标识',
+                source_unavailable_or_oversized:'文件不可用或超过读取上限'};
+            for(const candidate of data.candidates){
+                const box=add(container,'section','');box.dataset.ingredientStatus=candidate.status;
+                add(box,'strong',labels[candidate.status]||candidate.status);
+                add(box,'p','候选来源：'+candidate.relative_path);
+                if(candidate.identifiers){
+                    for(const [key,label] of [['cas','CAS'],['pubchem','PubChem CID']]){
+                        const witnesses=candidate.identifiers[key]||[];
+                        add(box,'p',label+'（来源声明）：'+(witnesses.length?witnesses.map(w=>Array.isArray(w.value)?w.value.join('；'):String(w.value)).join('；'):'未提供'));
+                        if(key==='pubchem')for(const witness of witnesses){
+                            const values=Array.isArray(witness.value)?witness.value:[witness.value];
+                            for(const value of values)if(/^[1-9][0-9]{0,11}$/.test(String(value))){
+                                const link=add(box,'a','打开 PubChem '+value);link.href='https://pubchem.ncbi.nlm.nih.gov/compound/'+value;
+                                link.target='_blank';link.rel='noopener noreferrer';
+                            }
+                        }
+                    }
+                    add(box,'p',candidate.target_links_status==='not_recorded'?
+                        '该成分文件未记录直接靶点表；不将药材靶点当成该成分靶点。':
+                        '该文件存在直接靶点表，原始行及抓取状态见下方；未核验作用机制。');
+                }
+                const proof=add(box,'details','');add(proof,'summary','成分字段原值、SHA与JSON出处');
+                add(proof,'pre',JSON.stringify({herb_source:data.herb_source,herb_row:data.herb_row,
+                    herb_json_pointer:data.herb_json_pointer,candidate},null,2)).style.whiteSpace='pre-wrap';
+            }
+        }
+
+        function renderRelationQuery(container, result, send) {
+            const data=result.relations;if(!data)return;
+            function add(parent,tag,text){const node=document.createElement(tag);node.textContent=text;parent.append(node);return node}
+            if(data.kind==='target_ingredient'){
+                const panel=add(container,'section','');panel.dataset.relationQuery=data.kind;
+                add(panel,'p','已核对目录覆盖 '+data.coverage_targets+' 个靶点；药材来源表有 '+data.reference_target_groups+' 个UniProt分组。未覆盖不等于没有关系。');
+                if(!data.data){
+                    for(const target of data.options){
+                        const button=add(panel,'button',target.gene+' · '+target.uniprot+' · 查询此靶点');button.type='button';
+                        button.addEventListener('click',()=>send('/relations 靶点成分 '+target.uniprot));
+                    }
+                    if(data.options_truncated)add(panel,'p','只展示前20个候选，请使用明确UniProt。');
+                    return;
+                }
+                const target=data.target,page=data.data;
+                add(panel,'strong',target.gene+' · '+target.uniprot+' · '+target.name);
+                add(panel,'p','第 '+data.page+' 页 · 共 '+page.total+' 条靶点来源成分行');
+                if(!page.items.length)add(panel,'p',page.total?'本页没有记录，请返回前一页。':'该靶点来源没有可展示的成分行，不表示不存在关联。');
+                for(const item of page.items){
+                    const row=add(panel,'article','');row.className='border rounded p-2 my-2';
+                    add(row,'strong',item.ingredient_name);
+                    add(row,'p','分子式：'+(item.raw_row['Molecular Formula']||'未提供')+'；分子量：'+(item.raw_row['Molecular Weight']||'未提供'));
+                    const proof=add(row,'details','');add(proof,'summary','靶点文件原始行、抓取状态与出处');
+                    add(proof,'pre',JSON.stringify(item,null,2)).style.whiteSpace='pre-wrap';
+                }
+                const prev=add(panel,'button','上一页');prev.type='button';prev.disabled=data.page<=1;
+                prev.addEventListener('click',()=>send('/relations 靶点成分 '+target.uniprot+' 第'+(data.page-1)+'页'));
+                const next=add(panel,'button','下一页');next.type='button';next.disabled=page.next_offset===null||data.page>=1000;
+                next.addEventListener('click',()=>send('/relations 靶点成分 '+target.uniprot+' 第'+(data.page+1)+'页'));
+                add(panel,'small','数据库来源关联，未核验实验结合或化学身份；未将成分与同名文件自动合并。');
+                return;
+            }
+            const label={ingredient:'成分',target:'靶点',common_target:'共同靶点',herb_target_paths:'成分靶点',disease:'疾病富集'}[data.kind];
+            function command(ids,page=1){return '/relations '+label+' '+ids.join(' | ')+' 第'+page+'页'}
+            const panel=add(container,'section','');panel.dataset.relationQuery=data.kind;
+            if(data.kind==='disease')add(panel,'p','疾病富集是来源关联，不是适应证或治疗推荐；疾病名称保留原文，未评定统计显著性。');
+            const groups=data.groups||[];
+            if(!data.data){
+                const selects=[];
+                for(const [i,group] of groups.entries()){
+                    const field=add(panel,'label','来源 '+(i+1)+'：'+group.query+' ');
+                    const select=add(field,'select','');select.setAttribute('aria-label','选择来源 '+(i+1));
+                    const empty=add(select,'option','请选择并核对来源');empty.value='';
+                    for(const record of group.options){
+                        const option=add(select,'option',record.name+' · 部位：'+(record.medicinal_part||'未提供')+' · '+record.source_record_id.slice(-12));
+                        option.value=record.source_record_id;
+                    }
+                    if(group.resolution_status==='ok'&&group.options.length===1)select.value=group.options[0].source_record_id;
+                    if(!group.options.length)add(panel,'p','此名称没有可选来源，请改用已收录的拼音或来源ID。');
+                    selects.push(select);
+                }
+                if(selects.length){
+                    const button=add(panel,'button','查询所选来源');button.type='button';
+                    const update=()=>{button.disabled=selects.some(x=>!x.value)||new Set(selects.map(x=>x.value)).size!==selects.length};
+                    selects.forEach(x=>x.addEventListener('change',update));update();
+                    button.addEventListener('click',()=>send(command(selects.map(x=>x.value),data.page)));
+                }
+                return;
+            }
+            const page=data.data;
+            if(data.kind==='disease'){
+                const capture=add(panel,'details','');add(capture,'summary','疾病表抓取状态（包括空结果）');
+                if(data.source_capture_status?.length)add(capture,'pre',JSON.stringify(data.source_capture_status,null,2)).style.whiteSpace='pre-wrap';
+                else add(capture,'p','来源未提供疾病表抓取状态，无法判断抓取完整性。');
+            }
+            if(data.kind==='herb_target_paths'){
+                const c=page.coverage;
+                add(panel,'p','药材成分来源行：'+c.herb_ingredient_source_rows+'；三项字段完整：'+c.complete_identity_rows+
+                    '；字段缺失：'+c.missing_identity_rows+'；与靶点目录匹配的成分行：'+c.matching_herb_rows+
+                    '；字段完整但未匹配：'+c.unmatched_complete_rows+'（其中同名但字段不一致：'+c.name_only_conflict_rows+'）。');
+                add(panel,'p','候选路径涉及 '+c.distinct_source_uniprot+' 个不同UniProt；当前目录覆盖 '+c.target_catalog_targets+
+                    ' 个靶点，药材来源表有 '+c.reference_target_groups+' 个分组。字段相同不代表已核验化学身份。');
+            }
+            for(const group of groups){
+                const record=group.options[0];add(panel,'p',record.name+' · '+record.source_record_id);
+            }
+            add(panel,'p','第 '+data.page+' 页 · 共 '+page.total+(data.kind==='common_target'?' 个不同UniProt标识':
+                data.kind==='herb_target_paths'?' 条字段一致候选路径':' 条来源记录'));
+            if(!page.items.length)add(panel,'p',page.total?'本页没有记录，可返回前一页。':'当前来源未记录符合条件的结果；不等于不存在相关关联。');
+            for(const item of page.items){
+                const row=add(panel,'article','');row.className='border rounded p-2 my-2';
+                add(row,'strong',data.kind==='common_target'?'UniProt '+item.identifier:
+                    data.kind==='herb_target_paths'?item.ingredient_name+' → '+item.target['Gene Symbol']+' · '+item.target['UniProt Accession Number']:
+                    item.name+(item.identifier?' · '+item.identifier:''));
+                if(item.identity_note)add(row,'p',item.identity_note);
+                if(data.kind==='common_target'){
+                    for(const [i,source] of item.sources.entries()){
+                        const box=add(row,'details','');add(box,'summary','来源 '+(i+1)+' 的原始行与出处（'+source.source_row_count+'行）');
+                        if(source.witnesses_truncated)add(box,'p','展示前3条原始行，完整行数见上方。');
+                        add(box,'pre',JSON.stringify(source,null,2)).style.whiteSpace='pre-wrap';
+                    }
+                    add(row,'small','按来源明确提供的相同UniProt分组，未外部核验；各来源名称可能不一致。');
+                }else if(data.kind==='herb_target_paths'){
+                    const box=add(row,'details','');add(box,'summary','双方原始行、抓取状态与出处');
+                    add(box,'pre',JSON.stringify(item,null,2)).style.whiteSpace='pre-wrap';
+                    const button=add(row,'button','查看该靶点的全部来源成分');button.type='button';
+                    button.addEventListener('click',()=>send('/relations 靶点成分 '+item.target['UniProt Accession Number']));
+                }else{
+                    const box=add(row,'details','');add(box,'summary','原始行与JSON出处');
+                    add(box,'pre',JSON.stringify(item,null,2)).style.whiteSpace='pre-wrap';
+                    if(data.kind==='ingredient'&&data.ingredient_detail_available){
+                        const details=add(row,'details','');add(details,'summary','查看成分标识与直接靶点记录');
+                        const content=add(details,'div','');let loading=false,loaded=false;
+                        async function load(){
+                            if(loaded||loading)return;loading=true;content.textContent='正在核对本地成分文件……';
+                            try{
+                                const params=new URLSearchParams({source_record_id:groups[0].options[0].source_record_id,edge_id:item.edge_id});
+                                const response=await fetch('/api/etcm/ingredient?'+params,{credentials:'include',cache:'no-store'});
+                                const detail=await response.json();if(!response.ok)throw new Error(detail.error||'成分详情不可用');
+                                content.replaceChildren();renderIngredientDetails(content,detail);loaded=true;
+                            }catch(error){content.replaceChildren();add(content,'p',error.message);
+                                const retry=add(content,'button','重试成分核对');retry.type='button';retry.addEventListener('click',load)}
+                            finally{loading=false}
+                        }
+                        details.addEventListener('toggle',()=>{if(details.open)load()});
+                    }
+                }
+            }
+            const ids=groups.map(g=>g.options[0].source_record_id);
+            const prev=add(panel,'button','上一页');prev.type='button';prev.disabled=data.page<=1;
+            prev.addEventListener('click',()=>send(command(ids,data.page-1)));
+            const next=add(panel,'button','下一页');next.type='button';next.disabled=page.next_offset===null||data.page>=1000;
+            next.addEventListener('click',()=>send(command(ids,data.page+1)));
+            add(panel,'small','分页保留已选来源ID；刷新时重新读取结果，记忆仅保存来源标识与数据版本。');
+        }
+
         function renderHerbResult(container, result, chooseSource) {
             const labels = {
                 name_pinyin: '拼音', latin_name: '拉丁名', english_name: '英文名',
@@ -1164,22 +1386,88 @@
                 card.className = 'border rounded p-2 my-2 herb-source-card';
                 container.appendChild(card);
                 add(card, 'h6', record.fields.name_pinyin.value);
+                if(record.name_zh_candidates?.length){
+                    const names=[...new Set(record.name_zh_candidates.map(x=>x.name_zh))];
+                    add(card,'p','中文名候选：'+names.join('、')+'（药典拼音标题匹配，实体及部位尚未核验）');
+                }
+                for(const comparison of record.identity_comparisons||[]){
+                    const box=add(card,'section','');box.dataset.etcmIdentity=comparison.status;
+                    add(box,'strong',comparison.name_zh+' · 药典来源对照：'+comparison.label);
+                    const part=comparison.part_comparison;
+                    add(box,'p','药用部位：ETCM '+(part.etcm_parts?.join('、')||'未识别')+
+                        '（原文：'+(part.etcm_original||'未提供')+'）；药典 '+(part.pharmacopoeia_parts?.join('、')||'未识别'));
+                    add(box,'p',comparison.latin_comparison.status==='exact_normalized_match'?
+                        '基原拉丁名文字一致（仅忽略空白与大小写）。':'基原拉丁名尚未完全对应，需核对原文。');
+                    add(box,'small','基于已记录OCR快照的自动字段对照，未人工确认；不合并功效、成分或炮制品。');
+                    const evidence=add(box,'details','');add(evidence,'summary','查看双方原文与核对出处');
+                    add(evidence,'p','ETCM基原原文：'+(comparison.latin_comparison.etcm_original||'未提供'));
+                    for(const witness of comparison.origin_evidence){
+                        add(evidence,'p','药典来源原文：'+witness.text);
+                        if(witness.source)add(evidence,'p','药典物理第 '+witness.source.source_pdf_page+' 页；块 '+witness.block_id);
+                    }
+                    add(evidence,'pre',JSON.stringify(comparison,null,2)).style.whiteSpace='pre-wrap';
+                }
                 add(card, 'p', record.source_record_id).style.overflowWrap = 'anywhere';
-                if (result.status === 'ambiguous_entity') {
+                if (result.status === 'ambiguous_entity' || result.status === 'name_mapping_candidates') {
                     const button = add(card, 'button', '选择此来源');
                     button.type = 'button';
                     button.className = 'btn btn-sm btn-outline-primary';
                     button.addEventListener('click', () => chooseSource(record.source_record_id));
                 }
                 for (const [key, field] of Object.entries(record.fields)) {
+                    const translated=field.translation;
                     add(card, 'p', (labels[key] || key) + '：' +
                         (field.state === 'missing' ? '来源未提供' :
+                        translated?.status==='dictionary_display' ? translated.text+'（原文：'+field.value+'）' :
                         Array.isArray(field.value) ? field.value.join('；') : field.value));
+                    if(translated?.status==='machine_candidate' && translated.text){
+                        const draft=add(card,'details','');add(draft,'summary','未审核机器译文（仅供对照）');
+                        add(draft,'p',translated.text);add(draft,'small','术语可能误译，解释以原始字段为准，不用于实体合并或临床判断。');
+                    }
                     if (field.source) {
                         const details = document.createElement('details');
                         card.appendChild(details);
                         add(details, 'summary', '字段出处与原值');
                         add(details, 'pre', JSON.stringify(field.source, null, 2)).style.whiteSpace = 'pre-wrap';
+                    }
+                }
+                if(record.relation_counts?.length){
+                    const section=add(card,'section','');section.dataset.etcmRelations=record.source_record_id;
+                    add(section,'h6','来源中的关联记录');
+                    add(section,'p','数量是来源表行数；关联不等于已验证的作用机制、治疗证据或抓取完整性。');
+                    for(const group of record.relation_counts){
+                        const details=add(section,'details','');add(details,'summary',group.label+'：'+group.count+'条');
+                        const list=add(details,'div',''),controls=add(details,'div','');
+                        const prev=add(controls,'button','上一页'),next=add(controls,'button','下一页');
+                        prev.type=next.type='button';prev.disabled=true;
+                        let offset=0,nextOffset=null,loaded=false,loading=false;
+                        async function load(start){
+                            if(loading)return;loading=true;prev.disabled=next.disabled=true;
+                            try{
+                                const query=new URLSearchParams({source_record_id:record.source_record_id,kind:group.kind,limit:'20',offset:String(start)});
+                                const response=await fetch('/api/etcm/relations?'+query,{credentials:'include'});
+                                const data=await response.json();if(!response.ok)throw new Error(data.error||'关联查询未完成');
+                                list.replaceChildren();add(list,'p','当前显示 '+(start+1)+'–'+(start+data.returned_count)+' / '+data.total+' 条来源记录');
+                                for(const item of data.items){
+                                    const row=add(list,'article','');add(row,'strong',item.name+(item.identifier?' · '+item.identifier:''));
+                                    if(item.identity_note)add(row,'p',item.identity_note);
+                                    const evidence=add(row,'details','');add(evidence,'summary','原始关联行与出处');
+                                    add(evidence,'pre',JSON.stringify({json_pointer:item.source_pointer,raw_row:item.raw_row,capture_status:item.capture_status,
+                                        grouping_status:item.identity_status,local_file_candidates:item.file_candidates},null,2)).style.whiteSpace='pre-wrap';
+                                    if(item.file_candidates.length)add(row,'small','本地文件仅按文件名得到候选，内部身份未校验，未自动合并。');
+                                    if(item.other_herb_sources?.length){
+                                        add(row,'p','同标识或名称分组的其他药材来源（最多5条，非实体核验）：');
+                                        for(const herb of item.other_herb_sources){const button=add(row,'button',herb.name_pinyin+' · 查看来源');
+                                            button.type='button';button.addEventListener('click',()=>chooseSource(herb.source_record_id))}
+                                    }
+                                }
+                                offset=start;nextOffset=data.next_offset;loaded=true;
+                            }catch(error){list.replaceChildren();add(list,'p',error.message)}
+                            finally{loading=false;prev.disabled=offset===0;next.disabled=nextOffset===null}
+                        }
+                        details.addEventListener('toggle',()=>{if(details.open&&!loaded)load(0)});
+                        prev.addEventListener('click',()=>load(Math.max(0,offset-20)));
+                        next.addEventListener('click',()=>{if(nextOffset!==null)load(nextOffset)});
                     }
                 }
                 const details = document.createElement('details');
@@ -1234,15 +1522,27 @@
             const workspaces = window.ResearchWorkspaces?.mount({submit(query) {
                 if (busy) return false;
                 const draft = messageInput.value;
+                const modeSwitch = document.getElementById('evidence-answer-mode');
+                const wasAI = modeSwitch?.checked;
+                if (modeSwitch) modeSwitch.checked = false;
                 messageInput.value = query;
                 chatForm.requestSubmit();
                 messageInput.value = draft;
+                if (modeSwitch) modeSwitch.checked = wasAI;
                 return true;
             }});
 
+            const bookmarks = window.ResearchBookmarks?.mount({renderPreview(container, data) {
+                if (data.research) renderResearchResult(container, data.research);
+                if (data.assistant) {
+                    const message = document.createElement('p');message.textContent = data.assistant.message;
+                    container.append(message);renderRelationQuery(container, data.assistant, sendLocalRelation);
+                }
+            }});
             function setBusy(value) {
                 busy = value;
                 workspaces?.setBusy(value);
+                bookmarks?.setBusy(value);
                 messageInput.disabled = value;
                 chatForm.querySelector('[type="submit"]').disabled = value;
                 clearChatBtn.disabled = value;
@@ -1250,6 +1550,12 @@
             function chooseSource(sourceId) {
                 messageInput.value = '/herb ' + sourceId;
                 chatForm.requestSubmit();
+            }
+            function sendLocalRelation(query){
+                const modeSwitch=document.getElementById('evidence-answer-mode');
+                const wasAI=modeSwitch?.checked;if(modeSwitch)modeSwitch.checked=false;
+                messageInput.value=query;chatForm.requestSubmit();
+                if(modeSwitch)modeSwitch.checked=wasAI;
             }
             setBusy(true);
             try {
@@ -1276,8 +1582,14 @@
                     const card=document.createElement('div');card.className='message assistant-message';
                     renderPubmedResult(card,history.pubmed);chatBody.appendChild(card);
                 }
+                if(history.assistant){
+                    const card=document.createElement('div');card.className='message assistant-message';
+                    card.dataset.assistantTopic=history.assistant.topic;
+                    const body=document.createElement('p');body.textContent=history.assistant.message;card.append(body);
+                    renderRelationQuery(card,history.assistant,sendLocalRelation);chatBody.append(card);
+                }
                 workspaces?.restore(history);
-                memoryStatus.textContent = '会话已自动保存，闲置 ' + history.retention_days + ' 天后过期；清除会话会删除已保存记忆。';
+                memoryStatus.textContent = '会话已自动保存，闲置 ' + history.retention_days + ' 天后过期；清除会话会删除聊天记忆。';
                 chatBody.scrollTop = chatBody.scrollHeight;
                 setBusy(false);
             } catch (error) {
@@ -1330,7 +1642,8 @@
                     displayMessages = [];
                     workspaces?.clear();
                     chatBody.replaceChildren();
-                    memoryStatus.textContent = '已删除服务器保存的会话记忆，当前为新会话。';
+                    memoryStatus.textContent = '已删除服务器保存的会话记忆，当前为新会话。' +
+                        (document.getElementById('research-bookmarks') ? '研究收藏保留。' : '');
                 } catch (error) {
                     memoryStatus.textContent = error.message;
                 } finally {
@@ -1412,6 +1725,7 @@
                             },
                             body: JSON.stringify({
                                 query: message,
+                                answer_mode: document.getElementById('evidence-answer-mode')?.checked ? 'evidence' : 'auto',
                                 conversation_history: [] // You might want to maintain this if needed
                             }),
                             credentials: 'include' // Important for cookie handling
@@ -1419,7 +1733,7 @@
                     }
                     
                     const data = await response.json();
-                    if (!response.ok && !data.tcm && !data.research && !data.pubmed) throw new Error(data.detail || '请求未完成');
+                    if (!response.ok && !data.tcm && !data.research && !data.pubmed && !data.assistant && !data.evidence_answer) throw new Error(data.detail || '请求未完成');
                     
                     // Remove thinking indicator
                     thinkingElement.remove();
@@ -1432,7 +1746,7 @@
                     const cleanText = removeMarkdown(data.response);
                     
                     // Build HTML content for the response with audio controls
-                    let assistantHtml = (data.tcm || data.research || data.pubmed || data.assistant) ? '' : `
+                    let assistantHtml = (data.tcm || data.research || data.pubmed || data.assistant || data.evidence_answer) ? '' : `
                         <div class="agent-tag">${data.agent}</div>
                         <div>${marked.parse(data.response)}</div>
                         <div class="audio-controls mt-2">
@@ -1481,11 +1795,29 @@
                         }
                     }
                     
-                    if (data.assistant) {
+                    if (data.evidence_answer) {
+                        assistantMessageElement.dataset.evidenceAnswerStatus = data.evidence_answer.status;
+                        const body=document.createElement('div');body.style.whiteSpace='pre-wrap';body.textContent=data.response;assistantMessageElement.append(body);
+                        const trace=document.createElement('details');const summary=document.createElement('summary');summary.textContent='来源与调用记录';trace.append(summary);
+                        const timing=document.createElement('p');timing.textContent='模型调用 '+data.evidence_answer.model_calls+' 次；总耗时 '+data.evidence_answer.duration_ms+' ms；费用未核算。';trace.append(timing);
+                        for(const evidence of data.evidence_answer.evidence||[]){
+                            const item=document.createElement('section');const heading=document.createElement('h4');heading.textContent='['+evidence.id+'] '+evidence.title;
+                            const source=document.createElement('pre');source.textContent=evidence.text;item.append(heading,source);
+                            if(evidence.pmid && /^[1-9][0-9]*$/.test(evidence.pmid)){const link=document.createElement('a');link.textContent='PubMed PMID '+evidence.pmid;link.href='https://pubmed.ncbi.nlm.nih.gov/'+encodeURIComponent(evidence.pmid)+'/';link.target='_blank';link.rel='noopener noreferrer';item.append(link)}
+                            trace.append(item);
+                        }
+                        assistantMessageElement.append(trace);
+                    } else if (data.assistant) {
                         assistantMessageElement.dataset.assistantTopic = data.assistant.topic;
                         const body = document.createElement('div');
                         body.style.whiteSpace = 'pre-wrap';body.textContent = data.response;
                         assistantMessageElement.append(body);
+                        if(data.assistant.topic==='etcm_relations')renderRelationQuery(assistantMessageElement,data.assistant,query=>{
+                            const modeSwitch=document.getElementById('evidence-answer-mode');
+                            const wasAI=modeSwitch?.checked;if(modeSwitch)modeSwitch.checked=false;
+                            messageInput.value=query;chatForm.requestSubmit();
+                            if(modeSwitch)modeSwitch.checked=wasAI;
+                        });
                         const values = data.assistant.herbs?.raw_efficacy_values || [];
                         if (values.length) {
                             const list = document.createElement('ul');list.setAttribute('aria-label','ETCM原始功效分类');

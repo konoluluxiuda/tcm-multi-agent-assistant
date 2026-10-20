@@ -1,0 +1,66 @@
+{
+  "version": "application_baseline_v1",
+  "recorded_date": "2026-10-19",
+  "scope": "Current application development and regression inputs, not all historical PDF experiments",
+  "independent_acceptance_available": false,
+  "note": "Records present bytes after development. Neither retroactive pre-tuning freeze nor independent evaluation. Legacy test labels remain historical. Hash checks do not establish provenance or correctness.",
+  "files": [
+    {
+      "path": "eval/tcm_golden_v1.json",
+      "role": "regression",
+      "sha256": "8d3ff70dda9d1e9d4530bdc7830f63bcbcca0131677e4f23daf67c9db044be72",
+      "case_count": 30
+    },
+    {
+      "path": "eval/tcm_task_candidates_v1.json",
+      "role": "regression",
+      "sha256": "5de95e2a6136f11974d9aaef7c1f40e3a4987a671bd1a3511ddcd111b4660dd8",
+      "case_count": 60
+    },
+    {
+      "path": "eval/mineru_retrieval_challenge_v1.json",
+      "role": "regression",
+      "sha256": "27db5b42cb3972a47ac1ec9bb2e48b749ad610c051ecf77da785d85665b6f00a",
+      "case_count": 50
+    },
+    {
+      "path": "eval/mineru_retrieval_questions_v1.json",
+      "role": "regression",
+      "sha256": "e22595f1984af35466b0261eabc63b41d7d779a0fe747722810b036f429d9e89",
+      "case_count": 28
+    },
+    {
+      "path": "eval/evidence_assistant_dev_v1.json",
+      "role": "development",
+      "sha256": "3e6b040e6cc1b3e574b4bf79c3eb9465e1c69678866736fbde1ca9ba9b045951",
+      "case_count": 10
+    },
+    {
+      "path": "eval/scoped_retrieval_dev_v1.json",
+      "role": "development",
+      "sha256": "ce83bc237dfc53b1bc80b32f30f6b7ec219635ee97c7b7354cf7c60d2decd6b7",
+      "case_count": 8
+    },
+    {
+      "path": "eval/dense_semantic_dev_v1.json",
+      "role": "development",
+      "sha256": "e2ee6db9d0ee84cc6aa47b4c943f8623e33f5960a1cd9998a08e2833b37770c8",
+      "case_count": 8
+    },
+    {
+      "path": "eval/mineru_retrieval_reference_v2.json",
+      "role": "reference",
+      "sha256": "fa1806d8359fa4be616339e98d41f18dff9ff0f4d72ce570c7df5db083b03dad"
+    },
+    {
+      "path": "eval/scoped_retrieval_reference_v1.json",
+      "role": "reference",
+      "sha256": "59ecb988cb6c565f7cba6efc92e8b814854156577e9cb1778a0c1b0f50a9a0f3"
+    },
+    {
+      "path": "eval/dense_semantic_reference_v1.json",
+      "role": "reference",
+      "sha256": "30077b997fb2090ee4ac0e0c29e0eff6e9610d78d138e652b3791a8dbb5d2a22"
+    }
+  ]
+}

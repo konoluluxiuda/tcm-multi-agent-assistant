@@ -21,13 +21,14 @@ from agents.agent_decision import process_query
 from agents import agent_decision as agent_runtime
 from agents.conversation_store import MemoryUnavailable, ConversationConflict, SessionExpired
 from agents.runtime import session_turn
-from features import env_bool, session_cookie_name
+from features import env_bool, session_cookie_name, can_auto_plan, evidence_auto_routing_enabled
 from tcm.chat import execute_turn, parse_request as parse_herb_request
 from tcm.agent_research import split_contexts, runtime as research_runtime, parse_request as parse_research_request
 from tcm.agent_pubmed import context_from as pubmed_context_from, runtime as pubmed_runtime, parse_request as parse_pubmed_request
 from tcm.mineru_research import SnapshotChanged
 from tcm.assistant_router import resolve as resolve_tool_request
 from source_access import SourceCatalog, PrivateArtifacts, create_source_router
+from tcm.bookmark_api import create_router as create_bookmark_router, enabled as bookmarks_enabled
 
 # Load configuration
 config = Config()
@@ -57,6 +58,7 @@ for directory in [UPLOAD_FOLDER, FRONTEND_UPLOAD_FOLDER, SKIN_LESION_OUTPUT, SPE
 source_catalog = SourceCatalog(Path.cwd(), os.getenv('SOURCE_MANIFEST_PATH', 'resources/source_manifest.json'))
 private_artifacts = PrivateArtifacts()
 app.include_router(create_source_router(source_catalog, private_artifacts, cookie_name=SESSION_COOKIE_NAME))
+app.include_router(create_bookmark_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME, research_runtime))
 image_request_lock = threading.Lock()
 
 
@@ -103,7 +105,8 @@ def feature_error(name):
 @app.middleware('http')
 async def enforce_features(request: Request, call_next):
     if (env_bool('RESEARCH_TOOLS_ONLY') and request.method in ('POST', 'PUT', 'PATCH', 'DELETE')
-            and request.url.path not in ('/chat', '/conversation', '/api/evidence/report')):
+            and request.url.path not in ('/chat', '/conversation', '/api/evidence/report')
+            and not (request.url.path == '/api/research/bookmarks' or request.url.path.startswith('/api/research/bookmarks/'))):
         return JSONResponse(status_code=403, content={'detail': '此部署仅支持药材与药典研究工具及会话管理。'})
     # Check before parsing upload bodies or invoking optional clients.
     feature = {'/upload': 'image_analysis', '/transcribe': 'speech', '/generate-speech': 'speech'}.get(request.url.path)
@@ -144,6 +147,7 @@ if config.features.state("speech")["available"]:
 
 class QueryRequest(BaseModel):
     query: str
+    answer_mode: Literal['auto', 'evidence'] = 'auto'
     conversation_history: List = []
 
 class SpeechRequest(BaseModel):
@@ -176,6 +180,10 @@ async def index(request: Request):
         "features": config.features.as_dict(), "research_tools_only": env_bool('RESEARCH_TOOLS_ONLY'),
         "pubmed_enabled": env_bool('ENABLE_PUBMED'),
         "natural_routing_enabled": env_bool('ENABLE_NATURAL_ROUTING'),
+        "research_bookmarks_enabled": bookmarks_enabled(),
+        "evidence_assistant_enabled": env_bool('ENABLE_EVIDENCE_ASSISTANT'),
+        "evidence_auto_routing_enabled": evidence_auto_routing_enabled(),
+        "evidence_assistant_synthetic": os.getenv('EVIDENCE_ASSISTANT_DATA_MODE','synthetic') == 'synthetic',
         "combined_report_enabled": env_bool('ENABLE_PUBMED') and env_bool('ENABLE_PHARMACOPOEIA_RESEARCH')})
 
 def session_cookie(value):
@@ -225,6 +233,10 @@ def conversation(response: Response, session_id: Optional[str] = Cookie(None, al
         pubmed_context = pubmed_context_from(snapshot.tcm_context)
         if pubmed_context:
             result['pubmed'], _ = pubmed_runtime.execute({'action': 'last'}, pubmed_context)
+        from tcm.relation_memory import context_from as relation_context_from,execute_turn as relation_turn
+        relation=relation_context_from(snapshot.tcm_context)
+        if relation:
+            result['assistant'],_=relation_turn({'followup':True,'action':'replay'},relation)
     set_session_cookie(response, session_id)
     response.headers['Cache-Control'] = 'private, no-store'
     return result
@@ -260,9 +272,66 @@ def research_ready():
         return JSONResponse(status_code=503, content={'status': 'not_ready', 'reason': 'research_unavailable'})
 
 
+@app.get('/ready/herbs')
+def herbs_ready():
+    import sqlite3
+    from tcm.assistant_info import herb_inventory, ROOT
+    try:
+        inventory=herb_inventory(os.getenv('TCM_DB') or ROOT/'var/tcm/herbs.sqlite3',
+                                 os.getenv('TCM_DATASET_VERSION') or None)
+        if inventory['status']!='ok' or inventory['source_record_count']==0:
+            return JSONResponse(status_code=503,content={'status':'not_ready','reason':'herb_dataset_unavailable'})
+        return {'status':'ready','dataset_version':inventory['dataset_version'],
+                'source_record_count':inventory['source_record_count'],'count_unit':'source_record'}
+    except (OSError,ValueError,sqlite3.Error,KeyError,TypeError):
+        return JSONResponse(status_code=503,content={'status':'not_ready','reason':'herb_database_unavailable'})
+
+
 @app.get('/research-objects.js')
 def research_object_script():
     return FileResponse(Path(__file__).parent / 'tcm/research_objects.js', media_type='application/javascript')
+
+
+@app.get('/api/etcm/ingredient')
+def etcm_ingredient(request: Request, source_record_id: str, edge_id: str):
+    import sqlite3
+    from tcm.chat import execute_request
+    from tcm.ingredient_details import details
+    if set(request.query_params) != {'source_record_id', 'edge_id'} or len(request.query_params.multi_items()) != 2:
+        return JSONResponse(status_code=400, content={'error': '无效的成分来源参数。'})
+    database, root = os.getenv('ETCM_ENRICHMENT_DB'), os.getenv('ETCM_SOURCE_ROOT')
+    if not database or not root:
+        return JSONResponse(status_code=503, content={'error': '本地成分详情工具未启用。'})
+    result = execute_request({'source_record_id': source_record_id})
+    if result['status'] != 'ok':
+        return JSONResponse(status_code=404, content={'error': '当前版本未找到该药材来源。'})
+    try:
+        return JSONResponse(content=details(database, root, result['records'][0], result['dataset_version'], edge_id),
+                            headers={'Cache-Control': 'no-store'})
+    except (OSError, ValueError, sqlite3.Error, KeyError, TypeError, RecursionError):
+        return JSONResponse(status_code=409, content={'error': '来源已改变、文件不可用或成分行不属于该药材，请重新核对来源。'})
+
+
+@app.get('/api/etcm/relations')
+def etcm_relations(request:Request,source_record_id:str,kind:Optional[str]=None,limit:int=20,offset:int=0):
+    import sqlite3
+    from tcm.etcm_enrichment import relations,KIND_LABELS
+    from tcm.chat import execute_request
+    if (set(request.query_params)-{'source_record_id','kind','limit','offset'} or
+            len(request.query_params.multi_items())!=len(request.query_params) or
+            (kind is not None and kind not in KIND_LABELS) or not 1<=limit<=100 or offset<0):
+        return JSONResponse(status_code=400,content={'error':'无效的关联查询参数。'})
+    path=os.getenv('ETCM_ENRICHMENT_DB')
+    if not path:return JSONResponse(status_code=503,content={'error':'中文与关联目录未启用。'})
+    result=execute_request({'source_record_id':source_record_id})
+    if result['status']!='ok':return JSONResponse(status_code=404,content={'error':'当前版本中未找到有效来源记录。'})
+    try:
+        data=relations(path,result['records'][0],result['dataset_version'],kind=kind,limit=limit,offset=offset)
+        return JSONResponse(content=data,headers={'Cache-Control':'no-store'})
+    except ValueError:
+        return JSONResponse(status_code=409,content={'error':'关联目录与当前来源不一致或未完成，请维护者重新生成。'})
+    except (OSError,sqlite3.Error,KeyError,TypeError):
+        return JSONResponse(status_code=503,content={'error':'关联目录暂不可用。'})
 
 
 @app.get('/research-workspaces.js')
@@ -368,13 +437,23 @@ def chat(
     session_id: Optional[str] = Cookie(None, alias=SESSION_COOKIE_NAME)
 ):
     """Process user text query through the multi-agent system."""
-    if env_bool('RESEARCH_TOOLS_ONLY') and resolve_tool_request(request.query) is None:
+    selected = resolve_tool_request(request.query)
+    mode = request.answer_mode
+    if selected and selected['tool'] == 'assistant' and selected['request'].get('topic') in ('overview', 'capabilities'):
+        mode = 'auto'
+    if mode == 'evidence':
+        if not env_bool('ENABLE_EVIDENCE_ASSISTANT'):
+            raise HTTPException(status_code=503, detail='AI整理模式尚未启用。')
+        if not 1 <= len(request.query.strip()) <= 1000:
+            raise HTTPException(status_code=422, detail='AI整理问题须为1–1000字符。')
+    if mode == 'auto' and env_bool('RESEARCH_TOOLS_ONLY') and selected is None and not can_auto_plan(request.query):
         raise HTTPException(status_code=403, detail='此部署支持资料查询。可问“你能做什么”“有多少药材”“黄芪有什么作用”；也保留 /herb、/research、/pubmed 指令。')
     # Generate session ID for cookie if it doesn't exist
     session_id = session_cookie(session_id)
     
     try:
-        response_data = process_query(request.query, session_id=session_id)
+        response_data = (process_query(request.query, session_id=session_id, task_mode='evidence')
+                         if mode == 'evidence' else process_query(request.query, session_id=session_id))
         response_text = response_data['messages'][-1].content
         
         # Set session cookie
@@ -387,6 +466,14 @@ def chat(
             "agent": response_data["agent_name"]
         }
         
+        if response_data.get('evidence_answer') is not None:
+            result['evidence_answer'] = response_data['evidence_answer']
+            if result['evidence_answer']['status'] in ('disabled', 'planning_failed', 'generation_failed', 'invalid_citations', 'invalid_support'):
+                result['status'] = 'unavailable'
+                response.status_code = 503 if result['evidence_answer']['status'] == 'disabled' else 502
+            elif result['evidence_answer']['status'] in ('partial', 'no_evidence'):
+                result['status'] = 'partial'
+
         if response_data.get('routing') is not None:
             result['routing'] = response_data['routing']
         if response_data.get('assistant_result') is not None:
@@ -407,6 +494,8 @@ def chat(
             if result['research']['status'] in ('research_disabled', 'research_unavailable'):
                 response.status_code = 503
                 result['status'] = 'unavailable'
+            elif result['research']['status'] == 'partial_evidence':
+                result['status'] = 'partial'
         if response_data.get('pubmed_result') is not None:
             result['pubmed'] = response_data['pubmed_result']
             status = result['pubmed']['status']

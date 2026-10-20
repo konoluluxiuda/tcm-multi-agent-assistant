@@ -1,0 +1,264 @@
+{
+  "status": "completed_diagnostic_not_acceptance",
+  "manifest": {
+    "kind": "scoped_field_location_recall_v1",
+    "policy": "all_nonblank_nonappendix_chunks_for_exact_entry_and_labels_v1",
+    "questions_sha256": "c46a1cbbd81096c614b1836b024668b813483125290e9b84e6dc92c257e88ab3",
+    "references_sha256": "bab99926eb2983da3781a59ec3868296852f37a1f0a185c94779d442eefb78c8",
+    "view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+    "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+    "code_sha256": {
+      "scripts/eval_scoped_recall.py": "d5ba686357e84a6981755b811b3f556369d0cef703a656daff8d172c1e0f955f",
+      "tcm/mineru_retrieval.py": "11a3fa2d05832ac5f544191f974e73d79b313eeb2d967a5893db354701a871ca",
+      "tcm/mineru_guards.py": "4f6675eefa56c933f050dd1eadba9b54b13408138efc7ae8edaa40ac53f183ed",
+      "tcm/mineru_pharmacopoeia.py": "061e595624095760762ed4f8730dd39de762d4435a4e774501588ad245847921",
+      "scripts/build_mineru_pharmacopoeia.py": "b5c7a2207d8a5b7175e0b029d4401164ac0b305356f82184ea54cf68b8723c96"
+    },
+    "human_gold": false,
+    "split": "author_designed_source_assisted_diagnostic_not_independent",
+    "cases": 24,
+    "clinical_correctness_evaluated": false
+  },
+  "k": 5,
+  "methods": [
+    "name_field",
+    "bm25",
+    "name_bm25"
+  ],
+  "results": {
+    "name_field": {
+      "retrieval_cases": 18,
+      "boundary_cases": 6,
+      "hit_at_k": 0.6666666666666666,
+      "macro_recall_at_k": 0.6481481481481481,
+      "mrr_at_k": 0.6666666666666666,
+      "entity_selection_correct": 17,
+      "field_selection_correct": 12,
+      "correct_boundaries": 6,
+      "wrong_entity_hits": 0,
+      "other_field_hits": 0,
+      "provenance_failures": 0,
+      "mean_query_ms": 0.9046305409962466
+    },
+    "bm25": {
+      "retrieval_cases": 18,
+      "boundary_cases": 6,
+      "hit_at_k": 0.7222222222222222,
+      "macro_recall_at_k": 0.6666666666666666,
+      "mrr_at_k": 0.6944444444444444,
+      "entity_selection_correct": null,
+      "field_selection_correct": null,
+      "correct_boundaries": 1,
+      "wrong_entity_hits": 25,
+      "other_field_hits": 22,
+      "provenance_failures": 0,
+      "mean_query_ms": 11.60212795669698
+    },
+    "name_bm25": {
+      "retrieval_cases": 18,
+      "boundary_cases": 6,
+      "hit_at_k": 0.6666666666666666,
+      "macro_recall_at_k": 0.6481481481481481,
+      "mrr_at_k": 0.6666666666666666,
+      "entity_selection_correct": 17,
+      "field_selection_correct": 12,
+      "correct_boundaries": 6,
+      "wrong_entity_hits": 0,
+      "other_field_hits": 0,
+      "provenance_failures": 0,
+      "mean_query_ms": 3.6815585396349584
+    }
+  },
+  "llm_calls": 0,
+  "embedding_calls": 0,
+  "limits": [
+    "Source-derived field-location relevance, not semantic or clinical relevance.",
+    "Repeated scopes are retained; locating all is not resolving preparation identity.",
+    "Unresolved references remain in the denominator but are not successful evidence hits.",
+    "AI-authored diagnostic; not independent gold or end-to-end chat task success.",
+    "Single sequential in-process query timing; no P95, concurrency or model cost claim."
+  ],
+  "default_method_diagnostics": [
+    {
+      "case_id": "R01",
+      "group": "canonical_control",
+      "status": "candidates",
+      "relevant_total": 1,
+      "recall_at_k": 1.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R02",
+      "group": "canonical_control",
+      "status": "candidates",
+      "relevant_total": 1,
+      "recall_at_k": 1.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R03",
+      "group": "canonical_control",
+      "status": "candidates",
+      "relevant_total": 1,
+      "recall_at_k": 1.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R04",
+      "group": "canonical_control",
+      "status": "candidates",
+      "relevant_total": 1,
+      "recall_at_k": 1.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R05",
+      "group": "canonical_control",
+      "status": "candidates",
+      "relevant_total": 1,
+      "recall_at_k": 1.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R06",
+      "group": "canonical_control",
+      "status": "candidates",
+      "relevant_total": 1,
+      "recall_at_k": 1.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R07",
+      "group": "field_paraphrase",
+      "status": "field_not_resolved",
+      "relevant_total": 1,
+      "recall_at_k": 0.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R08",
+      "group": "field_paraphrase",
+      "status": "name_not_resolved",
+      "relevant_total": 1,
+      "recall_at_k": 0.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R09",
+      "group": "field_paraphrase",
+      "status": "field_not_resolved",
+      "relevant_total": 1,
+      "recall_at_k": 0.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R10",
+      "group": "field_paraphrase",
+      "status": "field_not_resolved",
+      "relevant_total": 1,
+      "recall_at_k": 0.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R11",
+      "group": "field_paraphrase",
+      "status": "field_not_resolved",
+      "relevant_total": 1,
+      "recall_at_k": 0.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R12",
+      "group": "field_paraphrase",
+      "status": "field_not_resolved",
+      "relevant_total": 1,
+      "recall_at_k": 0.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R13",
+      "group": "multiple_fields",
+      "status": "candidates",
+      "relevant_total": 2,
+      "recall_at_k": 1.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R14",
+      "group": "multiple_fields",
+      "status": "candidates",
+      "relevant_total": 2,
+      "recall_at_k": 1.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R15",
+      "group": "multiple_fields",
+      "status": "candidates",
+      "relevant_total": 2,
+      "recall_at_k": 1.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R16",
+      "group": "repeated_scope",
+      "status": "partial_evidence",
+      "relevant_total": 3,
+      "recall_at_k": 0.6666666666666666,
+      "source_reference_or_empty_count": 1
+    },
+    {
+      "case_id": "R17",
+      "group": "repeated_scope",
+      "status": "ambiguous_field",
+      "relevant_total": 3,
+      "recall_at_k": 1.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R18",
+      "group": "multiple_fields",
+      "status": "candidates",
+      "relevant_total": 2,
+      "recall_at_k": 1.0,
+      "source_reference_or_empty_count": 0
+    },
+    {
+      "case_id": "R19",
+      "group": "boundary",
+      "status": "field_not_resolved"
+    },
+    {
+      "case_id": "R20",
+      "group": "boundary",
+      "status": "field_not_resolved"
+    },
+    {
+      "case_id": "R21",
+      "group": "boundary",
+      "status": "name_not_resolved"
+    },
+    {
+      "case_id": "R22",
+      "group": "boundary",
+      "status": "variant_scope_unresolved"
+    },
+    {
+      "case_id": "R23",
+      "group": "boundary",
+      "status": "field_not_observed"
+    },
+    {
+      "case_id": "R24",
+      "group": "boundary",
+      "status": "multiple_names"
+    }
+  ],
+  "verification": {
+    "new_guard_tests": 7,
+    "existing_retrieval_tests": 15,
+    "baseline_input_integrity": "passed",
+    "new_guard_worker_network_attempts": 0,
+    "full_application_regression": "not_rerun_no_application_code_changed"
+  }
+}

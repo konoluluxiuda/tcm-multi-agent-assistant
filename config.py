@@ -17,13 +17,16 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 # Load environment variables from .env file
 load_dotenv()
 
-def create_chat_model(temperature=0.3):
+def create_chat_model(temperature=0.3, *, timeout=60, max_retries=2, max_tokens=None):
+    options = {"max_tokens": max_tokens} if max_tokens is not None else {}
     return ChatOpenAI(
         model=os.environ["CHAT_MODEL"],
         api_key=os.environ["CHAT_API_KEY"],
         base_url=os.environ["CHAT_BASE_URL"],
         temperature=temperature,
-        timeout=60,
+        timeout=timeout,
+        max_retries=max_retries,
+        **options,
     )
 
 def create_embedding_model():

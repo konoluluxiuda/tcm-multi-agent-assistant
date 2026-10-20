@@ -1,0 +1,52 @@
+{
+  "kind": "portable_bookmark_backup_v1",
+  "status": "passed",
+  "offline": {
+    "modules": 67,
+    "tests": 588,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "checks": [
+      "actual_download_includes_both_kinds_and_notes_without_credentials_or_ids",
+      "new_browser_imports_two_copies_with_original_notes",
+      "new_ids_do_not_grant_access_to_original_owner",
+      "both_restored_source_bindings_requery_correct_local_evidence",
+      "duplicate_restore_keeps_edited_note_and_markup_stays_literal",
+      "damaged_backup_is_rejected_without_partial_import",
+      "restore_and_preview_do_not_create_chat_messages",
+      "original_and_imported_test_records_deleted",
+      "no_page_errors_or_ai_mode_requests"
+    ],
+    "total": 9
+  },
+  "cleanup": {
+    "test_records_deleted": 4,
+    "downloaded_test_files_deleted": true
+  },
+  "test_file_sha256": {
+    "browser_export_private.json": "ad5cc435c2d3cc87b09c72ae4c483d4c77231bd3a9b38c2ba2ee7dd9770fa182",
+    "browser_damaged_private.json": "294ca9c4efcef2f2dd3a23703bb724834d5b279a374f35f4eb712d0b159f4937"
+  },
+  "working_code_sha256": {
+    "tcm/bookmark_backup.py": "e6560bf10b26b0df4ea563fb254abf8de240a33a8b49be6429f801207a1201bb",
+    "tcm/research_bookmarks.py": "e8e0f9bde6642620ff80e974bc5ab29e50259ac3eab9f799de644b2fbb5f825e",
+    "tcm/bookmark_api.py": "6ad434d947e710d9c083cf52ce182ef4df8b4942f1ae70175985691169568de6",
+    "tcm/research_bookmarks.js": "28c38000db7ee8a10dc3fbdd2f82066dd33c9eb95c0f85a13e43536da33bc4e8",
+    "templates/index.html": "34547b5b8873999fe4dc33db1e3380ca60a1ea258fc4e4138b5b520c6108ca05",
+    "tests/test_bookmark_backup.py": "488edba5fcf74da68ca735fa96b529d9273a551effcc3d79de490389662293ea",
+    "app.py": "b551542ab0283db719ac0955a2a12f6c943706ccc18931c4bf6eef8b886330ab"
+  },
+  "llm_calls": 0,
+  "embedding_calls": 0,
+  "external_requests_allowed": 0,
+  "source_preview_port": 7875,
+  "docker_updated": false,
+  "limits": [
+    "Logical bookmark data copies; no original identity recovery or automatic synchronization.",
+    "Backup checksum detects corruption; it is not a signature or source approval.",
+    "Imported source bindings remain unchanged and are checked during preview.",
+    "No source corpus, owner tokens, old record IDs or chat history automatically included."
+  ]
+}

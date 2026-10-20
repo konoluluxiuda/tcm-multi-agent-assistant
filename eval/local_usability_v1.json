@@ -1,0 +1,22 @@
+{
+  "version": "local_usability_v1",
+  "created_date": "2026-10-20",
+  "role": "post_development_local_tool_usability_check",
+  "independent_acceptance": false,
+  "clinical_accuracy_evaluation": false,
+  "note": "Most cases reuse known workflows or are author-designed after development. User-reported questions are labelled individually. Source checks are mechanical, not independent medical review.",
+  "cases": [
+    {"id":"U01","origin":"user_reported","query":"数据概览","kind":"overview"},
+    {"id":"U02","origin":"user_reported","query":"/research 白术的功效","kind":"pharmacopoeia","name":"白术","field":"功能与主治"},
+    {"id":"U03","origin":"author_designed_post_development","query":"比较白术和黄芪的功效与用量","kind":"comparison","names":["白术","黄芪"],"fields":["功能与主治","用法与用量"]},
+    {"id":"U04","origin":"author_designed_post_development","query":"在ETCM查询BaiZhu的药用部位","kind":"herb_field","herb":"BaiZhu","field":"medicinal_part","raw_key":"Medicinal Part"},
+    {"id":"U05","origin":"author_designed_post_development","query":"白术有哪些成分","kind":"ingredient","herbs":["BaiZhu"],"selection":"simulate_explicit_source_choice"},
+    {"id":"U06","origin":"author_designed_post_development","query":"白术和黄芪有哪些共同靶点","kind":"common_target","herbs":["BaiZhu","HuangQi"],"selection":"simulate_explicit_source_choice"},
+    {"id":"U07","origin":"author_designed_post_development","query":"CYP24A1有哪些成分","kind":"target_ingredient","uniprot":"Q07973"},
+    {"id":"U08","origin":"author_designed_post_development","query":"白术的成分关联哪些靶点","kind":"herb_target_paths","herbs":["BaiZhu"],"selection":"simulate_explicit_source_choice"},
+    {"id":"U09","origin":"author_designed_post_development","query":"靶点CYP19A1有哪些成分","kind":"not_covered","goal":"expected_clarification"},
+    {"id":"U10","origin":"author_designed_post_development","query":"不存在样本草有哪些成分","kind":"unknown_herb","goal":"expected_clarification"},
+    {"id":"U11","origin":"author_designed_post_development","query":"帮我把白术的成分和相关靶点串起来","kind":"herb_target_paths","herbs":["BaiZhu"],"selection":"simulate_explicit_source_choice"},
+    {"id":"U12","origin":"author_designed_post_development","setup_query":"白术有哪些成分","query":"这些成分对应哪些靶点","kind":"herb_target_paths","herbs":["BaiZhu"],"selection":"simulate_explicit_source_choice","goal":"followup_to_previous_relation_source"}
+  ]
+}

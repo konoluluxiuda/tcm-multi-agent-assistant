@@ -9,7 +9,7 @@ import time
 
 from scripts.build_mineru_pharmacopoeia import read, write
 from tcm.mineru_pharmacopoeia import digest
-from tcm.mineru_retrieval import PARAMETERS, ResearchRetriever
+from tcm.mineru_retrieval import PARAMETERS, ResearchRetriever, METHODS
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -27,14 +27,18 @@ def anchor_matches(hit, reference):
     return False
 
 
-def evaluate(index, questions, references, view_path, output):
+def evaluate(index, questions, references, view_path, output, methods=('bm25','name_field')):
     if output.exists():
         raise FileExistsError('Use a fresh evaluation output directory')
+    if not methods or len(set(methods))!=len(methods) or any(m not in METHODS for m in methods):
+        raise ValueError('Select distinct supported retrieval methods')
     q, refs, view = read(questions), read(references), read(view_path)
     if q.get('k') != 5:
         raise ValueError('This frozen evaluation recipe expects k=5')
     if refs['question_sha256'] != digest(questions):
         raise ValueError('Questions changed after reference preparation')
+    if refs.get('source_view_sha256') and refs['source_view_sha256']!=digest(view_path):
+        raise ValueError('Reference source view changed')
     ref_by_id = {r['case_id']: r for r in refs['references']}
     source = {f"{e['id']}:field:{i:03}": (e, f) for e in view['entries'] for i, f in enumerate(e['fields'])}
     started = time.perf_counter();retriever = ResearchRetriever(index)
@@ -43,7 +47,7 @@ def evaluate(index, questions, references, view_path, output):
         retriever.close();raise ValueError('Reference source view differs from index')
     records, raw_outputs, provenance_failures = [], [], []
     try:
-        for method in ('bm25', 'name_field'):
+        for method in methods:
             for case in q['cases']:
                 result = retriever.query(case['question'], method=method, k=q['k'])
                 timings = []
@@ -72,6 +76,8 @@ def evaluate(index, questions, references, view_path, output):
                     rank = next((i for i, h in enumerate(result['hits'], 1) if h['chunk_id'] == expected), None)
                     anchor = any(h['chunk_id'] == expected and anchor_matches(h, ref) for h in result['hits'])
                     row.update(expected_chunk_id=expected, rank=rank, evidence_hit_at_k=rank is not None,
+                               top1_name_matches_reference=(result['hits'][0]['name']==ref['name']) if result['hits'] else None,
+                               any_wrong_name_in_hits=any(h['name']!=ref['name'] for h in result['hits']),
                                reference_anchor_hit_at_k=anchor,
                                reference_field_occurrences=ref['field_occurrences'],
                                top1_reference_hit=(rank == 1 and anchor),
@@ -81,9 +87,9 @@ def evaluate(index, questions, references, view_path, output):
     finally:
         retriever.close()
     groups = {}
-    for method in ('bm25', 'name_field'):
+    for method in methods:
         groups[method] = {}
-        for group in ('new_question_pilot', 'abstention', 'known_failure_regression'):
+        for group in sorted({c['group'] for c in q['cases']}):
             rows = [r for r in records if r['method'] == method and r['group'] == group]
             if group == 'abstention':
                 value = {'total': len(rows), 'correct_abstentions': sum(r['correct_abstention'] for r in rows)}
@@ -94,11 +100,16 @@ def evaluate(index, questions, references, view_path, output):
                          'top1_reference_hits': sum(r['top1_reference_hit'] for r in rows),
                          'unambiguous_top1_lookups': sum(r['unambiguous_top1_lookup'] for r in rows),
                          'ambiguous_fields': sum(r['status'] == 'ambiguous_field' for r in rows)}
+                value.update(top1_wrong_entity_count=sum(r['top1_name_matches_reference'] is False for r in rows),
+                             queries_with_other_entities_in_hits=sum(r['any_wrong_name_in_hits'] for r in rows))
             samples = sorted(t for r in rows for t in r['query_samples_ms'])
             value.update(mean_query_ms=statistics.mean(samples), p95_query_ms=samples[int(.95 * (len(samples) - 1))])
             groups[method][group] = value
     report = {'kind': 'mineru_lexical_retrieval_baseline', 'status': 'completed_with_observed_limitations',
               'parameters': PARAMETERS, 'questions_sha256': digest(questions), 'reference_sha256': digest(references),
+              'methods':list(methods),'split':'previously_used_development_regression_not_holdout',
+              'retriever_code_sha256':digest(ROOT/'tcm/mineru_retrieval.py'),
+              'guards_code_sha256':digest(ROOT/'tcm/mineru_guards.py'),
               'index_sha256': retriever.receipt['index_sha256'], 'view_sha256': digest(view_path),
               'evaluation_code_sha256': digest(Path(__file__)),
               'index_startup_including_hash_ms': startup_ms, 'results': groups,
@@ -119,6 +130,7 @@ if __name__ == '__main__':
     parser.add_argument('--references', type=Path, default=ROOT / 'eval/mineru_retrieval_reference_v2.json')
     parser.add_argument('--view', type=Path, default=ROOT / 'var/mineru_revisions_v2/research_view.json')
     parser.add_argument('--out', type=Path, default=ROOT / 'var/mineru_retrieval_eval_v2')
+    parser.add_argument('--methods',nargs='+',choices=METHODS,default=['bm25','name_field'])
     args = parser.parse_args()
-    report = evaluate(args.index, args.questions, args.references, args.view, args.out)
+    report = evaluate(args.index, args.questions, args.references, args.view, args.out,args.methods)
     print(json.dumps({k: v for k, v in report.items() if k != 'cases'}, ensure_ascii=False))

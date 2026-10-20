@@ -1,0 +1,22 @@
+# Optional local ETCM sources for the research image. Data is never built into it.
+# Use together with compose.research.yaml and set ETCM_SOURCE_HOST explicitly.
+services:
+  chat:
+    environment:
+      ETCM_ENRICHMENT_DB: /etcm-data/enrichment.sqlite3
+      ETCM_TARGET_DB: /etcm-data/targets-paths.sqlite3
+      ETCM_SOURCE_ROOT: /etcm-source
+    volumes:
+      - type: bind
+        # Prepare standalone snapshots first; do not mount a private WAL-mode main file.
+        source: ${ETCM_RUNTIME_DIR:?Run scripts.prepare_etcm_runtime and set ETCM_RUNTIME_DIR}
+        target: /etcm-data
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${ETCM_SOURCE_HOST:?Set ETCM_SOURCE_HOST to the local ETCM2.0 directory}
+        target: /etcm-source
+        read_only: true
+        bind:
+          create_host_path: false

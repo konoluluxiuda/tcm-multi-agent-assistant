@@ -1,0 +1,92 @@
+{
+  "kind": "research_local_candidate_update_20261020",
+  "status": "local_candidate_verified_pending_update_scope",
+  "image": {
+    "image_tag": "tcm-research-chat:working-20261020",
+    "image_id": "sha256:93968fc0eac41e010b0317c6a8420351f2085f70b3035607db9c2eb2d5d8794f",
+    "image_bytes": 408189534,
+    "base_revision": "f5d4bf3dec5d0be5771d7f4a52fdb20fee133696",
+    "working_tree_dirty": true,
+    "source_tree_sha256": "de46e6520e1b74e9bdd4a0e924602b1a07727366241c442750c983a52556a5ab"
+  },
+  "runtime_files_verified": 71,
+  "offline": {
+    "modules": 70,
+    "tests": 603,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "container_browser": {
+    "total": 20,
+    "checks": [
+      "explicit_bookmark_saved_and_markup_rendered_as_literal_text",
+      "two_window_conflict_rejected_without_overwriting_note_or_input",
+      "chat_clear_keeps_bookmark_and_preview_does_not_restore_chat_focus",
+      "explicit_selected_relation_source_and_second_page_saved",
+      "separate_browser_has_no_access_to_saved_items",
+      "no_page_errors_or_ai_mode_requests",
+      "actual_service_restart_keeps_two_bookmarks",
+      "restart_replay_research_same_sources_and_notes",
+      "restart_replay_relation_same_sources_and_notes",
+      "preview_after_restart_keeps_chat_empty",
+      "deleted_bookmarks_stay_deleted_after_reload",
+      "no_page_errors_or_ai_mode_requests",
+      "chinese_name_requires_source_selection_then_returns_20_untranslated_source_rows",
+      "capture_state_and_finite_page_boundary_visible_without_treatment_claims",
+      "reload_and_source_followup_restore_same_disease_focus",
+      "evidence_note_preserves_rows_capture_state_and_nonindication_boundary",
+      "disease_bookmark_backup_import_replays_same_explicit_source",
+      "bookmark_replay_does_not_write_chat_or_model_memory",
+      "test_bookmarks_deleted",
+      "no_page_errors_or_ai_mode_requests"
+    ]
+  },
+  "runtime_snapshot": {
+    "kind": "etcm_runtime_snapshot_v1",
+    "dataset_version": "local-2026-10-10",
+    "herb_source_fingerprint": "9921499429128fa21b4b8dc2c5100f359970d8fa796a1dcee32ca8259fe02d80",
+    "target_export_sha256": "d2e3b225fe1404f75eac2e52208d4bbd9dccdfabcafb1e63187ef7c1027cc171",
+    "files": {
+      "enrichment.sqlite3": {
+        "sha256": "9d3f9c6f8a5c7ececbde957e2a1ea6a74d6f225ff5194c094e3e45f4578a0980",
+        "bytes": 1041469440
+      },
+      "targets-paths.sqlite3": {
+        "sha256": "e9c6576db290d9a333435b85b82c3275ec68e6dfd849922e3de02e449e155fc1",
+        "bytes": 78991360
+      }
+    },
+    "source_permissions_changed": false,
+    "runtime_subdirectory": "catalogs"
+  },
+  "protected_service_ids_unchanged": true,
+  "protected_services": [
+    "/tcm-research-next-chat-1",
+    "/tcm-research-chat-1",
+    "/tcm-herb-query-tcm-query-1",
+    "/medical-assistant-current"
+  ],
+  "readonly_root": true,
+  "all_bind_mounts_readonly": true,
+  "candidate_port": 7876,
+  "model_calls": 0,
+  "published": false,
+  "git_committed_this_turn": false,
+  "existing_7873_replaced": false,
+  "deployment_failures_preserved": [
+    "Browser runner assumed AI checkbox enabled; adapted to tools-only profile.",
+    "Single-file WAL-mode database mount lacked companion files.",
+    "Original private enrichment directory mode0700 prevented non-root traversal."
+  ],
+  "deployment_fix": "SQLite online backup into standalone DELETE-journal snapshots; host-private parent0700 and bindable child0755. Original source modes unchanged.",
+  "cleanup": {
+    "failed_test_bookmarks_removed": 2,
+    "successful_test_bookmarks_removed": 4,
+    "temporary_cookie_state_removed": true,
+    "test_downloads_removed": true
+  },
+  "test_download_sha256": {
+    "disease_evidence_private.md": "57f60c3abbc6d9f5228063c51dacd7f377925a54f8b61691cec479acc056446a",
+    "disease_backup_private.json": "c940f4ce0563b665320ab890ba690b811c2bb2460301f25a1bf68fa83290117f"
+  }
+}

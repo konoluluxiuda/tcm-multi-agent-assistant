@@ -49,6 +49,27 @@ class DeploymentTests(unittest.TestCase):
                 response = self.client.get('/ready/research')
                 self.assertEqual(response.status_code, 503); self.assertNotIn('private', response.text)
 
+    def test_herb_readiness_uses_actual_snapshot_and_never_creates_missing_database(self):
+        from tcm.herbs import import_snapshot
+        root=Path(self.temp.name);source=root/'source';(source/'etcm_herbs').mkdir(parents=True)
+        (source/'etcm_herbs/Example.json').write_text(json.dumps({'code':1,'data':[
+            {'id':'base_information','value':[{'key':'Herb Name in Pinyin','value':'ExampleHerb'}]}]}))
+        database=root/'herbs.sqlite3';import_snapshot(source,database,'herb-test-v1')
+        before=database.read_bytes()
+        with patch.dict('os.environ',{'TCM_DB':str(database),'TCM_DATASET_VERSION':'herb-test-v1'}):
+            result=self.client.get('/ready/herbs')
+            self.assertEqual(result.status_code,200)
+            self.assertEqual(result.json(),{'status':'ready','dataset_version':'herb-test-v1',
+                                           'source_record_count':1,'count_unit':'source_record'})
+        self.assertEqual(database.read_bytes(),before)
+        with patch.dict('os.environ',{'TCM_DB':str(database),'TCM_DATASET_VERSION':'missing'}):
+            self.assertEqual(self.client.get('/ready/herbs').status_code,503)
+        missing=root/'private-missing.sqlite3'
+        with patch.dict('os.environ',{'TCM_DB':str(missing)}):
+            response=self.client.get('/ready/herbs')
+            self.assertEqual(response.status_code,503);self.assertNotIn(str(root),response.text)
+        self.assertFalse(missing.exists())
+
     def test_restricted_profile_blocks_general_chat_before_model_or_memory(self):
         with patch.dict('os.environ', {'RESEARCH_TOOLS_ONLY': '1'}), \
              patch.object(self.app, 'process_query', side_effect=AssertionError('provider path reached')), \

@@ -1,0 +1,225 @@
+{
+  "version": 1,
+  "author": "AI_authored_source_assisted_diagnostic",
+  "split": "development_not_independent",
+  "human_gold": false,
+  "k": 5,
+  "relevance_policy": "Exact specified source entry and labels, all nonblank non-appendix chunks; no clinical relevance judgments.",
+  "selection_note": "Six source names chosen after examining label availability, before running this suite. Canonical, paraphrase, multi-field, duplicate-scope and boundary diagnostics; no generalization claim.",
+  "cases": [
+    {
+      "id": "R01",
+      "group": "canonical_control",
+      "question": "金银花的功能与主治是什么？",
+      "name": "金银花",
+      "labels": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "R02",
+      "group": "canonical_control",
+      "question": "连翘的功能与主治是什么？",
+      "name": "连翘",
+      "labels": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "R03",
+      "group": "canonical_control",
+      "question": "桔梗的功能与主治是什么？",
+      "name": "桔梗",
+      "labels": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "R04",
+      "group": "canonical_control",
+      "question": "五味子的功能与主治是什么？",
+      "name": "五味子",
+      "labels": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "R05",
+      "group": "canonical_control",
+      "question": "丹参的功能与主治是什么？",
+      "name": "丹参",
+      "labels": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "R06",
+      "group": "canonical_control",
+      "question": "麦冬的功能与主治是什么？",
+      "name": "麦冬",
+      "labels": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "R07",
+      "group": "field_paraphrase",
+      "question": "金银花能派上什么用场？",
+      "name": "金银花",
+      "labels": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "R08",
+      "group": "field_paraphrase",
+      "question": "连翘一般拿来干什么？",
+      "name": "连翘",
+      "labels": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "R09",
+      "group": "field_paraphrase",
+      "question": "桔梗的传统用途记在哪里？",
+      "name": "桔梗",
+      "labels": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "R10",
+      "group": "field_paraphrase",
+      "question": "五味子主要针对哪些不适？",
+      "name": "五味子",
+      "labels": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "R11",
+      "group": "field_paraphrase",
+      "question": "丹参有哪些应用记载？",
+      "name": "丹参",
+      "labels": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "R12",
+      "group": "field_paraphrase",
+      "question": "麦冬可以起什么效果？",
+      "name": "麦冬",
+      "labels": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "R13",
+      "group": "multiple_fields",
+      "question": "金银花的用量和贮藏分别怎么记载？",
+      "name": "金银花",
+      "labels": [
+        "用法与用量",
+        "贮藏"
+      ]
+    },
+    {
+      "id": "R14",
+      "group": "multiple_fields",
+      "question": "连翘的用量和贮藏分别怎么记载？",
+      "name": "连翘",
+      "labels": [
+        "用法与用量",
+        "贮藏"
+      ]
+    },
+    {
+      "id": "R15",
+      "group": "multiple_fields",
+      "question": "桔梗的用量和贮藏分别怎么记载？",
+      "name": "桔梗",
+      "labels": [
+        "用法与用量",
+        "贮藏"
+      ]
+    },
+    {
+      "id": "R16",
+      "group": "repeated_scope",
+      "question": "五味子的性状有哪些记载？",
+      "name": "五味子",
+      "labels": [
+        "性状"
+      ]
+    },
+    {
+      "id": "R17",
+      "group": "repeated_scope",
+      "question": "丹参的性状有哪些记载？",
+      "name": "丹参",
+      "labels": [
+        "性状"
+      ]
+    },
+    {
+      "id": "R18",
+      "group": "multiple_fields",
+      "question": "麦冬的用量和贮藏分别怎么记载？",
+      "name": "麦冬",
+      "labels": [
+        "用法与用量",
+        "贮藏"
+      ]
+    },
+    {
+      "id": "R19",
+      "group": "boundary",
+      "question": "金银花今天卖多少钱？",
+      "allowed_statuses": [
+        "field_not_resolved"
+      ]
+    },
+    {
+      "id": "R20",
+      "group": "boundary",
+      "question": "连翘的批发价格是多少？",
+      "allowed_statuses": [
+        "field_not_resolved"
+      ]
+    },
+    {
+      "id": "R21",
+      "group": "boundary",
+      "question": "不存在的示例药甲的功效是什么？",
+      "allowed_statuses": [
+        "name_not_resolved"
+      ]
+    },
+    {
+      "id": "R22",
+      "group": "boundary",
+      "question": "酒丹参的功效是什么？",
+      "allowed_statuses": [
+        "variant_scope_unresolved"
+      ]
+    },
+    {
+      "id": "R23",
+      "group": "boundary",
+      "question": "麦冬的注意事项是什么？",
+      "allowed_statuses": [
+        "field_not_observed"
+      ]
+    },
+    {
+      "id": "R24",
+      "group": "boundary",
+      "question": "金银花和连翘的功效有哪些区别？",
+      "allowed_statuses": [
+        "multiple_names"
+      ]
+    }
+  ]
+}

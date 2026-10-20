@@ -1,0 +1,321 @@
+{
+  "kind": "known_failure_usage_paraphrase_regression",
+  "comparison_scope": "same_24_development_cases_not_independent_acceptance",
+  "frozen_inputs_equal": [
+    "questions_sha256",
+    "references_sha256",
+    "view_sha256",
+    "index_sha256"
+  ],
+  "before_manifest": {
+    "kind": "scoped_field_location_recall_v1",
+    "policy": "all_nonblank_nonappendix_chunks_for_exact_entry_and_labels_v1",
+    "questions_sha256": "c46a1cbbd81096c614b1836b024668b813483125290e9b84e6dc92c257e88ab3",
+    "references_sha256": "bab99926eb2983da3781a59ec3868296852f37a1f0a185c94779d442eefb78c8",
+    "view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+    "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+    "code_sha256": {
+      "scripts/eval_scoped_recall.py": "d5ba686357e84a6981755b811b3f556369d0cef703a656daff8d172c1e0f955f",
+      "tcm/mineru_retrieval.py": "11a3fa2d05832ac5f544191f974e73d79b313eeb2d967a5893db354701a871ca",
+      "tcm/mineru_guards.py": "4f6675eefa56c933f050dd1eadba9b54b13408138efc7ae8edaa40ac53f183ed",
+      "tcm/mineru_pharmacopoeia.py": "061e595624095760762ed4f8730dd39de762d4435a4e774501588ad245847921",
+      "scripts/build_mineru_pharmacopoeia.py": "b5c7a2207d8a5b7175e0b029d4401164ac0b305356f82184ea54cf68b8723c96"
+    },
+    "human_gold": false,
+    "split": "author_designed_source_assisted_diagnostic_not_independent",
+    "cases": 24,
+    "clinical_correctness_evaluated": false
+  },
+  "after_manifest": {
+    "kind": "scoped_field_location_recall_v1",
+    "policy": "all_nonblank_nonappendix_chunks_for_exact_entry_and_labels_v1",
+    "questions_sha256": "c46a1cbbd81096c614b1836b024668b813483125290e9b84e6dc92c257e88ab3",
+    "references_sha256": "bab99926eb2983da3781a59ec3868296852f37a1f0a185c94779d442eefb78c8",
+    "view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+    "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+    "code_sha256": {
+      "scripts/eval_scoped_recall.py": "d5ba686357e84a6981755b811b3f556369d0cef703a656daff8d172c1e0f955f",
+      "tcm/mineru_retrieval.py": "dd5b9f5e295b4411eeedcecd9c2de585f9131aa3a4ae506915fbe63384af35c0",
+      "tcm/mineru_guards.py": "4f6675eefa56c933f050dd1eadba9b54b13408138efc7ae8edaa40ac53f183ed",
+      "tcm/mineru_pharmacopoeia.py": "061e595624095760762ed4f8730dd39de762d4435a4e774501588ad245847921",
+      "scripts/build_mineru_pharmacopoeia.py": "b5c7a2207d8a5b7175e0b029d4401164ac0b305356f82184ea54cf68b8723c96"
+    },
+    "human_gold": false,
+    "split": "author_designed_source_assisted_diagnostic_not_independent",
+    "cases": 24,
+    "clinical_correctness_evaluated": false
+  },
+  "router_code_sha256": "b86d8f0f8cc41d059df3673fafe0186538e97c979d17b2b13dad330994777307",
+  "before": {
+    "name_field": {
+      "retrieval_cases": 18,
+      "boundary_cases": 6,
+      "hit_at_k": 0.6666666666666666,
+      "macro_recall_at_k": 0.6481481481481481,
+      "mrr_at_k": 0.6666666666666666,
+      "entity_selection_correct": 17,
+      "field_selection_correct": 12,
+      "correct_boundaries": 6,
+      "wrong_entity_hits": 0,
+      "other_field_hits": 0,
+      "provenance_failures": 0,
+      "mean_query_ms": 0.9046305409962466
+    },
+    "bm25": {
+      "retrieval_cases": 18,
+      "boundary_cases": 6,
+      "hit_at_k": 0.7222222222222222,
+      "macro_recall_at_k": 0.6666666666666666,
+      "mrr_at_k": 0.6944444444444444,
+      "entity_selection_correct": null,
+      "field_selection_correct": null,
+      "correct_boundaries": 1,
+      "wrong_entity_hits": 25,
+      "other_field_hits": 22,
+      "provenance_failures": 0,
+      "mean_query_ms": 11.60212795669698
+    },
+    "name_bm25": {
+      "retrieval_cases": 18,
+      "boundary_cases": 6,
+      "hit_at_k": 0.6666666666666666,
+      "macro_recall_at_k": 0.6481481481481481,
+      "mrr_at_k": 0.6666666666666666,
+      "entity_selection_correct": 17,
+      "field_selection_correct": 12,
+      "correct_boundaries": 6,
+      "wrong_entity_hits": 0,
+      "other_field_hits": 0,
+      "provenance_failures": 0,
+      "mean_query_ms": 3.6815585396349584
+    }
+  },
+  "after": {
+    "name_field": {
+      "retrieval_cases": 18,
+      "boundary_cases": 6,
+      "hit_at_k": 1,
+      "macro_recall_at_k": 0.9814814814814815,
+      "mrr_at_k": 1.0,
+      "entity_selection_correct": 18,
+      "field_selection_correct": 18,
+      "correct_boundaries": 6,
+      "wrong_entity_hits": 0,
+      "other_field_hits": 0,
+      "provenance_failures": 0,
+      "mean_query_ms": 1.0955337086973789
+    },
+    "bm25": {
+      "retrieval_cases": 18,
+      "boundary_cases": 6,
+      "hit_at_k": 0.7222222222222222,
+      "macro_recall_at_k": 0.6666666666666666,
+      "mrr_at_k": 0.6944444444444444,
+      "entity_selection_correct": null,
+      "field_selection_correct": null,
+      "correct_boundaries": 1,
+      "wrong_entity_hits": 25,
+      "other_field_hits": 27,
+      "provenance_failures": 0,
+      "mean_query_ms": 11.754556082451018
+    },
+    "name_bm25": {
+      "retrieval_cases": 18,
+      "boundary_cases": 6,
+      "hit_at_k": 1,
+      "macro_recall_at_k": 0.9814814814814815,
+      "mrr_at_k": 1.0,
+      "entity_selection_correct": 18,
+      "field_selection_correct": 18,
+      "correct_boundaries": 6,
+      "wrong_entity_hits": 0,
+      "other_field_hits": 0,
+      "provenance_failures": 0,
+      "mean_query_ms": 4.644058457415667
+    }
+  },
+  "default_case_statuses_after": [
+    {
+      "case_id": "R01",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R02",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R03",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R04",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R05",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R06",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R07",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R08",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R09",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R10",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R11",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R12",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R13",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R14",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R15",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R16",
+      "status": "partial_evidence",
+      "recall_at_k": 0.6666666666666666,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R17",
+      "status": "ambiguous_field",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R18",
+      "status": "candidates",
+      "recall_at_k": 1.0,
+      "entity_selection_correct": true,
+      "field_selection_correct": true
+    },
+    {
+      "case_id": "R19",
+      "status": "field_not_resolved"
+    },
+    {
+      "case_id": "R20",
+      "status": "field_not_resolved"
+    },
+    {
+      "case_id": "R21",
+      "status": "name_not_resolved"
+    },
+    {
+      "case_id": "R22",
+      "status": "variant_scope_unresolved"
+    },
+    {
+      "case_id": "R23",
+      "status": "field_not_observed"
+    },
+    {
+      "case_id": "R24",
+      "status": "multiple_names"
+    }
+  ],
+  "verification": {
+    "offline_modules": 65,
+    "offline_tests": 566,
+    "skipped": 0,
+    "network_attempts": 0,
+    "browser_checks": [
+      "R07_natural_question_renders_correct_source_field",
+      "R08_natural_question_renders_correct_source_field",
+      "R09_natural_question_renders_correct_source_field",
+      "R10_natural_question_renders_correct_source_field",
+      "R11_natural_question_renders_correct_source_field",
+      "R12_natural_question_renders_correct_source_field",
+      "source_followup_replays_current_focus",
+      "reload_restores_bound_research_card",
+      "preserved_field_not_resolved",
+      "preserved_variant_scope_unresolved",
+      "preserved_field_not_observed",
+      "no_page_errors_or_ai_mode_requests"
+    ],
+    "baseline_input_integrity": "passed"
+  },
+  "llm_calls": 0,
+  "embedding_calls": 0,
+  "index_rebuilt": false,
+  "docker_updated": false,
+  "limits": [
+    "Source-derived field-location relevance, not semantic or clinical relevance.",
+    "Repeated scopes are retained; locating all is not resolving preparation identity.",
+    "Unresolved references remain in the denominator but are not successful evidence hits.",
+    "AI-authored diagnostic; not independent gold or end-to-end chat task success.",
+    "Single sequential in-process query timing; no P95, concurrency or model cost claim."
+  ]
+}

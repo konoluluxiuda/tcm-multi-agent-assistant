@@ -60,7 +60,9 @@ window.ResearchWorkspaces = (() => {
             if (term) send('/pubmed ' + term);
         });
         function focusFrom(data) {
-            if (data.research) {
+            if (data.evidence_answer) {
+                status.textContent = '当前为AI资料整理任务，来源见回答；未建立药典与文献对象等价关系。';
+            } else if (data.research) {
                 status.textContent = data.research.focus_name
                     ? '当前药典焦点：' + data.research.focus_name
                     : '当前没有确认的药典对象，请核对候选或明确药名。';

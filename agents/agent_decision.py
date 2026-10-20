@@ -28,6 +28,8 @@ from tcm.agent_research import split_contexts, pack_contexts
 from tcm.agent_pubmed import parse_request as parse_pubmed_request, runtime as pubmed_runtime, context_from as pubmed_context_from
 from tcm.assistant_router import resolve as resolve_tool_request
 from tcm.assistant_info import execute as execute_assistant_info
+from features import can_auto_plan
+from tcm.relation_memory import context_from as relation_context_from, execute_turn as execute_relation_turn
 
 
 # Load configuration
@@ -127,6 +129,10 @@ class AgentState(MessagesState):
     pubmed_context: Optional[Dict]
     assistant_request: Optional[Dict]
     assistant_result: Optional[Dict]
+    relation_context: Optional[Dict]
+    task_mode: Optional[str]
+    evidence_request: Optional[Dict]
+    evidence_answer: Optional[Dict]
     routing: Optional[Dict]
 
 
@@ -178,21 +184,37 @@ def create_agent_graph():
         elif isinstance(current_input, dict):
             input_text = current_input.get("text", "")
         
+        if state.get('task_mode') == 'evidence':
+            return {'evidence_request': {'question': input_text}, 'tcm_context': None,
+                    'relation_context':None,
+                    'research_context': None, 'pubmed_context': None, 'has_image': False,
+                    'image_type': None, 'bypass_routing': False}
+
         selected = resolve_tool_request(current_input, herb_context=state.get('tcm_context'),
                                         research_context=state.get('research_context'),
-                                        pubmed_context=state.get('pubmed_context'))
+                                        pubmed_context=state.get('pubmed_context'),relation_context=state.get('relation_context'))
         if selected is not None:
             tool = selected['tool']
             key = {'herb': 'tcm_request', 'research': 'research_request',
                    'pubmed': 'pubmed_request', 'assistant': 'assistant_request'}[tool]
             changes = {key: selected['request'], 'has_image': False, 'image_type': None,
                        'bypass_routing': False, 'routing': {k: selected[k] for k in ('tool','reason','mode')}}
-            if tool != 'assistant':
+            if tool == 'assistant' and selected['request'].get('topic') == 'etcm_relations':
+                changes.update(tcm_context=None, research_context=None, pubmed_context=None)
+            elif tool != 'assistant':
+                changes['relation_context']=None
                 for owner, context_key in [('herb','tcm_context'),('research','research_context'),('pubmed','pubmed_context')]:
                     if owner != tool:
                         changes[context_key] = None
             return changes
-        state = {**state, 'research_context': None, 'pubmed_context': None}
+        if can_auto_plan(current_input):
+            return {'evidence_request': {'question': input_text}, 'tcm_context': None,
+                    'relation_context':None,
+                    'research_context': None, 'pubmed_context': None, 'has_image': False,
+                    'image_type': None, 'bypass_routing': False,
+                    'routing': {'tool': 'evidence', 'reason': 'unmatched_rule_model_fallback',
+                                'mode': 'automatic'}}
+        state = {**state, 'research_context': None, 'pubmed_context': None,'relation_context':None}
 
         # An unrelated turn ends the explicit herb focus, even if a guardrail blocks it.
         state = {**state, "tcm_context": None}
@@ -232,6 +254,8 @@ def create_agent_graph():
     
     def check_if_bypassing(state: AgentState) -> str:
         """Check if we should bypass normal routing due to guardrails."""
+        if state.get('evidence_request') is not None:
+            return 'EVIDENCE_ASSISTANT'
         if state.get('assistant_request') is not None:
             return 'ASSISTANT_INFO_AGENT'
         if state.get('pubmed_request') is not None:
@@ -246,10 +270,24 @@ def create_agent_graph():
             return "apply_guardrails"
         return "route_to_agent"
     
-    def run_assistant_info_agent(state: AgentState) -> Dict:
-        result = execute_assistant_info(state['assistant_request'])
+    def run_evidence_assistant(state: AgentState) -> Dict:
+        from features import env_bool
+        from tcm.evidence_assistant import configured_assistant
+        if not env_bool('ENABLE_EVIDENCE_ASSISTANT'):
+            result = {'status': 'disabled', 'message': 'AI整理模式未启用。', 'model_calls': 0}
+        else:
+            result = configured_assistant().run(state['evidence_request']['question'])
         message = AIMessage(content=result['message'])
-        return {'assistant_result': result, 'agent_name': 'ASSISTANT_INFO_AGENT',
+        return {'evidence_answer': result, 'agent_name': 'EVIDENCE_ASSISTANT',
+                'output': message, 'messages': [message], 'needs_human_validation': False}
+
+    def run_assistant_info_agent(state: AgentState) -> Dict:
+        relation=state.get('relation_context')
+        if state['assistant_request'].get('topic')=='etcm_relations':
+            result,relation=execute_relation_turn(state['assistant_request'],relation)
+        else:result = execute_assistant_info(state['assistant_request'])
+        message = AIMessage(content=result['message'])
+        return {'assistant_result': result, 'relation_context':relation,'agent_name': 'ASSISTANT_INFO_AGENT',
                 'output': message, 'messages': [message], 'needs_human_validation': False}
 
     def run_tcm_herb_agent(state: AgentState) -> Dict:
@@ -729,6 +767,8 @@ def create_agent_graph():
     workflow.add_node("apply_guardrails", apply_output_guardrails)
     
     # Define the edges (workflow connections)
+    workflow.add_node("EVIDENCE_ASSISTANT", run_evidence_assistant)
+    workflow.add_edge("EVIDENCE_ASSISTANT", END)
     workflow.add_node("ASSISTANT_INFO_AGENT", run_assistant_info_agent)
     workflow.add_edge("ASSISTANT_INFO_AGENT", END)
     workflow.add_node("TCM_HERB_AGENT", run_tcm_herb_agent)
@@ -747,6 +787,7 @@ def create_agent_graph():
             "feature_unavailable": "feature_unavailable",
             "apply_guardrails": "apply_guardrails",
             "route_to_agent": "route_to_agent",
+            "EVIDENCE_ASSISTANT": "EVIDENCE_ASSISTANT",
             "ASSISTANT_INFO_AGENT": "ASSISTANT_INFO_AGENT",
             "TCM_HERB_AGENT": "TCM_HERB_AGENT",
             'PHARMACOPOEIA_RESEARCH_AGENT': 'PHARMACOPOEIA_RESEARCH_AGENT',
@@ -820,14 +861,18 @@ def init_agent_state() -> AgentState:
         'pubmed_request': None,
         'pubmed_result': None,
         'pubmed_context': None,
+        "task_mode": "auto",
+        "evidence_request": None,
+        "evidence_answer": None,
         "assistant_request": None,
         "assistant_result": None,
+        "relation_context":None,
         "routing": None,
         "next": ""
     }
 
 
-def _process_query(query: Union[str, Dict], thread_config: Dict) -> Dict:
+def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='auto') -> Dict:
     """
     Process a user query through the agent decision system.
     
@@ -853,6 +898,8 @@ def _process_query(query: Union[str, Dict], thread_config: Dict) -> Dict:
     state = init_agent_state()
     state['tcm_context'], state['research_context'] = split_contexts(snapshot.tcm_context)
     state['pubmed_context'] = pubmed_context_from(snapshot.tcm_context)
+    state['relation_context']=relation_context_from(snapshot.tcm_context)
+    state['task_mode'] = task_mode
     
     # Add the current query
     state["current_input"] = query
@@ -871,7 +918,7 @@ def _process_query(query: Union[str, Dict], thread_config: Dict) -> Dict:
     if len(result["messages"]) > config.max_conversation_history:  # Keep last config.max_conversation_history messages
         result["messages"] = result["messages"][-config.max_conversation_history:]
     memory.save(session_id, result["messages"], pack_contexts(result.get('tcm_context'), result.get('research_context'),
-                result.get('pubmed_context')), revision=snapshot.revision)
+                result.get('pubmed_context'),result.get('relation_context')), revision=snapshot.revision)
 
     # visualize conversation history in console
     for m in result["messages"]:
@@ -880,11 +927,11 @@ def _process_query(query: Union[str, Dict], thread_config: Dict) -> Dict:
     # Add the response to conversation history
     return result
 
-def process_query(query: Union[str, Dict], conversation_history=None, *, session_id=None) -> Dict:
+def process_query(query: Union[str, Dict], conversation_history=None, *, session_id=None, task_mode='auto') -> Dict:
     """Run a turn in its own session; omitted IDs create isolated one-shot calls.
 
     Completed turns live in SQLite and survive restart. Client-supplied
     history is intentionally not trusted as server-side state.
     """
     with session_turn(session_id) as thread_config:
-        return _process_query(query, thread_config)
+        return _process_query(query, thread_config, task_mode=task_mode)

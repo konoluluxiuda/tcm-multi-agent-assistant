@@ -1,0 +1,49 @@
+{
+  "kind": "explicit_research_bookmarks_v1",
+  "status": "passed",
+  "offline": {
+    "modules": 66,
+    "tests": 578,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "before_restart": [
+      "explicit_bookmark_saved_and_markup_rendered_as_literal_text",
+      "two_window_conflict_rejected_without_overwriting_note_or_input",
+      "chat_clear_keeps_bookmark_and_preview_does_not_restore_chat_focus",
+      "explicit_selected_relation_source_and_second_page_saved",
+      "separate_browser_has_no_access_to_saved_items",
+      "no_page_errors_or_ai_mode_requests"
+    ],
+    "after_actual_restart": [
+      "actual_service_restart_keeps_two_bookmarks",
+      "restart_replay_research_same_sources_and_notes",
+      "restart_replay_relation_same_sources_and_notes",
+      "preview_after_restart_keeps_chat_empty",
+      "deleted_bookmarks_stay_deleted_after_reload",
+      "no_page_errors_or_ai_mode_requests"
+    ],
+    "total": 12
+  },
+  "initial_browser_failure": {
+    "preserved": true,
+    "reason": "stale asynchronous focus enabled save with old chat revision; server rejected 409; client generation/busy guards fixed"
+  },
+  "cleanup": {
+    "successful_run_test_items_deleted": 2,
+    "initial_failed_run_test_items_deleted": 1,
+    "temporary_cookie_state_deleted": true
+  },
+  "llm_calls": 0,
+  "embedding_calls": 0,
+  "external_requests_allowed": 0,
+  "source_preview_port": 7875,
+  "docker_updated": false,
+  "limits": [
+    "Anonymous browser-owned explicit bookmarks, not accounts or semantic memory.",
+    "No automatic retrieval of personal notes into models or evidence.",
+    "Clearing chat retains bookmarks; clearing cookies loses the access entry.",
+    "Existing conversation-only backup does not include bookmark database."
+  ]
+}

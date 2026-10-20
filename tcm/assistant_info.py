@@ -37,6 +37,9 @@ def herb_inventory(database, version=None):
 
 def execute(request):
     topic = request['topic']
+    if topic == 'etcm_relations':
+        from tcm.relation_queries import execute as execute_relations
+        return execute_relations(request)
     result = {'status': 'ok', 'topic': topic, 'llm_calls': 0, 'network_calls': 0}
     if topic == 'overview':
         try:
@@ -77,7 +80,7 @@ def execute(request):
     elif topic == 'capabilities':
         research='已启用' if env_bool('ENABLE_PHARMACOPOEIA_RESEARCH') else '未启用'
         pubmed='已启用' if env_bool('ENABLE_PUBMED') else '未启用'
-        result['message']=f'当前支持：\n• 数据概览：问“收录了多少药材”“有哪些功效分类”，按本地数据库统计。\n• 药典字段与原页证据（{research}）：问“黄芪有什么作用”，再问“用量呢”“出处呢”。\n• ETCM结构化属性：按来源ID或已收录拼音/拉丁/英文名查询；中文跨库映射尚未核验。\n• PubMed文献（{pubmed}）：如“在PubMed检索 Astragalus membranaceus”；只获取摘要及元数据。\n• 证据清单下载、会话保存与清除。\n尚不支持完整术语解释库、自动临床证据评议或患者个体化用药判断。工具已启用不等于资料已就绪；可问“数据概览”检查实际来源。'
+        result['message']=f'当前支持：\n• 数据概览：问“收录了多少药材”“有哪些功效分类”，按本地数据库统计。\n• 药典字段与原页证据（{research}）：问“黄芪有什么作用”，再问“用量呢”“出处呢”。\n• ETCM结构化属性：按来源ID或已收录拼音/拉丁/英文名查询；中文跨库映射尚未核验。\n• ETCM来源疾病富集：如“白术有哪些疾病富集记录”，需选择来源；不作为适应证或治疗推荐。\n• PubMed文献（{pubmed}）：如“在PubMed检索 Astragalus membranaceus”；只获取摘要及元数据。\n• 证据清单下载、会话保存与清除。\n尚不支持完整术语解释库、自动临床证据评议或患者个体化用药判断。工具已启用不等于资料已就绪；可问“数据概览”检查实际来源。'
     else:
         messages={
             'concept':'已识别为概念解释问题。当前资料是药典药材条目和ETCM字段，尚未建立有来源的术语解释库，不能据此给出可靠的通用定义。你可以指定概念与资料来源；若要查某味药的记载，可直接问“黄芪的归经是什么”。',

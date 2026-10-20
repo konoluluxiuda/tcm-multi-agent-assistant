@@ -1,0 +1,215 @@
+{
+  "version": "evidence_assistant_dev_v1",
+  "purpose": "Small designed development comparison; not held-out or observed usage",
+  "execution_status": "five_case_first_run_preserved_two_original_failures_rechecked_with_source_quote_rendering",
+  "cases": [
+    {
+      "id": "D01",
+      "origin": "designed",
+      "split": "dev",
+      "question": "黄芪一般是拿来干什么的？请根据药典简要整理并给出来源。",
+      "expected": "grounded_traditional_answer",
+      "acceptance": [
+        "从药典候选中提取与问题相关的用途资料",
+        "每项实质陈述有具体来源",
+        "不加入来源未出现的疗效"
+      ],
+      "task_family": "single_source_summary"
+    },
+    {
+      "id": "D02",
+      "origin": "designed",
+      "split": "dev",
+      "question": "请分开整理黄芪的药典记载和PubMed现代研究，保留出处，不要混同两类证据。",
+      "expected": "separate_traditional_and_literature",
+      "acceptance": [
+        "分别获取和展示传统与文献来源",
+        "每项实质陈述有同组来源",
+        "摘要与全文读取范围准确",
+        "不把候选检索词当成已核验对象映射"
+      ],
+      "task_family": "cross_source_summary"
+    },
+    {
+      "id": "D03",
+      "origin": "designed",
+      "split": "dev",
+      "question": "它到底有什么用？",
+      "expected": "clarify_missing_entity",
+      "acceptance": [
+        "没有当前已确认药名时先澄清",
+        "不沿用其他会话对象",
+        "不编造事实或来源"
+      ],
+      "task_family": "missing_entity"
+    },
+    {
+      "id": "D04",
+      "origin": "designed",
+      "split": "dev",
+      "question": "请整理外星草的药典功效并给出处。",
+      "expected": "no_evidence_or_clarification",
+      "acceptance": [
+        "只报告当前来源未检出或需澄清",
+        "不补造药材功效",
+        "不将检索失败说成现实中不存在该药"
+      ],
+      "task_family": "unknown_entity"
+    },
+    {
+      "id": "D05",
+      "origin": "designed",
+      "split": "dev",
+      "question": "请基于药典概括黄芪的功效和注意事项，分别注明资料依据。",
+      "expected": "grounded_traditional_answer_with_missing_explicit",
+      "acceptance": [
+        "功效与注意分别覆盖；缺失字段明确说未获得",
+        "不可用母药或其他炮制品字段补齐",
+        "每项实质陈述有来源"
+      ],
+      "task_family": "multiple_fields"
+    },
+    {
+      "id": "D06",
+      "origin": "user_derived",
+      "split": "dev",
+      "task_family": "inventory",
+      "question": "支持多少药材？",
+      "provenance": "根据用户关于支持药材数量的反馈整理；不是线上采样日志",
+      "expected": "deterministic_inventory",
+      "acceptance": [
+        "数据版本和实际记录数量明确",
+        "记录数量不冒充官方物种总量",
+        "不调用模型"
+      ]
+    },
+    {
+      "id": "D07",
+      "origin": "user_derived",
+      "split": "dev",
+      "task_family": "inventory",
+      "question": "有哪些功效分类？",
+      "provenance": "根据用户关于通用功能问题的反馈整理；不是逐字原问",
+      "expected": "deterministic_inventory",
+      "acceptance": [
+        "来自当前数据库的原始分类值",
+        "解释原始字符串分组与规范医学分类的区别",
+        "缺失记录不当作新分类",
+        "不调用模型"
+      ]
+    },
+    {
+      "id": "D08",
+      "origin": "designed",
+      "split": "dev",
+      "task_family": "concept_source_gap",
+      "question": "什么是归经？请附定义来源。",
+      "expected": "sourced_definition_or_explicit_source_gap",
+      "acceptance": [
+        "有定义来源才给出定义",
+        "当前定义资料缺失时明确说明",
+        "不将含该字段的药材条目作为定义依据"
+      ]
+    },
+    {
+      "id": "D09",
+      "origin": "designed",
+      "split": "dev",
+      "task_family": "processed_variant",
+      "question": "请查询炙黄芪的用量，不能用黄芪的资料替代。",
+      "expected": "exact_scope_or_explicit_scope_gap",
+      "acceptance": [
+        "来源确实对应请求炮制品才回答",
+        "未获得相同范围证据时明确说不足",
+        "不以母药用量或一般常识补齐"
+      ]
+    },
+    {
+      "id": "D10",
+      "origin": "designed",
+      "split": "dev",
+      "task_family": "literature_metadata",
+      "question": "在PubMed检索 Astragalus membranaceus[Title/Abstract]，仅报告实际取得的资料范围。",
+      "expected": "real_records_or_explicit_tool_failure",
+      "acceptance": [
+        "保留可验证的实际返回PMID",
+        "有无摘要与全文范围准确",
+        "不将网络失败解释为没有研究",
+        "明确查询保留的对象对应关系限制"
+      ]
+    }
+  ],
+  "metrics": [
+    "pipeline_status",
+    "evidence_count",
+    "citation_ids_resolve",
+    "model_calls",
+    "input_tokens",
+    "output_tokens",
+    "latency_ms",
+    "cost_or_null"
+  ],
+  "human_review_required": [
+    "claim_supported_by_citation",
+    "task_completion",
+    "incorrect_refusal",
+    "object_scope"
+  ],
+  "held_out": {
+    "status": "not_created",
+    "reason": "现有开发题和旧30/60题已用于开发，不能改名为独立保留集。后续由未参与调参的选题/审核过程补充并冻结新题；冻结前不报告独立效果。"
+  },
+  "comparison_protocol": {
+    "rule_baseline": "现有自然语言路由与确定性工具；保留澄清和失败输出，不为提高得分修改规则",
+    "model_workflow": "现有有界规划与带引用回答；统计/能力问题继续走确定性路径",
+    "controlled_inputs": [
+      "相同问题与会话初始状态",
+      "相同快照及检索方法",
+      "相同外部文献批次或合成夹具",
+      "相同工具失败注入"
+    ],
+    "scores": {
+      "task_completion": "逐题人工检查acceptance全部满足为1，否则0，未审为null；合法澄清可满足澄清类任务，但不自动满足资料整理任务",
+      "citation_support": "逐条实质陈述检查引用是否支持该陈述；支持数/需引用陈述数，无需引用的澄清为不适用，未审为null",
+      "citation_id_validity": "程序检查引用存在且来源组一致；独立于语义支持",
+      "latency": "记录总耗时与阶段耗时，报告样本量；单次运行不声称P95或稳定加速",
+      "model_cost": "provider返回的token与可验证单价；无单价则null，规则模型调用为0但总系统成本未知"
+    },
+    "execution_boundary": "Initial D01,D03,D04,D05,D09 run and one separately authorized D01,D05 repair recheck completed; no additional real-source runs performed.",
+    "status": "five_case_real_source_development_comparison_completed_independent_review_pending"
+  },
+  "execution_boundary": "Initial D01,D03,D04,D05,D09 run and one separately authorized D01,D05 repair recheck completed; no additional real-source runs performed.",
+  "live_batch": {
+    "case_ids": [
+      "D01",
+      "D03",
+      "D04",
+      "D05",
+      "D09"
+    ],
+    "model_calls": 8,
+    "excerpts": 3,
+    "excerpt_characters": 231,
+    "review_kind": "codex_development_self_review_not_human_or_independent",
+    "meets_development_criteria": 3,
+    "needs_revision": 2,
+    "business_accuracy": null,
+    "patch_retested_live": true
+  },
+  "repair_recheck": {
+    "case_ids": [
+      "D01",
+      "D05"
+    ],
+    "model_calls": 4,
+    "excerpts": 2,
+    "excerpt_characters": 218,
+    "meets_source_constraints": 2,
+    "full_requested_fields_available_cases": 1,
+    "partial_missing_fields_cases": 1,
+    "review_kind": "codex_development_self_review_not_human_or_independent",
+    "business_accuracy": null,
+    "answer_behavior": "server_verified_source_quotes_not_free_summarization",
+    "repetitions_per_case": 1
+  }
+}

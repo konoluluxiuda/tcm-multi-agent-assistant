@@ -6,7 +6,7 @@ from agents.conversation_store import ConversationStore, SessionExpired
 from agents.conversation_store import MemoryUnavailable
 from agents.runtime import session_turn
 from tcm.mineru_pharmacopoeia import digest
-from tcm.mineru_retrieval import name_key
+from tcm.mineru_retrieval import name_key, INTENTS
 
 MESSAGES = {
     'candidates': '已检出未人工审核的字段候选，请查看证据并核对原页。',
@@ -26,6 +26,30 @@ MESSAGES = {
 }
 FOLLOWUP = re.compile(r'^(它|这味药|刚才那味药|刚才的药材)')
 SOURCE_QUERY = {'出处呢', '出处', '查看原页', '看看出处', '证据呢'}
+
+
+def comparison_request(question):
+    """Recognize a bounded comparison grammar; never infer aliases or clinical intent."""
+    if not re.search(r'比较|对比|区别|差异', question):
+        return None
+    text=re.sub(r'\s+','',question).rstrip('？?。！!')
+    names=r'([\u4e00-\u9fff]{2,20}?)[和与、及]([\u4e00-\u9fff]{2,20}?)的'
+    match=re.fullmatch(r'(?:请帮我|帮我|请)?(?:比较|对比)'+names+r'(.+)',text)
+    if not match:
+        match=re.fullmatch(r'(?:请)?'+names+r'(.+?)(?:有什么区别|有何不同|有什么差异|的区别|的差异|对比|比较)',text)
+    error={'error':'请明确两味药材和最多两个药典字段，例如“比较白术和黄芪的功效与用量”；这里只并列原文，不判断选药或替代关系。'}
+    if not match:
+        return error
+    left,right,field_text=match.groups()
+    if left==right or any(re.search(r'[和与、及]',name) for name in (left,right)):
+        return error
+    aliases={alias:('来源' if label=='origin' else label)
+             for label,values in INTENTS.items() for alias in (*values,label) if alias!='origin'}
+    pattern='|'.join(re.escape(s) for s in sorted(aliases,key=len,reverse=True))
+    fields=re.fullmatch('('+pattern+')(?:[和与、及，,]('+pattern+'))?',field_text)
+    if not fields:
+        return error
+    return {'names':[left,right],'fields':list(dict.fromkeys(aliases[f] for f in fields.groups() if f))}
 
 
 class ResearchTool:
@@ -49,6 +73,9 @@ class ResearchTool:
             raise ValueError("Question must contain 1–500 characters")
         self.service.check()
         stripped = question.strip()
+        comparison=comparison_request(stripped)
+        if comparison is not None:
+            return self.compare(stripped,comparison), None
         is_source = stripped.rstrip('？?。！!') in SOURCE_QUERY
         followup = bool(FOLLOWUP.match(stripped)) or is_source
         result, resolved = None, stripped
@@ -76,6 +103,37 @@ class ResearchTool:
                 "focus_name": new_context["name"] if new_context else None, "followup": followup,
                 "resolved_question": resolved if result else None, "research_only": True,
                 "human_signoff": False, "llm_calls": 0, "workflow": "deterministic_research_tool_router"}, new_context
+
+    def compare(self, question, request):
+        base={'focus_name':None,'followup':False,'resolved_question':question,
+              'research_only':True,'human_signoff':False,'llm_calls':0,
+              'workflow':'deterministic_research_comparison','tool_result':None}
+        if 'error' in request:
+            return {**base,'status':'clarify_comparison','message':request['error']}
+        # Check the complete original question before splitting; preserve preparation guards.
+        probe=self.service.search(question,method='name_field',k=5)
+        if probe['status'] not in ('multiple_names','candidates'):
+            return {**base,'status':probe['status'],'message':MESSAGES.get(probe['status'],'请核对药名和原文范围。'),
+                    'tool_result':probe}
+        if {name_key(n) for n in probe.get('names',[])}!={name_key(n) for n in request['names']}:
+            return {**base,'status':'name_not_resolved','message':'未能确认两味完整药名；不会只展示已识别的一味，或使用母药替代。'}
+        groups=[]
+        for name in request['names']:
+            cells=[]
+            for field in request['fields']:
+                query=name+'的'+field
+                result=self.service.search(query,method='name_field',k=5)
+                cells.append({'field':field,'status':result['status'],'query':query,'result':result,
+                              'message':MESSAGES.get(result['status'],'当前字段无法完成检索，请核对原页。')})
+            groups.append({'name':name,'cells':cells})
+        self.service.check()
+        complete=all(c['status']=='candidates' for g in groups for c in g['cells'])
+        return {**base,'status':'candidates' if complete else 'partial_evidence',
+                'message':'药典原文对比：'+'、'.join(request['names'])+'；字段：'+'、'.join(request['fields'])+
+                          '。' + ('候选字段均已检出。' if complete else '部分字段缺失、重复或尚未完整解析，已逐项标明。')+
+                          '仅并列来源，不推断疗效优劣、替代或个人用药；后续查询请明确药名。',
+                'tool_result':{'comparison':{'names':request['names'],'fields':request['fields'],'groups':groups},
+                               'index_sha256':self.service.receipt['index_sha256'],'hits':[]}}
 
 
 class ResearchChat:

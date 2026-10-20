@@ -1,0 +1,55 @@
+{
+  "kind": "bookmark_evidence_notes_v1",
+  "status": "passed",
+  "offline": {
+    "modules": 68,
+    "tests": 594,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "total": 8,
+    "checks": [
+      "actual_markdown_download_contains_pharmacopoeia_page_evidence_without_notes_by_default",
+      "personal_note_is_opt_in_and_separate_from_evidence",
+      "saved_relation_second_page_exports_only_20_rows_with_both_source_witnesses",
+      "evidence_download_does_not_change_chat_memory",
+      "different_browser_cannot_download_other_owner_evidence",
+      "stale_revision_download_is_rejected_and_error_shown",
+      "test_bookmarks_deleted",
+      "no_page_errors_or_ai_mode_requests"
+    ]
+  },
+  "initial_browser_runner_failure": {
+    "preserved": true,
+    "reason": "Runner incorrectly waited for bookmark eligibility during expected source clarification; fixed waiting condition without changing application guards."
+  },
+  "cleanup": {
+    "successful_test_bookmarks_deleted": 2,
+    "initial_runner_test_bookmarks_deleted": 1,
+    "private_downloads_deleted": 5
+  },
+  "test_download_sha256": {
+    "research_private.md": "790b230fc40c386162ad4b44d620141bfaabc4e8aa0b9fe412599c1997edbea0",
+    "research_with_note_private.md": "e2c704171a678b62f82c0be2af9d3a6639b75ba2dd9dce75dc05218cf3e6945c",
+    "browser_run_02/research_private.md": "790b230fc40c386162ad4b44d620141bfaabc4e8aa0b9fe412599c1997edbea0",
+    "browser_run_02/research_with_note_private.md": "e2c704171a678b62f82c0be2af9d3a6639b75ba2dd9dce75dc05218cf3e6945c",
+    "browser_run_02/relation_page_two_private.md": "c115164fda4afbbd6a20dc6684ad496896c4155bedba9d6dacf56ea7a28cdd89"
+  },
+  "working_code_sha256": {
+    "tcm/bookmark_report.py": "fa1d50f1a9c78cdf198d551d84dc208968f820bcc1739f8fc84153bac6517c9f",
+    "tcm/bookmark_api.py": "94e3d7a5365593292a5feaa7014be8e22a6121806c33c8424c7faec3b9787fa3",
+    "tcm/research_bookmarks.js": "b4b77abec37d6444be8c13a5d4242e1b37fe69f5dad09057e2093d3a0167fcae",
+    "tests/test_bookmark_report.py": "dcf557e13e5a4406d18755627d86a19fdd868da13595bde7132717c9cca2a492"
+  },
+  "llm_calls": 0,
+  "embedding_calls": 0,
+  "external_requests_allowed": 0,
+  "source_preview_port": 7875,
+  "docker_updated": false,
+  "limits": [
+    "Single saved query, not synthesized review or clinical approval.",
+    "Relation exports only the saved page, not the full catalog.",
+    "Personal notes excluded by default and separated from evidence when selected."
+  ]
+}

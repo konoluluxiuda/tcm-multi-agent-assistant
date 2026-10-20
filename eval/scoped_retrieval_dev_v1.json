@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "author": "AI_designed_corpus_assisted_diagnostic_not_user_logs",
+  "split": "development_not_holdout",
+  "selection_note": "Body-term questions deliberately probe lexical lookup without field aliases. References come from the same corpus; not independent gold or broad semantic evaluation.",
+  "k": 5,
+  "cases": [
+    {"id":"scope-01","group":"body_term_diagnostic","question":"黄芪的补气记载","expected_name":"黄芪","expected_field":"功能与主治"},
+    {"id":"scope-02","group":"body_term_diagnostic","question":"当归的润肠记载","expected_name":"当归","expected_field":"功能与主治"},
+    {"id":"scope-03","group":"body_term_diagnostic","question":"陈皮的燥湿记载","expected_name":"陈皮","expected_field":"功能与主治"},
+    {"id":"scope-04","group":"body_term_diagnostic","question":"白术的食少记载","expected_name":"白术","expected_field":"功能与主治"},
+    {"id":"scope-05","group":"canonical_control","question":"黄芪的功效","expected_name":"黄芪","expected_field":"功能与主治"},
+    {"id":"scope-06","group":"abstention","question":"黄芪的市场价格","expected_status":"field_not_resolved"},
+    {"id":"scope-07","group":"abstention","question":"外星草的功效","expected_status":"name_not_resolved"},
+    {"id":"scope-08","group":"abstention","question":"黄芪的注意事项","expected_status":"field_not_observed"}
+  ]
+}

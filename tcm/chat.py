@@ -38,6 +38,7 @@ MESSAGES = {
     'context_stale': '上次所选来源或数据版本已发生变化，请重新查询并选择药材。',
     'context_cleared': '已清除本会话的药材选择。',
     'invalid_query': '用法：/herb BaiBu 或 /herb etcm2-local:<64位来源编号>。也可先查药材，再问“它的药用部位是什么？”。',
+    'name_mapping_candidates': '检出药典拼音标题对应的中文名候选，尚未核验实体、基原和药用部位；请先核对并选择ETCM来源，不自动合并为同一药材。',
 }
 
 
@@ -81,6 +82,16 @@ def execute_request(request, *, dataset_version=None):
             result = lookup(os.environ.get('TCM_DB') or DEFAULT_DATABASE,
                             dataset_version=dataset_version or os.environ.get('TCM_DATASET_VERSION') or None,
                             **request)
+            if result['status']=='unsupported_name_mapping' and request.get('name'):
+                from tcm.etcm_enrichment import chinese_candidates
+                candidates=chinese_candidates(request['name'],result['dataset_version'])
+                matched=[]
+                for candidate in candidates:
+                    selected=lookup(os.environ.get('TCM_DB') or DEFAULT_DATABASE,
+                                    source_record_id=candidate['source_record_id'],dataset_version=result['dataset_version'])
+                    if selected['status']=='ok' and selected['records'][0]['source']['file_sha256']==candidate['file_sha256']:
+                        matched.extend(selected['records'])
+                if matched:result.update(status='name_mapping_candidates',records=matched)
         except (sqlite3.Error, ValueError, KeyError, TypeError):
             # Don't leak private paths/SQL details or silently ask a model to invent an answer.
             result = {'status': 'database_unavailable', 'records': []}
@@ -95,6 +106,8 @@ def execute_request(request, *, dataset_version=None):
     ]
     result.update(total_record_count=total, returned_record_count=len(result['records']),
                   truncated=total > 20)
+    from tcm.etcm_enrichment import enrich_records
+    result['records']=enrich_records(result['records'],result.get('dataset_version'))
     # Only this fixed summary enters the conversational checkpoint, not raw source text.
     result['message'] = MESSAGES.get(result['status'], '该来源记录当前不可用，系统未补造字段。')
     return result

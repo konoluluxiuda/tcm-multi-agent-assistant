@@ -1,0 +1,17 @@
+{
+  "version":1,
+  "author":"AI_designed_paraphrase_development_not_user_logs",
+  "split":"development_not_holdout",
+  "selection_note":"Paraphrases designed before inspecting dense results; targets derived from the same corpus, not blind annotations. Includes a known natural-language context failure and unsupported questions.",
+  "k":5,
+  "cases":[
+    {"id":"dense-01","group":"paraphrase_diagnostic","question":"黄芪一般是拿来干什么的？","expected_name":"黄芪","expected_field":"功能与主治"},
+    {"id":"dense-02","group":"paraphrase_diagnostic","question":"陈皮要放在什么样的环境里？","expected_name":"陈皮","expected_field":"贮藏"},
+    {"id":"dense-03","group":"paraphrase_diagnostic","question":"白术的服用份量","expected_name":"白术","expected_field":"用法与用量"},
+    {"id":"dense-04","group":"paraphrase_diagnostic","question":"当归的口味和冷热属性","expected_name":"当归","expected_field":"性味与归经"},
+    {"id":"dense-05","group":"paraphrase_diagnostic","question":"黄柏要怎样存置才不容易变坏？","expected_name":"黄柏","expected_field":"贮藏"},
+    {"id":"dense-06","group":"paraphrase_diagnostic","question":"丹参的使用风险","expected_name":"丹参","expected_field":"注意"},
+    {"id":"dense-07","group":"abstention","question":"火星测试草的功效","expected_status":"name_not_resolved"},
+    {"id":"dense-08","group":"abstention","question":"黄芪今天卖多少钱","expected_status":"field_not_resolved"}
+  ]
+}

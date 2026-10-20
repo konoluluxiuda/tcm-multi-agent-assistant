@@ -1,4 +1,8 @@
 <div align="center">
+
+本地候选更新（2026-10-20）：新功能镜像已在 http://127.0.0.1:7876/ 隔离验收，原7873及远程标签未切换；[部署修复、603项回归与20项容器检查](docs/releases/RESEARCH_LOCAL_20261020.md)。
+
+源码增量（2026-10-20）：新增[研究收藏](docs/RESEARCH_BOOKMARKS.md)，支持药典及已选来源关联查询的手动保存、个人笔记和重启回看；同一浏览器访问，清空聊天保留，尚未进入已发布Docker镜像。
  
 ![logo](https://github.com/konoluluxiuda/tcm-multi-agent-assistant/blob/main/assets/logo_rounded.png)
 
@@ -20,7 +24,29 @@
 
 ## 中草药研究版本
 
+本地实用性首轮12题中8题完成当前资料范围任务、2题澄清、2题关系改述/追问未支持。已补有限改述和SQLite持久关系焦点，同题回归10题完成、2题澄清；原失败保留，不作为独立或医学准确率。选择成分来源后可问“这些成分对应哪些靶点”，刷新/重启可恢复来源与页码，原文不入记忆。详见[逐题结果与修复边界](docs/LLM_APPLICATION_EXPERIMENTS.md#关系改述与持久焦点修复2026-10-20)。
+
+源码中的LLM增量已完成5题真实开发测试及原两道失败题的受限重测，提供模型规划、原文支持绑定和药典摘录回答；该增量尚未发布到下述镜像。先看[5分钟演示与项目讲解](docs/PROJECT_DEMO.md)及[实验结果与限制](docs/LLM_APPLICATION_EXPERIMENTS.md)。已有本地记录时可生成不联网、不调用模型的交互回放：
+
+```bash
+python -m scripts.replay_evidence_demo --out var/evidence_assistant_v1/demo/replay-new.html
+```
+
+当前源码可用 `python -m scripts.preview_evidence --port 7875 --with-local-research --with-local-herbs` 启动独立预览，打开 http://127.0.0.1:7875/ 。`/research 白术的功效`直接查询本地药典，`BaiZhu的药用部位`查询ETCM，均不调用模型；需已有本地数据库、药典索引及PDF。ETCM默认固定`local-2026-10-10`版本，`/ready/herbs`可检查就绪。AI路径固定使用合成资料，未匹配的问题自动进入模型规划；“AI整理回答”可强制选择该模式（统计除外）。省略对应选项可关闭真实工具。需要安装研究聊天依赖并配置聊天模型，模型路径会发起实际调用。预览使用独立会话库，不更新旧Docker；详见上方演示说明。
+
+不勾选AI时，还可输入“比较白术和黄芪的功效与用量”，按字段并列两味药的原文及出处。最多两味、两字段；缺失或重复字段保留提示，不推断疗效优劣或替代关系。
+
+ETCM中文对照及来源关联已在当前源码交付：2076条双语记录、584583条来源关联，520条药材有未核验的中文药名候选。启动命令加`--etcm-enrichment var/etcm_enrichment_v1/data/enrichment.sqlite3`后，输入`/herb 白术`选择来源，可分页查看成分、靶点、方剂等记录；机器译文默认折叠，原值和出处保留。全程本地处理，未更新Docker；详见[数据位置、复现与限制](docs/ETCM_LOCALIZATION_AND_LINKS.md)。
+
+同一预览现可直接问“白术有哪些成分”“白术和黄芪有哪些共同靶点”：先选择中文候选对应的ETCM来源，再分页展示关联行或相同UniProt标识及双方出处，不调用模型。共同靶点不代表已验证机制或药效，见[查询范围与使用方法](docs/ETCM_LOCALIZATION_AND_LINKS.md#自然语言关联查询)。
+
+启动再加`--etcm-source /home/zry/workspace/HDCTI/dataset/ETCM2.0`，可从成分列表打开本地文件详情：核对内部名称、分子式及分子量后显示来源CAS/PubChem、SHA和JSON位置。缺少直接成分—靶点关系时明确提示，不把药材靶点归给每个成分；详见[成分详情与数据缺口](docs/ETCM_LOCALIZATION_AND_LINKS.md#成分文件标识与直接靶点记录)。
+
 当前研究镜像：`8n1eld/tcm-research-assistant:d0d3bc3`，约408 MB，支持数据概览、药材与药典、现代文献三个页签，以及受限自然语言查询、原页证据、组合清单和SQLite持久会话。本机入口为 http://127.0.0.1:7873/ 。镜像已发布并完成远程CI、摘要和拉取复验；运行仍需本地只读资料挂载，详见[新版发布与部署](docs/releases/RESEARCH_D0D3BC3.md)、[工作区说明](docs/RESEARCH_WORKSPACES.md)和[建设大纲](docs/TCM_PROJECT_ROADMAP.md)。页签共用一个任务，药典与文献对象对应关系尚待核验。
+
+源码7875预览另支持“CYP24A1有哪些成分”“P04278有哪些成分”，只读查询核对后的211个靶点、34924条来源成分行，保留分页和出处。启用需增加`--etcm-targets var/etcm_target_links_v1/targets.sqlite3`，完整命令与范围见[靶点→成分查询](docs/ETCM_LOCALIZATION_AND_LINKS.md#靶点成分聊天查询2026-10-20)。未覆盖不表示没有关系，未证明实验结合；此功能未进入上述Docker镜像。
+
+当前预览还支持“白术的成分关联哪些靶点”：选择来源后，按成分名称、分子式、分子量三字段连接双方来源行，显示候选路径及覆盖缺口，未核准化学身份或作用机制。使用包含组合索引的`--etcm-targets var/etcm_target_links_v1/targets-paths.sqlite3`即可兼容上述查询，完整启动命令见[候选路径说明](docs/ETCM_LOCALIZATION_AND_LINKS.md#药材成分靶点候选路径2026-10-20)。
 
 本机后续增量：7873已装入 `tcm-research-chat:bd40e73`，提供[对象原文线索与可选用户标注](docs/RESEARCH_OBJECT_REVIEW.md)。新增量尚未push或发布Hub，不自动核验实体一致。
 

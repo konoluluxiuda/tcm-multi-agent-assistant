@@ -23,6 +23,18 @@ def env_bool(name, default=False):
     raise ValueError(f'{name} must be a boolean (true/false or 1/0)')
 
 
+def evidence_auto_routing_enabled():
+    """Automatic model fallback is opt-in and restricted to fictional evidence."""
+    return (env_bool('ENABLE_EVIDENCE_AUTO_ROUTING') and
+            env_bool('ENABLE_EVIDENCE_ASSISTANT') and env_bool('ENABLE_NATURAL_ROUTING') and
+            os.getenv('EVIDENCE_ASSISTANT_DATA_MODE', 'synthetic') == 'synthetic')
+
+
+def can_auto_plan(query):
+    return (isinstance(query, str) and 1 <= len(query.strip()) <= 1000 and
+            not query.strip().startswith('/') and evidence_auto_routing_enabled())
+
+
 @dataclass(frozen=True)
 class FeatureFlags:
     image_analysis: bool = False

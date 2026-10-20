@@ -26,7 +26,31 @@ INTENTS = {
 # Deliberately finite glyph pairs, not medical aliases or a pinyin dictionary.
 # Query-only: do not change normalized()/terms() or the frozen FTS index recipe.
 NAME_SCRIPT_PAIRS = {'黃': '黄', '黨': '党', '參': '参', '烏': '乌'}
-QUERY_RULE_VERSION = 1
+QUERY_RULE_VERSION = 2
+METHODS = ('name_field','bm25','name_bm25')
+# Match a complete bounded question, rather than treating words such as
+# "应用" or "效果" anywhere in a question as a request for medicinal uses.
+USAGE_QUESTION = re.compile(
+    r'(?:请问|查一下|查询|药典中的|药典中|药典里|药典)?'
+    r'(?P<entity>[\u4e00-\u9fff]{2,20}?)(?:的)?'
+    r'(?P<phrase>(?:能|可以)?派上什么用场|'
+    r'(?:一般|通常)?(?:拿来|用来)干什么|'
+    r'(?:传统)?用途(?:是什么|有哪些|记在哪里|有什么记载)?|'
+    r'(?:一般|通常)?(?:有什么|有何)用途|'
+    r'(?:主要)?针对(?:哪些|什么)不适|'
+    r'(?:有哪些|有什么)(?:传统)?应用记载|'
+    r'(?:能|可以)?起什么效果|是做什么用的)'
+    r'(?:吗|呢)?[？?。！!]*'
+)
+
+
+def usage_paraphrase(question):
+    """Recognize a field request, not an entity alias or treatment recommendation."""
+    if not isinstance(question, str) or len(question) > PARAMETERS['max_query_chars']:
+        return None
+    match = USAGE_QUESTION.fullmatch(normalized(question))
+    return ({'entity': match['entity'], 'query_term': match['phrase'],
+             'field': '功能与主治', 'rule': 'bounded_usage_paraphrase'} if match else None)
 
 
 def normalized(text):
@@ -93,7 +117,7 @@ class ResearchRetriever:
             raise ValueError('Query must be text of at most 500 characters')
         if type(k) is not int or not 1 <= k <= PARAMETERS['max_k']:
             raise ValueError('k must be between 1 and 20')
-        if method not in ('name_field', 'bm25'):
+        if method not in METHODS:
             raise ValueError('Unknown retrieval method')
         result = {'method': method, 'question': question, 'status': 'candidates', 'hits': [],
                   'research_only': True, 'human_signoff': False, 'answer_generated': False,
@@ -102,13 +126,19 @@ class ResearchRetriever:
                   'query_interpretation': {'version': QUERY_RULE_VERSION, 'name_forms': [], 'field_matches': []}}
         if not question.strip() and not (name and field):
             return {**result, 'status': 'empty_query'}
-        if method == 'bm25' and (name is not None or field is not None):
+        if method in ('bm25','name_bm25') and (name is not None or field is not None):
             raise ValueError('Explicit filters require name_field mode')
         if (name is not None and not isinstance(name, str)) or (field is not None and not isinstance(field, str)):
             raise ValueError('Name and field must be text')
         query_names = name_spans(name or question, self.names)
+        usage = usage_paraphrase(question) if name is None and field is None else None
+        # A complete source name must agree with the grammar's entity. In
+        # particular, a parent-name substring cannot legitimize a new noun or
+        # an unresolved preparation. Keep the existing preparation guard first.
+        usage_names = [n for n in self.names if usage and name_key(n) == name_key(usage['entity'])]
         checked_names, variants, rejected = context_check(normalized(name or question), query_names,
-            field_words=[word for aliases in INTENTS.values() for word in aliases])
+            field_words=[word for aliases in INTENTS.values() for word in aliases]
+                        + ([usage['query_term']] if len(usage_names) == 1 else []))
         if name:
             # Exact glyph-normalized names only; no fuzzy or parent-name substitution.
             checked_names = [n for n in self.names if name_key(n) == name_key(name)]
@@ -155,15 +185,20 @@ class ResearchRetriever:
                 result['query_interpretation']['field_matches'] = [
                     {'query_term': alias, 'field': label}
                     for label, aliases in INTENTS.items() for alias in aliases if alias in normalized(question)]
-            if not labels:
+                if usage and usage_names == names:
+                    labels.append(usage['field'])
+                    result['query_interpretation']['field_matches'].append(
+                        {key: usage[key] for key in ('query_term', 'field', 'rule')})
+            if not labels and method=='name_field':
                 return {**result, 'status': 'field_not_resolved', 'names': names}
             if '性味与归经' in labels:
                 labels.append('性味')
             labels = sorted(set(labels))
             placeholders = ','.join('?' for _ in labels)
+            label_filter=f' AND label IN ({placeholders})' if labels else ''
             rows = self.connection.execute(
-                f"SELECT * FROM chunks WHERE entry_id=? AND label IN ({placeholders}) "
-                "AND scope NOT LIKE 'appendix:%' ORDER BY field_index", (entry_ids[0], *labels)).fetchall()
+                "SELECT * FROM chunks WHERE entry_id=? "+label_filter+
+                " AND scope NOT LIKE 'appendix:%' ORDER BY field_index", (entry_ids[0], *labels)).fetchall()
             if not rows:
                 return {**result, 'status': 'field_not_observed', 'names': names, 'fields': labels}
             # Multiple occurrences can refer to processed variants with different values.
@@ -171,7 +206,33 @@ class ResearchRetriever:
                 result['status'] = 'ambiguous_field'
                 result['message'] = '同一药名下有重复字段，可能涉及炮制品；请核对原文范围。'
             result.update(names=names, fields=labels, field_occurrences=len(rows))
-            rows = rows[:k]
+            if method=='name_bm25':
+                field_rows=rows
+                # Exclude entity tokens: a name match alone must not return arbitrary fields.
+                body=name_key(question).replace(name_key(names[0]),' ')
+                body=re.sub(r'请问|查询|药典|记载|可以|有哪些|相关|什么|的|吗|呢',' ',body)
+                tokens={t for t in terms(body) if len(t)>=2}
+                # Known field synonyms need not literally occur in the indexed label/body.
+                tokens.update(t for label in labels for t in terms(label))
+                if not tokens:
+                    return {**result,'status':'field_not_resolved','hits':[]}
+                expression=' OR '.join('"'+token+'"' for token in sorted(tokens))
+                scoped_labels=f" AND c.label IN ({placeholders})" if labels else ''
+                rows=self.connection.execute(
+                    'SELECT c.*, bm25(fts,3.0,2.0,1.0) AS rank FROM fts '
+                    'JOIN chunks c ON c.rowid=fts.rowid WHERE fts MATCH ? AND c.entry_id=? '
+                    "AND c.scope NOT LIKE 'appendix:%'"+scoped_labels+' ORDER BY rank,c.chunk_id LIMIT ?',
+                    (expression,entry_ids[0],*labels,k)).fetchall()
+                if not rows:
+                    return {**result,'status':'no_match' if labels else 'field_not_resolved','hits':[]}
+                if not labels:
+                    matched_labels={r['label'] for r in rows}
+                    result['field_occurrences']=sum(r['label'] in matched_labels for r in field_rows)
+                    if any(sum(r['label']==label for r in field_rows)>1 for label in matched_labels):
+                        result.update(status='ambiguous_field',message='命中字段有多处来源，不能按排名自动选择炮制范围。')
+                result['query_interpretation']['ranking']='bm25_with_entity_and_optional_field_filters_before_limit'
+            else:
+                rows = rows[:k]
         for row in rows:
             hit = self.hit(row)
             target = reference_target(row['text'])

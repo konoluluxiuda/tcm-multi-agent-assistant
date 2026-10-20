@@ -1,0 +1,60 @@
+{
+  "kind": "etcm_disease_enrichment_chat_v1",
+  "status": "passed",
+  "offline": {
+    "modules": 69,
+    "tests": 600,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "total": 8,
+    "checks": [
+      "chinese_name_requires_source_selection_then_returns_20_untranslated_source_rows",
+      "capture_state_and_finite_page_boundary_visible_without_treatment_claims",
+      "reload_and_source_followup_restore_same_disease_focus",
+      "evidence_note_preserves_rows_capture_state_and_nonindication_boundary",
+      "disease_bookmark_backup_import_replays_same_explicit_source",
+      "bookmark_replay_does_not_write_chat_or_model_memory",
+      "test_bookmarks_deleted",
+      "no_page_errors_or_ai_mode_requests"
+    ]
+  },
+  "observed_white_herb_source": {
+    "rows": 20,
+    "capture_states": [
+      "skipped"
+    ],
+    "complete_fetch_claimed": false
+  },
+  "base_database_sha256": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+  "base_database_matches_frozen_enrichment": true,
+  "working_code_sha256": {
+    "tcm/relation_queries.py": "e118b841ad219179ffd69260a16a0ba89554e61b2dc90d270363461ea10f4b4d",
+    "tcm/etcm_enrichment.py": "47ab0d3eb88afbf46e910a439cb4db98c0734fa009b64967c75cc1ec57546d48",
+    "tcm/bookmark_backup.py": "5f1258f48485877dee998e9a9c2a0906d96610fe95b4babd366141fbc09d90cb",
+    "tcm/bookmark_report.py": "f5fbde8f05760f2fdc83c1d45930caba00f18c96ad340ae1dfaa98d33bab3eb3",
+    "tcm/assistant_info.py": "699992ebcc7f0d63dcb552c307dca8e77a2ca5cc9d851202e424e5dfe6c8398e",
+    "templates/index.html": "19bc4c85c83baee5b9514563314501844a2a2619dd489130b25371f8fed462ec",
+    "tests/test_disease_relations.py": "c5c7514a4b822d4b9e64a05d1c2928b697182b091ec27af8527958476c023d00"
+  },
+  "test_download_sha256": {
+    "disease_evidence_private.md": "57f60c3abbc6d9f5228063c51dacd7f377925a54f8b61691cec479acc056446a",
+    "disease_backup_private.json": "c940f4ce0563b665320ab890ba690b811c2bb2460301f25a1bf68fa83290117f"
+  },
+  "cleanup": {
+    "test_bookmarks_deleted": 2,
+    "test_downloads_deleted": true
+  },
+  "llm_calls": 0,
+  "embedding_calls": 0,
+  "external_requests_allowed": 0,
+  "source_preview_port": 7875,
+  "docker_updated": false,
+  "limits": [
+    "Disease enrichment is not an indication or treatment recommendation.",
+    "Uses herb-source disease tables, not full disease-file ingestion.",
+    "No disease identity, translation or statistical-significance validation.",
+    "Known source rows with skipped capture do not establish complete coverage."
+  ]
+}

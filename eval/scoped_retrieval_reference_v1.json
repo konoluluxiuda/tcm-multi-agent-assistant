@@ -1,0 +1,128 @@
+{
+  "question_sha256": "ce83bc237dfc53b1bc80b32f30f6b7ec219635ee97c7b7354cf7c60d2decd6b7",
+  "source_view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+  "human_gold": false,
+  "reference_status": "same_corpus_derived_development_diagnostic",
+  "limits": [
+    "References are derived from the same parsed source view; not independent or human gold.",
+    "Questions deliberately use known corpus terms to diagnose lexical retrieval without a field alias.",
+    "No clinical correctness, semantic paraphrase accuracy or held-out generalization is measured."
+  ],
+  "references": [
+    {
+      "case_id": "scope-01",
+      "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+      "field_index": 12,
+      "field_occurrences": 1,
+      "name": "黄芪",
+      "label": "功能与主治",
+      "coarse_region_0_1000": [
+        73,
+        302,
+        487,
+        370
+      ],
+      "chapter_pdf_page": 323,
+      "source_document": "high",
+      "source_pdf_page": 344,
+      "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+      "expected_printed_page": 325,
+      "observed_printed_page": null,
+      "printed_label_status": "expected_sequence_not_individually_verified",
+      "upload_part": "药材和饮片_第301-400页.pdf",
+      "upload_part_page": 23
+    },
+    {
+      "case_id": "scope-02",
+      "entry_id": "mineru-herb-91438c2bd1cb594a95c13128",
+      "field_index": 17,
+      "field_occurrences": 1,
+      "name": "当归",
+      "label": "功能与主治",
+      "coarse_region_0_1000": [
+        70,
+        796,
+        487,
+        865
+      ],
+      "chapter_pdf_page": 141,
+      "source_document": "high",
+      "source_pdf_page": 162,
+      "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+      "expected_printed_page": 143,
+      "observed_printed_page": null,
+      "printed_label_status": "expected_sequence_not_individually_verified",
+      "upload_part": "药材和饮片_第101-200页.pdf",
+      "upload_part_page": 41
+    },
+    {
+      "case_id": "scope-03",
+      "entry_id": "mineru-herb-916607a51c9876e39d1acf59",
+      "field_index": 11,
+      "field_occurrences": 1,
+      "name": "陈皮",
+      "label": "功能与主治",
+      "coarse_region_0_1000": [
+        82,
+        613,
+        487,
+        645
+      ],
+      "chapter_pdf_page": 205,
+      "source_document": "high",
+      "source_pdf_page": 226,
+      "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+      "expected_printed_page": 207,
+      "observed_printed_page": null,
+      "printed_label_status": "expected_sequence_not_individually_verified",
+      "upload_part": "药材和饮片_第201-300页.pdf",
+      "upload_part_page": 5
+    },
+    {
+      "case_id": "scope-04",
+      "entry_id": "mineru-herb-b411d013f6ad7cd93372ad36",
+      "field_index": 16,
+      "field_occurrences": 1,
+      "name": "白术",
+      "label": "功能与主治",
+      "coarse_region_0_1000": [
+        82,
+        720,
+        487,
+        753
+      ],
+      "chapter_pdf_page": 109,
+      "source_document": "high",
+      "source_pdf_page": 130,
+      "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+      "expected_printed_page": 111,
+      "observed_printed_page": null,
+      "printed_label_status": "expected_sequence_not_individually_verified",
+      "upload_part": "药材和饮片_第101-200页.pdf",
+      "upload_part_page": 9
+    },
+    {
+      "case_id": "scope-05",
+      "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+      "field_index": 12,
+      "field_occurrences": 1,
+      "name": "黄芪",
+      "label": "功能与主治",
+      "coarse_region_0_1000": [
+        73,
+        302,
+        487,
+        370
+      ],
+      "chapter_pdf_page": 323,
+      "source_document": "high",
+      "source_pdf_page": 344,
+      "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+      "expected_printed_page": 325,
+      "observed_printed_page": null,
+      "printed_label_status": "expected_sequence_not_individually_verified",
+      "upload_part": "药材和饮片_第301-400页.pdf",
+      "upload_part_page": 23
+    }
+  ]
+}
