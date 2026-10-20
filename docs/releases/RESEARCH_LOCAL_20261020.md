@@ -1,5 +1,7 @@
 # 本地候选更新：2026-10-20
 
+后续本地更新：7876已运行c4de8bc，见[最新交付](RESEARCH_LOCAL_C4DE8BC.md)。本文件保留此前快照修复与0d65be4候选验收记录。
+
 状态：本地候选容器验收完成；用户已明确本次范围为“提交Git，并更新本地Docker（暂不上传远程）”。原7873保留；GitHub及Docker Hub不上传，已发布镜像d0d3bc3保持原内容。本次提交后，从干净提交构建本地标签`tcm-research-chat:local-20261020`并更新7876候选，构建回执保存在本机`var/research_update_20261020/build_committed.json`。
 
 ## 可查看的结果

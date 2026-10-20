@@ -1,0 +1,109 @@
+{
+  "kind": "local_container_delivery_c4de8bc",
+  "status": "passed",
+  "image": {
+    "image_tag": "tcm-research-chat:c4de8bc",
+    "image_id": "sha256:42c34951a22ce155ba779b72ee35313826c2898edf7eee6a91318ec7169eefd6",
+    "image_bytes": 408228594,
+    "base_revision": "c4de8bc04ad4c97244657b2e3af02e2a58df1d32",
+    "working_tree_dirty": false,
+    "source_tree_sha256": "52a9a8144332866ca75d675ac7b9851ef101d9e230530e1504055acc4a7583d7"
+  },
+  "deployment": {
+    "http": {
+      "/": 200,
+      "/health": 200,
+      "/ready/research": 200,
+      "/ready/herbs": 200,
+      "/research-bookmarks.js": 200
+    },
+    "uid": 10001,
+    "model_calls": 0,
+    "status": "passed",
+    "commit": "c4de8bc04ad4c97244657b2e3af02e2a58df1d32",
+    "source_files_verified": 74,
+    "same_memory_volume": true,
+    "protected_service_ids_unchanged": true,
+    "readonly_binds": true,
+    "readonly_root": true,
+    "request_log_correlation": true,
+    "model_and_pubmed_disabled": true,
+    "private_payloads_absent_from_app": true
+  },
+  "browser": {
+    "total_checks": 26,
+    "pre_update_checks": 6,
+    "post_update_checks": 20,
+    "groups": [
+      {
+        "scope": "old_image_before_recreate",
+        "status": "passed",
+        "checks": [
+          "explicit_bookmark_saved_and_markup_rendered_as_literal_text",
+          "two_window_conflict_rejected_without_overwriting_note_or_input",
+          "chat_clear_keeps_bookmark_and_preview_does_not_restore_chat_focus",
+          "explicit_selected_relation_source_and_second_page_saved",
+          "separate_browser_has_no_access_to_saved_items",
+          "no_page_errors_or_ai_mode_requests"
+        ]
+      },
+      {
+        "scope": "new_image_after_recreate",
+        "status": "passed",
+        "checks": [
+          "actual_service_restart_keeps_two_bookmarks",
+          "restart_replay_research_same_sources_and_notes",
+          "restart_replay_relation_same_sources_and_notes",
+          "preview_after_restart_keeps_chat_empty",
+          "deleted_bookmarks_stay_deleted_after_reload",
+          "no_page_errors_or_ai_mode_requests"
+        ]
+      },
+      {
+        "scope": "target_herb_lookup",
+        "status": "passed",
+        "checks": [
+          "gene_resolves_to_exact_uniprot_and_19_source_records_with_boundary",
+          "source_drilldown_uses_exact_record_id_without_name_mapping",
+          "second_page_keeps_uniprot_and_distinct_source_ids",
+          "reload_restores_target_page_and_bookmark_preview_keeps_chat_focus",
+          "markdown_preserves_saved_page_source_witnesses_and_nonrecommendation_boundary",
+          "backup_retains_target_focus_without_raw_source_rows",
+          "bookmarks_remain_browser_owner_isolated",
+          "test_bookmarks_deleted_no_js_errors_or_model_requests"
+        ]
+      },
+      {
+        "scope": "comparison_export",
+        "status": "passed",
+        "checks": [
+          "real_two_herb_two_field_download_preserves_originals_and_page_evidence",
+          "download_keeps_conversation_unchanged",
+          "partial_export_keeps_missing_fields_without_borrowing_other_herb_text",
+          "stale_export_shows_retry_guidance_and_restores_button_without_retry_loop",
+          "no_javascript_errors_or_external_model_requests",
+          "private_downloads_removed"
+        ]
+      }
+    ]
+  },
+  "offline_basis": {
+    "source": "audits/comparison_report_v1/summary.json",
+    "modules": 73,
+    "tests": 623,
+    "rerun_this_delivery": false,
+    "note": "Reused completed source regression; actual container files matched clean build receipt."
+  },
+  "cleanup": {
+    "persistence_test_bookmarks_deleted": 2,
+    "target_test_bookmarks_deleted": 2,
+    "temporary_cookie_state_removed": true,
+    "test_downloads_removed": true
+  },
+  "published_to_hub": false,
+  "git_pushed": false,
+  "existing_7873_replaced": false,
+  "model_calls": 0,
+  "external_source_disclosure": false,
+  "clinical_accuracy_claimed": false
+}

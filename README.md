@@ -1,10 +1,6 @@
 <div align="center">
 
-源码增量：药典两味药对比可[导出Markdown证据](docs/COMPARISON_EVIDENCE_EXPORT.md)，分别保留原文、缺失状态和原页定位；尚未进入Docker镜像。
-
-源码增量：支持[靶点反查药材来源](docs/TARGET_HERB_LOOKUP.md)，可问“CYP24A1关联哪些药材”，保留原始见证并进入具体药材来源；该增量尚未进入Docker镜像。
-
-源码增量：新增[聊天请求诊断](docs/CHAT_REQUEST_DIAGNOSTICS.md)，错误提示提供排查编号，记录固定工具类别、结果和耗时；该增量尚未进入本地Docker镜像。
+本地Docker已更新：**http://127.0.0.1:7876/**，镜像`tcm-research-chat:c4de8bc`，已提供[双药对比导出](docs/COMPARISON_EVIDENCE_EXPORT.md)、[靶点反查药材](docs/TARGET_HERB_LOOKUP.md)与[请求诊断](docs/CHAT_REQUEST_DIAGNOSTICS.md)。保留原会话卷，26项跨版本/容器检查通过；未上传远程，见[本地交付记录](docs/releases/RESEARCH_LOCAL_C4DE8BC.md)。
 
 本地候选更新（2026-10-20）：新功能镜像已在 http://127.0.0.1:7876/ 隔离验收，原7873及远程标签未切换；[部署修复、603项回归与20项容器检查](docs/releases/RESEARCH_LOCAL_20261020.md)。
 
