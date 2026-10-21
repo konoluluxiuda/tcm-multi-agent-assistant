@@ -28,28 +28,54 @@ FOLLOWUP = re.compile(r'^(它|这味药|刚才那味药|刚才的药材)')
 SOURCE_QUERY = {'出处呢', '出处', '查看原页', '看看出处', '证据呢'}
 
 
+MAX_COMPARISON_NAMES = 3
+MAX_COMPARISON_FIELDS = 4
+
+
 def comparison_request(question):
-    """Recognize a bounded comparison grammar; never infer aliases or clinical intent."""
-    if not re.search(r'比较|对比|区别|差异', question):
+    """Parse explicit bounded lists, without inferring aliases or clinical intent."""
+    if not isinstance(question, str) or not re.search(r'比较|对比|区别|差异|放一起', question):
         return None
-    text=re.sub(r'\s+','',question).rstrip('？?。！!')
-    names=r'([\u4e00-\u9fff]{2,20}?)[和与、及]([\u4e00-\u9fff]{2,20}?)的'
-    match=re.fullmatch(r'(?:请帮我|帮我|请)?(?:比较|对比)'+names+r'(.+)',text)
+    error = {'error': '请明确2至3味药材和最多4个药典字段，例如“比较黄芪、党参和人参的性味、归经、功效、用量”；这里只并列原文，不判断选药或替代关系。'}
+    if len(question) > 500:
+        return error
+    text = re.sub(r'\s+', '', question).rstrip('？?。！!')
+    names_pattern = r'([\u4e00-\u9fff、，,]{2,100}?)'
+    match = re.fullmatch(r'(?:请帮我|帮我|请)?(?:比较|对比)' + names_pattern + r'的(.+)', text)
     if not match:
-        match=re.fullmatch(r'(?:请)?'+names+r'(.+?)(?:有什么区别|有何不同|有什么差异|的区别|的差异|对比|比较)',text)
-    error={'error':'请明确两味药材和最多两个药典字段，例如“比较白术和黄芪的功效与用量”；这里只并列原文，不判断选药或替代关系。'}
+        match = re.fullmatch(r'(?:请)?' + names_pattern + r'的(.+?)(?:有什么区别|有何不同|有什么差异|的区别|的差异|对比|比较)', text)
+    if not match:
+        match = re.fullmatch(r'(?:请帮我|帮我|请)?把' + names_pattern + r'放一起(?:看看|看一下|比较一下)?[吧，,]*[，,](.+?)(?:都想比较一下|都想比较|都比较一下)', text)
     if not match:
         return error
-    left,right,field_text=match.groups()
-    if left==right or any(re.search(r'[和与、及]',name) for name in (left,right)):
+    names_text, field_text = match.groups()
+    names = re.split(r'[和与、及，,]', names_text)
+    if (not 2 <= len(names) <= MAX_COMPARISON_NAMES or
+            any(not re.fullmatch(r'[\u4e00-\u9fff]{2,20}', name) for name in names) or
+            len({name_key(name) for name in names}) != len(names)):
         return error
-    aliases={alias:('来源' if label=='origin' else label)
-             for label,values in INTENTS.items() for alias in (*values,label) if alias!='origin'}
-    pattern='|'.join(re.escape(s) for s in sorted(aliases,key=len,reverse=True))
-    fields=re.fullmatch('('+pattern+')(?:[和与、及，,]('+pattern+'))?',field_text)
-    if not fields:
+    aliases = {alias: ('来源' if label == 'origin' else label)
+               for label, values in INTENTS.items() for alias in (*values, label) if alias != 'origin'}
+    pattern = '|'.join(re.escape(s) for s in sorted(aliases, key=len, reverse=True))
+    # Consume whole field labels before separators: 性味与归经 is one source field.
+    tokens = []
+    remaining = field_text
+    while remaining:
+        field = re.match('(?:' + pattern + ')', remaining)
+        if not field:
+            return error
+        tokens.append(aliases[field.group()])
+        remaining = remaining[field.end():]
+        if remaining:
+            if remaining[0] not in '和与、及，,':
+                return error
+            remaining = remaining[1:]
+            if not remaining:
+                return error
+    fields = list(dict.fromkeys(tokens))
+    if not fields or len(fields) > MAX_COMPARISON_FIELDS:
         return error
-    return {'names':[left,right],'fields':list(dict.fromkeys(aliases[f] for f in fields.groups() if f))}
+    return {'names': names, 'fields': fields}
 
 
 class ResearchTool:
@@ -93,12 +119,18 @@ class ResearchTool:
             result = self.service.search(resolved, method='name_field', k=5)
             status = result['status']
         new_context = context if is_source and status == 'field_not_resolved' and result is None else None
-        if result and status == 'candidates' and len({h['name'] for h in result['hits']}) == 1:
+        usable_focus = (status == 'candidates' or status == 'partial_evidence' and
+                        result and result.get('missing_fields') and not result.get('unresolved_evidence'))
+        if result and usable_focus and len({h['name'] for h in result['hits']}) == 1:
             new_context = {**self.binding, 'name': result['hits'][0]['name'], 'last_question': resolved}
         elif result and status == 'field_not_resolved' and len(result.get('names', [])) == 1:
             if name_key(stripped) == name_key(result['names'][0]):
                 new_context = {**self.binding, 'name': result['names'][0], 'last_question': None}
         message = MESSAGES.get(status, "当前无法完成查询，请明确药名和字段。")
+        if status == 'field_not_resolved' and new_context:
+            message = f'已定位药典候选“{new_context["name"]}”，请继续选择功效、用量、注意、来源等字段；当前未返回整篇条目。'
+        if result and result.get('missing_fields'):
+            message += ' 本次未检出字段：' + '、'.join(result['missing_fields']) + '；未检出不等于不存在。'
         return {"status": status, "message": message, "tool_result": result,
                 "focus_name": new_context["name"] if new_context else None, "followup": followup,
                 "resolved_question": resolved if result else None, "research_only": True,
@@ -116,7 +148,7 @@ class ResearchTool:
             return {**base,'status':probe['status'],'message':MESSAGES.get(probe['status'],'请核对药名和原文范围。'),
                     'tool_result':probe}
         if {name_key(n) for n in probe.get('names',[])}!={name_key(n) for n in request['names']}:
-            return {**base,'status':'name_not_resolved','message':'未能确认两味完整药名；不会只展示已识别的一味，或使用母药替代。'}
+            return {**base,'status':'name_not_resolved','message':'未能确认全部完整药名；不会只展示已识别药材，或使用母药替代。'}
         groups=[]
         for name in request['names']:
             cells=[]

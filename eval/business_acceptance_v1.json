@@ -1,0 +1,319 @@
+{
+  "version": "business_acceptance_v1",
+  "created_date": "2026-10-20",
+  "role": "prospective_fixed_version_screening",
+  "independent_acceptance": false,
+  "observed_user_questions": 0,
+  "authorship_note": "Designed by the implementation agent after inspecting project capabilities and source field availability; some known task templates recur. Not independent authoring or semantic holdout proof. Freeze before first execution, no application fixes within this batch.",
+  "clinical_accuracy_evaluation": false,
+  "scope": "local rule-only chat plus two comparison downloads; not full product or model benefit acceptance",
+  "selection_policy": "At most one explicit source choice per allowed case, only using the preregistered original source path; no rewriting failed questions.",
+  "scoring": {
+    "full_completion": "All requested source fields/relations/provenance and any requested download validated.",
+    "partial": "Missing fields or incomplete requested evidence remain incomplete tasks.",
+    "boundaries": "Report separately from positive task completion, including tool unavailable.",
+    "semantic_comparison": "Compare original field text only; no clinical interpretation or relative efficacy assessment.",
+    "model_comparison": "not_run; current deployment disables AI, no new external data authorization."
+  },
+  "cases": [
+    {
+      "id": "P01",
+      "group": "用途表达",
+      "origin": "author_designed_after_development",
+      "query": "我在做桔梗的资料卡，药典把它用于哪些情况？",
+      "kind": "pharmacopoeia",
+      "role": "positive_task",
+      "name": "桔梗",
+      "fields": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "P02",
+      "group": "用途表达",
+      "origin": "author_designed_after_development",
+      "query": "药典中薄荷的作用有哪些？",
+      "kind": "pharmacopoeia",
+      "role": "positive_task",
+      "name": "薄荷",
+      "fields": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "P03",
+      "group": "用途表达",
+      "origin": "author_designed_after_development",
+      "query": "请查麦冬的传统用途，不需要你给治疗建议。",
+      "kind": "pharmacopoeia",
+      "role": "positive_task",
+      "name": "麦冬",
+      "fields": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "P04",
+      "group": "用途表达",
+      "origin": "author_designed_after_development",
+      "query": "我只想抄录连翘的功能与主治，请给对应原文和页码。",
+      "kind": "pharmacopoeia",
+      "role": "positive_task",
+      "name": "连翘",
+      "fields": [
+        "功能与主治"
+      ]
+    },
+    {
+      "id": "P05",
+      "group": "属性查询",
+      "origin": "author_designed_after_development",
+      "query": "陈皮应怎样保存，药典有没有写存放要求？",
+      "kind": "pharmacopoeia",
+      "role": "positive_task",
+      "name": "陈皮",
+      "fields": [
+        "贮藏"
+      ]
+    },
+    {
+      "id": "P06",
+      "group": "属性查询",
+      "origin": "author_designed_after_development",
+      "query": "请问茯苓归哪几条经？",
+      "kind": "pharmacopoeia",
+      "role": "positive_task",
+      "name": "茯苓",
+      "fields": [
+        "性味与归经"
+      ]
+    },
+    {
+      "id": "P07",
+      "group": "属性查询",
+      "origin": "author_designed_after_development",
+      "query": "药典记载的泽泻用几克？",
+      "kind": "pharmacopoeia",
+      "role": "positive_task",
+      "name": "泽泻",
+      "fields": [
+        "用法与用量"
+      ]
+    },
+    {
+      "id": "P08",
+      "group": "属性查询",
+      "origin": "author_designed_after_development",
+      "query": "我需要核对紫苏叶的来源和入药部位。",
+      "kind": "pharmacopoeia",
+      "role": "positive_task",
+      "name": "紫苏叶",
+      "fields": [
+        "origin"
+      ]
+    },
+    {
+      "id": "P09",
+      "group": "多字段与比较",
+      "origin": "author_designed_after_development",
+      "query": "我想核对连翘的功效、用量和贮藏，请把三项药典原文列出来。",
+      "kind": "pharmacopoeia",
+      "role": "positive_task",
+      "name": "连翘",
+      "fields": [
+        "功能与主治",
+        "用法与用量",
+        "贮藏"
+      ]
+    },
+    {
+      "id": "P10",
+      "group": "多字段与比较",
+      "origin": "author_designed_after_development",
+      "query": "麦冬的功效与注意事项分别是什么？",
+      "kind": "pharmacopoeia",
+      "role": "positive_task",
+      "name": "麦冬",
+      "fields": [
+        "功能与主治",
+        "注意"
+      ],
+      "expected_missing": [
+        "注意"
+      ]
+    },
+    {
+      "id": "P11",
+      "group": "多字段与比较",
+      "origin": "author_designed_after_development",
+      "query": "金银花和连翘的功效、用量、贮藏有什么差异？",
+      "kind": "comparison",
+      "role": "positive_task",
+      "names": [
+        "金银花",
+        "连翘"
+      ],
+      "fields": [
+        "功能与主治",
+        "用法与用量",
+        "贮藏"
+      ],
+      "export": true
+    },
+    {
+      "id": "P12",
+      "group": "多字段与比较",
+      "origin": "author_designed_after_development",
+      "query": "把陈皮、茯苓和泽泻放一起看一下，功效、归经、用量都想比较一下。",
+      "kind": "comparison",
+      "role": "positive_task",
+      "names": [
+        "陈皮",
+        "茯苓",
+        "泽泻"
+      ],
+      "fields": [
+        "功能与主治",
+        "性味与归经",
+        "用法与用量"
+      ],
+      "export": true
+    },
+    {
+      "id": "P13",
+      "group": "焦点与歧义",
+      "origin": "author_designed_after_development",
+      "query": "丹参的性状",
+      "kind": "boundary",
+      "role": "boundary",
+      "expected": "ambiguous_field",
+      "name": "丹参",
+      "fields": [
+        "性状"
+      ]
+    },
+    {
+      "id": "P14",
+      "group": "焦点与歧义",
+      "origin": "author_designed_after_development",
+      "query": "我想知道它怎么保存。",
+      "kind": "boundary",
+      "role": "boundary",
+      "expected": "clarify_entity"
+    },
+    {
+      "id": "P15",
+      "group": "焦点与歧义",
+      "origin": "author_designed_after_development",
+      "query": "它的用量是多少？",
+      "kind": "pharmacopoeia",
+      "role": "positive_task",
+      "setup_query": "陈皮的贮藏",
+      "name": "陈皮",
+      "fields": [
+        "用法与用量"
+      ],
+      "require_followup": true,
+      "setup_expect": {
+        "name": "陈皮",
+        "fields": [
+          "贮藏"
+        ]
+      }
+    },
+    {
+      "id": "P16",
+      "group": "焦点与歧义",
+      "origin": "author_designed_after_development",
+      "query": "它在ETCM里有哪些成分？",
+      "kind": "boundary",
+      "role": "boundary",
+      "setup_query": "桔梗的功效",
+      "expected": "cross_source_clarification",
+      "setup_expect": {
+        "name": "桔梗",
+        "fields": [
+          "功能与主治"
+        ]
+      }
+    },
+    {
+      "id": "P17",
+      "group": "ETCM与来源关系",
+      "origin": "author_designed_after_development",
+      "query": "在ETCM查询HuangQi的英文名",
+      "kind": "herb_field",
+      "role": "positive_task",
+      "herb": "HuangQi",
+      "field": "english_name",
+      "raw_key": "Herb Name in English"
+    },
+    {
+      "id": "P18",
+      "group": "ETCM与来源关系",
+      "origin": "author_designed_after_development",
+      "query": "CYP24A1有哪些成分 第2页",
+      "kind": "target_ingredient",
+      "role": "positive_task",
+      "uniprot": "Q07973",
+      "page": 2
+    },
+    {
+      "id": "P19",
+      "group": "ETCM与来源关系",
+      "origin": "author_designed_after_development",
+      "query": "白术的疾病富集记录有哪些？",
+      "kind": "disease",
+      "role": "positive_task",
+      "herb": "BaiZhu",
+      "allow_source_selection": true
+    },
+    {
+      "id": "P20",
+      "group": "ETCM与来源关系",
+      "origin": "author_designed_after_development",
+      "query": "白术的成分关联哪些靶点，请把对应的原始记录也列出来。",
+      "kind": "herb_target_paths",
+      "role": "positive_task",
+      "herb": "BaiZhu",
+      "allow_source_selection": true
+    },
+    {
+      "id": "P21",
+      "group": "范围与能力边界",
+      "origin": "author_designed_after_development",
+      "query": "药典里有酒桔梗的用量吗？请不要拿桔梗代替。",
+      "kind": "boundary",
+      "role": "boundary",
+      "expected": "variant_scope_unresolved"
+    },
+    {
+      "id": "P22",
+      "group": "范围与能力边界",
+      "origin": "author_designed_after_development",
+      "query": "我想了解不存在样本草乙的功效，找不到就直接告诉我。",
+      "kind": "boundary",
+      "role": "boundary",
+      "expected": "name_not_resolved"
+    },
+    {
+      "id": "P23",
+      "group": "范围与能力边界",
+      "origin": "author_designed_after_development",
+      "query": "我这几天睡不好，给我配药改善一下。",
+      "kind": "boundary",
+      "role": "boundary",
+      "expected": "personal_medication_boundary"
+    },
+    {
+      "id": "P24",
+      "group": "范围与能力边界",
+      "origin": "author_designed_after_development",
+      "query": "请在PubMed检索 Astragalus membranaceus insomnia，返回最近的摘要。",
+      "kind": "boundary",
+      "role": "boundary",
+      "expected": "pubmed_disabled",
+      "original_goal": "retrieve_recent_abstracts"
+    }
+  ]
+}

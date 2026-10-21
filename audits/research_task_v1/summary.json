@@ -1,0 +1,171 @@
+{
+  "date": "2026-10-21",
+  "scope": "synthetic_only_bounded_native_tool_workflow",
+  "entry": "CLI only; main7876 UI and Docker not changed",
+  "offline": {
+    "status": "passed",
+    "modules": 77,
+    "tests": 673,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "new_tests": 18,
+  "source_files_sha256": {
+    "tcm/research_task.py": "7629fc0cfb592f59076a331acf315451e5526af254d6d9ef86c62fe5cbc8ae3f",
+    "tcm/research_task_store.py": "0b8bb4e88fda995e5863765601e941395ca00016782cc6e8001fd50af0d5ce0e",
+    "tcm/research_task_fixtures.py": "455fc6e3d1c30db7eda383c6f741d0b2e6bc878cebaa84a0451ddd75668f7232",
+    "scripts/run_research_task.py": "1f7fcf8b074d5c9ed70fd1c29ca5ab1bb604a410bf11f544b1a3d65382dd80df",
+    "tests/test_research_task.py": "96530e268549c82dc8982bb00e78d266494ea863205db9598fb37ae4b96ae8f0"
+  },
+  "native_smoke": {
+    "status": "complete",
+    "endpoint": "api.deepseek.com",
+    "configured_model_captured_after_run": "deepseek-flash",
+    "provider_reported_model_id": null,
+    "protocol": "bind_tools / AIMessage.tool_calls / ToolMessage; no JSON-plan fallback",
+    "reserved_provider_attempt_slots": 7,
+    "successful_decision_usage_records": 6,
+    "tool_actions": 7,
+    "first_result": {
+      "status": "failed",
+      "reserved_slots": 5,
+      "failure": {
+        "phase": "model",
+        "error_type": "ValueError"
+      },
+      "preserved": true
+    },
+    "recovery": {
+      "same_task": true,
+      "budgets_retained": true,
+      "additional_slots": 2,
+      "total_limit": 12,
+      "change": "Accept at most two independent returned-study inspections, replay matching native ToolMessages; explicit retry retains state and prior budget.",
+      "first_exact_reply_retained": false,
+      "root_cause_limit": "Initial ValueError occurred in model/protocol checking. Exact reply was not retained; original root cause is not fully proven."
+    },
+    "actions": [
+      {
+        "name": "resolve_sources",
+        "model_step": null,
+        "observation": "user_selection_required"
+      },
+      {
+        "name": "common_targets",
+        "model_step": null,
+        "observation": "user_selection_required"
+      },
+      {
+        "name": "search_literature",
+        "model_step": null,
+        "observation": "empty"
+      },
+      {
+        "name": "search_literature",
+        "model_step": null,
+        "observation": "ok"
+      },
+      {
+        "name": "inspect_study",
+        "model_step": 6,
+        "observation": "herb_source_record"
+      },
+      {
+        "name": "inspect_study",
+        "model_step": 6,
+        "observation": "ingredient_only"
+      },
+      {
+        "name": "finish_task",
+        "model_step": 7,
+        "observation": null
+      }
+    ],
+    "evidence_classifications": [
+      "herb_source_record",
+      "ingredient_only"
+    ],
+    "user_choices": "simulated preregistered synthetic source/target IDs",
+    "real_corpus_sent": false,
+    "prior_user_chat_sent": false,
+    "model_free_text_or_CoT_persisted": false,
+    "token_accounting": "Six successful decision usage records; failed protocol reply token usage not retained. Complete cost unknown.",
+    "cost": null,
+    "first_private_result": "var/research_task_v1/native_smoke/result_01.json",
+    "final_private_result": "var/research_task_v1/native_smoke/result_02.json"
+  },
+  "scripted_scenarios": [
+    {
+      "case": "fixed_retry",
+      "status": "partial",
+      "steps": 4,
+      "provider_slots": 0
+    },
+    {
+      "case": "scripted_ingredient_only",
+      "status": "partial",
+      "steps": 6,
+      "provider_slots": 0
+    },
+    {
+      "case": "scripted_no_common",
+      "status": "partial",
+      "steps": 2,
+      "provider_slots": 0
+    },
+    {
+      "case": "scripted_retry",
+      "status": "complete",
+      "steps": 7,
+      "provider_slots": 0
+    },
+    {
+      "case": "scripted_unavailable",
+      "status": "partial",
+      "steps": 4,
+      "provider_slots": 0
+    },
+    {
+      "case": "scripted_withdrawn",
+      "status": "partial",
+      "steps": 6,
+      "provider_slots": 0
+    },
+    {
+      "case": "scripted_wrong_object",
+      "status": "partial",
+      "steps": 6,
+      "provider_slots": 0
+    }
+  ],
+  "restart_check": {
+    "separate_cli_processes": 3,
+    "source_and_target_pause_recovered": true,
+    "selected_targets": 2,
+    "controller_steps": 11,
+    "report_exported": true,
+    "policy": "deterministic test driver"
+  },
+  "limits": {
+    "model_attempt_slots": 12,
+    "tool_attempts": 12,
+    "selected_targets": 2,
+    "active_time_ms": 120000,
+    "transport_timeout_seconds": 15,
+    "transport_retries": 0,
+    "output_tokens_per_call": 600,
+    "message_content_chars": 24000,
+    "args_chars_per_action": 2000
+  },
+  "limitations": [
+    "Synthetic fixtures and simulated choices are not independent business acceptance.",
+    "Study classification uses structured fixture metadata, not general semantic/clinical review.",
+    "Fixed/adaptive comparison uses scripted controllers, not LLM/RAG A/B evidence.",
+    "Explicit Python controller plus dedicated SQLite; no LangGraph node checkpoint integration.",
+    "Completed tool steps persist; interrupted read-only actions need explicit recovery, consumed budgets remain, no exactly-once guarantee.",
+    "No actualETCM/PubMed adapter, chat integration, account authentication or production capacity acceptance."
+  ],
+  "docker_updated": false,
+  "git_committed": false,
+  "remote_pushed": false
+}

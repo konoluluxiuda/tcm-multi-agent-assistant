@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "data_mode": "synthetic_only",
+  "split": "additional_author_designed_acceptance_not_independent_holdout",
+  "cases": [
+    {"id":"A01","question":"我在整理示例甲草与示例乙草的资料，先把两个数据库条目中重复出现的靶点标识列出来，并保留各自位置。","intent":"source_relations","names":["示例甲草","示例乙草"],"profile":"direct","category":"source_paraphrase","reason":"明确要求靶点交集和两侧位置，不要求研究记录。"},
+    {"id":"A02","question":"示例乙草、示例甲草，想核实的是靶点交集对应的两边原文；不需要摘要，也不评判效果。","intent":"source_relations","names":["示例乙草","示例甲草"],"profile":"no_common","category":"empty_intersection","reason":"明确要求来源靶点交集；模拟资料中为空也应完成该查询。"},
+    {"id":"A03","question":"示例甲草和示例乙草只比较来源关系，不要去找或解读研究记录。","intent":"source_relations","names":["示例甲草","示例乙草"],"profile":"direct","category":"negated_research","reason":"研究记录被明确否定，不能扩大为研究核查。"},
+    {"id":"A04","question":"请查示例甲草和示例乙草的共同靶点。不是只看来源关系，还要核实已有合成研究记录的对象是否一致。","intent":"evidence_review","names":["示例甲草","示例乙草"],"profile":"wrong_object","category":"compound_supported_scope","reason":"明确要求来源与研究对象核查；模拟记录对象不符应保留partial。"},
+    {"id":"A05","question":"示例甲草和示例乙草，哪些论文样例研究的是整味药，哪些只是分离出的成分？也请排除撤稿的样例。","intent":"evidence_review","names":["示例甲草","示例乙草"],"profile":"ingredient_only","category":"research_paraphrase","reason":"合成研究对象与撤稿范围在已有核查能力内；成分不足以补齐药材证据。"},
+    {"id":"A06","question":"先核对示例乙草与示例甲草的来源，再检查现有合成论文样例有没有对象错配；不用讨论药效。","intent":"evidence_review","names":["示例乙草","示例甲草"],"profile":"direct","category":"research_paraphrase","reason":"要求来源与合成研究对象核查，不生成药效结论。"},
+    {"id":"A07","question":"示例甲草和示例乙草有何不同？","intent":null,"names":["示例甲草","示例乙草"],"profile":"direct","category":"missing_goal","reason":"未指定来源关系或研究核查，保持待澄清。"},
+    {"id":"A08","question":"示例甲草和它都登记了哪些共同靶点？","intent":"source_relations","names":["示例甲草"],"profile":"direct","category":"missing_entity","reason":"没有会话上下文，不能将它自动补成另一味合成药材。"},
+    {"id":"A09","question":"这两个对象有哪些共同靶点，双方原始记录也要。","intent":"source_relations","names":[],"profile":"direct","category":"missing_entities","reason":"无上下文可确定两个对象，保持实体缺项。"},
+    {"id":"A10","question":"示例甲草与示例乙草，帮我确定治疗失眠时选哪味，并解释共同靶点来源关系。","intent":null,"names":["示例甲草","示例乙草"],"profile":"direct","category":"unsupported_clinical_compound","reason":"当前计划不能表达临床选药请求及独立边界，不能静默缩成来源查询。"},
+    {"id":"A11","question":"比较示例甲草、示例乙草和示例丙草的共同靶点来源关系，三者都要，不要遗漏。","intent":null,"names":["示例甲草","示例乙草"],"profile":"direct","category":"unsupported_third_entity","reason":"计划只支持甲乙两味，第三对象不能被丢弃；已识别的甲乙保留，目标待澄清。"},
+    {"id":"A12","question":"示例甲草和示例乙草的共同靶点加一个药用部位的并排表；两项都要。","intent":null,"names":["示例甲草","示例乙草"],"profile":"direct","category":"unsupported_extra_deliverable","reason":"当前计划不支持药用部位表，不能把整个请求当成仅来源查询已完成。"}
+  ]
+}

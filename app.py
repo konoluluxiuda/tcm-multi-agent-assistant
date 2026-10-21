@@ -29,6 +29,7 @@ from tcm.mineru_research import SnapshotChanged
 from tcm.assistant_router import resolve as resolve_tool_request
 from source_access import SourceCatalog, PrivateArtifacts, create_source_router
 from tcm.bookmark_api import create_router as create_bookmark_router, enabled as bookmarks_enabled
+from tcm.research_task_api import create_router as create_task_router, enabled as tasks_enabled
 from tcm.request_observability import install as install_chat_observability, mark as mark_chat_request
 
 # Load configuration
@@ -60,6 +61,7 @@ source_catalog = SourceCatalog(Path.cwd(), os.getenv('SOURCE_MANIFEST_PATH', 're
 private_artifacts = PrivateArtifacts()
 app.include_router(create_source_router(source_catalog, private_artifacts, cookie_name=SESSION_COOKIE_NAME))
 app.include_router(create_bookmark_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME, research_runtime))
+app.include_router(create_task_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME))
 image_request_lock = threading.Lock()
 
 
@@ -107,7 +109,8 @@ def feature_error(name):
 async def enforce_features(request: Request, call_next):
     if (env_bool('RESEARCH_TOOLS_ONLY') and request.method in ('POST', 'PUT', 'PATCH', 'DELETE')
             and request.url.path not in ('/chat', '/conversation', '/api/evidence/report')
-            and not (request.url.path == '/api/research/bookmarks' or request.url.path.startswith('/api/research/bookmarks/'))):
+            and not (request.url.path == '/api/research/bookmarks' or request.url.path.startswith('/api/research/bookmarks/'))
+            and not (request.url.path == '/api/research/tasks' or request.url.path.startswith('/api/research/tasks/'))):
         return JSONResponse(status_code=403, content={'detail': '此部署仅支持药材与药典研究工具及会话管理。'})
     # Check before parsing upload bodies or invoking optional clients.
     feature = {'/upload': 'image_analysis', '/transcribe': 'speech', '/generate-speech': 'speech'}.get(request.url.path)
@@ -185,6 +188,7 @@ async def index(request: Request):
         "pubmed_enabled": env_bool('ENABLE_PUBMED'),
         "natural_routing_enabled": env_bool('ENABLE_NATURAL_ROUTING'),
         "research_bookmarks_enabled": bookmarks_enabled(),
+        "research_tasks_enabled": tasks_enabled(),
         "evidence_assistant_enabled": env_bool('ENABLE_EVIDENCE_ASSISTANT'),
         "evidence_auto_routing_enabled": evidence_auto_routing_enabled(),
         "evidence_assistant_synthetic": os.getenv('EVIDENCE_ASSISTANT_DATA_MODE','synthetic') == 'synthetic',

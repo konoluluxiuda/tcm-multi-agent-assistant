@@ -1,0 +1,149 @@
+{
+  "status": "passed",
+  "date": "2026-10-21",
+  "scope": "server_coverage_checks_for_explicit_synthetic_user_request_not_free_text_completeness",
+  "offline": {
+    "status": "passed",
+    "tests": 759,
+    "modules": 85,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "scope": "explicit_synthetic_request_scope_not_free_text_extraction_accuracy",
+    "total": 14,
+    "checks": [
+      {
+        "name": "full_user_request_and_uncovered_items_shown_before_any_tools",
+        "status": "passed"
+      },
+      {
+        "name": "ordinary_confirmation_cannot_silently_reduce_scope_or_change_revision",
+        "status": "passed"
+      },
+      {
+        "name": "refresh_preserves_original_request_without_preselecting_scope_consent",
+        "status": "passed"
+      },
+      {
+        "name": "other_browser_cannot_read_scope_request",
+        "status": "passed"
+      },
+      {
+        "name": "explicit_subset_consent_only_resolves_sources_and_keeps_original_request",
+        "status": "passed"
+      },
+      {
+        "name": "stale_scope_acknowledgement_is_rejected",
+        "status": "passed"
+      },
+      {
+        "name": "actual_server_restart_keeps_acknowledged_scope_and_revision",
+        "status": "passed"
+      },
+      {
+        "name": "subset_completion_does_not_mark_entire_request_complete",
+        "status": "passed"
+      },
+      {
+        "name": "markdown_keeps_original_request_and_unfinished_items",
+        "status": "passed"
+      },
+      {
+        "name": "refresh_does_not_regrade_partial_request_as_complete",
+        "status": "passed"
+      },
+      {
+        "name": "fully_covered_request_completes_without_reduction_consent",
+        "status": "passed"
+      },
+      {
+        "name": "legacy_synthetic_flow_keeps_previous_semantics",
+        "status": "passed"
+      },
+      {
+        "name": "mobile_layout_and_no_javascript_errors",
+        "status": "passed"
+      },
+      {
+        "name": "only_browser_test_owner_tasks_cleaned_up",
+        "status": "passed"
+      }
+    ],
+    "actual_preview_process_restart": true,
+    "external_model_calls": 0,
+    "test_tasks_deleted": true,
+    "docker_updated": false
+  },
+  "known_failure_replay": {
+    "status": "passed",
+    "scope": "known_failure_gate_replay_not_new_model_accuracy",
+    "rows": [
+      {
+        "id": "A11",
+        "frozen_response_sha256": "1029cb16b9ba3855b06f93d2edf146a936c5a7b4ef7ab1450acb8925c566d0c7",
+        "original_model_score": {
+          "validated_goal_entities_match": false,
+          "raw_goal_entities_match": false,
+          "missing_field_count_match": false,
+          "unmentioned_entities_removed": false
+        },
+        "manifest_source": "explicit_synthetic_user_declaration_not_model_extraction",
+        "blocked_without_reduction_ack": true,
+        "status_after_explicit_ack": "partial",
+        "confirmed_scope_complete": true,
+        "original_request_complete": false,
+        "gaps": [
+          "原请求未覆盖对象：示例丙草"
+        ],
+        "new_provider_calls": 0
+      },
+      {
+        "id": "A12",
+        "frozen_response_sha256": "5063681c234e7c218944c73e2bd8f10125e8809b5a6844358ff8d3cc43cc652f",
+        "original_model_score": {
+          "validated_goal_entities_match": false,
+          "raw_goal_entities_match": false,
+          "missing_field_count_match": false,
+          "unmentioned_entities_removed": false
+        },
+        "manifest_source": "explicit_synthetic_user_declaration_not_model_extraction",
+        "blocked_without_reduction_ack": true,
+        "status_after_explicit_ack": "partial",
+        "confirmed_scope_complete": true,
+        "original_request_complete": false,
+        "gaps": [
+          "原请求未覆盖交付：药用部位并排表"
+        ],
+        "new_provider_calls": 0
+      }
+    ],
+    "reused_frozen_responses": 2,
+    "new_provider_calls": 0,
+    "historical_scores_changed": false
+  },
+  "source_sha256": {
+    "tcm/request_coverage.py": "9c155705100c1ced2f80516743cf47fae4dc275ac45cccc0863f511f56d89124",
+    "tcm/task_plan.py": "8fa0bf11faaefd19f282e6885213b9d5b31e325b2886f56d150d305fb7dbdc04",
+    "tcm/research_task.py": "1fe503f7cb204577410ef93011039d743f9da7ae1b185d76f3c8f237ebf1a030",
+    "tcm/task_planner.py": "d0956e19c2fe7058dc200e3c0b767fd7ef996c9e94cdddd8d597ef77fa18db7b",
+    "tcm/research_task_api.py": "099d6438ae47b2b50a4a9bc8b1cae3c586494b39d7d56be7656b0e21dab90412",
+    "tcm/research_task_report.py": "ce82bf90061348d953104aa4d32e938b03509fb9acaf65f5d0d69d4d91d8a9fe",
+    "tcm/research_tasks.js": "a9e7232a72496151fc7c1a7159837861b4d03e0f0ad8cdba3245092ad3809b8c",
+    "tcm/research_tasks.html": "aa65c9f69ed85f1710538b15c3e10e89f98fea6f22483538610b421506f4220f",
+    "tests/test_request_coverage.py": "05f8a5f77d8010c5cb0ad287f2f9083037d15f3a6491e01cc8762d5d277a3ef2"
+  },
+  "limitations": [
+    "Request completeness depends on explicit user/caller declaration.",
+    "Legacy tasks and CLI proposals without request_scope retain old semantics.",
+    "ETCM and ordinary natural-language chat are not migrated.",
+    "Third-herb execution and medicinal-part table are still unsupported by this plan."
+  ],
+  "historical_model_scores_changed": false,
+  "new_provider_calls": 0,
+  "docker_updated": false,
+  "git_commit_created": false,
+  "remote_push": false,
+  "next_priority": "review original request inventory before planning from free-text input"
+}

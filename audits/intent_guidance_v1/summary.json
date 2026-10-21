@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-20",
+  "scope": "known_question_regression_not_independent_business_acceptance",
+  "offline_regression": {
+    "status": "passed",
+    "modules": 75,
+    "tests": 637,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "deployment": {
+    "port": 7876,
+    "image": "tcm-research-chat:intent-guidance-20261020",
+    "image_id": "sha256:3d3d13bce32a6729e61f3963d4c8a156e516534cde7d863b2930554207e20e05",
+    "base_commit": "cc9424bc99af353dbc3f16a336a38f1c83693025",
+    "working_tree_dirty": true,
+    "source_tree_sha256": "3eb75382ca86babd2d66866fa743df7c9b578cb1a0b5f219f7d9d09057a610fc",
+    "checks": {
+      "http": {
+        "/": 200,
+        "/health": 200,
+        "/ready/research": 200,
+        "/ready/herbs": 200,
+        "/research-bookmarks.js": 200
+      },
+      "uid": 10001,
+      "model_calls": 0,
+      "status": "passed",
+      "source_files_verified": 75,
+      "same_memory_volume": true,
+      "protected_service_ids_unchanged": true,
+      "readonly_binds": true,
+      "readonly_root": true,
+      "request_log_correlation": true,
+      "model_and_pubmed_disabled": true,
+      "private_payloads_absent_from_app": true
+    }
+  },
+  "browser_regression": {
+    "primary_questions": 12,
+    "http_200": 12,
+    "http_5xx": 0,
+    "generic_403_replaced_questions": [
+      5,
+      6,
+      7,
+      8,
+      11
+    ],
+    "classification": {
+      "scope_explanation": [
+        1
+      ],
+      "general_evidence_explanation_without_record_verification": [
+        6
+      ],
+      "partial_evidence": [
+        2,
+        3
+      ],
+      "clarification": [
+        4,
+        5,
+        7,
+        9,
+        10,
+        11
+      ],
+      "personal_medication_boundary": [
+        8
+      ],
+      "disabled_literature_and_export_prerequisites": [
+        12
+      ]
+    },
+    "task_completion_rate": null,
+    "reason": "clarifications, boundaries and HTTP success are not full research task completion",
+    "button_check": {
+      "requests": 1,
+      "query": "AKT1关联哪些药材",
+      "answer_mode": "auto",
+      "route": "etcm_relation_query",
+      "kind": "target_herb",
+      "resolution_status": "not_covered",
+      "compound_direction_executed": false
+    },
+    "automation_recovery": {
+      "selector_mismatch": true,
+      "replayed_questions": 12,
+      "total_actual_chat_requests": 25,
+      "replay_in_primary_metrics": false
+    },
+    "cleanup": {
+      "test_sessions_deleted": 2,
+      "browsers_closed": true
+    },
+    "model_calls": 0,
+    "external_requests": 0,
+    "private_report": "var/new_ai_usability_guidance_20261020/report.md"
+  },
+  "limitations": [
+    "Known simulated cases reused after fixes; no independent task accuracy claim.",
+    "AKT1 not covered by current reverse lookup catalog; this is not proof of no association.",
+    "Requested pharmacopoeia fields remain incomplete; source page metadata is not human source validation.",
+    "PubMed disabled; no papers retrieved or report exported."
+  ],
+  "remote_push": false,
+  "source_data_modified": false
+}

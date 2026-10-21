@@ -17,6 +17,8 @@ services:
       PUBMED_DB: /app-memory/pubmed.sqlite3
       CHAT_MEMORY_DB: /app-memory/conversations.sqlite3
       ENABLE_RESEARCH_BOOKMARKS: ${ENABLE_RESEARCH_BOOKMARKS:-1}
+      ENABLE_RESEARCH_TASKS: ${ENABLE_RESEARCH_TASKS:-0}
+      RESEARCH_TASK_DB: /app-memory/research_tasks.sqlite3
       RESEARCH_BOOKMARK_DB: /app-memory/research_bookmarks.sqlite3
       CHAT_COOKIE_NAME: ${RESEARCH_COOKIE_NAME:-research_chat_session}
       CHAT_MEMORY_TTL_DAYS: "30"

@@ -1,6 +1,28 @@
 <div align="center">
 
-本地Docker已更新：**http://127.0.0.1:7876/**，镜像`tcm-research-chat:c4de8bc`，已提供[双药对比导出](docs/COMPARISON_EVIDENCE_EXPORT.md)、[靶点反查药材](docs/TARGET_HERB_LOOKUP.md)与[请求诊断](docs/CHAT_REQUEST_DIAGNOSTICS.md)。保留原会话卷，26项跨版本/容器检查通过；未上传远程，见[本地交付记录](docs/releases/RESEARCH_LOCAL_C4DE8BC.md)。
+当前主线已调整：[核心任务控制对照与结论](docs/CORE_WORKFLOW_COMPARISON.md)。文献扩展冻结；4个已知合成场景中，确定性、一次策略规划和有限循环均满足预期，模型调用分别0/4/15次，未观察到额外完成收益。现有明确任务继续默认确定性工具，后续优先真实用户任务与演示，不继续堆功能。
+
+当前问句入口：[真实ETCM问句与清单核对](docs/LOCAL_TASK_REQUEST.md)。7877任务页可输入“白术和黄芪有哪些共同靶点？”，核对/修订清单后确认两味药的计划和来源，再核对选定靶点原始记录。未执行的其他要求保留为未完成；输入与资料均不外发，不具备完整自动语义提取能力。87模块782项离线及20项真实浏览器检查通过，含实际重启恢复；Docker未更新。
+
+当前范围控制：[请求覆盖契约](docs/REQUEST_COVERAGE.md)。新合成计划及ETCM问句任务保留用户声明的全部对象和交付，未覆盖部分须明确确认才允许执行子范围；子任务完成不会将整份清单标成完成。当前核验显式清单，尚不保证自由问句的完整需求提取。
+
+当前规划验证：[追加12题的冻结验收](docs/TASK_PLANNER_SYNTHETIC.md#追加验收冻结代码后的12题2026-10-21)。模型计划符合10/12、规则4/12，但只有4项完整执行完成；三对象与额外交付仍有遗漏。保留默认入口，下一项优先补请求覆盖契约，不以合法的子任务替代原请求。此前8题结果保留，未开放网页任意问题的模型外发。
+
+当前计划增量：[有界计划与持久澄清（合成验证）](docs/TASK_PLAN_CLARIFICATION.md)及[ETCM本地限定计划](docs/LOCAL_TASK_REQUEST.md)。计划、清单和来源/靶点选择可持久恢复；真实ETCM只执行两味药的来源关系，不支持自由问句模型自主规划。
+
+当前工程增量：[ETCM任务工具注册与返回契约](docs/TASK_TOOL_REGISTRY.md)。三个只读操作使用固定入口、严格参数与类型化结果，明确区分空结果、资料故障和快照变化；真实ETCM仍由确定性控制器执行，尚未接模型规划。
+
+当前源码增量：[本地任务完成范围](docs/TASK_COMPLETION_SCOPE.md)。新建ETCM查询不再因缺少文献一律标为未完成；来源不确定仍保留缺口，研究证据核验始终单列为未完成。旧任务及历史报告保留原口径。
+
+当前开发预览：**http://127.0.0.1:7877/research-tasks**。新增[来源文献ID与对象核验契约](docs/TASK_LITERATURE.md)，705项离线及16项本地页面检查通过；本轮不联网读取论文、不调用模型。Docker Desktop的WSL集成当前不可用，7876未监听，新镜像未构建/部署；以下7876记录为上次成功交付。7877使用独立会话与任务库。
+
+新用户请先阅读[使用说明与模拟测试问题](docs/NEW_USER_GUIDE.md)。
+
+上次Docker入口：**http://127.0.0.1:7876/**。最后成功装入[真实ETCM任务及此前修复](docs/RESEARCH_TASK_ETCM.md)工作树镜像，保留原会话卷；已提交基线为c4de8bc，见[交付记录](docs/releases/RESEARCH_LOCAL_C4DE8BC.md)。未上传远程。
+
+2026-10-21进一步接入[真实ETCM本地来源关系任务](docs/RESEARCH_TASK_ETCM.md)：确认两份来源、分页核对共同UniProt和双方原JSON，研究文献证据明确待补，不调用外部模型。695项离线及25项实际页面检查通过，仅本地Docker更新。
+
+2026-10-21新增[研究任务页面](docs/RESEARCH_TASK_WEB.md)：http://127.0.0.1:7876/research-tasks ，支持来源/靶点确认、SQLite持久化、重启恢复、动作记录及证据报告。初版页面仅合成资料；当前新增上述ETCM本地模式，两种模式均无模型调用。[CLI原生tool calling验证](docs/BOUNDED_RESEARCH_TASK.md)单独保留，不混算业务效果。
 
 本地候选更新（2026-10-20）：新功能镜像已在 http://127.0.0.1:7876/ 隔离验收，原7873及远程标签未切换；[部署修复、603项回归与20项容器检查](docs/releases/RESEARCH_LOCAL_20261020.md)。
 

@@ -1,0 +1,133 @@
+{
+  "status": "source_and_local_preview_passed",
+  "date": "2026-10-21",
+  "scope": "local ETCM reference ID provenance and synthetic literature metadata contract; no real article retrieval or model effectiveness evaluation",
+  "offline": {
+    "modules": 80,
+    "tests": 705,
+    "skipped": 0,
+    "network_attempts": 0,
+    "new_tests": 10
+  },
+  "browser": {
+    "status": "passed",
+    "scope": "local_preview_not_docker_ETCM_reference_leads_single_known_pair_not_independent_evaluation",
+    "names": [
+      "白术",
+      "黄芪"
+    ],
+    "common_target_total": 151,
+    "selected_target_count": 1,
+    "raw_witnesses_reconciled": 2,
+    "reference_anchors_reconciled": 2,
+    "checks": [
+      {
+        "name": "main_chat_link_and_two_separate_task_forms",
+        "status": "passed"
+      },
+      {
+        "name": "real_chinese_names_return_explicit_source_candidates_without_model",
+        "status": "passed"
+      },
+      {
+        "name": "real_source_pair_shared_uniprot_count_and_first_page",
+        "status": "passed"
+      },
+      {
+        "name": "real_next_page_retains_count_and_has_distinct_targets",
+        "status": "passed"
+      },
+      {
+        "name": "reload_recovers_real_task_page_and_candidates",
+        "status": "passed"
+      },
+      {
+        "name": "source_reference_button_keeps_metadata_unfetched_and_report_partial",
+        "status": "passed"
+      },
+      {
+        "name": "pmid_scalar_anchors_match_actual_source_json_and_file_hashes",
+        "status": "passed"
+      },
+      {
+        "name": "reference_leads_survive_page_reload_without_new_reads",
+        "status": "passed"
+      },
+      {
+        "name": "real_relation_report_keeps_both_sides_and_explicit_literature_gap",
+        "status": "passed"
+      },
+      {
+        "name": "both_source_files_sha256_and_raw_json_pointers_reconciled",
+        "status": "passed"
+      },
+      {
+        "name": "real_markdown_download_contains_snapshot_and_original_rows",
+        "status": "passed"
+      },
+      {
+        "name": "real_task_stale_selection_rejected",
+        "status": "passed"
+      },
+      {
+        "name": "real_data_task_isolated_from_another_browser",
+        "status": "passed"
+      },
+      {
+        "name": "real_task_mobile_layout",
+        "status": "passed"
+      },
+      {
+        "name": "no_browser_javascript_errors",
+        "status": "passed"
+      },
+      {
+        "name": "test_tasks_deleted_without_modifying_source_data",
+        "status": "passed"
+      }
+    ],
+    "total": 16,
+    "external_model_calls": 0,
+    "network_literature_calls": 0,
+    "clinical_conclusion": false,
+    "private_report_saved_locally": true,
+    "test_tasks_deleted": true
+  },
+  "preview": {
+    "url": "http://127.0.0.1:7877/research-tasks",
+    "binding": "127.0.0.1 only",
+    "independent_memory_tasks_bookmarks": true,
+    "real_source_readers": "SQLite read-only",
+    "health": 200,
+    "herbs_ready": 200,
+    "research_ready": 200,
+    "dotenv_loading_disabled": true,
+    "model_and_network_literature_disabled": true
+  },
+  "deployment": {
+    "docker_build": "failed",
+    "docker_updated": false,
+    "docker_image_published": false,
+    "reason": "Docker Desktop WSL integration unavailable; docker command failed, /var/run/docker.sock absent, previous local port7876 not listening.",
+    "requested_local_tag_not_built": "tcm-research-chat:task-literature-20261021"
+  },
+  "source_tree_sha256": "4baaf90a152d2715e158dbe0058c2a829ec281b5b4fed05de65bd2d6a36011c8",
+  "source_pointer_handling": "Reconstruct original scalar PMID positions from hash-matched frozen base-field raw values; retain legacy catalog_pointer separately; preserve all duplicate original positions.",
+  "data_policy": {
+    "real_articles_fetched": 0,
+    "external_model_calls": 0,
+    "real_corpus_sent": false,
+    "source_data_modified": false,
+    "fake_article_used_to_fill_real_report": false
+  },
+  "limits": [
+    "PMIDs listed in a source are not evidence for selected targets or mechanism; real reports remain partial.",
+    "Object/retraction/quotation contract tested only with synthetic titles and abstracts; no article metadata ingestion UI or live fetch adapter yet.",
+    "Object identity, target relation, quality appraisal and direct attribution remain unverified; keyword cues are not classifications.",
+    "Known source pair selected by test script, not independent user or human botanical identity review.",
+    "Legacy enrichment catalog not rewritten; corrected raw reference pointers apply to this new task feature.",
+    "Docker delivery incomplete because the local Docker integration is unavailable; 7877 is a separate local preview, not the original Docker service."
+  ],
+  "git_committed": false,
+  "remote_uploaded": false
+}

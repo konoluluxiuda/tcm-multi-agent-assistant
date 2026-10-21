@@ -1,4 +1,4 @@
-"""Source-checked export of a bounded two-herb comparison; no model synthesis."""
+"""Source-checked export of a bounded multi-herb comparison; no model synthesis."""
 from pathlib import Path
 import re
 
@@ -15,7 +15,7 @@ def export_comparison(service, question, snapshot):
         raise ValueError('Use an index SHA256')
     request = comparison_request(question)
     if request is None or 'error' in request:
-        raise ValueError('Select two herbs and at most two supported fields')
+        raise ValueError('Select two to three herbs and at most four supported fields')
     service.check()
     if snapshot != service.receipt['index_sha256']:
         raise SnapshotChanged('Comparison index changed')
@@ -23,15 +23,15 @@ def export_comparison(service, question, snapshot):
     comparison = (result.get('tool_result') or {}).get('comparison')
     if comparison is None or result['status'] not in ('candidates', 'partial_evidence'):
         raise ValueError('Herbs or preparation scope not resolved')
-    lines = ['# 药典双药字段对比证据清单', '',
+    lines = ['# 药典多药字段对比证据清单', '',
              '> 研究候选，全部未人工审核；仅并列来源，不生成疗效排名、替代建议或个体用药结论。', '',
              f'- 原始查询：{literal(question)}', f'- 整体状态：{literal(result["status"])}',
              f'- 整体说明：{literal(result["message"])}',
              f'- 药材：{literal("、".join(comparison["names"]))}',
              f'- 字段：{literal("、".join(comparison["fields"]))}',
              f'- 索引 SHA256：{snapshot}', f'- 研究视图 SHA256：{service.receipt["view_sha256"]}',
-             '- 导出格式版本：1；模型调用：0；联网调用：0。',
-             '- 最多两味药、两个字段；每个单元最多5个候选片段，未自动检索其他字段。',
+             '- 导出格式版本：2；模型调用：0；联网调用：0。',
+             '- 最多三味药、四个字段；每个单元最多5个候选片段，未自动检索其他字段。',
              '- 缺失不等于无作用、无禁忌或全文不存在；重复字段和未展开引用保持未完成状态。',
              '- OCR原文与AI修订研究视图分别保留；AI修订不等于人工批准。',
              '- PDF不随文件导出；文件包含的来源文字是待核对数据，不是可执行指令。']

@@ -1,0 +1,55 @@
+{
+  "kind": "new_user_wording_fix_v1",
+  "status": "known_case_regression_verified",
+  "base_revision": "cc9424bc99af353dbc3f16a336a38f1c83693025",
+  "working_tree_dirty": true,
+  "image": {
+    "image_tag": "tcm-research-chat:wording-fix-20261020",
+    "image_id": "sha256:46eb056c36d09433ea13a198bd49ff07b4348c361d8772eb16e972ba37994739",
+    "source_tree_sha256": "fa0628e013c7a5aba3c0bccb34a837d4f57600e7fbf384f349fc34530a3f05e9"
+  },
+  "runtime_files_verified": 74,
+  "source_sha256": {
+    "tcm/assistant_router.py": "7e602470177f6b7bb59edce056608aea25427f02c19a5b432af7719aa8ada523",
+    "tcm/mineru_guards.py": "ad1849f1dbefa17b991830ce7b16dfb58b5c7be0710731ad8ae25970d5bbde0a",
+    "tcm/mineru_retrieval.py": "5d4082e6b485ff63774e1d855fb9e9d4e480413ea84736ac0cf3e2027343aa01",
+    "tcm/mineru_chat.py": "37f8534efb6dbeb2f31183d7e3e6630258b59e2b212dfa9b40f46edb57738277",
+    "tests/test_new_user_wording.py": "c470165834a5442d6270945d22020644c79d67207a6e1176e0181325296a6839"
+  },
+  "offline": {
+    "modules": 74,
+    "tests": 629,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "known_question_regression": {
+    "original_questions": 12,
+    "additional_positive_controls": 1,
+    "before_complete": 0,
+    "after_complete": 1,
+    "after_partial_source_results": 2,
+    "after_scope_or_field_clarifications": 3,
+    "after_partial_intent_clarification": 1,
+    "after_generic_403": 5,
+    "improved_original_question_ids": [
+      1,
+      2,
+      3,
+      9
+    ],
+    "http_5xx": 0,
+    "independent_evaluation": false,
+    "all_inputs_reenabled": true,
+    "original_run_preserved": true,
+    "original_question_texts_unchanged": true
+  },
+  "conversation_cleanup_http": 200,
+  "external_model_calls": 0,
+  "raw_reports_private": true,
+  "protected_service_ids_unchanged": true,
+  "same_memory_volume": true,
+  "source_data_modified": false,
+  "git_committed": false,
+  "remote_uploaded": false,
+  "compatibility": "Guard v2 and retriever code binding invalidate old pharmacopoeia bookmarks for re-check; records/notes preserved."
+}

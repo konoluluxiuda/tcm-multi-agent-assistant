@@ -1,0 +1,127 @@
+{
+  "status": "passed",
+  "date": "2026-10-21",
+  "scope": "known_synthetic_question_planning_not_generic_or_clinical_accuracy",
+  "live_comparison": {
+    "status": "completed",
+    "mode": "live_synthetic",
+    "cases": 8,
+    "provider_calls": 8,
+    "policies": {
+      "deterministic": {
+        "run": 8,
+        "raw_goal_entities_match": 8,
+        "validated_goal_entities_match": 8,
+        "duration_ms_total": 1.026
+      },
+      "model": {
+        "run": 8,
+        "raw_goal_entities_match": 8,
+        "validated_goal_entities_match": 8,
+        "duration_ms_total": 10387.723
+      }
+    },
+    "all_proposals_wait_for_review": true,
+    "business_accuracy": null,
+    "independent_review": false,
+    "cost": null,
+    "limitations": [
+      "Eight known designed synthetic questions, not a general intent accuracy result.",
+      "Expected labels are author-designed, not independent human review.",
+      "Task execution remains deterministic and requires source/target choices.",
+      "Single run latency, price not configured, failures may have unknown token usage."
+    ]
+  },
+  "offline": {
+    "tests": 745,
+    "modules": 84,
+    "status": "passed",
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "after_proposal_export_display_final_tests": {
+    "module": "test_task_planner.py",
+    "status": "passed",
+    "total": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "expected_failures": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "total": 10,
+    "checks": [
+      {
+        "name": "complete_live_model_proposal_waits_without_tools_and_reports_prior_call",
+        "status": "passed"
+      },
+      {
+        "name": "proposal_suggestions_are_visible_but_require_explicit_submit",
+        "status": "passed"
+      },
+      {
+        "name": "refresh_retains_proposal_and_does_not_call_model_again",
+        "status": "passed"
+      },
+      {
+        "name": "user_can_explicitly_change_proposed_scope_original_proposal_preserved",
+        "status": "passed"
+      },
+      {
+        "name": "confirmed_plan_runs_existing_synthetic_tools_with_ingredient_boundary_no_new_provider_call",
+        "status": "passed"
+      },
+      {
+        "name": "download_contains_original_proposal_and_final_confirmed_plan",
+        "status": "passed"
+      },
+      {
+        "name": "stale_review_cannot_overwrite_confirmed_plan",
+        "status": "passed"
+      },
+      {
+        "name": "proposal_isolated_from_other_browser",
+        "status": "passed"
+      },
+      {
+        "name": "mobile_layout_and_no_javascript_errors",
+        "status": "passed"
+      },
+      {
+        "name": "only_test_owner_tasks_removed",
+        "status": "passed"
+      }
+    ],
+    "scope": "local_preview_with_single_previously_frozen_live_synthetic_proposal",
+    "new_provider_calls": 0,
+    "provider_calls_reused_from_P01": 1,
+    "test_tasks_deleted": true,
+    "docker_updated": false
+  },
+  "first_browser_attempt": {
+    "status": "failed",
+    "cause": "fixture subprocess missing repository PYTHONPATH",
+    "resolution": "correct test environment only, no product fix",
+    "failure_retained_locally": true
+  },
+  "source_sha256": {
+    "tcm/task_planner.py": "ba8a1ed569ce2b8cf94a29672b1e163df82d2fc0265702000438a01c7a06a406",
+    "scripts/eval_task_planner.py": "1d312adda08d0c92a57479ee3dce58128ab65e5684314e04abbd3032b86150e6",
+    "tcm/task_plan.py": "66832b7a075835707aa3a4b27d545a2c2def60934d502d002daa24a35685afe5",
+    "tcm/research_task.py": "a5d1e15c8b7944c1f76f44e3d6b55f0f63f9a237a364212ccf6da16e2d7cca7c",
+    "tcm/research_task_api.py": "83f09c1d03fb6929f3b2475a8c70c9676396c89a04dc5283508a405f19f794e6",
+    "tcm/research_task_report.py": "70c51ae6905a2a25be373686721e16cddd8c2b758bbfebc5c01062f5597624b9",
+    "tcm/research_tasks.js": "82f79c45fafd832d22635819c9d58916c59fc48cf3ff0407bd89ddacca9b06c9",
+    "tests/test_task_planner.py": "93e4c30d1e08762a2e7e360d206adc02b0701d24aaeeab48d1ab1a8bead980c7"
+  },
+  "default_changed": false,
+  "arbitrary_web_text_provider_route": false,
+  "real_corpus_or_history_sent": false,
+  "provider_calls_total": 8,
+  "docker_updated": false,
+  "git_commit_created": false,
+  "remote_push": false,
+  "decision": "Keep default deterministic; no observed model benefit on this known development set."
+}

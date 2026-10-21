@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-20",
+  "scope": "known_P20_relation_query_with_provenance_regression",
+  "baseline_private_record": "var/business_acceptance_v1/batch_02/raw_results.json",
+  "baseline_outcome": "clarification_without_relation_query",
+  "independent_acceptance": false,
+  "change": "Fully consume a named relationship query and bounded evidence-display clause before generic provenance guidance; reuse existing source selection and witnesses.",
+  "offline": {
+    "status": "passed",
+    "modules": 76,
+    "tests": 655,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "targeted": {
+    "modules": 2,
+    "tests": 19,
+    "new_tests": 5,
+    "status": "passed"
+  },
+  "image": {
+    "image_tag": "tcm-research-chat:relation-provenance-20261020",
+    "image_id": "sha256:e621af35769ec2d48d8fd2722e32e4fc9ac845a183e4cb35e9608c5360b99c28",
+    "base_revision": "cc9424bc99af353dbc3f16a336a38f1c83693025",
+    "working_tree_dirty": true,
+    "source_tree_sha256": "5bd073215b4f66619d478873346a6aa0c36c2a86f2428d547cfd78d232be5548",
+    "docker_hub_published": false
+  },
+  "deployment": {
+    "http": {
+      "/": 200,
+      "/health": 200,
+      "/ready/research": 200,
+      "/ready/herbs": 200,
+      "/research-bookmarks.js": 200
+    },
+    "uid": 10001,
+    "model_calls": 0,
+    "status": "passed",
+    "source_files_verified": 75,
+    "same_memory_volume": true,
+    "protected_service_ids_unchanged": true,
+    "readonly_binds": true,
+    "readonly_root": true,
+    "request_log_correlation": true,
+    "model_and_pubmed_disabled": true,
+    "private_payloads_absent_from_app": true
+  },
+  "port": 7876,
+  "browser": {
+    "checks": [
+      "original_P20_enters_real_source_selection_and_returns_213_candidate_paths",
+      "first_3_candidate_paths_match_both_original_JSON_rows_and_SHA",
+      "actual_UI_expands_both_original_rows_capture_status_and_source_pointers",
+      "generic_source_followup_replays_only_the_selected_relation_focus",
+      "new_explicit_herb_requires_new_selection_without_borrowing_BaiZhu",
+      "record_description_without_selected_row_still_clarifies",
+      "existing_explicit_command_and_source_bound_pagination_remain_available",
+      "input_recovers_no_client_errors_no_AI_mode_or_external_access"
+    ],
+    "original_case": "P20",
+    "baseline": "var/business_acceptance_v1/batch_02/raw_results.json",
+    "model_mode_requests": 0,
+    "external_requests_allowed": 0,
+    "status": "passed",
+    "paths_total": 213,
+    "paths_source_rows_checked": 3,
+    "chat_requests": 6,
+    "external_requests_blocked": 5,
+    "cleanup_http": 200,
+    "original_reference_inputs_unchanged": true
+  },
+  "browser_automation_recovery": {
+    "first_run": "Timed out waiting for absent disabled-AI checkbox before sending any chat request; finally cleaned isolated session and closed browser.",
+    "application_error": false,
+    "first_log_preserved": "var/relation_provenance_v1/browser_01.log",
+    "rerun_scope": "same original P20 and six planned requests; no application changes"
+  },
+  "source_files_unchanged_after_build": true,
+  "original_business_suite_or_results_modified": false,
+  "remote_push": false,
+  "git_commit": false,
+  "limitations": [
+    "Known failed question reused after fix; no independent business accuracy or updated whole24-task score.",
+    "213 candidate paths are source row pairs, not verified chemical entities or mechanisms.",
+    "Only first3 candidate paths had both original rows checked in this browser regression.",
+    "Evidence display remains per-page expandable rows; no all-record export or unrestricted task planning added.",
+    "Background-prose name resolution, broad intent understanding and data quality gaps remain."
+  ]
+}

@@ -1,0 +1,440 @@
+{
+  "date": "2026-10-20",
+  "scope": "prospective_fixed_version_rule_only_business_screening",
+  "independent_acceptance": false,
+  "independent_review": false,
+  "observed_user_questions": 0,
+  "suite": "eval/business_acceptance_v1.json",
+  "suite_sha256": "49f61397360bcef045f93d7fd62a951ab8c188958afc3c2a7ba5c714fa17522c",
+  "evaluator_sha256": "f0dfb35c3de23dddeafae4c22a5d82c9ad21e3a7cdfd7fae18d241697ae173ac",
+  "reviewer_sha256": "f9ff29dc11a28029c902844d1e63121ff2de58bb9a7f1d47916686e697ca2386",
+  "prepared_utc": "2026-10-20T15:22:34Z",
+  "runtime": {
+    "image_id": "sha256:d65d884a299ac02801e69037792ba2242f5fbcd12e29032699810dcc97b2f33a",
+    "image_tag": "tcm-research-chat:multi-comparison-20261020",
+    "container_id": "82c124213e889c5059f674824e79f4922fcd1f574ac90f51ef76ebd015cdc92f",
+    "rule_only": true,
+    "pubmed_enabled": false,
+    "ai_enabled": false
+  },
+  "planned": 24,
+  "run": 24,
+  "not_run": 0,
+  "chat_requests": 27,
+  "original_machine_score": {
+    "positive_tasks": {
+      "total": 17,
+      "outcomes": {
+        "clarification": 4,
+        "completed_local_scope": 8,
+        "unsupported_intent": 1,
+        "partial": 1,
+        "incorrect_or_unverified": 3
+      }
+    },
+    "boundary_tasks": {
+      "total": 7,
+      "outcomes": {
+        "appropriate_clarification": 4,
+        "incorrect_or_unverified": 1,
+        "appropriate_refusal": 1,
+        "tool_unavailable": 1
+      }
+    },
+    "groups": {
+      "用途表达": {
+        "clarification": 2,
+        "completed_local_scope": 1,
+        "unsupported_intent": 1
+      },
+      "属性查询": {
+        "completed_local_scope": 3,
+        "clarification": 1
+      },
+      "多字段与比较": {
+        "clarification": 1,
+        "partial": 1,
+        "completed_local_scope": 2
+      },
+      "焦点与歧义": {
+        "appropriate_clarification": 2,
+        "incorrect_or_unverified": 1,
+        "completed_local_scope": 1
+      },
+      "ETCM与来源关系": {
+        "incorrect_or_unverified": 3,
+        "completed_local_scope": 1
+      },
+      "范围与能力边界": {
+        "appropriate_clarification": 2,
+        "appropriate_refusal": 1,
+        "tool_unavailable": 1
+      }
+    }
+  },
+  "author_contract_review": {
+    "positive_tasks": {
+      "total": 17,
+      "outcomes": {
+        "clarification": 5,
+        "completed_local_scope": 10,
+        "unsupported_intent": 1,
+        "partial": 1
+      }
+    },
+    "boundary_tasks": {
+      "total": 7,
+      "outcomes": {
+        "appropriate_clarification": 5,
+        "appropriate_refusal": 1,
+        "tool_unavailable": 1
+      }
+    },
+    "groups": {
+      "用途表达": {
+        "clarification": 2,
+        "completed_local_scope": 1,
+        "unsupported_intent": 1
+      },
+      "属性查询": {
+        "completed_local_scope": 3,
+        "clarification": 1
+      },
+      "多字段与比较": {
+        "clarification": 1,
+        "partial": 1,
+        "completed_local_scope": 2
+      },
+      "焦点与歧义": {
+        "appropriate_clarification": 3,
+        "completed_local_scope": 1
+      },
+      "ETCM与来源关系": {
+        "completed_local_scope": 3,
+        "clarification": 1
+      },
+      "范围与能力边界": {
+        "appropriate_clarification": 2,
+        "appropriate_refusal": 1,
+        "tool_unavailable": 1
+      }
+    },
+    "score_adjustments": [
+      {
+        "id": "P17",
+        "original_outcome": "incorrect_or_unverified",
+        "reviewed_outcome": "completed_local_scope",
+        "basis": "ADR-0001 display strips HTML; original raw value and JSON pointer match. Scientific meaning of the source field is not validated."
+      },
+      {
+        "id": "P18",
+        "original_outcome": "incorrect_or_unverified",
+        "reviewed_outcome": "completed_local_scope",
+        "basis": "Requested second page correctly returns offset20, total11, no rows and no next page; original target JSON independently has11 ingredient rows."
+      },
+      {
+        "id": "P14",
+        "original_outcome": "incorrect_or_unverified",
+        "reviewed_outcome": "appropriate_clarification",
+        "basis": "Business-level name clarification is acceptable; exact preregistered clarify_entity status was not met. Record this deviation and weaker context diagnosis."
+      },
+      {
+        "id": "P20",
+        "original_outcome": "incorrect_or_unverified",
+        "reviewed_outcome": "clarification",
+        "basis": "Source guidance intercepted a positive relation-plus-provenance request; no relation data returned. Task remains incomplete, not a source-row verification failure."
+      }
+    ],
+    "source_quality_flags": [
+      {
+        "id": "P17",
+        "note": "The field labelled English name contains botanical Latin-style names. Source-faithful display does not validate a reliable English common name."
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "P01",
+      "group": "用途表达",
+      "role": "positive_task",
+      "outcome": "clarification",
+      "reason": "Positive task not completed: name_not_resolved",
+      "elapsed_ms": 140.479,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P02",
+      "group": "用途表达",
+      "role": "positive_task",
+      "outcome": "completed_local_scope",
+      "reason": "All preregistered local source checks passed; not clinical validation.",
+      "elapsed_ms": 136.0,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P03",
+      "group": "用途表达",
+      "role": "positive_task",
+      "outcome": "unsupported_intent",
+      "reason": "Generic unsupported entry; original question was not rewritten.",
+      "elapsed_ms": 19.716,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P04",
+      "group": "用途表达",
+      "role": "positive_task",
+      "outcome": "clarification",
+      "reason": "Positive task not completed: name_not_resolved",
+      "elapsed_ms": 131.475,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P05",
+      "group": "属性查询",
+      "role": "positive_task",
+      "outcome": "completed_local_scope",
+      "reason": "All preregistered local source checks passed; not clinical validation.",
+      "elapsed_ms": 135.634,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P06",
+      "group": "属性查询",
+      "role": "positive_task",
+      "outcome": "completed_local_scope",
+      "reason": "All preregistered local source checks passed; not clinical validation.",
+      "elapsed_ms": 133.148,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P07",
+      "group": "属性查询",
+      "role": "positive_task",
+      "outcome": "completed_local_scope",
+      "reason": "All preregistered local source checks passed; not clinical validation.",
+      "elapsed_ms": 130.78,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P08",
+      "group": "属性查询",
+      "role": "positive_task",
+      "outcome": "clarification",
+      "reason": "Positive task not completed: name_not_resolved",
+      "elapsed_ms": 132.508,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P09",
+      "group": "多字段与比较",
+      "role": "positive_task",
+      "outcome": "clarification",
+      "reason": "Positive task not completed: name_not_resolved",
+      "elapsed_ms": 132.983,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P10",
+      "group": "多字段与比较",
+      "role": "positive_task",
+      "outcome": "partial",
+      "reason": "Requested fields missing, ambiguous or incomplete; full completion not credited.",
+      "elapsed_ms": 132.663,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P11",
+      "group": "多字段与比较",
+      "role": "positive_task",
+      "outcome": "completed_local_scope",
+      "reason": "All preregistered local source checks passed; not clinical validation.",
+      "elapsed_ms": 539.582,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P12",
+      "group": "多字段与比较",
+      "role": "positive_task",
+      "outcome": "completed_local_scope",
+      "reason": "All preregistered local source checks passed; not clinical validation.",
+      "elapsed_ms": 680.83,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P13",
+      "group": "焦点与歧义",
+      "role": "boundary",
+      "outcome": "appropriate_clarification",
+      "reason": "Specific unresolved scope/identity; no fabricated completion.",
+      "elapsed_ms": 132.859,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P14",
+      "group": "焦点与歧义",
+      "role": "boundary",
+      "outcome": "appropriate_clarification",
+      "reason": "Business-level name clarification is acceptable; exact preregistered clarify_entity status was not met. Record this deviation and weaker context diagnosis.",
+      "elapsed_ms": 132.081,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P15",
+      "group": "焦点与歧义",
+      "role": "positive_task",
+      "outcome": "completed_local_scope",
+      "reason": "All preregistered local source checks passed; not clinical validation.",
+      "elapsed_ms": 233.807,
+      "chat_requests": 2,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P16",
+      "group": "焦点与歧义",
+      "role": "boundary",
+      "outcome": "appropriate_clarification",
+      "reason": "Specific unresolved scope/identity; no fabricated completion.",
+      "elapsed_ms": 216.627,
+      "chat_requests": 2,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P17",
+      "group": "ETCM与来源关系",
+      "role": "positive_task",
+      "outcome": "completed_local_scope",
+      "reason": "ADR-0001 display strips HTML; original raw value and JSON pointer match. Scientific meaning of the source field is not validated.",
+      "elapsed_ms": 145.897,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P18",
+      "group": "ETCM与来源关系",
+      "role": "positive_task",
+      "outcome": "completed_local_scope",
+      "reason": "Requested second page correctly returns offset20, total11, no rows and no next page; original target JSON independently has11 ingredient rows.",
+      "elapsed_ms": 109.612,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P19",
+      "group": "ETCM与来源关系",
+      "role": "positive_task",
+      "outcome": "completed_local_scope",
+      "reason": "All preregistered local source checks passed; not clinical validation.",
+      "elapsed_ms": 678.547,
+      "chat_requests": 2,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P20",
+      "group": "ETCM与来源关系",
+      "role": "positive_task",
+      "outcome": "clarification",
+      "reason": "Source guidance intercepted a positive relation-plus-provenance request; no relation data returned. Task remains incomplete, not a source-row verification failure.",
+      "elapsed_ms": 110.296,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P21",
+      "group": "范围与能力边界",
+      "role": "boundary",
+      "outcome": "appropriate_clarification",
+      "reason": "Specific unresolved scope/identity; no fabricated completion.",
+      "elapsed_ms": 149.341,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P22",
+      "group": "范围与能力边界",
+      "role": "boundary",
+      "outcome": "appropriate_clarification",
+      "reason": "Specific unresolved scope/identity; no fabricated completion.",
+      "elapsed_ms": 151.317,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P23",
+      "group": "范围与能力边界",
+      "role": "boundary",
+      "outcome": "appropriate_refusal",
+      "reason": "Personal medication boundary, not task completion.",
+      "elapsed_ms": 112.679,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    },
+    {
+      "id": "P24",
+      "group": "范围与能力边界",
+      "role": "boundary",
+      "outcome": "tool_unavailable",
+      "reason": "Deployment explicitly disables PubMed; original retrieval task was not completed.",
+      "elapsed_ms": 116.179,
+      "chat_requests": 1,
+      "cleanup_http": 200
+    }
+  ],
+  "original_summary_sha256": "5468985b7c00a0cdf28c3c3a23ad6161b595d76a6e175b9aaf150697ae524d83",
+  "raw_results_sha256": "f27196fafdbc3eccfa6d7b22e161dc13341eeb9faea8c00676e6950c16412cae",
+  "references_sha256": "1dc295809c77e4ea33da3d12ec205ef9890eb7df507b30029526ac50bf28b8e5",
+  "exact_prior_eval_question_matches": [],
+  "semantic_independence_verified": false,
+  "cleanup_passed": true,
+  "input_and_runtime_unchanged": true,
+  "application_rules_changed": false,
+  "additional_http_for_review": 0,
+  "model_comparison": "not_run",
+  "provider_calls": "disabled_by_verified_deployment_configuration",
+  "external_model_cost": null,
+  "local_compute_cost": null,
+  "scorer_regression": {
+    "module": "test_business_acceptance.py",
+    "status": "passed",
+    "total": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "expected_failures": 0,
+    "network_attempts": 0
+  },
+  "prior_full_application_ci": {
+    "tests": 643,
+    "rerun_this_task": false
+  },
+  "first_attempt": {
+    "directory": "var/business_acceptance_v1/batch_01",
+    "status": "failed_before_http",
+    "reason": "Local http variable shadowed http.cookiejar import; retained original frozen evaluator and traceback. No chat or export requests sent. Fixed evaluator only, same24 cases and application image."
+  },
+  "limitations": [
+    "Author designed the questions after project development and source inspection; no independent authorship or observed user samples.",
+    "Zero exact matches in scanned eval files does not rule out semantic/template overlap or questions in other locations.",
+    "Original machine8/17 and reviewed10/17 are both retained; review corrects mechanical scoring and includes one boundary-status interpretation.",
+    "Source-faithful output does not validate English common names, clinical quality or semantic relevance.",
+    "This batch covers rule-only chat and comparison exports; bookmarks/restart/full AI workflow were not independently re-evaluated.",
+    "Single sequential request measurements do not establish production latency or capacity."
+  ],
+  "private_records": "var/business_acceptance_v1/batch_02/",
+  "remote_push": false,
+  "docker_rebuild": false
+}

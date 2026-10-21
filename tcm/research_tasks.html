@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>研究任务</title>
+<style>
+body{font:16px/1.65 system-ui,sans-serif;background:#f3f6f7;color:#173438;margin:0}main{overflow-wrap:anywhere;max-width:1000px;margin:auto;padding:24px}a{color:#116b68}h1{font-size:28px}h2{font-size:21px}section{background:white;border:1px solid #d5e1e3;border-radius:12px;padding:20px;margin:18px 0}input,select,textarea{max-width:100%;box-sizing:border-box}textarea{width:100%;font:inherit}button{max-width:100%;overflow-wrap:anywhere}button,select{font:inherit;padding:8px;border:1px solid #aac0c2;border-radius:6px;margin:5px}button{background:#126965;color:white;cursor:pointer}button:disabled{opacity:.5;cursor:wait}label{display:block;margin:10px 0}.note{color:#4c6468}.warning{background:#fff6d9;border-left:4px solid #ad7922;padding:14px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f7;padding:12px}li{margin:8px 0}#feedback{min-height:26px;color:#8d351d}table{border-collapse:collapse;width:100%}td,th{text-align:left;vertical-align:top;border-bottom:1px solid #d5e1e3;padding:8px;overflow-wrap:anywhere}button.secondary{background:white;color:#116b68}.actions{display:flex;flex-wrap:wrap;align-items:center}
+</style><script src="/research-tasks.js" defer></script></head>
+<body><main><a href="/">← 返回聊天</a><h1>研究任务</h1>
+<p class="warning">提供真实ETCM本地关系核查与合成流程演示两种任务。均不调用外部模型或联网；来源关联不等于药理机制、疗效或文献证据。</p>
+<section><h2>用问句创建ETCM本地任务</h2><p>先核对原请求清单，再确认两味药的执行计划、来源与选定靶点。药名仅按本地目录字面匹配，可自行补全或纠正；不会自动理解否定或代词。原问句保存在本地，不发送给模型。</p>
+<form id="local-question-form"><label>原始问句<textarea id="local-request-question" required maxlength="400" rows="3" placeholder="白术和黄芪有哪些共同靶点？请保留双方的原始记录。"></textarea></label><button id="create-local-question" type="submit">核对ETCM请求清单</button></form>
+<p class="note">本任务一次执行两味药的来源关系核查。其他药材、文献核查、药用部位表等要求会留在清单；仅执行其中一部分需要明确确认，报告继续列出未完成项。</p></section>
+<section><h2>新建ETCM本地关系任务</h2><p>输入两味药材的已收录中文名、拼音或来源ID，确认来源后，分页查看共同UniProt标识，并导出选定靶点的双方原始记录。</p>
+<form id="local-form"><label>药材一<input id="herb-one" required maxlength="100" placeholder="例如：白术"></label><label>药材二<input id="herb-two" required maxlength="100" placeholder="例如：黄芪"></label><button type="submit" id="create-local">创建本地ETCM任务</button></form>
+<p class="note">中文名称仅提供候选，必须明确选择来源。本地查询完成不代表研究结论得到验证；未检索文献等限制会在报告中单独说明。</p></section>
+<section><h2>合成问句入口</h2><p>仅处理示例甲草、示例乙草、示例丙草的软件测试需求。输入保存在本地任务库，不发送给模型；草稿可能漏项或误读否定，必须先核对完整清单。</p>
+<form id="question-form"><label>原始问句<textarea id="request-question" required maxlength="400" rows="3" placeholder="示例甲草和示例乙草有哪些共同靶点？还要药用部位并排表。"></textarea></label><button id="create-question" type="submit">生成待核对清单</button></form></section>
+<section><h2>新建合成任务</h2><p>任务：确认示例甲草和示例乙草的来源，选择共同靶点，核查研究对象并生成证据清单。</p>
+<label>测试场景<select id="profile"><option value="retry">首次无结果，再补检</option><option value="direct">直接取得合成记录</option><option value="ingredient_only">只有成分证据</option><option value="withdrawn">撤稿记录</option><option value="wrong_object">研究对象不符</option><option value="unavailable">检索工具不可用</option><option value="no_common">没有共同靶点记录</option></select></label>
+<button id="create">创建任务</button>
+<h3>计划与澄清验证（合成资料）</h3><p>仍使用示例甲草和示例乙草及上方测试场景。先确定范围；留空时保存待确认计划，确认后才执行。本入口不自动理解自由问句。</p>
+<label>本次任务范围<select id="plan-intent"><option value="">暂未确定，先澄清</option><option value="source_relations">只核对来源关系与双方原始记录</option><option value="evidence_review">继续核查已有合成研究记录</option></select></label>
+<label><input id="scope-third" type="checkbox">原请求还包含示例丙草（当前执行器不支持）</label>
+<label><input id="scope-parts" type="checkbox">原请求还要求药用部位并排表（当前计划工具不支持）</label>
+<button id="create-plan">创建计划任务</button>
+<p class="note">任务保存在服务器 SQLite 中，刷新后可继续。每个浏览器最多20项；清空聊天不删除任务。清除 Cookie 或换浏览器后无法找回，无账号或跨设备同步功能。</p></section>
+<p id="feedback" role="status" aria-live="polite"></p>
+<section><div class="actions"><h2>本浏览器的任务</h2><button id="refresh" class="secondary">刷新列表</button></div><ul id="tasks"></ul></section>
+<section id="detail" hidden><h2 id="title"></h2><p id="summary"></p><p id="question" class="note"></p><div id="request-scope"></div><form id="choices" hidden></form><div id="controls" class="actions"></div><h3>工具动作与观察</h3><ol id="trace"></ol><div id="report"></div></section>
+</main></body></html>

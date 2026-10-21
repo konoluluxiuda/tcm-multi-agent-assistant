@@ -1,0 +1,160 @@
+{
+  "status": "passed",
+  "date": "2026-10-21",
+  "scope": "user_reviewed_real_etcm_local_request_workflow_not_automatic_semantic_completeness",
+  "offline": {
+    "status": "passed",
+    "tests": 782,
+    "modules": 87,
+    "skipped": 0,
+    "network_attempts": 0,
+    "full_snapshot_evaluation": {
+      "status": "not_run",
+      "reason": "requires private ETCM snapshot/database; separate local acceptance"
+    },
+    "live_provider_evaluation": {
+      "status": "not_run",
+      "reason": "offline regression uses deterministic substitutes"
+    }
+  },
+  "browser": {
+    "status": "passed",
+    "scope": "real_local_etcm_question_workflow_known_pair_not_independent_business_evaluation",
+    "total": 20,
+    "checks": [
+      {
+        "name": "real_catalog_literal_draft_pauses_without_relation_tools_or_models",
+        "status": "passed"
+      },
+      {
+        "name": "catalog_suggestions_retain_exact_question_offsets",
+        "status": "passed"
+      },
+      {
+        "name": "api_cannot_skip_inventory_review",
+        "status": "passed"
+      },
+      {
+        "name": "user_additions_and_unexecutable_requirements_are_saved_before_any_relation_query",
+        "status": "passed"
+      },
+      {
+        "name": "stale_request_review_is_rejected",
+        "status": "passed"
+      },
+      {
+        "name": "actual_server_restart_preserves_real_question_review_and_plan_revision",
+        "status": "passed"
+      },
+      {
+        "name": "real_scope_reduction_requires_explicit_confirmation",
+        "status": "passed"
+      },
+      {
+        "name": "confirmed_plan_uses_only_two_names_and_still_requires_source_selection",
+        "status": "passed"
+      },
+      {
+        "name": "real_common_identifiers_keep_total_and_page_without_duplicates",
+        "status": "passed"
+      },
+      {
+        "name": "real_completed_subset_preserves_all_unhandled_requirements_and_correct_labels",
+        "status": "passed"
+      },
+      {
+        "name": "selected_target_both_original_json_rows_and_sha256_reconciled",
+        "status": "passed"
+      },
+      {
+        "name": "download_preserves_original_question_review_coverage_and_raw_provenance",
+        "status": "passed"
+      },
+      {
+        "name": "optional_pmid_ids_do_not_fulfill_literature_review",
+        "status": "passed"
+      },
+      {
+        "name": "question_and_export_are_isolated_from_other_browser",
+        "status": "passed"
+      },
+      {
+        "name": "fully_supported_real_question_completes_without_reduction_acknowledgement",
+        "status": "passed"
+      },
+      {
+        "name": "unresolved_real_name_is_partial_not_an_empty_intersection",
+        "status": "passed"
+      },
+      {
+        "name": "pronouns_do_not_autofill_real_entities",
+        "status": "passed"
+      },
+      {
+        "name": "legacy_synthetic_route_remains_usable",
+        "status": "passed"
+      },
+      {
+        "name": "mobile_layout_and_javascript_checked_with_no_external_browser_requests",
+        "status": "passed"
+      },
+      {
+        "name": "only_created_test_tasks_removed",
+        "status": "passed"
+      }
+    ],
+    "common_target_total": 151,
+    "raw_witnesses_reconciled": 2,
+    "actual_preview_process_restart": true,
+    "external_model_calls": 0,
+    "external_browser_requests": 0,
+    "test_tasks_deleted": true,
+    "docker_updated": false
+  },
+  "workflow": [
+    "waiting_request",
+    "waiting_plan",
+    "waiting_sources",
+    "waiting_targets",
+    "report"
+  ],
+  "source_sha256": {
+    "tcm/task_plan.py": "47e3f83c669cfb26f9373ddef7f2cb5340e189f4286084b7aaf7c50b7e984bd7",
+    "tcm/request_coverage.py": "ca1edd784634930a9ae52cbca77d84aee393831dcbe9b008a831346b81772c3b",
+    "tcm/task_request.py": "56d29f1df04ee0bda97f998eae56123df3b71e3d1a18be074b3d338bd346b6c9",
+    "tcm/research_task_local.py": "f9098a347ef2dc8f7679215cba4cb96b2fe40ab8f628b2fae95eb7cd4ce0ebf1",
+    "tcm/research_task_api.py": "c005499ae4062f19ee287956d0d0412d733390241e65bfebfada751142e55b5c",
+    "tcm/research_tasks.html": "4670a32a0bc26ccc2f24c3397850fe1acd6b20eda0c6239216b94a0990c59dce",
+    "tcm/research_tasks.js": "ebd02ed6a74f2da9aa5261b792ae67d89b3a489aae84e8f1a09855f1f067d4f0",
+    "tests/test_local_task_request.py": "43904419b8b3b9090be8f00e9ea8832bda4c0031f2b2d43adc45a52abc305716"
+  },
+  "request_scope_data_mode": "etcm_local",
+  "execution_intents": [
+    "source_relations"
+  ],
+  "requires_inventory_and_plan_confirmation_before_relation_tools": true,
+  "third_and_other_unexecuted_requirements_preserved": true,
+  "semantic_completeness_automatically_verified": false,
+  "original_question_draft_and_review_preserved": true,
+  "real_etcm_tools_reused": true,
+  "raw_json_and_file_sha256_reconciled": true,
+  "legacy_reports_not_migrated": true,
+  "schema_migration": false,
+  "external_model_calls": 0,
+  "arbitrary_text_sent_to_provider": false,
+  "git_commit_created": false,
+  "remote_push": false,
+  "docker_updated": false,
+  "limitations": [
+    "Literal catalog hints do not understand negation, pronouns or all unknown entities; the user must correct and complete the inventory.",
+    "Completion is bound to the user-reviewed inventory, not an automatic proof of the original text semantics.",
+    "Only two selected herbs and source-reported shared identifiers are executed; other requirements remain incomplete.",
+    "Known-pair scripted source selection is not independent user evaluation or herb identity or clinical verification.",
+    "PMID identifiers do not fulfill literature review; external literature expansion remains frozen.",
+    "Anonymous browser ownership has no account, automatic cross-device synchronization or task backup.",
+    "Browser validation covers DOM, behavior and layout; Chinese typography is not fully visually validated."
+  ],
+  "verification_notes": [
+    "An initial worker stalled under restricted local test runtime; it was stopped and the related modules rerun successfully with local execution permissions. Offline workers forbid external network."
+  ]
+}

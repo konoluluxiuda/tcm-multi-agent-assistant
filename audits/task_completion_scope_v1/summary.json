@@ -1,0 +1,118 @@
+{
+  "status": "passed",
+  "date": "2026-10-21",
+  "scope": "completion_v2_local_query_not_research_validation",
+  "offline": {
+    "status": "passed",
+    "modules": 81,
+    "tests": 715,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "scope": "local_preview_not_docker_completion_v2_known_pair_not_independent_evaluation",
+    "names": [
+      "白术",
+      "黄芪"
+    ],
+    "common_target_total": 151,
+    "selected_target_count": 1,
+    "raw_witnesses_reconciled": 2,
+    "reference_anchors_reconciled": 2,
+    "checks": [
+      {
+        "name": "main_chat_link_and_two_separate_task_forms",
+        "status": "passed"
+      },
+      {
+        "name": "real_chinese_names_return_explicit_source_candidates_without_model",
+        "status": "passed"
+      },
+      {
+        "name": "real_source_pair_shared_uniprot_count_and_first_page",
+        "status": "passed"
+      },
+      {
+        "name": "real_next_page_retains_count_and_has_distinct_targets",
+        "status": "passed"
+      },
+      {
+        "name": "reload_recovers_real_task_page_and_candidates",
+        "status": "passed"
+      },
+      {
+        "name": "optional_reference_button_keeps_local_task_complete_without_claiming_research",
+        "status": "passed"
+      },
+      {
+        "name": "pmid_scalar_anchors_match_actual_source_json_and_file_hashes",
+        "status": "passed"
+      },
+      {
+        "name": "reference_leads_survive_page_reload_without_new_reads",
+        "status": "passed"
+      },
+      {
+        "name": "real_relation_report_keeps_both_sides_and_separates_research_limits",
+        "status": "passed"
+      },
+      {
+        "name": "both_source_files_sha256_and_raw_json_pointers_reconciled",
+        "status": "passed"
+      },
+      {
+        "name": "real_markdown_download_contains_snapshot_and_original_rows",
+        "status": "passed"
+      },
+      {
+        "name": "real_task_stale_selection_rejected",
+        "status": "passed"
+      },
+      {
+        "name": "real_data_task_isolated_from_another_browser",
+        "status": "passed"
+      },
+      {
+        "name": "real_task_mobile_layout",
+        "status": "passed"
+      },
+      {
+        "name": "no_browser_javascript_errors",
+        "status": "passed"
+      },
+      {
+        "name": "test_tasks_deleted_without_modifying_source_data",
+        "status": "passed"
+      }
+    ],
+    "total": 16,
+    "external_model_calls": 0,
+    "network_literature_calls": 0,
+    "clinical_conclusion": false,
+    "private_report_saved_locally": true,
+    "test_tasks_deleted": true
+  },
+  "compatibility": {
+    "legacy_pending_tasks_keep_v1": true,
+    "legacy_report_get_export_do_not_mutate": true,
+    "bulk_history_migration": false
+  },
+  "first_browser_attempt": {
+    "status": "failed",
+    "stage": "new_completion_label",
+    "cause": "pre-change preview process still running",
+    "resolution": "verified preview process restarted; same test passed",
+    "failure_retained_locally": true,
+    "test_task_deleted": true
+  },
+  "external_model_calls": 0,
+  "docker_updated": false,
+  "git_commit_created": false,
+  "remote_push": false,
+  "next_unimplemented": [
+    "typed_tool_results_and_registry",
+    "ETCM_model_planning",
+    "pending_plan_clarification_state"
+  ]
+}

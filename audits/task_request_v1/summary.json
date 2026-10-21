@@ -1,0 +1,124 @@
+{
+  "status": "passed",
+  "date": "2026-10-21",
+  "scope": "local_synthetic_question_user_inventory_review_not_automated_semantic_completeness",
+  "offline": {
+    "status": "passed",
+    "tests": 771,
+    "modules": 86,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "scope": "local_synthetic_question_inventory_review_not_natural_language_accuracy",
+    "total": 17,
+    "checks": [
+      {
+        "name": "free_question_stays_local_and_pauses_before_plan_or_tools",
+        "status": "passed"
+      },
+      {
+        "name": "literal_suggestions_are_labeled_incomplete_and_allow_negation_correction",
+        "status": "passed"
+      },
+      {
+        "name": "draft_anchors_point_to_exact_original_question_spans",
+        "status": "passed"
+      },
+      {
+        "name": "plan_confirmation_and_resume_cannot_skip_inventory_review",
+        "status": "passed"
+      },
+      {
+        "name": "refresh_retains_original_draft_without_auto_confirming_inventory",
+        "status": "passed"
+      },
+      {
+        "name": "manual_correction_and_added_requirement_are_saved_without_executing",
+        "status": "passed"
+      },
+      {
+        "name": "stale_inventory_review_cannot_replace_confirmed_scope",
+        "status": "passed"
+      },
+      {
+        "name": "actual_server_restart_preserves_question_draft_edits_and_revision",
+        "status": "passed"
+      },
+      {
+        "name": "coverage_gate_still_blocks_unconfirmed_scope_reduction_after_inventory_review",
+        "status": "passed"
+      },
+      {
+        "name": "completed_subset_retains_all_unhandled_entities_deliverables_and_manual_items",
+        "status": "passed"
+      },
+      {
+        "name": "markdown_contains_original_question_automatic_draft_and_user_revisions",
+        "status": "passed"
+      },
+      {
+        "name": "original_question_and_report_isolated_from_other_browser",
+        "status": "passed"
+      },
+      {
+        "name": "fully_reviewed_supported_question_completes_without_reduction_ack",
+        "status": "passed"
+      },
+      {
+        "name": "unresolved_pronouns_do_not_autofill_entities_or_execute",
+        "status": "passed"
+      },
+      {
+        "name": "legacy_synthetic_creation_and_completion_remain_compatible",
+        "status": "passed"
+      },
+      {
+        "name": "question_textarea_mobile_layout_and_no_javascript_errors",
+        "status": "passed"
+      },
+      {
+        "name": "only_test_owner_tasks_cleaned_up",
+        "status": "passed"
+      }
+    ],
+    "actual_preview_process_restart": true,
+    "external_model_calls": 0,
+    "test_tasks_deleted": true,
+    "docker_updated": false
+  },
+  "source_sha256": {
+    "tcm/task_request.py": "dcef27d7fb81b0b0a23e00faa163961037056516804accc4e0016bd233140d57",
+    "tcm/request_coverage.py": "9f0429b379d52fc50bcf57694ba1f986a62111ff2f954a6444148a54df077faf",
+    "tcm/research_task.py": "6f4b5646c8571c7c4407c82358ffbff42726927de63907da148ee043eb90e422",
+    "tcm/research_task_api.py": "baa5fe0b88c22b2e6b020c865c755f80668413a4ebbee075311195de4c656045",
+    "tcm/research_task_report.py": "8b0d9660e332465a5fb18e1a5185de1dd49ea28816a40422a81fece2881603cc",
+    "tcm/research_tasks.js": "c02943a85ed1211466c8213d772c27a5cd25ca1e833acb00ef7b5e83b01fafbf",
+    "tcm/research_tasks.html": "d87d8782bd26d643fd9d0146a8f8980bd026405f485e46e73c2d21bd3520c63f",
+    "tests/test_task_request.py": "25de815229305e2dbb06bc7ab1aae524c97a5f4aa9b1b39dcbe2999b2da958b8"
+  },
+  "workflow": [
+    "waiting_request",
+    "waiting_plan",
+    "waiting_sources",
+    "waiting_targets",
+    "report"
+  ],
+  "requires_explicit_inventory_review": true,
+  "semantic_completeness_automatically_verified": false,
+  "original_question_draft_and_review_preserved": true,
+  "legacy_scope_empty_defaults_normalized": true,
+  "external_model_calls": 0,
+  "arbitrary_text_sent_to_provider": false,
+  "real_ETCM_migrated": false,
+  "git_commit_created": false,
+  "remote_push": false,
+  "docker_updated": false,
+  "limitations": [
+    "Draft uses literal catalog hints and does not understand negation or pronouns.",
+    "Inventory completeness is declared by the user, not automatically proved.",
+    "Final completion refers to the user-reviewed inventory, not automatic semantic verification of raw text.",
+    "New question mode is synthetic only; old routes retain their scopes."
+  ]
+}

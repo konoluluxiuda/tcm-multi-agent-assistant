@@ -206,6 +206,16 @@ class ResearchRetriever:
                 result['status'] = 'ambiguous_field'
                 result['message'] = '同一药名下有重复字段，可能涉及炮制品；请核对原文范围。'
             result.update(names=names, fields=labels, field_occurrences=len(rows))
+            observed = {r['label'] for r in rows}
+            if observed & {'性味', '性味与归经'}:
+                observed.update({'性味', '性味与归经'})
+            missing = sorted(set(labels) - observed)
+            if missing:
+                result['missing_fields'] = missing
+                result['lookup_complete'] = False
+                if result['status'] == 'candidates':
+                    result['status'] = 'partial_evidence'
+                    result['message'] = '部分请求字段未在当前条目中检出，不能用已取得的字段代替。'
             if method=='name_bm25':
                 field_rows=rows
                 # Exclude entity tokens: a name match alone must not return arbitrary fields.

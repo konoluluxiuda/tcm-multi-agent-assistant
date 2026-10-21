@@ -1,0 +1,102 @@
+{
+  "status": "completed_with_findings",
+  "date": "2026-10-21",
+  "scope": "additional_synthetic_acceptance_not_independent_user_evaluation",
+  "frozen_core_files_unchanged": {
+    "tcm/task_planner.py": true,
+    "tcm/task_plan.py": true,
+    "tcm/research_task.py": true,
+    "tcm/research_task_fixtures.py": true,
+    "tcm/research_task_store.py": true,
+    "tcm/research_task_report.py": true
+  },
+  "comparison": {
+    "status": "completed",
+    "mode": "live_synthetic",
+    "cases": 12,
+    "suite": "acceptance-v1",
+    "split": "additional_author_designed_acceptance_not_independent_holdout",
+    "provider_calls": 12,
+    "policies": {
+      "deterministic": {
+        "run": 12,
+        "raw_goal_entities_match": 4,
+        "validated_goal_entities_match": 4,
+        "duration_ms_total": 1.371,
+        "execution_outcomes": {
+          "execution_complete": 0,
+          "execution_partial": 1,
+          "clarification_required": 3,
+          "needs_correction": 8,
+          "execution_failed": 0
+        }
+      },
+      "model": {
+        "run": 12,
+        "raw_goal_entities_match": 10,
+        "validated_goal_entities_match": 10,
+        "duration_ms_total": 15835.991,
+        "execution_outcomes": {
+          "execution_complete": 4,
+          "execution_partial": 2,
+          "clarification_required": 4,
+          "needs_correction": 2,
+          "execution_failed": 0
+        }
+      }
+    },
+    "all_proposals_wait_for_review": true,
+    "business_accuracy": null,
+    "independent_review": false,
+    "cost": null,
+    "limitations": [
+      "Author-designed synthetic questions, not a general intent accuracy result or independent holdout.",
+      "Expected labels are author-designed, not independent human review.",
+      "Task execution remains deterministic and requires source/target choices.",
+      "Single run latency, price not configured, failures may have unknown token usage."
+    ]
+  },
+  "model_failures": [
+    {
+      "id": "A11",
+      "policy": "model",
+      "failure_types": [
+        "unsupported_scope_selected",
+        "wrong_or_missing_entities"
+      ]
+    },
+    {
+      "id": "A12",
+      "policy": "model",
+      "failure_types": [
+        "unsupported_scope_selected"
+      ]
+    }
+  ],
+  "offline": {
+    "status": "passed",
+    "tests": 748,
+    "modules": 84,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "evaluator_first_attempt": {
+    "application_unchanged": true,
+    "failure": "Research report common-source rows incorrectly required to equal selected targets",
+    "resolution": "Check selected studies and both-side witnesses; retain common-source rows under existing report contract",
+    "original_results_retained": "var/task_planner_acceptance_v1/baseline_first"
+  },
+  "release_gate": "not_passed_for_automatic_planning",
+  "decision": "Model helps paraphrases in this sample; require request-coverage contract before default use",
+  "default_changed": false,
+  "core_prompt_or_rules_tuned_on_cases": false,
+  "provider_calls_this_round": 12,
+  "real_corpus_or_history_sent": false,
+  "new_browser_evaluation": false,
+  "git_commit_created": false,
+  "remote_push": false,
+  "docker_updated": false,
+  "independent_review": false,
+  "business_accuracy": null,
+  "next_priority": "explicit unsupported entities and unmet deliverables, with user-approved scope reduction"
+}

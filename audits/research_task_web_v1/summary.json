@@ -1,0 +1,125 @@
+{
+  "status": "passed",
+  "date": "2026-10-21",
+  "scope": "synthetic task web UI and persistent local execution state; not real corpus or model effectiveness",
+  "base_revision": "cc9424bc99af353dbc3f16a336a38f1c83693025",
+  "working_tree_dirty": true,
+  "image_tag": "tcm-research-chat:research-task-web-20261021",
+  "image_id": "sha256:7bd8a9b874e221ba0c63d86872dc0386c0cc70cfb0d5daa66d13dd7c0e35973b",
+  "source_tree_sha256": "08a3cd3140131f0f64d23ef80636b4456ff23880b6f9fdc4004c736bfb1e6512",
+  "offline": {
+    "modules": 78,
+    "tests": 685,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "new_api_tests": 12,
+  "browser": {
+    "status": "passed",
+    "scope": "actual_local_docker_browser_synthetic_only",
+    "checks": [
+      {
+        "name": "main_chat_link_and_synthetic_notice",
+        "status": "passed"
+      },
+      {
+        "name": "explicit_source_selection_and_second_pause",
+        "status": "passed"
+      },
+      {
+        "name": "container_restart_cookie_and_sqlite_task_recovery",
+        "status": "passed"
+      },
+      {
+        "name": "target_confirmation_empty_search_retry_and_completion",
+        "status": "passed"
+      },
+      {
+        "name": "action_observations_and_separate_evidence_scopes",
+        "status": "passed"
+      },
+      {
+        "name": "markdown_download_works_in_runtime_image",
+        "status": "passed"
+      },
+      {
+        "name": "stale_second_window_choices_rejected",
+        "status": "passed"
+      },
+      {
+        "name": "different_browser_cannot_list_read_or_download_task",
+        "status": "passed"
+      },
+      {
+        "name": "ingredient_only_stays_partial_with_explicit_gap",
+        "status": "passed"
+      },
+      {
+        "name": "mobile_view_has_no_horizontal_page_overflow",
+        "status": "passed"
+      },
+      {
+        "name": "test_tasks_deleted_without_touching_chat",
+        "status": "passed"
+      },
+      {
+        "name": "no_browser_javascript_errors",
+        "status": "passed"
+      }
+    ],
+    "total": 12,
+    "model_calls": 0,
+    "pubmed_calls": 0,
+    "test_tasks_deleted": true
+  },
+  "deployment": {
+    "http": {
+      "/": 200,
+      "/health": 200,
+      "/ready/research": 200,
+      "/ready/herbs": 200,
+      "/research-bookmarks.js": 200,
+      "/research-tasks": 200,
+      "/research-tasks.js": 200
+    },
+    "uid": 10001,
+    "model_calls": 0,
+    "status": "passed",
+    "commit": "cc9424bc99af353dbc3f16a336a38f1c83693025",
+    "source_files_verified": 82,
+    "same_memory_volume": true,
+    "protected_service_ids_unchanged": true,
+    "readonly_binds": true,
+    "readonly_root": true,
+    "request_log_correlation": true,
+    "model_and_pubmed_disabled": true,
+    "private_payloads_absent_from_app": true
+  },
+  "first_browser_attempt": {
+    "status": "failed",
+    "http_status": 403,
+    "phase": "main application tools-only write allowlist",
+    "retained": true,
+    "repair": "Allow exact task API prefix and add main-app middleware integration regression."
+  },
+  "storage": {
+    "backend": "SQLite",
+    "separate_database": true,
+    "same_existing_volume": true,
+    "owner": "SHA256 of independent signed anonymous cookie",
+    "revision_conflicts": "409",
+    "per_browser_limit": 20,
+    "real_container_restart_verified": true
+  },
+  "limits": [
+    "Web demo uses ScriptedToolModel, not live model reasoning. Native synthetic CLI validation remains separate.",
+    "No real ETCM/PubMed task adapters, clinical conclusions, real semantic accuracy or independent user effectiveness demonstrated.",
+    "Anonymous browser credential only; no accounts, cross-device recovery, automatic TTL, production shared lease or task backup.",
+    "Single-worker in-process coordination plus SQLite optimistic revisions; no exactly-once execution guarantee.",
+    "Automated browser lacks Chinese font glyphs; Chinese content checked via DOM, screenshot checks layout only."
+  ],
+  "external_model_calls_this_web_stage": 0,
+  "real_corpus_sent": false,
+  "git_committed": false,
+  "remote_uploaded": false
+}

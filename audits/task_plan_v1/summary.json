@@ -1,0 +1,112 @@
+{
+  "status": "passed",
+  "date": "2026-10-21",
+  "scope": "structured_synthetic_plan_and_persistent_clarification_not_model_intent_recognition",
+  "offline": {
+    "status": "passed",
+    "modules": 83,
+    "tests": 735,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "scope": "known_synthetic_plan_flow_not_natural_language_or_business_accuracy",
+    "total": 15,
+    "checks": [
+      {
+        "name": "draft_plan_pauses_without_tool_or_model_calls",
+        "status": "passed"
+      },
+      {
+        "name": "reload_restores_exact_missing_plan_slot_without_rewriting_state",
+        "status": "passed"
+      },
+      {
+        "name": "plan_clarification_mobile_layout",
+        "status": "passed"
+      },
+      {
+        "name": "real_preview_process_restart_preserves_waiting_plan_and_revision",
+        "status": "passed"
+      },
+      {
+        "name": "plan_confirmation_only_resolves_candidates_does_not_choose_sources",
+        "status": "passed"
+      },
+      {
+        "name": "confirmed_sources_still_require_explicit_target_selection",
+        "status": "passed"
+      },
+      {
+        "name": "relation_plan_finishes_without_research_search_and_keeps_both_witnesses",
+        "status": "passed"
+      },
+      {
+        "name": "download_keeps_confirmed_plan_and_original_synthetic_rows",
+        "status": "passed"
+      },
+      {
+        "name": "stale_plan_confirmation_cannot_change_scope",
+        "status": "passed"
+      },
+      {
+        "name": "another_browser_cannot_read_planned_task",
+        "status": "passed"
+      },
+      {
+        "name": "evidence_plan_preserves_ingredient_only_partial_boundary",
+        "status": "passed"
+      },
+      {
+        "name": "valid_empty_relation_query_completes_without_target_guessing",
+        "status": "passed"
+      },
+      {
+        "name": "legacy_unplanned_synthetic_workflow_is_unchanged",
+        "status": "passed"
+      },
+      {
+        "name": "no_browser_javascript_errors",
+        "status": "passed"
+      },
+      {
+        "name": "only_test_owner_tasks_cleaned_up",
+        "status": "passed"
+      }
+    ],
+    "external_model_calls": 0,
+    "real_data_or_network_tools": 0,
+    "actual_preview_process_restart": true,
+    "docker_updated": false,
+    "test_tasks_deleted": true
+  },
+  "source_sha256": {
+    "tcm/task_plan.py": "f8fadc823a7130207760d11f10b3b0e14de902ef0e6a94d96857ee52852eaf77",
+    "tcm/research_task.py": "fe569756d6fda87be25eb97b331ff80eec47611eeaa4e51f8f5eb018af5da01a",
+    "tcm/research_task_api.py": "bca9b039ad78f196e3750d6e77b96d48ff66684c21df8d396d5d4c38ed790bd3",
+    "tcm/research_task_report.py": "b124ff62d0034a89355616cd78f25205fad938cca04ec291baaf7e6c25d6cc3d",
+    "tcm/research_tasks.js": "fc405339d311ffbcdbed13e62a0116e4813c54945c346ae10b6bfc94019bd716",
+    "tcm/research_tasks.html": "9016e5a07434167740ee377a5404bbfb34d3ed1cde9023c532e380955e8f9345",
+    "tests/test_task_plan.py": "712f3a5b0136b299e5b41754b4bf3485c2df7629b03b515bad5566aae86543ef"
+  },
+  "supported_plan_intents": [
+    "source_relations",
+    "evidence_review"
+  ],
+  "clarification_state": "waiting_plan",
+  "missing_plan_executes_tools": false,
+  "free_text_model_planning": false,
+  "real_ETCM_plans": false,
+  "legacy_plans_migrated": false,
+  "external_model_calls": 0,
+  "real_data_sent_to_provider": false,
+  "git_commit_created": false,
+  "remote_push": false,
+  "docker_updated": false,
+  "limitations": [
+    "known synthetic flow, not independent business evaluation",
+    "structured form/API only, no free-text inference",
+    "existing Python state machine and SQLite, not general LangGraph interrupts"
+  ]
+}

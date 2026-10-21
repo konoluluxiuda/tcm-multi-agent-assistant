@@ -1,0 +1,91 @@
+{
+  "status": "completed",
+  "date": "2026-10-21",
+  "data_mode": "synthetic_only",
+  "split": "known_designed_development",
+  "manifest_sha256": "d909a911031b7719c9388c2d67fb61053e1f5d34dbc4cfbc421296b9dbe0de21",
+  "source_sha256": {
+    "scripts/benchmark_task_controllers.py": "60749c25d0f7806af72b197301daf6144de682e6972ed7f88e735900231d0900",
+    "tcm/research_task.py": "d874bdd4a9e629fd2154af002b9a2f8cfa533813a12337f86e76585eeb2573a7",
+    "tcm/research_task_fixtures.py": "455fc6e3d1c30db7eda383c6f741d0b2e6bc878cebaa84a0451ddd75668f7232",
+    "tcm/research_task_store.py": "13678791ac9f7e8c260c795250b06ca74107da8cfb296b2f802973df6791aaa8"
+  },
+  "configured_model": {
+    "endpoint_host": "api.deepseek.com",
+    "model": "deepseek-flash",
+    "temperature": 0,
+    "timeout": 15,
+    "max_retries": 0,
+    "max_tokens": 600
+  },
+  "returned_models": [
+    "deepseek-flash"
+  ],
+  "policy_results": {
+    "deterministic": {
+      "contract_passed": 4,
+      "run": 4,
+      "provider_calls": 0,
+      "duration_ms_total": 231.308,
+      "expected_complete": 2,
+      "expected_partial": 2,
+      "tool_actions": 15,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "mean_duration_ms": 57.827
+    },
+    "one_plan": {
+      "contract_passed": 4,
+      "run": 4,
+      "provider_calls": 4,
+      "duration_ms_total": 6318.179,
+      "expected_complete": 2,
+      "expected_partial": 2,
+      "tool_actions": 15,
+      "input_tokens": 6076,
+      "output_tokens": 646,
+      "mean_duration_ms": 1579.545
+    },
+    "bounded_loop": {
+      "contract_passed": 4,
+      "run": 4,
+      "provider_calls": 15,
+      "duration_ms_total": 14303.749,
+      "expected_complete": 2,
+      "expected_partial": 2,
+      "tool_actions": 16,
+      "input_tokens": 34371,
+      "output_tokens": 842,
+      "mean_duration_ms": 3575.937
+    }
+  },
+  "provider_calls": 19,
+  "provider_limit": 28,
+  "cost": null,
+  "findings": [
+    "All three methods met the same four execution contracts: two complete synthetic tasks and two expected partial outcomes.",
+    "No added completion benefit from the two model controllers in this known controlled sample.",
+    "Bounded-loop C04 attempted expanded search after unavailable, using one more tool action than the other methods; first run preserved without rerun.",
+    "Keep deterministic execution default for current explicit tasks; literature expansion and extra Agent/CoT UI work frozen."
+  ],
+  "checks": {
+    "benchmark_tests": 7,
+    "shared_engine_regressions": 18,
+    "live_first_run_rows": 12,
+    "live_failures": 0,
+    "real_corpus_sent": false,
+    "source_snapshot_verified": true
+  },
+  "business_accuracy": null,
+  "independent_review": false,
+  "semantic_support_review": "not_performed",
+  "limits": [
+    "Known synthetic execution cases; not novel user questions, real corpus retrieval or real research validation.",
+    "Shared server enforces scope and generates reports; this does not measure free-text hallucinations or medical correctness.",
+    "One-plan search space is only two booleans; it can match the deterministic driver without proving general planning ability.",
+    "Single run and rotated order, no statistical latency or robustness conclusion. Failed calls may have unknown token usage."
+  ],
+  "app_or_tool_logic_changed": false,
+  "git_committed": false,
+  "remote_uploaded": false
+}

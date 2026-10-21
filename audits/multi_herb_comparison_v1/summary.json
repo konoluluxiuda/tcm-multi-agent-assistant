@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-20",
+  "scope": "bounded_multi_herb_source_comparison",
+  "max_herbs": 3,
+  "max_fields": 4,
+  "max_local_queries": 13,
+  "max_candidate_hits": 60,
+  "export_size_limit_bytes": 3145728,
+  "export_format_version": 2,
+  "offline": {
+    "status": "passed",
+    "modules": 75,
+    "tests": 643,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "image": {
+    "image_tag": "tcm-research-chat:multi-comparison-20261020",
+    "image_id": "sha256:d65d884a299ac02801e69037792ba2242f5fbcd12e29032699810dcc97b2f33a",
+    "base_revision": "cc9424bc99af353dbc3f16a336a38f1c83693025",
+    "working_tree_dirty": true,
+    "source_tree_sha256": "a4312439aad1c82a49be39583ad6d46fda92e7f1b012d15989539ca9db1b9ca3",
+    "docker_hub_published": false
+  },
+  "deployment": {
+    "http": {
+      "/": 200,
+      "/health": 200,
+      "/ready/research": 200,
+      "/ready/herbs": 200,
+      "/research-bookmarks.js": 200
+    },
+    "uid": 10001,
+    "model_calls": 0,
+    "status": "passed",
+    "source_files_verified": 75,
+    "same_memory_volume": true,
+    "protected_service_ids_unchanged": true,
+    "readonly_binds": true,
+    "readonly_root": true,
+    "request_log_correlation": true,
+    "model_and_pubmed_disabled": true,
+    "private_payloads_absent_from_app": true
+  },
+  "port": 7876,
+  "browser": {
+    "checks": [
+      "original_known_three_herb_wording_renders_3_by_3",
+      "maximum_3_by_4_preserves_missing_states",
+      "previous_2_by_2_remains_available",
+      "all_downloads_preserve_cell_text_and_source",
+      "exports_do_not_change_conversation",
+      "over_budget_requests_clarify_without_grid",
+      "no_client_errors",
+      "no_evidence_mode_or_external_requests"
+    ],
+    "cases": [
+      {
+        "names": [
+          "黄芪",
+          "党参",
+          "人参"
+        ],
+        "fields": [
+          "性味与归经",
+          "功能与主治",
+          "用法与用量"
+        ],
+        "status": "candidates",
+        "cells": 9,
+        "cell_states": [
+          [
+            "candidates",
+            "candidates",
+            "candidates"
+          ],
+          [
+            "candidates",
+            "candidates",
+            "candidates"
+          ],
+          [
+            "candidates",
+            "candidates",
+            "candidates"
+          ]
+        ],
+        "download_sha256": "da37cf6ed49876b61869859355b9f2270a8c02fa55266fcd62f156a09e22ba3a"
+      },
+      {
+        "names": [
+          "黄芪",
+          "党参",
+          "人参"
+        ],
+        "fields": [
+          "性味与归经",
+          "功能与主治",
+          "用法与用量",
+          "注意"
+        ],
+        "status": "partial_evidence",
+        "cells": 12,
+        "cell_states": [
+          [
+            "candidates",
+            "candidates",
+            "candidates",
+            "field_not_observed"
+          ],
+          [
+            "candidates",
+            "candidates",
+            "candidates",
+            "candidates"
+          ],
+          [
+            "candidates",
+            "candidates",
+            "candidates",
+            "candidates"
+          ]
+        ],
+        "download_sha256": "f2a65c6746b54fc3dbfb25730915cd599c88484ae084a7585e2a396ef312fd22"
+      },
+      {
+        "names": [
+          "白术",
+          "黄芪"
+        ],
+        "fields": [
+          "功能与主治",
+          "用法与用量"
+        ],
+        "status": "candidates",
+        "cells": 4,
+        "cell_states": [
+          [
+            "candidates",
+            "candidates"
+          ],
+          [
+            "candidates",
+            "candidates"
+          ]
+        ],
+        "download_sha256": "af73bdda8d7b5f72847211eaf5f69fd6273718cb42ca3f338ff397566d9324ae"
+      }
+    ],
+    "external_requests_allowed": 0,
+    "answer_mode": "auto",
+    "status": "passed",
+    "test_session_delete_http": 200,
+    "private_downloads_removed": true
+  },
+  "limitations": [
+    "Known failed simulated question reused after implementation; not independent acceptance or a clinical accuracy claim.",
+    "性味 and 归经 map to the single original 性味与归经 field.",
+    "Missing fields remain partial; candidates require source verification.",
+    "Cross-turn comparison pronouns are not resolved automatically."
+  ],
+  "validation_history": [
+    "Initial direct unittest run interrupted; sandbox ASGI did not finish.",
+    "Isolated first targeted run found missing natural-routing environment flag in test; corrected test setup.",
+    "Added explicit 把…放一起 context boundaries and full-question regression before final CI.",
+    "Final CI ran on final runtime code; no runtime changes after image build."
+  ],
+  "remote_push": false,
+  "source_data_modified": false
+}

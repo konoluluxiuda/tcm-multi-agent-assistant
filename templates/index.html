@@ -366,6 +366,7 @@
                     </section>
                     {% endif %}
 
+                    {% if research_tasks_enabled %}<p class="px-3 py-2"><a href="/research-tasks">研究任务（ETCM本地 / 合成演示）</a></p>{% endif %}
                     {% if research_bookmarks_enabled %}
                     <details id="research-bookmarks" class="px-3 py-2">
                         <summary>研究收藏（持久保存）</summary>
@@ -569,7 +570,7 @@
                     container.append(details);
                 }
                 const download=el('button','导出对比证据 Markdown');download.type='button';download.dataset.comparisonExport='true';
-                const status=el('p','仅导出本次对比字段，分别保留两味药的原文、缺失状态及出处。','muted');
+                const status=el('p','仅导出本次对比字段，分别保留各味药的原文、缺失状态及出处。','muted');
                 download.addEventListener('click',async()=>{
                     download.disabled=true;status.textContent='正在核对来源并导出对比证据……';
                     try{
@@ -1876,6 +1877,14 @@
                         const body = document.createElement('div');
                         body.style.whiteSpace = 'pre-wrap';body.textContent = data.response;
                         assistantMessageElement.append(body);
+                        if(data.assistant.topic==='target_direction_needed'){
+                            for(const choice of data.assistant.choices||[]){
+                                const button=document.createElement('button');button.type='button';button.textContent=choice.label;
+                                button.className='btn btn-sm btn-outline-primary';
+                                button.addEventListener('click',()=>sendLocalRelation(choice.query));
+                                assistantMessageElement.append(button);
+                            }
+                        }
                         if(data.assistant.topic==='etcm_relations')renderRelationQuery(assistantMessageElement,data.assistant,query=>{
                             const modeSwitch=document.getElementById('evidence-answer-mode');
                             const wasAI=modeSwitch?.checked;if(modeSwitch)modeSwitch.checked=false;

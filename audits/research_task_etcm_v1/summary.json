@@ -1,0 +1,195 @@
+{
+  "status": "passed",
+  "date": "2026-10-21",
+  "scope": "local read-only ETCM task adapter and real-source browser integration; not independent user effectiveness or model reasoning evaluation",
+  "base_revision": "cc9424bc99af353dbc3f16a336a38f1c83693025",
+  "working_tree_dirty": true,
+  "image_tag": "tcm-research-chat:research-task-etcm-20261021",
+  "image_id": "sha256:23a335b5f7806ad924ccb61b75505392c33ddeeb41a2629e0f2d4aad31720876",
+  "source_tree_sha256": "db3b60a3f79da7930995b36bdf6fe110fa9d1fcd5e023dd5cbfd7b05edf4826a",
+  "offline": {
+    "modules": 79,
+    "tests": 695,
+    "skipped": 0,
+    "network_attempts": 0,
+    "new_etcm_task_tests": 10
+  },
+  "real_browser": {
+    "status": "passed",
+    "scope": "actual_local_ETCM_browser_single_known_pair_not_independent_evaluation",
+    "names": [
+      "白术",
+      "黄芪"
+    ],
+    "common_target_total": 151,
+    "selected_target_count": 1,
+    "raw_witnesses_reconciled": 2,
+    "checks": [
+      {
+        "name": "main_chat_link_and_two_separate_task_forms",
+        "status": "passed"
+      },
+      {
+        "name": "real_chinese_names_return_explicit_source_candidates_without_model",
+        "status": "passed"
+      },
+      {
+        "name": "real_source_pair_shared_uniprot_count_and_first_page",
+        "status": "passed"
+      },
+      {
+        "name": "real_next_page_retains_count_and_has_distinct_targets",
+        "status": "passed"
+      },
+      {
+        "name": "reload_recovers_real_task_page_and_candidates",
+        "status": "passed"
+      },
+      {
+        "name": "real_relation_report_keeps_both_sides_and_explicit_literature_gap",
+        "status": "passed"
+      },
+      {
+        "name": "both_source_files_sha256_and_raw_json_pointers_reconciled",
+        "status": "passed"
+      },
+      {
+        "name": "real_markdown_download_contains_snapshot_and_original_rows",
+        "status": "passed"
+      },
+      {
+        "name": "real_task_stale_selection_rejected",
+        "status": "passed"
+      },
+      {
+        "name": "real_data_task_isolated_from_another_browser",
+        "status": "passed"
+      },
+      {
+        "name": "real_task_mobile_layout",
+        "status": "passed"
+      },
+      {
+        "name": "no_browser_javascript_errors",
+        "status": "passed"
+      },
+      {
+        "name": "test_tasks_deleted_without_modifying_source_data",
+        "status": "passed"
+      }
+    ],
+    "total": 13,
+    "external_model_calls": 0,
+    "network_literature_calls": 0,
+    "clinical_conclusion": false,
+    "private_report_saved_locally": true,
+    "test_tasks_deleted": true
+  },
+  "synthetic_browser_regression": {
+    "status": "passed",
+    "scope": "actual_local_docker_browser_synthetic_only",
+    "checks": [
+      {
+        "name": "main_chat_link_and_synthetic_notice",
+        "status": "passed"
+      },
+      {
+        "name": "explicit_source_selection_and_second_pause",
+        "status": "passed"
+      },
+      {
+        "name": "container_restart_cookie_and_sqlite_task_recovery",
+        "status": "passed"
+      },
+      {
+        "name": "target_confirmation_empty_search_retry_and_completion",
+        "status": "passed"
+      },
+      {
+        "name": "action_observations_and_separate_evidence_scopes",
+        "status": "passed"
+      },
+      {
+        "name": "markdown_download_works_in_runtime_image",
+        "status": "passed"
+      },
+      {
+        "name": "stale_second_window_choices_rejected",
+        "status": "passed"
+      },
+      {
+        "name": "different_browser_cannot_list_read_or_download_task",
+        "status": "passed"
+      },
+      {
+        "name": "ingredient_only_stays_partial_with_explicit_gap",
+        "status": "passed"
+      },
+      {
+        "name": "mobile_view_has_no_horizontal_page_overflow",
+        "status": "passed"
+      },
+      {
+        "name": "test_tasks_deleted_without_touching_chat",
+        "status": "passed"
+      },
+      {
+        "name": "no_browser_javascript_errors",
+        "status": "passed"
+      }
+    ],
+    "total": 12,
+    "model_calls": 0,
+    "pubmed_calls": 0,
+    "test_tasks_deleted": true
+  },
+  "deployment": {
+    "http": {
+      "/": 200,
+      "/health": 200,
+      "/ready/research": 200,
+      "/ready/herbs": 200,
+      "/research-bookmarks.js": 200,
+      "/research-tasks": 200,
+      "/research-tasks.js": 200
+    },
+    "uid": 10001,
+    "model_calls": 0,
+    "status": "passed",
+    "commit": "cc9424bc99af353dbc3f16a336a38f1c83693025",
+    "source_files_verified": 83,
+    "same_memory_volume": true,
+    "protected_service_ids_unchanged": true,
+    "readonly_binds": true,
+    "readonly_root": true,
+    "request_log_correlation": true,
+    "model_and_pubmed_disabled": true,
+    "private_payloads_absent_from_app": true
+  },
+  "first_browser_attempt": {
+    "status": "failed",
+    "prior_checks_passed": 10,
+    "phase": "mobile viewport overflow from long source IDs",
+    "repair": "Wrap content and constrain form controls; business Python unchanged after full CI.",
+    "failure_report_retained": true,
+    "known_test_task_archived_and_deleted": true
+  },
+  "data_policy": {
+    "source_json_modified": false,
+    "source_catalogs_read_only": true,
+    "external_model_calls": 0,
+    "network_literature_calls": 0,
+    "real_corpus_sent_externally": false,
+    "fictional_studies_used_for_real_report": false
+  },
+  "limits": [
+    "Only the exact two candidate sources chosen by the test script; names and plant identities are not human verified.",
+    "151 counts source-declared shared UniProt groups for this selected pair, not mechanisms, binding, efficacy or all same-named herbs.",
+    "Selected evidence reconciled against two source JSON files; not an audit of every target or source row.",
+    "Real tasks stay partial with an explicit literature and identity-verification gap; no studies are synthesized.",
+    "Single-worker browser credential isolation, no production distributed leases, accounts, expiry cleanup or task backup.",
+    "Fingerprint cache assumes the existing read-only local catalogs; not protection against malicious privileged filesystem manipulation."
+  ],
+  "git_committed": false,
+  "remote_uploaded": false
+}

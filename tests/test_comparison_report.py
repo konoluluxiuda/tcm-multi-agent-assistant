@@ -39,7 +39,7 @@ class ComparisonReportTests(unittest.TestCase):
         self.assertEqual(len(self.service.queries),10)  # two bounded 1+4 query comparisons
 
     def test_invalid_scope_and_stale_index_are_rejected_before_any_export(self):
-        for question in ('示例叶的功效','比较示例叶和示例叶炭哪个更适合我','比较示例叶和示例叶炭的功效与用量与注意'):
+        for question in ('示例叶的功效','比较示例叶和示例叶炭哪个更适合我','比较示例叶和示例叶炭的功效与用量与注意与归经与贮藏'):
             with self.assertRaises(ValueError):self.export(question)
         self.assertEqual(self.service.queries,[])
         with self.assertRaises(SnapshotChanged):export_comparison(self.service,'比较示例叶和示例叶炭的功效','f'*64)
