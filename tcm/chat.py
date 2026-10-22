@@ -27,18 +27,18 @@ FIELD_PATTERN = '|'.join(re.escape(name) for name in sorted(FIELD_NAMES, key=len
 
 DEFAULT_DATABASE = Path(__file__).resolve().parents[1] / 'var/tcm/herbs.sqlite3'
 MESSAGES = {
-    'ok': '找到一条药材来源记录，请查看资料卡。来源内容尚未核验，不代表临床结论。',
+    'ok': '药材资料如下。',
     'ambiguous_entity': '发现同名来源，请选择来源 ID；系统不会自动合并药材。',
     'not_found': '未找到匹配记录，请检查已收录的拼音、拉丁名、英文名或来源 ID。',
     'unsupported_name_mapping': '中文名和别名尚未建立可靠映射，请使用已收录的拼音、拉丁名、英文名或来源 ID。',
     'database_unavailable': '药材数据库暂不可用，请联系维护者检查导入和数据库配置。',
     'dataset_not_found': '指定的数据版本未导入，请联系维护者检查版本配置。',
-    'clarify_entity': '当前会话没有已选药材，请先用 /herb 加药材名称或来源 ID 查询。',
+    'clarify_entity': '请先说明药材名称，例如“查看白术的属性”。',
     'clarify_source': '当前药名有多个来源，请先在候选资料卡中选择来源，再继续追问。',
     'context_stale': '上次所选来源或数据版本已发生变化，请重新查询并选择药材。',
     'context_cleared': '已清除本会话的药材选择。',
     'invalid_query': '用法：/herb BaiBu 或 /herb etcm2-local:<64位来源编号>。也可先查药材，再问“它的药用部位是什么？”。',
-    'name_mapping_candidates': '检出药典拼音标题对应的中文名候选，尚未核验实体、基原和药用部位；请先核对并选择ETCM来源，不自动合并为同一药材。',
+    'name_mapping_candidates': '请选择要查询的药材来源。',
 }
 
 
@@ -139,7 +139,13 @@ def execute_turn(request, context: HerbContext | None):
                 result['records'][0]['source']['file_sha256'] != context['file_sha256']):
             return _status_result('context_stale'), None
     else:
-        result = execute_request({k: v for k, v in request.items() if k != 'field'})
+        result = execute_request({k: v for k, v in request.items()
+                                  if k not in ('field','profile','resolve_unique_name')})
+        if (request.get('resolve_unique_name') is True and result['status']=='name_mapping_candidates'
+                and result['total_record_count']==1 and len(result['records'])==1 and not result['truncated']):
+            result.update(status='ok',message=MESSAGES['ok'],name_resolution_status='name_mapping_candidates',
+                          selection_method='unique_local_candidate',
+                          notes=['按目录唯一中文名候选读取；名称对应关系尚未人工核验，实际来源见详情。'])
     if result['status'] == 'ambiguous_entity':
         return result, {'status': 'ambiguous_entity'}
     if result['status'] != 'ok':

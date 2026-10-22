@@ -79,7 +79,7 @@ class PubMedRuntime:
                 run_id = store.save(data)
                 data = store.get(run_id)
             selected = {'kind': 'pubmed_run_v1', 'run_id': run_id, 'snapshot_sha256': _hash(data)}
-            messages = {'ok': '已获取本次文献元数据及可用摘要；未读取全文，未评议临床证据质量。',
+            messages = {'ok': f"找到{data['total_count']}条文献，展示{len(data['articles'])}条。",
                         'no_results': '本次有效检索式未命中；这不代表没有相关研究。',
                         'partial_fetch': '部分文献未能获取，请核对缺失PMID；未补造内容。',
                         'error': 'PubMed检索失败，不能据此判断没有相关研究。'}

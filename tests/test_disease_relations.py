@@ -67,7 +67,7 @@ class DiseaseRelationTests(unittest.TestCase):
         self.assertEqual(a['items'][0]['capture_status'][0]['status'], 'partial')
         self.assertEqual(a['items'][0]['raw_row']['Global category'], 'source category')
         self.assertTrue(a['items'][0]['source_pointer'].startswith('/data/1/value/0/value/'))
-        self.assertIn('不是适应证', first['message'])
+        self.assertIn('不是适应证',''.join(first['notes']))
         self.assertEqual(hashlib.sha256(self.base.read_bytes()).hexdigest(), before)
 
     def test_zero_rows_keep_skipped_and_unknown_capture_distinct(self):

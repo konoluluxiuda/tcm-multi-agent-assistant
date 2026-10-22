@@ -9,7 +9,7 @@ from tcm.mineru_pharmacopoeia import digest
 from tcm.mineru_retrieval import name_key, INTENTS
 
 MESSAGES = {
-    'candidates': '已检出未人工审核的字段候选，请查看证据并核对原页。',
+    'candidates': '药典记载如下。',
     'clarify_entity': '当前没有已确认药材，请先明确药名和要查询的字段。',
     'context_stale': '上次检索的数据或规则版本已改变，请明确药名重新查询。',
     'variant_scope_unresolved': '指定炮制品范围未解析，不能用母药字段替代。',
@@ -128,7 +128,7 @@ class ResearchTool:
                 new_context = {**self.binding, 'name': result['names'][0], 'last_question': None}
         message = MESSAGES.get(status, "当前无法完成查询，请明确药名和字段。")
         if status == 'field_not_resolved' and new_context:
-            message = f'已定位药典候选“{new_context["name"]}”，请继续选择功效、用量、注意、来源等字段；当前未返回整篇条目。'
+            message = f'想了解{new_context["name"]}的哪些内容？可问功效、用量或注意事项。'
         if result and result.get('missing_fields'):
             message += ' 本次未检出字段：' + '、'.join(result['missing_fields']) + '；未检出不等于不存在。'
         return {"status": status, "message": message, "tool_result": result,
@@ -161,9 +161,8 @@ class ResearchTool:
         self.service.check()
         complete=all(c['status']=='candidates' for g in groups for c in g['cells'])
         return {**base,'status':'candidates' if complete else 'partial_evidence',
-                'message':'药典原文对比：'+'、'.join(request['names'])+'；字段：'+'、'.join(request['fields'])+
-                          '。' + ('候选字段均已检出。' if complete else '部分字段缺失、重复或尚未完整解析，已逐项标明。')+
-                          '仅并列来源，不推断疗效优劣、替代或个人用药；后续查询请明确药名。',
+                'message':'、'.join(request['names'])+'：'+'、'.join(request['fields'])+'对比。'+
+                          ('' if complete else '部分字段未完整取得，见表中提示。'),
                 'tool_result':{'comparison':{'names':request['names'],'fields':request['fields'],'groups':groups},
                                'index_sha256':self.service.receipt['index_sha256'],'hits':[]}}
 

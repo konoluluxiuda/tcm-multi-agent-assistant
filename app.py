@@ -21,7 +21,7 @@ from agents.agent_decision import process_query
 from agents import agent_decision as agent_runtime
 from agents.conversation_store import MemoryUnavailable, ConversationConflict, SessionExpired
 from agents.runtime import session_turn
-from features import env_bool, session_cookie_name, can_auto_plan, evidence_auto_routing_enabled
+from features import env_bool, session_cookie_name, can_auto_plan, evidence_auto_routing_enabled,can_plan_intent
 from tcm.chat import execute_turn, parse_request as parse_herb_request
 from tcm.agent_research import split_contexts, runtime as research_runtime, parse_request as parse_research_request
 from tcm.agent_pubmed import context_from as pubmed_context_from, runtime as pubmed_runtime, parse_request as parse_pubmed_request
@@ -191,6 +191,7 @@ async def index(request: Request):
         "research_tasks_enabled": tasks_enabled(),
         "evidence_assistant_enabled": env_bool('ENABLE_EVIDENCE_ASSISTANT'),
         "evidence_auto_routing_enabled": evidence_auto_routing_enabled(),
+        "intent_planner_enabled": env_bool('ENABLE_INTENT_PLANNER'),
         "evidence_assistant_synthetic": os.getenv('EVIDENCE_ASSISTANT_DATA_MODE','synthetic') == 'synthetic',
         "combined_report_enabled": env_bool('ENABLE_PUBMED') and env_bool('ENABLE_PHARMACOPOEIA_RESEARCH')})
 
@@ -248,6 +249,11 @@ def conversation(response: Response, session_id: Optional[str] = Cookie(None, al
         relation=relation_context_from(snapshot.tcm_context)
         if relation:
             result['assistant'],_=relation_turn({'followup':True,'action':'replay'},relation)
+        from tcm.task_request import chat_review_from_context
+        pending=chat_review_from_context(snapshot.tcm_context)
+        if pending:
+            from tcm.assistant_info import execute as execute_assistant_info
+            result['assistant']=execute_assistant_info(pending)
     set_session_cookie(response, session_id)
     response.headers['Cache-Control'] = 'private, no-store'
     return result
@@ -475,14 +481,18 @@ def chat(
     selected = resolve_tool_request(request.query)
     mark_chat_request(http_request, tool=selected['tool'] if selected else 'unknown')
     mode = request.answer_mode
-    if selected and selected['tool'] == 'assistant' and selected['request'].get('topic') in ('overview', 'capabilities'):
+    if selected and ((selected['tool']=='assistant' and (
+            selected['request'].get('topic') in ('overview', 'capabilities', 'dataset_info', 'target_analysis', 'research_task_review') or
+            selected['request'].get('kind') == 'common_target')) or
+            selected['tool']=='herb' and selected['request'].get('profile') is True):
         mode = 'auto'
     if mode == 'evidence':
         if not env_bool('ENABLE_EVIDENCE_ASSISTANT'):
             raise HTTPException(status_code=503, detail='AI整理模式尚未启用。')
         if not 1 <= len(request.query.strip()) <= 1000:
             raise HTTPException(status_code=422, detail='AI整理问题须为1–1000字符。')
-    if mode == 'auto' and env_bool('RESEARCH_TOOLS_ONLY') and selected is None and not can_auto_plan(request.query):
+    if mode=='auto' and env_bool('RESEARCH_TOOLS_ONLY') and selected is None and not (
+            can_auto_plan(request.query) or can_plan_intent(request.query)):
         raise HTTPException(status_code=403, detail='此部署支持资料查询。可问“你能做什么”“有多少药材”“黄芪有什么作用”；也保留 /herb、/research、/pubmed 指令。')
     # Generate session ID for cookie if it doesn't exist
     session_id = session_cookie(session_id)
@@ -519,6 +529,9 @@ def chat(
 
         if response_data.get('routing') is not None:
             result['routing'] = response_data['routing']
+            if 'intent_model_calls' in result['routing']:
+                result['model_calls']=result['routing']['intent_model_calls']
+                mark_chat_request(http_request,model_calls=result['model_calls'])
         if response_data.get('assistant_result') is not None:
             result['assistant'] = response_data['assistant_result']
             if result['assistant']['status'] == 'unavailable':

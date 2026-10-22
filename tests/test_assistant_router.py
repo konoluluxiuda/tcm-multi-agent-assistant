@@ -28,6 +28,16 @@ class RouterTests(unittest.TestCase):
         for text in ('你能做什么','系统有什么功能','支持哪些功能','可以查什么'):
             self.assertEqual(resolve(text)['request']['topic'],'capabilities',text)
 
+    def test_collection_descriptions_do_not_require_herbs_or_swallow_queries(self):
+        for text in ('分别介绍两个数据','我想问的是介绍两个数据库','介绍一下当前数据库',
+                     '这两个数据库有什么区别','ETCM和药典分别有什么用'):
+            self.assertEqual(resolve(text)['request'],{'topic':'dataset_info','datasets':['etcm','pharmacopoeia']},text)
+        self.assertEqual(resolve('介绍ETCM')['request']['datasets'],['etcm'])
+        self.assertEqual(resolve('中国药典是什么')['request']['datasets'],['pharmacopoeia'])
+        for text in ('白术有哪些属性','在ETCM查白术','黄芪的药典记载','收录了多少药材'):
+            result=resolve(text)
+            self.assertTrue(result is None or result['request'].get('topic')!='dataset_info',text)
+
     def test_individual_efficacy_is_not_a_global_inventory_question(self):
         for text in ('黄芪的功效有哪些','黄芪有什么作用','黄芪的用量是多少','查一下黄芪的药用部位'):
             self.assertEqual(resolve(text)['tool'],'research',text)
@@ -172,6 +182,35 @@ class GraphTests(unittest.TestCase):
         self.assertNotIn(str(self.root),str(data))
         self.assertEqual(self.turn('什么是归经').json()['assistant']['status'],'clarification_needed')
         self.assertEqual(self.turn('找黄芪相关文献').json()['assistant']['status'],'clarification_needed')
+
+    def test_overview_then_descriptions_and_correction_use_local_metadata(self):
+        self.turn('数据概览')
+        with patch('tcm.intent_planner.plan_question',side_effect=AssertionError('Descriptions must be local')):
+            for question in ('分别介绍两个数据','我想问的是介绍两个数据库'):
+                response=self.turn(question);self.assertEqual(response.status_code,200)
+                result=response.json();info=result['assistant']
+                self.assertEqual(info['topic'],'dataset_info');self.assertEqual(info['status'],'ok')
+                self.assertEqual([c['id'] for c in info['datasets']],['etcm','pharmacopoeia'])
+                self.assertIn('当前索引2个条目',info['message'])
+                self.assertIn('当前记录数不可读取',info['message'])
+                self.assertNotIn('2076',info['message']);self.assertNotIn(str(self.root),str(info))
+                self.assertEqual(result.get('model_calls',0),0)
+        self.assertEqual(len(self.turn('介绍ETCM').json()['assistant']['datasets']),1)
+
+    def test_description_remains_available_without_indexes_and_preserves_focus(self):
+        self.turn('示例叶炭的功效')
+        with patch.object(self.ad.research_runtime,'get_service',return_value=None):
+            info=self.turn('介绍两个数据库').json()['assistant']
+            self.assertEqual(info['status'],'ok')
+            self.assertEqual(info['datasets'][1]['availability'],'disabled')
+            self.assertIn('未启用或不可读取',info['message'])
+        self.assertEqual(self.turn('用量呢').json()['research']['status'],'candidates')
+
+    def test_description_does_not_invoke_evidence_generation(self):
+        response=self.client.post('/chat',json={'query':'介绍两个数据库','answer_mode':'evidence'})
+        self.assertEqual(response.status_code,200)
+        self.assertEqual(response.json()['assistant']['topic'],'dataset_info')
+        self.assertNotIn('evidence_answer',response.json())
 
     def test_comparison_routes_through_main_graph_without_model_and_clears_focus(self):
         self.turn('示例叶炭的功效')

@@ -11,6 +11,35 @@ LABELS = {'ingredient': '成分', 'target': '靶点', 'common_target': '共同�
 LIMIT = 20
 
 
+def common_target_sentence(body):
+    """Consume a complete two-herb query, including optional context and provenance.
+
+    Extra tasks must not disappear while simplifying an ordinary read-only query.
+    Names are resolved against the existing catalog by execute(), not this grammar.
+    """
+    pair = r'(?P<pair>[^，,；;！？?!\n\r]{1,256}?)'
+    goal = r'(?:共同靶点|共同标识)'
+    evidence = (r'(?:[，,；;]\s*(?:并|同时)?(?:请)?'
+                r'(?:保留|附上|给出|列出|展示)(?:双方|两边|各自)?的?'
+                r'(?:原始记录|原始行|出处)(?:的位置|和出处|与出处|及出处)?)?')
+    patterns = (
+        r'(?:请帮我|帮我|麻烦|请)?\s*我(?:正在|在)?(?:整理|比较|核对|研究)\s*'+pair+
+        r'[，,]\s*(?:我)?(?:想|需要|希望)(?:查询|查一下|核对|查看|比较|查)\s*(?:两者的|双方的|它们的)?'+goal,
+        r'(?:请帮我|帮我|麻烦|请)?\s*(?:查询|查一下|查找|核对|查看|比较|查)?\s*'+pair+
+        r'(?:有哪些|有什么|的)?'+goal+r'(?:有哪些|是什么)?',
+    )
+    for pattern in patterns:
+        match = re.fullmatch(pattern+evidence, body)
+        if match is None:continue
+        entities = re.split(r'\s*(?:和|与|、|\|)\s*', match['pair'].strip())
+        if (len(entities)!=2 or any(not re.fullmatch(r'[\u4e00-\u9fffA-Za-z0-9 .():_\-]{1,100}',name)
+                                   or re.search(r'我|想|需要|整理|查询|核对|共同|靶点|文献|论文|价格|不要|这些|这两味',name)
+                                   for name in entities)):
+            continue
+        return entities
+    return None
+
+
 def parse(text, *, explicit=False):
     if not isinstance(text, str):
         return None
@@ -33,6 +62,12 @@ def parse(text, *, explicit=False):
     if page:
         request['page'] = int(page.group(1)) if len(page.group(1)) <= 4 else 0
         body = body[:page.start()].strip()
+    if not explicit:
+        names=common_target_sentence(body)
+        if names is not None:
+            return {**request,'kind':'common_target','entities':names,
+                    'resolve_unique_sources':True,
+                    **({'error':'invalid_query'} if not 1<=request['page']<=1000 else {})}
     if explicit:
         match = re.fullmatch(r'(共同靶点|靶点成分|靶点药材|成分靶点|疾病富集|成分|靶点)\s+(.+)', body)
         if not match:
@@ -73,6 +108,7 @@ def parse(text, *, explicit=False):
                     label, name = '靶点成分', token
             entities = [name.strip()]
     request.update(kind=next(k for k, v in LABELS.items() if v == label), entities=entities)
+    if not explicit and label=='共同靶点':request['resolve_unique_sources']=True
     if (not 1 <= request['page'] <= 1000 or len(entities) != (2 if label == '共同靶点' else 1)
             or any(not x or len(x) > 256 or re.search(r'[\n\r]', x) for x in entities)):
         request['error'] = 'invalid_query'
@@ -143,18 +179,25 @@ def execute(request):
     for name in request['entities']:
         record = execute_request({'source_record_id': name} if name.startswith('etcm2-local:') else {'name': name})
         unavailable |= record['status'] in ('database_unavailable', 'dataset_not_found')
-        groups.append({'query': name, 'resolution_status': record['status'],
+        candidate_names={c['name_zh'] for r in record['records'] for c in r.get('name_zh_candidates',[]) if c.get('name_zh')}
+        display_name=(next(iter(candidate_names)) if len(candidate_names)==1 else record['records'][0]['fields']['name_pinyin']['value']) if name.startswith('etcm2-local:') and len(record['records'])==1 else name
+        groups.append({'query': name, 'display_name':display_name,'resolution_status': record['status'],
                        'options': [{'source_record_id': r['source_record_id'],
                                     'name': r['fields']['name_pinyin']['value'],
                                     'medicinal_part': r['fields']['medicinal_part']['value'],
                                     'source': r['source']} for r in record['records']]})
+        if (request.get('resolve_unique_sources') is True and request['kind']=='common_target'
+                and record['status']=='name_mapping_candidates'
+                and record['total_record_count']==1 and len(record['records'])==1 and not record['truncated']):
+            groups[-1]['selection_method']='unique_local_candidate'
         selected.append(record)
     payload = {'kind': request['kind'], 'page': request['page'], 'groups': groups,
                'ingredient_detail_available': bool(os.getenv('ETCM_SOURCE_ROOT'))}
     result['relations'] = payload
     if unavailable:
         return {**result, 'status': 'unavailable', 'message': '当前ETCM来源数据不可用，未执行关联查询。'}
-    if any(r['status'] != 'ok' for r in selected):
+    if any(r['status']!='ok' and g.get('selection_method')!='unique_local_candidate'
+           for r,g in zip(selected,groups)):
         return {**result, 'status': 'clarification_needed',
                 'message': '请核对并选择本次查询的ETCM来源。中文名称是候选，未自动确认身份；没有匹配项时请改用已收录拼音或来源ID。'}
     records = [r['records'][0] for r in selected]
@@ -177,19 +220,23 @@ def execute(request):
     except (OSError, sqlite3.Error, ValueError, KeyError, TypeError):
         return {**result, 'status': 'unavailable', 'message': '关联目录不可用、未完成或与来源快照不一致，未改用模型补答。'}
     if request['kind'] == 'herb_target_paths':
-        result['message'] = (f"本地来源找到{data['total']}条字段一致的候选路径，每页最多20条。"
-                             '仅连接成分名称、分子式和分子量一致的双方原始行；未验证化学身份、结合或机制。'
-                             '未匹配不表示无关联，目录覆盖及字段缺失见下方。可按本会话已选关联来源继续追问。')
+        result['message']=f"{groups[0]['display_name']}：{data['total']}条成分—靶点候选路径。"
+        result['notes']=['仅连接成分名称、分子式和分子量一致的来源行；未验证化学身份、结合或机制。',
+                         '未匹配不表示无关联，覆盖及字段缺失见详情。']
         return result
     if request['kind'] == 'disease':
         payload['source_capture_status'] = data.get('source_capture_status', [])
-        result['message'] = (f"本地ETCM来源列出{data['total']}条疾病富集记录，每页最多20条。"
-                             '富集关联不是适应证或治疗推荐；不证明药材可治疗所列疾病。'
-                             '保留疾病原始名称和来源行，不自动翻译、合并疾病或评定统计显著性。'
-                             '零条或未抓取不等于不存在关联，抓取状态见原始证据。')
+        result['message']=f"{groups[0]['display_name']}：{data['total']}条疾病富集记录。"
+        result['notes']=['富集关联不是适应证或治疗推荐，不证明药材可治疗所列疾病。',
+                         '保留来源原名；未评定统计显著性，抓取完整性见原始证据。']
+        if not data['total']:result['message']+='当前来源未记录，不等于不存在。'
         return result
-    unit = '个来源声明的相同UniProt标识' if request['kind'] == 'common_target' else '条来源关联行'
-    result['message'] = (f"本地ETCM查询共找到{data['total']}{unit}，每页最多20项。"
-                         '共同靶点仅按明确标识去重；关联不证明作用机制或药效。空结果仅表示当前来源未记录，不表示不存在；抓取完整性未保证。'
-                         '可按本会话已选关联来源继续追问；数据改变时需重新选择。')
+    name='与'.join(g['display_name'] for g in groups)
+    label={'common_target':'个共同靶点（按UniProt匹配）','ingredient':'条成分记录','target':'条靶点记录'}[request['kind']]
+    result['message']=f"{name}：{data['total']}{label}。"
+    result['notes']=['ETCM来源关联不证明机制或药效；中文名候选的药材身份尚未核验。',
+                     '空结果仅表示当前来源未记录，不表示不存在；抓取完整性未保证。']
+    if any(g.get('selection_method')=='unique_local_candidate' for g in groups):
+        result['notes'].insert(0,'按本地目录唯一候选来源自动查询，实际来源及文件哈希见详情。')
+    if not data['total']:result['message']+='当前来源未记录，不表示不存在。'
     return result

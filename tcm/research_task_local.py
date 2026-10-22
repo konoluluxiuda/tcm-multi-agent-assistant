@@ -12,7 +12,7 @@ from tcm.research_task_store import TaskConflict
 from tcm.task_errors import LocalSnapshotChanged, LocalUnavailable, LocalBudget
 from tcm.task_tools import LocalTaskTools
 from tcm.task_plan import LocalTaskPlan,confirm_plan
-from tcm.task_request import draft_request,confirm_request,require_request_review
+from tcm.task_request import local_deliverable_hints,draft_request,confirm_request,require_request_review
 from tcm.request_coverage import cover_report,require_covered_scope
 
 
@@ -31,8 +31,7 @@ def local_request_draft(question,version):
     except (KeyError,OSError,ValueError,sqlite3.Error):
         raise LocalUnavailable('Local name catalog unavailable') from None
     return draft_request(question,entities=sorted(n for n in names if n and len(n)<=100),local=True,
-        hints={'source_relations':('共同靶点','来源关系','共同标识'),
-               'evidence_review':('文献','论文','研究记录'), 'medicinal_part_table':('药用部位',)})
+                         hints=local_deliverable_hints(question))
 
 
 def file_signature(path):

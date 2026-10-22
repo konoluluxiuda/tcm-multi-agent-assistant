@@ -1,0 +1,132 @@
+{
+  "status": "passed",
+  "date": "2026-10-22",
+  "scope": "known_user_report_chat_to_reviewed_local_etcm_task_handoff",
+  "failure_before": {
+    "http_status": 403,
+    "stage": "chat_routing_before_data_execution",
+    "response_category": "generic_tools_only_403"
+  },
+  "root_cause": "Previous scripted business acceptance entered the task page; the same compound question was not connected from the chat router.",
+  "fix": {
+    "chat_response": "local_review_action_without_task_creation_or_relation_queries",
+    "creation": "existing_etcm_question_api_after_explicit_button_click",
+    "whole_question_preserved": true,
+    "question_in_url": false,
+    "task_id_fragment_validated": true,
+    "fragment_reads_enforce_existing_owner_checks": true,
+    "legacy_direct_queries_and_commands_preserved": true,
+    "task_sources_and_targets_still_user_selected": true,
+    "no_schema_migration": true
+  },
+  "offline": {
+    "status": "passed",
+    "tests": 790,
+    "modules": 88,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "date": "2026-10-22",
+    "total": 15,
+    "checks": [
+      {
+        "name": "user_original_in_chat_returns_review_action_instead_of_403",
+        "status": "passed"
+      },
+      {
+        "name": "chat_response_does_not_automatically_create_or_query_a_task",
+        "status": "passed"
+      },
+      {
+        "name": "explicit_button_creates_one_local_task_and_opens_it_by_id_only",
+        "status": "passed"
+      },
+      {
+        "name": "refresh_reopens_linked_owned_task_without_creating_or_advancing_it",
+        "status": "passed"
+      },
+      {
+        "name": "handoff_continues_through_inventory_plan_source_and_target_confirmation",
+        "status": "passed"
+      },
+      {
+        "name": "both_selected_target_witnesses_reconcile_with_original_json_and_sha256",
+        "status": "passed"
+      },
+      {
+        "name": "download_preserves_user_original_question_and_both_source_locations",
+        "status": "passed"
+      },
+      {
+        "name": "report_link_refresh_is_read_only",
+        "status": "passed"
+      },
+      {
+        "name": "task_page_mobile_layout_does_not_overflow",
+        "status": "passed"
+      },
+      {
+        "name": "handoff_preserves_third_herb_and_extra_requirements_for_review",
+        "status": "passed"
+      },
+      {
+        "name": "copied_task_fragment_does_not_expose_another_browser_task",
+        "status": "passed"
+      },
+      {
+        "name": "invalid_fragment_is_rejected_without_mutating_tasks",
+        "status": "passed"
+      },
+      {
+        "name": "deleting_current_task_clears_its_fragment",
+        "status": "passed"
+      },
+      {
+        "name": "chat_and_task_handoff_have_no_javascript_errors_with_external_assets_blocked",
+        "status": "passed"
+      },
+      {
+        "name": "only_test_tasks_and_test_chat_are_cleaned_up",
+        "status": "passed"
+      }
+    ],
+    "scope": "known_user_report_chat_entry_fix_not_independent_language_evaluation",
+    "witnesses_reconciled": 2,
+    "external_model_calls": 0,
+    "external_asset_requests_blocked": 10,
+    "application_data_requests": "localhost_only",
+    "original_question_in_url": false,
+    "test_tasks_deleted": true,
+    "test_chat_cleared": true
+  },
+  "source_sha256": {
+    "app.py": "c51acbec6a8d4e4f7b5a76f6283a28bd0d53104227322bc2e498db8372be7ad3",
+    "tcm/assistant_router.py": "4396a551df9dc69644b896046c596b0d4bf8a3ba68176eafdc5d55cc81f2127b",
+    "tcm/assistant_info.py": "5bfa2574847c983098febdf2e245564ba7327522441b4b000073e0ae03f3f6d1",
+    "tcm/task_request.py": "d8a6e19cdd19615c8c6ec3457b49629db5b6d2a474c17f8cc0e835b25ed62b5f",
+    "tcm/research_task_local.py": "b225873cdea4ac252f2e80cdfd079cc12b8ba115c1c4b32258b34846a9bca960",
+    "tcm/research_tasks.js": "9fd74b0262b50ebab764eecff65c80bb8ca5530edfacb657fb314d53486a29d2",
+    "templates/index.html": "7c9a56ecb62e67a5bd7740c4cc7e9d33031d6ebb8d4035953784c19943af843c",
+    "tests/test_chat_task_handoff.py": "f7350889bfc9e0c1186c90a91fedca88ba84aab8a1fee41722a3b2a3a9567734"
+  },
+  "runtime": {
+    "port": 7877,
+    "launcher": "scripts.preview_local_tasks",
+    "restarted": true,
+    "state_databases_preserved": true
+  },
+  "external_model_calls": 0,
+  "independent_language_or_business_evaluation": false,
+  "git_commit_created": false,
+  "remote_push": false,
+  "docker_updated": false,
+  "limits": [
+    "The route reuses literal source-relationship task hints; it is not general semantic understanding.",
+    "Inventory completeness still requires user review; negation, unknown names and extra requirements are not automatically fully understood.",
+    "The action is rendered for the current chat response. After chat refresh, resend the original question if no task was created; created tasks remain in the task list.",
+    "Known user-reported failure regression and scripted source selection do not verify herb identity or clinical conclusions.",
+    "Browser static external resources were blocked; DOM and behavior were checked, not full typography or visual design."
+  ]
+}

@@ -91,7 +91,7 @@ def execute(request):
         return {**result, 'status': 'clarification_needed', 'message': '此基因符号对应多个来源UniProt，请选择明确标识后反查；不合并不同靶点。'}
     if data['resolution_status'] == 'not_covered':
         return {**result, 'status': 'clarification_needed', 'message': '已核对靶点目录尚未覆盖此标识；未覆盖不表示没有药材关联。请使用已收录的基因符号或UniProt。'}
-    result['message'] = (f"当前药材来源中有{data['data']['total']}条不同药材记录列出该UniProt，每页最多20条。"
-                         '记录数不是去重药材种数；同名不同来源保留，每条最多3行原始见证。'
-                         '这是来源关联，不是药效排名、治疗推荐或作用机制证明；未返回不代表没有关系，抓取完整性未保证。')
+    result['message']=f"{data['target']['gene']}：{data['data']['total']}条药材来源记录。"
+    result['notes']=['同名不同来源分别计数，不是去重药材种数；每条最多展示3行见证。',
+                     '这是来源关联，不代表作用机制或药效；未返回不表示没有关系。']
     return result

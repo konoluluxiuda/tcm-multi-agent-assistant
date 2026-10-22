@@ -86,7 +86,6 @@ def execute(request):
         return {**result, 'status': 'clarification_needed', 'message': '此基因符号对应多个来源UniProt，请选择本次查询的标识，不自动合并。'}
     if data['resolution_status'] == 'not_covered':
         return {**result, 'status': 'clarification_needed', 'message': '当前通过来源一致性检查的目录未覆盖此靶点。它可能尚未收录、被排除或标识不匹配；不表示该靶点没有成分关联。请提供明确的基因符号或UniProt。'}
-    result['message'] = (f"该靶点来源直接列出{data['data']['total']}条成分关联，每页最多20条。"
-                         '仅表示数据库收录，未核验化学身份、实验结合或作用机制；保留原始行及抓取状态。'
-                         '本会话可回看已选靶点来源，不会将靶点当作药材。')
+    result['message']=f"{data['target']['gene']}：{data['data']['total']}条关联成分记录。"
+    result['notes']=['仅表示数据库收录，未核验化学身份、实验结合或机制；来源原行及抓取状态见详情。']
     return result

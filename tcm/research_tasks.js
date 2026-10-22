@@ -32,6 +32,7 @@
   }
   async function update(task) {show(task);await listing();}
   function show(t) {
+    if(location.hash!=='#'+t.id)history.replaceState(null,'','#'+t.id);
     const local=t.data_mode==='etcm_local';
     const deliverables={...deliverableLabels,...(local?{evidence_review:'文献核查（本任务未执行）'}:{})};
     current=t; $('detail').hidden=false; $('title').textContent=`任务 ${t.id.slice(0,8)} · ${status(t)}`;
@@ -95,7 +96,7 @@
     if(t.data_mode==='etcm_local' && t.report?.local_steps_complete && !t.report.reference_leads && t.tool_calls<t.max_tool_calls)
       $('controls').append(button('读取来源文献ID（本地）',async()=>update(await api('/'+t.id+'/references',{method:'POST',body:JSON.stringify({revision:t.revision})}))));
     if(t.report) {const a=node('a','下载证据报告');a.href='/api/research/tasks/'+t.id+'/report';a.download=t.data_mode==='etcm_local'?'etcm-local-task.md':'synthetic-research-task.md';$('controls').append(a);}
-    $('controls').append(button('删除本任务',async()=>{await api('/'+t.id+'?revision='+t.revision,{method:'DELETE'});if(current?.id===t.id){current=null;$('detail').hidden=true;}await listing();}));
+    $('controls').append(button('删除本任务',async()=>{await api('/'+t.id+'?revision='+t.revision,{method:'DELETE'});if(current?.id===t.id){current=null;$('detail').hidden=true;history.replaceState(null,'',location.pathname+location.search);}await listing();}));
     $('trace').replaceChildren();t.actions.forEach(e=>{
       const li=node('li');li.append(node('strong',e.kind==='tool'?(tools[e.name]||e.name):e.kind==='user_selection'?'用户确认':'恢复记录'));
       const info=e.kind==='tool'?{参数:e.args,观察:e.observation}:e.selection||e.note;
@@ -130,5 +131,13 @@
   $('create').onclick=()=>action(async()=>update(await api('',{method:'POST',body:JSON.stringify({profile:$('profile').value})})));
   $('create-plan').onclick=()=>action(async()=>{const intent=$('plan-intent').value;await update(await api('',{method:'POST',body:JSON.stringify({mode:'synthetic_plan',profile:$('profile').value,plan:{intent:intent||null,herb_one:'示例甲草',herb_two:'示例乙草'},request_scope:{entities:['示例甲草','示例乙草',...($('scope-third').checked?['示例丙草']:[])],deliverables:[...(intent?[intent]:[]),...($('scope-parts').checked?['medicinal_part_table']:[])],goal_to_confirm:!intent}})}));});
   $('refresh').onclick=()=>action(async()=>{await listing();if(current)show(await api('/'+current.id));});
-  action(listing);
+  async function openLinkedTask(){
+    const id=location.hash.slice(1);
+    if(!id)return;
+    current=null;$('detail').hidden=true;
+    if(!/^[a-f0-9]{32}$/.test(id))throw new Error('任务链接无效，请从本浏览器任务列表选择。');
+    show(await api('/'+id));
+  }
+  window.addEventListener('hashchange',()=>action(openLinkedTask));
+  action(async()=>{await listing();await openLinkedTask();});
 })();

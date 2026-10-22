@@ -28,8 +28,9 @@ from tcm.agent_research import split_contexts, pack_contexts
 from tcm.agent_pubmed import parse_request as parse_pubmed_request, runtime as pubmed_runtime, context_from as pubmed_context_from
 from tcm.assistant_router import resolve as resolve_tool_request
 from tcm.assistant_info import execute as execute_assistant_info
-from features import can_auto_plan
+from features import can_auto_plan,can_plan_intent
 from tcm.relation_memory import context_from as relation_context_from, execute_turn as execute_relation_turn
+from tcm.task_request import capture_chat_review
 
 
 # Load configuration
@@ -193,14 +194,20 @@ def create_agent_graph():
         selected = resolve_tool_request(current_input, herb_context=state.get('tcm_context'),
                                         research_context=state.get('research_context'),
                                         pubmed_context=state.get('pubmed_context'),relation_context=state.get('relation_context'))
+        if selected is None and can_plan_intent(current_input):
+            from tcm.intent_planner import plan_question
+            selected=plan_question(current_input)
         if selected is not None:
             tool = selected['tool']
             key = {'herb': 'tcm_request', 'research': 'research_request',
                    'pubmed': 'pubmed_request', 'assistant': 'assistant_request'}[tool]
             changes = {key: selected['request'], 'has_image': False, 'image_type': None,
-                       'bypass_routing': False, 'routing': {k: selected[k] for k in ('tool','reason','mode')}}
-            if tool == 'assistant' and selected['request'].get('topic') == 'etcm_relations':
+                       'bypass_routing': False, 'routing': {k:selected[k] for k in
+                           ('tool','reason','mode','intent_status','intent_model_calls','intent_duration_ms') if k in selected}}
+            if tool == 'assistant' and selected['request'].get('topic') in ('etcm_relations','target_analysis'):
                 changes.update(tcm_context=None, research_context=None, pubmed_context=None)
+            elif tool == 'assistant' and selected['request'].get('topic') == 'research_task_review':
+                changes.update(tcm_context=None, research_context=None, pubmed_context=None,relation_context=None)
             elif tool != 'assistant':
                 changes['relation_context']=None
                 for owner, context_key in [('herb','tcm_context'),('research','research_context'),('pubmed','pubmed_context')]:
@@ -285,6 +292,9 @@ def create_agent_graph():
         relation=state.get('relation_context')
         if state['assistant_request'].get('topic')=='etcm_relations':
             result,relation=execute_relation_turn(state['assistant_request'],relation)
+        elif state['assistant_request'].get('topic')=='target_analysis':
+            from tcm.analysis_tools import execute_turn as analysis_turn
+            result,relation=analysis_turn(state['assistant_request'],relation)
         else:result = execute_assistant_info(state['assistant_request'])
         message = AIMessage(content=result['message'])
         return {'assistant_result': result, 'relation_context':relation,'agent_name': 'ASSISTANT_INFO_AGENT',
@@ -918,7 +928,8 @@ def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='a
     if len(result["messages"]) > config.max_conversation_history:  # Keep last config.max_conversation_history messages
         result["messages"] = result["messages"][-config.max_conversation_history:]
     memory.save(session_id, result["messages"], pack_contexts(result.get('tcm_context'), result.get('research_context'),
-                result.get('pubmed_context'),result.get('relation_context')), revision=snapshot.revision)
+                result.get('pubmed_context'),result.get('relation_context'),
+                task_review=capture_chat_review(result.get('assistant_result'))), revision=snapshot.revision)
 
     # visualize conversation history in console
     for m in result["messages"]:

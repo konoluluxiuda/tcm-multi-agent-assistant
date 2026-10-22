@@ -35,7 +35,7 @@ class ComparisonReportTests(unittest.TestCase):
         self.assertIn('partial',missing);self.assertEqual(missing.count('field\\_not\\_observed'),2)
         self.assertEqual(missing.count('本单元没有可用候选字段'),2)
         repeated=self.export('比较示例叶和示例叶炭的功效与用量')
-        self.assertIn('ambiguous\\_field',repeated);self.assertIn('部分字段缺失',repeated)
+        self.assertIn('ambiguous\\_field',repeated);self.assertIn('partial\\_evidence',repeated)
         self.assertEqual(len(self.service.queries),10)  # two bounded 1+4 query comparisons
 
     def test_invalid_scope_and_stale_index_are_rejected_before_any_export(self):

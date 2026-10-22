@@ -10,6 +10,36 @@ DELIVERABLE_HINTS={'source_relations':('共同靶点','来源关系','共同标�
                    'evidence_review':('研究记录','论文样例'),
                    'medicinal_part_table':('药用部位',)}
 
+LOCAL_DELIVERABLE_HINTS={**DELIVERABLE_HINTS,'evidence_review':('文献','论文','研究记录')}
+
+
+def local_deliverable_hints(question):
+    """An explicit identifier namespace plus intersection is a relation request."""
+    if re.search(r'(?<![A-Za-z0-9])UniProt(?![A-Za-z0-9])',question,re.I) and '交集' in question:
+        return {**LOCAL_DELIVERABLE_HINTS,
+                'source_relations':(*LOCAL_DELIVERABLE_HINTS['source_relations'],'交集')}
+    return LOCAL_DELIVERABLE_HINTS
+
+
+def capture_chat_review(result):
+    """Persist only the pending local question, never a tool result or source text."""
+    if not isinstance(result,dict) or result.get('topic')!='research_task_review' or result.get('can_create_task') is not True:
+        return None
+    proposal=result.get('task_proposal') or {}
+    question=proposal.get('question')
+    if proposal.get('mode')=='etcm_question' and isinstance(question,str) and 1<=len(question)<=400:
+        return {'kind':'local_task_review_v1','question':question}
+    return None
+
+
+def chat_review_from_context(context):
+    if not isinstance(context,dict) or context.get('kind')!='agent_contexts_v1':return None
+    pending=context.get('task_review')
+    if (not isinstance(pending,dict) or set(pending)!={'kind','question'} or
+            pending['kind']!='local_task_review_v1' or not isinstance(pending['question'],str) or
+            not 1<=len(pending['question'])<=400):return None
+    return {'topic':'research_task_review','question':pending['question']}
+
 
 def draft_request(question,*,entities=ENTITIES,hints=DELIVERABLE_HINTS,local=False):
     if not isinstance(question,str) or not question.strip() or len(question)>400:

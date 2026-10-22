@@ -79,6 +79,6 @@ class NewUserWordingTests(unittest.TestCase):
             self.assertEqual(source['status'],'partial_evidence');self.assertEqual(source['tool_result']['hits'][0]['name'],'示例叶炭')
             intro=client.post('/chat',json={'query':'帮我找一下示例叶，我主要想看药典怎么写的。'}).json()['research']
             self.assertEqual(intro['status'],'field_not_resolved');self.assertEqual(intro['focus_name'],'示例叶')
-            self.assertIn('已定位药典候选',intro['message'])
+            self.assertIn(intro['focus_name'],intro['message'])
             follow=client.post('/chat',json={'query':'功效呢'}).json()['research']
             self.assertEqual(follow['status'],'candidates');self.assertEqual(follow['tool_result']['hits'][0]['name'],'示例叶')

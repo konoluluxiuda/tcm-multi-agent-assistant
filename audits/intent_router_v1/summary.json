@@ -1,0 +1,373 @@
+{
+  "status": "passed",
+  "date": "2026-10-22",
+  "scope": "natural_herb_attributes_and_opt_in_one_call_question_only_intent_routing",
+  "reported_failure": {
+    "question": "我需要查看白术的相关属性",
+    "previous_behavior": "Unrecognized attribute wording was rejected by the tools-only HTTP precheck; the local preview disabled models.",
+    "current_behavior": "Existing rule resolves the complete named herb, reads the unique local ETCM candidate, and displays attributes without checklist or model invocation."
+  },
+  "architecture": [
+    "Existing explicit commands and established rules run first.",
+    "Only a rule miss plus ENABLE_INTENT_PLANNER allows a single model request.",
+    "The model selects a strict QueryIntent action, literal entities, canonical fields and existing relation kind.",
+    "Schema, entity grounding and scope checks map accepted intents to existing LangGraph tool nodes.",
+    "Local tools supply source data; results are not sent back to the model for answer generation.",
+    "Invalid, timed-out, unsupported or incomplete plans stop with a short clarification; no legacy model retry."
+  ],
+  "authorization": {
+    "user_approved": true,
+    "user_answer": "允许，仅外发当前问句做意图识别",
+    "external_content": "current unmatched question plus static system instructions and capability schema",
+    "source_text_sent": false,
+    "history_sent": false,
+    "database_sent": false,
+    "model_calls_per_unmatched_request_max": 1,
+    "sdk_retries": 0,
+    "timeout_seconds": 10,
+    "provider_host": "api.deepseek.com",
+    "model": "deepseek-flash",
+    "validation_basis": "Code review and fixture assertions on SDK input; real browser route/call results. No independent packet capture."
+  },
+  "verification": {
+    "new_fixture_module": {
+      "module": "test_intent_planner.py",
+      "tests": 11,
+      "status": "passed"
+    },
+    "priority_recheck": {
+      "status": "passed",
+      "modules": 3,
+      "tests": 36
+    },
+    "local_browser_model_disabled": {
+      "status": "passed",
+      "total": 15,
+      "external_model_calls": 0,
+      "cases": [
+        {
+          "id": "A01",
+          "question": "我需要查看白术的相关属性",
+          "expected": "BaiZhu",
+          "check": "passed",
+          "fields_checked": 13,
+          "routing": {
+            "tool": "herb",
+            "reason": "herb_attribute_query",
+            "mode": "natural"
+          }
+        },
+        {
+          "id": "A02",
+          "question": "帮我看看黄芪的基本信息",
+          "expected": "HuangQi",
+          "check": "passed",
+          "fields_checked": 13,
+          "routing": {
+            "tool": "herb",
+            "reason": "herb_attribute_query",
+            "mode": "natural"
+          }
+        },
+        {
+          "id": "A03",
+          "question": "白术有哪些属性",
+          "expected": "BaiZhu",
+          "check": "passed",
+          "fields_checked": 13,
+          "routing": {
+            "tool": "herb",
+            "reason": "herb_attribute_query",
+            "mode": "natural"
+          }
+        },
+        {
+          "id": "A04",
+          "question": "我想了解当归的属性",
+          "expected": "DangGui",
+          "check": "passed",
+          "fields_checked": 13,
+          "routing": {
+            "tool": "herb",
+            "reason": "herb_attribute_query",
+            "mode": "natural"
+          }
+        },
+        {
+          "id": "A05",
+          "question": "查询白术的资料",
+          "expected": "BaiZhu",
+          "check": "passed",
+          "fields_checked": 13,
+          "routing": {
+            "tool": "herb",
+            "reason": "herb_attribute_query",
+            "mode": "natural"
+          }
+        },
+        {
+          "id": "A06",
+          "question": "查看未知测试草的属性",
+          "expected": null,
+          "check": "passed"
+        },
+        {
+          "id": "A07",
+          "question": "查询炒白术的基本属性",
+          "expected": null,
+          "check": "passed"
+        },
+        {
+          "id": "A08",
+          "question": "它的相关属性呢",
+          "expected": null,
+          "check": "passed"
+        },
+        {
+          "id": "A09",
+          "question": "当归和川芎有哪些共同靶点",
+          "expected": "relations",
+          "check": "passed"
+        },
+        {
+          "id": "A10",
+          "question": "数据概览",
+          "expected": "overview",
+          "check": "passed"
+        },
+        {
+          "id": "A11",
+          "question": "我需要查看白术的相关属性，再帮我配药",
+          "expected": "boundary",
+          "check": "passed"
+        },
+        {
+          "id": "A12",
+          "question": "什么是属性",
+          "expected": "concept",
+          "check": "passed"
+        },
+        {
+          "id": "A13",
+          "question": "这个助手能提供什么资料",
+          "expected": "capabilities",
+          "check": "passed"
+        },
+        {
+          "id": "A14",
+          "question": "在ETCM查询白术的相关属性",
+          "expected": "BaiZhu",
+          "check": "passed",
+          "fields_checked": 13,
+          "routing": {
+            "tool": "herb",
+            "reason": "herb_attribute_query",
+            "mode": "natural"
+          }
+        },
+        {
+          "id": "A15",
+          "question": "在ETCM白术的基本信息",
+          "expected": "BaiZhu",
+          "check": "passed",
+          "fields_checked": 13,
+          "routing": {
+            "tool": "herb",
+            "reason": "herb_attribute_query",
+            "mode": "natural"
+          }
+        }
+      ],
+      "classification": {
+        "scoped_queries_completed": 10,
+        "clarification": 3,
+        "personal_medication_boundary": 1,
+        "concept_source_needed": 1
+      },
+      "additional_checks": [
+        "Selected-source followups and full-profile restoration",
+        "Reload",
+        "390px and 1100px layout",
+        "No browser JavaScript errors"
+      ],
+      "field_comparison_scope": "Returned fields compared to canonical imported local SQLite records, not a new review of the complete raw JSON snapshot."
+    },
+    "synthetic_live_provider_protocol": {
+      "status": "passed",
+      "questions": 3,
+      "model_calls": 3,
+      "data_tools_executed": false,
+      "cases": [
+        {
+          "id": "M01",
+          "question": "能给我一张示例甲草的资料卡吗",
+          "expected_action": "herb_profile",
+          "check": "passed"
+        },
+        {
+          "id": "M02",
+          "question": "帮我对照示例甲草和示例乙草，分别记载的功效及使用份量是什么",
+          "expected_action": "compare",
+          "check": "passed"
+        },
+        {
+          "id": "M03",
+          "question": "示例甲草提取物的资料卡，我想了解它",
+          "expected_action": "herb_profile",
+          "check": "passed"
+        }
+      ]
+    },
+    "authorized_live_browser_model_enabled": {
+      "status": "passed",
+      "total": 3,
+      "model_calls_reported": 2,
+      "cases": [
+        {
+          "id": "E01",
+          "question": "我需要查看白术的相关属性",
+          "expected_model_calls": 0,
+          "check": "passed",
+          "routing": {
+            "tool": "herb",
+            "reason": "herb_attribute_query",
+            "mode": "natural"
+          },
+          "model_calls": 0,
+          "fields_checked": 13
+        },
+        {
+          "id": "E02",
+          "question": "能给我一张白术的资料卡吗",
+          "expected_model_calls": 1,
+          "check": "passed",
+          "routing": {
+            "tool": "herb",
+            "reason": "model_intent_fallback",
+            "mode": "model",
+            "intent_status": "ok",
+            "intent_model_calls": 1,
+            "intent_duration_ms": 837.67
+          },
+          "model_calls": 1,
+          "fields_checked": 13
+        },
+        {
+          "id": "E03",
+          "question": "帮我把白术的档案调出来",
+          "expected_model_calls": 1,
+          "check": "passed",
+          "routing": {
+            "tool": "herb",
+            "reason": "model_intent_fallback",
+            "mode": "model",
+            "intent_status": "ok",
+            "intent_model_calls": 1,
+            "intent_duration_ms": 1005.42
+          },
+          "model_calls": 1,
+          "fields_checked": 13
+        }
+      ],
+      "additional_checks": [
+        "Current question works with an earlier local capabilities turn",
+        "Result restored after reload",
+        "Intent notice visible, evidence-generation toggle absent",
+        "Only newly created test conversations cleaned up"
+      ],
+      "packet_capture_performed": false
+    },
+    "full_offline": {
+      "status": "passed",
+      "modules": 89,
+      "tests": 809,
+      "skipped": 0,
+      "network_attempts": 0,
+      "failures": 0,
+      "errors": 0,
+      "scope": "Isolated deterministic fixtures with credentials removed and network denied; not a live-provider accuracy measurement."
+    }
+  },
+  "retained_failures": [
+    {
+      "stage": "initial_focused",
+      "issue": "A test incorrectly rejected empty LangChain tool_calls metadata; importing a TestCase directly duplicated discovery.",
+      "resolution": "Assert no actual tool calls or planner payload in memory and import fixtures as a module; final new module contains 11 distinct tests.",
+      "private_artifacts": "var/intent_router_v1/focused/first_intent_check.json and .log"
+    },
+    {
+      "stage": "first_full_offline",
+      "status": "failed",
+      "failed_modules": [
+        "test_new_user_wording.py"
+      ],
+      "issue": "A generic attribute rule captured a capabilities wording before the established route.",
+      "resolution": "Preserve capabilities, concepts, explicit source and named-field priority; add regression assertions.",
+      "private_artifacts": "var/intent_router_v1/ci_round_01/"
+    },
+    {
+      "stage": "restricted_environment_full_attempt",
+      "status": "terminated_without_complete_result",
+      "issue": "ASGI TestClient stalled at local thread communication; no full conclusion was produced.",
+      "resolution": "Preserve log, stop only the matching test coordinator/worker and rerun the same network-denied suite with local communication permitted.",
+      "private_artifacts": "var/intent_router_v1/ci_sandbox_attempt/"
+    }
+  ],
+  "runtime": {
+    "chat_url": "http://127.0.0.1:7877/",
+    "tasks_url": "http://127.0.0.1:7877/research-tasks",
+    "command": "python -m scripts.preview_local_tasks --port 7877 --with-intent-model",
+    "intent_model_enabled": true,
+    "evidence_generation_enabled": false,
+    "online_tools_enabled": false,
+    "tracing_enabled": false,
+    "ordinary_chat_and_embedding_models_enabled": false,
+    "state_directory": "var/task_literature_v1",
+    "default_without_flag": "Model disabled; existing local queries remain usable."
+  },
+  "data_and_state": {
+    "schema_migration": false,
+    "source_data_or_indexes_changed": false,
+    "existing_tasks_preserved": true,
+    "existing_source_version_checks_retained": true,
+    "multiple_sources_require_selection": true,
+    "prepared_or_unknown_names_not_replaced_by_parent_herb": true,
+    "source_provenance_available_in_details": true
+  },
+  "limits": [
+    "Developer-designed examples are not independent user acceptance or a general intent-accuracy estimate.",
+    "Only a rule miss reaches this model; a selected rule followed by a failed lookup does not trigger replanning.",
+    "One bounded query intent is supported; arbitrary multi-goal research execution is not implemented.",
+    "Literal entity and schema checks cannot prove complete semantic interpretation or clinical correctness.",
+    "Chinese-name candidate identity and full corpus correctness have not been independently validated.",
+    "No new source-based answer generation, literature retrieval, embeddings or Docker deployment was tested in this scope."
+  ],
+  "rollback": {
+    "stop_external_calls": "Restart the same launcher without --with-intent-model, preserving its state directory.",
+    "code_dependencies": "Restore the intent entry, feature flag, adapter, config prefix, launcher and attribute parsing together for a full code rollback.",
+    "database_migration_required": false
+  },
+  "delivery": {
+    "tested_worktree_not_committed": true,
+    "git_committed_this_change": false,
+    "git_pushed": false,
+    "docker_updated": false,
+    "baseline_git_head": "f2f811489bdcaf292e5a05371b58c63e713b7de1",
+    "application_source_unchanged_since_browser_test": true,
+    "private_artifact_root": "var/intent_router_v1/",
+    "source_sha256": {
+      "app.py": "8925cb4161e4a14236244049df01f55c51c84f4862a1dffc9c5c0b99a09fd951",
+      "features.py": "bb209966151b1019b375a42a56629e7d0c3c172c89caf42a121d1313de7ba791",
+      "config.py": "d77fe60fe6a325672066d8b4ed2fea182b12015a8a253639c637ba3945bfe7cf",
+      "agents/agent_decision.py": "1e09fedeef8dade00e767199d633ea70a38104b04754bf6908b249f4011eae35",
+      "tcm/attribute_intent.py": "ca88b4dfec38e51039d00ddcecbaf45b19cf4edac317ec6011b1ea9b3f0525b1",
+      "tcm/intent_planner.py": "8b57c370335984c816d29e0709d5b50b32c7154f745a0946a98d97e6502cd7ab",
+      "tcm/assistant_router.py": "7be06f204836daa4235fd59d978ac6f8817b9c5c59a75a92f25d794dcdd051bb",
+      "tcm/assistant_info.py": "5eb69cc114647871d89a9a90db84db7aa1fe4a455fbdabf8dd541d9f3a39dc1e",
+      "tcm/chat.py": "07ca4f367eeb383f22d53358d7eab04cacfe46a660446e3baa832b886c69177d",
+      "templates/index.html": "8ffdee845247cffb734efb71b65117ede6b0fc57081a923eacd821d338227fce",
+      "scripts/preview_local_tasks.py": "b59a638ee7ee6f234a7413516cac0f27f9dea81f180a95118f51066c53526978",
+      "tests/test_intent_planner.py": "6716d487def5baca1ea1581b8c51fcde13a056332d0ee5bee6050a6144c3f5dc"
+    }
+  }
+}

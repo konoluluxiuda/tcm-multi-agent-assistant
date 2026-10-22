@@ -1,0 +1,185 @@
+{
+  "status": "passed",
+  "date": "2026-10-22",
+  "scope": "simplify_explicit_two_herb_common_target_queries_without_inventory_or_plan_confirmation",
+  "previous_behavior": "User original question returned the research-task inventory review prompt; prior turn only explained the design and did not change it.",
+  "current_behavior": {
+    "original_user_question": "我在整理当归与川芎，想核对共同靶点",
+    "chat_topic": "etcm_relations",
+    "shared_identifiers_for_current_DangGui_ChuanXiong_sources": 172,
+    "request_checklist_required": false,
+    "plan_confirmation_required": false,
+    "target_selection_required": false,
+    "research_task_created": false,
+    "automatic_source_policy": "Natural-language two-herb common-target query only: use a single nontruncated valid local Chinese-name candidate, with source and unverified identity explicitly shown. Multiple candidates require source choice; missing candidates do not yield a fabricated intersection.",
+    "retained_checks": [
+      "source_snapshot_and_version",
+      "read_only_queries",
+      "distinct_sources",
+      "explicit_uniprot_groups"
+    ],
+    "extra_entities_and_deliverables": "kept in the original question and routed to the existing reviewed task workflow; not silently truncated",
+    "explicit_relations_commands_and_single_herb_queries": "retain prior source confirmation policy",
+    "existing_chat_text": "not rewritten; refresh and resubmit the question to use the new path"
+  },
+  "verification_order": [
+    "focused_fixture_regression",
+    "actual_browser_scenarios",
+    "full_offline_regression"
+  ],
+  "focused": {
+    "status": "passed",
+    "modules": 6,
+    "tests": 61,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "total": 9,
+    "checks_passed": 9,
+    "cases": [
+      {
+        "id": "Q01",
+        "question": "我在整理当归与川芎，想核对共同靶点",
+        "expected": 172,
+        "status": "passed",
+        "selected_source_rows_checked": 2,
+        "topic": "etcm_relations",
+        "total": 172
+      },
+      {
+        "id": "Q02",
+        "question": "我在整理当归与川芎，想核对共同靶点，并保留双方原始记录的位置",
+        "expected": 172,
+        "status": "passed",
+        "selected_source_rows_checked": 4,
+        "topic": "etcm_relations",
+        "total": 172,
+        "evidence_downloaded": true
+      },
+      {
+        "id": "Q03",
+        "question": "我正在比较茯苓与甘草，希望查询双方的共同标识，附上双方原始行",
+        "expected": 180,
+        "status": "passed",
+        "selected_source_rows_checked": 2,
+        "topic": "etcm_relations",
+        "total": 180
+      },
+      {
+        "id": "Q04",
+        "question": "核对陈皮与半夏共同靶点，给出双方出处",
+        "expected": 94,
+        "status": "passed",
+        "selected_source_rows_checked": 2,
+        "topic": "etcm_relations",
+        "total": 94
+      },
+      {
+        "id": "Q05",
+        "question": "白术和黄芪有哪些共同靶点",
+        "expected": 151,
+        "status": "passed",
+        "selected_source_rows_checked": 2,
+        "topic": "etcm_relations",
+        "total": 151
+      },
+      {
+        "id": "Q06",
+        "question": "我在整理当归与未收录测试药，想核对共同靶点",
+        "expected": null,
+        "status": "passed",
+        "selected_source_rows_checked": 0,
+        "topic": "etcm_relations"
+      },
+      {
+        "id": "Q07",
+        "question": "我在整理当归与川芎，想核对共同靶点，还要文献和采购价格",
+        "expected": "review",
+        "status": "passed",
+        "selected_source_rows_checked": 0,
+        "topic": "research_task_review"
+      },
+      {
+        "id": "Q08",
+        "question": "我在整理当归、川芎与甘草，想核对共同靶点",
+        "expected": "review",
+        "status": "passed",
+        "selected_source_rows_checked": 0,
+        "topic": "research_task_review"
+      },
+      {
+        "id": "Q09",
+        "question": "我在整理当归与川芎，想核对共同靶点，再帮我配药",
+        "expected": "boundary",
+        "status": "passed",
+        "selected_source_rows_checked": 0,
+        "topic": "personal_medication_boundary"
+      }
+    ],
+    "application_files_frozen": 181,
+    "application_code_unchanged": true,
+    "external_model_calls": 0,
+    "independent_acceptance": false,
+    "completed_direct_local_queries": 5,
+    "missing_source_clarifications": 1,
+    "compound_requests_preserved": 2,
+    "personal_medication_boundary": 1,
+    "selected_source_witnesses_reconciled": 12,
+    "pagination_refresh_followup_verified": true,
+    "evidence_note_downloads": 1,
+    "layout_widths_checked": [
+      390,
+      1100
+    ],
+    "test_chat_and_bookmark_cleanup_scope": "fresh isolated browser sessions only",
+    "external_static_assets": "blocked"
+  },
+  "offline": {
+    "status": "passed",
+    "tests": 798,
+    "modules": 88,
+    "skipped": 0,
+    "network_attempts": 0,
+    "new_tests_this_increment": 4,
+    "full_snapshot_evaluation": {
+      "status": "not_run",
+      "reason": "requires private ETCM snapshot/database; separate local acceptance"
+    },
+    "live_provider_evaluation": {
+      "status": "not_run",
+      "reason": "offline regression uses deterministic substitutes"
+    }
+  },
+  "source_sha256": {
+    "app.py": "973c1c5b11d4a77ef9e0660fc27e7512d078d26f347e9ca2493f880367442e0e",
+    "tcm/relation_queries.py": "c5b988eff4f02d1dc152c0598d1980d05f5671cfe5c01f1052a2640f3ef81638",
+    "templates/index.html": "62b20b5c35cc45dc1708e3eca711e4e993e483a03f4091089d48dc996771a56a",
+    "tests/test_relation_queries.py": "c9918f74c64fa95760e2b7520d0cd4f84c9df242e554605ed73928b4a2cc69bd",
+    "tests/test_chat_task_handoff.py": "813a81148c41b05eca0073c42c0b56f04351e9d1c1e1d632f4aba4a6bc763192"
+  },
+  "runtime": {
+    "port": 7877,
+    "launcher": "scripts.preview_local_tasks",
+    "restarted": true,
+    "previous_state_directory_reused": true,
+    "other_instances_not_updated": true
+  },
+  "schema_migration": false,
+  "external_model_calls": 0,
+  "independent_language_or_business_evaluation": false,
+  "git_commit_created": false,
+  "remote_push": false,
+  "docker_updated": false,
+  "limits": [
+    "Bounded deterministic sentence parsing, not full semantic understanding or model planning.",
+    "A unique local name candidate is not a verified herb identity; all results are scoped to the displayed sources.",
+    "9 expected-behavior checks include only 5 completed direct local queries; missing-source, compound-task and personal-medication cases are not completed business tasks.",
+    "12 selected source witnesses were reconciled; not all source rows or every common identifier were individually audited.",
+    "Bookmark evidence export contains the saved page, not the whole intersection.",
+    "Known user-reported questions and developer-selected variants; no independent user accuracy or clinical claims.",
+    "DOM and behavior/layout checks with external assets blocked; not complete typography review.",
+    "Complex request inventory workflow remains; current simplification does not cover every task type.",
+    "No Docker deployment or remote push; old services on other ports may continue to show prior behavior."
+  ]
+}

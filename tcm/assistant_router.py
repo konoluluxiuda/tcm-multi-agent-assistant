@@ -28,6 +28,9 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
     text = query.strip()
     # Commands preserve the existing parser contracts, including errors and bounds.
     if text.startswith('/'):
+        from tcm.analysis_chat import parse as analysis_request
+        parsed=analysis_request(text,explicit=True)
+        if parsed is not None:return route('assistant',parsed,'explicit_analysis','explicit')
         from tcm.relation_queries import parse as relation_request
         parsed = relation_request(text, explicit=True)
         if parsed is not None:
@@ -43,15 +46,29 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
     if not text or len(text) > 2000:
         return None
     short = re.sub(r'\s+', '', text).rstrip('？?。！!')
+    from tcm.dataset_info import parse as dataset_request
+    dataset = dataset_request(text)
+    if dataset is not None:
+        return route('assistant', dataset, 'dataset_description')
     from tcm.intent_guidance import recognize as guidance
     clarified = guidance(text, relation_context)
     if clarified:
         return route('assistant', clarified, 'relation_query_with_provenance'
                      if clarified.get('source_evidence_requested') else 'bounded_intent_guidance')
+    from tcm.analysis_chat import parse as analysis_request
+    analysis=analysis_request(text)
+    if analysis is not None:return route('assistant',analysis,'target_analysis_query')
     from tcm.relation_queries import parse as relation_request
     parsed = relation_request(text)
     if parsed is not None:
         return route('assistant', parsed, 'etcm_relation_query')
+    # Compound relationship requests must retain the entire question. Hand them
+    # to the existing reviewed task workflow instead of guessing two names or
+    # discarding clauses that the direct-query grammar could not consume.
+    from tcm.task_request import local_deliverable_hints
+    if any(token in text for token in local_deliverable_hints(text)['source_relations']):
+        return route('assistant', {'topic':'research_task_review','question':query},
+                     'local_task_inventory_review')
     # Coverage questions describe this service, rather than requesting evidence fusion.
     if (len(short) <= 160 and
             re.search(r'^(?:请问)?(?:这里|你这里|这个(?:系统|助手|平台)|本(?:系统|平台))', short) and
@@ -109,10 +126,13 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
         if herb_context:
             return route('assistant', {'topic': 'research_name_needed'}, 'cross_source_entity_unverified')
         return route('research', {'question': '它的' + field}, 'active_research_followup' if research_context else 'missing_entity')
+    from tcm.attribute_intent import parse as attribute_request
     # Source selection is kept separate from entity resolution in the chosen tool.
     structured = re.fullmatch(POLITE + r'(?:在\s*)?(?:ETCM|结构化数据库)\s*(?:中|里)?\s*(?:查询|查一下|查)?\s*(.+)', text, re.I)
     if structured:
         body = structured.group(1).strip()
+        attributes=attribute_request(body)
+        if attributes is not None:return route('herb',attributes,'herb_attribute_query')
         named = herb_request('查询' + body)
         return route('herb', named or {'name': body}, 'explicit_structured_source')
     if comparison_request(text) is not None:
@@ -128,6 +148,9 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
         return route('research', {'question': text}, 'pharmacopoeia_field_query')
     if named:
         return route('herb', {'name': named.group(1).strip(), 'field': FIELD_NAMES[named.group(2)]}, 'structured_field_query')
+    attributes=attribute_request(text)
+    if attributes is not None:
+        return route('herb',attributes,'herb_attribute_query')
     introductory = re.fullmatch(
         POLITE + r'(?:查询|查找|找一下|查一下|看看|看一下)\s*([\u4e00-\u9fff]{2,20})'
         r'[，,。\s]*(?:我)?(?:主要)?想(?:看|了解)(?:一下)?药典(?:中|里)?(?:怎么写的|的记载|如何记载)(?:[？?。！!])*', text)

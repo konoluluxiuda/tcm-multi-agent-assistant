@@ -1,4 +1,4 @@
-function citations(card,hit,kind,label){
+function citations(card,hit,kind,label,destination=card){
  const values=hit[kind]||[];if(!values.length)return;
  const details=el('details');details.append(el('summary',`${label}（${values.length} 处；逐处核对，红框为定位范围）`));
  values.forEach((c,i)=>{const s=c.source,box=el('div',undefined,'citation');
@@ -14,15 +14,16 @@ function citations(card,hit,kind,label){
     image.onload=()=>URL.revokeObjectURL(url);image.onerror=()=>{URL.revokeObjectURL(url);image.remove();button.disabled=false;button.textContent='图片解码失败，点击重试'};image.src=url;box.append(image);button.remove();
    }catch(error){button.disabled=false;button.textContent='重试查看原页';let err=box.querySelector('.error');if(!err){err=el('p',undefined,'error');box.append(err)}err.textContent=error.message}
   });box.append(button);details.append(box);
- });card.append(details);
+ });destination.append(details);
 }
-function render(hit){const card=el('article');card.append(el('h2',`${hit.name} · ${hit.label==='origin'?'来源':hit.label}`),el('span','未人工审核','badge'));
- if(hit.raw_name!==hit.name)card.append(el('p',`OCR 药名：${hit.raw_name} → AI 修订候选：${hit.name}`));
- card.append(el('p',`范围：${hit.scope} · 人工审核状态：${hit.review_status} · 本字段 AI 修订 ${hit.field_overlay_ids.length} 项；条目累计修订 ${hit.entry_overlay_ids.length} 项`,'muted meta'));
- if(hit.raw_flags.length)card.append(el('p','原始检查标记：'+hit.raw_flags.join('、'),'muted meta'));
- const texts=el('div',undefined,'texts');for(const [title,text]of [['OCR 原文（不含 AI 文本修订）',hit.raw_text],['研究视图（包含已启用 AI 修订）',hit.text]]){const panel=el('section');panel.append(el('h3',title),el('pre',text));texts.append(panel)}card.append(texts);
- if(hit.raw_text===hit.text)card.append(el('p','本字段文本无 AI 修改；药名或其他字段可能存在修订。','muted'));
- citations(card,hit,'evidence','字段原页证据');citations(card,hit,'title_evidence','标题原页证据');return card;
+function render(hit){const card=el('article');card.dataset.researchHit='true';card.append(el('h3',`${hit.name} · ${hit.label==='origin'?'来源':hit.label}`));
+ const text=el('div',hit.text);text.style.whiteSpace='pre-wrap';text.dataset.resultText='true';card.append(text);
+ const proof=el('details');proof.dataset.resultDetails='true';proof.append(el('summary','出处与校订信息'));
+ if(hit.raw_text!==hit.text)proof.append(el('h4','OCR原文'),el('pre',hit.raw_text));
+ if(hit.raw_name!==hit.name)proof.append(el('p',`OCR药名：${hit.raw_name}；当前名称：${hit.name}`));
+ proof.append(el('p',`审核状态：${hit.review_status}；字段校订 ${hit.field_overlay_ids.length} 项；条目校订 ${hit.entry_overlay_ids.length} 项。药典摘录尚需按原页核对。`));
+ if(hit.raw_flags.length)proof.append(el('p','检查标记：'+hit.raw_flags.join('、')));
+ citations(card,hit,'evidence','字段原页',proof);citations(card,hit,'title_evidence','标题原页',proof);card.append(proof);return card;
 }
 
 function exportEvidence(container,data){
@@ -30,12 +31,12 @@ function exportEvidence(container,data){
  if(interpreted){const descriptions=[];
   for(const item of interpreted.name_forms||[])if(item.rule==='script_variant')descriptions.push(`药名字形：${item.query_form} → ${item.indexed_name}`);
   for(const item of interpreted.field_matches||[])if(item.query_term!==item.field)descriptions.push(`字段：${item.query_term} → ${item.field}`);
-  if(descriptions.length)container.append(el('p',[...new Set(descriptions)].join('；')+'。仅用于定位来源，不建立别名或药理等价关系。','muted'));
+  if(descriptions.length){const info=el('details');info.dataset.resultDetails='true';info.append(el('summary','检索说明'),el('p',[...new Set(descriptions)].join('；')+'。仅用于定位来源。'));container.append(info)}
  }
  const allowed=['candidates','partial_evidence','reference_unresolved','ambiguous_field','field_not_observed','variant_scope_unresolved'];
  if(!data||data.method!=='name_field'||!allowed.includes(data.status)||!/^[a-f0-9]{64}$/.test(data.index_sha256||''))return;
  const button=el('button','导出本轮证据 Markdown');button.type='button';button.dataset.evidenceExport='true';
- const note=el('p','仅导出本轮查询字段，保留未审核、缺失和范围限制。','muted');
+ const note=el('p','','muted');
  button.addEventListener('click',async()=>{button.disabled=true;note.textContent='正在核对来源并导出……';
   try{const response=await fetch('/api/research/report?'+new URLSearchParams({q:data.question,snapshot:data.index_sha256}));
    if(!response.ok){const error=await response.json();throw new Error(error.error||'导出失败，请重新检索')}

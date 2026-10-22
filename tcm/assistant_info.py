@@ -37,10 +37,35 @@ def herb_inventory(database, version=None):
 
 def execute(request):
     topic = request['topic']
+    if topic=='target_analysis':
+        from tcm.analysis_tools import execute_turn
+        return execute_turn(request)[0]
+    if topic == 'dataset_info':
+        from tcm.dataset_info import describe
+        return describe(execute({'topic':'overview'}), request.get('datasets'))
     if topic == 'etcm_relations':
         from tcm.relation_queries import execute as execute_relations
         return execute_relations(request)
     result = {'status': 'ok', 'topic': topic, 'llm_calls': 0, 'network_calls': 0}
+    if topic=='intent_clarification':
+        message=('当前只提供资料查询，不能执行价格交易或个体选药、处方任务。' if request.get('unsupported') else
+                 '请说明要了解的资料或查询内容，例如介绍数据库、药材属性、成分或共同靶点。')
+        if request.get('planner_failed'):message='暂时未能识别这句话，请换一种说法，例如“介绍两个数据库”或“查看白术的属性”。'
+        return {**result,'status':'clarification_needed','message':message}
+    if topic == 'research_task_review':
+        question=request['question']
+        if not env_bool('ENABLE_RESEARCH_TASKS'):
+            return {**result,'status':'clarification_needed','can_create_task':False,
+                    'message':'这条复合查询需要先核对请求清单，但当前部署尚未启用研究任务。'
+                              '原句没有被拆成较小查询或执行；请使用已启用研究任务的入口。'}
+        if not isinstance(question,str) or not 1<=len(question)<=400:
+            return {**result,'status':'clarification_needed','can_create_task':False,
+                    'message':'研究任务每题最多400字符。请缩短原句或明确拆分任务后重试；未截断原请求或执行查询。'}
+        return {**result,'status':'clarification_needed','can_create_task':True,
+                'task_proposal':{'mode':'etcm_question','question':question},
+                'message':'这个问题包含多个要求，请先确认本次要查询的范围。',
+                'notes':['完整原句保存在本地研究任务中，尚未执行查询。',
+                         '当前一次执行两味药的共同标识及双方记录，其他要求保留为未完成。']}
     if topic == 'overview':
         try:
             herbs = herb_inventory(os.getenv('TCM_DB') or ROOT/'var/tcm/herbs.sqlite3', os.getenv('TCM_DATASET_VERSION') or None)
@@ -62,25 +87,33 @@ def execute(request):
         except (OSError, ValueError, sqlite3.Error, KeyError, TypeError, RuntimeError):
             research = {'status': 'unavailable'}
         result.update(herbs=herbs, pharmacopoeia=research)
-        lines = ['当前本地资料概览（实时读取已导入数据库）：']
+        lines=[]
+        notes=['记录数不是去重药材种数；ETCM与药典未完成对象对应，两个数量不能相加。']
         if herbs['status']=='ok':
-            lines += [f"ETCM：{herbs['source_record_count']}条有效来源记录。",
-                      f"功效分类字段：{herbs['efficacy_present_records']}条有值，{herbs['efficacy_missing_records']}条缺失；非空原始字段值共{herbs['raw_efficacy_value_count']}种。"]
-            lines.append('原始分类值及记录数见下方列表（最多20种）；这些来源标签不写入会话历史。')
+            lines.append(f"ETCM：{herbs['source_record_count']}条药材来源记录。")
+            notes.append(f"功效分类：{herbs['efficacy_present_records']}条有值、{herbs['efficacy_missing_records']}条缺失；原始值共{herbs['raw_efficacy_value_count']}种，未统一分类。")
         else:
             lines.append('ETCM：当前数据不可用或指定版本未导入，未沿用旧数量。')
         if research['status']=='ok':
-            lines.append(f"药典研究索引：{research['entry_count']}个候选条目，{research['field_chunk_count']}个字段块，尚未完成人工审核。")
+            lines.append(f"药典：{research['entry_count']}个条目，{research['field_chunk_count']}个字段。")
+            notes.append('药典提取尚未完成人工审核。')
         else:
             lines.append('药典研究索引：未启用或当前不可用，未推测数量。')
-        lines += ['记录数不等于去重药材种数；功效原始值未合并、拆分或翻译，不能视为已核验的标准分类。ETCM与药典未完成跨库对象映射，两个数量不能相加。',
-                  '可以继续问“黄芪有什么作用”，也可用已收录的拼音或拉丁名查询ETCM属性。']
         result['status']='ok' if herbs['status']=='ok' and research['status']=='ok' else 'partial' if herbs['status']=='ok' or research['status']=='ok' else 'unavailable'
         result['message']='\n'.join(lines)
+        result['notes']=notes
     elif topic == 'capabilities':
+        from tcm.analysis_tools import tool_specs
+        analyses='、'.join(s['label'] for s in tool_specs() if s['configured'])
         research='已启用' if env_bool('ENABLE_PHARMACOPOEIA_RESEARCH') else '未启用'
         pubmed='已启用' if env_bool('ENABLE_PUBMED') else '未启用'
-        result['message']=f'当前支持：\n• 数据概览：问“收录了多少药材”“有哪些功效分类”，按本地数据库统计。\n• 药典字段与原页证据（{research}）：问“黄芪有什么作用”，再问“用量呢”“出处呢”。\n• ETCM结构化属性：按来源ID或已收录拼音/拉丁/英文名查询；中文跨库映射尚未核验。\n• 靶点反查药材来源：如“CYP24A1关联哪些药材”，按已核对UniProt查询；仅来源关联，不作药效排序。\n• ETCM来源疾病富集：如“白术有哪些疾病富集记录”，需选择来源；不作为适应证或治疗推荐。\n• PubMed文献（{pubmed}）：如“在PubMed检索 Astragalus membranaceus”；只获取摘要及元数据。\n• 证据清单下载、会话保存与清除。\n尚不支持完整术语解释库、自动临床证据评议或患者个体化用药判断。工具已启用不等于资料已就绪；可问“数据概览”检查实际来源。'
+        result['message']=(f'可以查询：\n• 药典功效、用量和出处（{research}）\n'
+                           '• 药材属性、成分、靶点及来源关联\n• 药典字段对比、数据概览\n'
+                           f'• PubMed文献（{pubmed}）\n• 收藏和证据下载')
+        result['notes']=['不提供个体选药或处方。中文名称对应关系与研究结论仍须核对。',
+                         '工具已启用不等于资料已就绪，可问“数据概览”查看当前资料。']
+        if analyses:result['message']+='\n• '+analyses
+
     else:
         guidance = {
             'personal_medication_boundary': '当前服务不能根据你的症状选药、配药或提供个体处方。可以查询明确药材的药典记载和原页来源；这些资料不能代替针对个人情况的专业判断。',

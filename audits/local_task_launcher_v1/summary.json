@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "date": "2026-10-22",
+  "scope": "local_task_launcher_live_smoke_not_independent_business_evaluation",
+  "total": 12,
+  "checks": [
+    {
+      "name": "documented_module_starts_with_isolated_port_and_state",
+      "status": "passed"
+    },
+    {
+      "name": "real_etcm_snapshot_ready",
+      "status": "passed"
+    },
+    {
+      "name": "pharmacopoeia_ready",
+      "status": "passed"
+    },
+    {
+      "name": "inherited_model_and_online_flags_cannot_enable_fallback",
+      "status": "passed"
+    },
+    {
+      "name": "question_pauses_without_model_or_relation_tools",
+      "status": "passed"
+    },
+    {
+      "name": "inventory_confirmation_is_saved_before_plan_execution",
+      "status": "passed"
+    },
+    {
+      "name": "module_restart_recovers_same_task_cookie_and_revision",
+      "status": "passed"
+    },
+    {
+      "name": "confirmed_plan_uses_real_source_candidates",
+      "status": "passed"
+    },
+    {
+      "name": "local_shared_targets_ready",
+      "status": "passed"
+    },
+    {
+      "name": "report_completes_with_no_external_model_calls",
+      "status": "passed"
+    },
+    {
+      "name": "task_remains_isolated_from_another_browser",
+      "status": "passed"
+    },
+    {
+      "name": "only_created_test_task_deleted",
+      "status": "passed"
+    }
+  ],
+  "external_model_calls": 0,
+  "actual_process_restart": true,
+  "source_data": "existing_local_readonly_catalogs",
+  "other_preview_processes_unchanged_during_isolated_smoke": true,
+  "default_profile_preserves_existing_state_paths": true,
+  "git_commit_created": false,
+  "remote_push": false,
+  "docker_updated": false,
+  "full_offline_regression_rerun": false,
+  "launcher_sha256": "85b397fbca974e3c980fb60442ac20682f819319e8b03a56384332cc6598499a",
+  "syntax_and_local_documentation_links": "passed"
+}

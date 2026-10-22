@@ -1,0 +1,117 @@
+{
+  "date": "2026-10-23",
+  "status": "local_implementation_verified_provider_retest_not_run",
+  "scope": [
+    "registered_herb_target_profile",
+    "registered_herb_target_similarity",
+    "bounded_chat_and_model_intent_mapping",
+    "readable_result_table",
+    "parameter_only_persistent_focus"
+  ],
+  "offline_regression": {
+    "status": "passed",
+    "modules": 91,
+    "tests": 831,
+    "skipped": 0,
+    "network_attempts": 0,
+    "private_report": "var/target_similarity_v1/ci_final/summary.json"
+  },
+  "browser": {
+    "status": "passed",
+    "checks": [
+      "registered_capabilities",
+      "profile_no_model",
+      "profile_to_top10_and_independent_sql",
+      "four_original_json_files_hashes_and_target_sets",
+      "desktop_mobile_and_folded_provenance",
+      "open_pair_evidence",
+      "switch_metric_and_preserve_top_k",
+      "reload_recovers_analysis_parameters",
+      "local_analysis_followup",
+      "unknown_prepared_and_over_budget",
+      "previous_descriptions_and_browser_errors"
+    ],
+    "total": 11,
+    "code_unchanged": true,
+    "independent_acceptance": false,
+    "private_report": "var/target_similarity_v1/browser_final/summary.json"
+  },
+  "data_validation": {
+    "source_records": 2076,
+    "with_targets": 1849,
+    "uncovered_sources": 227,
+    "distinct_identifiers": 962,
+    "query_profile": {
+      "source_label": "BaiZhu",
+      "target_count": 253,
+      "source_rows": 269,
+      "duplicate_identifier_rows": 15,
+      "unidentified_rows": 1
+    },
+    "independent_sql": [
+      "top10_jaccard",
+      "top5_common_count"
+    ],
+    "raw_json_files_checked": 4,
+    "raw_checks": [
+      "sha256",
+      "query_set",
+      "shared_ids",
+      "query_only_ids",
+      "candidate_only_ids"
+    ]
+  },
+  "provider": {
+    "actual_calls": 2,
+    "sent": "current question and static tool definitions only",
+    "sent_corpus_or_history": false,
+    "first_browser": "failed assertion after 9 successful checks; response not saved; exact first failure unavailable",
+    "extra_diagnostic": "explicitly authorized one call; selected correct tool/name/top_k, redundant entities rejected by old scope validator",
+    "fix": "normalize only a single entity exactly equal to analysis.arguments.name; all conflicting/extra scope still rejected",
+    "captured_output_offline_replay": "passed; no provider request",
+    "post_fix_live_end_to_end": "not_run",
+    "general_intent_accuracy": "not_established"
+  },
+  "retained_failures": [
+    {
+      "artifact": "var/target_similarity_v1/browser/summary.json",
+      "status": "failed"
+    },
+    {
+      "artifact": "var/target_similarity_v1/focused/first_calculation_check.json",
+      "cause": "test used relative_path instead of relative_file_path; corrected test"
+    },
+    {
+      "artifact": "var/target_similarity_v1/diagnostic_replay_tests.json",
+      "cause": "direct worker invocation omitted test environment; graph setup failed with missing CHAT_MODEL; full isolated runner passed"
+    }
+  ],
+  "deployment": {
+    "local_preview_port": 7877,
+    "git_commit_created": false,
+    "git_push": false,
+    "docker_updated": false,
+    "schema_migration": false,
+    "raw_source_writes": false
+  },
+  "limitations": [
+    "source associations are not efficacy or novel target predictions",
+    "disease gene indexing and candidate ranking remain planned",
+    "registry includes only two new analyses, not all legacy tools or MCP",
+    "no full provider re-test after fix",
+    "no production concurrency benchmark or independent biological ranking labels",
+    "no actual process restart acceptance in this increment"
+  ],
+  "source_sha256": {
+    "tcm/target_similarity.py": "0ad1367083355f7ac9ca6e5e0767176701ec0c3fa618825300b765f4f6c7cb66",
+    "tcm/analysis_tools.py": "4fe229429755fc69d5a6c2f106d676425b72d7bcdcf354ef86323c00ebb8e24b",
+    "tcm/analysis_chat.py": "87bcc333acfc6288a0f51efd040d8df55eb45f5a87fb6730e2bf8dec47148ea9",
+    "tcm/intent_planner.py": "394cd56f5a7e26efdd8cf9de5120a8d9fb730b26b7b70b4e7a2d340f131ccdee",
+    "tcm/assistant_router.py": "2fba51f29c1844039bc98ed991a2220d97aa901f2a15865118a91dc90f323557",
+    "tcm/assistant_info.py": "137d9558daf700e3484b064b08a701e1ee355802aa5214c01d1eccda80629a77",
+    "tcm/relation_memory.py": "651e7fb61934a74935aa87221931ab94002aaf44087cfedff36074919c28fe18",
+    "agents/agent_decision.py": "7ddc37f63e90c974d678ccfd1b968b63f5ba055cbbc2541921fd65029f04216c",
+    "app.py": "1437b1729649a092411065db699189d5a5b308fd758dea087689d498bf17a0a5",
+    "templates/index.html": "04a3d8ba2c7ccf09a714a9bcee28b12cbcde099a0f3cc43fd5a2ac0540a8fab7"
+  }
+}

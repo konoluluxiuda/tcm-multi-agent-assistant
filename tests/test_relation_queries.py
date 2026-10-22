@@ -61,8 +61,13 @@ class RelationQueryTests(unittest.TestCase):
             self.assertIsNone(resolve('Alpha有哪些成分'))
             self.assertEqual(resolve('/relations 成分 Alpha')['tool'], 'assistant')
 
-    def test_chinese_candidates_require_selection_for_both_entities(self):
+    def test_unique_chinese_candidates_execute_and_explicit_commands_still_require_source_ids(self):
         result = execute(parse('测试甲草和测试乙草有哪些共同靶点'))
+        self.assertEqual(result['status'],'ok')
+        self.assertEqual(result['relations']['data']['total'],23)
+        self.assertIn('唯一候选',''.join(result['notes']));self.assertIn('尚未核验',''.join(result['notes']))
+        self.assertEqual([g['selection_method'] for g in result['relations']['groups']],['unique_local_candidate']*2)
+        result = execute(parse('/relations 共同靶点 测试甲草 | 测试乙草',explicit=True))
         self.assertEqual(result['status'], 'clarification_needed')
         self.assertNotIn('data', result['relations'])
         self.assertEqual([g['resolution_status'] for g in result['relations']['groups']], ['name_mapping_candidates']*2)
@@ -70,6 +75,26 @@ class RelationQueryTests(unittest.TestCase):
         chosen = execute(parse('/relations 共同靶点 '+' | '.join(ids), explicit=True))
         self.assertEqual(chosen['relations']['data']['total'], 23)
         self.assertEqual(chosen['llm_calls'], 0)
+
+    def test_multiple_candidates_and_unknown_names_do_not_automatically_choose_a_source(self):
+        import sqlite3
+        with sqlite3.connect(self.database) as con:
+            con.execute("INSERT INTO name_candidates SELECT herb_id,'测试甲草',entry_id,evidence FROM name_candidates WHERE name_zh='测试乙草'")
+        with patch('tcm.relation_queries.shared_targets',side_effect=AssertionError('Ambiguous source queried')):
+            for text in ('我在整理测试甲草与测试乙草，想核对共同靶点','未知测试草和测试乙草有哪些共同靶点'):
+                result=execute(parse(text));self.assertEqual(result['status'],'clarification_needed')
+                self.assertNotIn('data',result['relations'])
+            self.assertEqual(len(execute(parse('测试甲草和测试乙草有哪些共同靶点'))['relations']['groups'][0]['options']),2)
+
+    def test_background_parser_does_not_discard_third_herbs_extra_tasks_or_clinical_requests(self):
+        from tcm.assistant_router import resolve
+        for text in (
+                '我在整理测试甲草与测试乙草，想核对共同靶点，还要文献和采购价格',
+                '我在整理测试甲草、测试乙草与未知第三草，想核对共同靶点',
+                '我在整理测试甲草与测试乙草，想核对共同靶点，并保留双方原始记录的位置，再查论文'):
+            self.assertIsNone(parse(text))
+            self.assertEqual(resolve(text)['request']['topic'],'research_task_review')
+        self.assertEqual(resolve('我在整理测试甲草与测试乙草，想核对共同靶点，再帮我配药')['request']['topic'],'personal_medication_boundary')
 
     def test_single_source_pagination_preserves_rows_and_capture_status(self):
         first = execute(parse('Alpha有哪些成分'))['relations']['data']

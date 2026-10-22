@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-22",
+  "status": "passed",
+  "scope": "dataset_description_intent_fix_and_research_analytics_readiness_plan",
+  "root_cause": "Database descriptions were absent from both intent actions and local metadata tools; generic clarification incorrectly demanded a herb name.",
+  "changes": [
+    "Local metadata descriptions for ETCM and pharmacopoeia, with live counts and explicit unavailable counts.",
+    "Bounded rule routing for database introductions and comparisons.",
+    "Strict model dataset_info action and dataset selection enum; no source or history sent.",
+    "Generic clarification allows dataset questions, not only herb requests.",
+    "Descriptions retain current herb focus and bypass evidence generation."
+  ],
+  "verification": {
+    "focused": {
+      "status": "passed",
+      "modules": 4,
+      "tests": 48
+    },
+    "actual_browser_local": {
+      "status": "passed",
+      "total": 8,
+      "cases": [
+        {
+          "question": "数据概览",
+          "expected": "overview",
+          "check": "passed",
+          "routing": {
+            "tool": "assistant",
+            "reason": "dataset_question",
+            "mode": "natural"
+          },
+          "model_calls": 0
+        },
+        {
+          "question": "分别介绍两个数据",
+          "expected": "dataset_info",
+          "check": "passed",
+          "routing": {
+            "tool": "assistant",
+            "reason": "dataset_description",
+            "mode": "natural"
+          },
+          "model_calls": 0
+        },
+        {
+          "question": "我想问的是介绍两个数据库",
+          "expected": "dataset_info",
+          "check": "passed",
+          "routing": {
+            "tool": "assistant",
+            "reason": "dataset_description",
+            "mode": "natural"
+          },
+          "model_calls": 0
+        },
+        {
+          "question": "介绍ETCM",
+          "expected": "etcm",
+          "check": "passed",
+          "routing": {
+            "tool": "assistant",
+            "reason": "dataset_description",
+            "mode": "natural"
+          },
+          "model_calls": 0
+        },
+        {
+          "question": "中国药典是什么",
+          "expected": "pharmacopoeia",
+          "check": "passed",
+          "routing": {
+            "tool": "assistant",
+            "reason": "dataset_description",
+            "mode": "natural"
+          },
+          "model_calls": 0
+        },
+        {
+          "question": "这两个数据库有什么区别",
+          "expected": "dataset_info",
+          "check": "passed",
+          "routing": {
+            "tool": "assistant",
+            "reason": "dataset_description",
+            "mode": "natural"
+          },
+          "model_calls": 0
+        },
+        {
+          "question": "我需要查看白术的相关属性",
+          "expected": "herb",
+          "check": "passed",
+          "routing": {
+            "tool": "herb",
+            "reason": "herb_attribute_query",
+            "mode": "natural"
+          },
+          "model_calls": 0
+        },
+        {
+          "question": "当归和川芎有哪些共同靶点",
+          "expected": "relations",
+          "check": "passed",
+          "routing": {
+            "tool": "assistant",
+            "reason": "etcm_relation_query",
+            "mode": "natural"
+          },
+          "model_calls": 0
+        }
+      ],
+      "model_calls": 0,
+      "source_sha256": {
+        "tcm/dataset_info.py": "8e90494258734b67d2004932057468270b6a5bc5cf4de39adf28f17b990d5dcd",
+        "tcm/assistant_info.py": "dc53429d5521d43d90d2afea9381eac255333f748f6f332d4395d3cae1c3c9df",
+        "tcm/assistant_router.py": "4a8753d6d155d6a784032bfc0154ebe61b007bc13c35439087480894da94f354",
+        "tcm/intent_planner.py": "68ab615a23c092c357e457c1c7cc33ac962c9fc8f9f322a4d3d7d7357e53a14a",
+        "app.py": "ea2f9e6850331070eb25bcf1f249e7b9d3ff8b59aad933a539f3122dbf2c542d"
+      },
+      "code_unchanged": true,
+      "independent_acceptance": false
+    },
+    "live_question_only_intent": {
+      "status": "passed",
+      "cases": [
+        {
+          "question": "说说咱们装的那两套资料各擅长什么",
+          "expected": "dataset_info",
+          "check": "passed",
+          "routing": {
+            "tool": "assistant",
+            "reason": "model_intent_fallback",
+            "mode": "model",
+            "intent_status": "ok",
+            "intent_model_calls": 1,
+            "intent_duration_ms": 789.26
+          },
+          "model_calls": 1
+        }
+      ],
+      "model_calls": 1,
+      "data_or_history_sent": false,
+      "egress_validation": "Implementation and fixture SDK-input assertions; no independent packet capture."
+    },
+    "full_offline": {
+      "status": "passed",
+      "tests": 815,
+      "modules": 89,
+      "skipped": 0,
+      "network_attempts": 0
+    }
+  },
+  "initial_checks_retained": [
+    {
+      "artifact": "var/dataset_info_v1/focused/first_router_check.log",
+      "issue": "Negative routing test assumed an existing unrecognized question had a route; corrected to allow None while rejecting dataset_info capture."
+    },
+    {
+      "artifact": "var/dataset_info_v1/browser/summary.json",
+      "issue": "Refresh assertion ran before asynchronous conversation load. Awaited conversation response and rendered text, then all eight local browser cases passed without another model call."
+    }
+  ],
+  "research_analysis": "data_readiness.json and docs/RESEARCH_ANALYTICS_PLAN.md",
+  "planned_not_implemented": [
+    "shared_analysis_tool_registry",
+    "herb_target_similarity",
+    "disease_gene_index",
+    "disease_candidate_ranking",
+    "novel_target_prediction"
+  ],
+  "runtime": {
+    "url": "http://127.0.0.1:7877/",
+    "intent_model_enabled": true,
+    "state_directory": "var/task_literature_v1",
+    "source_data_changed": false,
+    "schema_migration": false,
+    "existing_user_state_preserved": true
+  },
+  "limits": [
+    "Developer-selected examples, not independent general intent accuracy.",
+    "Read-only data counts and two disease-file structure samples do not validate the full biomedical dataset.",
+    "Current target links are source declarations, not newly predicted or independently confirmed targets."
+  ],
+  "delivery": {
+    "git_committed": false,
+    "git_pushed": false,
+    "docker_updated": false
+  },
+  "rollback": "Remove dataset_info from rule/model/API paths and restore the prior clarification text together; no database migration. Existing intent-only model flag can be disabled independently."
+}

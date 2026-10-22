@@ -1,0 +1,329 @@
+{
+  "status": "passed",
+  "date": "2026-10-22",
+  "scope": "concise_default_answers_and_optional_provenance_across_existing_chat_tools",
+  "changes": [
+    "One short result summary and one compact table for ETCM common targets, ingredients, targets, candidate paths, disease enrichment and reverse lookups.",
+    "Source rows, JSON pointers, hashes, capture status, source-selection notes and scope limitations remain available in closed details; not repeated per row.",
+    "Pharmacopoeia text shown once; differing OCR original, edits and original-page links remain in details.",
+    "Successful comparison cells show source text; incomplete fields retain visible messages.",
+    "Herb attributes omit status codes, long source IDs and unrequested missing fields from default view; raw fields and source are retained in details.",
+    "Dataset overview and capabilities shortened; categories and supplementary notes are expandable.",
+    "Literature retrieval metadata and routine notices collapsed; actual retraction/correction or identity alerts stay visible.",
+    "Chat, restored current results and bookmark previews share the concise assistant renderer; a restored structured result does not repeat the last matching summary."
+  ],
+  "data_and_state": {
+    "query_parameters_and_source_checks_retained": true,
+    "source_data_and_indexes_unchanged": true,
+    "raw_evidence_preserved": true,
+    "no_source_text_added_to_memory": true,
+    "schema_migration": false,
+    "historical_chat_text_not_rewritten": true,
+    "existing_task_engine_unchanged": true
+  },
+  "verification": {
+    "initial_focused": {
+      "modules": 11,
+      "tests": 128,
+      "status": "passed"
+    },
+    "browser": {
+      "status": "passed",
+      "total": 17,
+      "passed": 17,
+      "cases": [
+        {
+          "id": "R01",
+          "kind": "common_target",
+          "question": "我在整理当归与川芎，想核对共同靶点",
+          "check": "passed",
+          "source_witnesses_checked": 2,
+          "downloads": 1,
+          "http_status": 200,
+          "visible_characters": 1013,
+          "summary": "当归与川芎：172个共同靶点（按UniProt匹配）。",
+          "result_rows": 20,
+          "total": 172
+        },
+        {
+          "id": "R02",
+          "kind": "ingredient",
+          "question": "白术有哪些成分",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 0,
+          "http_status": 200,
+          "visible_characters": 834,
+          "summary": "白术：307条成分记录。",
+          "result_rows": 20,
+          "total": 307
+        },
+        {
+          "id": "R03",
+          "kind": "target",
+          "question": "白术有哪些靶点",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 0,
+          "http_status": 200,
+          "visible_characters": 898,
+          "summary": "白术：269条靶点记录。",
+          "result_rows": 20,
+          "total": 269
+        },
+        {
+          "id": "R04",
+          "kind": "herb_target_paths",
+          "question": "白术的成分关联哪些靶点",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 0,
+          "http_status": 200,
+          "visible_characters": 1276,
+          "summary": "白术：213条成分—靶点候选路径。",
+          "result_rows": 20,
+          "total": 213
+        },
+        {
+          "id": "R05",
+          "kind": "target_ingredient",
+          "question": "CYP24A1有哪些成分",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 0,
+          "http_status": 200,
+          "visible_characters": 503,
+          "summary": "CYP24A1：11条关联成分记录。",
+          "result_rows": 11,
+          "total": 11
+        },
+        {
+          "id": "R06",
+          "kind": "target_herb",
+          "question": "CYP24A1关联哪些药材",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 0,
+          "http_status": 200,
+          "visible_characters": 502,
+          "summary": "CYP24A1：19条药材来源记录。",
+          "result_rows": 19,
+          "total": 19
+        },
+        {
+          "id": "R07",
+          "kind": "disease",
+          "question": "白术有哪些疾病富集记录",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 0,
+          "http_status": 200,
+          "visible_characters": 783,
+          "summary": "白术：20条疾病富集记录。",
+          "result_rows": 20,
+          "total": 20
+        },
+        {
+          "id": "R08",
+          "kind": "research",
+          "question": "黄芪有什么作用",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 1,
+          "http_status": 200,
+          "visible_characters": 149
+        },
+        {
+          "id": "R09",
+          "kind": "comparison",
+          "question": "比较白术和黄芪的功效与用量",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 1,
+          "http_status": 200,
+          "visible_characters": 292
+        },
+        {
+          "id": "R10",
+          "kind": "partial",
+          "question": "比较白术和黄芪的功效与注意",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 1,
+          "http_status": 200,
+          "visible_characters": 366
+        },
+        {
+          "id": "R11",
+          "kind": "herb",
+          "question": "在ETCM查询BaiZhu的药用部位",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 0,
+          "http_status": 200,
+          "visible_characters": 54
+        },
+        {
+          "id": "R12",
+          "kind": "overview",
+          "question": "数据概览",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 0,
+          "http_status": 200,
+          "visible_characters": 52
+        },
+        {
+          "id": "R13",
+          "kind": "capabilities",
+          "question": "你能做什么",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 0,
+          "http_status": 200,
+          "visible_characters": 87
+        },
+        {
+          "id": "R14",
+          "kind": "missing",
+          "question": "未知测试草与川芎有哪些共同靶点",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 0,
+          "http_status": 200
+        },
+        {
+          "id": "R15",
+          "kind": "disabled",
+          "question": "在PubMed检索 Astragalus membranaceus",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 0,
+          "http_status": 503
+        },
+        {
+          "id": "R16",
+          "kind": "boundary",
+          "question": "我最近总觉得累，帮我选两味药配着喝",
+          "check": "passed",
+          "source_witnesses_checked": 0,
+          "downloads": 0,
+          "http_status": 200
+        },
+        {
+          "id": "R17",
+          "kind": "synthetic_pubmed_render",
+          "check": "passed"
+        }
+      ],
+      "external_model_calls": 0,
+      "actual_pubmed_requests": 0,
+      "application_code_unchanged": true,
+      "independent_acceptance": false,
+      "screenshot_font": "local Windows NotoSansSC injected for screenshots only; external assets blocked"
+    },
+    "browser_outcomes": {
+      "completed_local_scope": 12,
+      "partial_fields_retained": 1,
+      "missing_source": 1,
+      "disabled_tool": 1,
+      "personal_medication_boundary": 1,
+      "synthetic_literature_render_only": 1
+    },
+    "actual_downloads": 4,
+    "common_target_source_witnesses_reconciled": 2,
+    "pharmacopoeia_hits_reconciled_to_index": true,
+    "original_pdf_image_loaded": true,
+    "first_browser_checks": {
+      "preserved": true,
+      "paths": [
+        "var/readable_answers_v1/browser",
+        "var/readable_answers_v1/browser_round_02"
+      ],
+      "failures": "R01 assertions counted matching summaries from different prior turns, then included the static welcome message. Driver assertions were corrected; these were not independent business failures."
+    },
+    "first_full_regression": {
+      "preserved": true,
+      "status": "failed",
+      "tests": 798,
+      "failed_modules": [
+        {
+          "module": "test_comparison_report.py",
+          "failures": 1,
+          "errors": 0
+        },
+        {
+          "module": "test_disease_relations.py",
+          "failures": 2,
+          "errors": 0
+        },
+        {
+          "module": "test_new_user_wording.py",
+          "failures": 1,
+          "errors": 0
+        }
+      ],
+      "followup": "Three old copy/location assertions were updated while retaining scope, focus and partial-status checks. A visible zero-disease-record qualification was restored."
+    },
+    "compatibility_recheck": {
+      "modules": 3,
+      "tests": 18,
+      "status": "passed"
+    },
+    "offline": {
+      "status": "passed",
+      "tests": 798,
+      "modules": 88,
+      "skipped": 0,
+      "network_attempts": 0,
+      "new_test_cases": 0,
+      "full_snapshot_evaluation": {
+        "status": "not_run",
+        "reason": "requires private ETCM snapshot/database; separate local acceptance"
+      },
+      "live_provider_evaluation": {
+        "status": "not_run",
+        "reason": "offline regression uses deterministic substitutes"
+      }
+    }
+  },
+  "source_sha256": {
+    "templates/index.html": "00d9e3769494b3f996fad3caf504a9230e7272a21ee3e1335864e6032c1006ff",
+    "tcm/mineru_evidence.js": "302a8407543e186e09a40b46bd96cee650d339f2de3c90937b39a5d8d9fa85c9",
+    "tcm/relation_queries.py": "5e99e6703e23def54311eb41c7874ecbc30ef4e6cadbbf82c047056c670ba309",
+    "tcm/target_ingredients.py": "d96eb7694084ad62c4f8f7f360dd123ddc33a8b0f1b4eb141a85e6bc16ad3403",
+    "tcm/target_herbs.py": "4c969f85760e376f8c9a8f4abc2e38fe3fef76f7ebd9ee487c8d76b0f04d4869",
+    "tcm/relation_memory.py": "1b03928f85979977ad8fb53a41dc93c5e4fce7741704f78f5aee489a3dbb7deb",
+    "tcm/chat.py": "73d230bfe90cd37560ca2393c5f8921c107172597e8e5c9e1e13ebf32459bc26",
+    "tcm/mineru_chat.py": "011819735213241ee4c2fd37a316ae0d1def4bb9751660bbaeda445218bb544e",
+    "tcm/assistant_info.py": "033f57f58161306d209c66f39c8b20b61a8a91a02ce7f79863a462a1c2d3dac5",
+    "tcm/agent_pubmed.py": "8bc3849481aaf96033b5e28fea236ffefbc3419f1820d97376f0dd1cd99b27a1",
+    "tests/test_relation_queries.py": "4e38aa2800c0790b87b1beb516c6a5dad78f44245e086f6cc1d6ba49a515b7f3",
+    "tests/test_relation_memory.py": "bb3c695842f04f1b3829b53e55ebdb1ed16d84d7cfdd5c213824322fe20fab49",
+    "tests/test_disease_relations.py": "f0e44f1efd5903d426e0e5908f09c48086bd9d2e52707a5d7e46c16f676aa506",
+    "tests/test_comparison_report.py": "bdd2103309d264223fceeb3469c840bec8f2e95b33ecfb39f50ebba79a840395",
+    "tests/test_new_user_wording.py": "4a676810196737c6cfe6df75e4dcff155a97926f6d7abd8dc772885b4546cf2e"
+  },
+  "runtime": {
+    "port": 7877,
+    "launcher": "scripts.preview_local_tasks",
+    "application_changes_loaded": true,
+    "original_state_directory_retained": true,
+    "docker_updated": false
+  },
+  "external_model_calls": 0,
+  "actual_pubmed_requests": 0,
+  "independent_language_or_business_evaluation": false,
+  "git_commit_created": false,
+  "remote_push": false,
+  "limits": [
+    "Presentation and wording changes, not broader natural-language understanding, better retrieval recall, model reasoning or clinical validation.",
+    "17 checks include partial/missing/disabled/boundary outcomes and a synthetic literature render; not 17 completed business tasks.",
+    "Evidence exports keep detailed source and scope information; bookmark export still contains only the saved page.",
+    "Only selected source witnesses and pharmacopoeia hits were reconciled; not the entire corpus or every common-target row.",
+    "Browser external assets were blocked. Screenshot-only local Chinese font injection and temporary removal of the chat viewport crop are documented; not full visual QA of all production styles.",
+    "Historical chat text is retained, so old verbose replies remain; new questions and restored current evidence use the concise renderer.",
+    "Source identity remains unverified where previously marked; technical notes are expandable rather than deleted.",
+    "Only the 7877 source preview was updated; Docker and other instances retain their prior versions."
+  ]
+}

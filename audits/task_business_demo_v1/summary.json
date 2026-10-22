@@ -1,0 +1,446 @@
+{
+  "status": "passed",
+  "date": "2026-10-22",
+  "scope": "fixed_commit_author_designed_real_local_task_business_walkthrough",
+  "code_commit": "f2f811489bdcaf292e5a05371b58c63e713b7de1",
+  "runtime": "restarted_localhost_source_preview_7877",
+  "independent_user_evaluation": false,
+  "question_origin": "author_designed_after_reading_implementation",
+  "actor": "scripted_user",
+  "human_signoff": false,
+  "frozen_input_sha256": "6d97a58e3060fa40a9ec12ed85324f7e46032849c95a02bfa70f9db410179f38",
+  "frozen_input_contents": "questions_expected_outcomes_source_candidates_raw_json_intersections_and_287_code_hashes_before_browser_execution",
+  "frozen_code_files": 287,
+  "code_unchanged_during_execution": true,
+  "source_files_unchanged": true,
+  "source_file_count": 6,
+  "common_task_snapshot": {
+    "dataset_version": "local-2026-10-10",
+    "source_fingerprint": "9921499429128fa21b4b8dc2c5100f359970d8fa796a1dcee32ca8259fe02d80",
+    "catalog_sha256": {
+      "herbs": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+      "relations": "9d3f9c6f8a5c7ececbde957e2a1ea6a74d6f225ff5194c094e3e45f4578a0980"
+    }
+  },
+  "workflow_outcomes": {
+    "complete": 3,
+    "partial": 2,
+    "waiting_request": 1
+  },
+  "contract_checks_passed": 6,
+  "contract_checks_total": 6,
+  "submitted_inventories": 5,
+  "inventories_requiring_scripted_manual_correction": 4,
+  "corrected_case_ids": [
+    "B02",
+    "B03",
+    "B04",
+    "B05"
+  ],
+  "selected_raw_witness_rows_checked": 16,
+  "reports_downloaded": 5,
+  "tool_actions": 13,
+  "external_model_calls": 0,
+  "external_browser_requests": 0,
+  "all_test_tasks_deleted": true,
+  "cases": [
+    {
+      "id": "B01",
+      "question": "我在整理当归与川芎，想核对共同靶点，并保留双方原始记录的位置。",
+      "expected_status": "complete",
+      "status": "passed",
+      "actor": "scripted_user_no_human_observation",
+      "draft_entities": [
+        "当归",
+        "川芎"
+      ],
+      "draft_deliverables": [
+        "source_relations"
+      ],
+      "inventory_edits": {
+        "added_entities": [],
+        "removed_entities": [],
+        "added_deliverables": [],
+        "removed_deliverables": [],
+        "added_other_requirements": []
+      },
+      "actual_status": "complete",
+      "confirmed_scope_complete": true,
+      "request_complete": true,
+      "common_target_total": 172,
+      "tool_calls": 3,
+      "external_model_calls": 0,
+      "witness_rows_checked": 4,
+      "report_downloaded": true,
+      "user_confirmation_stages": [
+        "request_inventory",
+        "execution_plan",
+        "source_records",
+        "selected_targets"
+      ],
+      "browser_post_count": 5,
+      "browser_post_responses": [
+        {
+          "path": "/api/research/tasks",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/04d620ef670d42cb998e89116c0e34af/request",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/04d620ef670d42cb998e89116c0e34af/choose",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/04d620ef670d42cb998e89116c0e34af/choose",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/04d620ef670d42cb998e89116c0e34af/choose",
+          "status": 200
+        }
+      ],
+      "scripted_wall_seconds": 2.8,
+      "external_browser_requests": 0,
+      "javascript_errors": 0,
+      "test_task_deleted": true,
+      "raw_expected_common_target_count": 172
+    },
+    {
+      "id": "B02",
+      "question": "茯苓、甘草这两份来源都提到了哪些UniProt标识？先列交集，再给我出处。",
+      "expected_status": "complete",
+      "status": "passed",
+      "actor": "scripted_user_no_human_observation",
+      "draft_entities": [
+        "茯苓",
+        "甘草"
+      ],
+      "draft_deliverables": [],
+      "inventory_edits": {
+        "added_entities": [],
+        "removed_entities": [],
+        "added_deliverables": [
+          "source_relations"
+        ],
+        "removed_deliverables": [],
+        "added_other_requirements": []
+      },
+      "actual_status": "complete",
+      "confirmed_scope_complete": true,
+      "request_complete": true,
+      "common_target_total": 180,
+      "tool_calls": 3,
+      "external_model_calls": 0,
+      "witness_rows_checked": 4,
+      "report_downloaded": true,
+      "user_confirmation_stages": [
+        "request_inventory",
+        "execution_plan",
+        "source_records",
+        "selected_targets"
+      ],
+      "browser_post_count": 5,
+      "browser_post_responses": [
+        {
+          "path": "/api/research/tasks",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/fed316ee16e248e9a89901027ae08bc1/request",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/fed316ee16e248e9a89901027ae08bc1/choose",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/fed316ee16e248e9a89901027ae08bc1/choose",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/fed316ee16e248e9a89901027ae08bc1/choose",
+          "status": 200
+        }
+      ],
+      "scripted_wall_seconds": 1.532,
+      "external_browser_requests": 0,
+      "javascript_errors": 0,
+      "test_task_deleted": true,
+      "raw_expected_common_target_count": 180
+    },
+    {
+      "id": "B03",
+      "question": "陈皮和半夏的共同靶点要原始记录，不要论文。",
+      "expected_status": "complete",
+      "status": "passed",
+      "actor": "scripted_user_no_human_observation",
+      "draft_entities": [
+        "陈皮",
+        "半夏"
+      ],
+      "draft_deliverables": [
+        "source_relations",
+        "evidence_review"
+      ],
+      "inventory_edits": {
+        "added_entities": [],
+        "removed_entities": [],
+        "added_deliverables": [],
+        "removed_deliverables": [
+          "evidence_review"
+        ],
+        "added_other_requirements": []
+      },
+      "actual_status": "complete",
+      "confirmed_scope_complete": true,
+      "request_complete": true,
+      "common_target_total": 94,
+      "tool_calls": 3,
+      "external_model_calls": 0,
+      "witness_rows_checked": 4,
+      "report_downloaded": true,
+      "user_confirmation_stages": [
+        "request_inventory",
+        "execution_plan",
+        "source_records",
+        "selected_targets"
+      ],
+      "browser_post_count": 5,
+      "browser_post_responses": [
+        {
+          "path": "/api/research/tasks",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/5470b28b5e044144b205a765eb1bfadb/request",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/5470b28b5e044144b205a765eb1bfadb/choose",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/5470b28b5e044144b205a765eb1bfadb/choose",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/5470b28b5e044144b205a765eb1bfadb/choose",
+          "status": 200
+        }
+      ],
+      "scripted_wall_seconds": 1.207,
+      "external_browser_requests": 0,
+      "javascript_errors": 0,
+      "test_task_deleted": true,
+      "raw_expected_common_target_count": 94
+    },
+    {
+      "id": "B04",
+      "question": "把当归、川芎、甘草的共同靶点和药用部位做表，还需要文献支持、比较采购价格。",
+      "expected_status": "partial",
+      "status": "passed",
+      "actor": "scripted_user_no_human_observation",
+      "draft_entities": [
+        "当归",
+        "川芎",
+        "甘草"
+      ],
+      "draft_deliverables": [
+        "source_relations",
+        "evidence_review",
+        "medicinal_part_table"
+      ],
+      "inventory_edits": {
+        "added_entities": [],
+        "removed_entities": [],
+        "added_deliverables": [],
+        "removed_deliverables": [],
+        "added_other_requirements": [
+          "比较采购价格"
+        ]
+      },
+      "actual_status": "partial",
+      "confirmed_scope_complete": true,
+      "request_complete": false,
+      "common_target_total": 172,
+      "tool_calls": 3,
+      "external_model_calls": 0,
+      "witness_rows_checked": 4,
+      "report_downloaded": true,
+      "user_confirmation_stages": [
+        "request_inventory",
+        "execution_plan",
+        "source_records",
+        "selected_targets"
+      ],
+      "browser_post_count": 6,
+      "browser_post_responses": [
+        {
+          "path": "/api/research/tasks",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/82e98e652b8346f7b7fd4b3822eaa93a/request",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/82e98e652b8346f7b7fd4b3822eaa93a/choose",
+          "status": 422
+        },
+        {
+          "path": "/api/research/tasks/82e98e652b8346f7b7fd4b3822eaa93a/choose",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/82e98e652b8346f7b7fd4b3822eaa93a/choose",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/82e98e652b8346f7b7fd4b3822eaa93a/choose",
+          "status": 200
+        }
+      ],
+      "scripted_wall_seconds": 1.372,
+      "external_browser_requests": 0,
+      "javascript_errors": 0,
+      "test_task_deleted": true,
+      "raw_expected_common_target_count": 172
+    },
+    {
+      "id": "B05",
+      "question": "想查陈皮和未收录测试药的共同靶点，附双方原始记录。",
+      "expected_status": "partial",
+      "status": "passed",
+      "actor": "scripted_user_no_human_observation",
+      "draft_entities": [
+        "陈皮"
+      ],
+      "draft_deliverables": [
+        "source_relations"
+      ],
+      "inventory_edits": {
+        "added_entities": [
+          "未收录测试药"
+        ],
+        "removed_entities": [],
+        "added_deliverables": [],
+        "removed_deliverables": [],
+        "added_other_requirements": []
+      },
+      "actual_status": "partial",
+      "confirmed_scope_complete": false,
+      "request_complete": false,
+      "common_target_total": null,
+      "tool_calls": 1,
+      "external_model_calls": 0,
+      "witness_rows_checked": 0,
+      "report_downloaded": true,
+      "user_confirmation_stages": [
+        "request_inventory",
+        "execution_plan"
+      ],
+      "browser_post_count": 3,
+      "browser_post_responses": [
+        {
+          "path": "/api/research/tasks",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/8981b93b71f045af86bc3f6ef68867dc/request",
+          "status": 200
+        },
+        {
+          "path": "/api/research/tasks/8981b93b71f045af86bc3f6ef68867dc/choose",
+          "status": 200
+        }
+      ],
+      "scripted_wall_seconds": 0.612,
+      "external_browser_requests": 0,
+      "javascript_errors": 0,
+      "test_task_deleted": true,
+      "raw_expected_common_target_count": null
+    },
+    {
+      "id": "B06",
+      "question": "这两味药的共同靶点能列给我吗？",
+      "expected_status": "waiting_request",
+      "status": "passed",
+      "actor": "scripted_user_no_human_observation",
+      "draft_entities": [],
+      "draft_deliverables": [
+        "source_relations"
+      ],
+      "inventory_edits": {
+        "added_entities": [],
+        "removed_entities": [],
+        "added_deliverables": [],
+        "removed_deliverables": [],
+        "added_other_requirements": []
+      },
+      "actual_status": "waiting_request",
+      "confirmed_scope_complete": false,
+      "request_complete": false,
+      "common_target_total": null,
+      "tool_calls": 0,
+      "external_model_calls": 0,
+      "witness_rows_checked": 0,
+      "report_downloaded": false,
+      "browser_post_count": 1,
+      "browser_post_responses": [
+        {
+          "path": "/api/research/tasks",
+          "status": 200
+        }
+      ],
+      "scripted_wall_seconds": 0.331,
+      "external_browser_requests": 0,
+      "javascript_errors": 0,
+      "test_task_deleted": true,
+      "raw_expected_common_target_count": null
+    }
+  ],
+  "validation_reused": {
+    "offline_tests": 782,
+    "offline_modules": 87,
+    "audit": "audits/local_task_request_v1/summary.json",
+    "new_full_regression_run": false,
+    "reason": "application_code_unchanged_this_turn"
+  },
+  "git_commit_created": false,
+  "remote_push": false,
+  "docker_updated": false,
+  "limits": [
+    "Author-designed questions and scripted candidate selections are not independent users or herb identity verification.",
+    "Three complete, two partial and one waiting request are reported separately; contract pass is not full task completion.",
+    "Four of five submitted inventories required scripted user corrections; this is not automatic semantic accuracy.",
+    "Counts describe only the selected raw source pair and source-declared UniProt intersection, not pharmacological efficacy.",
+    "Only two selected targets per matched case had their witness rows checked; this is not full-corpus citation accuracy.",
+    "Scripted wall time includes browser work, requests, downloads and source reconciliation; no human completion time or production latency percentile is estimated.",
+    "DOM, JavaScript behavior and mobile overflow were checked; Chinese typography and actual user comprehension were not human-reviewed.",
+    "Actual owner-recorded demonstration, independent replication and independent user acceptance remain pending."
+  ],
+  "documented_startup_smoke": {
+    "status": "passed",
+    "scope": "documented_startup_command_with_isolated_port_and_state",
+    "models_and_external_tools_disabled": true,
+    "health": "healthy",
+    "herbs": "ready",
+    "research": "ready",
+    "task_stage": "waiting_request",
+    "external_model_calls": 0,
+    "substitution": "Temporary available port, isolated state/Cookie and verified local Python; all other documented settings unchanged",
+    "created_test_task_deleted": true
+  },
+  "local_driver_sha256": "f00de6d26894fedd70698fdc902b04379ecde786e3f613bc37fb12e2a1dc85b9",
+  "documentation_sha256": {
+    "README.md": "8dbba96c6e45eb02c32e18e1c77730b8ff9e353914f0959356a17f97c77617dc",
+    "docs/PROJECT_DEMO.md": "9d4fcb87d33409f3b9785aa00c185204db51312c95d72bb98fc250e78570eea8",
+    "docs/TCM_PROJECT_ROADMAP.md": "4fce5397db18d3ceabb6fbf5df88ee88baf97f2e114a455d8256f3085dd05258",
+    "docs/LOCAL_TASK_REQUEST.md": "adcd8259f9708a37955b10d0040c426ab153d019780adaf7acb37e5946bb65ad",
+    "docs/NEW_USER_GUIDE.md": "8f27a1c8b948ff93566bbb632999c82ff625f9ef7f45d9a74f75b062ec5ec390"
+  },
+  "documentation_links_checked": true,
+  "application_code_still_matches_frozen_commit": true
+}

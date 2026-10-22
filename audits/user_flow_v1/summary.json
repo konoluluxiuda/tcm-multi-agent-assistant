@@ -1,0 +1,353 @@
+{
+  "status": "passed",
+  "date": "2026-10-22",
+  "scope": "developer_simulated_chat_and_local_business_flows_followed_by_full_offline_regression",
+  "execution_order": [
+    "simulate_16_scenarios_round_01",
+    "fix_two_blockers",
+    "repeat_same_16_scenarios_round_02",
+    "start_full_offline_regression_after_round_02",
+    "additional_actual_process_restart_checks_while_ci_runs",
+    "finish_full_offline_regression"
+  ],
+  "first_round": {
+    "checks_passed": 14,
+    "total": 16,
+    "failures": [
+      {
+        "id": "S02",
+        "failure": "AssertionError: review action missing after chat refresh"
+      },
+      {
+        "id": "S03",
+        "failure": "AssertionError: chat did not offer a reviewed task"
+      }
+    ],
+    "original_results_preserved": true
+  },
+  "fixes": [
+    "Persist the pending short question in the existing SQLite chat context and restore the review action on conversation GET without creating tasks or querying tools.",
+    "Recognize an explicit UniProt namespace plus intersection as a local source-relation draft hint in both chat routing and inventory drafting.",
+    "Clear previous source focus on a new pending review; clear pending action on a new successful chat turn or chat deletion."
+  ],
+  "browser": {
+    "status": "passed",
+    "checks_passed": 16,
+    "total": 16,
+    "business_outcomes": {
+      "completed_local_scope": 11,
+      "unsupported_requirements_retained": 1,
+      "missing_source": 1,
+      "missing_field_retained": 1,
+      "tool_disabled": 1,
+      "outside_service_scope": 1
+    },
+    "cases": [
+      {
+        "id": "S01",
+        "kind": "task",
+        "question": "我在整理当归与川芎，想核对共同靶点，并保留双方原始记录的位置",
+        "check": "passed",
+        "business_outcome": "completed_local_scope",
+        "source_rows_checked": 2,
+        "downloads": 1,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S02",
+        "kind": "task",
+        "question": "我在整理当归与川芎，想核对共同靶点，并保留双方原始记录的位置。",
+        "check": "passed",
+        "business_outcome": "completed_local_scope",
+        "source_rows_checked": 2,
+        "downloads": 1,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S03",
+        "kind": "task",
+        "question": "茯苓、甘草这两份来源都提到了哪些UniProt标识？先列交集，再给我出处。",
+        "check": "passed",
+        "business_outcome": "completed_local_scope",
+        "source_rows_checked": 2,
+        "downloads": 1,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S04",
+        "kind": "task",
+        "question": "陈皮和半夏的共同靶点要原始记录，不要论文。",
+        "check": "passed",
+        "business_outcome": "completed_local_scope",
+        "source_rows_checked": 2,
+        "downloads": 1,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S05",
+        "kind": "task",
+        "question": "把当归、川芎、甘草的共同靶点和药用部位做表，还需要文献支持、比较采购价格。",
+        "check": "passed",
+        "business_outcome": "unsupported_requirements_retained",
+        "source_rows_checked": 2,
+        "downloads": 1,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S06",
+        "kind": "task",
+        "question": "想查陈皮和未收录测试药的共同靶点，附双方原始记录。",
+        "check": "passed",
+        "business_outcome": "missing_source",
+        "source_rows_checked": 0,
+        "downloads": 1,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S07",
+        "kind": "task",
+        "question": "这两味药的共同靶点能列给我吗？",
+        "check": "passed",
+        "business_outcome": "completed_local_scope",
+        "source_rows_checked": 2,
+        "downloads": 1,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S08",
+        "kind": "overview",
+        "question": "数据概览",
+        "check": "passed",
+        "business_outcome": "completed_local_scope",
+        "source_rows_checked": 0,
+        "downloads": 0,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S09",
+        "kind": "research",
+        "question": "黄芪有什么作用",
+        "check": "passed",
+        "business_outcome": "completed_local_scope",
+        "source_rows_checked": 0,
+        "downloads": 1,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S10",
+        "kind": "comparison",
+        "question": "比较白术和黄芪的功效与用量",
+        "check": "passed",
+        "business_outcome": "completed_local_scope",
+        "source_rows_checked": 0,
+        "downloads": 1,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S11",
+        "kind": "comparison",
+        "question": "比较白术和黄芪的功效与注意",
+        "check": "passed",
+        "business_outcome": "missing_field_retained",
+        "source_rows_checked": 0,
+        "downloads": 1,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S12",
+        "kind": "paths_bookmark",
+        "question": "白术有哪些成分",
+        "check": "passed",
+        "business_outcome": "completed_local_scope",
+        "source_rows_checked": 3,
+        "downloads": 1,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S13",
+        "kind": "direct_common",
+        "question": "当归和川芎有哪些共同靶点",
+        "check": "passed",
+        "business_outcome": "completed_local_scope",
+        "source_rows_checked": 4,
+        "downloads": 0,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S14",
+        "kind": "targets",
+        "question": "CYP24A1有哪些成分",
+        "check": "passed",
+        "business_outcome": "completed_local_scope",
+        "source_rows_checked": 1,
+        "downloads": 0,
+        "initial_http_status": 200
+      },
+      {
+        "id": "S15",
+        "kind": "disabled",
+        "question": "在PubMed检索 Astragalus membranaceus",
+        "check": "passed",
+        "business_outcome": "tool_disabled",
+        "source_rows_checked": 0,
+        "downloads": 0,
+        "initial_http_status": 503
+      },
+      {
+        "id": "S16",
+        "kind": "clinical",
+        "question": "我最近总觉得累，帮我选两味药配着喝",
+        "check": "passed",
+        "business_outcome": "outside_service_scope",
+        "source_rows_checked": 0,
+        "downloads": 0,
+        "initial_http_status": 200
+      }
+    ],
+    "selected_source_rows_reconciled": 20,
+    "actual_downloads": 11,
+    "application_code_unchanged_during_batch": true,
+    "application_files_frozen": 181,
+    "fresh_isolated_browser_context_per_scenario": true,
+    "cleanup_scope": "records created by each fresh test-only browser context",
+    "external_static_assets": "blocked",
+    "scripted_inventory_edits_and_source_selection": true,
+    "S07_pronoun_handling": "script explicitly supplies both herb names, not automatic pronoun resolution"
+  },
+  "offline": {
+    "status": "passed",
+    "tests": 794,
+    "modules": 88,
+    "skipped": 0,
+    "network_attempts": 0,
+    "new_tests_this_increment": 4,
+    "chat_handoff_module_tests": 12,
+    "full_snapshot_evaluation": {
+      "status": "not_run",
+      "reason": "requires private ETCM snapshot/database; separate local acceptance"
+    },
+    "live_provider_evaluation": {
+      "status": "not_run",
+      "reason": "offline regression uses deterministic substitutes"
+    }
+  },
+  "process_restart": {
+    "status": "passed",
+    "date": "2026-10-22",
+    "scope": "pending_chat_review_actual_process_restart_not_independent_evaluation",
+    "total": 18,
+    "checks": [
+      {
+        "name": "documented_module_starts_with_isolated_port_and_state",
+        "status": "passed"
+      },
+      {
+        "name": "real_etcm_snapshot_ready",
+        "status": "passed"
+      },
+      {
+        "name": "pharmacopoeia_ready",
+        "status": "passed"
+      },
+      {
+        "name": "inherited_model_and_online_flags_cannot_enable_fallback",
+        "status": "passed"
+      },
+      {
+        "name": "chat_offers_original_question_without_model_calls",
+        "status": "passed"
+      },
+      {
+        "name": "chat_response_does_not_create_a_task",
+        "status": "passed"
+      },
+      {
+        "name": "actual_process_restart_restores_same_pending_proposal",
+        "status": "passed"
+      },
+      {
+        "name": "history_restore_does_not_create_a_task",
+        "status": "passed"
+      },
+      {
+        "name": "other_browser_cannot_read_pending_review",
+        "status": "passed"
+      },
+      {
+        "name": "question_pauses_without_model_or_relation_tools",
+        "status": "passed"
+      },
+      {
+        "name": "inventory_confirmation_is_saved_before_plan_execution",
+        "status": "passed"
+      },
+      {
+        "name": "module_restart_recovers_same_task_cookie_and_revision",
+        "status": "passed"
+      },
+      {
+        "name": "confirmed_plan_uses_real_source_candidates",
+        "status": "passed"
+      },
+      {
+        "name": "local_shared_targets_ready",
+        "status": "passed"
+      },
+      {
+        "name": "report_completes_with_no_external_model_calls",
+        "status": "passed"
+      },
+      {
+        "name": "task_remains_isolated_from_another_browser",
+        "status": "passed"
+      },
+      {
+        "name": "only_created_test_task_deleted",
+        "status": "passed"
+      },
+      {
+        "name": "chat_clear_removes_persisted_pending_action",
+        "status": "passed"
+      }
+    ],
+    "external_model_calls": 0,
+    "actual_process_restart": true,
+    "source_data": "existing_local_readonly_catalogs",
+    "other_preview_processes_unchanged": true
+  },
+  "source_sha256": {
+    "app.py": "062c1c2eff47ed06e62cf60e67a756d4646fc7b6241d2b2e1bab5858df524801",
+    "agents/agent_decision.py": "e343dab9b6d3f7850f6204a840a97dfc6caa0fa455a8c542579ed78af85c75b4",
+    "tcm/agent_research.py": "ac8c5cd84a3b4bd6d4227226089ec662d12b3c9bbef8e7993834dd44592db306",
+    "tcm/assistant_router.py": "b0bae6cbd8d0f41f2131da3fbe6296b9b5eec0fda0fc2020a8f3a63653c8602d",
+    "tcm/assistant_info.py": "5bfa2574847c983098febdf2e245564ba7327522441b4b000073e0ae03f3f6d1",
+    "tcm/task_request.py": "68740a7291d1ea7e77c2a8f5abe9970ce1ec6f4aa76af74b7ea174258eb43434",
+    "tcm/research_task_local.py": "23d187da93df6e82ab518cf2b77a75075b8dfda39169de91411c019b639d586f",
+    "templates/index.html": "d9546f713157f994d4f77dfe834cdbc5e3fef0e29cf9dd1538a58be3092f75d6",
+    "tcm/research_tasks.js": "9fd74b0262b50ebab764eecff65c80bb8ca5530edfacb657fb314d53486a29d2",
+    "tests/test_chat_task_handoff.py": "10a90aec7fb97d44ca950d39ac3052bbcdfe02f1f501b305c7efe42ad3c8aa15",
+    "scripts/preview_local_tasks.py": "85b397fbca974e3c980fb60442ac20682f819319e8b03a56384332cc6598499a"
+  },
+  "runtime": {
+    "port": 7877,
+    "launcher": "scripts.preview_local_tasks",
+    "application_fixes_loaded": true,
+    "existing_user_state_databases_preserved": true
+  },
+  "schema_migration": false,
+  "external_model_calls": 0,
+  "independent_language_or_business_evaluation": false,
+  "git_commit_created": false,
+  "remote_push": false,
+  "docker_updated": false,
+  "limits": [
+    "11 scoped local tasks completed; five other scenarios remain unfulfilled or outside the configured service scope despite passing expected-behavior checks.",
+    "All questions were developer-selected known examples; this is regression evidence, not independent user success or general intent accuracy.",
+    "Negation, unknown names, pronouns and extra requirements still need explicit inventory review or edits; source candidates do not establish herb identity.",
+    "Only selected source witnesses were reconciled, not every row for every common identifier or the entire corpus.",
+    "The local task controller is deterministic; these results do not evaluate model planning, clinical outcomes or production latency.",
+    "External browser assets were blocked; DOM and behavior checks do not constitute complete typography or visual QA.",
+    "Restoring a review button does not provide cross-refresh task-creation idempotency; created tasks should be reopened from the task list.",
+    "Local preview only; no Git commit, remote push, Docker build or deployment was performed in this increment."
+  ]
+}

@@ -66,6 +66,9 @@ def clarification(message):
 
 
 def execute_turn(request,focus):
+    if request.get('followup') and isinstance(focus,dict) and focus.get('kind')=='etcm_analysis_focus_v1':
+        from tcm.analysis_tools import execute_turn as analysis_turn
+        return analysis_turn(request,focus)
     from tcm.relation_queries import execute
     followup=request.get('followup',False)
     try:
@@ -84,9 +87,8 @@ def execute_turn(request,focus):
         result=execute(request)
         new_focus=capture(result)
         if followup and result.get('status')=='ok':
-            prefix=('沿用本会话已选药材来源，查询全部成分的候选路径，不只限于上一页。' if action=='paths' else
-                    '按本会话已选来源和页码重新读取本地资料。')
-            result['message']=prefix+'\n'+result['message']
+            if action=='paths':
+                result.setdefault('notes',[]).append('沿用已选药材来源，查询全部成分的候选路径，不只限于上一页。')
         return result,new_focus
     except (OSError,ValueError,KeyError,TypeError,sqlite3.Error):
         return {'topic':'etcm_relations','status':'unavailable','message':'关联来源或记忆绑定暂不可用，请核对数据后重新查询。',

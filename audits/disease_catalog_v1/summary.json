@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-23",
+  "status": "local_catalog_and_queries_verified",
+  "scope": "P2a disease source audit and versioned target index; P2b ranking and chat not implemented",
+  "build": {
+    "status": "built",
+    "kind": "etcm_disease_genes_v1",
+    "dataset_version": "disease-local-2026-10-23",
+    "source_fingerprint": "3ff76e62182ad1f4e1079133af48cfba2878fad9df99f647d22be5659efa475f",
+    "files": 7705,
+    "source_bytes": 34542210363,
+    "indexed_sources": 7593,
+    "file_status_counts": {
+      "source_identity_consistent_not_externally_verified": 7593,
+      "filename_internal_identity_mismatch": 112
+    },
+    "distinct_file_hashes": 7705,
+    "duplicate_file_copies": 0,
+    "ambiguous_name_groups": 0,
+    "target_rows": 2047010,
+    "distinct_uniprot": 563,
+    "unidentified_rows": 0,
+    "duplicate_identifier_rows": 43565,
+    "rows_without_single_gene_symbol": 0,
+    "sources_without_target_table": 11,
+    "sources_without_usable_targets": 11,
+    "sources_with_conflicting_gene_symbols": 0,
+    "capture_state_counts": {
+      "source_reported_complete": 7504,
+      "source_reported_skipped": 75,
+      "not_recorded": 14
+    },
+    "species_status_counts": {
+      "not_recorded": 7593
+    },
+    "target_row_key_source_counts": {
+      "Gene Symbol": 7582,
+      "Inhibitors": 7582,
+      "Target Name": 7582,
+      "UniProt Accession Number": 7582,
+      "linkformat": 7582
+    },
+    "identical_nonempty_target_set_groups": 381,
+    "sources_in_identical_nonempty_target_sets": 1632,
+    "background": {
+      "dataset_version": "local-2026-10-10",
+      "source_fingerprint": "9921499429128fa21b4b8dc2c5100f359970d8fa796a1dcee32ca8259fe02d80",
+      "target_set_sha256": "cf1ad15cef75db55ae4fc164d5aec715747dd9751d7486b5b25b8650594f1d27",
+      "target_count": 962
+    },
+    "disease_identifiers_in_herb_background": 549,
+    "disease_identifiers_outside_herb_background": 14,
+    "duration_seconds": 254.788,
+    "model_calls": 0,
+    "network_calls": 0,
+    "clinical_or_species_validation": false,
+    "chat_enabled": false,
+    "ranking_implemented": false,
+    "original_files_modified": false
+  },
+  "verification": {
+    "status": "passed",
+    "all_catalog_totals_and_orphans_checked": true,
+    "original_files_checked": 13,
+    "original_rows_compared": 3554,
+    "samples": [
+      {
+        "source_file": "etcm_diseases/11p15.4_Microduplication_Syndrome.json",
+        "rows": 231,
+        "targets": 226
+      },
+      {
+        "source_file": "etcm_diseases/Bernard-Soulier_Syndrome.json",
+        "rows": 309,
+        "targets": 304
+      },
+      {
+        "source_file": "etcm_diseases/Cognitive_Impairment_with_or_Without_Cerebellar_Ataxia.json",
+        "rows": 316,
+        "targets": 309
+      },
+      {
+        "source_file": "etcm_diseases/Dyschromatosis_Universalis_Hereditaria_1.json",
+        "rows": 226,
+        "targets": 220
+      },
+      {
+        "source_file": "etcm_diseases/Grange_Syndrome.json",
+        "rows": 317,
+        "targets": 312
+      },
+      {
+        "source_file": "etcm_diseases/Interstitial_Pneumonitis,_Desquamative,_Familial.json",
+        "rows": 330,
+        "targets": 324
+      },
+      {
+        "source_file": "etcm_diseases/Mental_Retardation,_X-Linked,_Syndromic,_Claes-Jensen_Type.json",
+        "rows": 264,
+        "targets": 259
+      },
+      {
+        "source_file": "etcm_diseases/Neuronal_Intestinal_Dysplasia,_Type_B.json",
+        "rows": 323,
+        "targets": 316
+      },
+      {
+        "source_file": "etcm_diseases/Prader-Willi_Habitus,_Osteopenia,_and_Camptodactyly.json",
+        "rows": 319,
+        "targets": 314
+      },
+      {
+        "source_file": "etcm_diseases/Spermatogenic_Failure_13.json",
+        "rows": 305,
+        "targets": 299
+      },
+      {
+        "source_file": "etcm_diseases/Zinc,_Elevated_Plasma.json",
+        "rows": 323,
+        "targets": 316
+      },
+      {
+        "source_file": "etcm_diseases/Dermatosis_Papulosa_Nigra.json",
+        "rows": 291,
+        "targets": 283
+      },
+      {
+        "source_file": "etcm_diseases/Strabismus.json",
+        "rows": 0,
+        "targets": 0
+      }
+    ],
+    "filename_mismatch_slash_normalization_candidates": 109,
+    "network_calls": 0,
+    "model_calls": 0,
+    "independent_biological_validation": false
+  },
+  "identical_target_set_examples": [
+    {
+      "same_set_sources": 110,
+      "example_names": [
+        "Acanthosis Nigricans",
+        "Ainhum",
+        "Alcohol Sensitivity, Acute",
+        "Alzheimer Disease 5",
+        "Anal Canal Carcinoma"
+      ]
+    },
+    {
+      "same_set_sources": 56,
+      "example_names": [
+        "Deafness, Autosomal Recessive 100",
+        "Deafness, Autosomal Recessive 101",
+        "Deafness, Autosomal Recessive 104",
+        "Deafness, Autosomal Recessive 109",
+        "Deafness, Autosomal Recessive 110"
+      ]
+    },
+    {
+      "same_set_sources": 33,
+      "example_names": [
+        "Aganglionosis, Total Intestinal",
+        "Angiolipomatosis, Familial",
+        "Aplasia Cutis Congenita of Limbs, Autosomal Recessive",
+        "Bifid Nose, Autosomal Recessive",
+        "Body Mass Index Quantitative Trait Locus 14"
+      ]
+    }
+  ],
+  "offline_regression": {
+    "status": "passed",
+    "modules": 92,
+    "tests": 843,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "cli_example": {
+    "status": "source_record",
+    "name": "Dermatosis Papulosa Nigra",
+    "targets": 283,
+    "verified_displayed_rows": 20
+  },
+  "remaining_filename_cases": {
+    "slash_to_underscore_candidates": 109,
+    "colon_to_underscore_candidates": 2,
+    "encoding_mismatch_candidates": 1,
+    "excluded_from_index": 112,
+    "not_claimed_wrong_disease_content": true
+  },
+  "source_sha256": {
+    "tcm/disease_catalog.py": "8d5cf7a4547c1427a31fa0a39c62a7254ef0ff86dea3a132db8d07db2fd82039",
+    "scripts/build_etcm_diseases.py": "7da19b0f4e1bb17760ef1a5e4652e4c18cfa9a634eb99c2858bcc40f5c640920",
+    "scripts/query_etcm_diseases.py": "ed775262fcd462dda60cf3e40249fa03424fcd7ae8f35cf9c1cb285fdf4e5729",
+    "tests/test_disease_catalog.py": "93c55cfefbb37b4b43d51cb92ff2d0448a60b69ce9f0762c75d7a37aa365bc40"
+  },
+  "deploy": {
+    "running_chat_changed": false,
+    "docker_updated": false,
+    "git_committed": false,
+    "git_pushed": false,
+    "external_calls": 0
+  },
+  "limits": [
+    "All indexed source records lack explicit species fields; no human-species verification.",
+    "Source status ok is not independent proof of complete capture.",
+    "1632 source records share 381 nonempty target sets; largest group has 110 sources.",
+    "No external disease identifiers, translations or synonymous entity resolution.",
+    "No independent disease-gene ground truth, efficacy or novel target predictions."
+  ],
+  "local_artifacts": {
+    "database": "var/disease_catalog_v1/build/diseases.sqlite3",
+    "file_report": "var/disease_catalog_v1/build/files.jsonl",
+    "source_verification": "var/disease_catalog_v1/source_verification.json",
+    "full_ci": "var/disease_catalog_v1/ci_final/summary.json"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "date": "2026-10-22",
+  "status": "read_only_inventory_complete",
+  "dataset_versions": [
+    "local-2026-10-10"
+  ],
+  "herb_source_records": 2076,
+  "relation_coverage": [
+    {
+      "kind": "chinese_patent_drug",
+      "source_rows": 70007,
+      "herb_source_records": 898,
+      "node_groups": 8927
+    },
+    {
+      "kind": "disease",
+      "source_rows": 14176,
+      "herb_source_records": 801,
+      "node_groups": 1110
+    },
+    {
+      "kind": "external_reference",
+      "source_rows": 2626,
+      "herb_source_records": 1621,
+      "node_groups": 2626
+    },
+    {
+      "kind": "ingredient",
+      "source_rows": 67342,
+      "herb_source_records": 1898,
+      "node_groups": 38199
+    },
+    {
+      "kind": "reference_pmid",
+      "source_rows": 91,
+      "herb_source_records": 65,
+      "node_groups": 89
+    },
+    {
+      "kind": "target",
+      "source_rows": 126775,
+      "herb_source_records": 1849,
+      "node_groups": 969
+    },
+    {
+      "kind": "traditional_chinese_medicine_formula",
+      "source_rows": 303566,
+      "herb_source_records": 654,
+      "node_groups": 46273
+    }
+  ],
+  "target_node_identity": {
+    "name_group_not_entity_verified": 7,
+    "source_declared_uniprot_not_externally_verified": 942,
+    "source_declared_uniprot_not_externally_verified_multiple_source_labels": 20
+  },
+  "explicit_uniprot_sets": {
+    "herb_source_records": 1849,
+    "uncovered_herb_source_records": 227,
+    "distinct_source_uniprot_pairs": 119154,
+    "distinct_uniprot": 962,
+    "min": 1,
+    "median": 43,
+    "max": 329
+  },
+  "audited_target_catalog": {
+    "target_files": 211,
+    "ingredient_source_rows": 34924
+  },
+  "raw_file_counts": {
+    "etcm_diseases": 7705,
+    "etcm_ingredients": 38281
+  },
+  "disease_structure_samples": [
+    {
+      "relative_path": "etcm_diseases/Strabismus.json",
+      "sha256": "0dbecca3b472957d88700107f8883ecf662c23f41823636273330671a57935bc",
+      "related_groups": []
+    },
+    {
+      "relative_path": "etcm_diseases/Dermatosis_Papulosa_Nigra.json",
+      "sha256": "ee9991e91a66ae0ad37cebfeb5a11f2ecd1c3d6a28109559eea217bdbbc3f850",
+      "related_groups": [
+        {
+          "kind": "herb",
+          "stored_rows": 19,
+          "first_row_keys": [
+            "linkformat",
+            "Herb Name in Pinyin",
+            "Herb Name in Latin",
+            "Property",
+            "Flavor",
+            "Meridian Tropism"
+          ]
+        },
+        {
+          "kind": "target",
+          "stored_rows": 291,
+          "first_row_keys": [
+            "linkformat",
+            "Target Name",
+            "UniProt Accession Number",
+            "Gene Symbol",
+            "Inhibitors"
+          ]
+        }
+      ]
+    }
+  ],
+  "all_disease_files_parsed": false,
+  "compound_structure_coverage_audited": false,
+  "disease_gene_index_built": false,
+  "similarity_tool_implemented": false,
+  "novel_target_prediction_implemented": false,
+  "external_model_calls": 0,
+  "source_files_changed": false,
+  "limitations": [
+    "Counts refer to source records and declared identifiers, not verified biological entities or treatment effects.",
+    "Source target lists may mix existing and upstream-predicted links; the inspected herb edge schema has no per-edge evidence grade.",
+    "Disease directory size is not a count of validated diseases or complete disease-gene sets.",
+    "Two structure samples do not establish full disease-file availability or species correctness."
+  ],
+  "queries": {
+    "herbs": "SELECT COUNT(*) FROM herbs",
+    "edges": "SELECT kind,COUNT(*),COUNT(DISTINCT herb_id),COUNT(DISTINCT node_id) FROM edges GROUP BY kind",
+    "target_identity": "SELECT identity_status,COUNT(*) FROM nodes WHERE kind='target' GROUP BY identity_status",
+    "target_sets": "SELECT e.herb_id,COUNT(DISTINCT n.identifier) FROM edges e JOIN nodes n ON e.node_id=n.node_id WHERE e.kind='target' AND n.identity_status LIKE 'source_declared_uniprot_not_externally_verified%' GROUP BY e.herb_id"
+  },
+  "catalogs": {
+    "enrichment": "var/research_update_20261020/runtime_catalogs/catalogs/enrichment.sqlite3",
+    "targets": "var/research_update_20261020/runtime_catalogs/catalogs/targets-paths.sqlite3"
+  }
+}

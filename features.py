@@ -35,6 +35,12 @@ def can_auto_plan(query):
             not query.strip().startswith('/') and evidence_auto_routing_enabled())
 
 
+def can_plan_intent(query):
+    """Opt-in question-only planner; no source content or conversation is sent."""
+    return (env_bool('ENABLE_INTENT_PLANNER') and env_bool('ENABLE_NATURAL_ROUTING') and
+            isinstance(query,str) and 1<=len(query.strip())<=1000 and not query.strip().startswith('/'))
+
+
 @dataclass(frozen=True)
 class FeatureFlags:
     image_analysis: bool = False

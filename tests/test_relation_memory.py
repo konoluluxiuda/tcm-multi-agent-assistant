@@ -33,7 +33,7 @@ class RelationMemoryTests(unittest.TestCase):
         result,new_focus=execute_turn(parse('这些成分对应哪些靶点'),restored)
         self.assertEqual(result['relations']['data']['total'],26)
         self.assertEqual(new_focus['query_kind'],'herb_target_paths')
-        self.assertIn('全部成分',result['message'])
+        self.assertIn('全部成分',''.join(result['notes']))
 
     def test_missing_focus_or_target_focus_never_supplies_an_implicit_herb(self):
         result,focus=execute_turn(parse('这些成分对应哪些靶点'),None)
