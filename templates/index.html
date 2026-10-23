@@ -1291,6 +1291,48 @@
             if(result.notes?.length){const details=el('details');details.dataset.resultDetails='true';details.append(el('summary','资料说明'));for(const note of result.notes)details.append(el('p',note));container.append(details)}
         }
 
+        function renderDiseaseAnalysis(container,result,send){
+            const data=result.analysis_result.data,profile=data.profile;
+            container.dataset.diseaseAnalysis=result.analysis_result.tool;
+            function button(parent,label,query){const b=el('button',label,'btn btn-sm btn-outline-primary');b.type='button';b.addEventListener('click',()=>send(query));parent.append(b)}
+            function fold(parent,label){const d=el('details');d.append(el('summary',label));parent.append(d);return d}
+            function json(parent,value){const p=el('pre',JSON.stringify(value,null,2));p.style.whiteSpace='pre-wrap';p.style.overflowWrap='anywhere';parent.append(p)}
+            const state=profile.species_status==='not_recorded'?'物种未记录':'来源物种字段尚未核验';
+            container.append(el('p',state+'；以下是来源关联资料，不是治疗建议。'));
+            if(data.identical_set_sources>1)container.append(el('p','另有 '+(data.identical_set_sources-1)+' 条疾病来源具有相同靶点集合，仅凭此集合无法区分。'));
+            if(result.analysis_result.tool==='rank_herbs_for_gene_set'){
+                container.append(el('p','疾病集合 '+data.target_ids.length+' 个；药材背景内 '+data.background_target_ids.length+' 个，背景外 '+data.outside_background_ids.length+' 个。'));
+                const wrap=el('div');wrap.style.overflowX='auto';const table=el('table');table.className='table table-sm';table.setAttribute('aria-label','疾病关联候选药材');
+                const head=el('thead'),hr=el('tr');for(const label of ['药材来源','Jaccard','共同靶点','疾病覆盖','背景内覆盖','依据'])hr.append(el('th',label));head.append(hr);table.append(head);
+                const body=el('tbody');
+                for(const item of data.items){const tr=el('tr');const label=item.source.name===item.source.name_pinyin?item.source.name:item.source.name+' · '+item.source.name_pinyin;
+                    const percent=n=>n?((item.shared_count/n)*100).toFixed(1)+'%':'—';
+                    tr.append(el('td',label),el('td',item.jaccard.toFixed(4)),el('td',String(item.shared_count)),el('td',percent(data.target_ids.length)),el('td',percent(data.background_target_ids.length)));
+                    const cell=el('td'),d=fold(cell,'查看');
+                    for(const [label,ids] of [['共同标识',item.shared_ids],['疾病来源独有',item.query_only_ids],['药材来源独有',item.candidate_only_ids]])d.append(el('p',label+'（'+ids.length+'）：'+(ids.join('、')||'无')));
+                    const raw=fold(d,'双方原始记录（前3个共同标识，每侧最多3行）');
+                    json(raw,{disease_source:profile.source,herb_source:item.source.source,pairs:item.evidence});
+                    button(d,'查看药材靶点原行','/relations 靶点 '+item.source_record_id);tr.append(cell);body.append(tr);
+                }
+                table.append(body);wrap.append(table);container.append(wrap);
+                if(!data.items.length&&data.target_ids.length)container.append(el('p','当前药材背景没有共同标识，无法形成候选排序。'));
+                const metric=data.metric==='jaccard'?'common_count':'jaccard';
+                button(container,data.metric==='jaccard'?'改按共同靶点数排序':'改按Jaccard排序','/analysis disease-rank '+data.record_id+' --top-k '+data.top_k+' --metric '+metric);
+                button(container,'查看疾病靶点原行','/analysis disease '+data.record_id);
+            }else{
+                const wrap=el('div');wrap.style.overflowX='auto';const table=el('table');table.className='table table-sm';table.setAttribute('aria-label','疾病来源靶点');
+                const header=el('tr');for(const label of ['UniProt','基因符号','原始记录'])header.append(el('th',label));const head=el('thead');head.append(header);table.append(head);
+                const body=el('tbody');for(const row of data.rows){const tr=el('tr');tr.append(el('td',row.uniprot||'缺失'),el('td',row.gene||'缺失'));const td=el('td');json(fold(td,'查看'),{json_pointer:row.json_pointer,raw_row:row.raw_row});tr.append(td);body.append(tr)}table.append(body);wrap.append(table);container.append(wrap);
+                container.append(el('p','第 '+data.page+' 页 · '+profile.target_row_count+' 条原始行'));
+                if(data.page>1)button(container,'上一页','/analysis disease '+data.record_id+' --page '+(data.page-1));
+                if(data.has_next)button(container,'下一页','/analysis disease '+data.record_id+' --page '+(data.page+1));
+                if(data.target_ids.length)button(container,'查看候选药材排序','/analysis disease-rank '+data.record_id);
+            }
+            const details=fold(container,'来源与计算说明');json(details,profile);
+            details.append(el('p','数据版本：'+data.dataset_version+'；原始抓取状态按来源保留，未独立核验完整性。'));
+            if(data.items)details.append(el('p','Jaccard=共同标识数/疾病与药材完整集合并集；疾病覆盖与背景内覆盖分别使用上方两个分母，背景外标识没有丢弃。药材未覆盖来源 '+data.coverage.without_targets+' 条。'));
+        }
+
         function renderTargetAnalysis(container,result,send){
             function button(parent,label,query){const b=el('button',label,'btn btn-sm btn-outline-primary');b.type='button';b.addEventListener('click',()=>send(query));parent.append(b)}
             function fold(parent,label){const d=el('details');d.dataset.resultDetails='true';d.append(el('summary',label));parent.append(d);return d}
@@ -1298,6 +1340,7 @@
             for(const option of result.options||[]){const row=el('div');button(row,'选择 '+option.label,option.query);json(fold(row,'来源'),option.source);container.append(row)}
             const tool=result.analysis_result,data=tool?.data;
             if(!data)return;
+            if(['disease_gene_profile','rank_herbs_for_gene_set'].includes(tool.tool)){renderDiseaseAnalysis(container,result,send);return}
             container.dataset.analysisTool=tool.tool;
             const profile=data.profile,source=profile.source,coverage=data.coverage;
             container.append(el('p','原始靶点行 '+profile.source_row_count+' 条；重复标识行 '+profile.duplicate_identifier_rows+' 条；无可用标识行 '+profile.unidentified_rows+' 条。'));

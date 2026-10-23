@@ -4,7 +4,7 @@
 
 回答默认显示简短结论、结果表格或药典正文；原始记录、来源哈希和技术说明按需展开，缺失/失败状态仍直接提示。见[展示调整](docs/LOCAL_TASK_REQUEST.md#回答展示精简2026-10-22)。
 
-数据库介绍已支持：“分别介绍两个数据”“介绍ETCM”“ETCM和药典有什么区别”，无需药材名。7877源码聊天还支持“白术的靶点画像”“与白术靶点最相似的药材，前5个”，见[相似度使用说明](docs/TARGET_SIMILARITY.md)。疾病JSON审计和来源靶点索引的本地构建/查询见[疾病索引说明](docs/DISEASE_GENE_CATALOG.md)；尚未接入疾病聊天和候选药材排序，不是新靶点预测。当前阶段与后续工作见[实施方案](docs/RESEARCH_ANALYTICS_PLAN.md)。
+数据库介绍已支持：“分别介绍两个数据”“介绍ETCM”“ETCM和药典有什么区别”，无需药材名。7877源码聊天还支持“白术的靶点画像”“与白术靶点最相似的药材，前5个”，见[相似度使用说明](docs/TARGET_SIMILARITY.md)。疾病JSON审计和来源靶点索引的本地构建/查询见[疾病索引说明](docs/DISEASE_GENE_CATALOG.md)；疾病聊天与候选药材来源排序现已接入，启动加 `--diseases var/disease_catalog_v1/build/diseases.sqlite3`，见[示例与限制](docs/DISEASE_CANDIDATE_ANALYSIS.md)；不是新靶点预测。当前阶段与后续工作见[实施方案](docs/RESEARCH_ANALYTICS_PLAN.md)。
 
 可直接问“我需要查看白术的相关属性”。已接入[一次模型意图兜底](docs/INTENT_ROUTING.md)：用户已授权当前7877仅外发未识别的当前问句，最多一次模型调用，提取对象/方向/字段后本地查询，不发送资料或历史。实际验证“资料卡”“调出档案”均可返回白术属性；原句走规则、零模型调用。启用命令：`python -m scripts.preview_local_tasks --port 7877 --with-intent-model`；不加选项则关闭模型。
 

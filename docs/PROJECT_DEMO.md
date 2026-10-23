@@ -130,6 +130,8 @@ cd /home/zry/workspace/Multi-Agent-Medical-Assistant
 
 启动后检查`/health`、`/ready/herbs`和`/ready/research`；health正常不代表资料可用。当前就绪为2076份ETCM来源记录，药典索引SHA见接口；两库数量不相加。12项实际启动检查通过，含独立状态、外部功能继承配置被关闭、真实任务交付和进程重启恢复，见[启动验收](../audits/local_task_launcher_v1/summary.json)。
 
+若出现 `ModuleNotFoundError: No module named 'uvicorn'`，说明当前解释器没有安装项目服务依赖；仅安装uvicorn可能继续缺少FastAPI或LangGraph。请使用上方已验证的解释器，或安装完整的 `requirements-research-chat.txt`。启动器现在会在创建状态/打印地址前提示缺失依赖和当前解释器。
+
 本机Python位于临时目录，清理/tmp或换机后需要重新准备环境，例如：
 
 ```bash

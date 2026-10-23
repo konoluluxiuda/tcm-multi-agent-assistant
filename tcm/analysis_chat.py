@@ -2,6 +2,22 @@
 import re
 
 
+def disease_request(text):
+    if re.search(r'治疗|疗效|用药|服用|配方|配伍|预测',text):return None
+    profile=re.fullmatch(r'(?:请)?(?:查询|查看)?\s*疾病\s+(.{1,300}?)\s*的(?:靶点资料|靶点画像|靶点|基因集)',text)
+    if profile:return {'topic':'target_analysis','call':{'tool':'disease_gene_profile','arguments':{'name':profile[1].strip()}}}
+    rank=re.fullmatch(r'(?:按)?疾病\s+(.{1,300}?)\s*的(?:候选药材|靶点(?:集合)?(?:找|筛选)候选药材)((?:[，；].*)?)',text)
+    if not rank:return None
+    args={'name':rank[1].strip()};seen=set()
+    for clause in filter(None,(s.strip() for s in re.split('[，；]',rank[2]))):
+        count=re.fullmatch(r'(?:列|列出|显示)?前([0-9]{1,3})个',clause)
+        metric=re.fullmatch(r'按(共同靶点数|Jaccard(?:相似度)?)排序',clause,re.I)
+        if count and 'top_k' not in seen:args['top_k']=int(count[1]);seen.add('top_k')
+        elif metric and 'metric' not in seen:args['metric']='common_count' if metric[1]=='共同靶点数' else 'jaccard';seen.add('metric')
+        else:return None
+    return {'topic':'target_analysis','call':{'tool':'rank_herbs_for_gene_set','arguments':args}}
+
+
 def parse(text, *, explicit=False):
     if not isinstance(text,str):return None
     text=text.strip()
@@ -9,6 +25,10 @@ def parse(text, *, explicit=False):
     if explicit:
         if not re.match(r'^/analysis(?:\s|$)',text):return None
         body=text[len('/analysis'):].strip()
+        disease=re.fullmatch(r'disease\s+([^\n\r]{1,300}?)(?: --page ([0-9]{1,5}))?',body)
+        ranking=re.fullmatch(r'disease-rank\s+([^\n\r]{1,300}?)(?: --top-k ([0-9]{1,3}))?(?: --metric (jaccard|common_count))?',body)
+        if disease:return {**request,'call':{'tool':'disease_gene_profile','arguments':{'name':disease[1],'page':int(disease[2] or 1)}}}
+        if ranking:return {**request,'call':{'tool':'rank_herbs_for_gene_set','arguments':{'name':ranking[1],'top_k':int(ranking[2] or 10),'metric':ranking[3] or 'jaccard'}}}
         profile=re.fullmatch(r'profile\s+([^\n\r]{1,100})',body)
         similarity=re.fullmatch(r'similarity\s+([^\n\r]{1,100}?)(?: --top-k ([0-9]{1,3}))?(?: --metric (jaccard|common_count))?',body)
         if profile:return {**request,'call':{'tool':'herb_target_profile','arguments':{'name':profile[1]}}}
@@ -16,6 +36,8 @@ def parse(text, *, explicit=False):
         return request
     if len(text)>400:return None
     text=text.rstrip('？?。！!').strip()
+    disease=disease_request(text)
+    if disease is not None:return disease
     if text in ('回看分析结果','刚才的分析结果'):
         return {**request,'followup':True,'action':'replay'}
     clauses=[s.strip() for s in re.split(r'[，,；;。！？?!]',text) if s.strip()]

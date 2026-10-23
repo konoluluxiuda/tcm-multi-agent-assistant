@@ -1,7 +1,9 @@
 """Run the local ETCM/task demo without external models or online tools."""
 import argparse
 import hashlib
+import importlib.util
 import os
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,9 +17,19 @@ def main():
                         help='Persistent chat/task/bookmark directory; reuse it after restarting')
     parser.add_argument('--with-intent-model',action='store_true',
                         help='Allow one configured model call with only an unmatched question; no source text/history')
+    parser.add_argument('--diseases',type=Path,help='Optional completed disease source catalog for local analysis')
     args = parser.parse_args()
     if not 1 <= args.port <= 65535:
         parser.error('--port must be between 1 and 65535')
+    missing_modules = [name for name in ('uvicorn', 'fastapi', 'langgraph', 'langchain_openai',
+                                         'pydantic', 'jinja2', 'dotenv', 'multipart')
+                       if importlib.util.find_spec(name) is None]
+    if missing_modules:
+        parser.error('当前Python环境缺少依赖：' + ', '.join(missing_modules) +
+                     '\n当前解释器：' + sys.executable +
+                     '\n请切换到已安装项目依赖的环境，或在项目虚拟环境中运行：'
+                     '\npython -m pip install -r requirements-research-chat.txt'
+                     '\n环境准备见 docs/PROJECT_DEMO.md 的“启动与复现”。')
 
     state = args.state.resolve()
     files = {
@@ -61,8 +73,15 @@ def main():
         'EMBEDDING_BASE_URL': 'http://127.0.0.1:9/v1', 'EMBEDDING_DIM': '1024',
         'CHAT_COOKIE_NAME': cookie, 'CHAT_COOKIE_SECURE': '0',
         'TCM_DATASET_VERSION': 'local-2026-10-10',
+        'ETCM_DISEASE_DB': str(args.diseases.resolve()) if args.diseases else '',
         **{key: str(path) for key, path in {**files, **directories, **state_files}.items()},
     }
+    if args.diseases:
+        from tcm.disease_catalog import connect as disease_connect
+        try:
+            connection,_=disease_connect(args.diseases);connection.close()
+        except Exception:
+            parser.error('Disease catalog must be a completed local index')
     if args.with_intent_model:
         from dotenv import dotenv_values
         configured=dotenv_values(ROOT/'.env')

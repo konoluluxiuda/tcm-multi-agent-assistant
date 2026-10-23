@@ -48,8 +48,10 @@ def rank_sets(query_id, sets, *, metric='jaccard', top_k=10):
     return sorted(rows,key=key)[:top_k]
 
 
-def query(enrichment, database, record, version, *, tool, metric='jaccard', top_k=10, expected_revision=None):
-    if tool not in ('herb_target_profile','herb_target_similarity'):raise ValueError('Unknown analysis')
+def query(enrichment, database, record, version, *, tool, metric='jaccard', top_k=10, expected_revision=None, external_query=None):
+    if tool not in ('herb_target_profile','herb_target_similarity','rank_herbs_for_gene_set'):raise ValueError('Unknown analysis')
+    disease_mode=tool=='rank_herbs_for_gene_set'
+    if disease_mode != (external_query is not None):raise ValueError('Invalid external set scope')
     before=[file_token(p) for p in (enrichment,database)]
     started=monotonic()
     with closing(connect(enrichment)) as side, closing(sqlite3.connect(
@@ -67,8 +69,8 @@ def query(enrichment, database, record, version, *, tool, metric='jaccard', top_
         indexed={r['source_record_id']:r['file_sha256'] for r in side.execute('SELECT source_record_id,file_sha256 FROM herbs WHERE dataset_version=?',(version,))}
         if not originals or {k:v['sha'] for k,v in originals.items()}!=indexed:
             raise SnapshotChanged('Catalog and base source records differ')
-        sid=record['source_record_id']
-        if indexed.get(sid)!=record['source']['file_sha256']:raise SnapshotChanged('Selected source differs')
+        sid=external_query['record_id'] if disease_mode else record['source_record_id']
+        if not disease_mode and indexed.get(sid)!=record['source']['file_sha256']:raise SnapshotChanged('Selected source differs')
         revision=hashlib.sha256(json.dumps([VERSION,version,meta['source_fingerprint'],before],sort_keys=True).encode()).hexdigest()
         if expected_revision is not None and expected_revision!=revision:raise SnapshotChanged('Analysis changed')
         names={}
@@ -91,19 +93,37 @@ def query(enrichment, database, record, version, *, tool, metric='jaccard', top_
             return {'source_record_id':identifier,'name':next(iter(candidate)) if len(candidate)==1 else r['name'],
                     'name_pinyin':r['name'],'source':r['source'],'capture_status':capture,
                     'name_identity_verified':False}
-        profile={'source':source(sid),'target_ids':sorted(sets[sid]),'target_count':len(sets[sid]),
-                 'source_row_count':raw_counts[sid], 'unidentified_rows':raw_counts[sid]-eligible_counts[sid],
-                 'duplicate_identifier_rows':eligible_counts[sid]-len(sets[sid])}
+        if disease_mode:
+            from tcm.disease_catalog import dumps
+            universe=set().union(*sets.values());binding=external_query['background']
+            if (binding['dataset_version']!=version or binding['source_fingerprint']!=meta['source_fingerprint']
+                    or binding['target_set_sha256']!=hashlib.sha256(dumps(sorted(universe)).encode()).hexdigest()):
+                raise SnapshotChanged('Disease herb background differs')
+            query_set=set(external_query['target_ids'])
+            profile=None
+        else:
+            query_set=sets[sid]
+            profile={'source':source(sid),'target_ids':sorted(query_set),'target_count':len(query_set),
+                     'source_row_count':raw_counts[sid], 'unidentified_rows':raw_counts[sid]-eligible_counts[sid],
+                     'duplicate_identifier_rows':eligible_counts[sid]-len(query_set)}
         coverage={'source_records':len(sets),'with_targets':sum(bool(s) for s in sets.values()),
                   'without_targets':sum(not s for s in sets.values()),
                   'distinct_identifiers':len(set().union(*sets.values()))}
         output={'algorithm_version':VERSION,'dataset_version':version,'catalog_revision':revision,
                 'profile':profile,'coverage':coverage}
-        if tool=='herb_target_similarity':
-            rows=rank_sets(sid,sets,metric=metric,top_k=top_k)
+        if tool in ('herb_target_similarity','rank_herbs_for_gene_set'):
+            rows=rank_sets(sid,{**sets,sid:query_set} if disease_mode else sets,metric=metric,top_k=top_k)
             output.update(metric=metric,top_k=top_k,
                           eligible_peers=sum(bool(s) for k,s in sets.items() if k!=sid),
-                          overlapping_peers=sum(bool(sets[sid]&s) for k,s in sets.items() if k!=sid),
+                          overlapping_peers=sum(bool(query_set&s) for k,s in sets.items() if k!=sid),
                           items=[{**r,'source':source(r['source_record_id'])} for r in rows])
+        if disease_mode:
+            output.pop('profile')
+            output.update(background_target_ids=sorted(query_set&universe),outside_background_ids=sorted(query_set-universe))
+            for item in output['items']:
+                item['evidence']=[]
+                for uid in item['shared_ids'][:3]:
+                    witnesses=side.execute("SELECT e.source_pointer,e.raw_row FROM edges e JOIN nodes n ON n.node_id=e.node_id WHERE e.herb_id=? AND e.kind='target' AND n.identifier=? ORDER BY e.source_pointer LIMIT 3",(item['source_record_id'],uid)).fetchall()
+                    item['evidence'].append({'uniprot':uid,'herb_rows':[{'json_pointer':r[0],'raw_row':json.loads(r[1])} for r in witnesses]})
     if before!=[file_token(p) for p in (enrichment,database)]:raise SnapshotChanged('Catalog changed during analysis')
     return output

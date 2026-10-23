@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-23",
+  "status": "local_chat_and_ranking_verified",
+  "prior_stage_commit": "9d25d49",
+  "scope": [
+    "disease_gene_profile",
+    "rank_herbs_for_gene_set",
+    "read_only_source_and_background_binding",
+    "persisted_parameters_and_replay",
+    "bounded_pair_evidence"
+  ],
+  "offline_regression": {
+    "status": "passed",
+    "modules": 93,
+    "tests": 851,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "focused": {
+    "module": "test_disease_analysis.py",
+    "status": "passed",
+    "total": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "expected_failures": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "checks": [
+      "registry_capabilities",
+      "disease_profile_no_model",
+      "source_rows_pagination",
+      "top5_jaccard_sql_and_four_original_files",
+      "desktop_mobile_folded_evidence",
+      "open_both_source_witnesses",
+      "common_count_switch_and_independent_order",
+      "refresh_and_replay",
+      "unknown_budget_and_empty",
+      "identical_set_limitation",
+      "herb_and_dataset_regression"
+    ],
+    "total": 11,
+    "model_calls": 0,
+    "code_unchanged": true
+  },
+  "real_source_check": {
+    "disease_name": "Dermatosis Papulosa Nigra",
+    "targets": 283,
+    "background_covered": 279,
+    "outside_background": 4,
+    "identical_set_sources": 8,
+    "independent_sql_set_ranking": [
+      "top5_jaccard",
+      "top5_common_count"
+    ],
+    "original_files_checked": 4,
+    "raw_witness_scope": "disease and first three herb candidates; all displayed sampled pairs verified against original JSON"
+  },
+  "provider": {
+    "live_calls": 0,
+    "synthetic_sdk_graph_test": "passed",
+    "new_schema_live_end_to_end": "not_run"
+  },
+  "retained_failures": [
+    {
+      "path": "var/disease_analysis_v1/first_focused.json",
+      "cause": "chosen synthetic fallback question was captured by the pre-existing pharmacopoeia source-field rule; changed test input to an actual unmatched question",
+      "original_question_fixed": false
+    }
+  ],
+  "limitations": [
+    "exact source names/IDs; no verified Chinese disease aliases",
+    "source species and clinical applicability unverified",
+    "identical target sets yield identical rankings",
+    "no independent biological or clinical evaluation",
+    "no new-schema live provider test",
+    "no real-process restart acceptance in this increment",
+    "evidence preview limited to first three shared IDs and up to three rows per side"
+  ],
+  "deployment": {
+    "preview_port": 7877,
+    "disease_catalog": "var/disease_catalog_v1/build/diseases.sqlite3",
+    "new_changes_committed": false,
+    "push": false,
+    "docker_updated": false,
+    "raw_sources_modified": false,
+    "schema_migrations": false
+  },
+  "source_sha256": {
+    "tcm/disease_analysis.py": "bf2cd4146fe2320fb26f07da249701aed5b1e819c281e8f93139b75c5606c55b",
+    "tcm/analysis_tools.py": "2971e683066e2933746d9648c39c4b1ffda97d26978bf6735bcb77887ba53b8d",
+    "tcm/analysis_chat.py": "2c01c0076d001dc0d43375b2967663ea05baf2034931e4e0525b3b9e138548eb",
+    "tcm/intent_planner.py": "23185ebf5929b76ebf7c03b8966662cadddb35a421a0bf6a587c473d0e518c1a",
+    "tcm/target_similarity.py": "cbe13634124fa714ad333bad21c771d3e5a3554d5110c2b53f80bd01311e263e",
+    "templates/index.html": "b5be4b64ff556ed6b2d544e5608ecf3680301f47552d7b7862e197dea647395a",
+    "scripts/preview_local_tasks.py": "2e2a2ff73cd72c1700f6eda22221c4ee7ea67fc776d52f3c15194e467e4f6b24",
+    "tests/test_disease_analysis.py": "11f2418f59d7333e8ba5970c3816f7c0b32bc9aeef1f38ba7ff8d1870094073c"
+  },
+  "local_artifacts": {
+    "ci": "var/disease_analysis_v1/ci_final/summary.json",
+    "browser": "var/disease_analysis_v1/browser/summary.json",
+    "driver": "var/disease_analysis_v1/browser_check.py"
+  }
+}
