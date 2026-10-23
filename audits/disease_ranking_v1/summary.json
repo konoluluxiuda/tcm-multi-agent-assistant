@@ -1,0 +1,256 @@
+{
+  "status": "completed",
+  "scope": "label_free_development_diagnostics",
+  "protocol_sha256": "a4ec909f8a3580203911acf599d29af65cb81c66543908178b3e68e55955379b",
+  "sources": {
+    "herb_dataset_version": "local-2026-10-10",
+    "herb_source_fingerprint": "9921499429128fa21b4b8dc2c5100f359970d8fa796a1dcee32ca8259fe02d80",
+    "disease_dataset_version": "disease-local-2026-10-23",
+    "disease_source_fingerprint": "3ff76e62182ad1f4e1079133af48cfba2878fad9df99f647d22be5659efa475f",
+    "herb_target_set_sha256": "cf1ad15cef75db55ae4fc164d5aec715747dd9751d7486b5b25b8650594f1d27",
+    "herb_sources": 2076,
+    "herb_sources_with_targets": 1849,
+    "herb_distinct_targets": 962,
+    "disease_sources_without_targets": 11,
+    "disease_sources_with_targets": 7582,
+    "unique_nonempty_disease_sets": 6331,
+    "identical_set_groups": 381,
+    "sources_in_identical_set_groups": 1632
+  },
+  "sample_size": 128,
+  "top_k": 10,
+  "sample_target_counts": {
+    "count": 128,
+    "mean": 267.390625,
+    "median": 299.0,
+    "min": 10,
+    "max": 379
+  },
+  "sample_outside_background_counts": {
+    "count": 128,
+    "mean": 5.6171875,
+    "median": 6.0,
+    "min": 0,
+    "max": 9
+  },
+  "positive_overlap_candidates": {
+    "count": 128,
+    "mean": 1738.546875,
+    "median": 1781.5,
+    "min": 584,
+    "max": 1813
+  },
+  "production_rankings_checked": 16,
+  "diagnostics": {
+    "eligible_herb_target_counts": {
+      "count": 1849,
+      "mean": 64.44240129799891,
+      "median": 43,
+      "min": 1,
+      "max": 329
+    },
+    "size_only_target_counts": {
+      "count": 10,
+      "mean": 313.1,
+      "median": 317.0,
+      "min": 292,
+      "max": 329
+    },
+    "methods": {
+      "jaccard": {
+        "queries": 128,
+        "empty_results": 0,
+        "short_results": 0,
+        "overlap_with_size_only_at_k": {
+          "count": 128,
+          "mean": 0.62578125,
+          "median": 0.7,
+          "min": 0.0,
+          "max": 0.9
+        },
+        "pairwise_overlap_at_k": {
+          "count": 8128,
+          "mean": 0.5853961614173229,
+          "median": 0.7,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "selected_target_counts": {
+          "count": 1280,
+          "mean": 277.68671875,
+          "median": 299.0,
+          "min": 4,
+          "max": 329
+        },
+        "distinct_top1_sources": 20,
+        "distinct_topk_sources": 121,
+        "most_frequent_top1": [
+          {
+            "source_record_id": "etcm2-local:7bb219df5a2a3a663ec9b36dc55149bb178169f964b54f94214477f191f6091f",
+            "name_pinyin": "FuPenZi",
+            "queries": 64
+          },
+          {
+            "source_record_id": "etcm2-local:94505c49ceffcf5b90d38d9c813c54a8151ee9e857531920097ad83a7246c7f0",
+            "name_pinyin": "SangBaiPi",
+            "queries": 29
+          },
+          {
+            "source_record_id": "etcm2-local:bb7bedc6e884dcbf5ff8336c6550991c6e121a3d3f641e34487b55e497ce692a",
+            "name_pinyin": "GanCao",
+            "queries": 10
+          },
+          {
+            "source_record_id": "etcm2-local:64095bbde1e7bafb90ec04aa389378e8f93b37e88b6c721e6d7bb7fee60140d4",
+            "name_pinyin": "ZhiGanCao",
+            "queries": 7
+          },
+          {
+            "source_record_id": "etcm2-local:19ac44f948bfcc101040463820ddeccc1bceb58b24c8d5e1acc3aa0d4ae34933",
+            "name_pinyin": "GanJiang",
+            "queries": 2
+          }
+        ],
+        "most_frequent_topk": [
+          {
+            "source_record_id": "etcm2-local:bb7bedc6e884dcbf5ff8336c6550991c6e121a3d3f641e34487b55e497ce692a",
+            "name_pinyin": "GanCao",
+            "queries": 115
+          },
+          {
+            "source_record_id": "etcm2-local:7bb219df5a2a3a663ec9b36dc55149bb178169f964b54f94214477f191f6091f",
+            "name_pinyin": "FuPenZi",
+            "queries": 112
+          },
+          {
+            "source_record_id": "etcm2-local:64095bbde1e7bafb90ec04aa389378e8f93b37e88b6c721e6d7bb7fee60140d4",
+            "name_pinyin": "ZhiGanCao",
+            "queries": 111
+          },
+          {
+            "source_record_id": "etcm2-local:19ac44f948bfcc101040463820ddeccc1bceb58b24c8d5e1acc3aa0d4ae34933",
+            "name_pinyin": "GanJiang",
+            "queries": 105
+          },
+          {
+            "source_record_id": "etcm2-local:94505c49ceffcf5b90d38d9c813c54a8151ee9e857531920097ad83a7246c7f0",
+            "name_pinyin": "SangBaiPi",
+            "queries": 105
+          }
+        ]
+      },
+      "common_count": {
+        "queries": 128,
+        "empty_results": 0,
+        "short_results": 0,
+        "overlap_with_size_only_at_k": {
+          "count": 128,
+          "mean": 0.8203125,
+          "median": 0.9,
+          "min": 0.1,
+          "max": 0.9
+        },
+        "pairwise_overlap_at_k": {
+          "count": 8128,
+          "mean": 0.8097071850393701,
+          "median": 0.9,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "selected_target_counts": {
+          "count": 1280,
+          "mean": 306.46953125,
+          "median": 317.0,
+          "min": 134,
+          "max": 329
+        },
+        "distinct_top1_sources": 12,
+        "distinct_topk_sources": 49,
+        "most_frequent_top1": [
+          {
+            "source_record_id": "etcm2-local:7bb219df5a2a3a663ec9b36dc55149bb178169f964b54f94214477f191f6091f",
+            "name_pinyin": "FuPenZi",
+            "queries": 76
+          },
+          {
+            "source_record_id": "etcm2-local:bb7bedc6e884dcbf5ff8336c6550991c6e121a3d3f641e34487b55e497ce692a",
+            "name_pinyin": "GanCao",
+            "queries": 21
+          },
+          {
+            "source_record_id": "etcm2-local:94505c49ceffcf5b90d38d9c813c54a8151ee9e857531920097ad83a7246c7f0",
+            "name_pinyin": "SangBaiPi",
+            "queries": 10
+          },
+          {
+            "source_record_id": "etcm2-local:297f1ecdf02f881ddaa59bd707a88bd9047c9a8c64586ae9d46f317cdacce25d",
+            "name_pinyin": "BanXia",
+            "queries": 6
+          },
+          {
+            "source_record_id": "etcm2-local:19ac44f948bfcc101040463820ddeccc1bceb58b24c8d5e1acc3aa0d4ae34933",
+            "name_pinyin": "GanJiang",
+            "queries": 5
+          }
+        ],
+        "most_frequent_topk": [
+          {
+            "source_record_id": "etcm2-local:bb7bedc6e884dcbf5ff8336c6550991c6e121a3d3f641e34487b55e497ce692a",
+            "name_pinyin": "GanCao",
+            "queries": 126
+          },
+          {
+            "source_record_id": "etcm2-local:64095bbde1e7bafb90ec04aa389378e8f93b37e88b6c721e6d7bb7fee60140d4",
+            "name_pinyin": "ZhiGanCao",
+            "queries": 124
+          },
+          {
+            "source_record_id": "etcm2-local:19ac44f948bfcc101040463820ddeccc1bceb58b24c8d5e1acc3aa0d4ae34933",
+            "name_pinyin": "GanJiang",
+            "queries": 123
+          },
+          {
+            "source_record_id": "etcm2-local:297f1ecdf02f881ddaa59bd707a88bd9047c9a8c64586ae9d46f317cdacce25d",
+            "name_pinyin": "BanXia",
+            "queries": 123
+          },
+          {
+            "source_record_id": "etcm2-local:94505c49ceffcf5b90d38d9c813c54a8151ee9e857531920097ad83a7246c7f0",
+            "name_pinyin": "SangBaiPi",
+            "queries": 121
+          }
+        ]
+      }
+    },
+    "between_methods_overlap_at_k": {
+      "count": 128,
+      "mean": 0.7468750000000001,
+      "median": 0.8,
+      "min": 0.0,
+      "max": 1.0
+    }
+  },
+  "predictive_validity": "not_evaluated_no_independent_labels",
+  "input_stat_tokens_unchanged": true,
+  "duration_seconds": 11.024,
+  "verification": {
+    "offline_status": "passed",
+    "offline_modules": 95,
+    "offline_tests": 867,
+    "skipped": 0,
+    "network_attempts": 0,
+    "browser": "not_run_no_ui_changes_this_stage",
+    "live_model_calls": 0
+  },
+  "implementation_sha256": {
+    "tcm/ranking_diagnostics.py": "9c445eabcea743f9f8063015975664dff647760cce10908240aebc25d17ebfef",
+    "scripts/eval_disease_ranking.py": "9cec149ca00ce3de5ea23c891f7a7344a600b18cab32f6d451d728993e4710ad",
+    "tcm/target_similarity.py": "cbe13634124fa714ad333bad21c771d3e5a3554d5110c2b53f80bd01311e263e",
+    "tests/test_ranking_diagnostics.py": "3be1ded1cda7f28a7667949e71622047cc6009f484225e069cf73f86cfd203f4"
+  },
+  "local_artifacts": {
+    "protocol": "var/disease_ranking_v1/run/protocol.json",
+    "rankings": "var/disease_ranking_v1/run/rankings.json",
+    "offline": "var/disease_ranking_v1/ci_final/summary.json"
+  }
+}

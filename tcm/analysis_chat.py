@@ -4,6 +4,10 @@ import re
 
 def disease_request(text):
     if re.search(r'治疗|疗效|用药|服用|配方|配伍|预测',text):return None
+    if text in ('浏览疾病目录','查看疾病目录','疾病目录','有哪些疾病','有哪些疾病来源'):
+        return {'topic':'target_analysis','call':{'tool':'search_disease_sources','arguments':{'name':''}}}
+    search=re.fullmatch(r'(?:请)?(?:查找|搜索|检索)疾病(?:名称)?\s*[:：]?\s*(.{1,100})',text)
+    if search:return {'topic':'target_analysis','call':{'tool':'search_disease_sources','arguments':{'name':search[1].strip()}}}
     profile=re.fullmatch(r'(?:请)?(?:查询|查看)?\s*疾病\s+(.{1,300}?)\s*的(?:靶点资料|靶点画像|靶点|基因集)',text)
     if profile:return {'topic':'target_analysis','call':{'tool':'disease_gene_profile','arguments':{'name':profile[1].strip()}}}
     rank=re.fullmatch(r'(?:按)?疾病\s+(.{1,300}?)\s*的(?:候选药材|靶点(?:集合)?(?:找|筛选)候选药材)((?:[，；].*)?)',text)
@@ -25,6 +29,13 @@ def parse(text, *, explicit=False):
     if explicit:
         if not re.match(r'^/analysis(?:\s|$)',text):return None
         body=text[len('/analysis'):].strip()
+        search=re.fullmatch(r'diseases(?:\s+([^\n\r]*))?',body)
+        if search:
+            term=(search[1] or '').strip();page=re.search(r'(?:^|\s)--page ([0-9]{1,5})$',term)
+            number=int(page[1]) if page else 1
+            if page:term=term[:page.start()].strip()
+            if len(term)>100 or re.search(r'(?:^|\s)--',term):return request
+            return {**request,'call':{'tool':'search_disease_sources','arguments':{'name':term,'page':number}}}
         disease=re.fullmatch(r'disease\s+([^\n\r]{1,300}?)(?: --page ([0-9]{1,5}))?',body)
         ranking=re.fullmatch(r'disease-rank\s+([^\n\r]{1,300}?)(?: --top-k ([0-9]{1,3}))?(?: --metric (jaccard|common_count))?',body)
         if disease:return {**request,'call':{'tool':'disease_gene_profile','arguments':{'name':disease[1],'page':int(disease[2] or 1)}}}

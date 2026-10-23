@@ -1291,6 +1291,22 @@
             if(result.notes?.length){const details=el('details');details.dataset.resultDetails='true';details.append(el('summary','资料说明'));for(const note of result.notes)details.append(el('p',note));container.append(details)}
         }
 
+        function renderDiseaseSearch(container,result,send){
+            const data=result.analysis_result.data;container.dataset.diseaseSearch='true';
+            function button(parent,label,query){const b=el('button',label,'btn btn-sm btn-outline-primary');b.type='button';b.addEventListener('click',()=>send(query));parent.append(b)}
+            const form=el('form');form.style.display='flex';form.style.flexWrap='wrap';form.style.gap='8px';
+            const input=el('input');input.type='text';input.maxLength=100;input.value=data.query;input.placeholder='疾病英文名称或关键词，如 diabetes';input.setAttribute('aria-label','疾病名称关键词');
+            const submit=el('button','搜索');submit.type='submit';form.append(input,submit);form.addEventListener('submit',e=>{e.preventDefault();send('/analysis diseases'+(input.value.trim()?' '+input.value.trim():''))});container.append(form);
+            const wrap=el('div');wrap.style.overflowX='auto';const table=el('table');table.className='table table-sm';table.setAttribute('aria-label','疾病名称搜索结果');
+            const head=el('thead'),tr=el('tr');for(const label of ['疾病来源名称','靶点数','操作'])tr.append(el('th',label));head.append(tr);table.append(head);const body=el('tbody');
+            for(const item of data.items){const row=el('tr');row.append(el('td',item.name),el('td',String(item.target_count)));const actions=el('td');button(actions,'查看靶点','/analysis disease '+item.record_id);button(actions,'候选排序','/analysis disease-rank '+item.record_id);
+                const d=el('details');d.append(el('summary','来源'));const pre=el('pre',JSON.stringify({source:item.source,capture_state:item.capture_state,species_status:item.species_status},null,2));pre.style.whiteSpace='pre-wrap';pre.style.overflowWrap='anywhere';d.append(pre);actions.append(d);row.append(actions);body.append(row)}
+            table.append(body);wrap.append(table);container.append(wrap);container.append(el('p','第 '+data.page+' 页 · 共 '+data.total+' 条来源'));
+            const prefix='/analysis diseases'+(data.query?' '+data.query:'');
+            if(data.page>1)button(container,'上一页',prefix+' --page '+(data.page-1));if(data.has_next)button(container,'下一页',prefix+' --page '+(data.page+1));
+            const note=el('details');note.append(el('summary','查找说明'),el('p','按来源原名做字面关键词匹配；多个关键词需同时出现，优先完整名称和前缀，不自动翻译、合并疾病或选择候选。'));container.append(note);
+        }
+
         function renderDiseaseAnalysis(container,result,send){
             const data=result.analysis_result.data,profile=data.profile;
             container.dataset.diseaseAnalysis=result.analysis_result.tool;
@@ -1316,6 +1332,15 @@
                 }
                 table.append(body);wrap.append(table);container.append(wrap);
                 if(!data.items.length&&data.target_ids.length)container.append(el('p','当前药材背景没有共同标识，无法形成候选排序。'));
+                if(data.items.length&&data.size_context){
+                    const context=fold(container,'查看规模对照');context.dataset.sizeContext='true';
+                    context.append(el('p','同规模期望 = 疾病背景内靶点数 × 药材靶点数 ÷ 背景总数。本次分别使用 '+data.size_context.query_background_count+' 和 '+data.size_context.background_size+'；背景外标识不参与期望计算。差值用于解释集合重叠，不能证明疾病针对性或药效。'));
+                    const t=el('table');t.className='table table-sm';t.setAttribute('aria-label','候选规模对照');
+                    const h=el('thead'),r=el('tr');for(const label of ['药材来源','实测共同靶点','同规模期望','差值'])r.append(el('th',label));h.append(r);t.append(h);
+                    const b=el('tbody');for(const item of data.items){const row=el('tr');const delta=Math.round(item.observed_minus_expected*100)/100;
+                        row.append(el('td',item.source.name),el('td',String(item.shared_count)),el('td',item.expected_shared_count.toFixed(2)),el('td',(delta>0?'+':'')+delta.toFixed(2)));b.append(row)}
+                    t.append(b);context.append(t);
+                }
                 const metric=data.metric==='jaccard'?'common_count':'jaccard';
                 button(container,data.metric==='jaccard'?'改按共同靶点数排序':'改按Jaccard排序','/analysis disease-rank '+data.record_id+' --top-k '+data.top_k+' --metric '+metric);
                 button(container,'查看疾病靶点原行','/analysis disease '+data.record_id);
@@ -1340,6 +1365,7 @@
             for(const option of result.options||[]){const row=el('div');button(row,'选择 '+option.label,option.query);json(fold(row,'来源'),option.source);container.append(row)}
             const tool=result.analysis_result,data=tool?.data;
             if(!data)return;
+            if(tool.tool==='search_disease_sources'){renderDiseaseSearch(container,result,send);return}
             if(['disease_gene_profile','rank_herbs_for_gene_set'].includes(tool.tool)){renderDiseaseAnalysis(container,result,send);return}
             container.dataset.analysisTool=tool.tool;
             const profile=data.profile,source=profile.source,coverage=data.coverage;

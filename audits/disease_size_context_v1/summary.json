@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "offline_tests": 24,
+  "modules": [
+    {
+      "module": "test_disease_analysis.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_disease_search.py",
+      "status": "passed",
+      "total": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_target_similarity.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "browser": {
+    "status": "passed",
+    "checks": [
+      "real_source_formula_and_zero_model_calls",
+      "collapsed_by_default",
+      "expand_and_values",
+      "metric_switch",
+      "refresh_recomputes_and_collapses",
+      "no_javascript_errors"
+    ],
+    "total": 6,
+    "model_calls": 0
+  },
+  "preview_port": 7878,
+  "live_model_calls": 0,
+  "full_regression": "not_run_targeted_checks_only"
+}

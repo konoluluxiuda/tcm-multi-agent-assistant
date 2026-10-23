@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "checks": [
+    "disease_name_search",
+    "search_to_selected_source_ranking",
+    "original_files_hashes_and_12_source_rows",
+    "real_source_formula_and_zero_model_calls",
+    "collapsed_by_default",
+    "expand_and_values",
+    "metric_switch",
+    "refresh_recomputes_and_collapses",
+    "open_original_evidence",
+    "no_javascript_errors"
+  ],
+  "total": 10,
+  "model_calls": 0,
+  "scope": "known_development_workflow",
+  "raw_witnesses_checked": 12,
+  "candidate_sources_sampled": 2,
+  "preview": "http://127.0.0.1:7878/",
+  "git_head": "f02ba1a28f76ea3c41fe43ed98fdefcc4b9b417f",
+  "working_tree_uncommitted": true,
+  "full_regression_this_turn": "not_run_docs_only",
+  "driver": "var/disease_delivery_v1/browser.py",
+  "implementation_sha256": {
+    "tcm/disease_analysis.py": "4109b6d80ad3c21035e31a3f81f07c120f671157aaced893afd8f7761b0bf765",
+    "tcm/disease_search.py": "8c59eb60a0f85c990715208c21b0f93b4dfdb3f4c4964a567b96dabc22b2f8ac",
+    "tcm/analysis_tools.py": "f1962bab5e8d8468b19de8f75cddbdbc64b584f5229c9079dd4791982d7b90e2",
+    "templates/index.html": "ca4a92f884a93d0673f896b32bdf63d15e6a21f46934790ca9bb7e0fb8fde2ef"
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "status": "completed",
+  "scope": "exploratory_existing_development_cohort_no_independent_labels",
+  "protocol_sha256": "a1b20db942c59d89b3827749f5798aa5182aa50a812989d5133c6db8c8005ed0",
+  "baseline_protocol_sha256": "a4ec909f8a3580203911acf599d29af65cb81c66543908178b3e68e55955379b",
+  "sources": {
+    "herb_dataset_version": "local-2026-10-10",
+    "herb_source_fingerprint": "9921499429128fa21b4b8dc2c5100f359970d8fa796a1dcee32ca8259fe02d80",
+    "disease_dataset_version": "disease-local-2026-10-23",
+    "disease_source_fingerprint": "3ff76e62182ad1f4e1079133af48cfba2878fad9df99f647d22be5659efa475f",
+    "herb_target_set_sha256": "cf1ad15cef75db55ae4fc164d5aec715747dd9751d7486b5b25b8650594f1d27",
+    "herb_sources": 2076,
+    "herb_sources_with_targets": 1849,
+    "herb_distinct_targets": 962,
+    "disease_sources_without_targets": 11,
+    "disease_sources_with_targets": 7582,
+    "unique_nonempty_disease_sets": 6331,
+    "identical_set_groups": 381,
+    "sources_in_identical_set_groups": 1632
+  },
+  "sample_size": 128,
+  "iterations_per_query": 256,
+  "seed": 20261023,
+  "candidate_comparisons": 60588032,
+  "diagnostics": {
+    "evaluated_queries": 128,
+    "queries_without_background_overlap": 0,
+    "observed_max_overlap": {
+      "count": 128,
+      "mean": 91.375,
+      "median": 99.0,
+      "min": 6,
+      "max": 132
+    },
+    "null_max_overlap_mean": {
+      "count": 128,
+      "mean": 93.89877319335938,
+      "median": 104.783203125,
+      "min": 5.265625,
+      "max": 131.5078125
+    },
+    "queries_above_null_max_p95": 0,
+    "queries_above_all_simulated_maxima": 0,
+    "methods": {
+      "jaccard": {
+        "selected_positions": 1280,
+        "shared_count": {
+          "count": 1280,
+          "mean": 81.28125,
+          "median": 90.0,
+          "min": 1,
+          "max": 132
+        },
+        "expected_shared_count": {
+          "count": 1280,
+          "mean": 80.10323382276508,
+          "median": 89.77806652806653,
+          "min": 0.04158004158004158,
+          "max": 126.88045738045739
+        },
+        "observed_minus_expected": {
+          "count": 1280,
+          "mean": 1.1780161772349271,
+          "median": 0.5514553014553059,
+          "min": -12.103950103950098,
+          "max": 20.7993762993763
+        },
+        "standardized_excess": {
+          "count": 1280,
+          "mean": 0.40405572386610555,
+          "median": 0.08398746699947676,
+          "min": -1.9384919882983587,
+          "max": 7.819600331116447
+        },
+        "observed_to_expected": {
+          "count": 1280,
+          "mean": 1.3423200919262976,
+          "median": 1.0061113879192738,
+          "min": 0.787741935483871,
+          "max": 32.06666666666666
+        },
+        "positions_above_expected_overlap": 680
+      },
+      "common_count": {
+        "selected_positions": 1280,
+        "shared_count": {
+          "count": 1280,
+          "mean": 83.0609375,
+          "median": 91.0,
+          "min": 3,
+          "max": 132
+        },
+        "expected_shared_count": {
+          "count": 1280,
+          "mean": 84.19719903196466,
+          "median": 92.88149688149689,
+          "min": 1.392931392931393,
+          "max": 126.88045738045739
+        },
+        "observed_minus_expected": {
+          "count": 1280,
+          "mean": -1.1362615319646572,
+          "median": -1.1985446985446977,
+          "min": -14.278586278586282,
+          "max": 14.164241164241162
+        },
+        "standardized_excess": {
+          "count": 1280,
+          "mean": -0.14148945214266323,
+          "median": -0.19754766753593975,
+          "min": -2.896727039619645,
+          "max": 3.4448610045962353
+        },
+        "observed_to_expected": {
+          "count": 1280,
+          "mean": 1.0063798682027083,
+          "median": 0.9845093010444819,
+          "min": 0.6622738001573564,
+          "max": 2.9448979591836735
+        },
+        "positions_above_expected_overlap": 501
+      }
+    }
+  },
+  "input_stat_tokens_unchanged": true,
+  "predictive_validity": "not_evaluated_no_independent_labels",
+  "duration_seconds": 17.361,
+  "verification": {
+    "status": "passed",
+    "focused_modules": 3,
+    "focused_tests": 24,
+    "skipped": 0,
+    "network_attempts": 0,
+    "live_model_calls": 0,
+    "full_regression_this_stage": "not_run_isolated_offline_evaluator",
+    "browser_this_stage": "not_run_no_ui_changes",
+    "baseline_ranking_lists_checked": 256
+  },
+  "limitations": [
+    "does_not_preserve_disease_target_frequencies",
+    "no_multiplicity_adjusted_significance_claims",
+    "pair_diagnostics_are_post_selection",
+    "no_efficacy_or_disease_specificity_validation"
+  ],
+  "implementation_sha256": {
+    "scripts/eval_disease_size_null.py": "fff98e4783d5887c0a17ec19f87eb1485662282a65f1a1e14cacce2c4635ae63",
+    "tcm/target_size_null.py": "c7b7e39c4d13400d74f3a0299b625faae36d303146845c97a177cb261043b727",
+    "scripts/eval_disease_ranking.py": "9cec149ca00ce3de5ea23c891f7a7344a600b18cab32f6d451d728993e4710ad",
+    "tcm/ranking_diagnostics.py": "9c445eabcea743f9f8063015975664dff647760cce10908240aebc25d17ebfef",
+    "tests/test_target_size_null.py": "8c88cbdd8cf3597df9e9433e3b0a1a18487d0898df8ec61f4aed12c53a2a2837"
+  },
+  "local_artifacts": {
+    "protocol": "var/disease_size_null_v1/run/protocol.json",
+    "queries": "var/disease_size_null_v1/run/queries.json",
+    "tests": "var/disease_size_null_v1/tests/summary.json"
+  }
+}

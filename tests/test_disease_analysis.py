@@ -61,6 +61,23 @@ class DiseaseAnalysisTests(unittest.TestCase):
             result=self.call(name=name);self.assertEqual(result.status,'empty');self.assertFalse(result.data.items)
         self.assertEqual(self.call(name='Disjoint').data.outside_background_ids,['R88888'])
 
+    def test_size_context_uses_background_and_rejects_corrupt_explanations(self):
+        data=self.call().data
+        self.assertEqual(data.size_context.query_background_count,2)
+        self.assertEqual(data.size_context.background_size,data.coverage.distinct_identifiers)
+        for item in data.items:
+            expected=2*item.target_count/data.coverage.distinct_identifiers
+            self.assertAlmostEqual(item.expected_shared_count,expected)
+            self.assertAlmostEqual(item.observed_minus_expected,item.shared_count-expected)
+        for field in ('expected_shared_count','observed_minus_expected'):
+            bad=data.model_dump();bad['items'][0][field]+=1
+            with patch('tcm.disease_analysis.query',return_value=bad):
+                self.assertEqual(self.call().error.code,'invalid_result')
+        bad=data.model_dump();bad['size_context']['background_size']+=1
+        with patch('tcm.disease_analysis.query',return_value=bad):
+            self.assertEqual(self.call().error.code,'invalid_result')
+        self.assertEqual(self.call(name='Disjoint').data.size_context.query_background_count,0)
+
     def test_natural_chat_replay_and_evidence_mode_never_call_model(self):
         with patch('tcm.intent_planner.plan_question',side_effect=AssertionError('Unnecessary model call')):
             r=self.turn('查询疾病 Synthetic disease 的靶点资料',answer_mode='evidence').json()

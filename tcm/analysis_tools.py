@@ -55,7 +55,22 @@ class DiseaseRankingCall(Contract):
     arguments: DiseaseRankingArgs
 
 
-AnalysisCall = Annotated[ProfileCall | SimilarityCall | DiseaseCall | DiseaseRankingCall, Field(discriminator='tool')]
+class DiseaseSearchArgs(Contract):
+    name: str = Field(default='',max_length=100)
+    page: int = Field(default=1,ge=1,le=10000)
+
+    @model_validator(mode='after')
+    def bounded_term(self):
+        if self.name!=self.name.strip() or re.search(r'[\n\r]',self.name):raise ValueError('Invalid search term')
+        return self
+
+
+class DiseaseSearchCall(Contract):
+    tool: Literal['search_disease_sources']
+    arguments: DiseaseSearchArgs
+
+
+AnalysisCall = Annotated[ProfileCall | SimilarityCall | DiseaseCall | DiseaseRankingCall | DiseaseSearchCall, Field(discriminator='tool')]
 CALL = TypeAdapter(AnalysisCall)
 
 
@@ -167,6 +182,8 @@ class DiseaseData(Contract):
 
 class DiseaseCandidateItem(SimilarityItem):
     evidence: list[dict] = Field(max_length=3)
+    expected_shared_count: float = Field(ge=0,allow_inf_nan=False)
+    observed_minus_expected: float = Field(allow_inf_nan=False)
 
     @model_validator(mode='after')
     def witnesses(self):
@@ -177,7 +194,13 @@ class DiseaseCandidateItem(SimilarityItem):
         return self
 
 
+class SizeContext(Contract):
+    background_size: int = Field(ge=0)
+    query_background_count: int = Field(ge=0)
+
+
 class DiseaseRankingData(DiseaseData):
+    size_context: SizeContext
     algorithm_version: str
     herb_dataset_version: str
     coverage: Coverage
@@ -198,10 +221,47 @@ class DiseaseRankingData(DiseaseData):
                 or self.overlapping_peers>self.eligible_peers):
             raise ValueError('Invalid disease coverage')
         seen=set()
+        if (self.size_context.background_size!=self.coverage.distinct_identifiers
+                or self.size_context.query_background_count!=len(inside)
+                or len(inside)>self.size_context.background_size):
+            raise ValueError('Invalid size background')
         for item in self.items:
+            n=self.size_context.background_size
+            expected=len(inside)*item.target_count/n if n else 0.0
+            if (item.target_count>n or abs(item.expected_shared_count-expected)>1e-9
+                    or abs(item.observed_minus_expected-(item.shared_count-expected))>1e-9):
+                raise ValueError('Invalid size expectation')
             if item.source_record_id in seen or set(item.shared_ids)|set(item.query_only_ids)!=targets:
                 raise ValueError('Invalid disease candidate')
             seen.add(item.source_record_id)
+        return self
+
+
+class DiseaseSearchItem(Contract):
+    record_id: str
+    name: str
+    target_count: int = Field(ge=0)
+    capture_state: str
+    species_status: str
+    source: dict
+    match_kind: Literal['browse','exact','prefix','keywords']
+
+
+class DiseaseSearchData(Contract):
+    query: str
+    dataset_version: str
+    catalog_revision: str
+    total: int = Field(ge=0)
+    page: int = Field(ge=1,le=10000)
+    has_next: bool
+    items: list[DiseaseSearchItem] = Field(max_length=20)
+
+    @model_validator(mode='after')
+    def counts(self):
+        if len(self.items)!=min(20,max(0,self.total-(self.page-1)*20)) or self.has_next!=(self.page*20<self.total):
+            raise ValueError('Invalid result page')
+        if len({r.record_id for r in self.items})!=len(self.items):raise ValueError('Duplicate source')
+        if any(r.record_id!='etcm-disease:'+r.source.get('file_sha256','') for r in self.items):raise ValueError('Invalid source binding')
         return self
 
 
@@ -211,13 +271,14 @@ SPECS = {
     'herb_target_similarity': (SimilarityArgs,SimilarityData,'寻找与一味药靶点集合最相似的药材来源。默认Jaccard，可按common_count共同靶点数排序；前1至20条。不做疾病治疗推荐或新靶点预测。','药材靶点相似度'),
     'disease_gene_profile': (DiseaseArgs,DiseaseData,'按疾病来源原名或ID查询来源靶点集合与原始记录，page默认1。不猜译名或疾病别名。','疾病靶点资料'),
     'rank_herbs_for_gene_set': (DiseaseRankingArgs,DiseaseRankingData,'按明确疾病来源的靶点集合排序药材来源，默认Jaccard/前10个，也支持common_count；最多20。不做治疗推荐、药效或新靶点预测。','疾病关联候选排序'),
+    'search_disease_sources': (DiseaseSearchArgs,DiseaseSearchData,'按疾病名称关键词查找来源；name逐字来自问句，不翻译或猜别名；明确浏览疾病目录时name留空。分页20项，结果只供选择，不自动分析候选。','疾病名称查找'),
 }
 
 
 def tool_specs():
     return [{'name':name,'description':spec[2],'parameters':spec[0].model_json_schema(),
              'label':spec[3],'result_schema':spec[1].model_json_schema(),'read_only':True,
-             'configured':bool(os.getenv('ETCM_DISEASE_DB')) if name=='disease_gene_profile' else
+             'configured':bool(os.getenv('ETCM_DISEASE_DB')) if name in ('disease_gene_profile','search_disease_sources') else
                  bool(os.getenv('TCM_DB') and os.getenv('ETCM_ENRICHMENT_DB') and (name!='rank_herbs_for_gene_set' or os.getenv('ETCM_DISEASE_DB')))} for name,spec in SPECS.items()]
 
 
@@ -229,7 +290,10 @@ def invoke(call, record=None, version=None, *, expected_revision=None):
         return ToolResult(tool=str(name),status='error',error=ToolError(code='invalid_arguments'),elapsed_ms=0)
     path=os.getenv('ETCM_ENRICHMENT_DB');base=os.getenv('TCM_DB')
     try:
-        if name in ('disease_gene_profile','rank_herbs_for_gene_set'):
+        if name=='search_disease_sources':
+            from tcm.disease_search import query
+            data=query(validated,expected_revision=expected_revision)
+        elif name in ('disease_gene_profile','rank_herbs_for_gene_set'):
             from tcm.disease_analysis import query
             data=query(validated,expected_revision=expected_revision)
         else:
@@ -239,7 +303,8 @@ def invoke(call, record=None, version=None, *, expected_revision=None):
         try:typed=SPECS[name][1].model_validate(data)
         except ValidationError:
             return ToolResult(tool=name,status='error',error=ToolError(code='invalid_result'),elapsed_ms=(perf_counter()-started)*1000)
-        empty=(not typed.target_ids or isinstance(typed,DiseaseRankingData) and not typed.items) if isinstance(typed,DiseaseData) else (not typed.profile.target_count or isinstance(typed,SimilarityData) and not typed.items)
+        if isinstance(typed,DiseaseSearchData):empty=not typed.items
+        else:empty=(not typed.target_ids or isinstance(typed,DiseaseRankingData) and not typed.items) if isinstance(typed,DiseaseData) else (not typed.profile.target_count or isinstance(typed,SimilarityData) and not typed.items)
         return ToolResult(tool=name,status='empty' if empty else 'ok',data=typed,elapsed_ms=(perf_counter()-started)*1000)
     except target_similarity.SnapshotChanged:code='snapshot_changed'
     except (OSError,ValueError,sqlite3.Error,KeyError,TypeError):code='unavailable'
@@ -249,6 +314,7 @@ def invoke(call, record=None, version=None, *, expected_revision=None):
 def command(call, source_id=None):
     parsed=CALL.validate_python(call);args=parsed.arguments
     name=source_id or args.name
+    if parsed.tool=='search_disease_sources':return '/analysis diseases'+(' '+name if name else '')+f' --page {args.page}'
     if parsed.tool=='disease_gene_profile':return f'/analysis disease {name} --page {args.page}'
     if parsed.tool=='rank_herbs_for_gene_set':return f'/analysis disease-rank {name} --top-k {args.top_k} --metric {args.metric}'
     if parsed.tool=='herb_target_profile':return '/analysis profile '+name
@@ -270,6 +336,9 @@ def execute_turn(request, focus=None):
     try:parsed=CALL.validate_python(call)
     except (ValidationError,TypeError):
         return {**result,'status':'clarification_needed','message':'可问“白术的靶点画像”或“与白术靶点最相似的药材，前10个”。最多返回20个候选。'},None
+    if parsed.tool=='search_disease_sources':
+        from tcm.disease_search import execute_turn as search_turn
+        return search_turn(parsed,expected_revision=expected)
     if parsed.tool in ('disease_gene_profile','rank_herbs_for_gene_set'):
         from tcm.disease_analysis import execute_turn as disease_turn
         return disease_turn(parsed,expected_revision=expected)

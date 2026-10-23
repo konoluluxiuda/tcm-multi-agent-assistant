@@ -1,8 +1,15 @@
 <div align="center">
 
+**当前统一入口（2026-10-23）：** 新增疾病检索、排序与规模对照的预览在 **http://127.0.0.1:7878/**；请按[当前交付与五分钟演示](docs/DISEASE_WORKFLOW_DELIVERY.md)操作。7877旧进程未更新，以下旧阶段日志中的端口/完成状态按当时范围理解。本轮源码已归入2026-10-24本地Git基线；未push或发布镜像。 当前工作树已于2026-10-24通过96模块877项完整离线回归，见[验收摘要](audits/delivery_regression_20261024/summary.json)。
+
+
 本地启动：`python -m scripts.preview_local_tasks --port 7877`，访问 **http://127.0.0.1:7877/**。明确的双药共同靶点查询直接显示结果、双方原始行和出处，不再要求清单或计划确认；当前目录只有一份候选来源时自动使用并展示来源，多来源时才选择。独立研究任务页仍保留。无需模型或Tavily密钥；见[启动说明](docs/PROJECT_DEMO.md#启动与复现)和[本次简化](docs/LOCAL_TASK_REQUEST.md#明确双药查询直接执行2026-10-22)。
 
 回答默认显示简短结论、结果表格或药典正文；原始记录、来源哈希和技术说明按需展开，缺失/失败状态仍直接提示。见[展示调整](docs/LOCAL_TASK_REQUEST.md#回答展示精简2026-10-22)。
+
+不知道完整疾病原名时，可问“浏览疾病目录”“查找疾病 diabetes”，从分页结果进入靶点资料或候选排序；见[名称查找说明](docs/DISEASE_NAME_SEARCH.md)。中文疾病别名尚未核验。
+
+候选排序已有[128组本地基线诊断](docs/DISEASE_RANKING_EVALUATION.md)：Jaccard比共同靶点数减少结果集中，但仍与药材靶点规模明显相关；当前输出用于来源集合候选检索，预测有效性尚无独立标签验证。 后续[规模随机对照](docs/DISEASE_SIZE_NULL_EVALUATION.md)中，128组实测最大交集均未超过各自随机最大交集第95百分位，默认排序未调整。
 
 数据库介绍已支持：“分别介绍两个数据”“介绍ETCM”“ETCM和药典有什么区别”，无需药材名。7877源码聊天还支持“白术的靶点画像”“与白术靶点最相似的药材，前5个”，见[相似度使用说明](docs/TARGET_SIMILARITY.md)。疾病JSON审计和来源靶点索引的本地构建/查询见[疾病索引说明](docs/DISEASE_GENE_CATALOG.md)；疾病聊天与候选药材来源排序现已接入，启动加 `--diseases var/disease_catalog_v1/build/diseases.sqlite3`，见[示例与限制](docs/DISEASE_CANDIDATE_ANALYSIS.md)；不是新靶点预测。当前阶段与后续工作见[实施方案](docs/RESEARCH_ANALYTICS_PLAN.md)。
 

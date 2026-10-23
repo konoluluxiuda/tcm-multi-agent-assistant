@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-23",
+  "status": "local_discovery_verified",
+  "prior_stage_commit": "f02ba1a",
+  "scope": [
+    "search_disease_sources",
+    "literal_multi_keyword_matching",
+    "20_row_pagination",
+    "explicit_source_selection",
+    "retain_original_analysis_parameters",
+    "search_parameter_replay"
+  ],
+  "offline_regression": {
+    "status": "passed",
+    "modules": 94,
+    "tests": 859,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "final_focused": {
+    "module": "test_disease_search.py",
+    "status": "passed",
+    "total": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "expected_failures": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "checks": [
+      "registry_capability",
+      "browse_and_next_page",
+      "keyword_search_and_independent_names",
+      "inline_search_form",
+      "desktop_mobile_and_folded_sources",
+      "selected_source_profile",
+      "selected_source_ranking",
+      "partial_name_selection_preserves_ranking_request",
+      "refresh_and_replay_search",
+      "unknown_chinese_and_literal_wildcards",
+      "previous_functions_and_js_errors"
+    ],
+    "total": 11,
+    "model_calls": 0,
+    "code_unchanged": true
+  },
+  "real_source_counts": {
+    "browse": 7593,
+    "diabetes": 51,
+    "diabetes mellitus": 24,
+    "alzheimer": 9,
+    "unverified_chinese_query": 0
+  },
+  "independent_check": "Counts and ordered pages compared to direct source-name reads; tests do not establish semantic recall or biomedical identity.",
+  "provider": {
+    "live_calls": 0,
+    "synthetic_sdk_one_call_test": "passed",
+    "new_schema_live_end_to_end": "not_run"
+  },
+  "development_corrections": [
+    "Empty-term page command now parsed as browse with explicit page, not a search for --page.",
+    "Standalone underscore normalizes to no results, not full-directory browse.",
+    "Imported previous test class caused initial duplicate discovery; switched to module import, final new tests counted once."
+  ],
+  "limitations": [
+    "No verified Chinese alias mapping, translation or fuzzy spelling correction.",
+    "Candidates are source-name matches, not equivalent diseases.",
+    "Partial original analysis shows at most 20 candidates and never auto-selects.",
+    "Ranking remains source-set association, not clinical or independent biological prediction.",
+    "Browser refresh and storage replay tested; no actual-process restart acceptance in this increment."
+  ],
+  "deployment": {
+    "preview_port": 7877,
+    "intent_model_enabled": false,
+    "new_changes_committed": false,
+    "push": false,
+    "docker_updated": false,
+    "database_migrations": false,
+    "source_writes": false
+  },
+  "source_sha256": {
+    "tcm/disease_search.py": "8c59eb60a0f85c990715208c21b0f93b4dfdb3f4c4964a567b96dabc22b2f8ac",
+    "tcm/disease_analysis.py": "af8cd9b5c641b499e73cce47e406cb4334bd8925c1190d7e0cd3bd97c56b84b2",
+    "tcm/analysis_tools.py": "c998ac08410d1106989669e9372a93f89200c9c442b19694f20aeb06f703adae",
+    "tcm/analysis_chat.py": "cfac4c8d61bf8eafc0d7245a6d3c373b5a5857fe1ced52bc15586d51668b71ec",
+    "tcm/intent_planner.py": "f635596f050ed448d727ea4322006c70f6a6cb59d2f2e9667b2f39c3329cc7a6",
+    "templates/index.html": "fb898ac39137cb87069b835f90cb4507112b2694a03897a522d20be6438f7bb0",
+    "tests/test_disease_search.py": "32a8abc1b3e0ba939b3497c4bdf933d5a9784c2eb0d428b95c1522789f83c2ad"
+  },
+  "local_artifacts": {
+    "ci": "var/disease_search_v1/ci_final/summary.json",
+    "browser": "var/disease_search_v1/browser/summary.json",
+    "driver": "var/disease_search_v1/browser_check.py"
+  }
+}

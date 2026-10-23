@@ -33,6 +33,13 @@ def query(call, *, expected_revision=None):
             metric=call.arguments.metric,top_k=call.arguments.top_k,
             external_query={'record_id':found['record_id'],'target_ids':found['target_ids'],'background':binding})
         herb_revision=ranking.pop('catalog_revision');ranking['herb_dataset_version']=ranking.pop('dataset_version')
+        population=ranking['coverage']['distinct_identifiers']
+        inside=len(ranking['background_target_ids'])
+        ranking['size_context']={'background_size':population,'query_background_count':inside}
+        for item in ranking['items']:
+            expected=inside*item['target_count']/population if population else 0.0
+            item['expected_shared_count']=expected
+            item['observed_minus_expected']=item['shared_count']-expected
         evidence_con,_=catalog.connect(path)
         with closing(evidence_con):
             evidence_con.execute('BEGIN')
@@ -41,7 +48,7 @@ def query(call, *, expected_revision=None):
                     rows=evidence_con.execute('SELECT json_pointer,raw_row FROM target_rows WHERE record_id=? AND uniprot=? ORDER BY ordinal LIMIT 3',(found['record_id'],pair['uniprot'])).fetchall()
                     pair['disease_rows']=[{'json_pointer':r[0],'raw_row':json.loads(r[1])} for r in rows]
         data.update(ranking)
-    revision=hashlib.sha256(catalog.dumps(['disease_analysis_v1',before,found['source_fingerprint'],herb_revision]).encode()).hexdigest()
+    revision=hashlib.sha256(catalog.dumps(['disease_analysis_v2_size_context',before,found['source_fingerprint'],herb_revision]).encode()).hexdigest()
     if before!=similarity.file_token(path) or expected_revision is not None and expected_revision!=revision:
         raise similarity.SnapshotChanged('Disease analysis changed')
     data['catalog_revision']=revision
@@ -59,7 +66,15 @@ def execute_turn(parsed, *, expected_revision=None):
         return {**result,'status':'unavailable','message':'疾病来源索引暂不可用，请检查数据版本。'},None
     if found['resolution_status']!='source_record':
         options=[{'label':o['name'],'source':o,'query':command(parsed.model_dump(),o['record_id'])} for o in found['options']]
-        return {**result,'status':'clarification_needed','message':'请选择疾病来源。' if options else '未找到该疾病来源。请使用数据库原名（例如 Strabismus）或来源ID；当前没有经过核验的中文疾病别名映射。','options':options},None
+        total=len(options)
+        if not options and not parsed.arguments.name.startswith('etcm-disease:') and len(parsed.arguments.name)<=100:
+            from tcm.disease_search import search
+            try:
+                candidates=search(path,parsed.arguments.name);total=candidates['total']
+                options=[{'label':o['name'],'source':o['source'],'query':command(parsed.model_dump(),o['record_id'])} for o in candidates['items']]
+            except (OSError,ValueError,sqlite3.Error,KeyError,TypeError):
+                return {**result,'status':'unavailable','message':'疾病目录暂不可用，请重新查询。'},None
+        return {**result,'status':'clarification_needed','message':f'未唯一定位疾病来源，请从{total}条匹配来源中选择（显示前{len(options)}条）；尚未执行分析。' if options else '未找到该疾病来源。可问“查找疾病 diabetes”或“浏览疾病目录”；当前没有经过核验的中文疾病别名映射。','options':options,'options_truncated':total>len(options)},None
     current=parsed.model_dump();current['arguments']['name']=found['record_id']
     tool_result=invoke(current,expected_revision=expected_revision)
     if tool_result.status=='error':

@@ -19,7 +19,7 @@ research：单药药典字段；compare：2至3味药同一组药典字段；fie
 relation：成分ingredient、靶点target、共同靶点common_target、成分靶点候选路径herb_target_paths、疾病富集disease、靶点关联成分target_ingredient、靶点关联药材target_herb；fields为空。
 overview：资料统计；capabilities：服务功能；二者不填对象和字段。
 dataset_info：介绍本项目的数据来源、两个数据库的内容/区别/用途，不需要药材名；datasets可填etcm、pharmacopoeia，留空表示两者。只有此action可填写datasets，其他action留空。
-analysis：调用ANALYSIS_TOOLS注册的药材靶点画像/相似度、疾病靶点资料或疾病来源集合的药材候选排序。只填analysis={tool,arguments}，其他对象/字段留空；arguments.name逐字取自当前问句，保留完整对象，不翻译疾病名。默认前10条/Jaccard，按要求选择共同靶点数；超过20条、治疗选药或新靶点预测尚不支持，不要改成已有来源查询。
+analysis：调用ANALYSIS_TOOLS注册的药材靶点画像/相似度、疾病名称查找、疾病靶点资料或疾病来源集合的药材候选排序。只填analysis={tool,arguments}，其他对象/字段留空；arguments.name逐字取自当前问句，保留完整对象，不翻译疾病名。名称查找只返回来源候选不自动分析，只有明确浏览目录时name留空。排序默认前10条/Jaccard，按要求选择共同靶点数；超过20条、治疗选药或新靶点预测尚不支持，不要改成已有来源查询。
 entities逐字取自当前问句，保留完整炮制前后缀、提取物或复方范围，不能猜别名、翻译名称或补代词。
 不要把“附出处”当成查询药材基原；实际结果由本地工具查询，不会发送给你。
 多种独立任务、药材查询缺少对象、没有明确查询方向或预算不够，action=clarify；诊疗、选药、配药、价格、交易等action=unsupported。数据库介绍和功能问题不要求药材对象。
@@ -85,8 +85,14 @@ def mapped(intent,question):
         return {'tool':'assistant','request':{'topic':'intent_clarification','unsupported':action=='unsupported'}}
     if action in ('overview','capabilities'):return {'tool':'assistant','request':{'topic':action}}
     if action=='analysis':
-        if not grounded(intent.analysis.arguments.name,question):raise ValueError('Ungrounded analysis name')
-        disease_tool=intent.analysis.tool in ('disease_gene_profile','rank_herbs_for_gene_set')
+        name=intent.analysis.arguments.name
+        if not name and intent.analysis.tool=='search_disease_sources':
+            from tcm.analysis_chat import parse
+            request=parse(question)
+            if not request or request.get('call',{}).get('tool')!='search_disease_sources' or request['call']['arguments'].get('name')!='':
+                raise ValueError('Unrequested whole catalog')
+        elif not grounded(name,question):raise ValueError('Ungrounded analysis name')
+        disease_tool=intent.analysis.tool in ('disease_gene_profile','rank_herbs_for_gene_set','search_disease_sources')
         if re.search(r'预测|治疗|疗效|替代|配方|配伍|服用|用药',question) or not disease_tool and '疾病' in question:
             raise ValueError('Unsupported analysis scope')
         requested=re.findall(r'前\s*([0-9]+)\s*(?:个|条|名)',question)
