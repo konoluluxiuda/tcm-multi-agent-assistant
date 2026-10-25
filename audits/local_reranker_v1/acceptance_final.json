@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "external_calls": 0,
+  "synthetic_order_verified": true,
+  "truncated_candidates": 2,
+  "tiny_budget_refused": true,
+  "short_inference_interrupted": true,
+  "session_reusable_after_timeout": true,
+  "missing_model_keeps_candidates": true,
+  "numpy_default_verified": true,
+  "unsupported_question_has_no_hits": true,
+  "model": {
+    "model": "Xenova/bge-reranker-base",
+    "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+    "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+    "status": "used",
+    "candidates": 2,
+    "returned": 2,
+    "truncated_candidates": 0,
+    "inference_ms": 26.11
+  },
+  "real_reranker": {
+    "model": "Xenova/bge-reranker-base",
+    "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+    "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+    "status": "used",
+    "candidates": 2,
+    "returned": 2,
+    "truncated_candidates": 0,
+    "inference_ms": 61.01,
+    "total_ms": 1586.49
+  },
+  "real_chunk_ids": [
+    "mineru-herb-91438c2bd1cb594a95c13128:field:019",
+    "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+  ]
+}

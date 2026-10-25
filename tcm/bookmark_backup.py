@@ -32,8 +32,9 @@ def validate_item(item):
     focus = payload['focus']
     require(isinstance(focus, dict))
     if payload['kind'] == 'research':
-        require(set(focus) == {'kind', 'name', 'last_question', 'index_sha256', 'view_sha256',
+        require(set(focus) - {'request_sha256'} == {'kind', 'name', 'last_question', 'index_sha256', 'view_sha256',
                                'retriever_sha256', 'guards_sha256'})
+        require('request_sha256' not in focus or sha(focus['request_sha256']))
         require(focus['kind'] == 'mineru_research_chat_v1')
         require(text(focus['name'], 1, 200) and text(focus['last_question'], 1, 500))
         require(all(sha(focus[k]) for k in ('index_sha256', 'view_sha256', 'retriever_sha256', 'guards_sha256')))

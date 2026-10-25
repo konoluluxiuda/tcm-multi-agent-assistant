@@ -9,7 +9,7 @@ from typing import TypedDict
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ('TCM_DB', 'TCM_DATASET_VERSION', 'ETCM_ENRICHMENT_DB', 'PHARMACOPOEIA_INDEX',
-          'LOCAL_DENSE_MODEL', 'LOCAL_DENSE_CACHE', 'LOCAL_DENSE_PYTHON')
+          'LOCAL_DENSE_MODEL', 'LOCAL_DENSE_CACHE', 'LOCAL_DENSE_PYTHON', 'LOCAL_QDRANT_GENERATION', 'LOCAL_RERANKER_MODEL')
 
 
 def fuse(rankings, k=6):
@@ -39,7 +39,10 @@ def text_search(herb, question):
         names = resolve_names(question, r.names)
         if any(name != herb for name in names):
             return {'status': 'multiple_entities', 'hits': []}
-        query = question if names else herb + '的' + question
+        from tcm.report_request import interpret_report_request, organize_fields
+        request = interpret_report_request(herb, question)
+        interpreted = request['search_question']
+        query = interpreted if names else herb + '的' + interpreted
         gate = r.query(query, method='name_field', k=20)
         if gate['status'] not in ('candidates', 'field_not_resolved'):
             return {**gate, 'retrieval': 'guarded_fields'}
@@ -53,10 +56,18 @@ def text_search(herb, question):
             return {**lexical, 'retrieval': {'method':'guarded_lexical','dense':'not_used_without_lexical_evidence','reranker':'none'}}
         metadata = {'method': 'rrf', 'dense': 'not_configured', 'reranker': 'none'}
         if os.getenv('LOCAL_DENSE_MODEL') and os.getenv('LOCAL_DENSE_CACHE'):
+            metadata['backend'] = 'qdrant_local' if os.getenv('LOCAL_QDRANT_GENERATION') else 'numpy'
             try:
                 from tcm.local_dense import LocalEncoder, DenseRetriever
-                dense = DenseRetriever(r, LocalEncoder(Path(os.environ['LOCAL_DENSE_MODEL']), threads=2),
-                                       Path(os.environ['LOCAL_DENSE_CACHE']))
+                encoder = LocalEncoder(Path(os.environ['LOCAL_DENSE_MODEL']), threads=2)
+                if os.getenv('LOCAL_QDRANT_GENERATION'):
+                    from tcm.qdrant_dense import QdrantDenseRetriever
+                    dense = QdrantDenseRetriever(r, encoder, Path(os.environ['LOCAL_DENSE_CACHE']),
+                                                 Path(os.environ['LOCAL_QDRANT_GENERATION']))
+                    metadata['backend'] = 'qdrant_local'
+                else:
+                    dense = DenseRetriever(r, encoder, Path(os.environ['LOCAL_DENSE_CACHE']))
+                    metadata['backend'] = 'numpy'
                 found = dense.query(query, method='name_dense', k=20)
                 if found['status'] in ('candidates',):
                     rankings.append(found['hits']); metadata['dense'] = 'used'
@@ -66,9 +77,18 @@ def text_search(herb, question):
                     metadata['dense'] = found['status']
             except (ImportError, OSError, ValueError, KeyError, RuntimeError):
                 metadata['dense'] = 'unavailable'
-        hits = fuse(rankings)
+        candidates = fuse(rankings, k=20)
+        from tcm.local_reranker import maybe_rerank
+        hits, rerank = maybe_rerank(query, candidates, os.getenv('LOCAL_RERANKER_MODEL'))
+        # Recover candidates omitted by the reranker cap before explicit field ordering.
+        seen = {h['chunk_id'] for h in hits}
+        ordered = hits + [h for h in candidates if h['chunk_id'] not in seen]
+        hits, missing = organize_fields(ordered, request)
+        metadata['request'] = request
+        metadata['missing_requested_fields'] = missing
+        metadata['reranker'] = rerank
         # A capped result is a selection, never evidence of exhaustive field coverage.
-        return {**gate, 'status': 'candidates' if hits else 'no_match', 'hits': hits,
+        return {**gate, 'status': ('partial_evidence' if missing else 'candidates') if hits else 'no_match', 'hits': hits,
                 'retrieval': metadata, 'selection_limit': 6, 'exhaustive': False}
     finally:
         with_retriever.close()

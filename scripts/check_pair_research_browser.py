@@ -23,6 +23,8 @@ async def main(args):
   saved=args.out/'download.json';await download.save_as(saved)
   data=json.loads(saved.read_text());assert data['herbs']==['当归','川芎']
   assert data['targets']['total']==172
+  if args.expect_qdrant:
+   assert all(r['text']['retrieval'].get('backend')=='qdrant_local' and r['text']['retrieval']['dense']=='used' for r in data['source_reports'])
   assert all(len(x['sources'])==2 for x in data['targets']['items'])
   saved.unlink()  # Acceptance stores metrics, not source excerpts.
 
@@ -32,11 +34,12 @@ async def main(args):
   await page.wait_for_function("document.querySelector('#local-research-output').innerText.includes('172 个共同 UniProt')")
   assert not errors,errors
   await page.screenshot(path=str(args.out/'browser.png'),full_page=True)
-  (args.out/'browser.json').write_text(json.dumps({'status':'passed','real_sources':['当归','川芎'],'target_count':172,'download_verified':True,'history_reloaded':True,'javascript_errors':errors}))
+  (args.out/'browser.json').write_text(json.dumps({'status':'passed','real_sources':['当归','川芎'],'target_count':172,'download_verified':True,'qdrant_verified':args.expect_qdrant,'history_reloaded':True,'javascript_errors':errors}))
   print('browser passed')
   await browser.close()
 if __name__=='__main__':
  parser=argparse.ArgumentParser(description=__doc__)
+ parser.add_argument('--expect-qdrant',action='store_true')
  parser.add_argument('--url',default='http://127.0.0.1:7879/')
  parser.add_argument('--browser',type=Path,required=True)
  parser.add_argument('--out',type=Path,required=True)

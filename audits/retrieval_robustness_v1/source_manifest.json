@@ -1,0 +1,11 @@
+{
+  "scripts/eval_retrieval_robustness.py": "85736fc7c908e581cf51e30dfe595dcffbf76f57b850630334b66d38e1a32a41",
+  "tests/test_retrieval_robustness.py": "1b65e20f0642d96306873e42c43cb1d5c4aa7b0892e018e261d2d7b46f894214",
+  "eval/retrieval_robustness_dev_v1.json": "61ee92c928124b21d62e797248f35e5f5f03e145dac570e5e3cf357ae8027729",
+  "tcm/cross_source_report.py": "1221f384b8d1776e9a624d1bb16653bcfa8626f59400f41d95378c9ea77e0262",
+  "tcm/mineru_retrieval.py": "5d4082e6b485ff63774e1d855fb9e9d4e480413ea84736ac0cf3e2027343aa01",
+  "tcm/mineru_guards.py": "9beb03849c4ce25c3152f8c7dba674aa3df165be6aa37d4a2e6b71efd797f4ae",
+  "tcm/local_reranker.py": "4280d05cd0ab5d848340d4229861ae23ba06ccd113b4e3607f85fcf398adf4b7",
+  "tcm/local_dense.py": "ca9c724b8f016d4456c94d7f3c29320ad9d1b26e2b615cb617017e69a4551f9b",
+  "tcm/qdrant_dense.py": "3d2204119bb8f80d90f190b61376538f36f35f721e98a5b36bbad9d20cfa5a35"
+}

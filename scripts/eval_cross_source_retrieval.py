@@ -12,7 +12,10 @@ from scripts.eval_mineru_retrieval import anchor_matches
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--out',type=Path,required=True)
+    parser.add_argument('--qdrant-generation',type=Path)
+    parser.add_argument('--reranker-model',type=Path)
     args=parser.parse_args();root=Path(__file__).resolve().parents[1]
+    os.environ['LOCAL_QDRANT_GENERATION']=str(args.qdrant_generation.resolve()) if args.qdrant_generation else ''
     os.environ.update(PHARMACOPOEIA_INDEX=str(root/'var/mineru_retrieval_v2'),
         LOCAL_DENSE_MODEL=str(root/'var/evidence_assistant_v1/local_bge_small_zh'),
         LOCAL_DENSE_CACHE=str(root/'var/evidence_assistant_v1/local_dense_cache'))
@@ -23,6 +26,7 @@ def main():
     suites=[('regression','mineru_retrieval_questions_v1','mineru_retrieval_reference_v2'),
             ('body_dev','scoped_retrieval_dev_v1','scoped_retrieval_reference_v1'),
             ('semantic_dev','dense_semantic_dev_v1','dense_semantic_reference_v1')]
+    methods=('name_field','name_bm25','hybrid')+(('hybrid_rerank',) if args.reranker_model else ())
     rows=[];r=ResearchRetriever(os.environ['PHARMACOPOEIA_INDEX']);inputs={}
     try:
         for suite,qfile,rfile in suites:
@@ -34,10 +38,11 @@ def main():
             reference={x['case_id']:x for x in refs['references']}
             for case in questions['cases']:
                 names=resolve_names(case['question'],r.names)
-                for method in ('name_field','name_bm25','hybrid'):
+                for method in methods:
+                    os.environ['LOCAL_RERANKER_MODEL']=str(args.reranker_model.resolve()) if method=='hybrid_rerank' else ''
                     start=time.monotonic()
-                    if method=='hybrid' and len(names)==1:result=text_search(names[0],case['question'])
-                    else:result=r.query(case['question'],method='name_field' if method=='hybrid' else method,k=5)
+                    if method in ('hybrid','hybrid_rerank') and len(names)==1:result=text_search(names[0],case['question'])
+                    else:result=r.query(case['question'],method='name_field' if method in ('hybrid','hybrid_rerank') else method,k=5)
                     hits=result['hits'][:5]
                     row={'suite':suite,'id':case['id'],'method':method,'status':result['status'],
                          'ms':round((time.monotonic()-start)*1000,2),'dense':result.get('retrieval'),
@@ -50,14 +55,15 @@ def main():
                                    wrong_entity=any(h['name']!=ref['name'] for h in hits))
                     rows.append(row)
         summaries={}
-        for method in ('name_field','name_bm25','hybrid'):
+        for method in methods:
             selected=[r for r in rows if r['method']==method];positive=[r for r in selected if 'target_hit_at_5' in r]
             summaries[method]={'positive_cases':len(positive),'target_hits_at_5':sum(r['target_hit_at_5'] for r in positive),
               'mrr_at_5':sum(r['reciprocal_rank'] for r in positive)/len(positive),
               'wrong_entity_cases':sum(r['wrong_entity'] for r in positive),
               'abstention_cases':len(selected)-len(positive),'correct_abstentions':sum(r.get('correct_abstention',False) for r in selected),
-              'mean_ms':sum(r['ms'] for r in selected)/len(selected)}
-        report={'evaluation_type':'existing_development_not_independent','recall_claimed':False,
+              'mean_ms':sum(r['ms'] for r in selected)/len(selected),
+              'reranker_used':sum(isinstance(r.get('dense'),dict) and isinstance(r['dense'].get('reranker'),dict) and r['dense']['reranker'].get('status')=='used' for r in selected)}
+        report={'evaluation_type':'existing_development_not_independent','recall_claimed':False,'dense_backend':'qdrant_local' if args.qdrant_generation else 'numpy',
                 'view_sha256':r.receipt['view_sha256'],'inputs':inputs,'summary':summaries,'cases':rows}
         args.out.parent.mkdir(parents=True,exist_ok=True);args.out.write_text(json.dumps(report,ensure_ascii=False,indent=2))
         print(json.dumps(summaries,ensure_ascii=False,indent=2))

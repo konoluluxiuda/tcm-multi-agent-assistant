@@ -86,7 +86,8 @@ class ResearchTool:
         self.binding = {'kind': 'mineru_research_chat_v1', 'index_sha256': service.receipt['index_sha256'],
                         'view_sha256': service.receipt['view_sha256'],
                         'retriever_sha256': digest(root / 'mineru_retrieval.py'),
-                        'guards_sha256': digest(root / 'mineru_guards.py')}
+                        'guards_sha256': digest(root / 'mineru_guards.py'),
+                        'request_sha256': digest(root / 'report_request.py')}
 
     def valid_context(self, context):
         return (isinstance(context, dict) and all(context.get(k) == v for k, v in self.binding.items())
@@ -116,7 +117,19 @@ class ResearchTool:
                 resolved = context['last_question']
             elif followup:
                 resolved = FOLLOWUP.sub(context['name'], stripped, count=1)
-            result = self.service.search(resolved, method='name_field', k=5)
+            from tcm.report_request import bounded_field_request, interpret_report_request, organize_fields
+            request = bounded_field_request(resolved) or interpret_report_request('', resolved)
+            result = self.service.search(request['search_question'], method='name_field', k=20)
+            # Keep the original resolved sentence for source replay and session memory.
+            result['request_interpretation'] = request
+            if result['status'] == 'candidates':
+                hits, missing = organize_fields(result['hits'],
+                    {**request, 'fields': result.get('fields', [])}, limit=5)
+                result = {**result, 'hits': hits}
+                if missing:
+                    result.update(status='partial_evidence', missing_fields=missing, lookup_complete=False)
+            else:
+                result = {**result, 'hits': result.get('hits', [])[:5]}
             status = result['status']
         new_context = context if is_source and status == 'field_not_resolved' and result is None else None
         usable_focus = (status == 'candidates' or status == 'partial_evidence' and

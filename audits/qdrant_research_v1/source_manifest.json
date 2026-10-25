@@ -1,0 +1,16 @@
+{
+  "base_commit": "3eea40fe17b4f65be71701ee6c6b13f476bb8b7f",
+  "scope": "Changed implementation and validation files after committed baseline",
+  "files": {
+    "requirements-local-qdrant.txt": "9bcaba18e65f8aef9955b42a923292a015e281de423b0631adff82f46be5974b",
+    "scripts/build_local_qdrant.py": "bcff5eb907ae6d0f7d372ee3485c547906ff49ede19573293c840eb859bbdbc4",
+    "scripts/check_local_qdrant.py": "3d56242152d313fabdb5f08f332e7014251bc8acdb956113e3d1d0cdb0d76b92",
+    "tcm/qdrant_dense.py": "3d2204119bb8f80d90f190b61376538f36f35f721e98a5b36bbad9d20cfa5a35",
+    "tests/test_qdrant_dense.py": "9ebda411acc78cd85a55eb69357d63ea9a20d46dcb354addd5ea5d01f2033e21",
+    "scripts/check_pair_research_browser.py": "9b1ea03fb75d0e10e92bfd42c8a7852f1390323871c6b47aab00669d2316374a",
+    "scripts/eval_cross_source_retrieval.py": "bcd6723e27f86ac90738266f6276deecbbb7a029da8cf30a937cb7e5c07a3747",
+    "scripts/preview_local_tasks.py": "fa22f8967f1b127655302f675967e1d211fbd8761edf4b77e92d7df147c840ab",
+    "tcm/cross_source_report.py": "3bbecd501ee469676a3e2578dea1e213c3773f97aefe361264b6d749320ba1be",
+    "tcm/local_dense.py": "ca9c724b8f016d4456c94d7f3c29320ad9d1b26e2b615cb617017e69a4551f9b"
+  }
+}

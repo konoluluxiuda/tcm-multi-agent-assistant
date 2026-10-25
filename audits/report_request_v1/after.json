@@ -1,0 +1,2909 @@
+{
+  "evaluation_type": "source_assisted_development_not_independent",
+  "external_model_calls": 0,
+  "question_sha256": "61ee92c928124b21d62e797248f35e5f5f03e145dac570e5e3cf357ae8027729",
+  "runner_sha256": "85736fc7c908e581cf51e30dfe595dcffbf76f57b850630334b66d38e1a32a41",
+  "source_view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+  "summary": {
+    "bm25": {
+      "total": 30,
+      "passed": 12,
+      "failures": {
+        "no_candidates": 12,
+        "wrong_priority": 6
+      },
+      "covered_targets": 24,
+      "expected_targets": 36,
+      "mean_ms": 4.04,
+      "groups": {
+        "multi_field": {
+          "total": 6,
+          "passed": 6
+        },
+        "paraphrase_effect": {
+          "total": 6,
+          "passed": 0
+        },
+        "paraphrase_storage": {
+          "total": 6,
+          "passed": 0
+        },
+        "priority_paraphrase": {
+          "total": 6,
+          "passed": 0
+        },
+        "unsupported": {
+          "total": 6,
+          "passed": 6
+        }
+      },
+      "reranker_used": 0
+    },
+    "hybrid": {
+      "total": 30,
+      "passed": 30,
+      "failures": {},
+      "covered_targets": 36,
+      "expected_targets": 36,
+      "mean_ms": 610.88,
+      "groups": {
+        "multi_field": {
+          "total": 6,
+          "passed": 6
+        },
+        "paraphrase_effect": {
+          "total": 6,
+          "passed": 6
+        },
+        "paraphrase_storage": {
+          "total": 6,
+          "passed": 6
+        },
+        "priority_paraphrase": {
+          "total": 6,
+          "passed": 6
+        },
+        "unsupported": {
+          "total": 6,
+          "passed": 6
+        }
+      },
+      "reranker_used": 0
+    },
+    "hybrid_rerank": {
+      "total": 30,
+      "passed": 30,
+      "failures": {},
+      "covered_targets": 36,
+      "expected_targets": 36,
+      "mean_ms": 1228.06,
+      "groups": {
+        "multi_field": {
+          "total": 6,
+          "passed": 6
+        },
+        "paraphrase_effect": {
+          "total": 6,
+          "passed": 6
+        },
+        "paraphrase_storage": {
+          "total": 6,
+          "passed": 6
+        },
+        "priority_paraphrase": {
+          "total": 6,
+          "passed": 6
+        },
+        "unsupported": {
+          "total": 6,
+          "passed": 6
+        }
+      },
+      "reranker_used": 12
+    }
+  },
+  "cases": [
+    {
+      "id": "robust-01",
+      "group": "paraphrase_storage",
+      "method": "bm25",
+      "status": "name_not_resolved",
+      "ms": 0.44,
+      "retrieval": null,
+      "passed": false,
+      "failure": "no_candidates",
+      "missing_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ],
+      "covered_targets": 0,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-01",
+      "group": "paraphrase_storage",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1955.93,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "当归",
+          "original_question": "当归买回来放在哪里保存？",
+          "fields": [
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "当归的贮藏"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ]
+    },
+    {
+      "id": "robust-01",
+      "group": "paraphrase_storage",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 742.74,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "当归",
+          "original_question": "当归买回来放在哪里保存？",
+          "fields": [
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "当归的贮藏"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ]
+    },
+    {
+      "id": "robust-02",
+      "group": "paraphrase_effect",
+      "method": "bm25",
+      "status": "name_not_resolved",
+      "ms": 2.17,
+      "retrieval": null,
+      "passed": false,
+      "failure": "no_candidates",
+      "missing_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ],
+      "covered_targets": 0,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-02",
+      "group": "paraphrase_effect",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 750.01,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "当归",
+          "original_question": "整理当归的资料，想知道它主要用来做什么。",
+          "fields": [
+            "功能与主治"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "当归的功能与主治"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ]
+    },
+    {
+      "id": "robust-02",
+      "group": "paraphrase_effect",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 928.53,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "当归",
+          "original_question": "整理当归的资料，想知道它主要用来做什么。",
+          "fields": [
+            "功能与主治"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "当归的功能与主治"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ]
+    },
+    {
+      "id": "robust-03",
+      "group": "multi_field",
+      "method": "bm25",
+      "status": "candidates",
+      "ms": 8.43,
+      "retrieval": null,
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ]
+    },
+    {
+      "id": "robust-03",
+      "group": "multi_field",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 736.97,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "当归",
+          "original_question": "把当归的功效、贮藏两项都列出来。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "existing_field_aliases",
+          "search_question": "把当归的功效、贮藏两项都列出来。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ]
+    },
+    {
+      "id": "robust-03",
+      "group": "multi_field",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2720.25,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 58.7,
+          "total_ms": 1804.71
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "当归",
+          "original_question": "把当归的功效、贮藏两项都列出来。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "existing_field_aliases",
+          "search_question": "把当归的功效、贮藏两项都列出来。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ]
+    },
+    {
+      "id": "robust-04",
+      "group": "priority_paraphrase",
+      "method": "bm25",
+      "status": "candidates",
+      "ms": 9.68,
+      "retrieval": null,
+      "passed": false,
+      "failure": "wrong_priority",
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": false,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ]
+    },
+    {
+      "id": "robust-04",
+      "group": "priority_paraphrase",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 653.91,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "当归",
+          "original_question": "当归的功效和贮藏都需要，不过请先列保存要求。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": "贮藏",
+          "parse_source": "existing_field_aliases",
+          "search_question": "当归的功效和贮藏都需要，不过请先列保存要求。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ]
+    },
+    {
+      "id": "robust-04",
+      "group": "priority_paraphrase",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2168.63,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 61.48,
+          "total_ms": 1282.05
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "当归",
+          "original_question": "当归的功效和贮藏都需要，不过请先列保存要求。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": "贮藏",
+          "parse_source": "existing_field_aliases",
+          "search_question": "当归的功效和贮藏都需要，不过请先列保存要求。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ]
+    },
+    {
+      "id": "robust-05",
+      "group": "unsupported",
+      "method": "bm25",
+      "status": "field_not_resolved",
+      "ms": 1.63,
+      "retrieval": null,
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-05",
+      "group": "unsupported",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 26.94,
+      "retrieval": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-05",
+      "group": "unsupported",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 26.06,
+      "retrieval": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-06",
+      "group": "paraphrase_storage",
+      "method": "bm25",
+      "status": "name_not_resolved",
+      "ms": 0.55,
+      "retrieval": null,
+      "passed": false,
+      "failure": "no_candidates",
+      "missing_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ],
+      "covered_targets": 0,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-06",
+      "group": "paraphrase_storage",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 669.99,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄芪",
+          "original_question": "黄芪买回来放在哪里保存？",
+          "fields": [
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "黄芪的贮藏"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ]
+    },
+    {
+      "id": "robust-06",
+      "group": "paraphrase_storage",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 678.74,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄芪",
+          "original_question": "黄芪买回来放在哪里保存？",
+          "fields": [
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "黄芪的贮藏"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ]
+    },
+    {
+      "id": "robust-07",
+      "group": "paraphrase_effect",
+      "method": "bm25",
+      "status": "name_not_resolved",
+      "ms": 0.62,
+      "retrieval": null,
+      "passed": false,
+      "failure": "no_candidates",
+      "missing_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "covered_targets": 0,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-07",
+      "group": "paraphrase_effect",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 636.83,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄芪",
+          "original_question": "整理黄芪的资料，想知道它主要用来做什么。",
+          "fields": [
+            "功能与主治"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "黄芪的功能与主治"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ]
+    },
+    {
+      "id": "robust-07",
+      "group": "paraphrase_effect",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 733.45,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄芪",
+          "original_question": "整理黄芪的资料，想知道它主要用来做什么。",
+          "fields": [
+            "功能与主治"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "黄芪的功能与主治"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ]
+    },
+    {
+      "id": "robust-08",
+      "group": "multi_field",
+      "method": "bm25",
+      "status": "candidates",
+      "ms": 7.07,
+      "retrieval": null,
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ]
+    },
+    {
+      "id": "robust-08",
+      "group": "multi_field",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 672.62,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄芪",
+          "original_question": "把黄芪的功效、贮藏两项都列出来。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "existing_field_aliases",
+          "search_question": "把黄芪的功效、贮藏两项都列出来。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ]
+    },
+    {
+      "id": "robust-08",
+      "group": "multi_field",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2252.9,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 85.02,
+          "total_ms": 1371.13
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄芪",
+          "original_question": "把黄芪的功效、贮藏两项都列出来。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "existing_field_aliases",
+          "search_question": "把黄芪的功效、贮藏两项都列出来。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ]
+    },
+    {
+      "id": "robust-09",
+      "group": "priority_paraphrase",
+      "method": "bm25",
+      "status": "candidates",
+      "ms": 8.95,
+      "retrieval": null,
+      "passed": false,
+      "failure": "wrong_priority",
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": false,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ]
+    },
+    {
+      "id": "robust-09",
+      "group": "priority_paraphrase",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 725.05,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄芪",
+          "original_question": "黄芪的功效和贮藏都需要，不过请先列保存要求。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": "贮藏",
+          "parse_source": "existing_field_aliases",
+          "search_question": "黄芪的功效和贮藏都需要，不过请先列保存要求。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ]
+    },
+    {
+      "id": "robust-09",
+      "group": "priority_paraphrase",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2299.4,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 80.89,
+          "total_ms": 1389.11
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄芪",
+          "original_question": "黄芪的功效和贮藏都需要，不过请先列保存要求。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": "贮藏",
+          "parse_source": "existing_field_aliases",
+          "search_question": "黄芪的功效和贮藏都需要，不过请先列保存要求。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ]
+    },
+    {
+      "id": "robust-10",
+      "group": "unsupported",
+      "method": "bm25",
+      "status": "field_not_resolved",
+      "ms": 2.44,
+      "retrieval": null,
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-10",
+      "group": "unsupported",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 27.15,
+      "retrieval": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-10",
+      "group": "unsupported",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 27.39,
+      "retrieval": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-11",
+      "group": "paraphrase_storage",
+      "method": "bm25",
+      "status": "name_not_resolved",
+      "ms": 0.57,
+      "retrieval": null,
+      "passed": false,
+      "failure": "no_candidates",
+      "missing_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ],
+      "covered_targets": 0,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-11",
+      "group": "paraphrase_storage",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 658.04,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "川芎",
+          "original_question": "川芎买回来放在哪里保存？",
+          "fields": [
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "川芎的贮藏"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ]
+    },
+    {
+      "id": "robust-11",
+      "group": "paraphrase_storage",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 674.96,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "川芎",
+          "original_question": "川芎买回来放在哪里保存？",
+          "fields": [
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "川芎的贮藏"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ]
+    },
+    {
+      "id": "robust-12",
+      "group": "paraphrase_effect",
+      "method": "bm25",
+      "status": "name_not_resolved",
+      "ms": 0.71,
+      "retrieval": null,
+      "passed": false,
+      "failure": "no_candidates",
+      "missing_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013"
+      ],
+      "covered_targets": 0,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-12",
+      "group": "paraphrase_effect",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 735.74,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "川芎",
+          "original_question": "整理川芎的资料，想知道它主要用来做什么。",
+          "fields": [
+            "功能与主治"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "川芎的功能与主治"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013"
+      ]
+    },
+    {
+      "id": "robust-12",
+      "group": "paraphrase_effect",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 652.13,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "川芎",
+          "original_question": "整理川芎的资料，想知道它主要用来做什么。",
+          "fields": [
+            "功能与主治"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "川芎的功能与主治"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013"
+      ]
+    },
+    {
+      "id": "robust-13",
+      "group": "multi_field",
+      "method": "bm25",
+      "status": "candidates",
+      "ms": 8.17,
+      "retrieval": null,
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013",
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ]
+    },
+    {
+      "id": "robust-13",
+      "group": "multi_field",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 663.89,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "川芎",
+          "original_question": "把川芎的功效、贮藏两项都列出来。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "existing_field_aliases",
+          "search_question": "把川芎的功效、贮藏两项都列出来。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013",
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ]
+    },
+    {
+      "id": "robust-13",
+      "group": "multi_field",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2254.21,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 47.04,
+          "total_ms": 1381.48
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "川芎",
+          "original_question": "把川芎的功效、贮藏两项都列出来。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "existing_field_aliases",
+          "search_question": "把川芎的功效、贮藏两项都列出来。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013",
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ]
+    },
+    {
+      "id": "robust-14",
+      "group": "priority_paraphrase",
+      "method": "bm25",
+      "status": "candidates",
+      "ms": 7.86,
+      "retrieval": null,
+      "passed": false,
+      "failure": "wrong_priority",
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": false,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013",
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ]
+    },
+    {
+      "id": "robust-14",
+      "group": "priority_paraphrase",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 664.92,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "川芎",
+          "original_question": "川芎的功效和贮藏都需要，不过请先列保存要求。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": "贮藏",
+          "parse_source": "existing_field_aliases",
+          "search_question": "川芎的功效和贮藏都需要，不过请先列保存要求。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:015",
+        "mineru-herb-68478866da9a70522b4b2e09:field:013"
+      ]
+    },
+    {
+      "id": "robust-14",
+      "group": "priority_paraphrase",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2502.69,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 48.31,
+          "total_ms": 1511.66
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "川芎",
+          "original_question": "川芎的功效和贮藏都需要，不过请先列保存要求。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": "贮藏",
+          "parse_source": "existing_field_aliases",
+          "search_question": "川芎的功效和贮藏都需要，不过请先列保存要求。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:015",
+        "mineru-herb-68478866da9a70522b4b2e09:field:013"
+      ]
+    },
+    {
+      "id": "robust-15",
+      "group": "unsupported",
+      "method": "bm25",
+      "status": "field_not_resolved",
+      "ms": 1.8,
+      "retrieval": null,
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-15",
+      "group": "unsupported",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 31.28,
+      "retrieval": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-15",
+      "group": "unsupported",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 28.15,
+      "retrieval": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-16",
+      "group": "paraphrase_storage",
+      "method": "bm25",
+      "status": "name_not_resolved",
+      "ms": 0.73,
+      "retrieval": null,
+      "passed": false,
+      "failure": "no_candidates",
+      "missing_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "covered_targets": 0,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-16",
+      "group": "paraphrase_storage",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 788.58,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "陈皮",
+          "original_question": "陈皮买回来放在哪里保存？",
+          "fields": [
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "陈皮的贮藏"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ]
+    },
+    {
+      "id": "robust-16",
+      "group": "paraphrase_storage",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 781.33,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "陈皮",
+          "original_question": "陈皮买回来放在哪里保存？",
+          "fields": [
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "陈皮的贮藏"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ]
+    },
+    {
+      "id": "robust-17",
+      "group": "paraphrase_effect",
+      "method": "bm25",
+      "status": "name_not_resolved",
+      "ms": 0.73,
+      "retrieval": null,
+      "passed": false,
+      "failure": "no_candidates",
+      "missing_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011"
+      ],
+      "covered_targets": 0,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-17",
+      "group": "paraphrase_effect",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 671.41,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "陈皮",
+          "original_question": "整理陈皮的资料，想知道它主要用来做什么。",
+          "fields": [
+            "功能与主治"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "陈皮的功能与主治"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011"
+      ]
+    },
+    {
+      "id": "robust-17",
+      "group": "paraphrase_effect",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 705.79,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "陈皮",
+          "original_question": "整理陈皮的资料，想知道它主要用来做什么。",
+          "fields": [
+            "功能与主治"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "陈皮的功能与主治"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011"
+      ]
+    },
+    {
+      "id": "robust-18",
+      "group": "multi_field",
+      "method": "bm25",
+      "status": "candidates",
+      "ms": 7.86,
+      "retrieval": null,
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011",
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ]
+    },
+    {
+      "id": "robust-18",
+      "group": "multi_field",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 730.58,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "陈皮",
+          "original_question": "把陈皮的功效、贮藏两项都列出来。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "existing_field_aliases",
+          "search_question": "把陈皮的功效、贮藏两项都列出来。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011",
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ]
+    },
+    {
+      "id": "robust-18",
+      "group": "multi_field",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2397.42,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 60.16,
+          "total_ms": 1487.5
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "陈皮",
+          "original_question": "把陈皮的功效、贮藏两项都列出来。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "existing_field_aliases",
+          "search_question": "把陈皮的功效、贮藏两项都列出来。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011",
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ]
+    },
+    {
+      "id": "robust-19",
+      "group": "priority_paraphrase",
+      "method": "bm25",
+      "status": "candidates",
+      "ms": 7.7,
+      "retrieval": null,
+      "passed": false,
+      "failure": "wrong_priority",
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": false,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011",
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ]
+    },
+    {
+      "id": "robust-19",
+      "group": "priority_paraphrase",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 743.12,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "陈皮",
+          "original_question": "陈皮的功效和贮藏都需要，不过请先列保存要求。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": "贮藏",
+          "parse_source": "existing_field_aliases",
+          "search_question": "陈皮的功效和贮藏都需要，不过请先列保存要求。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013",
+        "mineru-herb-916607a51c9876e39d1acf59:field:011"
+      ]
+    },
+    {
+      "id": "robust-19",
+      "group": "priority_paraphrase",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2301.61,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 58.82,
+          "total_ms": 1359.55
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "陈皮",
+          "original_question": "陈皮的功效和贮藏都需要，不过请先列保存要求。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": "贮藏",
+          "parse_source": "existing_field_aliases",
+          "search_question": "陈皮的功效和贮藏都需要，不过请先列保存要求。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013",
+        "mineru-herb-916607a51c9876e39d1acf59:field:011"
+      ]
+    },
+    {
+      "id": "robust-20",
+      "group": "unsupported",
+      "method": "bm25",
+      "status": "field_not_resolved",
+      "ms": 1.7,
+      "retrieval": null,
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-20",
+      "group": "unsupported",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 27.98,
+      "retrieval": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-20",
+      "group": "unsupported",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 29.48,
+      "retrieval": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-21",
+      "group": "paraphrase_storage",
+      "method": "bm25",
+      "status": "name_not_resolved",
+      "ms": 0.76,
+      "retrieval": null,
+      "passed": false,
+      "failure": "no_candidates",
+      "missing_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ],
+      "covered_targets": 0,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-21",
+      "group": "paraphrase_storage",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 778.15,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄柏",
+          "original_question": "黄柏买回来放在哪里保存？",
+          "fields": [
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "黄柏的贮藏"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ]
+    },
+    {
+      "id": "robust-21",
+      "group": "paraphrase_storage",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 736.8,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄柏",
+          "original_question": "黄柏买回来放在哪里保存？",
+          "fields": [
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "黄柏的贮藏"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ]
+    },
+    {
+      "id": "robust-22",
+      "group": "paraphrase_effect",
+      "method": "bm25",
+      "status": "name_not_resolved",
+      "ms": 1.02,
+      "retrieval": null,
+      "passed": false,
+      "failure": "no_candidates",
+      "missing_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017"
+      ],
+      "covered_targets": 0,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-22",
+      "group": "paraphrase_effect",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 676.03,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄柏",
+          "original_question": "整理黄柏的资料，想知道它主要用来做什么。",
+          "fields": [
+            "功能与主治"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "黄柏的功能与主治"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017"
+      ]
+    },
+    {
+      "id": "robust-22",
+      "group": "paraphrase_effect",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 666.61,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄柏",
+          "original_question": "整理黄柏的资料，想知道它主要用来做什么。",
+          "fields": [
+            "功能与主治"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "黄柏的功能与主治"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017"
+      ]
+    },
+    {
+      "id": "robust-23",
+      "group": "multi_field",
+      "method": "bm25",
+      "status": "candidates",
+      "ms": 7.88,
+      "retrieval": null,
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017",
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ]
+    },
+    {
+      "id": "robust-23",
+      "group": "multi_field",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 686.77,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄柏",
+          "original_question": "把黄柏的功效、贮藏两项都列出来。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "existing_field_aliases",
+          "search_question": "把黄柏的功效、贮藏两项都列出来。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017",
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ]
+    },
+    {
+      "id": "robust-23",
+      "group": "multi_field",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2256.67,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 57.52,
+          "total_ms": 1360.49
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄柏",
+          "original_question": "把黄柏的功效、贮藏两项都列出来。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "existing_field_aliases",
+          "search_question": "把黄柏的功效、贮藏两项都列出来。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017",
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ]
+    },
+    {
+      "id": "robust-24",
+      "group": "priority_paraphrase",
+      "method": "bm25",
+      "status": "candidates",
+      "ms": 9.35,
+      "retrieval": null,
+      "passed": false,
+      "failure": "wrong_priority",
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": false,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017",
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ]
+    },
+    {
+      "id": "robust-24",
+      "group": "priority_paraphrase",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 768.84,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄柏",
+          "original_question": "黄柏的功效和贮藏都需要，不过请先列保存要求。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": "贮藏",
+          "parse_source": "existing_field_aliases",
+          "search_question": "黄柏的功效和贮藏都需要，不过请先列保存要求。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019",
+        "mineru-herb-c802003b15ded10b72efb773:field:017"
+      ]
+    },
+    {
+      "id": "robust-24",
+      "group": "priority_paraphrase",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2390.24,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 63.04,
+          "total_ms": 1375.36
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "黄柏",
+          "original_question": "黄柏的功效和贮藏都需要，不过请先列保存要求。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": "贮藏",
+          "parse_source": "existing_field_aliases",
+          "search_question": "黄柏的功效和贮藏都需要，不过请先列保存要求。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019",
+        "mineru-herb-c802003b15ded10b72efb773:field:017"
+      ]
+    },
+    {
+      "id": "robust-25",
+      "group": "unsupported",
+      "method": "bm25",
+      "status": "field_not_resolved",
+      "ms": 1.67,
+      "retrieval": null,
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-25",
+      "group": "unsupported",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 27.86,
+      "retrieval": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-25",
+      "group": "unsupported",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 28.02,
+      "retrieval": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-26",
+      "group": "paraphrase_storage",
+      "method": "bm25",
+      "status": "name_not_resolved",
+      "ms": 0.56,
+      "retrieval": null,
+      "passed": false,
+      "failure": "no_candidates",
+      "missing_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ],
+      "covered_targets": 0,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-26",
+      "group": "paraphrase_storage",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 661.11,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "丹参",
+          "original_question": "丹参买回来放在哪里保存？",
+          "fields": [
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "丹参的贮藏"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ]
+    },
+    {
+      "id": "robust-26",
+      "group": "paraphrase_storage",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 667.21,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "丹参",
+          "original_question": "丹参买回来放在哪里保存？",
+          "fields": [
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "丹参的贮藏"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ]
+    },
+    {
+      "id": "robust-27",
+      "group": "paraphrase_effect",
+      "method": "bm25",
+      "status": "name_not_resolved",
+      "ms": 0.79,
+      "retrieval": null,
+      "passed": false,
+      "failure": "no_candidates",
+      "missing_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ],
+      "covered_targets": 0,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-27",
+      "group": "paraphrase_effect",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 665.61,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "丹参",
+          "original_question": "整理丹参的资料，想知道它主要用来做什么。",
+          "fields": [
+            "功能与主治"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "丹参的功能与主治"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ]
+    },
+    {
+      "id": "robust-27",
+      "group": "paraphrase_effect",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 715.77,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "丹参",
+          "original_question": "整理丹参的资料，想知道它主要用来做什么。",
+          "fields": [
+            "功能与主治"
+          ],
+          "priority_field": null,
+          "parse_source": "bounded_paraphrase",
+          "search_question": "丹参的功能与主治"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 1,
+      "expected_targets": 1,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ]
+    },
+    {
+      "id": "robust-28",
+      "group": "multi_field",
+      "method": "bm25",
+      "status": "candidates",
+      "ms": 7.96,
+      "retrieval": null,
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020",
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ]
+    },
+    {
+      "id": "robust-28",
+      "group": "multi_field",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 668.67,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "丹参",
+          "original_question": "把丹参的功效、贮藏两项都列出来。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "existing_field_aliases",
+          "search_question": "把丹参的功效、贮藏两项都列出来。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020",
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ]
+    },
+    {
+      "id": "robust-28",
+      "group": "multi_field",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2234.98,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 47.89,
+          "total_ms": 1341.08
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "丹参",
+          "original_question": "把丹参的功效、贮藏两项都列出来。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": null,
+          "parse_source": "existing_field_aliases",
+          "search_question": "把丹参的功效、贮藏两项都列出来。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020",
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ]
+    },
+    {
+      "id": "robust-29",
+      "group": "priority_paraphrase",
+      "method": "bm25",
+      "status": "candidates",
+      "ms": 9.67,
+      "retrieval": null,
+      "passed": false,
+      "failure": "wrong_priority",
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": false,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020",
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ]
+    },
+    {
+      "id": "robust-29",
+      "group": "priority_paraphrase",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 794.58,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "丹参",
+          "original_question": "丹参的功效和贮藏都需要，不过请先列保存要求。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": "贮藏",
+          "parse_source": "existing_field_aliases",
+          "search_question": "丹参的功效和贮藏都需要，不过请先列保存要求。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:023",
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ]
+    },
+    {
+      "id": "robust-29",
+      "group": "priority_paraphrase",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2211.83,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 55.11,
+          "total_ms": 1238.19
+        },
+        "backend": "qdrant_local",
+        "request": {
+          "version": 1,
+          "herb": "丹参",
+          "original_question": "丹参的功效和贮藏都需要，不过请先列保存要求。",
+          "fields": [
+            "功能与主治",
+            "贮藏"
+          ],
+          "priority_field": "贮藏",
+          "parse_source": "existing_field_aliases",
+          "search_question": "丹参的功效和贮藏都需要，不过请先列保存要求。"
+        },
+        "missing_requested_fields": []
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 2,
+      "expected_targets": 2,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:023",
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ]
+    },
+    {
+      "id": "robust-30",
+      "group": "unsupported",
+      "method": "bm25",
+      "status": "field_not_resolved",
+      "ms": 1.67,
+      "retrieval": null,
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-30",
+      "group": "unsupported",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 27.8,
+      "retrieval": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-30",
+      "group": "unsupported",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 27.94,
+      "retrieval": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "passed": true,
+      "failure": null,
+      "missing_ids": [],
+      "covered_targets": 0,
+      "expected_targets": 0,
+      "provenance_consistent": true,
+      "wrong_entity": false,
+      "priority_correct": true,
+      "hit_ids": []
+    }
+  ]
+}

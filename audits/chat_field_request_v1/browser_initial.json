@@ -1,0 +1,297 @@
+{
+  "status": "failed",
+  "evaluation": "seen_development_cases_not_independent",
+  "ui": [
+    {
+      "question": "当归买回来放在哪里保存？",
+      "first": "贮藏",
+      "status": "candidates"
+    },
+    {
+      "question": "整理当归的资料，想知道它主要用来做什么。",
+      "first": "功能与主治",
+      "status": "candidates"
+    },
+    {
+      "question": "当归的功效和贮藏都需要，不过请先列保存要求。",
+      "first": "贮藏",
+      "status": "candidates"
+    }
+  ],
+  "reload_source_replay": true,
+  "total": 30,
+  "passed": 24,
+  "cases": [
+    {
+      "id": "robust-01",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ]
+    },
+    {
+      "id": "robust-02",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ]
+    },
+    {
+      "id": "robust-03",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ]
+    },
+    {
+      "id": "robust-04",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ]
+    },
+    {
+      "id": "robust-05",
+      "http": 403,
+      "status": null,
+      "passed": false,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-06",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ]
+    },
+    {
+      "id": "robust-07",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ]
+    },
+    {
+      "id": "robust-08",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ]
+    },
+    {
+      "id": "robust-09",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ]
+    },
+    {
+      "id": "robust-10",
+      "http": 403,
+      "status": null,
+      "passed": false,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-11",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ]
+    },
+    {
+      "id": "robust-12",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013"
+      ]
+    },
+    {
+      "id": "robust-13",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013",
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ]
+    },
+    {
+      "id": "robust-14",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:015",
+        "mineru-herb-68478866da9a70522b4b2e09:field:013"
+      ]
+    },
+    {
+      "id": "robust-15",
+      "http": 403,
+      "status": null,
+      "passed": false,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-16",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ]
+    },
+    {
+      "id": "robust-17",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011"
+      ]
+    },
+    {
+      "id": "robust-18",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011",
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ]
+    },
+    {
+      "id": "robust-19",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013",
+        "mineru-herb-916607a51c9876e39d1acf59:field:011"
+      ]
+    },
+    {
+      "id": "robust-20",
+      "http": 403,
+      "status": null,
+      "passed": false,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-21",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ]
+    },
+    {
+      "id": "robust-22",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017"
+      ]
+    },
+    {
+      "id": "robust-23",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017",
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ]
+    },
+    {
+      "id": "robust-24",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019",
+        "mineru-herb-c802003b15ded10b72efb773:field:017"
+      ]
+    },
+    {
+      "id": "robust-25",
+      "http": 403,
+      "status": null,
+      "passed": false,
+      "hit_ids": []
+    },
+    {
+      "id": "robust-26",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ]
+    },
+    {
+      "id": "robust-27",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ]
+    },
+    {
+      "id": "robust-28",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020",
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ]
+    },
+    {
+      "id": "robust-29",
+      "http": 200,
+      "status": "candidates",
+      "passed": true,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:023",
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ]
+    },
+    {
+      "id": "robust-30",
+      "http": 403,
+      "status": null,
+      "passed": false,
+      "hit_ids": []
+    }
+  ],
+  "javascript_errors": []
+}

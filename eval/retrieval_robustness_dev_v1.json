@@ -1,0 +1,337 @@
+{
+  "split": "source_assisted_development_not_independent",
+  "label_basis": "Existing source field identities; paraphrases frozen before this run; no human review",
+  "source_view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+  "cases": [
+    {
+      "id": "robust-01",
+      "herb": "当归",
+      "group": "paraphrase_storage",
+      "question": "当归买回来放在哪里保存？",
+      "expected_chunk_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-02",
+      "herb": "当归",
+      "group": "paraphrase_effect",
+      "question": "整理当归的资料，想知道它主要用来做什么。",
+      "expected_chunk_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-03",
+      "herb": "当归",
+      "group": "multi_field",
+      "question": "把当归的功效、贮藏两项都列出来。",
+      "expected_chunk_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-04",
+      "herb": "当归",
+      "group": "priority_paraphrase",
+      "question": "当归的功效和贮藏都需要，不过请先列保存要求。",
+      "expected_chunk_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ],
+      "primary_chunk_id": "mineru-herb-91438c2bd1cb594a95c13128:field:019",
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-05",
+      "herb": "当归",
+      "group": "unsupported",
+      "question": "当归今天每公斤的市场价格是多少？",
+      "expected_chunk_ids": [],
+      "primary_chunk_id": null,
+      "expect_abstention": true
+    },
+    {
+      "id": "robust-06",
+      "herb": "黄芪",
+      "group": "paraphrase_storage",
+      "question": "黄芪买回来放在哪里保存？",
+      "expected_chunk_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-07",
+      "herb": "黄芪",
+      "group": "paraphrase_effect",
+      "question": "整理黄芪的资料，想知道它主要用来做什么。",
+      "expected_chunk_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-08",
+      "herb": "黄芪",
+      "group": "multi_field",
+      "question": "把黄芪的功效、贮藏两项都列出来。",
+      "expected_chunk_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-09",
+      "herb": "黄芪",
+      "group": "priority_paraphrase",
+      "question": "黄芪的功效和贮藏都需要，不过请先列保存要求。",
+      "expected_chunk_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ],
+      "primary_chunk_id": "mineru-herb-4d2e9a34d40176dfd7d25676:field:014",
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-10",
+      "herb": "黄芪",
+      "group": "unsupported",
+      "question": "黄芪今天每公斤的市场价格是多少？",
+      "expected_chunk_ids": [],
+      "primary_chunk_id": null,
+      "expect_abstention": true
+    },
+    {
+      "id": "robust-11",
+      "herb": "川芎",
+      "group": "paraphrase_storage",
+      "question": "川芎买回来放在哪里保存？",
+      "expected_chunk_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-12",
+      "herb": "川芎",
+      "group": "paraphrase_effect",
+      "question": "整理川芎的资料，想知道它主要用来做什么。",
+      "expected_chunk_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-13",
+      "herb": "川芎",
+      "group": "multi_field",
+      "question": "把川芎的功效、贮藏两项都列出来。",
+      "expected_chunk_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013",
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-14",
+      "herb": "川芎",
+      "group": "priority_paraphrase",
+      "question": "川芎的功效和贮藏都需要，不过请先列保存要求。",
+      "expected_chunk_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013",
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ],
+      "primary_chunk_id": "mineru-herb-68478866da9a70522b4b2e09:field:015",
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-15",
+      "herb": "川芎",
+      "group": "unsupported",
+      "question": "川芎今天每公斤的市场价格是多少？",
+      "expected_chunk_ids": [],
+      "primary_chunk_id": null,
+      "expect_abstention": true
+    },
+    {
+      "id": "robust-16",
+      "herb": "陈皮",
+      "group": "paraphrase_storage",
+      "question": "陈皮买回来放在哪里保存？",
+      "expected_chunk_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-17",
+      "herb": "陈皮",
+      "group": "paraphrase_effect",
+      "question": "整理陈皮的资料，想知道它主要用来做什么。",
+      "expected_chunk_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-18",
+      "herb": "陈皮",
+      "group": "multi_field",
+      "question": "把陈皮的功效、贮藏两项都列出来。",
+      "expected_chunk_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011",
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-19",
+      "herb": "陈皮",
+      "group": "priority_paraphrase",
+      "question": "陈皮的功效和贮藏都需要，不过请先列保存要求。",
+      "expected_chunk_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011",
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "primary_chunk_id": "mineru-herb-916607a51c9876e39d1acf59:field:013",
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-20",
+      "herb": "陈皮",
+      "group": "unsupported",
+      "question": "陈皮今天每公斤的市场价格是多少？",
+      "expected_chunk_ids": [],
+      "primary_chunk_id": null,
+      "expect_abstention": true
+    },
+    {
+      "id": "robust-21",
+      "herb": "黄柏",
+      "group": "paraphrase_storage",
+      "question": "黄柏买回来放在哪里保存？",
+      "expected_chunk_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-22",
+      "herb": "黄柏",
+      "group": "paraphrase_effect",
+      "question": "整理黄柏的资料，想知道它主要用来做什么。",
+      "expected_chunk_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-23",
+      "herb": "黄柏",
+      "group": "multi_field",
+      "question": "把黄柏的功效、贮藏两项都列出来。",
+      "expected_chunk_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017",
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-24",
+      "herb": "黄柏",
+      "group": "priority_paraphrase",
+      "question": "黄柏的功效和贮藏都需要，不过请先列保存要求。",
+      "expected_chunk_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017",
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ],
+      "primary_chunk_id": "mineru-herb-c802003b15ded10b72efb773:field:019",
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-25",
+      "herb": "黄柏",
+      "group": "unsupported",
+      "question": "黄柏今天每公斤的市场价格是多少？",
+      "expected_chunk_ids": [],
+      "primary_chunk_id": null,
+      "expect_abstention": true
+    },
+    {
+      "id": "robust-26",
+      "herb": "丹参",
+      "group": "paraphrase_storage",
+      "question": "丹参买回来放在哪里保存？",
+      "expected_chunk_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-27",
+      "herb": "丹参",
+      "group": "paraphrase_effect",
+      "question": "整理丹参的资料，想知道它主要用来做什么。",
+      "expected_chunk_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-28",
+      "herb": "丹参",
+      "group": "multi_field",
+      "question": "把丹参的功效、贮藏两项都列出来。",
+      "expected_chunk_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020",
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ],
+      "primary_chunk_id": null,
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-29",
+      "herb": "丹参",
+      "group": "priority_paraphrase",
+      "question": "丹参的功效和贮藏都需要，不过请先列保存要求。",
+      "expected_chunk_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020",
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ],
+      "primary_chunk_id": "mineru-herb-286aad7a798a996040ceaa27:field:023",
+      "expect_abstention": false
+    },
+    {
+      "id": "robust-30",
+      "herb": "丹参",
+      "group": "unsupported",
+      "question": "丹参今天每公斤的市场价格是多少？",
+      "expected_chunk_ids": [],
+      "primary_chunk_id": null,
+      "expect_abstention": true
+    }
+  ]
+}

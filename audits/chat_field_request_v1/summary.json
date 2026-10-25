@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "modules": 115,
+  "tests": 984,
+  "skipped": 0,
+  "browser_ui_cases": 3,
+  "source_replay_after_reload": true,
+  "development_behavior_cases": 30,
+  "answered_cases": 24,
+  "explicit_unsupported_cases": 6,
+  "independent_accuracy_claimed": false,
+  "external_model_calls": 0,
+  "git_committed": false,
+  "docker_updated": false
+}

@@ -1,0 +1,92 @@
+{
+  "split": "development_not_holdout",
+  "author": "AI designed explicit priority diagnostics",
+  "selection_note": "Frozen after lexical candidate inspection, before any reranker scoring on these questions; source-derived, not independent gold.",
+  "source_view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+  "cases": [
+    {
+      "id": "priority-01",
+      "herb": "当归",
+      "question": "当归的功效和贮藏，重点是贮藏",
+      "expected_primary_field": "贮藏",
+      "expected_chunk_id": "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+    },
+    {
+      "id": "priority-02",
+      "herb": "当归",
+      "question": "当归的功效和贮藏，重点是功效",
+      "expected_primary_field": "功能与主治",
+      "expected_chunk_id": "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+    },
+    {
+      "id": "priority-03",
+      "herb": "黄芪",
+      "question": "黄芪的功效和贮藏，重点是贮藏",
+      "expected_primary_field": "贮藏",
+      "expected_chunk_id": "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+    },
+    {
+      "id": "priority-04",
+      "herb": "黄芪",
+      "question": "黄芪的功效和贮藏，重点是功效",
+      "expected_primary_field": "功能与主治",
+      "expected_chunk_id": "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+    },
+    {
+      "id": "priority-05",
+      "herb": "川芎",
+      "question": "川芎的功效和贮藏，重点是贮藏",
+      "expected_primary_field": "贮藏",
+      "expected_chunk_id": "mineru-herb-68478866da9a70522b4b2e09:field:015"
+    },
+    {
+      "id": "priority-06",
+      "herb": "川芎",
+      "question": "川芎的功效和贮藏，重点是功效",
+      "expected_primary_field": "功能与主治",
+      "expected_chunk_id": "mineru-herb-68478866da9a70522b4b2e09:field:013"
+    },
+    {
+      "id": "priority-07",
+      "herb": "陈皮",
+      "question": "陈皮的功效和贮藏，重点是贮藏",
+      "expected_primary_field": "贮藏",
+      "expected_chunk_id": "mineru-herb-916607a51c9876e39d1acf59:field:013"
+    },
+    {
+      "id": "priority-08",
+      "herb": "陈皮",
+      "question": "陈皮的功效和贮藏，重点是功效",
+      "expected_primary_field": "功能与主治",
+      "expected_chunk_id": "mineru-herb-916607a51c9876e39d1acf59:field:011"
+    },
+    {
+      "id": "priority-09",
+      "herb": "黄柏",
+      "question": "黄柏的功效和贮藏，重点是贮藏",
+      "expected_primary_field": "贮藏",
+      "expected_chunk_id": "mineru-herb-c802003b15ded10b72efb773:field:019"
+    },
+    {
+      "id": "priority-10",
+      "herb": "黄柏",
+      "question": "黄柏的功效和贮藏，重点是功效",
+      "expected_primary_field": "功能与主治",
+      "expected_chunk_id": "mineru-herb-c802003b15ded10b72efb773:field:017"
+    },
+    {
+      "id": "priority-11",
+      "herb": "丹参",
+      "question": "丹参的功效和贮藏，重点是贮藏",
+      "expected_primary_field": "贮藏",
+      "expected_chunk_id": "mineru-herb-286aad7a798a996040ceaa27:field:023"
+    },
+    {
+      "id": "priority-12",
+      "herb": "丹参",
+      "question": "丹参的功效和贮藏，重点是功效",
+      "expected_primary_field": "功能与主治",
+      "expected_chunk_id": "mineru-herb-286aad7a798a996040ceaa27:field:020"
+    }
+  ]
+}

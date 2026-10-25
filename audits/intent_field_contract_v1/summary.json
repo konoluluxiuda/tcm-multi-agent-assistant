@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-26",
+  "status": "passed",
+  "validation": "observed unittest execution; synthetic model responses and local fixture sources",
+  "command": "/tmp/tcm-ci-mail-env/bin/python -m unittest tests.test_intent_field_contract tests.test_intent_planner tests.test_chat_field_request tests.test_agent_research",
+  "modules": 4,
+  "tests": 34,
+  "external_model_calls": 0,
+  "full_repository_regression_run": false,
+  "real_model_quality_verified": false,
+  "source_sha256": {
+    "tcm/intent_planner.py": "91803a9f3e0259e70845aa6d968a5e3a1f021db8b72591637e5ce5cffc7d90a5",
+    "tcm/agent_research.py": "78017735eb1726fc188cbd33b59a771bfd953c45f144b56f901cf26e7d6a142a",
+    "tests/test_intent_planner.py": "3b6add62e207e6d3999a8265ccac69be1c926074e369302626fcf59ecd14529b",
+    "tests/test_intent_field_contract.py": "8233453d41bcf2f6246d6a190029fb126c7cae973cea91f83b8d2296bd91777b"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "base_commit": "3eea40f",
+  "backend": "qdrant_local",
+  "independent_server_deployed": false,
+  "points": 8654,
+  "dimension": 512,
+  "targeted_tests": 31,
+  "concurrent_processes": 4,
+  "development_questions": 44,
+  "external_model_calls": 0,
+  "browser_qdrant_verified": true,
+  "quality_improvement_demonstrated": false,
+  "default_preview_port": 7879,
+  "optional_qdrant_preview_port": 7880
+}

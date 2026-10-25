@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "date": "2026-10-25",
+  "scope": "Local optional Cross-Encoder runtime, browser, development comparisons and offline regression",
+  "regression": {
+    "modules": 112,
+    "tests": 969,
+    "skipped": 0
+  },
+  "source_fingerprints_verified": 364,
+  "external_llm_calls": 0,
+  "browser_receipt": "browser.json",
+  "runtime_receipt": "acceptance_final.json",
+  "priority_development": {
+    "questions": 12,
+    "rrf_priority_at_1": 6,
+    "rule_priority_at_1": 12,
+    "reranker_priority_at_1": 12,
+    "independent_holdout": false
+  },
+  "advantage_over_rule_demonstrated": false,
+  "enabled_by_default": false,
+  "git_committed": false,
+  "docker_published": false
+}

@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "regression_modules": 114,
+  "regression_tests": 979,
+  "skipped": 0,
+  "scope": "Report text branch only; bounded local request interpretation and presentation ordering",
+  "development_cases_passed": 30,
+  "development_cases_total": 30,
+  "independent_evaluation": false,
+  "browser_cases": 3,
+  "external_model_calls": 0,
+  "git_committed": false,
+  "docker_updated": false
+}

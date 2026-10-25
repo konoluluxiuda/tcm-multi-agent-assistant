@@ -1,0 +1,598 @@
+{
+  "evaluation": "explicit_priority_development_not_independent",
+  "question_sha256": "ac7806da075875e783b036691b1482daa706edc3c4071faa509d1a4dd3fc4991",
+  "summary": {
+    "rrf": {
+      "total": 12,
+      "priority_at_1": 6,
+      "target_present": 12,
+      "mean_ms": 1115.0366666666666,
+      "reranker_used": 0
+    },
+    "rrf_rerank": {
+      "total": 12,
+      "priority_at_1": 12,
+      "target_present": 12,
+      "mean_ms": 2994.595,
+      "reranker_used": 12
+    }
+  },
+  "cases": [
+    {
+      "id": "priority-01",
+      "method": "rrf",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ],
+      "priority_at_1": false,
+      "target_present": true,
+      "ms": 1916.01,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-01",
+      "method": "rrf_rerank",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 3441.22,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 62.36,
+          "total_ms": 1673.83
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-02",
+      "method": "rrf",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 948.17,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-02",
+      "method": "rrf_rerank",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:019"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 2762.81,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 63.77,
+          "total_ms": 1414.79
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-03",
+      "method": "rrf",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ],
+      "priority_at_1": false,
+      "target_present": true,
+      "ms": 1593.64,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-03",
+      "method": "rrf_rerank",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 3997.79,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 83.49,
+          "total_ms": 1971.18
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-04",
+      "method": "rrf",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 943.75,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-04",
+      "method": "rrf_rerank",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 3062.97,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 100.27,
+          "total_ms": 1558.59
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-05",
+      "method": "rrf",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013",
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ],
+      "priority_at_1": false,
+      "target_present": true,
+      "ms": 1078.95,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-05",
+      "method": "rrf_rerank",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:015",
+        "mineru-herb-68478866da9a70522b4b2e09:field:013"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 2761.42,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 45.25,
+          "total_ms": 1401.72
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-06",
+      "method": "rrf",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013",
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 1073.13,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-06",
+      "method": "rrf_rerank",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:013",
+        "mineru-herb-68478866da9a70522b4b2e09:field:015"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 2752.29,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 44.73,
+          "total_ms": 1403.8
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-07",
+      "method": "rrf",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011",
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "priority_at_1": false,
+      "target_present": true,
+      "ms": 1121.51,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-07",
+      "method": "rrf_rerank",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013",
+        "mineru-herb-916607a51c9876e39d1acf59:field:011"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 2514.27,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 55.77,
+          "total_ms": 1254.77
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-08",
+      "method": "rrf",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011",
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 714.97,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-08",
+      "method": "rrf_rerank",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011",
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 2696.62,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 71.54,
+          "total_ms": 1328.04
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-09",
+      "method": "rrf",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017",
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ],
+      "priority_at_1": false,
+      "target_present": true,
+      "ms": 1096.67,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-09",
+      "method": "rrf_rerank",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019",
+        "mineru-herb-c802003b15ded10b72efb773:field:017"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 2836.05,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 59.61,
+          "total_ms": 1421.04
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-10",
+      "method": "rrf",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017",
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 1112.24,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-10",
+      "method": "rrf_rerank",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:017",
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 3350.92,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 65.0,
+          "total_ms": 1772.55
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-11",
+      "method": "rrf",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020",
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ],
+      "priority_at_1": false,
+      "target_present": true,
+      "ms": 1082.84,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-11",
+      "method": "rrf_rerank",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:023",
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 2952.97,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 65.78,
+          "total_ms": 1505.37
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-12",
+      "method": "rrf",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020",
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 698.56,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      }
+    },
+    {
+      "id": "priority-12",
+      "method": "rrf_rerank",
+      "status": "candidates",
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020",
+        "mineru-herb-286aad7a798a996040ceaa27:field:023"
+      ],
+      "priority_at_1": true,
+      "target_present": true,
+      "ms": 2805.81,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "model": "Xenova/bge-reranker-base",
+          "revision": "cbd4c47f870c4bb77534e06b8853de9c6e958b82",
+          "fingerprint": "1e115c6b78c4976ce35c2b051376ddd8e3dbb02b299f9f3c87d3bbebc7106790",
+          "status": "used",
+          "candidates": 2,
+          "returned": 2,
+          "truncated_candidates": 0,
+          "inference_ms": 51.03,
+          "total_ms": 1346.36
+        },
+        "backend": "qdrant_local"
+      }
+    }
+  ]
+}

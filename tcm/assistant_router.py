@@ -140,6 +140,9 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
     named = re.fullmatch(POLITE + r'(?:查询|查一下|查)?\s*(.{1,256}?)的(' + HERB_PATTERN + r')(?:是什么|呢)?[？?。！!]*', text)
     if named and named.group(1).strip().isascii() and re.search(r'[A-Za-z]',named.group(1)):
         return route('herb', {'name':named.group(1).strip(),'field':FIELD_NAMES[named.group(2)]}, 'structured_named_field_query')
+    from tcm.report_request import bounded_field_request
+    if bounded_field_request(text) is not None:
+        return route('research', {'question': text}, 'shared_bounded_field_request')
     if usage is not None:
         # Pass the original question; the tool independently checks exact
         # source names and preparation scope before accepting this field.

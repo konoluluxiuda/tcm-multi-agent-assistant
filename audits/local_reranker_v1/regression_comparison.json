@@ -1,0 +1,2799 @@
+{
+  "evaluation_type": "existing_development_not_independent",
+  "recall_claimed": false,
+  "dense_backend": "qdrant_local",
+  "view_sha256": "dd4a1b9132e558867712850b16d95c65e867b2bf55ad749c7a70a71232be04ce",
+  "inputs": {
+    "regression": {
+      "questions": "e22595f1984af35466b0261eabc63b41d7d779a0fe747722810b036f429d9e89",
+      "references": "fa1806d8359fa4be616339e98d41f18dff9ff0f4d72ce570c7df5db083b03dad"
+    },
+    "body_dev": {
+      "questions": "ce83bc237dfc53b1bc80b32f30f6b7ec219635ee97c7b7354cf7c60d2decd6b7",
+      "references": "59ecb988cb6c565f7cba6efc92e8b814854156577e9cb1778a0c1b0f50a9a0f3"
+    },
+    "semantic_dev": {
+      "questions": "e2ee6db9d0ee84cc6aa47b4c943f8623e33f5960a1cd9998a08e2833b37770c8",
+      "references": "30077b997fb2090ee4ac0e0c29e0eff6e9610d78d138e652b3791a8dbb5d2a22"
+    }
+  },
+  "summary": {
+    "name_field": {
+      "positive_cases": 35,
+      "target_hits_at_5": 25,
+      "mrr_at_5": 0.7142857142857143,
+      "wrong_entity_cases": 0,
+      "abstention_cases": 9,
+      "correct_abstentions": 9,
+      "mean_ms": 1.2397727272727272,
+      "reranker_used": 0
+    },
+    "name_bm25": {
+      "positive_cases": 35,
+      "target_hits_at_5": 29,
+      "mrr_at_5": 0.8285714285714286,
+      "wrong_entity_cases": 0,
+      "abstention_cases": 9,
+      "correct_abstentions": 9,
+      "mean_ms": 4.625454545454546,
+      "reranker_used": 0
+    },
+    "hybrid": {
+      "positive_cases": 35,
+      "target_hits_at_5": 29,
+      "mrr_at_5": 0.8142857142857143,
+      "wrong_entity_cases": 0,
+      "abstention_cases": 9,
+      "correct_abstentions": 9,
+      "mean_ms": 703.2390909090909,
+      "reranker_used": 0
+    },
+    "hybrid_rerank": {
+      "positive_cases": 35,
+      "target_hits_at_5": 29,
+      "mrr_at_5": 0.8142857142857143,
+      "wrong_entity_cases": 0,
+      "abstention_cases": 9,
+      "correct_abstentions": 9,
+      "mean_ms": 665.5068181818182,
+      "reranker_used": 0
+    }
+  },
+  "cases": [
+    {
+      "suite": "regression",
+      "id": "new-01",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 2.57,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:000"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-01",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 5.07,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:000"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-01",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1634.5,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:000"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-01",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 1216.8,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:000"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-02",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 2.27,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-02",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 2.37,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-02",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 904.47,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-02",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 838.39,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-c802003b15ded10b72efb773:field:019"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-03",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.87,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:016"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-03",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 6.97,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:016"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-03",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1089.26,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:016"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-03",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 1131.49,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:016"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-04",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.84,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:017"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-04",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 7.5,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:017"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-04",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 891.65,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:017"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-04",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 796.78,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:017"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-05",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 4.34,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:016"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-05",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 12.11,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:016"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-05",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1826.97,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:016"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-05",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 2037.69,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:016"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-06",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 3.8,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:018"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-06",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 16.69,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:018"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-06",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1155.76,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:018"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-06",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 1343.71,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:018"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-07",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 3.34,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-07",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 7.31,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-07",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1316.71,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-07",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 970.59,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-08",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.36,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:022"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-08",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 2.03,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:022"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-08",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 790.42,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:022"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-08",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 1111.13,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:022"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-09",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.17,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:012"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-09",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 9.67,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:012"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-09",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1020.93,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:012"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-09",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 822.68,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:012"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-10",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.14,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-10",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 7.07,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-10",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 833.91,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-10",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 1048.49,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-41712cd9798e3e8fd3b8f699:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-11",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 0.99,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-11",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 3.02,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-11",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1181.29,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-11",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 906.73,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-12",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.56,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:000"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-12",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 2.55,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:000"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-12",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 773.55,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:000"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-12",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 988.81,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:000"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-13",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.02,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-13",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 7.98,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-13",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1117.22,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-13",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 822.83,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-14",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.02,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:014"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-14",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 8.44,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:014"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-14",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1306.23,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:014"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-14",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 1126.13,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:014"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-15",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.24,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:006"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-15",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 9.0,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:006"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-15",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 807.29,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:006"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-15",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 747.04,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:006"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-16",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.47,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:008"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-16",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 9.49,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:008"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-16",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1160.28,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:008"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-16",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 1024.4,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-bea7ca461574003ae23b3a1e:field:008"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-17",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 0.94,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:008"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-17",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 9.05,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:008"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-17",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 827.82,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:008"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-17",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 931.34,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:008"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-18",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.35,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:009"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-18",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 6.17,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:009"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-18",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1135.41,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:009"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-18",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 1274.97,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-2cca123266aa9cc511ef3c0f:field:009"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-19",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.49,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-b83aa9d35ae5055a36946197:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-19",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 13.97,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-b83aa9d35ae5055a36946197:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-19",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1875.4,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-b83aa9d35ae5055a36946197:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-19",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 1282.42,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-b83aa9d35ae5055a36946197:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-20",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.58,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-b83aa9d35ae5055a36946197:field:014"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-20",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 5.27,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-b83aa9d35ae5055a36946197:field:014"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-20",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1187.9,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-b83aa9d35ae5055a36946197:field:014"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "new-20",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 991.91,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-b83aa9d35ae5055a36946197:field:014"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "negative-01",
+      "method": "name_field",
+      "status": "name_not_resolved",
+      "ms": 1.07,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-01",
+      "method": "name_bm25",
+      "status": "name_not_resolved",
+      "ms": 0.75,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-01",
+      "method": "hybrid",
+      "status": "name_not_resolved",
+      "ms": 0.43,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-01",
+      "method": "hybrid_rerank",
+      "status": "name_not_resolved",
+      "ms": 0.44,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-02",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "ms": 0.74,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-02",
+      "method": "name_bm25",
+      "status": "field_not_resolved",
+      "ms": 1.25,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-02",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 29.18,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-02",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 27.64,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-03",
+      "method": "name_field",
+      "status": "multiple_names",
+      "ms": 0.43,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-03",
+      "method": "name_bm25",
+      "status": "multiple_names",
+      "ms": 0.4,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-03",
+      "method": "hybrid",
+      "status": "multiple_names",
+      "ms": 0.52,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-03",
+      "method": "hybrid_rerank",
+      "status": "multiple_names",
+      "ms": 0.42,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-04",
+      "method": "name_field",
+      "status": "field_not_observed",
+      "ms": 0.62,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-04",
+      "method": "name_bm25",
+      "status": "field_not_observed",
+      "ms": 0.64,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-04",
+      "method": "hybrid",
+      "status": "field_not_observed",
+      "ms": 26.76,
+      "dense": "guarded_fields",
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "negative-04",
+      "method": "hybrid_rerank",
+      "status": "field_not_observed",
+      "ms": 26.47,
+      "dense": "guarded_fields",
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "regression",
+      "id": "regression-01",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 0.66,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-51c7ed52b7770d23540b8200:field:014"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-01",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 8.57,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-51c7ed52b7770d23540b8200:field:014"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-01",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 1253.98,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-51c7ed52b7770d23540b8200:field:014"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-01",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 1226.6,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-51c7ed52b7770d23540b8200:field:014"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-02",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.38,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-cad32bc15b7732595c2c1453:field:007"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-02",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 7.96,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-cad32bc15b7732595c2c1453:field:007"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-02",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 895.32,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-cad32bc15b7732595c2c1453:field:007"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-02",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 775.95,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-cad32bc15b7732595c2c1453:field:007"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-03",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 1.14,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-baa41eafc52d0933e14b3c95:field:004"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-03",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 4.59,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-baa41eafc52d0933e14b3c95:field:004"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-03",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 818.84,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-baa41eafc52d0933e14b3c95:field:004"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-03",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 877.9,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-baa41eafc52d0933e14b3c95:field:004"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-04",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 0.96,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-e2f0b026e6139226fd4150dc:field:010"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-04",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 7.87,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-e2f0b026e6139226fd4150dc:field:010"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-04",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 774.44,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-e2f0b026e6139226fd4150dc:field:010"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "regression",
+      "id": "regression-04",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 750.76,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-e2f0b026e6139226fd4150dc:field:010"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-01",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "ms": 0.53,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-01",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 0.73,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-01",
+      "method": "hybrid",
+      "status": "ambiguous_field",
+      "ms": 840.88,
+      "dense": "guarded_dense",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:013",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:001",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:007",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:000"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-01",
+      "method": "hybrid_rerank",
+      "status": "ambiguous_field",
+      "ms": 775.58,
+      "dense": "guarded_dense",
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:013",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:001",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:007",
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:000"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-02",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "ms": 0.75,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-02",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 0.94,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-02",
+      "method": "hybrid",
+      "status": "ambiguous_field",
+      "ms": 801.0,
+      "dense": "guarded_dense",
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:008",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:014",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:018",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-02",
+      "method": "hybrid_rerank",
+      "status": "ambiguous_field",
+      "ms": 807.36,
+      "dense": "guarded_dense",
+      "hit_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:008",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:014",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:018",
+        "mineru-herb-91438c2bd1cb594a95c13128:field:013"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-03",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "ms": 0.99,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-03",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 1.08,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:011"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-03",
+      "method": "hybrid",
+      "status": "ambiguous_field",
+      "ms": 789.91,
+      "dense": "guarded_dense",
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:000",
+        "mineru-herb-916607a51c9876e39d1acf59:field:011",
+        "mineru-herb-916607a51c9876e39d1acf59:field:001",
+        "mineru-herb-916607a51c9876e39d1acf59:field:013",
+        "mineru-herb-916607a51c9876e39d1acf59:field:012"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 0.5,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-03",
+      "method": "hybrid_rerank",
+      "status": "ambiguous_field",
+      "ms": 781.26,
+      "dense": "guarded_dense",
+      "hit_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:000",
+        "mineru-herb-916607a51c9876e39d1acf59:field:011",
+        "mineru-herb-916607a51c9876e39d1acf59:field:001",
+        "mineru-herb-916607a51c9876e39d1acf59:field:013",
+        "mineru-herb-916607a51c9876e39d1acf59:field:012"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 0.5,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-04",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "ms": 1.03,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-04",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 1.31,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:016"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-04",
+      "method": "hybrid",
+      "status": "ambiguous_field",
+      "ms": 814.42,
+      "dense": "guarded_dense",
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:016",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:017",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:007",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:012",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:001"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-04",
+      "method": "hybrid_rerank",
+      "status": "ambiguous_field",
+      "ms": 756.6,
+      "dense": "guarded_dense",
+      "hit_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:016",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:017",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:007",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:012",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:001"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-05",
+      "method": "name_field",
+      "status": "candidates",
+      "ms": 0.94,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-05",
+      "method": "name_bm25",
+      "status": "candidates",
+      "ms": 6.52,
+      "dense": null,
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-05",
+      "method": "hybrid",
+      "status": "candidates",
+      "ms": 811.88,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_configured"
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-05",
+      "method": "hybrid_rerank",
+      "status": "candidates",
+      "ms": 817.71,
+      "dense": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": {
+          "status": "not_needed",
+          "candidates": 1
+        },
+        "backend": "qdrant_local"
+      },
+      "hit_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "target_hit_at_5": true,
+      "reciprocal_rank": 1.0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-06",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "ms": 0.76,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-06",
+      "method": "name_bm25",
+      "status": "field_not_resolved",
+      "ms": 0.89,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-06",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 26.68,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-06",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 27.76,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-07",
+      "method": "name_field",
+      "status": "name_not_resolved",
+      "ms": 0.41,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-07",
+      "method": "name_bm25",
+      "status": "name_not_resolved",
+      "ms": 0.51,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-07",
+      "method": "hybrid",
+      "status": "name_not_resolved",
+      "ms": 0.39,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-07",
+      "method": "hybrid_rerank",
+      "status": "name_not_resolved",
+      "ms": 0.39,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-08",
+      "method": "name_field",
+      "status": "field_not_observed",
+      "ms": 0.5,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-08",
+      "method": "name_bm25",
+      "status": "field_not_observed",
+      "ms": 0.47,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-08",
+      "method": "hybrid",
+      "status": "field_not_observed",
+      "ms": 25.29,
+      "dense": "guarded_fields",
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "body_dev",
+      "id": "scope-08",
+      "method": "hybrid_rerank",
+      "status": "field_not_observed",
+      "ms": 25.75,
+      "dense": "guarded_fields",
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-01",
+      "method": "name_field",
+      "status": "name_not_resolved",
+      "ms": 0.42,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-01",
+      "method": "name_bm25",
+      "status": "name_not_resolved",
+      "ms": 0.41,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-01",
+      "method": "hybrid",
+      "status": "name_not_resolved",
+      "ms": 26.77,
+      "dense": "guarded_fields",
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-01",
+      "method": "hybrid_rerank",
+      "status": "name_not_resolved",
+      "ms": 26.29,
+      "dense": "guarded_fields",
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-02",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "ms": 0.8,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-02",
+      "method": "name_bm25",
+      "status": "field_not_resolved",
+      "ms": 1.17,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-02",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 27.72,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-02",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 27.71,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-03",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "ms": 0.81,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-03",
+      "method": "name_bm25",
+      "status": "field_not_resolved",
+      "ms": 0.88,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-03",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 27.67,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-03",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 28.46,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-04",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "ms": 0.67,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-04",
+      "method": "name_bm25",
+      "status": "field_not_resolved",
+      "ms": 1.36,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-04",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 27.84,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-04",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 25.89,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-05",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "ms": 1.05,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-05",
+      "method": "name_bm25",
+      "status": "field_not_resolved",
+      "ms": 1.34,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-05",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 28.46,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-05",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 28.36,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-06",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "ms": 0.62,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-06",
+      "method": "name_bm25",
+      "status": "field_not_resolved",
+      "ms": 0.81,
+      "dense": null,
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-06",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 27.94,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-06",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 25.94,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "target_hit_at_5": false,
+      "reciprocal_rank": 0,
+      "wrong_entity": false
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-07",
+      "method": "name_field",
+      "status": "name_not_resolved",
+      "ms": 0.42,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-07",
+      "method": "name_bm25",
+      "status": "name_not_resolved",
+      "ms": 0.47,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-07",
+      "method": "hybrid",
+      "status": "name_not_resolved",
+      "ms": 0.55,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-07",
+      "method": "hybrid_rerank",
+      "status": "name_not_resolved",
+      "ms": 0.66,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-08",
+      "method": "name_field",
+      "status": "field_not_resolved",
+      "ms": 0.49,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-08",
+      "method": "name_bm25",
+      "status": "field_not_resolved",
+      "ms": 0.87,
+      "dense": null,
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-08",
+      "method": "hybrid",
+      "status": "field_not_resolved",
+      "ms": 28.68,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "correct_abstention": true
+    },
+    {
+      "suite": "semantic_dev",
+      "id": "dense-08",
+      "method": "hybrid_rerank",
+      "status": "field_not_resolved",
+      "ms": 26.07,
+      "dense": {
+        "method": "guarded_lexical",
+        "dense": "not_used_without_lexical_evidence",
+        "reranker": "none"
+      },
+      "hit_ids": [],
+      "correct_abstention": true
+    }
+  ]
+}

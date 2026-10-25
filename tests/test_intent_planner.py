@@ -143,6 +143,32 @@ class IntentGraphTests(unittest.TestCase):
         self.assertTrue(all(not m['data'].get('tool_calls') for m in snapshot.messages))
         self.assertNotIn('submit_query_intent',str(snapshot.messages))
 
+    def test_model_field_priority_executes_local_research_and_replays_without_model(self):
+        from tests.test_mineru_retrieval import fixture
+        from scripts.build_mineru_retrieval import build
+        from tests.test_mineru_chat import Service
+        fixture(self.root/'pharma');build(self.root/'pharma',self.root/'pharma-index')
+        service=Service(self.root/'pharma-index')
+        q='示例叶炭能派什么用场、每回取多少，后一项放最前'
+        self.assertIsNone(resolve(q))
+        model=Model({'action':'research','entities':['示例叶炭'],
+                     'fields':['功能与主治','用法与用量'],
+                     'priority_field':'用法与用量','priority_evidence':'后一项放最前'})
+        with patch('tcm.agent_research.runtime.get_service',return_value=service), patch('config.create_chat_model',return_value=model):
+            response=self.turn(q)
+            self.assertEqual(response.status_code,200,response.text)
+            result=response.json()
+            self.assertEqual(result['routing']['mode'],'model')
+            self.assertEqual(result['research']['intent_request']['original_question'],q)
+            self.assertEqual(result['research']['tool_result']['hits'][0]['label'],'用法与用量')
+            self.assertEqual(len(result['research']['tool_result']['hits']),2)
+            with patch('tcm.intent_planner.plan_question',side_effect=AssertionError('Replay must remain local')):
+                replay=self.turn('出处呢').json()
+            self.assertEqual(replay['research']['tool_result']['hits'],result['research']['tool_result']['hits'])
+        self.assertEqual(len(model.inputs),1)
+        self.assertEqual(model.inputs[0][1].content,q)
+        self.assertNotIn('测试用量',str(model.inputs))
+
     def test_model_description_intent_executes_the_local_description_tool(self):
         question='说说咱们装的那两套资料各擅长什么'
         model=Model({'action':'dataset_info'})

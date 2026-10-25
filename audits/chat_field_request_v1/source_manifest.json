@@ -1,0 +1,10 @@
+{
+  "tcm/report_request.py": "afc07366bfc1378867434b3d5aec7f71897e1b225ef31a27f7e0367aff666a68",
+  "tcm/assistant_router.py": "d1b34141fa797495e4d2fc2cb8d719b1d359e914b71b6de142524a8c16984242",
+  "tcm/mineru_chat.py": "9b7b1a97420c3ec14fc6036c7f2910b90880ceb181b009389a2a475af3047ef6",
+  "tcm/research_bookmarks.py": "2bec5d8d352c426fcc8b54ac4063ee1947f35e95bc012537057b1bdebac56fec",
+  "tcm/bookmark_backup.py": "2be7a96a4270c1a19d3aabb96d009b1a64c904ccb962e1d39c847a2935682d14",
+  "tests/test_chat_field_request.py": "51c8a26e4b52451ccc458a6ca318e2e54aad5a9030df021974b9586815d5f4de",
+  "scripts/check_chat_field_browser.py": "f0ae295fec7d54113ffe9edcd700b1e066025fe989b9de36b980d887cd0c3fb2",
+  "eval/retrieval_robustness_dev_v1.json": "61ee92c928124b21d62e797248f35e5f5f03e145dac570e5e3cf357ae8027729"
+}

@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "model_used": "Xenova/bge-reranker-base",
+  "candidate_count": 2,
+  "reranker_used": true,
+  "qdrant_used": true,
+  "history_reloaded": true,
+  "javascript_errors": []
+}

@@ -201,7 +201,8 @@ def capture(context):
     if research and research.get('last_question'):
         fields = ('kind', 'name', 'last_question', 'index_sha256', 'view_sha256',
                   'retriever_sha256', 'guards_sha256')
-        return {'kind': 'research', 'focus': {key: research[key] for key in fields}}
+        return {'kind': 'research', 'focus': {**{key: research[key] for key in fields},
+                                                   **({'request_sha256': research['request_sha256']} if 'request_sha256' in research else {})}}
     if relation:
         fields = ('kind', 'query_kind', 'page', 'dataset_version', 'herb_source_fingerprint',
                   'herb_sources', 'uniprot', 'target_export_sha256')

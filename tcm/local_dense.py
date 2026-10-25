@@ -109,6 +109,10 @@ class DenseRetriever:
         if not np.allclose(np.linalg.norm(self.vectors,axis=1),1,atol=0.001):raise ValueError('Expected normalized vectors')
         self.identifiers=[i['chunk_id'] for i in self.items]
 
+    def rank(self,vector,k,allowed):
+        scores=self.vectors@vector
+        return [(i,float(scores[i])) for i in top_indices(scores,self.identifiers,k,allowed)]
+
     def query(self,question,method='dense',k=5):
         if method not in ('dense','name_dense'):raise ValueError('Unknown dense method')
         if not isinstance(question,str) or not 1<=len(question.strip())<=500:raise ValueError('Question must contain 1–500 characters')
@@ -125,11 +129,10 @@ class DenseRetriever:
                      and (not labels or item['label'] in labels)]
         encoding_start=time.monotonic();vector=self.encoder.encode([question],query=True)[0]
         base['query_encoding_ms']=round((time.monotonic()-encoding_start)*1000,3)
-        scores=self.vectors@vector
-        selected=top_indices(scores,self.identifiers,k,allowed)
-        for i in selected:
+        selected=self.rank(vector,k,allowed)
+        for i,score in selected:
             row=self.lexical.connection.execute('SELECT * FROM chunks WHERE chunk_id=?',(self.identifiers[i],)).fetchone()
-            hit=self.lexical.hit(row);hit['score']=float(scores[i]);hit['embedding_truncated']=self.items[i]['embedding_truncated']
+            hit=self.lexical.hit(row);hit['score']=score;hit['embedding_truncated']=self.items[i]['embedding_truncated']
             if reference_target(hit['text']) or not field_body(hit['text']):
                 base.setdefault('unresolved_evidence',[]).append(hit)
             else:base['hits'].append(hit)

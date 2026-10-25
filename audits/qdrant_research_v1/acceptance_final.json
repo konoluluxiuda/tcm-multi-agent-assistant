@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "network_calls": 0,
+  "backend": "qdrant_local",
+  "count": 8654,
+  "dimension": 512,
+  "cases": [
+    {
+      "question": "当归的功效",
+      "status": "candidates",
+      "ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ],
+      "parity": true,
+      "qdrant_ms": 1031.52
+    },
+    {
+      "question": "黄芪的归经",
+      "status": "candidates",
+      "ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:011"
+      ],
+      "parity": true,
+      "qdrant_ms": 475.83
+    },
+    {
+      "question": "陈皮的贮藏",
+      "status": "candidates",
+      "ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "parity": true,
+      "qdrant_ms": 496.27
+    },
+    {
+      "question": "白术的食少记载",
+      "status": "ambiguous_field",
+      "ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:016",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:017",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:007",
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:012"
+      ],
+      "parity": true,
+      "qdrant_ms": 470.07
+    },
+    {
+      "question": "当归的功效",
+      "status": "candidates",
+      "ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ],
+      "parity": true,
+      "qdrant_ms": 442.2
+    }
+  ],
+  "unavailable_generation_keeps_lexical": true,
+  "concurrent_processes": 4,
+  "concurrent_all_used_qdrant": true,
+  "existing_generation_refused": true,
+  "version_mismatch_refused": true,
+  "checksum_mismatch_refused": true
+}

@@ -73,6 +73,9 @@ class ResearchRuntime:
             if service is None:
                 return status_result('research_disabled', '药典研究工具尚未启用；不会改用模型或联网补答。'), None
             result, selected = ResearchTool(service).execute(request['question'], context)
+            if 'original_question' in request:
+                result['intent_request'] = {key: request[key] for key in
+                    ('original_question', 'intent_fields', 'priority_field') if key in request}
             return {**result, 'workflow': 'langgraph_explicit_research_tool'}, selected
         except SnapshotChanged:
             return status_result('research_unavailable', '药典来源快照已改变，请维护者校验并重启服务后重新查询。'), None
