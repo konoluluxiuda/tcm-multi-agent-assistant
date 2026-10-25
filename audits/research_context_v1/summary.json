@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "tests": 30,
+  "modules": [
+    {
+      "module": "test_research_context.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run_store.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run_sdk.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_live_synthetic.py",
+      "status": "passed",
+      "total": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "external_model_calls": 0,
+  "measurement": "serialized_utf8_bytes_not_provider_tokens",
+  "scope": "Offline protocol and evidence-preservation checks, not live completion-rate comparison"
+}

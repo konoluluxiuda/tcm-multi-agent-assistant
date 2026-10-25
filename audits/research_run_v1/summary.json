@@ -1,0 +1,24 @@
+{
+  "scope": "synthetic_offline_J01_first_increment",
+  "tests": {
+    "module": "test_research_run.py",
+    "status": "passed",
+    "total": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "expected_failures": 0,
+    "network_attempts": 0
+  },
+  "demo_status": "complete",
+  "sdk_decisions": 4,
+  "tool_calls": 3,
+  "live_provider_calls": 0,
+  "initial_failures": 3,
+  "fix": "Validate generic ToolResult with concrete payload schema before serialization",
+  "implementation_sha256": {
+    "tcm/research_run.py": "e22eee1d5712f4d24db8d466ba0b768af70d01a4a2de19234e710c7e16e25248",
+    "tcm/research_run_demo.py": "649ac4202aaa31f49d35b56899233a760722708189b2b2a32a2fab91806ad5ee",
+    "tests/test_research_run.py": "7c49daa36cfca157ec6129f8938372bab5d31749feb9c126eb6f8915f36e44e9"
+  }
+}

@@ -56,6 +56,7 @@ class DiseaseRankingCall(Contract):
 
 
 class DiseaseSearchArgs(Contract):
+    page_size: int = Field(default=20,ge=1,le=20)
     name: str = Field(default='',max_length=100)
     page: int = Field(default=1,ge=1,le=10000)
 
@@ -248,6 +249,7 @@ class DiseaseSearchItem(Contract):
 
 
 class DiseaseSearchData(Contract):
+    page_size: int = Field(default=20,ge=1,le=20)
     query: str
     dataset_version: str
     catalog_revision: str
@@ -258,7 +260,7 @@ class DiseaseSearchData(Contract):
 
     @model_validator(mode='after')
     def counts(self):
-        if len(self.items)!=min(20,max(0,self.total-(self.page-1)*20)) or self.has_next!=(self.page*20<self.total):
+        if len(self.items)!=min(self.page_size,max(0,self.total-(self.page-1)*self.page_size)) or self.has_next!=(self.page*self.page_size<self.total):
             raise ValueError('Invalid result page')
         if len({r.record_id for r in self.items})!=len(self.items):raise ValueError('Duplicate source')
         if any(r.record_id!='etcm-disease:'+r.source.get('file_sha256','') for r in self.items):raise ValueError('Invalid source binding')
@@ -271,7 +273,7 @@ SPECS = {
     'herb_target_similarity': (SimilarityArgs,SimilarityData,'寻找与一味药靶点集合最相似的药材来源。默认Jaccard，可按common_count共同靶点数排序；前1至20条。不做疾病治疗推荐或新靶点预测。','药材靶点相似度'),
     'disease_gene_profile': (DiseaseArgs,DiseaseData,'按疾病来源原名或ID查询来源靶点集合与原始记录，page默认1。不猜译名或疾病别名。','疾病靶点资料'),
     'rank_herbs_for_gene_set': (DiseaseRankingArgs,DiseaseRankingData,'按明确疾病来源的靶点集合排序药材来源，默认Jaccard/前10个，也支持common_count；最多20。不做治疗推荐、药效或新靶点预测。','疾病关联候选排序'),
-    'search_disease_sources': (DiseaseSearchArgs,DiseaseSearchData,'按疾病名称关键词查找来源；name逐字来自问句，不翻译或猜别名；明确浏览疾病目录时name留空。分页20项，结果只供选择，不自动分析候选。','疾病名称查找'),
+    'search_disease_sources': (DiseaseSearchArgs,DiseaseSearchData,'按疾病名称关键词查找来源；name逐字来自问句，不翻译或猜别名；明确浏览疾病目录时name留空。每页默认20项，page_size可指定1–20项；结果只供选择，不自动分析候选。','疾病名称查找'),
 }
 
 
@@ -314,7 +316,7 @@ def invoke(call, record=None, version=None, *, expected_revision=None):
 def command(call, source_id=None):
     parsed=CALL.validate_python(call);args=parsed.arguments
     name=source_id or args.name
-    if parsed.tool=='search_disease_sources':return '/analysis diseases'+(' '+name if name else '')+f' --page {args.page}'
+    if parsed.tool=='search_disease_sources':return '/analysis diseases'+(' '+name if name else '')+(f' --page-size {args.page_size}' if args.page_size!=20 else '')+f' --page {args.page}'
     if parsed.tool=='disease_gene_profile':return f'/analysis disease {name} --page {args.page}'
     if parsed.tool=='rank_herbs_for_gene_set':return f'/analysis disease-rank {name} --top-k {args.top_k} --metric {args.metric}'
     if parsed.tool=='herb_target_profile':return '/analysis profile '+name
@@ -324,10 +326,12 @@ def command(call, source_id=None):
 def execute_turn(request, focus=None):
     from tcm.chat import execute_turn as herb_turn
     result={'topic':'target_analysis','status':'ok','llm_calls':0,'network_calls':0}
+    if request.get('directory_error')=='count':
+        return {**result,'status':'clarification_needed','message':'每次可列出1–20条疾病来源，例如“给我5个疾病及ID”。'},focus
     replay=bool(request.get('followup'));expected=None
     if replay:
-        if not focus or focus.get('kind')!='etcm_analysis_focus_v1' or request.get('action','replay')!='replay':
-            return {**result,'status':'clarification_needed','message':'请先查询明确药材的靶点画像或相似度。'},None
+        if not focus or focus.get('kind')!='etcm_analysis_focus_v1' or request.get('action','replay') not in ('replay','directory_next','directory_previous'):
+            return {**result,'status':'clarification_needed','message':'请先查询资料；浏览疾病可问“给我两个疾病及ID”。'},None
         expected=focus.get('catalog_revision')
         if not isinstance(expected,str) or not expected:
             return {**result,'status':'clarification_needed','message':'上次分析版本不可用，请重新查询。'},None
@@ -336,6 +340,17 @@ def execute_turn(request, focus=None):
     try:parsed=CALL.validate_python(call)
     except (ValidationError,TypeError):
         return {**result,'status':'clarification_needed','message':'可问“白术的靶点画像”或“与白术靶点最相似的药材，前10个”。最多返回20个候选。'},None
+    action=request.get('action','replay')
+    if replay and action in ('directory_next','directory_previous'):
+        if parsed.tool!='search_disease_sources':
+            return {**result,'status':'clarification_needed','message':'请先浏览疾病目录，例如“给我两个疾病及ID”。'},focus
+        size=request.get('page_size',parsed.arguments.page_size)
+        if size!=parsed.arguments.page_size:
+            return {**result,'status':'clarification_needed','message':f'上次每页{parsed.arguments.page_size}条。可说“疾病下一页”继续，或“给我{size}个疾病及ID”重新列出。'},focus
+        page=parsed.arguments.page+(1 if action=='directory_next' else -1)
+        if not 1<=page<=10000:
+            return {**result,'status':'clarification_needed','message':'已到分页边界，不能继续翻页。'},focus
+        parsed=parsed.model_copy(update={'arguments':parsed.arguments.model_copy(update={'page':page})})
     if parsed.tool=='search_disease_sources':
         from tcm.disease_search import execute_turn as search_turn
         return search_turn(parsed,expected_revision=expected)

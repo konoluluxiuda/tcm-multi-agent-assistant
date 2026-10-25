@@ -10,8 +10,9 @@ from tcm import disease_catalog as catalog
 from tcm.target_similarity import file_token,SnapshotChanged
 
 
-def search(path, name='', *, page=1, expected_revision=None):
+def search(path, name='', *, page=1, page_size=20, expected_revision=None):
     if (not isinstance(name,str) or name!=name.strip() or len(name)>100 or '\n' in name or '\r' in name
+            or type(page_size) is not int or not 1<=page_size<=20
             or type(page) is not int or not 1<=page<=10000):
         raise ValueError('Invalid disease search')
     before=file_token(path);con,meta=catalog.connect(path)
@@ -23,8 +24,8 @@ def search(path, name='', *, page=1, expected_revision=None):
         con.set_progress_handler(lambda:int(monotonic()-started>5),10000);con.execute('BEGIN')
         total=con.execute('SELECT COUNT(*) FROM diseases WHERE '+where,terms).fetchone()[0]
         rows=con.execute('SELECT record_id,name,name_key,document FROM diseases WHERE '+where+
-            ' ORDER BY CASE WHEN name_key=? THEN 0 WHEN substr(name_key,1,length(?))=? THEN 1 ELSE 2 END,name_key,record_id LIMIT 20 OFFSET ?',
-            [*terms,normalized,normalized,normalized,(page-1)*20]).fetchall()
+            ' ORDER BY CASE WHEN name_key=? THEN 0 WHEN substr(name_key,1,length(?))=? THEN 1 ELSE 2 END,name_key,record_id LIMIT ? OFFSET ?',
+            [*terms,normalized,normalized,normalized,page_size,(page-1)*page_size]).fetchall()
         items=[]
         for row in rows:
             p=json.loads(row['document'])
@@ -36,13 +37,13 @@ def search(path, name='', *, page=1, expected_revision=None):
     if before!=file_token(path) or expected_revision is not None and expected_revision!=revision:
         raise SnapshotChanged('Disease search snapshot changed')
     return {'query':name,'dataset_version':meta['dataset_version'],'catalog_revision':revision,
-            'total':total,'page':page,'has_next':page*20<total,'items':items}
+            'total':total,'page':page,'page_size':page_size,'has_next':page*page_size<total,'items':items}
 
 
 def query(call, *, expected_revision=None):
     path=os.getenv('ETCM_DISEASE_DB')
     if not path:raise ValueError('Disease catalog not configured')
-    return search(path,call.arguments.name,page=call.arguments.page,expected_revision=expected_revision)
+    return search(path,call.arguments.name,page=call.arguments.page,page_size=call.arguments.page_size,expected_revision=expected_revision)
 
 
 def execute_turn(parsed, *, expected_revision=None):

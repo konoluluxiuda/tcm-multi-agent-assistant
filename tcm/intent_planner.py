@@ -91,12 +91,16 @@ def mapped(intent,question):
             request=parse(question)
             if not request or request.get('call',{}).get('tool')!='search_disease_sources' or request['call']['arguments'].get('name')!='':
                 raise ValueError('Unrequested whole catalog')
+            expected=request['call']['arguments']
+            if intent.analysis.arguments.page_size!=expected.get('page_size',20) or intent.analysis.arguments.page!=expected.get('page',1):
+                raise ValueError('Requested directory count or page changed')
         elif not grounded(name,question):raise ValueError('Ungrounded analysis name')
         disease_tool=intent.analysis.tool in ('disease_gene_profile','rank_herbs_for_gene_set','search_disease_sources')
         if re.search(r'预测|治疗|疗效|替代|配方|配伍|服用|用药',question) or not disease_tool and '疾病' in question:
             raise ValueError('Unsupported analysis scope')
         requested=re.findall(r'前\s*([0-9]+)\s*(?:个|条|名)',question)
-        if requested and (len(requested)!=1 or int(requested[0])!=getattr(intent.analysis.arguments,'top_k',None)):
+        count_field='page_size' if intent.analysis.tool=='search_disease_sources' else 'top_k'
+        if requested and (len(requested)!=1 or int(requested[0])!=getattr(intent.analysis.arguments,count_field,None)):
             raise ValueError('Requested result count changed')
         return {'tool':'assistant','request':{'topic':'target_analysis','call':intent.analysis.model_dump()}}
     if action=='dataset_info':return {'tool':'assistant','request':{'topic':action,'datasets':intent.datasets}}

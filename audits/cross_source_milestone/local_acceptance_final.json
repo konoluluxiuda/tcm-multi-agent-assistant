@@ -1,0 +1,90 @@
+{
+  "status": "passed",
+  "external_model_calls": 0,
+  "cases": [
+    {
+      "herb": "白术",
+      "question": "功效及注意事项",
+      "status": "partial",
+      "text_status": "partial_evidence",
+      "structured_status": "name_mapping_candidates",
+      "chunks": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:016"
+      ],
+      "fields": 12,
+      "retrieval": "guarded_fields",
+      "branch_ms": {
+        "text": 86,
+        "structured": 60
+      }
+    },
+    {
+      "herb": "当归",
+      "question": "性味与归经",
+      "status": "complete",
+      "text_status": "candidates",
+      "structured_status": "name_mapping_candidates",
+      "chunks": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:016"
+      ],
+      "fields": 12,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": "none"
+      },
+      "branch_ms": {
+        "text": 509,
+        "structured": 52
+      }
+    },
+    {
+      "herb": "黄芪",
+      "question": "功能与主治",
+      "status": "complete",
+      "text_status": "candidates",
+      "structured_status": "name_mapping_candidates",
+      "chunks": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:012"
+      ],
+      "fields": 12,
+      "retrieval": {
+        "method": "rrf",
+        "dense": "used",
+        "reranker": "none"
+      },
+      "branch_ms": {
+        "text": 467,
+        "structured": 51
+      }
+    },
+    {
+      "herb": "不存在的合成药",
+      "question": "功效",
+      "status": "needs_input",
+      "text_status": "name_not_resolved",
+      "structured_status": "unsupported_name_mapping",
+      "chunks": [],
+      "fields": 0,
+      "retrieval": null,
+      "branch_ms": {
+        "text": 76,
+        "structured": 51
+      }
+    },
+    {
+      "herb": "白术",
+      "question": "川芎的功效",
+      "status": "partial",
+      "text_status": "multiple_entities",
+      "structured_status": "name_mapping_candidates",
+      "chunks": [],
+      "fields": 12,
+      "retrieval": null,
+      "branch_ms": {
+        "text": 76,
+        "structured": 53
+      }
+    }
+  ]
+}

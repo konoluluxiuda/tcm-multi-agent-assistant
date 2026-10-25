@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "tests": 23,
+  "modules": [
+    {
+      "module": "test_research_synthetic_v2.py",
+      "status": "passed",
+      "total": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_live_synthetic.py",
+      "status": "passed",
+      "total": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run_sdk.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "replayed_tool_calls": 6,
+  "previous_name_contract_errors_resolved": 2,
+  "external_model_calls": 0,
+  "original_live_passed": 0,
+  "original_live_result_sha256": "40bab11b13f8bc3b4f3a4dd8c47cfd99f4c5645b6d879d085c2bc0e61335f4a3",
+  "limitation": "Offline contract replay; no new measurement of live model completion."
+}

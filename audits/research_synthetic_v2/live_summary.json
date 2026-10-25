@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "fixture_version": "synthetic-v2-contract-aligned",
+  "passed": 2,
+  "tasks": 2,
+  "http_requests": 7,
+  "authorized_max_requests": 8,
+  "input_tokens": 7807,
+  "output_tokens": 562,
+  "tool_calls": 5,
+  "automatic_retries": 0,
+  "real_corpus_sent": false,
+  "result_sha256": "f6219c08231c157c4fc39da322ce124a2d9746dd272c58ab7acbf711dea81d66",
+  "scope": "Two instructed synthetic smoke tasks; not general business accuracy or unprompted autonomous planning."
+}

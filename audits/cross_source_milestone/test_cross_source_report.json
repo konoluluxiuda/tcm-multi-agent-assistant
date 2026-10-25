@@ -1,0 +1,10 @@
+{
+  "module": "test_cross_source_report.py",
+  "status": "passed",
+  "total": 6,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "expected_failures": 0,
+  "network_attempts": 0
+}

@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "tests": 26,
+  "modules": [
+    {
+      "module": "test_research_run_sdk.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run_scope.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "protocol": {
+    "mode": "real_sdk_synthetic_http",
+    "external_model_calls": 0,
+    "http_requests": 4,
+    "usage_source": "synthetic_fixture",
+    "provider_quality_evaluated": false
+  },
+  "result": {
+    "status": "complete",
+    "reason": "tool_scope_complete",
+    "model_calls": 4,
+    "tool_calls": 3,
+    "input_tokens": 400,
+    "output_tokens": 80
+  },
+  "note": "Usage numbers are fixture values, not actual provider billing or model quality."
+}

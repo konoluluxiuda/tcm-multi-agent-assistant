@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "milestone": "local_background_research_queue_sse",
+  "offline_modules": 108,
+  "offline_tests": 946,
+  "skipped": 0,
+  "network_attempts": 0,
+  "source_files": 328,
+  "http_acceptance": {
+    "status": "passed",
+    "sse_disconnect_keeps_job": true,
+    "last_event_id_replay": true,
+    "explicit_cancel": true,
+    "actual_process_kill": true,
+    "expired_run_interrupted_not_reexecuted": true,
+    "queued_job_runs_after_restart": true,
+    "external_model_calls": 0
+  },
+  "browser": {
+    "status": "passed",
+    "post_status": 202,
+    "page_close_does_not_cancel": true,
+    "history_replay": true,
+    "sse_connections": 2,
+    "target_count": 283,
+    "rows": 20,
+    "cross_session_stream": 404,
+    "delete": true,
+    "page_errors": []
+  },
+  "external_model_calls": 0,
+  "preview": "http://127.0.0.1:7879/",
+  "postgresql_checkpoint": "not_implemented",
+  "mid_graph_resume": "not_implemented",
+  "docker_release": "not_run",
+  "git_commit_push": "not_run"
+}

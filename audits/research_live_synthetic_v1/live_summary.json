@@ -1,0 +1,12 @@
+{
+  "status": "completed_with_failures",
+  "passed": 0,
+  "tasks": 2,
+  "http_requests": 8,
+  "input_tokens": 8761,
+  "output_tokens": 737,
+  "data_mode": "synthetic_only",
+  "additional_requests": 0,
+  "result_sha256": "40bab11b13f8bc3b4f3a4dd8c47cfd99f4c5645b6d879d085c2bc0e61335f4a3",
+  "interpretation": "Protocol integration succeeded; task failures are confounded by fixture/tool-contract mismatch, not an estimate of general model accuracy."
+}

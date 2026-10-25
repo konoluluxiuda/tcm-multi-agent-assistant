@@ -30,6 +30,65 @@ class SearchTests(unittest.TestCase):
     def turn(self,q,**kw):
         with redirect_stdout(io.StringIO()):return self.client.post('/chat',json={'query':q,**kw})
 
+    def test_natural_examples_count_ids_and_replay(self):
+        for question in ('随便提供两个疾病及id','请给我2个疾病和ID','列出三个疾病名称及编号'):
+            request=parse(question)
+            count=request['call']['arguments']['page_size']
+            with patch('tcm.intent_planner.plan_question',side_effect=AssertionError('No model needed')):
+                response=self.turn(question).json()['assistant']
+            data=response['analysis_result']['data']
+            self.assertEqual(len(data['items']),count)
+            self.assertTrue(all(item['record_id'].startswith('etcm-disease:') for item in data['items']))
+            replay=self.turn('回看分析结果').json()['assistant']['analysis_result']['data']
+            self.assertEqual(replay['items'],data['items'])
+            second=search(self.disease_db,page=2,page_size=count)
+            self.assertFalse({r['record_id'] for r in data['items']}&{r['record_id'] for r in second['items']})
+            call=parse(command(request['call']),explicit=True)['call']
+            self.assertEqual(call['arguments']['page_size'],count)
+        for question in ('提供两个疾病及id并推荐用药','提供两个疾病及id还要分析靶点'):
+            self.assertIsNone(parse(question))
+        for size in (0,21,True):
+            with self.assertRaises(ValueError):search(self.disease_db,page_size=size)
+
+    def test_directory_paraphrases_and_continuation(self):
+        questions={'请帮我列举两种疾病并附上ID':2,'给我几个疾病及编号':5,
+                   '给我十一种疾病和ID':11,'随便给2个疾病':2,'列出前二十条疾病来源及id':20}
+        for q,count in questions.items():
+            result=self.turn(q).json()['assistant']
+            self.assertEqual(len(result['analysis_result']['data']['items']),count,q)
+        first=self.turn('给我两个疾病及id').json()['assistant']['analysis_result']['data']
+        second=self.turn('再给两个疾病').json()['assistant']['analysis_result']['data']
+        self.assertEqual(second['page'],2)
+        self.assertFalse({r['record_id'] for r in first['items']}&{r['record_id'] for r in second['items']})
+        back=self.turn('疾病上一页').json()['assistant']['analysis_result']['data']
+        self.assertEqual(back['items'],first['items'])
+        for q in ('提供0个疾病','提供21个疾病','再给三个疾病'):
+            self.assertEqual(self.turn(q).json()['assistant']['status'],'clarification_needed')
+        for q in ('数据库里有哪些疾病','有哪些疾病及ID','查看疾病列表'):
+            self.assertEqual(parse(q)['call']['tool'],'search_disease_sources')
+        for q in ('列出两种疾病并预测治疗方案','给我几个疾病及编号，再查文献','再给两个疾病并分析靶点'):
+            self.assertIsNone(parse(q))
+
+    def test_directory_followup_requires_own_current_focus(self):
+        from tcm.analysis_tools import execute_turn
+        r,_=execute_turn(parse('疾病下一页'))
+        self.assertEqual(r['status'],'clarification_needed')
+        self.turn('给我两个疾病及id')
+        cookie=self.client.cookies[self.app.SESSION_COOKIE_NAME]
+        self.client.cookies.clear()
+        self.assertEqual(self.turn('再给两个疾病').json()['assistant']['status'],'clarification_needed')
+        self.client.cookies.set(self.app.SESSION_COOKIE_NAME,cookie)
+        with sqlite3.connect(self.disease_db) as con:con.execute("UPDATE metadata SET value='changed' WHERE key='source_fingerprint'")
+        self.assertEqual(self.turn('疾病下一页').json()['assistant']['status'],'unavailable')
+
+    def test_model_cannot_change_directory_count(self):
+        for size,status in ((2,'ok'),(20,'invalid_output')):
+            plan={'action':'analysis','analysis':{'tool':'search_disease_sources','arguments':{'name':'','page_size':size}}}
+            result=plan_question('给我两个疾病及ID',sdk=Model(plan))
+            self.assertEqual(result['intent_status'],status)
+        plan={'action':'analysis','analysis':{'tool':'search_disease_sources','arguments':{'name':'','page_size':2,'page':2}}}
+        self.assertEqual(plan_question('给我两个疾病及ID',sdk=Model(plan))['intent_status'],'invalid_output')
+
     def test_literal_keywords_exact_priority_browse_and_pages(self):
         first=search(self.disease_db,'SYNTHETIC disease');second=search(self.disease_db,'SYNTHETIC disease',page=2)
         self.assertEqual(first['total'],26);self.assertEqual(first['items'][0]['name'],'Synthetic disease')

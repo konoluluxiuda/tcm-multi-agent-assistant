@@ -1,0 +1,275 @@
+{
+  "mode": "live_synthetic",
+  "fixture_version": "synthetic-v2-contract-aligned",
+  "http_requests": 7,
+  "planned_tasks": 2,
+  "run_tasks": 2,
+  "passed": 2,
+  "results": [
+    {
+      "id": "S01",
+      "passed": true,
+      "http_requests": 3,
+      "run": {
+        "events": [
+          {
+            "call_id": "call_00_ET_FcVwyXiBUJe9jzvijTa88161",
+            "tool": "search_disease_sources",
+            "arguments": {
+              "page_size": 20,
+              "name": "Synthetic disease",
+              "page": 1
+            },
+            "status": "ok",
+            "evidence_id": "obs-1",
+            "elapsed_ms": 1.013
+          },
+          {
+            "call_id": "call_00_ET_g4dOWiUtpxHGdcVWAvfh3497",
+            "tool": "disease_gene_profile",
+            "arguments": {
+              "name": "Synthetic disease",
+              "page": 1
+            },
+            "status": "ok",
+            "evidence_id": "obs-2",
+            "elapsed_ms": 1.021
+          },
+          {
+            "call_id": "call_00_bmBsaeVssarstaM4fsLY0067",
+            "tool": "finish_research",
+            "status": "complete",
+            "unresolved": []
+          }
+        ],
+        "evidence": {
+          "obs-1": {
+            "version": 1,
+            "tool": "search_disease_sources",
+            "status": "ok",
+            "data": {
+              "page_size": 20,
+              "query": "Synthetic disease",
+              "dataset_version": "synthetic-v2-contract-aligned",
+              "catalog_revision": "synthetic",
+              "total": 1,
+              "page": 1,
+              "has_next": false,
+              "items": [
+                {
+                  "record_id": "etcm-disease:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "name": "Synthetic disease",
+                  "target_count": 1,
+                  "capture_state": "synthetic",
+                  "species_status": "synthetic",
+                  "source": {
+                    "file_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  },
+                  "match_kind": "exact"
+                }
+              ]
+            },
+            "error": null,
+            "elapsed_ms": 0.0
+          },
+          "obs-2": {
+            "version": 1,
+            "tool": "disease_gene_profile",
+            "status": "ok",
+            "data": {
+              "record_id": "etcm-disease:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "dataset_version": "synthetic-v2-contract-aligned",
+              "catalog_revision": "synthetic",
+              "profile": {
+                "name": "Synthetic disease",
+                "target_count": 1,
+                "source": {
+                  "file_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                },
+                "target_row_count": 1,
+                "species_status": "synthetic",
+                "detail_status": "available"
+              },
+              "target_ids": [
+                "P12345"
+              ],
+              "rows": [
+                {
+                  "uniprot": "P12345",
+                  "gene": "SYNTHETIC_GENE",
+                  "json_pointer": "/synthetic/targets/0",
+                  "raw_row": {
+                    "UniProt": "P12345",
+                    "Gene": "SYNTHETIC_GENE",
+                    "synthetic": true
+                  }
+                }
+              ],
+              "page": 1,
+              "has_next": false,
+              "identical_set_sources": 1
+            },
+            "error": null,
+            "elapsed_ms": 0.0
+          }
+        },
+        "model_calls": 3,
+        "tool_calls": 2,
+        "status": "complete",
+        "reason": "tool_scope_complete",
+        "input_tokens": 3210,
+        "output_tokens": 192,
+        "coverage": {},
+        "usage_reported_calls": 3,
+        "completion_scope": "declared_tool_types"
+      }
+    },
+    {
+      "id": "S02",
+      "passed": true,
+      "http_requests": 4,
+      "run": {
+        "events": [
+          {
+            "call_id": "call_00_ET_U2VmEoeDoUXn2kFiZZ9X5003",
+            "tool": "search_disease_sources",
+            "arguments": {
+              "page_size": 20,
+              "name": "missing",
+              "page": 1
+            },
+            "status": "empty",
+            "evidence_id": "obs-1",
+            "elapsed_ms": 0.089
+          },
+          {
+            "call_id": "call_00_5aSUQrCf1UHV9gnB8rc89583",
+            "tool": "search_disease_sources",
+            "arguments": {
+              "page_size": 20,
+              "name": "Synthetic disease",
+              "page": 1
+            },
+            "status": "ok",
+            "evidence_id": "obs-2",
+            "elapsed_ms": 1.038
+          },
+          {
+            "call_id": "call_00_rUClcH1qnFNsqBj1tj7y9154",
+            "tool": "disease_gene_profile",
+            "arguments": {
+              "name": "Synthetic disease",
+              "page": 1
+            },
+            "status": "ok",
+            "evidence_id": "obs-3",
+            "elapsed_ms": 0.975
+          },
+          {
+            "call_id": "call_00_2Ekl1u4aOqfr6I4zfzuy2462",
+            "tool": "finish_research",
+            "status": "complete",
+            "unresolved": []
+          }
+        ],
+        "evidence": {
+          "obs-1": {
+            "version": 1,
+            "tool": "search_disease_sources",
+            "status": "empty",
+            "data": {
+              "page_size": 20,
+              "query": "missing",
+              "dataset_version": "synthetic-v2-contract-aligned",
+              "catalog_revision": "synthetic",
+              "total": 0,
+              "page": 1,
+              "has_next": false,
+              "items": []
+            },
+            "error": null,
+            "elapsed_ms": 0.0
+          },
+          "obs-2": {
+            "version": 1,
+            "tool": "search_disease_sources",
+            "status": "ok",
+            "data": {
+              "page_size": 20,
+              "query": "Synthetic disease",
+              "dataset_version": "synthetic-v2-contract-aligned",
+              "catalog_revision": "synthetic",
+              "total": 1,
+              "page": 1,
+              "has_next": false,
+              "items": [
+                {
+                  "record_id": "etcm-disease:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "name": "Synthetic disease",
+                  "target_count": 1,
+                  "capture_state": "synthetic",
+                  "species_status": "synthetic",
+                  "source": {
+                    "file_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  },
+                  "match_kind": "exact"
+                }
+              ]
+            },
+            "error": null,
+            "elapsed_ms": 0.0
+          },
+          "obs-3": {
+            "version": 1,
+            "tool": "disease_gene_profile",
+            "status": "ok",
+            "data": {
+              "record_id": "etcm-disease:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "dataset_version": "synthetic-v2-contract-aligned",
+              "catalog_revision": "synthetic",
+              "profile": {
+                "name": "Synthetic disease",
+                "target_count": 1,
+                "source": {
+                  "file_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                },
+                "target_row_count": 1,
+                "species_status": "synthetic",
+                "detail_status": "available"
+              },
+              "target_ids": [
+                "P12345"
+              ],
+              "rows": [
+                {
+                  "uniprot": "P12345",
+                  "gene": "SYNTHETIC_GENE",
+                  "json_pointer": "/synthetic/targets/0",
+                  "raw_row": {
+                    "UniProt": "P12345",
+                    "Gene": "SYNTHETIC_GENE",
+                    "synthetic": true
+                  }
+                }
+              ],
+              "page": 1,
+              "has_next": false,
+              "identical_set_sources": 1
+            },
+            "error": null,
+            "elapsed_ms": 0.0
+          }
+        },
+        "model_calls": 4,
+        "tool_calls": 3,
+        "status": "complete",
+        "reason": "tool_scope_complete",
+        "input_tokens": 4597,
+        "output_tokens": 370,
+        "coverage": {},
+        "usage_reported_calls": 4,
+        "completion_scope": "declared_tool_types"
+      }
+    }
+  ]
+}

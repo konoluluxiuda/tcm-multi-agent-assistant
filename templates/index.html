@@ -392,6 +392,26 @@
                         <div data-bookmark-preview></div>
                     </details>
                     {% endif %}
+                    {% if research_runs_enabled %}
+                    <details class="px-3" id="local-research-panel">
+                        <summary>本地研究 · 跨来源报告 / 疾病靶点</summary>
+                        <p>疾病模式查询靶点；报告模式输入药材名，并列查看药典字段与 ETCM 基础属性。离线后台执行；刷新或关闭页面不会取消，需点击“取消”停止。记录保存在服务器，可在本会话回看。清除会话或Cookie后无法从新会话找回。</p>
+                        <form id="local-research-form">
+                            <label>研究类型 <select data-research-mode><option value="disease">疾病靶点</option><option value="report">药典 + ETCM 报告</option><option value="compare">两味药联合比较</option></select></label>
+                            <label>研究对象 <input required maxlength="200" placeholder="疾病英文名或来源 ID"></label>
+                            <label data-second-herb hidden>另一味药 <input maxlength="80" placeholder="川芎"></label>
+                            <label data-report-question hidden>药典查询内容 <input maxlength="400" placeholder="功效及注意事项" value="功效及注意事项"></label>
+                            <button type="submit">查询靶点</button>
+                            <button type="button" data-cancel disabled>取消</button>
+                        </form>
+                        <div id="local-research-output" aria-live="polite"></div>
+                        <details><summary>研究历史（最近20条）</summary>
+                            <button type="button" id="local-research-refresh">刷新历史</button>
+                            <div id="local-research-history" aria-live="polite"></div>
+                        </details>
+                    </details>
+                    <script src="/research-runs.js" defer></script>
+                    {% endif %}
                     <small id="memory-status" class="text-muted px-3" role="status">正在恢复已保存会话…</small>
                     <div id="chat-body" class="chat-body">
                         <div class="message assistant-message">
@@ -1298,11 +1318,11 @@
             const input=el('input');input.type='text';input.maxLength=100;input.value=data.query;input.placeholder='疾病英文名称或关键词，如 diabetes';input.setAttribute('aria-label','疾病名称关键词');
             const submit=el('button','搜索');submit.type='submit';form.append(input,submit);form.addEventListener('submit',e=>{e.preventDefault();send('/analysis diseases'+(input.value.trim()?' '+input.value.trim():''))});container.append(form);
             const wrap=el('div');wrap.style.overflowX='auto';const table=el('table');table.className='table table-sm';table.setAttribute('aria-label','疾病名称搜索结果');
-            const head=el('thead'),tr=el('tr');for(const label of ['疾病来源名称','靶点数','操作'])tr.append(el('th',label));head.append(tr);table.append(head);const body=el('tbody');
-            for(const item of data.items){const row=el('tr');row.append(el('td',item.name),el('td',String(item.target_count)));const actions=el('td');button(actions,'查看靶点','/analysis disease '+item.record_id);button(actions,'候选排序','/analysis disease-rank '+item.record_id);
+            const head=el('thead'),tr=el('tr');for(const label of ['疾病来源名称','来源 ID','靶点数','操作'])tr.append(el('th',label));head.append(tr);table.append(head);const body=el('tbody');
+            for(const item of data.items){const row=el('tr');row.append(el('td',item.name),el('td',item.record_id),el('td',String(item.target_count)));const actions=el('td');button(actions,'查看靶点','/analysis disease '+item.record_id);button(actions,'候选排序','/analysis disease-rank '+item.record_id);
                 const d=el('details');d.append(el('summary','来源'));const pre=el('pre',JSON.stringify({source:item.source,capture_state:item.capture_state,species_status:item.species_status},null,2));pre.style.whiteSpace='pre-wrap';pre.style.overflowWrap='anywhere';d.append(pre);actions.append(d);row.append(actions);body.append(row)}
             table.append(body);wrap.append(table);container.append(wrap);container.append(el('p','第 '+data.page+' 页 · 共 '+data.total+' 条来源'));
-            const prefix='/analysis diseases'+(data.query?' '+data.query:'');
+            const prefix='/analysis diseases'+(data.query?' '+data.query:'')+((data.page_size||20)!==20?' --page-size '+data.page_size:'');
             if(data.page>1)button(container,'上一页',prefix+' --page '+(data.page-1));if(data.has_next)button(container,'下一页',prefix+' --page '+(data.page+1));
             const note=el('details');note.append(el('summary','查找说明'),el('p','按来源原名做字面关键词匹配；多个关键词需同时出现，优先完整名称和前缀，不自动翻译、合并疾病或选择候选。'));container.append(note);
         }

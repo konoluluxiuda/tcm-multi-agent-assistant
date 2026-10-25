@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "modules": 110,
+  "tests": 961,
+  "skipped": 0,
+  "source_files_unchanged_since_manifest": 352,
+  "external_model_calls": 0,
+  "real_source_cases": 3,
+  "browser": "passed",
+  "download_and_history": "passed",
+  "deployment": "local_7879_only",
+  "limitations": [
+    "fixed graph, not autonomous LLM agents",
+    "no verified identity merge or efficacy inference",
+    "first 20 shared identifiers only"
+  ]
+}

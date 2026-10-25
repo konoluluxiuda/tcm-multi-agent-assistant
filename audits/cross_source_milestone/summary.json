@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "full_regression_modules": 109,
+  "full_regression_tests": 953,
+  "skipped": 0,
+  "final_targeted_tests": 15,
+  "real_source_cases": 5,
+  "external_model_calls": 0,
+  "evaluation": "development_not_holdout",
+  "hybrid_better_than_bm25": false,
+  "browser": "passed",
+  "limitations": [
+    "fixed graph, not autonomous LLM agents",
+    "no Qdrant or learned reranker in new report",
+    "source identity not merged",
+    "full regression ran during final retrieval edits; affected tests rerun afterward"
+  ]
+}

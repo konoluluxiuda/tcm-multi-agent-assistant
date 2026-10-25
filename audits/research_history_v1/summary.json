@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "tests": 24,
+  "modules": [
+    {
+      "module": "test_research_run_api.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run_store.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_optional_features.py",
+      "status": "passed",
+      "total": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "browser": {
+    "status": "passed",
+    "refresh_and_replay": true,
+    "snapshot_rows": 20,
+    "cross_session_status": 404,
+    "delete": true,
+    "page_errors": []
+  },
+  "external_model_calls": 0
+}

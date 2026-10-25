@@ -1,0 +1,133 @@
+{
+  "status": "passed",
+  "tests": 31,
+  "modules": [
+    {
+      "module": "test_research_token_budget.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_context.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_evidence_read.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run_sdk.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "comparison": {
+    "mode": "offline_projection_comparison",
+    "estimator": "utf8_byte_proxy",
+    "external_model_calls": 0,
+    "six_projected_requests": {
+      "full": 279765,
+      "projected": 163235
+    },
+    "all_projected_fit": true,
+    "reduction_fraction": 0.41652815756080996,
+    "checks": [
+      {
+        "input_bytes_before": 15375,
+        "input_bytes_after": 15375,
+        "input_byte_limit": 38000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      {
+        "input_bytes_before": 27876,
+        "input_bytes_after": 27876,
+        "input_byte_limit": 38000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      {
+        "input_bytes_before": 40377,
+        "input_bytes_after": 28724,
+        "input_byte_limit": 38000,
+        "compacted_call_ids": [
+          "0"
+        ],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      {
+        "input_bytes_before": 52878,
+        "input_bytes_after": 29572,
+        "input_byte_limit": 38000,
+        "compacted_call_ids": [
+          "0",
+          "1"
+        ],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      {
+        "input_bytes_before": 65379,
+        "input_bytes_after": 30420,
+        "input_byte_limit": 38000,
+        "compacted_call_ids": [
+          "0",
+          "1",
+          "2"
+        ],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      {
+        "input_bytes_before": 77880,
+        "input_bytes_after": 31268,
+        "input_byte_limit": 38000,
+        "compacted_call_ids": [
+          "0",
+          "1",
+          "2",
+          "3"
+        ],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      }
+    ],
+    "limitation": "Synthetic prompt sizes only; not provider token savings or task completion accuracy."
+  },
+  "external_model_calls": 0
+}

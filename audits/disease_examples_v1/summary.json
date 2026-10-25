@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "tests": 39,
+  "modules": [
+    {
+      "module": "test_disease_search.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_analysis_chat.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run_scope.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "browser": {
+    "status": "passed",
+    "question": "随便提供两个疾病及id",
+    "items": [
+      {
+        "name": "11p15.4 Microduplication Syndrome",
+        "record_id": "etcm-disease:429cce3853798e35bd9329635f50455314847000ed2f1de3a4493a644630893d"
+      },
+      {
+        "name": "11q22.2q22.3 Microdeletion Syndrome",
+        "record_id": "etcm-disease:8c936a14ef243571bead119aed0632d26686dca6ced8580d370829d2df894e4a"
+      }
+    ],
+    "page_errors": []
+  },
+  "external_model_calls": 0
+}

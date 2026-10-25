@@ -18,6 +18,8 @@ def main():
     parser.add_argument('--with-intent-model',action='store_true',
                         help='Allow one configured model call with only an unmatched question; no source text/history')
     parser.add_argument('--diseases',type=Path,help='Optional completed disease source catalog for local analysis')
+    parser.add_argument('--dense-python', type=Path,
+                        help='Optional local Python with ONNX/tokenizers/numpy; enables existing local BGE cache, no downloads')
     args = parser.parse_args()
     if not 1 <= args.port <= 65535:
         parser.error('--port must be between 1 and 65535')
@@ -76,6 +78,15 @@ def main():
         'ETCM_DISEASE_DB': str(args.diseases.resolve()) if args.diseases else '',
         **{key: str(path) for key, path in {**files, **directories, **state_files}.items()},
     }
+    if args.dense_python:
+        model = ROOT / 'var/evidence_assistant_v1/local_bge_small_zh'
+        cache = ROOT / 'var/evidence_assistant_v1/local_dense_cache'
+        if not args.dense_python.is_file() or not model.is_dir() or not cache.is_dir():
+            parser.error('Local dense Python/model/cache missing; prepare local assets first')
+        environment.update(LOCAL_DENSE_PYTHON=str(args.dense_python.absolute()),
+                           LOCAL_DENSE_MODEL=str(model), LOCAL_DENSE_CACHE=str(cache))
+    else:
+        environment.update(LOCAL_DENSE_PYTHON='', LOCAL_DENSE_MODEL='', LOCAL_DENSE_CACHE='')
     if args.diseases:
         from tcm.disease_catalog import connect as disease_connect
         try:

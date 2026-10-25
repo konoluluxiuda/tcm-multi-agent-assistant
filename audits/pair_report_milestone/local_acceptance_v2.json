@@ -1,0 +1,54 @@
+{
+  "status": "failed",
+  "external_model_calls": 0,
+  "cases": [
+    {
+      "herbs": [
+        "当归",
+        "川芎"
+      ],
+      "status": "needs_input",
+      "comparison_rows": 0,
+      "target_status": "unresolved_sources",
+      "target_total": null,
+      "target_rows": 0,
+      "branch_statuses": [
+        "failed",
+        "failed"
+      ],
+      "two_sided_witnesses": true
+    },
+    {
+      "herbs": [
+        "白术",
+        "黄芪"
+      ],
+      "status": "needs_input",
+      "comparison_rows": 0,
+      "target_status": "unresolved_sources",
+      "target_total": null,
+      "target_rows": 0,
+      "branch_statuses": [
+        "failed",
+        "failed"
+      ],
+      "two_sided_witnesses": true
+    },
+    {
+      "herbs": [
+        "当归",
+        "不存在的合成药"
+      ],
+      "status": "needs_input",
+      "comparison_rows": 0,
+      "target_status": "unresolved_sources",
+      "target_total": null,
+      "target_rows": 0,
+      "branch_statuses": [
+        "failed",
+        "failed"
+      ],
+      "two_sided_witnesses": true
+    }
+  ]
+}

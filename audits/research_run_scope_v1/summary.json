@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-24",
+  "scope": "explicit_action_contract_and_local_readonly_adapter",
+  "status": "passed",
+  "tests": [
+    {
+      "module": "test_research_run.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run_scope.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_disease_search.py",
+      "status": "passed",
+      "total": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_disease_catalog.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "total": 41,
+  "live_model_calls": 0,
+  "local_demo": {
+    "mode": "local_offline_driver",
+    "status": "complete",
+    "target_count": 283,
+    "source_rows_checked": 20,
+    "file_sha256_verified": true,
+    "completion_scope": "explicit_actions",
+    "sdk_decisions": 2,
+    "tool_calls": 1
+  },
+  "limitations": [
+    "not_free_text_full_intent_coverage",
+    "no_main_chat_integration",
+    "no_live_llm_validation",
+    "no_persistent_run_or_token_hard_budget"
+  ],
+  "implementation_sha256": {
+    "tcm/research_run.py": "def09443ea8c0ee5aaa21e537ec51a691c4424d86c1205386c5970f3e9e54cd7",
+    "tcm/research_run_scope.py": "c71498321d2a6aeb4dd73f00f8c08aa8c8a9839d1deced018ee3720990928945",
+    "tcm/research_run_local.py": "dac40b85e3a7f239474fc70fab1370d850909b9ddf95638d0407337c8819b707",
+    "scripts/run_local_research.py": "03fcc1eaceb760e225bbdc4bfe93eacbb59dc51d48e2c89fc8ee0c288bd11587",
+    "tests/test_research_run_scope.py": "a4e3a0f7928f0efdaec3bbc0c25116798cdccb01a140e2baab8fa75b03a88fc7"
+  }
+}

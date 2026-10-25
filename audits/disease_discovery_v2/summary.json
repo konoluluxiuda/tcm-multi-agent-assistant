@@ -1,0 +1,60 @@
+{
+  "status": "passed",
+  "total": 43,
+  "modules": [
+    {
+      "module": "test_disease_search.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_analysis_chat.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_intent_planner.py",
+      "status": "passed",
+      "total": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run_scope.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "browser": {
+    "status": "passed",
+    "pages": [
+      1,
+      2,
+      1
+    ],
+    "rows_per_page": 2,
+    "duplicate_between_pages": false,
+    "invalid_count": "clarification_needed",
+    "page_errors": [],
+    "external_requests": "blocked"
+  },
+  "external_model_calls": 0
+}

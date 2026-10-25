@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "tests": 31,
+  "modules": [
+    {
+      "module": "test_research_run_store.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run_scope.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_run_api.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "cli_acceptance": {
+    "status": "passed",
+    "run_id": "0a70889bc8224daabfb7e86de34e490e",
+    "separate_process_reload": true,
+    "status_after_reopen": "complete",
+    "revision": 5,
+    "final_evidence_ids": [
+      "obs-1"
+    ],
+    "target_count": 283
+  },
+  "external_model_calls": 0
+}
