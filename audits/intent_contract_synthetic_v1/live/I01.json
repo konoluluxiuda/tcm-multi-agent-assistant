@@ -1,0 +1,33 @@
+{
+  "id": "I01",
+  "rule_route": null,
+  "proposal": {
+    "action": "clarify",
+    "entities": [
+      "虚构试验叶"
+    ],
+    "unresolved_requirements": [
+      "对象“虚构试验叶”名称存疑，需确认是否为真实药材名称",
+      "“能派上哪些用场”指向不明确：是查询药材的功效/主治条目，还是咨询本服务能提供哪些功能"
+    ]
+  },
+  "route": {
+    "tool": "assistant",
+    "request": {
+      "topic": "intent_clarification",
+      "planner_failed": true
+    },
+    "mode": "model",
+    "reason": "model_intent_fallback",
+    "intent_status": "invalid_output",
+    "intent_model_calls": 1,
+    "intent_duration_ms": 3101.18
+  },
+  "usage": {
+    "input_tokens": 3404,
+    "output_tokens": 407,
+    "total_tokens": 3811
+  },
+  "passed": false,
+  "failure": "invalid_or_unavailable"
+}

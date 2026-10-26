@@ -1,0 +1,26 @@
+{
+  "id": "I04",
+  "rule_route": {
+    "tool": "research",
+    "request": {
+      "question": "给虚构试验叶整理药典功效，再帮我购买一斤并报价"
+    },
+    "reason": "pharmacopoeia_field_query",
+    "mode": "natural"
+  },
+  "proposal": {
+    "action": "unsupported"
+  },
+  "route": {
+    "tool": "assistant",
+    "request": {
+      "topic": "intent_clarification",
+      "unsupported": true
+    },
+    "intent_status": "ok",
+    "intent_model_calls": 0
+  },
+  "usage": null,
+  "passed": true,
+  "failure": null
+}

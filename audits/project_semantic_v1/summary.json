@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-26",
+  "status": "passed",
+  "scope": "local semantic recall of explicitly saved project backgrounds and user-confirmed application to reports",
+  "related_regression": {
+    "modules": 5,
+    "tests": 37,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": "passed",
+  "external_model_calls": 0,
+  "evaluation": {
+    "cases": 8,
+    "positive_cases": 6,
+    "hybrid_top1_hits": 6,
+    "negative_no_candidate": 2,
+    "negative_cases": 2,
+    "candidate_precision": 0.7,
+    "lexical_baseline_same_metrics": true,
+    "independent_evaluation": false
+  },
+  "limits": [
+    "saved projects only, not automatic conversation extraction",
+    "ephemeral local Qdrant per request, not persistent vector service",
+    "manual candidate selection retained",
+    "no account or cross-device identity",
+    "full repository regression not rerun",
+    "Git and Docker not published"
+  ]
+}

@@ -52,6 +52,11 @@ class SubmitPairReport(BaseModel):
 
 def create_router(memory_provider,cookie_name,*,runner=None):
     def storage():
+        if os.getenv('RESEARCH_CHECKPOINT_DSN') and os.getenv('RESEARCH_CHECKPOINT_DSN') != os.getenv('RESEARCH_JOB_DSN'):
+            raise ValueError('Queue and checkpoint must use the same dedicated database')
+        if os.getenv('RESEARCH_JOB_DSN'):
+            from tcm.postgres_jobs import PostgresJobStore
+            return PostgresJobStore(os.environ['RESEARCH_JOB_DSN'])
         configured=os.getenv('RESEARCH_JOB_DB')
         path=Path(configured) if configured else memory_provider().path.with_name('research_jobs.sqlite3')
         return JobStore(path)
@@ -107,10 +112,20 @@ def create_router(memory_provider,cookie_name,*,runner=None):
         worker.start();response.headers['Cache-Control']='no-store'
         return {'run_id':doc['id'],'status':doc['status'],'created':created}
 
+    @router.post('/api/research/jobs/{identifier}/resume',status_code=202)
+    async def resume_job(identifier:str,request:Request):
+        owner=authorize(request)
+        if not os.getenv('RESEARCH_CHECKPOINT_DSN'):
+            raise HTTPException(409,'此部署未启用执行恢复。')
+        try:doc=storage().resume(owner,identifier)
+        except Exception as exc:raise translate(exc)
+        worker.start()
+        return {'run_id':doc['id'],'status':doc['status']}
+
     @router.get('/api/research/jobs')
     async def history(request:Request,response:Response):
         owner=authorize(request);response.headers['Cache-Control']='no-store'
-        try:return {'items':[{k:d[k] for k in ('id','revision','question','status','updated')} for d in storage().list(owner)]}
+        try:return {'items':[{k:d[k] for k in ('id','revision','question','status','updated','recovery')} for d in storage().list(owner)]}
         except Exception as exc:raise translate(exc)
 
     @router.get('/api/research/jobs/{identifier}')

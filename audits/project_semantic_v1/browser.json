@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "actual_local_embedding": true,
+  "chat_recall_after_reload": true,
+  "current_question_overrides_saved": true,
+  "report_source_field": "贮藏",
+  "stale_card_rejected": true,
+  "deleted_not_recalled": true,
+  "other_identity_no_memory": true,
+  "ordinary_chat_unchanged": true,
+  "javascript_errors": [],
+  "external_model_calls": 0
+}

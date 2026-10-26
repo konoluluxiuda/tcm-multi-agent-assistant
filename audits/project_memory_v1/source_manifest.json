@@ -1,0 +1,10 @@
+{
+  "app.py": "ad9f0787ce7ff3526118478961aba5d575d187ebec36a467da8b6c288043dc2c",
+  "tcm/project_memory.py": "c6d399bc943572c5c7fb1d73867ff2197d2ac32e73bd78654768394ca602880f",
+  "tcm/project_memory_api.py": "9bc5469a5080b456e7a2c5cebb0943874e147fc53109ae3aac99da1ec85e6edf",
+  "templates/index.html": "341b1ace2fad791e663d4a0356cfdec244ae62e8c9b8da921567f077a1fecba1",
+  "tcm/research_runs.js": "12811b8f1d4575620d35f1d7061de0d5fe52e53b75b6434869e455aada02f6cf",
+  "tests/test_project_memory.py": "a0a977c09d790ffbdce95e0a946d7488383484b45c035861264bc33b48955dc9",
+  "tests/test_research_deployment.py": "eb1627f2f5d033bd94f40d273b5ba160869ce1dd5f29413e70629678b099a5ab",
+  "scripts/check_project_memory_browser.py": "d1c725e2561926ffc9a6d5a49964c9e3c394cedc37b944ee8ebe741e4885342f"
+}

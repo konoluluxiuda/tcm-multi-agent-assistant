@@ -1,0 +1,13 @@
+{
+  "split": "frozen_synthetic_development_not_user_accuracy",
+  "cases": [
+    {"id":"I01","question":"请把虚构试验叶能派上哪些用场的条目找给我","expected":{"action":"research","entities":["虚构试验叶"],"fields":["功能与主治"],"priority_field":null}},
+    {"id":"I02","question":"虚构试验叶能派什么用场、每回取多少，两项都留着，后一项放最前","expected":{"action":"research","entities":["虚构试验叶"],"fields":["功能与主治","用法与用量"],"priority_field":"用法与用量"}},
+    {"id":"I03","question":"只看虚构试验叶胶囊能派上什么用场的条目，不要换成原药材","expected":{"action":"research","entities":["虚构试验叶胶囊"],"fields":["功能与主治"],"priority_field":null}},
+    {"id":"I04","question":"给虚构试验叶整理药典功效，再帮我购买一斤并报价","expected":{"action":"unsupported"}},
+    {"id":"I05","question":"虚构试验叶的药典记载与Example Synthetic Leaf的新论文都要整理，别漏掉任何一边","expected":{"action":"clarify"}},
+    {"id":"I06","question":"把它能派上什么用场的那段找来，我还没说名字","expected":{"action":"clarify"}},
+    {"id":"I07","question":"咱们这里装的两套数据分别记录什么，各能帮我核对什么","expected":{"action":"dataset_info"}},
+    {"id":"I08","question":"虚构试验叶的形貌和能派上的用场都需要，形貌那部分排在第一段","expected":{"action":"research","entities":["虚构试验叶"],"fields":["性状","功能与主治"],"priority_field":"性状"}}
+  ]
+}

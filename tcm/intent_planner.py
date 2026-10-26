@@ -63,6 +63,9 @@ class QueryIntent(BaseModel):
         if len(set(self.entities))!=len(self.entities) or len(set(self.fields))!=len(self.fields):raise ValueError('Duplicate slots')
         if len(set(self.datasets))!=len(self.datasets) or (self.datasets and self.action!='dataset_info'):
             raise ValueError('Invalid dataset scope')
+        # Stop actions may mention objects diagnostically, but cannot carry executable slots.
+        if self.action in ('clarify','unsupported'):
+            self.entities=[]
         if self.action in ('overview','capabilities','dataset_info','clarify','unsupported'):
             if self.entities or self.fields or self.relation_kind is not None:raise ValueError('Stopped task cannot query')
         elif self.action=='herb_profile':
@@ -79,10 +82,12 @@ class QueryIntent(BaseModel):
 
 def grounded(entity,question):
     from tcm.mineru_guards import PROCESS_PREFIXES
+    from tcm.request_boundaries import chinese_context
     for match in re.finditer(re.escape(entity),question,flags=re.I if entity.isascii() else 0):
         before,after=question[:match.start()],question[match.end():]
         if any(before.endswith(p) for p in (*PROCESS_PREFIXES,'假','伪','非','不是','不查','不要')):continue
         if re.match(r'(?:的)?(?:提取物|浸膏|挥发油|总黄酮|总皂苷|炭|煎剂|颗粒|胶囊)',after):continue
+        if not entity.isascii() and not chinese_context(before,after):continue
         if entity.isascii() and (before and before[-1].isascii() and before[-1].isalnum() or after and after[0].isascii() and after[0].isalnum()):continue
         return True
     return False
@@ -93,7 +98,8 @@ def mapped(intent,question):
     action=intent.action
     if intent.priority_evidence and intent.priority_evidence not in question:
         raise ValueError('Ungrounded priority evidence')
-    if action not in ('clarify','unsupported') and re.search(r'价格|采购|售价|购买|处方|配药',question):
+    from tcm.request_boundaries import unsupported_requirement
+    if action not in ('clarify','unsupported') and unsupported_requirement(question):
         raise ValueError('Unsupported requirements cannot disappear')
     if action in ('clarify','unsupported'):
         return {'tool':'assistant','request':{'topic':'intent_clarification','unsupported':action=='unsupported'}}

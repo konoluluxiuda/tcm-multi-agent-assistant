@@ -1,0 +1,33 @@
+{
+  "id": "I08",
+  "rule_route": null,
+  "proposal": {
+    "action": "research",
+    "entities": [
+      "虚构试验叶"
+    ],
+    "fields": [
+      "性状",
+      "功能与主治"
+    ],
+    "priority_field": "性状",
+    "priority_evidence": "虚构试验叶的形貌和能派上的用场都需要，形貌那部分排在第一段"
+  },
+  "route": {
+    "tool": "research",
+    "request": {
+      "question": "虚构试验叶的性状与功能与主治，先列性状",
+      "original_question": "虚构试验叶的形貌和能派上的用场都需要，形貌那部分排在第一段",
+      "intent_fields": [
+        "性状",
+        "功能与主治"
+      ],
+      "priority_field": "性状"
+    },
+    "intent_status": "ok",
+    "intent_model_calls": 0
+  },
+  "usage": null,
+  "passed": true,
+  "failure": null
+}

@@ -1,0 +1,4 @@
+-r requirements-research-chat.txt
+langgraph-checkpoint-postgres==2.0.16
+psycopg[binary]==3.2.6
+psycopg-pool==3.2.6

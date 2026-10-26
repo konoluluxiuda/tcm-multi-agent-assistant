@@ -93,3 +93,17 @@ class DeploymentTests(unittest.TestCase):
         with patch.dict('os.environ', {'RESEARCH_TOOLS_ONLY': '0'}), \
              patch.object(self.app, 'process_query', return_value={'messages': [type('Message', (), {'content': 'fixture'})()], 'agent_name': 'fixture'}):
             self.assertEqual(self.client.post('/chat', json={'query': 'hello'}).status_code, 200)
+
+    def test_project_writes_in_restricted_profile(self):
+        from agents.conversation_store import ConversationStore
+        root = Path(self.temp.name)
+        memory = ConversationStore(root / 'memory.sqlite3')
+        with patch.dict('os.environ', {'RESEARCH_TOOLS_ONLY':'1', 'ENABLE_RESEARCH_TASKS':'1',
+                                      'ETCM_DISEASE_DB':'fixture', 'RESEARCH_PROJECT_DB':str(root/'projects.sqlite3')}), \
+             patch.object(self.app.agent_runtime, 'memory', memory):
+            self.client.cookies.set(self.app.SESSION_COOKIE_NAME, memory.new_cookie())
+            result = self.client.post('/api/research/projects', json={'title':'研究', 'herbs':['示例叶'], 'question':'贮藏'})
+            self.assertEqual(result.status_code, 201, result.text)
+            identifier = result.json()['id']
+            self.assertEqual(self.client.delete('/api/research/projects/'+identifier+'?revision=1').status_code, 200)
+            self.assertEqual(self.client.post('/api/research/projects-other',json={}).status_code,403)

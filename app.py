@@ -30,6 +30,7 @@ from tcm.assistant_router import resolve as resolve_tool_request
 from source_access import SourceCatalog, PrivateArtifacts, create_source_router
 from tcm.bookmark_api import create_router as create_bookmark_router, enabled as bookmarks_enabled
 from tcm.research_job_api import create_router as create_job_router
+from tcm.project_memory_api import create_router as create_project_router
 from tcm.research_run_api import create_router as create_run_router, enabled as runs_enabled
 from tcm.research_task_api import create_router as create_task_router, enabled as tasks_enabled
 from tcm.request_observability import install as install_chat_observability, mark as mark_chat_request
@@ -66,6 +67,7 @@ app.include_router(create_bookmark_router(lambda: agent_runtime.memory, lambda: 
 app.include_router(create_task_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME))
 app.include_router(create_run_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME))
 app.include_router(create_job_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME))
+app.include_router(create_project_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME))
 image_request_lock = threading.Lock()
 
 
@@ -114,6 +116,7 @@ async def enforce_features(request: Request, call_next):
     if (env_bool('RESEARCH_TOOLS_ONLY') and request.method in ('POST', 'PUT', 'PATCH', 'DELETE')
             and request.url.path not in ('/chat', '/conversation', '/api/evidence/report', '/api/research/runs/profile')
             and not (request.url.path == '/api/research/bookmarks' or request.url.path.startswith('/api/research/bookmarks/'))
+            and not (request.url.path == '/api/research/projects' or request.url.path.startswith('/api/research/projects/'))
             and not (request.url.path == '/api/research/jobs' or request.url.path.startswith('/api/research/jobs/'))
             and not (request.url.path == '/api/research/runs' or request.url.path.startswith('/api/research/runs/'))
             and not (request.url.path == '/api/research/tasks' or request.url.path.startswith('/api/research/tasks/'))):
@@ -485,6 +488,22 @@ def chat(
 ):
     """Process user text query through the multi-agent system."""
     mark_chat_request(http_request, phase='routing')
+    from tcm.project_semantic import enabled as memory_enabled, memory_reference, recall as recall_projects, store_for, owner_key
+    from tcm.research_run_api import enabled as research_enabled
+    if request.answer_mode == 'auto' and research_enabled() and memory_enabled() and memory_reference(request.query):
+        if not 1 <= len(request.query.strip()) <= 400:
+            raise HTTPException(422, '记忆检索问题须为1–400字符。')
+        session_id = session_cookie(session_id)
+        try:
+            memory_result = recall_projects(store_for(agent_runtime.memory), owner_key(session_id), request.query)
+        except (OSError, sqlite3.Error):
+            memory_result = {'status':'unavailable', 'items':[], 'external_calls':0}
+        set_session_cookie(response, session_id)
+        response.headers['Cache-Control'] = 'no-store'
+        mark_chat_request(http_request, phase='response', tool='project_memory', model_calls=0)
+        text = {'candidates':'找到以下研究项目，请选择要继续的项目。', 'no_memory':'还没有保存研究项目，可在“本地研究”中创建。',
+                'no_match':'没有找到足够相关的项目，请补充项目名称或药材。', 'unavailable':'本地记忆检索暂不可用，可在“本地研究”中手动选择项目。'}[memory_result['status']]
+        return {'status':'success', 'response':text, 'agent':'项目记忆', 'project_memory':memory_result}
     selected = resolve_tool_request(request.query)
     mark_chat_request(http_request, tool=selected['tool'] if selected else 'unknown')
     mode = request.answer_mode

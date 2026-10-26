@@ -1,0 +1,36 @@
+{
+  "id": "I04",
+  "rule_route": {
+    "tool": "research",
+    "request": {
+      "question": "给虚构试验叶整理药典功效，再帮我购买一斤并报价"
+    },
+    "reason": "pharmacopoeia_field_query",
+    "mode": "natural"
+  },
+  "proposal": {
+    "action": "unsupported",
+    "entities": [
+      "虚构试验叶"
+    ]
+  },
+  "route": {
+    "tool": "assistant",
+    "request": {
+      "topic": "intent_clarification",
+      "planner_failed": true
+    },
+    "mode": "model",
+    "reason": "model_intent_fallback",
+    "intent_status": "invalid_output",
+    "intent_model_calls": 1,
+    "intent_duration_ms": 1013.27
+  },
+  "usage": {
+    "input_tokens": 3405,
+    "output_tokens": 141,
+    "total_tokens": 3546
+  },
+  "passed": false,
+  "failure": "invalid_or_unavailable"
+}

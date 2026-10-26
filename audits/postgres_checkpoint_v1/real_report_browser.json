@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "question": "当归买回来放在哪里保存？",
+      "first_field": "贮藏",
+      "hits": 1,
+      "source_preserved": true
+    },
+    {
+      "question": "整理当归的资料，想知道它主要用来做什么。",
+      "first_field": "功能与主治",
+      "hits": 1,
+      "source_preserved": true
+    },
+    {
+      "question": "当归的功效和贮藏都需要，不过请先列保存要求。",
+      "first_field": "贮藏",
+      "hits": 2,
+      "source_preserved": true
+    }
+  ],
+  "history_reloaded": true,
+  "javascript_errors": []
+}

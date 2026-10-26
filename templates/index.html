@@ -396,6 +396,26 @@
                     <details class="px-3" id="local-research-panel">
                         <summary>本地研究 · 跨来源报告 / 疾病靶点</summary>
                         <p>疾病模式查询靶点；报告模式输入药材名，并列查看药典字段与 ETCM 基础属性。离线后台执行；刷新或关闭页面不会取消，需点击“取消”停止。记录保存在服务器，可在本会话回看。清除会话或Cookie后无法从新会话找回。</p>
+                        <section id="project-memory-panel">
+                            <h4>研究项目记忆</h4>
+                            <p>保存常用药材和关注问题，下次选择项目即可填入报告。仅保存在本地；不作为药学事实。清除Cookie后无法找回。删除项目不删除已生成的研究历史。</p>
+                            <form id="project-search-form">
+                                <label>查找研究背景 <input name="query" required maxlength="400" placeholder="继续上次那组补血活血药的比较"></label>
+                                <button type="submit">检索项目记忆</button>
+                            </form>
+                            <div id="project-search-results" aria-live="polite"></div>
+                            <button type="button" id="project-refresh">刷新项目</button>
+                            <div id="project-list"></div>
+                            <form id="project-memory-form">
+                                <label>项目名称 <input name="title" required maxlength="80"></label>
+                                <label>药材 <input name="herb" required maxlength="80"></label>
+                                <label>另一味药（可选） <input name="second" maxlength="80"></label>
+                                <label>关注问题 <input name="question" required maxlength="400" placeholder="功效及贮藏"></label>
+                                <button type="submit">保存项目</button>
+                                <button type="button" id="project-new">新建项目</button>
+                            </form>
+                            <p id="project-status" role="status"></p>
+                        </section>
                         <form id="local-research-form">
                             <label>研究类型 <select data-research-mode><option value="disease">疾病靶点</option><option value="report">药典 + ETCM 报告</option><option value="compare">两味药联合比较</option></select></label>
                             <label>研究对象 <input required maxlength="200" placeholder="疾病英文名或来源 ID"></label>
@@ -1898,7 +1918,7 @@
                     const cleanText = removeMarkdown(data.response);
                     
                     // Build HTML content for the response with audio controls
-                    let assistantHtml = (data.tcm || data.research || data.pubmed || data.assistant || data.evidence_answer) ? '' : `
+                    let assistantHtml = (data.tcm || data.research || data.pubmed || data.assistant || data.evidence_answer || data.project_memory) ? '' : `
                         <div class="agent-tag">${data.agent}</div>
                         <div>${marked.parse(data.response)}</div>
                         <div class="audio-controls mt-2">
@@ -1947,7 +1967,9 @@
                         }
                     }
                     
-                    if (data.evidence_answer) {
+                    if (data.project_memory) {
+                        window.renderProjectMemory(assistantMessageElement, data.project_memory);
+                    } else if (data.evidence_answer) {
                         assistantMessageElement.dataset.evidenceAnswerStatus = data.evidence_answer.status;
                         const body=document.createElement('div');body.style.whiteSpace='pre-wrap';body.textContent=data.response;assistantMessageElement.append(body);
                         const trace=document.createElement('details');const summary=document.createElement('summary');summary.textContent='来源与调用记录';trace.append(summary);

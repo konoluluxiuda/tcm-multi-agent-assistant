@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "concurrent_connections": 8,
+  "claimed_unique_jobs": 4,
+  "migration_idempotent": true,
+  "sqlite_import": {
+    "jobs": 1,
+    "events": 2,
+    "direction": "sqlite_to_postgres"
+  },
+  "sqlite_rollback": {
+    "jobs": 1,
+    "events": 2,
+    "direction": "postgres_to_sqlite"
+  },
+  "nonempty_target_rejected": true,
+  "external_calls": 0
+}

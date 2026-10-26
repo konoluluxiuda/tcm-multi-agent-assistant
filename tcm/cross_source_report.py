@@ -145,7 +145,7 @@ class ReportState(TypedDict, total=False):
     report: dict
 
 
-async def run_report(payload, *, on_state=None, backend=local_branch):
+async def run_report(payload, *, on_state=None, backend=local_branch, checkpointer=None, thread_id=None):
     from langgraph.graph import StateGraph, START, END
     herb, question = payload['herb'], payload['question']
     async def branch(name):
@@ -174,12 +174,22 @@ async def run_report(payload, *, on_state=None, backend=local_branch):
     graph.add_node('assemble', assemble)
     graph.add_edge(START, 'text_research'); graph.add_edge(START, 'structured_research')
     graph.add_edge(['text_research', 'structured_research'], 'assemble'); graph.add_edge('assemble', END)
+    compiled=graph.compile(checkpointer=checkpointer)
+    config={'configurable':{'thread_id':thread_id}} if checkpointer else None
+    initial={'text': {}, 'structured': {}}
+    if checkpointer:
+        if not thread_id:raise ValueError('Checkpoint requires a private thread identifier')
+        previous=await compiled.aget_state(config)
+        if previous.values:
+            initial=None
+            if not previous.next and previous.values.get('report'):
+                return previous.values['report']
     if on_state is None:
         # LangGraph 0.3 forces values mode for nested graphs; consume its final state.
-        final = await graph.compile().ainvoke({'text': {}, 'structured': {}})
+        final = await compiled.ainvoke(initial,config=config)
         return final['report']
     state = {}; events = []
-    async for update in graph.compile().astream({'text': {}, 'structured': {}}, stream_mode='updates'):
+    async for update in compiled.astream(initial, config=config, stream_mode='updates'):
         for name, values in update.items():
             # Nested graphs may attach __metadata__ to update frames.
             if name not in ('text_research', 'structured_research', 'assemble') or not values:

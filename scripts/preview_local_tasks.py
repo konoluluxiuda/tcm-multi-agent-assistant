@@ -20,6 +20,7 @@ def main():
     parser.add_argument('--diseases',type=Path,help='Optional completed disease source catalog for local analysis')
     parser.add_argument('--dense-python', type=Path,
                         help='Optional local Python with ONNX/tokenizers/numpy; enables existing local BGE cache, no downloads')
+    parser.add_argument('--semantic-memory', action='store_true', help='Enable local project memory retrieval; requires --dense-python, never sends memory to providers')
     parser.add_argument('--qdrant-generation',type=Path,help='Optional immutable local Qdrant generation; requires --dense-python')
     parser.add_argument('--reranker-model',type=Path,help='Optional pinned local ONNX cross-encoder directory; requires --dense-python')
     args = parser.parse_args()
@@ -80,6 +81,10 @@ def main():
         'ETCM_DISEASE_DB': str(args.diseases.resolve()) if args.diseases else '',
         **{key: str(path) for key, path in {**files, **directories, **state_files}.items()},
     }
+    if args.semantic_memory and not args.dense_python:
+        parser.error('--semantic-memory requires --dense-python')
+    environment['PROJECT_MEMORY_PYTHON'] = str(args.dense_python.absolute()) if args.semantic_memory else ''
+    environment['PROJECT_MEMORY_MODEL'] = str(ROOT / 'var/evidence_assistant_v1/local_bge_small_zh') if args.semantic_memory else ''
     if args.reranker_model and not args.dense_python:
         parser.error('--reranker-model requires --dense-python')
     environment['LOCAL_RERANKER_MODEL'] = str(args.reranker_model.resolve()) if args.reranker_model else ''

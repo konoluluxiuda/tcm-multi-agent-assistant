@@ -1,0 +1,33 @@
+{
+  "id": "I02",
+  "rule_route": null,
+  "proposal": {
+    "action": "research",
+    "entities": [
+      "虚构试验叶"
+    ],
+    "fields": [
+      "功能与主治",
+      "用法与用量"
+    ],
+    "priority_field": "用法与用量",
+    "priority_evidence": "虚构试验叶能派什么用场、每回取多少，两项都留着，后一项放最前"
+  },
+  "route": {
+    "tool": "research",
+    "request": {
+      "question": "虚构试验叶的功能与主治与用法与用量，先列用法与用量",
+      "original_question": "虚构试验叶能派什么用场、每回取多少，两项都留着，后一项放最前",
+      "intent_fields": [
+        "功能与主治",
+        "用法与用量"
+      ],
+      "priority_field": "用法与用量"
+    },
+    "intent_status": "ok",
+    "intent_model_calls": 0
+  },
+  "usage": null,
+  "passed": true,
+  "failure": null
+}

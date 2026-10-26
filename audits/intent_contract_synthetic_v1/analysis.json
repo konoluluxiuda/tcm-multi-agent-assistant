@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-26",
+  "evaluation": "frozen_synthetic_development",
+  "provider_host": "api.deepseek.com",
+  "model": "deepseek-flash",
+  "attempted_calls": 8,
+  "strict_passed": 3,
+  "total": 8,
+  "retries": 0,
+  "corpus_or_history_sent": false,
+  "mean_planner_ms": 2075.49375,
+  "usage": {
+    "input_tokens": 27260,
+    "output_tokens": 2411,
+    "total_tokens": 29671
+  },
+  "ambiguous_reference_cases": [
+    "I03"
+  ],
+  "production_fallback_eligible": 6,
+  "production_fallback_eligible_passed": 3,
+  "deployment_enabled": false,
+  "cost": null,
+  "source_sha256": {
+    "eval/intent_contract_synthetic_v1.json": "c3d9914230b2e0784b4208f770654a22d09b3442a99eed56c2f9007f3276b046",
+    "scripts/eval_intent_contract_live.py": "4654a011aa959af8b766512f2a74483515f087d63c1fbb0a569a4d657be69581",
+    "tests/test_intent_contract_eval.py": "b73488fbe72d0ade6f25aa478d222730d57c8d71091e34b5b9760d101e94f938",
+    "tcm/intent_planner.py": "91803a9f3e0259e70845aa6d968a5e3a1f021db8b72591637e5ce5cffc7d90a5"
+  }
+}

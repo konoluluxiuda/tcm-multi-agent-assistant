@@ -1,0 +1,30 @@
+{
+  "id": "I03",
+  "rule_route": null,
+  "proposal": {
+    "action": "research",
+    "entities": [
+      "虚构试验叶胶囊"
+    ],
+    "fields": [
+      "功能与主治"
+    ],
+    "priority_field": null
+  },
+  "route": {
+    "tool": "research",
+    "request": {
+      "question": "虚构试验叶胶囊的功能与主治",
+      "original_question": "只看虚构试验叶胶囊能派上什么用场的条目，不要换成原药材",
+      "intent_fields": [
+        "功能与主治"
+      ],
+      "priority_field": null
+    },
+    "intent_status": "ok",
+    "intent_model_calls": 0
+  },
+  "usage": null,
+  "passed": true,
+  "failure": null
+}

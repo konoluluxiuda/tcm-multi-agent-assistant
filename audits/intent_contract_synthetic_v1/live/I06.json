@@ -1,0 +1,29 @@
+{
+  "id": "I06",
+  "rule_route": null,
+  "proposal": {
+    "action": "clarify",
+    "unresolved_requirements": [
+      "缺少药材名称，无法确定要查询哪一味药的功效/功能主治内容"
+    ]
+  },
+  "route": {
+    "tool": "assistant",
+    "request": {
+      "topic": "intent_clarification",
+      "unsupported": false
+    },
+    "mode": "model",
+    "reason": "model_intent_fallback",
+    "intent_status": "ok",
+    "intent_model_calls": 1,
+    "intent_duration_ms": 923.08
+  },
+  "usage": {
+    "input_tokens": 3405,
+    "output_tokens": 110,
+    "total_tokens": 3515
+  },
+  "passed": true,
+  "failure": null
+}

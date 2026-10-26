@@ -1,0 +1,26 @@
+{
+  "id": "I05",
+  "rule_route": {
+    "tool": "assistant",
+    "request": {
+      "topic": "clarify_sources"
+    },
+    "reason": "multiple_sources",
+    "mode": "natural"
+  },
+  "proposal": {
+    "action": "clarify"
+  },
+  "route": {
+    "tool": "assistant",
+    "request": {
+      "topic": "intent_clarification",
+      "unsupported": false
+    },
+    "intent_status": "ok",
+    "intent_model_calls": 0
+  },
+  "usage": null,
+  "passed": true,
+  "failure": null
+}

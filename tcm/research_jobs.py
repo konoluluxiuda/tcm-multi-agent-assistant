@@ -24,7 +24,7 @@ class JobStore:
         self.path=Path(path);self.clock=clock
         if self.path.is_symlink():raise ValueError('Queue cannot be a symlink')
         self.path.parent.mkdir(parents=True,exist_ok=True,mode=0o700)
-        with closing(sqlite3.connect(self.path)) as db,db:
+        with closing(self.connect()) as db,db:
             db.execute('BEGIN IMMEDIATE')
             tables={r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
             if tables:
@@ -37,6 +37,9 @@ class JobStore:
                 db.execute('CREATE INDEX jobs_claim ON jobs(status,updated)')
         os.chmod(self.path,0o600)
 
+    def connect(self):
+        return sqlite3.connect(self.path)
+
     @staticmethod
     def event(db,doc):
         snapshot=doc.get('snapshot') or {}
@@ -47,7 +50,7 @@ class JobStore:
 
     def enqueue(self,owner,question,key,*,payload=None):
         fingerprint=hashlib.sha256((question if payload is None else json.dumps({'question':question,'payload':payload},sort_keys=True,ensure_ascii=False)).encode()).hexdigest()
-        with closing(sqlite3.connect(self.path)) as db,db:
+        with closing(self.connect()) as db,db:
             db.execute('BEGIN IMMEDIATE')
             row=db.execute('SELECT fingerprint,document FROM jobs WHERE owner=? AND request_key=?',(owner,key)).fetchone()
             if row:
@@ -65,18 +68,18 @@ class JobStore:
         return doc,True
 
     def get(self,owner,identifier):
-        with closing(sqlite3.connect(self.path)) as db:
+        with closing(self.connect()) as db:
             row=db.execute('SELECT document FROM jobs WHERE owner=? AND id=?',(owner,identifier)).fetchone()
         if not row:raise KeyError(identifier)
         return json.loads(row[0])
 
     def list(self,owner):
-        with closing(sqlite3.connect(self.path)) as db:
+        with closing(self.connect()) as db:
             rows=db.execute('SELECT document FROM jobs WHERE owner=? ORDER BY updated DESC,id LIMIT 20',(owner,)).fetchall()
         return [json.loads(r[0]) for r in rows]
 
     def claim(self,worker):
-        with closing(sqlite3.connect(self.path)) as db,db:
+        with closing(self.connect()) as db,db:
             db.execute('BEGIN IMMEDIATE')
             # Expired workers are fenced off; uncertain work is never silently retried.
             for identifier,raw in db.execute("SELECT id,document FROM jobs WHERE status='running' AND lease<?",(self.clock(),)).fetchall():
@@ -90,7 +93,7 @@ class JobStore:
             self.event(db,doc);return row[0],doc
 
     def heartbeat(self,identifier,worker):
-        with closing(sqlite3.connect(self.path)) as db,db:
+        with closing(self.connect()) as db,db:
             changed=db.execute("UPDATE jobs SET lease=? WHERE id=? AND worker=? AND status='running' AND lease>=?",(self.clock()+30,identifier,worker,self.clock())).rowcount
             if changed!=1:raise JobConflict('Lease lost')
             return bool(db.execute('SELECT cancel FROM jobs WHERE id=?',(identifier,)).fetchone()[0])
@@ -100,7 +103,7 @@ class JobStore:
         updated={**doc,'revision':doc['revision']+1,'status':status,'reason':reason,'updated':self.clock()}
         if snapshot is not None:updated['snapshot']=snapshot
         if result is not None:updated['result']=result
-        with closing(sqlite3.connect(self.path)) as db,db:
+        with closing(self.connect()) as db,db:
             db.execute('BEGIN IMMEDIATE')
             # Cancellation wins over a concurrent completion commit.
             row=db.execute("SELECT cancel FROM jobs WHERE id=? AND owner=? AND worker=? AND status='running' AND revision=? AND lease>=?",(doc['id'],owner,worker,doc['revision'],self.clock())).fetchone()
@@ -113,7 +116,7 @@ class JobStore:
         return updated
 
     def cancel(self,owner,identifier):
-        with closing(sqlite3.connect(self.path)) as db,db:
+        with closing(self.connect()) as db,db:
             db.execute('BEGIN IMMEDIATE')
             row=db.execute('SELECT document FROM jobs WHERE id=? AND owner=?',(identifier,owner)).fetchone()
             if not row:raise KeyError(identifier)
@@ -127,12 +130,29 @@ class JobStore:
     def events(self,owner,identifier,after):
         doc=self.get(owner,identifier)
         if after>doc['revision']:raise JobConflict('Event cursor exceeds revision')
-        with closing(sqlite3.connect(self.path)) as db:
+        with closing(self.connect()) as db:
             rows=db.execute('SELECT payload FROM job_events WHERE job_id=? AND sequence>? ORDER BY sequence LIMIT 100',(identifier,after)).fetchall()
         return doc,[json.loads(r[0]) for r in rows]
 
+    def resume(self,owner,identifier):
+        with closing(self.connect()) as db,db:
+            db.execute('BEGIN IMMEDIATE')
+            row=db.execute('SELECT document FROM jobs WHERE owner=? AND id=?',(owner,identifier)).fetchone()
+            if not row:raise KeyError(identifier)
+            doc=json.loads(row[0])
+            if doc['status']!='interrupted' or doc.get('recovery')!='checkpoint':
+                raise JobConflict('Only interrupted checkpoint jobs may resume')
+            if db.execute("SELECT count(*) FROM jobs WHERE status IN ('queued','running') AND owner=?",(owner,)).fetchone()[0]:
+                raise JobBusy('An active job already exists')
+            if db.execute("SELECT count(*) FROM jobs WHERE status IN ('queued','running')").fetchone()[0]>=20:raise JobBusy('Queue full')
+            doc.update(status='queued',reason='resume_requested',revision=doc['revision']+1,updated=self.clock())
+            db.execute('UPDATE jobs SET status=?,revision=?,updated=?,worker=NULL,lease=NULL,cancel=0,document=? WHERE id=?',
+                       ('queued',doc['revision'],doc['updated'],json.dumps(doc),identifier))
+            self.event(db,doc)
+            return doc
+
     def delete(self,owner,identifier):
-        with closing(sqlite3.connect(self.path)) as db,db:
+        with closing(self.connect()) as db,db:
             db.execute('BEGIN IMMEDIATE')
             row=db.execute('SELECT status FROM jobs WHERE id=? AND owner=?',(identifier,owner)).fetchone()
             if not row:raise KeyError(identifier)
@@ -177,7 +197,14 @@ class ResearchWorker:
         try:
             if doc.get('payload',{}).get('kind')=='cross_source':
                 from tcm.cross_source_report import run_report
-                work=asyncio.create_task(run_report(doc['payload'],on_state=persist))
+                if os.getenv('RESEARCH_CHECKPOINT_DSN'):
+                    from tcm.report_checkpoint import run_checkpoint_report
+                    doc={**doc,'recovery':'checkpoint'}
+                    doc=store.save(owner,doc,self.identity)
+                    work=asyncio.create_task(run_checkpoint_report(owner,doc,on_state=persist))
+                else:
+                    if doc.get('recovery')=='checkpoint':raise JobConflict('Checkpoint backend disabled')
+                    work=asyncio.create_task(run_report(doc['payload'],on_state=persist))
             elif doc.get('payload',{}).get('kind')=='pair_report':
                 from tcm.pair_research_report import run_pair_report
                 work=asyncio.create_task(run_pair_report(doc['payload'],on_state=persist))

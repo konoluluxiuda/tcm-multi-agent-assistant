@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "reload_recall": true,
+  "real_local_report": true,
+  "source_field": "贮藏",
+  "other_browser_isolated": true,
+  "stale_recall_blocked": true,
+  "delete_not_recalled": true,
+  "javascript_errors": [],
+  "external_model_calls": 0,
+  "comparison": {
+    "kind": "fixed_workflow_input_count_not_business_accuracy",
+    "without_project": {
+      "mode_and_fields_to_enter": 3
+    },
+    "with_saved_project": {
+      "project_selection": 1
+    },
+    "cases": 1
+  }
+}

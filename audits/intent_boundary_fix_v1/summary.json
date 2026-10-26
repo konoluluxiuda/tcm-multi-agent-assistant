@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-26",
+  "status": "fixed_with_targeted_reverification",
+  "initial_full_run": {
+    "modules": 118,
+    "tests": 995,
+    "failed_modules": [
+      "test_relation_queries.py"
+    ]
+  },
+  "final_targeted_modules": 7,
+  "final_targeted_tests": 75,
+  "final_targeted_status": "passed",
+  "full_suite_repeated_after_final_fix": false,
+  "saved_proposal_replay_passed": 5,
+  "saved_proposals_total": 8,
+  "original_live_passed": 3,
+  "external_model_calls": 0
+}

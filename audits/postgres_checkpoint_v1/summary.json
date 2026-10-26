@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-26",
+  "status": "passed",
+  "scope": "optional PostgreSQL job queue and single-herb report LangGraph checkpoint recovery",
+  "regression": {
+    "modules": 119,
+    "tests": 998,
+    "skipped": 0
+  },
+  "external_model_calls": 0,
+  "browser_attempts": [
+    {
+      "status": "failed",
+      "reason": "history API omitted recovery field; fixed"
+    },
+    {
+      "status": "failed",
+      "reason": "synthetic and real workers shared queue; isolated acceptance database"
+    },
+    {
+      "status": "passed",
+      "receipt": "browser.json"
+    }
+  ],
+  "limitations": [
+    "single-herb report only",
+    "no multi-host or rolling upgrade acceptance",
+    "no external tool exactly-once guarantee",
+    "SQLite rollback preserves terminal history, not graph checkpoints",
+    "Docker deployment not tested"
+  ]
+}

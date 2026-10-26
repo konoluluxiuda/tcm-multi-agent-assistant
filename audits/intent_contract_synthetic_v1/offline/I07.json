@@ -1,0 +1,19 @@
+{
+  "id": "I07",
+  "rule_route": null,
+  "proposal": {
+    "action": "dataset_info"
+  },
+  "route": {
+    "tool": "assistant",
+    "request": {
+      "topic": "dataset_info",
+      "datasets": []
+    },
+    "intent_status": "ok",
+    "intent_model_calls": 0
+  },
+  "usage": null,
+  "passed": true,
+  "failure": null
+}

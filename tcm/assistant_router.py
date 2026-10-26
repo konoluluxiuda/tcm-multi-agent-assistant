@@ -45,6 +45,18 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
         return route('herb', parsed, 'legacy_herb_query', 'legacy') if parsed is not None else None
     if not text or len(text) > 2000:
         return None
+    from tcm.request_boundaries import unsupported_requirement
+    if unsupported_requirement(text):
+        from tcm.intent_guidance import recognize
+        boundary = recognize(text, relation_context)
+        if boundary and boundary.get('topic') == 'personal_medication_boundary':
+            return route('assistant', boundary, 'bounded_intent_guidance')
+        from tcm.task_request import local_deliverable_hints
+        if any(token in text for token in local_deliverable_hints(text)['source_relations']):
+            return route('assistant', {'topic':'research_task_review','question':query},
+                         'local_task_inventory_review')
+        return route('assistant', {'topic':'intent_clarification','unsupported':True},
+                     'unsupported_request_requirement')
     short = re.sub(r'\s+', '', text).rstrip('？?。！!')
     from tcm.dataset_info import parse as dataset_request
     dataset = dataset_request(text)

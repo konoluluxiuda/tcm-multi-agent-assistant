@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-26",
+  "status": "passed",
+  "scope": "explicit owner-scoped project background persistence and report prefill",
+  "tests": 26,
+  "test_modules": 4,
+  "full_repository_regression": "not_rerun_this_increment",
+  "external_model_calls": 0,
+  "browser": "browser.json",
+  "initial_failures": [
+    {
+      "kind": "browser",
+      "reason": "restricted-mode middleware omitted project write routes",
+      "resolution": "exact project route allowlist and main-app regression added"
+    },
+    {
+      "kind": "unisolated tests",
+      "reason": "two legacy chat tests returned 503 when run with ambient configuration",
+      "resolution": "standard isolated test environment: temporary memory DB, dotenv disabled, no network; all 26 passed"
+    }
+  ],
+  "limitations": [
+    "explicit ID selection, no semantic recall",
+    "same signed cookie identity, no cross-device accounts",
+    "project deletion does not delete existing reports",
+    "browser stale revision check is not an atomic project/job transaction",
+    "MCP not implemented"
+  ]
+}

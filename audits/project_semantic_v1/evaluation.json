@@ -1,0 +1,250 @@
+{
+  "status": "completed",
+  "dataset_kind": "frozen_development_cases_not_independent_benchmark",
+  "dataset_sha256": "865de809e16f14b6b6cab70b0d21f98bc1f8b34268f21271c0f5cc146889e4c2",
+  "cases": [
+    {
+      "query": "继续上次当归和川芎的比较",
+      "relevant": [
+        "blood"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "blood"
+        ],
+        "dense": [
+          "blood",
+          "blood_other"
+        ],
+        "hybrid": [
+          "blood",
+          "blood_other"
+        ]
+      },
+      "cosine": {
+        "blood": 0.7012,
+        "blood_other": 0.5152,
+        "spleen": 0.4778,
+        "storage": 0.4072
+      },
+      "elapsed_ms": 1122.3
+    },
+    {
+      "query": "之前补血活血的那组研究",
+      "relevant": [
+        "blood",
+        "blood_other"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "blood",
+          "blood_other",
+          "storage"
+        ],
+        "dense": [
+          "blood_other",
+          "blood"
+        ],
+        "hybrid": [
+          "blood",
+          "blood_other"
+        ]
+      },
+      "cosine": {
+        "blood_other": 0.6804,
+        "blood": 0.6609,
+        "storage": 0.4005,
+        "spleen": 0.3878
+      },
+      "elapsed_ms": 772.9
+    },
+    {
+      "query": "我之前整理过健脾方面的草药",
+      "relevant": [
+        "spleen"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "spleen"
+        ],
+        "dense": [
+          "spleen"
+        ],
+        "hybrid": [
+          "spleen"
+        ]
+      },
+      "cosine": {
+        "spleen": 0.6802,
+        "storage": 0.485,
+        "blood_other": 0.4792,
+        "blood": 0.473
+      },
+      "elapsed_ms": 710.9
+    },
+    {
+      "query": "找回甘草应该怎么存放的项目",
+      "relevant": [
+        "storage"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "storage"
+        ],
+        "dense": [
+          "storage"
+        ],
+        "hybrid": [
+          "storage"
+        ]
+      },
+      "cosine": {
+        "storage": 0.6726,
+        "blood": 0.3647,
+        "spleen": 0.3631,
+        "blood_other": 0.3434
+      },
+      "elapsed_ms": 767.0
+    },
+    {
+      "query": "上次那两个调理脾胃的药用哪个部位",
+      "relevant": [
+        "spleen"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "spleen"
+        ],
+        "dense": [
+          "spleen",
+          "blood"
+        ],
+        "hybrid": [
+          "spleen",
+          "blood"
+        ]
+      },
+      "cosine": {
+        "spleen": 0.655,
+        "blood": 0.5002,
+        "blood_other": 0.4572,
+        "storage": 0.4419
+      },
+      "elapsed_ms": 749.0
+    },
+    {
+      "query": "之前丹参鸡血藤的功效整理",
+      "relevant": [
+        "blood_other"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "blood_other",
+          "blood",
+          "spleen"
+        ],
+        "dense": [
+          "blood_other",
+          "blood"
+        ],
+        "hybrid": [
+          "blood_other",
+          "blood"
+        ]
+      },
+      "cosine": {
+        "blood_other": 0.7357,
+        "blood": 0.5624,
+        "spleen": 0.4835,
+        "storage": 0.4006
+      },
+      "elapsed_ms": 850.0
+    },
+    {
+      "query": "如何安装显卡驱动",
+      "relevant": [],
+      "results": {
+        "no_memory": [],
+        "lexical": [],
+        "dense": [],
+        "hybrid": []
+      },
+      "cosine": {
+        "storage": 0.2667,
+        "blood": 0.2388,
+        "blood_other": 0.1954,
+        "spleen": 0.1463
+      },
+      "elapsed_ms": 880.1
+    },
+    {
+      "query": "查找我的机票报销记录",
+      "relevant": [],
+      "results": {
+        "no_memory": [],
+        "lexical": [],
+        "dense": [],
+        "hybrid": []
+      },
+      "cosine": {
+        "blood_other": 0.2598,
+        "blood": 0.2108,
+        "storage": 0.2099,
+        "spleen": 0.2087
+      },
+      "elapsed_ms": 758.9
+    }
+  ],
+  "metrics": {
+    "no_memory": {
+      "top1_hits": 0,
+      "positive_cases": 6,
+      "mean_recall_at_3": 0.0,
+      "negative_no_candidate": 2,
+      "negative_cases": 2,
+      "returned_candidates": 0,
+      "relevant_candidates": 0,
+      "candidate_precision": null
+    },
+    "lexical": {
+      "top1_hits": 6,
+      "positive_cases": 6,
+      "mean_recall_at_3": 1.0,
+      "negative_no_candidate": 2,
+      "negative_cases": 2,
+      "returned_candidates": 10,
+      "relevant_candidates": 7,
+      "candidate_precision": 0.7
+    },
+    "dense": {
+      "top1_hits": 6,
+      "positive_cases": 6,
+      "mean_recall_at_3": 1.0,
+      "negative_no_candidate": 2,
+      "negative_cases": 2,
+      "returned_candidates": 10,
+      "relevant_candidates": 7,
+      "candidate_precision": 0.7
+    },
+    "hybrid": {
+      "top1_hits": 6,
+      "positive_cases": 6,
+      "mean_recall_at_3": 1.0,
+      "negative_no_candidate": 2,
+      "negative_cases": 2,
+      "returned_candidates": 10,
+      "relevant_candidates": 7,
+      "candidate_precision": 0.7
+    }
+  },
+  "external_model_calls": 0,
+  "threshold": 0.5,
+  "automatic_application": false,
+  "interpretation": "No-memory returns no candidates by definition; this is not business task accuracy. Scores are not probabilities. Development labels only."
+}

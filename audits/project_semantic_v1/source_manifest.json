@@ -1,0 +1,14 @@
+{
+  "app.py": "2c4bd19db86b78e38b0e1b879e0a1b3bb02e30f28c650fee9260e47c527adaf4",
+  "tcm/project_memory.py": "c6d399bc943572c5c7fb1d73867ff2197d2ac32e73bd78654768394ca602880f",
+  "tcm/project_memory_api.py": "bcfee58fdf19bd8db6a38b3f9bdea3908eff3c412399c0b68603be628976a798",
+  "tcm/project_semantic.py": "6269ab11ee5cb9c6c085e24286afe8cc699a99ee867c8cf036ba4a123ee1cf1f",
+  "tcm/research_runs.js": "594fdf66e855bfb13695f45c0cba8509bcf33bb30469ba299238fcea87e61870",
+  "templates/index.html": "ef99ae002f383ae13581beaf21342c770e24999da0bd5ba8f2a121148b8b0ca2",
+  "scripts/project_memory_dense.py": "e7a09adfaf01e1a9160c142136f0dccde4b62a569eb394e0730ebc36fdf34718",
+  "scripts/preview_local_tasks.py": "358059325c59b35d7446a4c9f55d43dddf41e96e5486a3caed1e780b7e03e852",
+  "scripts/eval_project_semantic.py": "c68a479a9e49ab23180849efc5335986704726252064bc21abb7ba65fec8ca49",
+  "scripts/check_project_semantic_browser.py": "55232591f58a5871467b87cd241c5fbff851a488eca7005154173f045e970d52",
+  "tests/test_project_semantic.py": "7d62486217e8d45e94b0e716e7384a2cfa5e2775277ccf6d52f261d3cee73fe1",
+  "eval/project_semantic_v1.json": "865de809e16f14b6b6cab70b0d21f98bc1f8b34268f21271c0f5cc146889e4c2"
+}

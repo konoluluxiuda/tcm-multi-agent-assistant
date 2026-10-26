@@ -1,0 +1,26 @@
+{
+  "id": "I07",
+  "rule_route": null,
+  "proposal": {
+    "action": "dataset_info"
+  },
+  "route": {
+    "tool": "assistant",
+    "request": {
+      "topic": "dataset_info",
+      "datasets": []
+    },
+    "mode": "model",
+    "reason": "model_intent_fallback",
+    "intent_status": "ok",
+    "intent_model_calls": 1,
+    "intent_duration_ms": 765.36
+  },
+  "usage": {
+    "input_tokens": 3405,
+    "output_tokens": 67,
+    "total_tokens": 3472
+  },
+  "passed": true,
+  "failure": null
+}

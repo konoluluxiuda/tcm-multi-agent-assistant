@@ -136,6 +136,107 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!response.ok) throw new Error(typeof data.detail === 'string' ? data.detail : '研究记录暂不可用。');
         return data;
     }
+    const projectForm = document.getElementById('project-memory-form');
+    const projectStatus = document.getElementById('project-status');
+    let editingProject = null, recalledProject = null, projectVersion = 0;
+    const projectValues = () => ({title:projectForm.elements.title.value,
+        herbs:[projectForm.elements.herb.value,projectForm.elements.second.value].map(x=>x.trim()).filter(Boolean),
+        question:projectForm.elements.question.value});
+    function editProject(doc) {
+        editingProject = doc;
+        projectForm.elements.title.value = doc?.title || '';
+        projectForm.elements.herb.value = doc?.herbs[0] || '';
+        projectForm.elements.second.value = doc?.herbs[1] || '';
+        projectForm.elements.question.value = doc?.question || '';
+    }
+    async function loadProjects() {
+        if (!projectForm) return;
+        const version = ++projectVersion;
+        try {
+            const data = await api('/api/research/projects');
+            if (version !== projectVersion) return;
+            const list = document.getElementById('project-list'); list.replaceChildren();
+            if (!data.items.length) list.append(node('p','暂无项目。'));
+            for (const doc of data.items) {
+                const row = node('div', doc.title + ' · ' + doc.herbs.join(' / ') + ' · ' + doc.question + ' ');
+                const use = node('button','用于报告'), edit = node('button','编辑项目'), remove = node('button','删除项目');
+                for (const b of [use,edit,remove]) b.type = 'button';
+                use.addEventListener('click', async () => {
+                    try {
+                        const fresh = await api('/api/research/projects/' + doc.id);
+                        mode.value = fresh.herbs.length === 2 ? 'compare' : 'report';
+                        mode.dispatchEvent(new Event('change'));
+                        input.value = fresh.herbs[0]; secondHerb.value = fresh.herbs[1] || '';
+                        reportQuestion.value = fresh.question; recalledProject = fresh;
+                        projectStatus.textContent = '已填入“' + fresh.title + '”，可修改本次问题后生成报告；不会自动更新项目。';
+                    } catch (e) { projectStatus.textContent = e.message; }
+                });
+                edit.addEventListener('click', async () => {
+                    try { editProject(await api('/api/research/projects/' + doc.id)); projectStatus.textContent = '正在编辑：' + doc.title; }
+                    catch (e) { projectStatus.textContent = e.message; }
+                });
+                remove.addEventListener('click', async () => {
+                    try {
+                        await api('/api/research/projects/' + doc.id + '?revision=' + doc.revision,{method:'DELETE'});
+                        if (editingProject?.id === doc.id) editProject(null);
+                        if (recalledProject?.id === doc.id) { recalledProject = null; input.value = ''; secondHerb.value = ''; reportQuestion.value = ''; }
+                        projectStatus.textContent = '项目已删除，已有研究历史仍保留。'; await loadProjects();
+                    } catch (e) { projectStatus.textContent = e.message; }
+                });
+                row.append(use,edit,remove); list.append(row);
+            }
+        } catch (e) { projectStatus.textContent = e.message; }
+    }
+    window.renderProjectMemory = function(container, result) {
+        container.replaceChildren();
+        const messages = {candidates:'找到相关项目。选择后可修改本次问题：',no_memory:'还没有保存项目。',no_match:'没有找到足够相关的项目，请补充药材或研究方向。',unavailable:'本地语义检索暂不可用，请手动选择项目。'};
+        container.append(node('p',messages[result.status] || '无法读取项目。'));
+        for (const doc of result.items || []) {
+            const row = node('div',''); row.append(node('p',doc.title + ' · ' + doc.herbs.join(' / ') + ' · ' + doc.question));
+            const select = node('button','继续这个项目'); select.type='button';
+            select.addEventListener('click',async()=>{
+                select.disabled = true;
+                try {
+                    const applied = await api('/api/research/projects/' + doc.id + '/apply', {
+                        method:'POST',headers:{'Content-Type':'application/json'},
+                        body:JSON.stringify({revision:doc.revision,query:result.query})});
+                    mode.value = applied.herbs.length===2 ? 'compare' : 'report';mode.dispatchEvent(new Event('change'));
+                    input.value=applied.herbs[0];secondHerb.value=applied.herbs[1] || '';reportQuestion.value=applied.question;
+                    recalledProject={id:applied.project_id,revision:applied.revision};
+                    document.getElementById('local-research-panel').open=true;
+                    projectStatus.textContent='已使用“'+applied.title+'”的背景；本次查询：'+applied.herbs.join(' / ')+' · '+applied.question+'。';
+                    form.scrollIntoView({block:'center'});reportQuestion.focus();
+                    row.append(node('p','已填入报告，请点击“生成资料报告”。'));
+                } catch(e) { row.append(node('p',e.message)); }
+                finally { select.disabled=false; }
+            });
+            row.append(select);container.append(row);
+        }
+    };
+    const searchForm=document.getElementById('project-search-form');
+    if (searchForm) searchForm.addEventListener('submit',async event=>{
+        event.preventDefault();const button=searchForm.querySelector('button');button.disabled=true;
+        const results=document.getElementById('project-search-results');results.replaceChildren(node('p','正在本地检索…'));
+        try {
+            const found=await api('/api/research/projects/recall',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query:searchForm.elements.query.value})});
+            window.renderProjectMemory(results,found);
+        } catch(e) {results.replaceChildren(node('p',e.message));}
+        finally {button.disabled=false;}
+    });
+    if (projectForm) {
+        document.getElementById('project-refresh').addEventListener('click',loadProjects);
+        document.getElementById('project-new').addEventListener('click',()=>{editProject(null);projectStatus.textContent='新建项目';});
+        projectForm.addEventListener('submit',async event=>{
+            event.preventDefault(); const button = projectForm.querySelector('[type=submit]'); button.disabled = true;
+            try {
+                const body = projectValues(); if (editingProject) body.revision = editingProject.revision;
+                const doc = await api('/api/research/projects' + (editingProject ? '/' + editingProject.id : ''),
+                    {method:editingProject ? 'PUT' : 'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+                editProject(doc); projectStatus.textContent = '项目已保存。'; await loadProjects();
+            } catch (e) { projectStatus.textContent = e.message; }
+            finally { button.disabled = false; }
+        });
+    }
     async function loadHistory() {
         const version = ++historyVersion;
         try {
@@ -165,7 +266,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     try { await api((item.job ? '/api/research/jobs/' : '/api/research/runs/') + item.id, {method:'DELETE'}); output.replaceChildren(); await loadHistory(); }
                     catch (e) { history.append(node('p', e.message)); remove.disabled = false; }
                 });
-                row.append(view, remove); history.append(row);
+                row.append(view, remove);
+                if (item.job && item.status === 'interrupted' && item.recovery === 'checkpoint') {
+                    const resume = node('button', '继续执行'); resume.type = 'button';
+                    resume.addEventListener('click', async () => {
+                        if (controller) return;
+                        resume.disabled = true;
+                        try { await api('/api/research/jobs/' + item.id + '/resume', {method:'POST'}); attach(item.id); }
+                        catch (e) { output.replaceChildren(node('p',e.message)); resume.disabled = false; }
+                    });
+                    row.append(resume);
+                }
+                history.append(row);
             }
             const running = jobs.items.find(x => !terminal.has(x.status));
             if (running && !controller) attach(running.id);
@@ -173,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     refresh.addEventListener('click', loadHistory);
     document.getElementById('local-research-panel').addEventListener('toggle', event => {
-        if (event.target.open) loadHistory();
+        if (event.target.open) { loadHistory(); loadProjects(); }
     });
     function release() {
         if (stream) stream.close();
@@ -237,6 +349,10 @@ document.addEventListener('DOMContentLoaded', () => {
         controller = true; start.disabled = true; cancel.disabled = true;
         output.replaceChildren(node('p', '正在提交后台任务…'));
         try {
+            if (report && recalledProject) {
+                const current = await api('/api/research/projects/' + recalledProject.id);
+                if (current.revision !== recalledProject.revision) throw new Error('项目已修改，请重新选择“用于报告”后再提交。');
+            }
             const result = await api('/api/research/jobs' + (compare ? '/compare' : report ? '/report' : ''), {
                 method: 'POST', headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({...payload,request_key:pendingSubmission.key})

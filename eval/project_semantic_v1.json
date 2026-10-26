@@ -1,0 +1,19 @@
+{
+  "kind": "frozen_development_cases_not_independent_benchmark",
+  "projects": [
+    {"id":"blood","title":"补血活血药比较","herbs":["当归","川芎"],"question":"功效及贮藏"},
+    {"id":"spleen","title":"健脾药整理","herbs":["白术","茯苓"],"question":"药用部位与性味"},
+    {"id":"storage","title":"甘草保存研究","herbs":["甘草"],"question":"贮藏及注意事项"},
+    {"id":"blood_other","title":"补血活血另一组","herbs":["丹参","鸡血藤"],"question":"功效及用量"}
+  ],
+  "cases": [
+    {"query":"继续上次当归和川芎的比较","relevant":["blood"]},
+    {"query":"之前补血活血的那组研究","relevant":["blood","blood_other"]},
+    {"query":"我之前整理过健脾方面的草药","relevant":["spleen"]},
+    {"query":"找回甘草应该怎么存放的项目","relevant":["storage"]},
+    {"query":"上次那两个调理脾胃的药用哪个部位","relevant":["spleen"]},
+    {"query":"之前丹参鸡血藤的功效整理","relevant":["blood_other"]},
+    {"query":"如何安装显卡驱动","relevant":[]},
+    {"query":"查找我的机票报销记录","relevant":[]}
+  ]
+}

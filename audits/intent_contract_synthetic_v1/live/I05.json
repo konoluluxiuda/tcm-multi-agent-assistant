@@ -1,0 +1,41 @@
+{
+  "id": "I05",
+  "rule_route": {
+    "tool": "assistant",
+    "request": {
+      "topic": "clarify_sources"
+    },
+    "reason": "multiple_sources",
+    "mode": "natural"
+  },
+  "proposal": {
+    "action": "clarify",
+    "entities": [
+      "虚构试验叶",
+      "Example Synthetic Leaf"
+    ],
+    "unresolved_requirements": [
+      "“Example Synthetic Leaf的新论文”属于文献检索与汇总需求，当前无对应查询能力，无法在本次一并整理",
+      "两个对象分别指向不同数据范围（药典记载 vs 新论文），需拆分为单一可执行查询"
+    ]
+  },
+  "route": {
+    "tool": "assistant",
+    "request": {
+      "topic": "intent_clarification",
+      "planner_failed": true
+    },
+    "mode": "model",
+    "reason": "model_intent_fallback",
+    "intent_status": "invalid_output",
+    "intent_model_calls": 1,
+    "intent_duration_ms": 2066.76
+  },
+  "usage": {
+    "input_tokens": 3410,
+    "output_tokens": 300,
+    "total_tokens": 3710
+  },
+  "passed": false,
+  "failure": "invalid_or_unavailable"
+}

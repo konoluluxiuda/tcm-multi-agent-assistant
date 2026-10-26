@@ -1,0 +1,33 @@
+{
+  "id": "I03",
+  "rule_route": null,
+  "proposal": {
+    "action": "herb_field",
+    "entities": [
+      "虚构试验叶胶囊"
+    ],
+    "fields": [
+      "indications"
+    ]
+  },
+  "route": {
+    "tool": "herb",
+    "request": {
+      "name": "虚构试验叶胶囊",
+      "field": "indications",
+      "resolve_unique_name": true
+    },
+    "mode": "model",
+    "reason": "model_intent_fallback",
+    "intent_status": "ok",
+    "intent_model_calls": 1,
+    "intent_duration_ms": 2815.48
+  },
+  "usage": {
+    "input_tokens": 3407,
+    "output_tokens": 420,
+    "total_tokens": 3827
+  },
+  "passed": false,
+  "failure": "action,fields"
+}

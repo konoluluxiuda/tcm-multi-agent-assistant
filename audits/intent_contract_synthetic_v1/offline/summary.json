@@ -1,0 +1,16 @@
+{
+  "question_sha256": "c3d9914230b2e0784b4208f770654a22d09b3442a99eed56c2f9007f3276b046",
+  "planner_sha256": "91803a9f3e0259e70845aa6d968a5e3a1f021db8b72591637e5ce5cffc7d90a5",
+  "mode": "offline_contract_only",
+  "max_calls": 0,
+  "per_question_max_calls": 1,
+  "max_output_tokens": 650,
+  "timeout_seconds": 10,
+  "retries": 0,
+  "total": 8,
+  "passed": 8,
+  "model_calls": 0,
+  "rule_unmatched": 6,
+  "cost": null,
+  "cost_note": "No price assumption; token usage reported only when supplied"
+}
