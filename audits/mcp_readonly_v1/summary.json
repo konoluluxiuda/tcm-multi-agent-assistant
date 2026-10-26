@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-27",
+  "status": "passed",
+  "scope": "two read-only MCP stdio tools integrated into local research reports",
+  "sdk": "mcp==1.28.0",
+  "sdk_runtime": "isolated Python 3.13 Linux",
+  "related_tests": 36,
+  "modules": 6,
+  "full_repository_regression": "not_run_this_increment",
+  "external_model_calls": 0,
+  "protocol": "protocol.json",
+  "browser": "browser.json",
+  "initial_failures": [
+    "restricted sandbox SDK handshake timed out; local-process acceptance run outside sandbox",
+    "configuration edit affected getenv arguments; corrected before final parity/browser/regression"
+  ],
+  "limits": [
+    "no remote HTTP/authentication deployment",
+    "no model-directed MCP tool selection",
+    "shared-target tool remains direct",
+    "second client is independent project JSON-RPC probe, not third-party desktop app",
+    "Windows process cleanup untested",
+    "no load benchmark or accuracy improvement claim"
+  ]
+}

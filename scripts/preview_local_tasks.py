@@ -20,6 +20,7 @@ def main():
     parser.add_argument('--diseases',type=Path,help='Optional completed disease source catalog for local analysis')
     parser.add_argument('--dense-python', type=Path,
                         help='Optional local Python with ONNX/tokenizers/numpy; enables existing local BGE cache, no downloads')
+    parser.add_argument('--mcp-python',type=Path,help='Optional isolated MCP SDK runtime; use stdio read-only report tools')
     parser.add_argument('--semantic-memory', action='store_true', help='Enable local project memory retrieval; requires --dense-python, never sends memory to providers')
     parser.add_argument('--qdrant-generation',type=Path,help='Optional immutable local Qdrant generation; requires --dense-python')
     parser.add_argument('--reranker-model',type=Path,help='Optional pinned local ONNX cross-encoder directory; requires --dense-python')
@@ -83,6 +84,10 @@ def main():
     }
     if args.semantic_memory and not args.dense_python:
         parser.error('--semantic-memory requires --dense-python')
+    if args.mcp_python and not args.mcp_python.is_file():
+        parser.error('MCP Python executable missing')
+    environment['RESEARCH_REPORT_TRANSPORT'] = 'mcp' if args.mcp_python else 'direct'
+    environment['RESEARCH_MCP_PYTHON'] = str(args.mcp_python.absolute()) if args.mcp_python else ''
     environment['PROJECT_MEMORY_PYTHON'] = str(args.dense_python.absolute()) if args.semantic_memory else ''
     environment['PROJECT_MEMORY_MODEL'] = str(ROOT / 'var/evidence_assistant_v1/local_bge_small_zh') if args.semantic_memory else ''
     if args.reranker_model and not args.dense_python:

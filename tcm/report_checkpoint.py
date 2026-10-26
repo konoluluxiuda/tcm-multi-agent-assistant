@@ -26,7 +26,7 @@ def source_fingerprint():
 
 async def run_checkpoint_report(owner,doc,*,on_state=None,backend=None,fingerprint=None):
     from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
-    from tcm.cross_source_report import local_branch
+    from tcm.mcp_client import report_branch
     thread=hashlib.sha256((owner+':'+doc['id']).encode()).hexdigest()
     lock=int(thread[:15],16)
     binding=hashlib.sha256(json.dumps({'payload':doc['payload'],'source':fingerprint or await asyncio.to_thread(source_fingerprint)},sort_keys=True).encode()).hexdigest()
@@ -39,7 +39,7 @@ async def run_checkpoint_report(owner,doc,*,on_state=None,backend=None,fingerpri
             old=await cur.fetchone()
             if old and old['fingerprint']!=binding:raise ValueError('Source or execution contract changed')
             if not old:await saver.conn.execute('INSERT INTO tcm_jobs.checkpoint_bindings VALUES(%s,%s)',(thread,binding))
-            result=await run_report(doc['payload'],on_state=on_state,backend=backend or local_branch,
+            result=await run_report(doc['payload'],on_state=on_state,backend=backend or report_branch,
                                     checkpointer=saver,thread_id=thread)
             if fingerprint is None:
                 final=hashlib.sha256(json.dumps({'payload':doc['payload'],'source':await asyncio.to_thread(source_fingerprint)},sort_keys=True).encode()).hexdigest()

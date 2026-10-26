@@ -1,0 +1,4 @@
+# Install in a separate virtual environment, not the locked research-chat runtime.
+# MCP v1 maintenance protocol integration, pinned and tested locally.
+-c constraints-mcp.txt
+mcp==1.28.0

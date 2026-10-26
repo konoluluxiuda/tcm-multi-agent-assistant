@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "transport": "stdio",
+  "sdk_version": "1.28.0",
+  "clients": [
+    "official_sdk_application_bridge",
+    "independent_jsonrpc_probe"
+  ],
+  "discovery": true,
+  "parity": [
+    {
+      "tool": "lookup_pharmacopoeia",
+      "same_data_and_sources": true,
+      "data_status": "candidates"
+    },
+    {
+      "tool": "lookup_etcm_profile",
+      "same_data_and_sources": true,
+      "data_status": "name_mapping_candidates"
+    }
+  ],
+  "invalid_arguments_and_unknown_tool": true,
+  "private_error_redacted": true,
+  "protocol_cancel_and_reuse": true,
+  "sdk_timeout_session_closed": true,
+  "external_model_calls": 0
+}

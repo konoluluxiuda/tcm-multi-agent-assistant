@@ -27,6 +27,8 @@ async def check(args):
             history = await (await context.request.get(args.url.rstrip('/')+'/api/research/jobs')).json()
             identifier = history['items'][0]['id']
             saved = await (await context.request.get(args.url.rstrip('/')+'/api/research/jobs/'+identifier)).json()
+            if getattr(args, 'transport', None):
+                assert all(saved['result'][branch].get('tool_transport') == args.transport for branch in ('text','structured')), saved['result']
             result = saved['result']['text']
             assert result['status'] == 'candidates', result['status']
             assert result['hits'][0]['label'] == first
@@ -42,7 +44,7 @@ async def check(args):
         await page.wait_for_function("document.querySelector('#local-research-output').innerText.includes('ETCM 基础属性')")
         assert not errors, errors
         args.out.parent.mkdir(parents=True, exist_ok=True)
-        args.out.write_text(json.dumps({'status':'passed','cases':receipts,'history_reloaded':True,'javascript_errors':errors},ensure_ascii=False,indent=2)+'\n')
+        args.out.write_text(json.dumps({'status':'passed','cases':receipts,'history_reloaded':True,'javascript_errors':errors,'expected_transport':getattr(args,'transport',None)},ensure_ascii=False,indent=2)+'\n')
         await browser.close()
         print('Report request browser passed')
 
@@ -52,4 +54,5 @@ if __name__ == '__main__':
     p.add_argument('--url', default='http://127.0.0.1:7882/')
     p.add_argument('--browser', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
+    p.add_argument('--transport', choices=('direct','mcp'))
     asyncio.run(check(p.parse_args()))

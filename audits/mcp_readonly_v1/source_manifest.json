@@ -1,0 +1,16 @@
+{
+  "tcm/mcp_contract.py": "9b796797cf44994a7343b2784468e169da85c4707c372ed76a3a75f7366a200f",
+  "tcm/mcp_server.py": "da1d4bf1f548b3d12d1a3a37c19b599de733fb642d352feacc4b16d9546c2b3a",
+  "tcm/mcp_client.py": "044a40917b9bad532d0eec802f6bc1af8fa31f8ad475b43c44c56e191b9d8436",
+  "tcm/cross_source_report.py": "7109344a3a3ca16820be189a1883dc1b876583f0f067c7ad3dd3e310da3faac6",
+  "tcm/report_checkpoint.py": "222d2f46f0b523442b8af7b430e9f2ee56e30e0d844142b0ee950ca6669b018a",
+  "scripts/mcp_bridge.py": "96c60314acb2611f37dbee5f878aa73a2fd1483327da4c62c11c1bee3b17fb2b",
+  "scripts/mcp_stdio_probe.py": "cc716dea678a057235a8e041f17129064a70db8a81fa8fbd334ec15950fdd6da",
+  "scripts/check_mcp_protocol.py": "fb0e3b2dcb9a5eea87e64808f117f0057573075481fd5f4365b1715edf4ce990",
+  "scripts/check_report_request_browser.py": "aaa406b54b072d315fde78b9a4b341920563d90a17f1d7ff4f12149831615da2",
+  "scripts/preview_local_tasks.py": "44a37978946639e9ec470a6831da1484ad4292d3e247672fda2440ab6a192dcb",
+  "tests/test_mcp_contract.py": "1fac5802f1096d00ddb83608a0ffa5e92e8e51f4b74f64e401779589df09a7f5",
+  "tests/mcp_fault_server.py": "cb8749163e11e972ffeeea3699ea24ebd82ed2121916ea42e9e119de9d567e9a",
+  "requirements-mcp.txt": "c9e99367a6ac7e2978b8dc8ae3560996f0b74035ed6358de65557fb563b97157",
+  "constraints-mcp.txt": "9c85317aa40fc7fb6dab53facdccbb6b8e9efdd39306d624aed79d398fb94a0b"
+}

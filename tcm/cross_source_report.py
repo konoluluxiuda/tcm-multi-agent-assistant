@@ -9,7 +9,7 @@ from typing import TypedDict
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ('TCM_DB', 'TCM_DATASET_VERSION', 'ETCM_ENRICHMENT_DB', 'PHARMACOPOEIA_INDEX',
-          'LOCAL_DENSE_MODEL', 'LOCAL_DENSE_CACHE', 'LOCAL_DENSE_PYTHON', 'LOCAL_QDRANT_GENERATION', 'LOCAL_RERANKER_MODEL')
+          'LOCAL_DENSE_MODEL', 'LOCAL_DENSE_CACHE', 'LOCAL_DENSE_PYTHON', 'LOCAL_QDRANT_GENERATION', 'LOCAL_RERANKER_MODEL', 'RESEARCH_REPORT_TRANSPORT', 'RESEARCH_MCP_PYTHON')
 
 
 def fuse(rankings, k=6):
@@ -145,8 +145,10 @@ class ReportState(TypedDict, total=False):
     report: dict
 
 
-async def run_report(payload, *, on_state=None, backend=local_branch, checkpointer=None, thread_id=None):
+async def run_report(payload, *, on_state=None, backend=None, checkpointer=None, thread_id=None):
     from langgraph.graph import StateGraph, START, END
+    from tcm.mcp_client import report_branch
+    backend = backend or report_branch
     herb, question = payload['herb'], payload['question']
     async def branch(name):
         started = time.monotonic()
