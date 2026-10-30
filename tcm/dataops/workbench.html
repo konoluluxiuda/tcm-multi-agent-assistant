@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>资料工作台</title>
+<style>
+body{font:16px/1.65 system-ui,sans-serif;color:#16302c;background:#f3f7f5;margin:0}main{max-width:1150px;margin:30px auto;padding:20px}
+body.embed{background:white}body.embed main{margin:0;padding:0}body.embed main>:not(#deliverySection){display:none}body.embed #deliverySection{margin:0;padding:10px;border:0}body.embed #deliverySection>:not(#agentControls):not(#status):not(#result){display:none}
+section{background:white;padding:22px;border:1px solid #d7e2dc;border-radius:12px;margin:18px 0}h1,h2{line-height:1.25}label{display:inline-block;margin:8px 14px 8px 0}input,select,button,textarea{font:inherit;padding:7px;border:1px solid #acbfb6;border-radius:5px}button{background:#176b55;color:white;cursor:pointer}button:disabled{opacity:.5}textarea{width:95%;height:65px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border-bottom:1px solid #d9e4dd;padding:9px;text-align:left;vertical-align:top;max-width:310px;overflow-wrap:anywhere}a{color:#176b55}.scroll{overflow:auto}.muted{color:#5b6d64}#status{white-space:pre-wrap}details{margin:8px 0}
+</style>
+<main>
+<p><a href="/">返回聊天</a></p><h1>资料核对工作台</h1>
+<p>选择目录中的记录，整理ETCM属性和药典字段，下载带出处的核对表。</p>
+<section id="naturalPanel" hidden><h2>直接说明要整理什么</h2>
+<textarea id="naturalQuestion" maxlength="2000" aria-label="整理要求" placeholder="整理白术和黄芪的功效、注意事项，保留出处并生成表格"></textarea>
+<p><button id="submitQuestion">开始整理</button> <button id="reviseQuestion" disabled>修改当前结果</button></p>
+<p class="muted">支持指定药材、条数、字段或原始值筛选。打开结果后可输入“增加贮藏，保留旧字段”。未指定药典字段时默认整理功效和注意；当前执行使用本地模型替身，不调用外部模型。</p>
+<p id="proposalStatus" role="status" aria-live="polite" style="white-space:pre-wrap"></p>
+</section>
+<section><h2>1. 选择记录</h2>
+<label>筛选字段 <select id="filterField"><option value="">全部记录</option value="medicinal_part">药用部位</option><option value="family">科</option><option value="efficacy_class">功效分类</option><option value="indications">适应描述</option></select></label>
+<label>条件 <select id="filterOp"><option value="contains">包含</option><option value="equals">等于</option><option value="missing">缺失</option></select></label>
+<label>原始值 <input id="filterValue" placeholder="如 Root；按原始字段筛选"></label>
+<label>条数 <input id="limit" type="number" min="1" max="50" value="20" style="width:65px"></label>
+<button id="browse">查看记录</button><p id="selectionSummary" class="muted"></p>
+<div class="scroll"><table id="records"></table></div>
+<details><summary>按名称或来源ID指定记录</summary><p>每行一个中文名、拼音名，或全部填写来源ID，最多50条。例如：白术、黄芪分别填写一行。名称候选保留待核验状态。</p><textarea id="sourceIds" placeholder="白术&#10;黄芪"></textarea></details>
+</section>
+<section id="deliverySection"><h2>2. 整理与交付</h2>
+<label>任务名称 <input id="title" value="批量资料核对" maxlength="120"></label>
+<div id="fields"><label><input type="checkbox" value="功能与主治" checked>功能与主治</label><label><input type="checkbox" value="注意" checked>注意</label><label><input type="checkbox" value="贮藏">贮藏</label><label><input type="checkbox" value="炮制">炮制</label></div>
+<label><input type="checkbox" id="requireAll">要求全部字段补齐（有缺项则标为部分完成）</label>
+<p class="muted">唯一候选仍保留身份待核验状态；多个候选不会自动选取。缺失和差异会写入问题表。</p>
+<button id="run">生成核对表</button><button id="retry" hidden>重试同一请求</button>
+<div id="agentPanel" hidden><p class="muted">D2本地验证：使用合成模型替身，根据观察选择工具，不调用外部模型。目标以所选记录和字段为准。</p>
+<label>任务说明 <input id="question" value="核对所选记录，补充所选字段并保留出处" maxlength="2000" style="width:75%"></label>
+<p><button id="runAgent">动态整理</button> <button id="revise" disabled>增加字段并生成下一版</button>
+<label><input id="refreshConflicts" type="checkbox">同时重查存在对应问题的记录</label></p></div>
+<div id="agentControls"></div>
+<p id="status" role="status" aria-live="polite"></p><div id="result"></div>
+</section>
+<section><h2>已保存的任务</h2><button id="refresh">刷新记录</button><div id="history"></div></section>
+</main>
+<script>
+const $=id=>document.getElementById(id);let selected=[],pending=null,currentDoc=null,stream=null,poll=null;
+const params=new URLSearchParams(location.search),embedView=params.get('embed')==='1';if(embedView)document.body.classList.add('embed');
+const labels={fields_consistent_not_verified:'字面字段一致，身份待核验',medicinal_part_difference:'药用部位存在差异',needs_identity_review:'基原文字待核对',insufficient_evidence:'身份信息不足',ambiguous:'多个候选',unmatched:'未找到对应',source_mismatch:'来源版本不对应',candidate_value:'候选原文',candidate_scope_value:'饮片段原文，范围待核对',ambiguous_field:'同名字段有多个版本',present:'来源有值',missing:'字段缺失',medicinal_part:'药用部位',latin_name:'拉丁名'};
+const label=x=>labels[x]||x;
+const node=(tag,text)=>{const e=document.createElement(tag);e.textContent=text;return e};
+async function api(path,body){const r=await fetch(path,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined});const data=await r.json();if(!r.ok)throw Error(typeof data.detail==='string'?data.detail:data.detail?.issues?.join('\n')||'请求参数无效');return data}
+function query(){const field=$('filterField').value;return {filters:field?[{field,op:$('filterOp').value,value:$('filterOp').value==='missing'?'':$('filterValue').value}]:[],limit:Number($('limit').value)}}
+function renderTable(target,headers,rows){target.replaceChildren();const head=node('tr','');headers.forEach(x=>head.append(node('th',x)));target.append(head);for(const row of rows){const tr=node('tr','');for(const value of row)tr.append(node('td',String(value??'缺失')));target.append(tr)}}
+$('browse').onclick=async()=>{try{const d=await api('/api/dataops/query',query());selected=d.records.map(r=>r.source_id);renderTable($('records'),['名称','药用部位','来源ID'],d.records.map(r=>[r.name,r.medicinal_part,r.source_id]));$('selectionSummary').textContent=`匹配${d.total}条，本次选择前${d.returned}条（按来源ID稳定排序）。`;$('sourceIds').value=''}catch(e){$('status').textContent=e.message}};
+for(const id of ['filterField','filterOp','filterValue','limit'])$(id).addEventListener('change',()=>{selected=[];$('records').replaceChildren();$('selectionSummary').textContent='条件已改变，请重新查看记录。'});
+async function show(doc){const changed=currentDoc?.id!==doc.id;currentDoc=doc;if(changed){$('title').value=doc.goal.title;for(const input of $('fields').querySelectorAll('input'))input.checked=doc.goal.document_fields.includes(input.value)}const div=$('result');div.replaceChildren();$('agentControls').replaceChildren();$('revise').disabled=!doc.result||!['complete','partial'].includes(doc.status);$('reviseQuestion').disabled=!doc.result||!doc.artifact||!['complete','partial'].includes(doc.status);$('status').textContent=doc.result&&['complete','partial'].includes(doc.status)?`已整理${doc.result.rows.length}条，缺失${doc.result.coverage.missing_cells}个字段，发现${doc.result.issues.length}项待核对问题。`:(doc.status==='waiting_input'?'有一条记录存在多个候选，请选择或跳过。':['building','queued','running'].includes(doc.status)?'正在整理，可关闭页面，稍后从任务记录继续。':`任务状态：${doc.status}${doc.error?'；原因：'+doc.error:''}`);
+if(doc.progress){const d=node('details','');d.append(node('summary',`执行记录：${doc.progress.model_calls}次模型决策，${doc.progress.leaf_reads}次来源读取`));const pre=node('pre',JSON.stringify(doc.progress,null,2));pre.style.whiteSpace='pre-wrap';d.append(pre);div.append(d)}
+if(!doc.result||!doc.artifact||!['complete','partial'].includes(doc.status))return;const link=node('a',`下载核对表 v${doc.revision}（XLSX）`);link.href=`/api/dataops/workspaces/${doc.id}/artifact`;div.append(link);const table=node('table','');div.append(table);renderTable(table,['名称','对应状态','字段与原文'],doc.result.rows.map(r=>[r.name,label(r.mapping_status),Object.entries(r.cells).map(([f,c])=>label(f)+'：'+(c.value??'缺失')+' ['+label(c.status)+']').join('\n')]));const detail=node('details','');detail.append(node('summary','查看问题与来源'));const pre=node('pre',JSON.stringify({issues:doc.result.issues,evidence:doc.result.evidence,diff:doc.result.diff},null,2));pre.style.whiteSpace='pre-wrap';detail.append(pre);div.append(detail)}
+async function submit(){if(!pending)return;$('run').disabled=true;$('retry').hidden=true;$('status').textContent='正在核对资料并生成表格…';try{await show(await api('/api/dataops/workspaces',pending));pending=null;await history()}catch(e){$('status').textContent=e.message;$('retry').hidden=false}finally{$('run').disabled=false}}
+$('run').onclick=()=>{try{const text=$('sourceIds').value.trim();const values=text?text.split(/\n|[，]/).map(x=>x.trim()).filter(Boolean):selected;const q=values.length?(values.every(x=>x.startsWith('etcm2-local:'))?{source_ids:values,limit:50}:{names:values,limit:50}):query();pending={request_key:crypto.randomUUID().replaceAll('-',''),goal:{title:$('title').value,query:q,document_fields:[...$('fields').querySelectorAll('input:checked')].map(x=>x.value),completion_policy:$('requireAll').checked?'require_all_fields':'audit'}};submit()}catch(e){$('status').textContent=e.message}};
+$('retry').onclick=submit;
+async function history(){const d=await api('/api/dataops/workspaces');$('history').replaceChildren();for(const item of d.items){const p=node('p','');const b=node('button',item.goal.title+' · v'+item.revision+' · '+item.status);b.onclick=async()=>{try{if(item.mode==='dynamic_A')await watchAgent(item.id);else await show(await api('/api/dataops/workspaces/'+item.id))}catch(e){$('status').textContent=e.message}};p.append(b);$('history').append(p)}}
+function stopWatch(){if(stream)stream.close();stream=null;if(poll)clearTimeout(poll);poll=null}
+async function watchAgent(id){stopWatch();const d=await api('/api/dataops/agent-runs/'+id);await show(d.workspace);const box=$('agentControls');
+if(d.job.status==='waiting_input'&&d.workspace.pending){const p=d.workspace.pending;box.append(node('p','请选择药典候选；此操作不等于身份审核：'));for(const c of p.candidates){const b=node('button',(c.name_zh||c.entry_id)+' · '+c.entry_id);b.onclick=()=>answerAgent(id,d.job.revision,p,'choose',c.entry_id);box.append(b)}const skip=node('button','跳过，保留未知');skip.onclick=()=>answerAgent(id,d.job.revision,p,'skip');box.append(skip)}
+if(['queued','running','waiting_input'].includes(d.job.status)){const cancel=node('button','取消任务');cancel.onclick=async()=>{try{await api(`/api/dataops/agent-runs/${id}/cancel`,{});await watchAgent(id)}catch(e){$('status').textContent=e.message}};box.append(cancel)}
+if(d.job.status==='interrupted'&&d.workspace.error!=='model_dispatch_unknown'){const recover=node('button','从检查点恢复');recover.onclick=async()=>{try{await api(`/api/dataops/agent-runs/${id}/recover`,{job_revision:d.job.revision});await watchAgent(id)}catch(e){$('status').textContent=e.message}};box.append(recover)}
+if(['queued','running'].includes(d.job.status)){stream=new EventSource(`/api/dataops/agent-runs/${id}/events`);stream.addEventListener('progress',()=>{stopWatch();poll=setTimeout(()=>watchAgent(id).catch(e=>$('status').textContent=e.message),200)});stream.onerror=()=>{stopWatch();poll=setTimeout(()=>watchAgent(id).catch(e=>$('status').textContent=e.message),1000)}}}
+async function answerAgent(id,jobRevision,p,operation,candidateId=null){try{await api(`/api/dataops/agent-runs/${id}/answer`,{job_revision:jobRevision,question_id:p.question_id,revision:p.revision,operation,candidate_id:candidateId});await watchAgent(id)}catch(e){$('status').textContent=e.message}}
+function chosenGoal(){const text=$('sourceIds').value.trim();const values=text?text.split(/\n|[，]/).map(x=>x.trim()).filter(Boolean):selected;const q=values.length?(values.every(x=>x.startsWith('etcm2-local:'))?{source_ids:values,limit:50}:{names:values,limit:50}):query();return {title:$('title').value,query:q,document_fields:[...$('fields').querySelectorAll('input:checked')].map(x=>x.value),completion_policy:$('requireAll').checked?'require_all_fields':'audit'}}
+async function startAgent(revise){try{const goal=chosenGoal();const body={request_key:crypto.randomUUID().replaceAll('-',''),question:$('question').value,goal};if(revise){if(!currentDoc?.result)throw Error('请先打开已有结果。');body.parent_id=currentDoc.id;body.expected_revision=currentDoc.revision;goal.query={source_ids:currentDoc.result.rows.map(r=>r.source_id),limit:50};goal.attributes=currentDoc.goal.attributes;if($('refreshConflicts').checked)body.refresh_source_ids=currentDoc.result.rows.filter(r=>r.mapping_status!=='fields_consistent_not_verified').map(r=>r.source_id)}const d=await api('/api/dataops/agent-runs',body);await watchAgent(d.workspace.id);await history()}catch(e){$('status').textContent=e.message}}
+$('runAgent').onclick=()=>startAgent(false);$('revise').onclick=()=>startAgent(true);
+let naturalPending=null,naturalSignature='';
+async function submitQuestion(revise){try{const question=$('naturalQuestion').value.trim();if(!question)throw Error('请输入整理要求。');const scope=revise?{parent_id:currentDoc?.id,expected_revision:currentDoc?.revision}:{};if(revise&&(!currentDoc?.result||!currentDoc?.artifact))throw Error('请先打开已有结果。');const signature=JSON.stringify({question,...scope});if(signature!==naturalSignature){naturalSignature=signature;naturalPending={request_key:crypto.randomUUID().replaceAll('-',''),question,...scope}}$('submitQuestion').disabled=true;$('reviseQuestion').disabled=true;$('proposalStatus').textContent='正在整理…';const d=await api('/api/dataops/task-requests',naturalPending);$('proposalStatus').textContent=`整理字段：${d.workspace.goal.document_fields.join('、')}。${d.proposal.defaults.join(' ')}`;await watchAgent(d.workspace.id);await history()}catch(e){$('proposalStatus').textContent=e.message}finally{$('submitQuestion').disabled=false;$('reviseQuestion').disabled=!currentDoc?.result||!currentDoc?.artifact}}
+$('submitQuestion').onclick=()=>submitQuestion(false);$('reviseQuestion').onclick=()=>submitQuestion(true);
+api('/api/dataops/capabilities').then(d=>{$('agentPanel').hidden=!d.agent;$('naturalPanel').hidden=!d.agent}).catch(()=>{});
+$('refresh').onclick=()=>history().catch(e=>$('status').textContent=e.message);if(!embedView)history().catch(e=>$('status').textContent=e.message);
+const requestedRun=params.get('run');if(/^[a-f0-9]{32}$/.test(requestedRun||''))watchAgent(requestedRun).catch(e=>$('status').textContent=e.message);
+if(embedView){const notify=()=>parent.postMessage({type:'dataops-height',height:Math.ceil(document.body.scrollHeight)},location.origin);new ResizeObserver(notify).observe(document.body);notify()}
+</script></html>

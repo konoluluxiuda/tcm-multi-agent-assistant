@@ -1,0 +1,41 @@
+{
+  "records": [
+    {
+      "phase": "initial_core_unittest",
+      "status": "failed",
+      "failed_tests": 3,
+      "issues": [
+        "false finish used up model budget instead of stopping for no progress",
+        "invalid source metadata treated as a tool argument error",
+        "receipt replay test invoked synthetic policy without its required context"
+      ],
+      "resolution": "separate tool rejection from source failure; count blocked finish as no progress; correct receipt test setup",
+      "latest_status": "passed"
+    },
+    {
+      "phase": "first_browser_run",
+      "status": "failed",
+      "issue": "after reload revision inherited default title instead of parent title",
+      "resolution": "restore title and selected fields when opening a workspace",
+      "latest_status": "passed"
+    },
+    {
+      "phase": "concurrent_api_recheck",
+      "status": "failed",
+      "raw_report": {
+        "module": "test_dataops_d2_api.py",
+        "status": "failed",
+        "total": 5,
+        "failures": 0,
+        "errors": 1,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      "issue": "GET paired new queue waiting state with earlier workspace snapshot lacking question",
+      "resolution": "read queue state before its already-persisted workspace projection",
+      "latest_status": "passed"
+    }
+  ],
+  "all_real_model_tests": "not_run"
+}

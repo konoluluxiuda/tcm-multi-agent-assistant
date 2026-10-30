@@ -1,0 +1,209 @@
+{
+  "version": "dataops-question-entry-v1",
+  "date": "2026-10-30",
+  "status": "local_acceptance_passed",
+  "kind": "bounded_local_question_compiler_and_existing_synthetic_agent_delivery",
+  "claims": {
+    "general_language_understanding": false,
+    "real_model_effectiveness": false,
+    "real_A_revalidated": false,
+    "new_external_model_calls": 0,
+    "deployed_image": false
+  },
+  "behavior": [
+    "Exact local catalog aliases, bounded count/filter/field grammar, provenance and explicit defaults.",
+    "Unconsumed requirements block execution; original question and unmatched text are returned, not silently dropped.",
+    "Ready questions compile server-side into CreateAgent and use the existing queue, graph and artifacts.",
+    "Follow-up field additions reuse parent selection and fields; explicit replacements and problem refresh are bounded.",
+    "Owner/revision/source checks, CSRF, strict body schema and request-key idempotence retained.",
+    "No mandatory goal confirmation step; candidate ambiguity still uses persistent human selection."
+  ],
+  "affected_checks": [
+    {
+      "module": "test_dataops_api.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_d1.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_d2.py",
+      "status": "passed",
+      "total": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_d2_api.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_evaluation.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_live_protocol.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_native_loop.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_planning.py",
+      "status": "passed",
+      "total": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_question.py",
+      "status": "passed",
+      "total": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "total": 72,
+  "browser": {
+    "status": "passed",
+    "kind": "synthetic_question_ui_contract",
+    "external_model_calls": 0,
+    "unknown_requirements_not_enqueued": true,
+    "original_question_kept": true,
+    "question_to_delivery": true,
+    "persistent_candidate_answer": true,
+    "incremental_revision": true,
+    "v1_preserved": true,
+    "download_hash_checked": true,
+    "reload_finished": true,
+    "javascript_errors": [],
+    "external_requests": [],
+    "font_layout_reviewed": false
+  },
+  "real_catalog_resolution_only": {
+    "status": "passed",
+    "kind": "local_real_catalog_question_resolution_only",
+    "results": [
+      {
+        "question": "整理白术和黄芪的功效、注意事项，保留出处并生成表格",
+        "status": "ready",
+        "issues": [],
+        "selected_records": 2,
+        "unknown_names": []
+      },
+      {
+        "question": "整理药用部位包含Root的前20条记录，补充功效和注意",
+        "status": "ready",
+        "issues": [],
+        "selected_records": 20,
+        "unknown_names": []
+      }
+    ],
+    "catalog_alias_count": 4561,
+    "source_revision": {
+      "dataset_version": "local-2026-10-10",
+      "sources": [
+        "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+        "9d3f9c6f8a5c7ececbde957e2a1ea6a74d6f225ff5194c094e3e45f4578a0980",
+        "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+        "6daa88391f6f5dd3d2cb91e15564f8cb7d4a61dde09b0620ed1d94cf193ce040"
+      ],
+      "rules": "dataops-d1-v2-scope-aware"
+    },
+    "external_model_calls": 0,
+    "elapsed_seconds": 2.598,
+    "document_values_read_or_sent": false,
+    "identity_approval": false
+  },
+  "initial_development": {
+    "report": {
+      "module": "test_dataops_question.py",
+      "status": "failed",
+      "total": 11,
+      "failures": 0,
+      "errors": 1,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    "reason": "Test cleanup entered the same router lifespan through two TestClient event loops; fixed the secondary read-only client fixture. Original failed report/log retained."
+  },
+  "limitations": [
+    "Grammar supports a subset of natural phrasing and intentionally declines unknown syntax or requirements.",
+    "Unknown names are not fuzzy-resolved; aliases are candidates, not identity approval.",
+    "Follow-up selection changes require a new task. At most four document fields and 50 records per run.",
+    "The /dataops page uses SyntheticDriver; no real model production driver enabled.",
+    "V2 A remains 0/3 with unconfirmed original interruption cause. V3 is not run.",
+    "Real catalog check tested name/filter resolution, not a new real-data XLSX or model acceptance.",
+    "Existing checkpoints bind source/code revisions; start a fresh run when code binding changes."
+  ],
+  "source_hashes": {
+    "app.py": "473d850d77ae3332689379c5af888150254b303aa1a621bdf02689c72f940f59",
+    "tcm/dataops/contracts.py": "d0e115e4ceee29dde358e28e9419522d7b9269fab7c7e71e27442a39e3ea6a0f",
+    "tcm/dataops/data_access.py": "b5c74a8c75d5ceae5902bb735e1c05cc53df0b1bf21265eed500fc4051525cfb",
+    "tcm/dataops/goal_proposal.py": "8c1f3349b528564ce8661c76d34e46c9144e59f5fac5a2d459ed9e81d6f27b7c",
+    "tcm/dataops/api.py": "4be2d3afbc71fa904e5676fa919d6377cf96fc10cb11dea98091e42346c507df",
+    "tcm/dataops/workbench.html": "7bc8c8e56695e93e03b4a788a45cb4d6c6944854e70f62b2196dc71d91808a03",
+    "tests/test_dataops_question.py": "41962aded7314f8117adba15db18219a0aa2c34e741d975815ed9713dd2a1ba6",
+    "scripts/check_dataops_question_browser.py": "5b5050abdb0b0640ebde886f3bf4bbd77f21d751969eebdc26cb9f7a79df5546"
+  },
+  "private_logs": "var/dataops_question_v1",
+  "final_default_disclosure_recheck": {
+    "module": "test_dataops_question.py",
+    "status": "passed",
+    "total": 11,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "expected_failures": 0,
+    "network_attempts": 0
+  },
+  "test_interpretation": "72 affected checks, then overlapping 11 question checks after default-count disclosure; do not sum into 83 distinct tests. Browser and real-catalog scenarios used explicit names/counts and were not repeated for this disclosure-only addition."
+}

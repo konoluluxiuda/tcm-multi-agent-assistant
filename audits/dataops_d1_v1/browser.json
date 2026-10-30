@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "source_records": 20,
+  "workspace_id": "d812598d50ef44b28e4d86c2b9a1b9bc",
+  "four_sheet_download": true,
+  "download_sha256_verified": true,
+  "idempotent_replay": true,
+  "restored_after_refresh": true,
+  "other_owner_denied": true,
+  "stale_selection_cleared": true,
+  "retired_menu_removed": true,
+  "javascript_errors": [],
+  "blocked_external_assets": 5,
+  "chinese_name_list": [
+    "白术",
+    "黄芪"
+  ],
+  "prepared_slice_scope_preserved": true,
+  "font_layout_reviewed": false,
+  "model_calls": 0
+}

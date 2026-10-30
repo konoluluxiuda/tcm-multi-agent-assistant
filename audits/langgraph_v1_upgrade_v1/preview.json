@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "url": "http://127.0.0.1:7895/",
+  "framework": {
+    "langgraph": "1.2.18",
+    "langgraph-checkpoint": "4.3.1",
+    "langgraph-checkpoint-postgres": "3.2.0",
+    "langchain-core": "1.7.0",
+    "langchain-openai": "1.7.3",
+    "openai": "2.54.0"
+  },
+  "http_checks": {
+    "/": 200,
+    "/health": 200,
+    "/ready/research": 200,
+    "/chat_dataset_info": 200
+  },
+  "external_model_calls": 0,
+  "state": "var/langgraph_v1_upgrade_v1/preview_state",
+  "old_state_migrated": false
+}

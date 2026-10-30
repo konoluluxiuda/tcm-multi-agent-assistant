@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "files": 145,
+  "local_file_links_checked": 736,
+  "broken": [],
+  "scope": "README.md and docs/**/*.md; local destinations only; URL availability and Markdown heading fragments not verified"
+}

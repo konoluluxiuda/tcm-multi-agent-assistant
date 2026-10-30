@@ -1,0 +1,174 @@
+{
+  "version": "native-action-contract-v1",
+  "date": "2026-10-30",
+  "status": "offline_verified_live_not_run",
+  "scope": "Native SDK adapter and persistent graph contract; scripted provider simulator, NOT LLM effectiveness.",
+  "changes": [
+    "Validate one registered tool and schema-shaped arguments before execution.",
+    "Optional max_response_corrections=1 for a received rejected response; default 0. Within original model request budget.",
+    "Correction count, feedback and next graph node persist; resuming does not repeat the rejected response.",
+    "Unknown dispatch never gets a correction request. Repeated invalid response or exhausted budget stops.",
+    "Correction policy and implementation changes reject recovery of incompatible checkpoints.",
+    "A failed parent is reported as blocked_parent; no child created and no masking KeyError.",
+    "Future pilot V3 explicitly proposes at most one correction per A goal and counts rejected-response usage."
+  ],
+  "affected_tests": [
+    {
+      "module": "test_dataops_d2.py",
+      "status": "passed",
+      "total": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_d2_api.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_evaluation.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_live_protocol.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_native_loop.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_planning.py",
+      "status": "passed",
+      "total": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "affected_test_total": 45,
+  "native_sdk_synthetic_tasks": [
+    "B01",
+    "B04",
+    "R01"
+  ],
+  "fault_cases": [
+    "zero calls",
+    "multiple calls",
+    "invalid JSON",
+    "invalid argument schema",
+    "unregistered tool",
+    "repeated rejection",
+    "unknown timeout",
+    "request budget exhaustion",
+    "crash before correction",
+    "policy changed on resume"
+  ],
+  "regression": {
+    "status": "passed",
+    "cases": 30,
+    "strategy_runs": 90,
+    "strategies": {
+      "F": {
+        "executed": 30,
+        "contract_passed": 30,
+        "outcomes": {
+          "query_complete": 6,
+          "complete": 18,
+          "partial": 2,
+          "waiting_input": 1,
+          "failed": 1,
+          "rejected": 2
+        },
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null
+      },
+      "P": {
+        "executed": 30,
+        "contract_passed": 30,
+        "outcomes": {
+          "query_complete": 6,
+          "complete": 18,
+          "partial": 2,
+          "waiting_input": 1,
+          "failed": 1,
+          "rejected": 2
+        },
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null
+      },
+      "A": {
+        "executed": 30,
+        "contract_passed": 30,
+        "outcomes": {
+          "query_complete": 6,
+          "complete": 18,
+          "partial": 2,
+          "waiting_input": 1,
+          "failed": 1,
+          "rejected": 2
+        },
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null
+      }
+    },
+    "network_attempts": 0,
+    "external_model_calls": 0,
+    "suite_sha256": "39411e98dcfffc2751d3e79afdd84f94585944725a01562ff7b9952dbd7b1893",
+    "protocol_sha256": "3c1d9c99730b3ea4d56bf04ffed4e6e88ee33d3e636476e8887d662d9c558c2a",
+    "reference_sha256": "beb28dff99973c93e697744204f2ee77705f028dd4173550a6fa9b38d539a736",
+    "source_unchanged": true,
+    "holdout_note": "Author-designed prospective combinations. Once executed they are regression cases, not unseen holdout.",
+    "no_llm_improvement_claim": true
+  },
+  "real_provider_requests": 0,
+  "original_v2_unchanged": true,
+  "actual_v2_A_result": "0/3; original interruption root cause unconfirmed",
+  "v3": "preview only; requires new authorization; not run",
+  "known_limitations": [
+    "Original V2 rejection details unavailable; this is not an exact replay of its missing replies.",
+    "Scripted mock responses cannot establish real-model delivery, semantic reasoning or benefit over F/P.",
+    "HTTP deployment remains synthetic. Free-text goal compilation and Docker validation remain open."
+  ],
+  "source_hashes": {
+    "tcm/dataops/model.py": "482306b90a839b0741f00553b74e0046ff325427de5f34d61f79ea199a48647b",
+    "tcm/dataops/graph.py": "ac3d16d6c4b86d8c33edd51a6fb5d10681ea1b9602f0edc8c3345b460b1f4b52",
+    "tcm/dataops/evaluation.py": "e2b7431245b5a133821bee983663378525f8b71a4c039df77782ba6eafd0da14",
+    "scripts/eval_dataops_live.py": "486947bfe754884b8d360938dce84e766f9d534654d9646b5c7095e2a1baa4c8",
+    "tests/test_dataops_native_loop.py": "8f7f5cb34bfa2d6d11439f5e956d4160f032e58d308a978b8baa68602400bf56",
+    "tests/test_dataops_evaluation.py": "5bf3bb84d4930ad79a91c98fc6b798dee7c289388304c2ebe5e1b31b7ca1384c"
+  },
+  "private_logs": "var/dataops_a_contract_v1",
+  "reference": "https://docs.langchain.com/oss/python/langchain/structured-output#error-handling"
+}

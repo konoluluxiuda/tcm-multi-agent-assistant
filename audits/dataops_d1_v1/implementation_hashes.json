@@ -1,0 +1,19 @@
+{
+  "tcm/dataops/api.py": "dd0c158c9a8c6071bcee09886051562d7b69d0e8d1a3637fb9fb38b9ae6166e9",
+  "tcm/dataops/workspace.py": "74e39069c1d5c5b557204f200b46c0a20d38f9094763444ee7d79606b33a5856",
+  "tcm/dataops/artifacts.py": "39149e8f5b8a4dac393eb7c6c6f962d4a819df112e994e78d6ca82d41d3131d2",
+  "tcm/dataops/baseline.py": "bfc168389deedb60d03f6cdd707f96488810ee3b8d1a04e380407ef0af5e49c6",
+  "tcm/dataops/data_access.py": "aa09bc891e6251809f2e9260d002ee462bd02986c89f6304630d280cb651678b",
+  "tcm/dataops/contracts.py": "f709fdd603392ce15d4c8c8037aba410e8bdb18947831184ac817a6df3805a8b",
+  "tcm/dataops/__init__.py": "a1259b05d1579d154c72b88922394c4012039dc4f85305b8251d2e80515f0ea7",
+  "tcm/dataops/workbench.html": "8027cd0cd7205096d4f3e1575210bd1d0f7968e6106bb40fac29b0eccfb9c71d",
+  "app.py": "4cdad2502db491b8293ce3f0b89928fa65103804d87fd7cf31791287e2db45db",
+  "scripts/preview_local_tasks.py": "ae05f16081dd6bbbe51ae1055f654dc0def407a64400fdf03304cd57fc73679b",
+  "scripts/check_dataops_d1.py": "c1122e1d112d37ca2624bc68e21045df217775c3dfc4bd76563536251749b78b",
+  "scripts/check_dataops_browser.py": "031d1a24921d068966a1768b1f905e4e2fab21003466cd8c724c0b2be145db8b",
+  "tcm/agent_pubmed.py": "f5f3e115a8c7c08f95a9f8806d961fa08f6771e262e5e756aa60ab2f359c1a37",
+  "tcm/pubmed.py": "32e6d3d886a01f2a8fe1550c9f489a3ed52bb11d4b1248740bbe3d589c9aacec",
+  "tcm/literature_store.py": "b1f0bd8f1555107cb0fc6a6587a704da28137cd5180bc98c62e7b3580577e7d2",
+  "tcm/research_workspaces.js": "ba5649014a50dfb43646d452bcedc0ed5b9bd2928e85aa5efe517b8d4f39bca9",
+  "tcm/assistant_info.py": "71c6c9af29c59c6dc51d4d5c85e63f155fe01400d8f156c1cddaf6603f9db18e"
+}

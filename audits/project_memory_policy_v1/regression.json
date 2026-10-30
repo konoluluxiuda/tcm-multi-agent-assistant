@@ -1,0 +1,22 @@
+[
+  {
+    "module": "tests.test_project_semantic",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 18 tests in 2.280s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_project_memory",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 8 tests in 0.470s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_research_deployment",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 8 tests in 2.363s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_cross_source_report",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 6 tests in 0.171s\n\nOK\n"
+  }
+]

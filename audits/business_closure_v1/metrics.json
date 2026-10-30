@@ -1,0 +1,19 @@
+{
+  "status": "screening_only",
+  "positive_planned": 18,
+  "positive_complete": 8,
+  "positive_not_complete": 10,
+  "boundary_appropriate": 5,
+  "boundary_tool_disabled": 1,
+  "grader_errors": 0,
+  "independent_task_accuracy": null,
+  "human_citation_support_rate": null,
+  "application_p50_ms": null,
+  "application_p95_ms": null,
+  "timing_note": "Per-case elapsed_ms includes HTTP, job polling, source verification and private serialization; not an application response latency metric. CI ran concurrently.",
+  "provider_tokens": null,
+  "model_api_cost": 0,
+  "total_system_cost": null,
+  "external_model_calls": 0,
+  "new_model_effect": "not_run"
+}

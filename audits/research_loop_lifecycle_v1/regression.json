@@ -1,0 +1,27 @@
+[
+  {
+    "module": "test_research_loop_api",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 5 tests in 1.544s\n\nOK\n"
+  },
+  {
+    "module": "test_research_run_durable",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 10 tests in 2.301s\n\nOK\n"
+  },
+  {
+    "module": "test_runtime_backup",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 8 tests in 1.404s\n\nOK\n"
+  },
+  {
+    "module": "test_research_run",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 12 tests in 0.286s\n\nOK\n"
+  },
+  {
+    "module": "test_research_deployment",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 8 tests in 2.304s\n\nOK\n"
+  }
+]

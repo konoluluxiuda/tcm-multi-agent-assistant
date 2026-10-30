@@ -1,0 +1,6 @@
+{
+  "scripts/check_deepagents_candidate.py": "3f6ce609453c48aa7de30ce12f60c27b9d206b4511660970f91e7b42e0f48bc9",
+  "experiments/architecture_candidates/dynamic_dependency.py": "c610a3aa681304bebaa4111eb21df3acce427dcfeadca7c43a1d06c823d06bb8",
+  "tcm/analysis_tools.py": "f2459d76260a4d83a7d02d18503fc2f2f546e7ccbcbdfeea9a6528648f3bde0a",
+  "tcm/research_run_demo.py": "649ac4202aaa31f49d35b56899233a760722708189b2b2a32a2fab91806ad5ee"
+}

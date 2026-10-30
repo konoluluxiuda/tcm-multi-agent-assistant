@@ -1,0 +1,192 @@
+[
+  {
+    "id": "A01",
+    "query": "继续上次那组补血活血药的比较",
+    "passed": true,
+    "rejected": false,
+    "expected": {
+      "herbs": [
+        "当归",
+        "川芎"
+      ],
+      "question": "功效及贮藏"
+    },
+    "actual": {
+      "herbs": [
+        "当归",
+        "川芎"
+      ],
+      "question": "功效及贮藏",
+      "question_source": "saved_project"
+    }
+  },
+  {
+    "id": "A02",
+    "query": "继续上次的研究，这次只看贮藏",
+    "passed": true,
+    "rejected": false,
+    "expected": {
+      "herbs": [
+        "当归",
+        "川芎"
+      ],
+      "question": "看贮藏"
+    },
+    "actual": {
+      "herbs": [
+        "当归",
+        "川芎"
+      ],
+      "question": "看贮藏",
+      "question_source": "current_question"
+    }
+  },
+  {
+    "id": "A03",
+    "query": "继续上次的研究，这次看白术的贮藏",
+    "passed": true,
+    "rejected": false,
+    "expected": {
+      "herbs": [
+        "白术"
+      ],
+      "question": "看白术的贮藏"
+    },
+    "actual": {
+      "herbs": [
+        "白术"
+      ],
+      "question": "看白术的贮藏",
+      "question_source": "current_question"
+    }
+  },
+  {
+    "id": "A04",
+    "query": "继续上次的研究，这次只看白术的贮藏，现在还要注意事项",
+    "passed": false,
+    "rejected": false,
+    "expected": {
+      "herbs": [
+        "白术"
+      ],
+      "question": "看白术的贮藏，现在还要注意事项"
+    },
+    "actual": {
+      "herbs": [
+        "当归",
+        "川芎"
+      ],
+      "question": "还要注意事项",
+      "question_source": "current_question"
+    }
+  },
+  {
+    "id": "A05",
+    "query": "继续上次的研究，这次不要当归，只看白术的贮藏",
+    "passed": false,
+    "rejected": false,
+    "expected": {
+      "reject": true
+    },
+    "actual": {
+      "herbs": [
+        "当归",
+        "白术"
+      ],
+      "question": "不要当归，只看白术的贮藏",
+      "question_source": "current_question"
+    }
+  },
+  {
+    "id": "A06",
+    "query": "继续上次的研究，这次换成未知药材",
+    "passed": true,
+    "rejected": true,
+    "expected": {
+      "reject": true
+    },
+    "actual": null
+  },
+  {
+    "id": "A07",
+    "query": "继续上次的研究，这次看当归、川芎、白术的功效",
+    "passed": true,
+    "rejected": true,
+    "expected": {
+      "reject": true
+    },
+    "actual": null
+  },
+  {
+    "id": "A08",
+    "query": "继续上次的研究，这次预测治疗效果",
+    "passed": true,
+    "rejected": false,
+    "expected": {
+      "herbs": [
+        "当归",
+        "川芎"
+      ],
+      "question": "预测治疗效果"
+    },
+    "actual": {
+      "herbs": [
+        "当归",
+        "川芎"
+      ],
+      "question": "预测治疗效果",
+      "question_source": "current_question"
+    }
+  },
+  {
+    "id": "A09",
+    "query": "继续上次的研究",
+    "passed": true,
+    "rejected": true,
+    "expected": {
+      "reject": true
+    },
+    "actual": null
+  },
+  {
+    "id": "A10",
+    "query": "继续上次的研究",
+    "passed": true,
+    "rejected": true,
+    "expected": {
+      "reject": true
+    },
+    "actual": null
+  },
+  {
+    "id": "A11",
+    "query": "继续上次的研究",
+    "passed": true,
+    "rejected": true,
+    "expected": {
+      "reject": true
+    },
+    "actual": null
+  },
+  {
+    "id": "A12",
+    "query": "继续上次的研究，这次看川芎和当归的注意事项",
+    "passed": true,
+    "rejected": false,
+    "expected": {
+      "herbs": [
+        "川芎",
+        "当归"
+      ],
+      "question": "看川芎和当归的注意事项"
+    },
+    "actual": {
+      "herbs": [
+        "川芎",
+        "当归"
+      ],
+      "question": "看川芎和当归的注意事项",
+      "question_source": "current_question"
+    }
+  }
+]

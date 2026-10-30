@@ -1,0 +1,13 @@
+{
+  "tests_passed": 53,
+  "live_model_calls": 0,
+  "deployed": false,
+  "browser_tested": false,
+  "source_sha256": {
+    "tcm/pair_research_report.py": "0cb942e46dca1aaac767d210e24721fcbf3045b13438d928b1eef739ae59877b",
+    "tcm/relation_queries.py": "aead7e27f47b6968c01c9ba1880624cf14d566f52fe702e98952f674387bdf91",
+    "tcm/cross_source_report.py": "9093ed08447f8a33b69658c06a434c60de0555b21b2870706538582ffa58b4b6",
+    "tcm/research_runs.js": "21993f74934e43c00ce98a43acdeb89fccc5cc96d8e5b7086e12acede0ed76b1",
+    "tests/test_pair_report_pagination.py": "2cc5d3bbf312b7ccf9074aa7688c7eee59f76c7e758bdc64813c03e6cfba71de"
+  }
+}

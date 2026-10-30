@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "related_tests": 43,
+  "external_calls": 0,
+  "mode": "synthetic_only",
+  "api_owner_revision_and_lock_verified": true,
+  "sqlite_bundle_restore_resume_verified": true,
+  "live_provider_enabled": false,
+  "known_initial_failures": [
+    "page queried before cookie bootstrap",
+    "test expected 404 without initializing second session; actual 401"
+  ]
+}

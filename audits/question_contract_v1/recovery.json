@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "data": "synthetic_only",
+  "external_model_calls": 0,
+  "cases": [
+    {
+      "case": "initial_claim",
+      "status": "complete",
+      "reason": "declared_actions_complete",
+      "reads_before_kill": 0,
+      "reads_after_resume": 6,
+      "tool_calls": 6,
+      "same_job_id": true,
+      "replayed_saved_reads": 0,
+      "killed_process_exit": -9
+    },
+    {
+      "case": "leaf_saved",
+      "status": "complete",
+      "reason": "declared_actions_complete",
+      "reads_before_kill": 1,
+      "reads_after_resume": 2,
+      "tool_calls": 2,
+      "same_job_id": true,
+      "replayed_saved_reads": 0,
+      "killed_process_exit": -9
+    },
+    {
+      "case": "inner_pending",
+      "status": "partial",
+      "reason": "uncertain_tool_dispatch",
+      "reads_before_kill": 1,
+      "reads_after_resume": 1,
+      "tool_calls": 1,
+      "same_job_id": true,
+      "replayed_saved_reads": 0,
+      "killed_process_exit": -9
+    },
+    {
+      "case": "report_saved",
+      "status": "complete",
+      "reason": "declared_actions_complete",
+      "reads_before_kill": 6,
+      "reads_after_resume": 6,
+      "tool_calls": 6,
+      "same_job_id": true,
+      "replayed_saved_reads": 0,
+      "killed_process_exit": -9
+    }
+  ],
+  "lease_expiry": "clock advanced only after killed child exited",
+  "limits": [
+    "single machine SQLite queue and file journal",
+    "not machine power loss or remote provider exactly-once"
+  ]
+}

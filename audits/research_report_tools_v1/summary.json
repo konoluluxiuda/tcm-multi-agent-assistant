@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "milestone": "P0-2 unified report tools in existing A loop",
+  "date": "2026-10-29",
+  "business_tool_count": 8,
+  "new_tests": 19,
+  "offline": {
+    "modules": 140,
+    "tests": 1192,
+    "syntax_files": 455,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": "passed",
+  "sigkill": "passed",
+  "real_local_smoke": {
+    "status": "ok",
+    "source_reads": 13,
+    "outer_actions": 1,
+    "shared_targets": 172,
+    "field_rows": 2
+  },
+  "external_model_calls": 0,
+  "scope_limits": [
+    "Finite grounded grammar, not arbitrary autonomous decomposition",
+    "No new-chat queue, web resume, SSE or cancel integration yet",
+    "Composite pending stops; no per-leaf resume inside this A action",
+    "No independent task-set or real model quality evaluation",
+    "Unified report tool path uses lexical retrieval and direct workers",
+    "No Docker build, Git commit or remote upload this turn"
+  ]
+}

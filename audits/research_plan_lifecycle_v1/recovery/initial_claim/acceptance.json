@@ -1,0 +1,11 @@
+{
+  "case": "initial_claim",
+  "status": "complete",
+  "reason": "declared_actions_complete",
+  "reads_before_kill": 0,
+  "reads_after_resume": 6,
+  "tool_calls": 6,
+  "same_job_id": true,
+  "replayed_saved_reads": 0,
+  "killed_process_exit": -9
+}

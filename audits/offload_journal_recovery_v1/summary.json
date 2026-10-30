@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "evidence_saved",
+      "status": "partial",
+      "reason": "uncertain_tool_dispatch",
+      "backend_dispatches": 1,
+      "evidence_records": 1,
+      "reference_published": false,
+      "marker_recovered": false
+    },
+    {
+      "case": "reference_saved",
+      "status": "complete",
+      "reason": "evidence_read_complete",
+      "backend_dispatches": 1,
+      "evidence_records": 1,
+      "reference_published": true,
+      "marker_recovered": true
+    }
+  ],
+  "external_calls": 0,
+  "synthetic_only": true,
+  "limits": [
+    "Fixed publication protocol; not a model loop",
+    "Unpublished evidence retained, not automatically garbage-collected",
+    "No distributed transaction; unknown outcomes stop rather than refetch"
+  ]
+}

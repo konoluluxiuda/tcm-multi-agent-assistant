@@ -1,0 +1,14 @@
+{
+  "live_model_calls": 18,
+  "tests_passed": 16,
+  "source_sha256": {
+    "scripts/eval_pair_live_synthetic.py": "32240e5705d06f316217d6e6f55369d672f1e05ad8d6fefbcd63973a5735e22f",
+    "scripts/check_pair_protocol.py": "0449509003b7ea8988f0ddf37c73612629857f4005776218442b6292a63a69c7",
+    "scripts/check_pair_architecture_preflight.py": "80871010a338a70a8eddb1dce4f6509650ae454ba93afd3ca239a104feeca7b7",
+    "experiments/architecture_candidates/pair_protocol.py": "8f061f539b7f6e87638bd3c11d23f7b6e18be4b096c977168ec999b4f538eba1",
+    "tests/test_pair_live_synthetic.py": "0a559057c12d5a3b32e5c391e02171db7534abced82a78b9de9976bb7ff07bde",
+    "tcm/research_run_sdk.py": "362ea72992075e476f1b5cc8cd43515bb6ffba746978ef8e2d0252e0b8595a45"
+  },
+  "phase": "authorized_live_execution",
+  "result_sha256": "8663c6e2b84bfb90b998765a44f248aa177a67081dd447e267743871985d23d0"
+}

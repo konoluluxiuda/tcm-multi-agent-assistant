@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "question": "比较当归与川芎的药典功效和用量，核对全部共同靶点，保留双方原始记录的位置",
+  "initial_status": "queued",
+  "submission_seconds": 0.343,
+  "job_status": "complete",
+  "execution": {
+    "mode": "local_declared_actions",
+    "driver_steps": 2,
+    "tool_calls": 13,
+    "action_calls": 1
+  },
+  "shared_targets": 172,
+  "targets_complete": true,
+  "field_rows": 2,
+  "missing": [],
+  "evidence_bytes": 406182,
+  "download_sha256": "4083d0e977a4ba1c56f967d8c81c85bfe006f5cc713ff116340117561c1a1194",
+  "download_target_items": 172,
+  "same_job_after_refresh": true,
+  "same_key_same_job": true,
+  "terminal_cursor_done_only": true,
+  "external_model_calls": 0,
+  "environment": "local SQLite preview, no model or web tools",
+  "latency_note": "single local smoke observation, not benchmark or p95"
+}

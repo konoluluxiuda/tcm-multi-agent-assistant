@@ -1,0 +1,219 @@
+{
+  "version": "dataops-chat-entry-v1",
+  "date": "2026-10-30",
+  "status": "local_acceptance_passed",
+  "problem": "The user submitted a batch table request on /, while the new compiler existed only on /dataops. Legacy pharmacopoeia parsing returned an incorrect name clarification.",
+  "solution": [
+    "Chat intercepts explicit table-delivery requests and bounded field revisions before legacy routing.",
+    "Chat and workbench share one DataOpsService, existing lease queue, graph, owner key and artifact store.",
+    "Chat embeds the existing result view with progress, human candidate choice, cancellation and download.",
+    "Conversation stores only task focus/card metadata plus ordinary messages; reload reads persisted task state without resubmitting.",
+    "Request-key lookup avoids duplicate jobs or wrong-parent recompilation after later revisions.",
+    "Unknown requirements remain clarification, are not enqueued and are not sent to the legacy parser.",
+    "Ordinary queries and explicit slash commands keep existing routes; only the explicit synthetic driver is enabled."
+  ],
+  "affected_tests": [
+    {
+      "module": "test_chat_field_request.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_conversation_store.py",
+      "status": "passed",
+      "total": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_api.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_chat.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_d1.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_d2.py",
+      "status": "passed",
+      "total": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_d2_api.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_evaluation.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_live_protocol.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_native_loop.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_planning.py",
+      "status": "passed",
+      "total": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_question.py",
+      "status": "passed",
+      "total": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_framework_upgrade.py",
+      "status": "passed",
+      "total": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_request_observability.py",
+      "status": "passed",
+      "total": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "affected_total": 102,
+  "browser_real_local_data": {
+    "status": "passed",
+    "question": "整理白术和黄芪的功效、注意事项，保留出处并生成表格",
+    "data": "real_local",
+    "driver": "synthetic",
+    "external_model_calls": 0,
+    "chat_homepage_submission": true,
+    "record_count": 2,
+    "inline_download_hash_verified": true,
+    "reload_restores_task": true,
+    "chat_followup_revision": true,
+    "reused_cells": 8,
+    "v1_preserved": true,
+    "unknown_requirements_not_enqueued": true,
+    "javascript_errors": [],
+    "blocked_external_assets": 10,
+    "font_layout_reviewed": false
+  },
+  "original_port_smoke": {
+    "status": "passed",
+    "port": 7912,
+    "original_state_directory": "var/dataops_question_demo",
+    "chat_renderer_loaded": true,
+    "original_question_proposal": "ready",
+    "health": 200,
+    "external_model_calls": 0,
+    "tasks_created_by_smoke_check": 0,
+    "restart": "graceful_same_arguments_same_state"
+  },
+  "deployment": {
+    "original_port": 7912,
+    "state_directory": "var/dataops_question_demo",
+    "active_jobs_before_restart": 0,
+    "old_process_identity_checked": true,
+    "restart_method": "SIGINT then exact same arguments",
+    "state_files_removed": false,
+    "temporary_7913_test_service": "stopped",
+    "7912_service": "running_updated_preview"
+  },
+  "new_external_model_calls": 0,
+  "docker_build_or_push": false,
+  "git_commit_or_push": false,
+  "limitations": [
+    "Task classification and goal compilation remain bounded local rules, not general LLM understanding.",
+    "Real ETCM/pharmacopoeia data was processed locally with SyntheticDriver, not a real-model A evaluation.",
+    "The original V2 A 0/3 and its unknown root cause remain unchanged; V3 was not run.",
+    "Chat follow-ups use the current saved DataOps focus; changing objects starts a new task.",
+    "No production multi-user identity or distributed deployment claim; existing owner/cookie boundary retained."
+  ],
+  "source_hashes": {
+    "app.py": "07fa3085d3d2f2ebb899ae6e63b8a865a5b92946bbb01789ca1aeded62d3aebf",
+    "templates/index.html": "3c1072fabb200704a8efa859978eec6b511b1315bf323be9a37aaddd591b6844",
+    "tcm/dataops/api.py": "530a5b43425398da35a42b45d7ef4a915898e8d4b9a0bf60752ab1ae78dd4754",
+    "tcm/dataops/service.py": "4e7195febd0cb861f4e9fee0241ba7a80e4ae404003106ee41f97dafc8d596cf",
+    "tcm/dataops/chat.py": "a09621bf21c515d8e569208b887aff0bae4305c24fe05d44f9aa16f2d27e848f",
+    "tcm/dataops/workspace.py": "2fdc9da99116206fd1737854b7c2e4861929777ab56334ccc9c4e14b5c58e543",
+    "tcm/dataops/workbench.html": "a623df33709ecb7cb3ed2873c9eb93301d86d3e8df70e5bf99ab933c93ef7ad0",
+    "tests/test_dataops_chat.py": "aaa5d4a5a927180b131898f330012746728285481da1b34da4ad3006e2b74128",
+    "scripts/check_dataops_chat_browser.py": "d130563ad81ed0f396f997b38c1745993015a81a256f9a41e80e7c086e8a9de4"
+  },
+  "private_run_directory": "var/dataops_chat_v1"
+}

@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-27",
+  "status": "completed_with_known_gaps",
+  "dataset": "author-written synthetic diagnostics, not independent user evaluation",
+  "retrieval_cases": 14,
+  "context_cases": 12,
+  "context_before": 10,
+  "context_after": 12,
+  "related_tests": 35,
+  "browser": "passed",
+  "external_model_calls": 0,
+  "retrieval_recomputed_after_fix": false,
+  "remaining_gaps": [
+    "hybrid top1 8/10 versus lexical 9/10",
+    "absent herb query returns unrelated project candidates",
+    "all-project listing intent not routed to listing",
+    "automatic memory routing triggered on only 4/10 relevant queries"
+  ],
+  "git_committed": false
+}

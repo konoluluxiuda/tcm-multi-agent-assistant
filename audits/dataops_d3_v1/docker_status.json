@@ -1,0 +1,13 @@
+{
+  "status": "not_run",
+  "date": "2026-10-30",
+  "reason": "WSL integration unavailable and docker.exe cannot connect to dockerDesktopLinuxEngine pipe",
+  "static_yaml_check": "passed",
+  "dataops_driver": "synthetic",
+  "real_provider_disabled": true,
+  "data_mount_read_only": true,
+  "dedicated_persistent_state": true,
+  "image_build": "not_run",
+  "image_run": "not_run",
+  "remote_push": "not_run"
+}

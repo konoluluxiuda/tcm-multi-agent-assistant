@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "local_links_checked": 758,
+  "broken": [],
+  "scope": "README, docs/**/*.md, this audit README; local targets only, not external URLs or heading anchors"
+}

@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "method": "full_offline_regression_plus_affected_module_recheck",
+  "full_suite": {
+    "modules": 147,
+    "tests": 1243,
+    "skipped": 0,
+    "network_attempts": 0,
+    "source": "var/dataops_d1_ci_release/summary.json",
+    "sha256": "167124d7b9ab0fd12b3ac7270f84bdcae4fa743d5ffb9dc0605134b51b3858f6"
+  },
+  "scope_fix_recheck": [
+    {
+      "module": "test_dataops_d1.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_api.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "note": "Prepared-slice scope handling changed after full-suite DataOps modules ran; affected modules were rechecked. Counts are not added as independent tasks."
+}

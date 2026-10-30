@@ -1,0 +1,17 @@
+{
+  "README.md": "a4a25ccd1ca47a4c3bdde6d06a37cb0af48aae7666553011f67b57dabcc1afcf",
+  "app.py": "473d850d77ae3332689379c5af888150254b303aa1a621bdf02689c72f940f59",
+  "audits/dataops_question_v1/README.md": "75e72035e0ac1bf3cc18842ef31f641db920989ecf839e51d583321c00f4f10b",
+  "docs/DATAOPS_D3_EVALUATION.md": "a7b87834b0be17f19673cd390c214481b45898a2a05cfe78d5e97b6241e8e7b2",
+  "docs/DATAOPS_DEMO.md": "e3ed75ff4e6be6bbbe173fea21fdf2f595a8d2a47788bf79d7967c007bcf9929",
+  "docs/DATAOPS_WORKBENCH_PLAN.md": "14742b6a93834d1a81c7b6a97c9126d47d9798b77eacdff8ca4d03f2f2c8d801",
+  "docs/README.md": "ad3222734702177a70bb77738213e00d5163c36499f30f51e8e3af642ba77ae5",
+  "docs/TCM_PROJECT_ROADMAP.md": "d5844102fc660f68df0c199428102279fc89d6c08d223c1e8e7ceee1d04f2b42",
+  "scripts/check_dataops_question_browser.py": "5b5050abdb0b0640ebde886f3bf4bbd77f21d751969eebdc26cb9f7a79df5546",
+  "tcm/dataops/api.py": "4be2d3afbc71fa904e5676fa919d6377cf96fc10cb11dea98091e42346c507df",
+  "tcm/dataops/contracts.py": "d0e115e4ceee29dde358e28e9419522d7b9269fab7c7e71e27442a39e3ea6a0f",
+  "tcm/dataops/data_access.py": "b5c74a8c75d5ceae5902bb735e1c05cc53df0b1bf21265eed500fc4051525cfb",
+  "tcm/dataops/goal_proposal.py": "8c1f3349b528564ce8661c76d34e46c9144e59f5fac5a2d459ed9e81d6f27b7c",
+  "tcm/dataops/workbench.html": "7bc8c8e56695e93e03b4a788a45cb4d6c6944854e70f62b2196dc71d91808a03",
+  "tests/test_dataops_question.py": "41962aded7314f8117adba15db18219a0aa2c34e741d975815ed9713dd2a1ba6"
+}

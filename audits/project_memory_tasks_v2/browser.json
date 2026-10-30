@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "current_entity_preserved": "白术",
+  "all_current_clauses_preserved": true,
+  "negative_entity_application_rejected": true,
+  "no_automatic_job_submission": true,
+  "javascript_errors": [],
+  "external_model_calls": 0
+}

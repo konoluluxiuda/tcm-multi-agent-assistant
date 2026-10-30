@@ -1,5 +1,24 @@
 # 精简药典研究聊天 Docker 部署
 
+## 当前配置与发布边界（2026-10-29）
+
+最新LangGraph 1.x及A方案改动只完成本地源码验收，**尚未构建、发布新版镜像**。下文旧标签、容器状态、端口和验收数字是历史交付记录，不能判断今天是否仍运行。最新源码先按[README](../README.md#本地运行)在7896预览；旧镜像不能用于验收最新聊天功能。
+
+当前`compose.research.yaml`默认映射为`127.0.0.1:7872:8000`，可通过`RESEARCH_PORT`修改主机端口；8000是容器端口。Compose仍是精简药典/基础属性部署：默认`ENABLE_RESEARCH_TASKS=0`，未挂载当前完整ETCM关系目录、疾病索引等，不与7896本地预览能力等价。构建新镜像也不会自动补齐这些运行配置；完整部署适配和容器验收仍在[统一大纲](TCM_PROJECT_ROADMAP.md)P1中。新聊天后台执行还需`ENABLE_RESEARCH_PLAN_JOBS=1`及持久队列/journal/证据目录，不能仅凭旧Compose启动就认为已包含；见[生命周期配置](RESEARCH_PLAN_LIFECYCLE.md)。
+
+需要自行验证构建时，使用白名单上下文脚本，明确镜像与端口，不使用工作区整体作为构建上下文：
+
+```bash
+.venv/bin/python -m scripts.build_research_image --tag tcm-research-chat:local
+RESEARCH_IMAGE=tcm-research-chat:local RESEARCH_PORT=7872 \
+  docker compose -f compose.research.yaml up -d --no-build
+docker compose -f compose.research.yaml ps
+```
+
+以上为构建/启动方式，本次文档核验没有执行这些命令，不证明镜像已构建、数据已就绪或容器能提供最新全部功能。可先用`/ready/research`核对已配置的药典工具；该接口不是所有工具和业务质量的总验收。
+
+## 历史部署记录
+
 运行状态更新（2026-10-21）：本轮来源文献ID功能尚未更新Docker，因Docker Desktop的WSL集成不可用、socket不存在，7876未监听。新增功能已在独立本地预览 **http://127.0.0.1:7877/research-tasks** 验证，705项离线及16项页面检查通过。见[本轮状态与恢复构建命令](TASK_LITERATURE.md)；以下镜像为此前成功交付记录。
 
 当前7876：`tcm-research-chat:research-task-etcm-20261021`，支持[真实ETCM本地关系任务](RESEARCH_TASK_ETCM.md)与原合成演示，外部模型/PubMed关闭。695项离线、13项真实数据页面和12项合成回归通过，83个运行文件核对，原卷/其他实例保留，未上传远程。以下为历史交付记录。

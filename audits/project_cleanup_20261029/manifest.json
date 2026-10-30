@@ -1,0 +1,523 @@
+{
+  "date": "2026-10-29",
+  "rollback_archive": "/tmp/tcm-cleanup-20261029-sedz7m69/before-cleanup.tar.gz",
+  "deleted_files": [
+    {
+      "path": "experiments/architecture_candidates/dynamic_dependency.py",
+      "bytes": 5431,
+      "sha256": "c610a3aa681304bebaa4111eb21df3acce427dcfeadca7c43a1d06c823d06bb8",
+      "tracked": false,
+      "reason": "superseded_discovery_prototype"
+    },
+    {
+      "path": "experiments/architecture_candidates/durable_dependency.py",
+      "bytes": 5803,
+      "sha256": "8f9cd821808c6f16b397f0ca5107ee3af15e83be2881dbc53b62149a00b94043",
+      "tracked": false,
+      "reason": "superseded_discovery_prototype"
+    },
+    {
+      "path": "experiments/architecture_candidates/synthetic.py",
+      "bytes": 1177,
+      "sha256": "e3253a5b924a7220b4ab0b739df88c08c6d11960cfaba6a4f127af64ffd4bbc2",
+      "tracked": false,
+      "reason": "superseded_discovery_prototype"
+    },
+    {
+      "path": "scripts/check_architecture_dependency.py",
+      "bytes": 2218,
+      "sha256": "12d53838aa4543b0606684dd54f641374e6114d73047eabbaf952dba99df470c",
+      "tracked": false,
+      "reason": "superseded_discovery_prototype"
+    },
+    {
+      "path": "scripts/check_architecture_dependency_recovery.py",
+      "bytes": 4624,
+      "sha256": "2aabc4ba8e9e7968ba0113fc83e8590a68cd900eceec92174c2ba1f30b03e1b5",
+      "tracked": false,
+      "reason": "superseded_discovery_prototype"
+    },
+    {
+      "path": "scripts/check_deepagents_candidate.py",
+      "bytes": 9871,
+      "sha256": "3f6ce609453c48aa7de30ce12f60c27b9d206b4511660970f91e7b42e0f48bc9",
+      "tracked": false,
+      "reason": "superseded_discovery_prototype"
+    },
+    {
+      "path": "scripts/check_context_candidates.py",
+      "bytes": 8761,
+      "sha256": "09aa590c7dd64d3e8d491a7fdd00073e44ef6676c66ccf5791ad017ee2bc4b16",
+      "tracked": false,
+      "reason": "superseded_discovery_prototype"
+    },
+    {
+      "path": "tests/test_architecture_dynamic_dependency.py",
+      "bytes": 7402,
+      "sha256": "881b53cbfcd4eb870b741f6de0abcb02f3ae2f56820dff8821090c46e569f883",
+      "tracked": false,
+      "reason": "superseded_discovery_prototype"
+    },
+    {
+      "path": "tests/test_architecture_dependency_durable.py",
+      "bytes": 4450,
+      "sha256": "c5c659d64bca295eaec13fde16066623913ab5d2e984aa52ad0fb8714a24d6a9",
+      "tracked": false,
+      "reason": "superseded_discovery_prototype"
+    },
+    {
+      "path": "docs/ARCHITECTURE_DEPENDENCY_SPIKE.md",
+      "bytes": 4379,
+      "sha256": "7c878fc3f6561e0df2bec0d4b27591e9f4742f2ae68b6a7b69a79a800dc99b0e",
+      "tracked": false,
+      "reason": "superseded_document"
+    },
+    {
+      "path": "docs/ARCHITECTURE_DEPENDENCY_RECOVERY.md",
+      "bytes": 3546,
+      "sha256": "067d2a65ecf933e733b2a6310e10fa7c03f9e8f509efa2fb616b8fa4fac12376",
+      "tracked": false,
+      "reason": "superseded_document"
+    },
+    {
+      "path": "docs/ARCHITECTURE_CANDIDATE_REVIEW.md",
+      "bytes": 9819,
+      "sha256": "ee5282cca045e0b93cba00a617ac110629ca9dbc57015012475b8cc959d7bc25",
+      "tracked": false,
+      "reason": "superseded_document"
+    },
+    {
+      "path": "docs/DEEPAGENTS_CANDIDATE_COMPARISON.md",
+      "bytes": 6486,
+      "sha256": "9dabc1fb23c9b77acd4a4caf6e2450efcdb810d1562d05953ff614a1a5a9881d",
+      "tracked": false,
+      "reason": "superseded_document"
+    },
+    {
+      "path": "docs/CONTEXT_CANDIDATE_COMPARISON.md",
+      "bytes": 5183,
+      "sha256": "c6870bcfea1581cf39b87e66ff36eb654cb6f52547b46afa70b2729ac27d1033",
+      "tracked": false,
+      "reason": "superseded_document"
+    },
+    {
+      "path": "docs/PAIR_LIVE_SYNTHETIC_PLAN.md",
+      "bytes": 3218,
+      "sha256": "6a3ecc15cced1377fa703cbe678b54cd003aa140491fe1d20af8199f7ed927d6",
+      "tracked": false,
+      "reason": "superseded_document"
+    },
+    {
+      "path": "docs/PROJECT_DEMO_HISTORY_20261023.md",
+      "bytes": 18390,
+      "sha256": "66dff241d70242fd4248a287e02adc4527cdf36806fe7d3e90f35da22552c457",
+      "tracked": false,
+      "reason": "superseded_document"
+    },
+    {
+      "path": "docs/PROJECT_IMPLEMENTATION_STATUS.md",
+      "bytes": 15641,
+      "sha256": "fb3f78be05a3adcfabbd2c5e8201e0a568014fea127fc20923d428c7b9eb933e",
+      "tracked": true,
+      "reason": "superseded_document"
+    },
+    {
+      "path": "docs/RECRUITMENT_TECH_ROADMAP.md",
+      "bytes": 23089,
+      "sha256": "1ad3feda2eaba8a3efc25081cf43a6695ce3bedb17450472d8519af5015ae6e3",
+      "tracked": true,
+      "reason": "superseded_document"
+    },
+    {
+      "path": "audits/check_framework.py",
+      "bytes": 4682,
+      "sha256": "2a5a84d445c53b72e0d705de2a91b90cb577e3cbb8fd4ac7e67aa4f265e6c16d",
+      "tracked": true,
+      "reason": "superseded_historical_AST_probe"
+    },
+    {
+      "path": "assets/Multi-Agent-Medical-Assistant-v1-compressed.mp4",
+      "bytes": 7898797,
+      "sha256": "b9f3b04622ec27c11bdcd5f93c247db8f51400a0ba798093f041d77e49d03a18",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "assets/Multi-Agent-Medical-Assistant-v1.9_Compressed.mp4",
+      "bytes": 8708148,
+      "sha256": "510ac46a1edd0d43fb2076fc6225a83013e9b59d83af2ae7cd73f9be3b7541e8",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "assets/final-medical-assistant-flowchart-code.mermaid",
+      "bytes": 3159,
+      "sha256": "c45856cbea0e410710df2c64149848937c600f9dfb76d4da9442cabb7a317314",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "assets/final_medical_assistant_flowchart.png",
+      "bytes": 183309,
+      "sha256": "e96ecb5d2a5bd1535b32bee8c8b3594e6cc714a1b92cfae5a65b75975d953f0f",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "assets/final_medical_assistant_flowchart_light.png",
+      "bytes": 182257,
+      "sha256": "8d06e42c0702bda04c22ad3d0fb3ff8c2a89eb2949b04524c8da0fe29829c9fb",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "assets/final_medical_assistant_flowchart_light_rounded.png",
+      "bytes": 44582,
+      "sha256": "6d216a2e335eaaf6fbc25f18bd3d2b30f5f64c3178a96f34d946f0bc49fcba5c",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "assets/graph.png",
+      "bytes": 187504,
+      "sha256": "f34e857c9cc5fcef4b91790790b1754937a8d76350fe348b3a50cb29bc0999a4",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "assets/logo.jpg",
+      "bytes": 613395,
+      "sha256": "152b6065f3bd1db38ba49420a0a62580322dfce1e727d31c13647dd2fa4b364f",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "assets/logo_rounded.png",
+      "bytes": 286580,
+      "sha256": "65e10d415c3c7b448c45a98746453b444a24a7dfb00fd94e6df4cbdb34d0074b",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "assets/medical_chatbot_flowchart.png",
+      "bytes": 131405,
+      "sha256": "585eddb369f824e307fdee11e63e963f50d2001b82a2ec3c5ee5ebe04a61a490",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "assets/medical_chatbot_flowchart_rounded.png",
+      "bytes": 66183,
+      "sha256": "8a2b6d48f00e06b1c985c8c692b464a17c18a124aa51cb557d7ea9330ef8d121",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/chest_x-ray_covid_and_normal/NORMAL2-IM-0362-0001.jpeg",
+      "bytes": 131517,
+      "sha256": "f011b4b662848d2d01523dcf0eabe6baf452f7c08c8b8f3b63f4ddc75b3d609e",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/chest_x-ray_covid_and_normal/NORMAL2-IM-0364-0001.jpeg",
+      "bytes": 115324,
+      "sha256": "462097a224b7f412afb0f207fa41f40b154c6faa3ad31ed909d7b8e7ec2f012d",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/chest_x-ray_covid_and_normal/NORMAL2-IM-0374-0001.jpeg",
+      "bytes": 253048,
+      "sha256": "6dab52095640e56a8ba55499c0483cf6000921d8e977f6d9e3ca2cb7ea76dc17",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/chest_x-ray_covid_and_normal/NORMAL2-IM-0380-0001.jpeg",
+      "bytes": 244900,
+      "sha256": "89c833b6840bc1849bb5995fb8adf7ece83e5d4a3a2d12808ba7329ee2200bb4",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/chest_x-ray_covid_and_normal/covid-19-pneumonia-101.png",
+      "bytes": 1972829,
+      "sha256": "1bb6be4f8df721ebef695b240eb4232f9dc1c7115b0e8dc8f74461cb37cdb7aa",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/chest_x-ray_covid_and_normal/covid-example-01.jpg",
+      "bytes": 421556,
+      "sha256": "4570a9524d57cb2697ea577ac5d36553cf28e0d190d347edda1fe12f07d54751",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/chest_x-ray_covid_and_normal/covid-example-02.jpeg",
+      "bytes": 181141,
+      "sha256": "e15ba844714b877ccdc9bca248a66ce8cb1e369b41dc76547ad2b103196296f3",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0012558.jpg",
+      "bytes": 170450,
+      "sha256": "d97986234fc25e1476995aee680d4713004d8427e616c8c8f1c77ab967712554",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0012559.jpg",
+      "bytes": 131434,
+      "sha256": "9a52f7ff5f68dbff1c97da7eceefa4504de8a42c0dee481201f569514bd42910",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0012560.jpg",
+      "bytes": 146687,
+      "sha256": "26c694047e2902788a5837875a6a518a60211c0c5d2073bd56efe90961a3f29a",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0012563.jpg",
+      "bytes": 163947,
+      "sha256": "3cba44bd53eef76faab8e6fd282251114a0c79812d15198f9db9d0dba346a57f",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0012564.jpg",
+      "bytes": 146231,
+      "sha256": "c5be0e1e14f3d12393c8028ed1892df28fbe2bdf34ef158efc899af613eaf865",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0012566.jpg",
+      "bytes": 143447,
+      "sha256": "ccccaa33d0ccae4694c31c84543daf3c8541327daf16b494dd408d48399c4ccb",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0017789.jpg",
+      "bytes": 279811,
+      "sha256": "f97f729af0514b20793b9add3c4d85d69c5160d9906554df26a97cfb062b45c7",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0020803.jpg",
+      "bytes": 278571,
+      "sha256": "7bbe929e6012cd4d09f525d62bd4f167531afeb8ef4a04df7b0d0e79dfcafdc6",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0020840.jpg",
+      "bytes": 279040,
+      "sha256": "8eb02b640ba8ef1faaae812b196e50fbafb39ec1b64b21d9b0508b2be4998d27",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0020849.jpg",
+      "bytes": 283627,
+      "sha256": "3d5c64584f7db74789fa71a14222f08989295d66f2520b5ba5b14a1fc8db83ed",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0020879.jpg",
+      "bytes": 271040,
+      "sha256": "80b625778b124abe6ae42dc05f3d6a701ebf1e1a2791f4365c2bb092c08e7afc",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0020935.jpg",
+      "bytes": 272822,
+      "sha256": "082a37a836b25c1dc6bdb896dd7312127f7ba52678662c5c30bf9ddab5331190",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "sample_images/skin_lesion_images/ISIC_0021054.jpg",
+      "bytes": 285202,
+      "sha256": "a257ea63b3ef6dc21140b941cab5c215e23a0fe5be8d9b6d0cf3af948a0b4e33",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "uploads/backend/cf383b56-853e-428e-a2c1-b627be36b742_covid-example-01.jpg",
+      "bytes": 421556,
+      "sha256": "4570a9524d57cb2697ea577ac5d36553cf28e0d190d347edda1fe12f07d54751",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "uploads/backend/eef24507-03b9-4b8d-9593-4ea321732fae_ISIC_0017789.jpg",
+      "bytes": 279811,
+      "sha256": "f97f729af0514b20793b9add3c4d85d69c5160d9906554df26a97cfb062b45c7",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "uploads/frontend/cf383b56-853e-428e-a2c1-b627be36b742_covid-example-01.jpg",
+      "bytes": 421556,
+      "sha256": "4570a9524d57cb2697ea577ac5d36553cf28e0d190d347edda1fe12f07d54751",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "uploads/frontend/eef24507-03b9-4b8d-9593-4ea321732fae_ISIC_0017789.jpg",
+      "bytes": 279811,
+      "sha256": "f97f729af0514b20793b9add3c4d85d69c5160d9906554df26a97cfb062b45c7",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    },
+    {
+      "path": "uploads/skin_lesion_output/segmentation_plot.png",
+      "bytes": 677995,
+      "sha256": "6e39e6dad102a8a1335286086c8c9d3fbe1c1338c4df880761f814d867e8333c",
+      "tracked": true,
+      "reason": "upstream_demo_asset"
+    }
+  ],
+  "retired_test_modules": {
+    "tests/test_architecture_dynamic_dependency.py": 15,
+    "tests/test_architecture_dependency_durable.py": 9
+  },
+  "preserved": [
+    "original PDFs/JSON/OCR and runtime SQLite/PostgreSQL databases",
+    "model assets and virtual environments",
+    "original live model successes and failures in audits",
+    "A/B/C latest isolated comparison and evidence-offload prototypes"
+  ],
+  "generated_cleanup": [
+    {
+      "path": "var/candidate_a_business_v1/ci",
+      "files": null,
+      "bytes": null,
+      "status": "removed",
+      "reason": "reproducible per-module CI outputs; original audit summaries and failure logs retained; count unavailable after interrupted manifest flush"
+    },
+    {
+      "path": "var/candidate_a_business_v1/ci_final",
+      "files": null,
+      "bytes": null,
+      "status": "removed",
+      "reason": "reproducible per-module CI outputs; original audit summaries and failure logs retained; count unavailable after interrupted manifest flush"
+    },
+    {
+      "path": "var/candidate_a_chat_v1/ci",
+      "files": null,
+      "bytes": null,
+      "status": "removed",
+      "reason": "reproducible per-module CI outputs; original audit summaries and failure logs retained; count unavailable after interrupted manifest flush"
+    },
+    {
+      "path": "var/candidate_a_chat_v1/ci_final",
+      "files": null,
+      "bytes": null,
+      "status": "removed",
+      "reason": "reproducible per-module CI outputs; original audit summaries and failure logs retained; count unavailable after interrupted manifest flush"
+    },
+    {
+      "path": "var/langgraph_v1_upgrade_v1/ci",
+      "files": null,
+      "bytes": null,
+      "status": "removed",
+      "reason": "reproducible per-module CI outputs; original audit summaries and failure logs retained; count unavailable after interrupted manifest flush"
+    },
+    {
+      "path": "var/langgraph_v1_upgrade_v1/ci_final",
+      "files": null,
+      "bytes": null,
+      "status": "removed",
+      "reason": "reproducible per-module CI outputs; original audit summaries and failure logs retained; count unavailable after interrupted manifest flush"
+    },
+    {
+      "path": "agents/__pycache__",
+      "files": 4,
+      "bytes": 60610,
+      "reason": "regenerable_python_cache",
+      "status": "skipped_permission_denied_or_partially_removed"
+    },
+    {
+      "path": "agents/rag_agent/__pycache__",
+      "files": 12,
+      "bytes": 103310,
+      "reason": "regenerable_python_cache",
+      "status": "removed"
+    },
+    {
+      "path": "agents/web_search_processor_agent/__pycache__",
+      "files": 5,
+      "bytes": 10948,
+      "reason": "regenerable_python_cache",
+      "status": "skipped_permission_denied_or_partially_removed"
+    },
+    {
+      "path": "agents/guardrails/__pycache__",
+      "files": 1,
+      "bytes": 6721,
+      "reason": "regenerable_python_cache",
+      "status": "skipped_permission_denied_or_partially_removed"
+    },
+    {
+      "path": "agents/image_analysis_agent/__pycache__",
+      "files": 2,
+      "bytes": 6688,
+      "reason": "regenerable_python_cache",
+      "status": "skipped_permission_denied_or_partially_removed"
+    },
+    {
+      "path": "agents/image_analysis_agent/chest_xray_agent/__pycache__",
+      "files": 1,
+      "bytes": 5525,
+      "reason": "regenerable_python_cache",
+      "status": "skipped_permission_denied_or_partially_removed"
+    },
+    {
+      "path": "agents/image_analysis_agent/skin_lesion_agent/__pycache__",
+      "files": 2,
+      "bytes": 11454,
+      "reason": "regenerable_python_cache",
+      "status": "skipped_permission_denied_or_partially_removed"
+    },
+    {
+      "path": "tcm/__pycache__",
+      "files": 181,
+      "bytes": 2036958,
+      "reason": "regenerable_python_cache",
+      "status": "removed"
+    },
+    {
+      "path": "scripts/__pycache__",
+      "files": 174,
+      "bytes": 1957368,
+      "reason": "regenerable_python_cache",
+      "status": "removed"
+    },
+    {
+      "path": "tests/__pycache__",
+      "files": 181,
+      "bytes": 2380972,
+      "reason": "regenerable_python_cache",
+      "status": "removed"
+    },
+    {
+      "path": "experiments/architecture_candidates/__pycache__",
+      "files": 17,
+      "bytes": 137599,
+      "reason": "regenerable_python_cache",
+      "status": "removed"
+    }
+  ],
+  "rollback_verified_files": 55
+}

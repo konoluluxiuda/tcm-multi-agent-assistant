@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "date": "2026-10-29",
+  "milestone": "P0-1 production evidence offload",
+  "offline": {
+    "modules": 138,
+    "tests": 1173,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "new_tests_included": 19,
+  "sigkill_cases": 3,
+  "browser": "passed: read/next/previous/download/restore/fallback wording",
+  "real_local_ETCM_smoke": {
+    "tool_calls": 2,
+    "externalized_payload_bytes": [
+      21189
+    ]
+  },
+  "external_model_calls": 0,
+  "preview": "http://127.0.0.1:7896/",
+  "local_file_links_checked": 758,
+  "git_committed": false,
+  "docker_built_or_published": false,
+  "next": "P0-2 existing reports as controlled tools",
+  "limits": [
+    "No independent model-quality/cost claim",
+    "New chat background queue and web resume still pending",
+    "Unpublished evidence retained and counted against quota",
+    "Backup/restore does not override changed executable bindings"
+  ]
+}

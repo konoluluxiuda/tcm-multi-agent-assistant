@@ -1,0 +1,46 @@
+{
+  "status": "passed",
+  "execution": "production tcm.research_run via run_durable",
+  "cases": [
+    {
+      "case": "evidence_saved",
+      "status": "partial",
+      "reason": "uncertain_tool_dispatch",
+      "backend_calls": 1,
+      "model_calls": 1,
+      "tool_calls": 1,
+      "evidence_records": 1,
+      "marker_recovered": false,
+      "max_resumed_input_bytes": 0
+    },
+    {
+      "case": "reference_saved",
+      "status": "complete",
+      "reason": "declared_actions_complete",
+      "backend_calls": 1,
+      "model_calls": 3,
+      "tool_calls": 2,
+      "evidence_records": 1,
+      "marker_recovered": true,
+      "max_resumed_input_bytes": 4175
+    },
+    {
+      "case": "action_saved",
+      "status": "complete",
+      "reason": "declared_actions_complete",
+      "backend_calls": 1,
+      "model_calls": 3,
+      "tool_calls": 2,
+      "evidence_records": 1,
+      "marker_recovered": true,
+      "max_resumed_input_bytes": 4175
+    }
+  ],
+  "external_model_calls": 0,
+  "data": "synthetic_only",
+  "limits": [
+    "process SIGKILL, not machine power loss",
+    "unpublished evidence retained; no inferred publication",
+    "no semantic quality or provider-token claim"
+  ]
+}

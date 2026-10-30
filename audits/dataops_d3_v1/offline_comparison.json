@@ -1,0 +1,4043 @@
+{
+  "kind": "scripted_strategies_not_llm_effectiveness",
+  "development_first": {
+    "status": "failed",
+    "cases": 18,
+    "strategy_runs": 54,
+    "split": "development",
+    "suite_sha256": "39411e98dcfffc2751d3e79afdd84f94585944725a01562ff7b9952dbd7b1893",
+    "protocol_sha256": "841d1113249a00164e4ce52c8789393003752d478dce9c5193c0942f6c4fee0d",
+    "reference_sha256": "2529c6e68380103f9ce59d5ffe822e6a20a8a30e6686e396e4da49189eae8afd",
+    "strategies": {
+      "F": {
+        "executed": 18,
+        "contract_passed": 16,
+        "outcomes": {
+          "query_complete": 4,
+          "complete": 9,
+          "exception": 2,
+          "waiting_input": 1,
+          "failed": 1,
+          "rejected": 1
+        },
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null
+      },
+      "P": {
+        "executed": 18,
+        "contract_passed": 16,
+        "outcomes": {
+          "query_complete": 4,
+          "complete": 9,
+          "exception": 2,
+          "waiting_input": 1,
+          "failed": 1,
+          "rejected": 1
+        },
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null
+      },
+      "A": {
+        "executed": 18,
+        "contract_passed": 16,
+        "outcomes": {
+          "query_complete": 4,
+          "complete": 9,
+          "exception": 2,
+          "waiting_input": 1,
+          "failed": 1,
+          "rejected": 1
+        },
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null
+      }
+    },
+    "results": [
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.02329945199744543,
+        "case_id": "Q01",
+        "split": "development",
+        "strategy": "F",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.020093286999326665,
+        "case_id": "Q01",
+        "split": "development",
+        "strategy": "P",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.01901513000484556,
+        "case_id": "Q01",
+        "split": "development",
+        "strategy": "A",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.023765153004205786,
+        "case_id": "Q02",
+        "split": "development",
+        "strategy": "F",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.020722225999634247,
+        "case_id": "Q02",
+        "split": "development",
+        "strategy": "P",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.030357670002558734,
+        "case_id": "Q02",
+        "split": "development",
+        "strategy": "A",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.02840787800232647,
+        "case_id": "Q03",
+        "split": "development",
+        "strategy": "F",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.025895933002175298,
+        "case_id": "Q03",
+        "split": "development",
+        "strategy": "P",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.024556375996326096,
+        "case_id": "Q03",
+        "split": "development",
+        "strategy": "A",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.024187745999370236,
+        "case_id": "Q04",
+        "split": "development",
+        "strategy": "F",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.02294110900402302,
+        "case_id": "Q04",
+        "split": "development",
+        "strategy": "P",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.018908290003309958,
+        "case_id": "Q04",
+        "split": "development",
+        "strategy": "A",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "fc29ecb0e118447e83685dfb863e7b47",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1965,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.6035313949978445,
+        "case_id": "B01",
+        "split": "development",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "37bd88bcbc734a13b1511c6ac810608d",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1965,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5431328999984544,
+        "case_id": "B01",
+        "split": "development",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "14a6b471e83e4ed2af9448c98f723e90",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1935,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5121182200018666,
+        "case_id": "B01",
+        "split": "development",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "8655e422620c446fb5a42695ce91033b",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1797,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5213325949953287,
+        "case_id": "B02",
+        "split": "development",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "ca267d1b01f54af8ae0bf775d5abe2ca",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1797,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5037931600018055,
+        "case_id": "B02",
+        "split": "development",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "f16d0eacd7644deea968d8246ab92e78",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1767,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5272074669992435,
+        "case_id": "B02",
+        "split": "development",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "1f6f6c24369b4c6ba9bd6cc790513a85",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:110abfafddbc347006d8c002febdbed0f8be204e902c2e123f9ae39f1864b12b",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1460,
+        "host_policy_steps_including_parent": 5,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.4495041059999494,
+        "case_id": "B03",
+        "split": "development",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "3be88a32ea834903b15b1adc4474e5c5",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:110abfafddbc347006d8c002febdbed0f8be204e902c2e123f9ae39f1864b12b",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1460,
+        "host_policy_steps_including_parent": 5,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.45060226100031286,
+        "case_id": "B03",
+        "split": "development",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "de482e2f1fbb429cb52ebdf86f07a71c",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:110abfafddbc347006d8c002febdbed0f8be204e902c2e123f9ae39f1864b12b",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1436,
+        "host_policy_steps_including_parent": 5,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.4527241649993812,
+        "case_id": "B03",
+        "split": "development",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "failed",
+        "outcome": "exception",
+        "error_type": "TypeError",
+        "errors": [],
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.2939277650002623,
+        "case_id": "B04",
+        "split": "development",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "failed",
+        "outcome": "exception",
+        "error_type": "TypeError",
+        "errors": [],
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.3017089869972551,
+        "case_id": "B04",
+        "split": "development",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "failed",
+        "outcome": "exception",
+        "error_type": "TypeError",
+        "errors": [],
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.30663002299843356,
+        "case_id": "B04",
+        "split": "development",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "6e9c13b6bfbf42de9d37e917e8e4f121",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1572,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5525304469992989,
+        "case_id": "B05",
+        "split": "development",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "527803e708eb4f4a9b8001944f404eb1",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1572,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.551141848001862,
+        "case_id": "B05",
+        "split": "development",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "680ef9e0d8f04fecb53da3cc2ebccd5b",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1560,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.553906735003693,
+        "case_id": "B05",
+        "split": "development",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "7b83f6117d06418db6587995d6a14988",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1826,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.49102513999969233,
+        "case_id": "B06",
+        "split": "development",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "f2930c64505a40789adc338b40730c41",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1826,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5201499390022946,
+        "case_id": "B06",
+        "split": "development",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "08ccd50b8e1f403397a89e0c049ebcf7",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1796,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.4927951809950173,
+        "case_id": "B06",
+        "split": "development",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "9d3778ef0b3342b49bbee6edc797805d",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2062,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9018397990002995,
+        "case_id": "R01",
+        "split": "development",
+        "strategy": "F",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "607cee0a4f844e839fa92ce32e044bb2",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2062,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.902908860000025,
+        "case_id": "R01",
+        "split": "development",
+        "strategy": "P",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "7b1c4e5857024f7ba1a29226e3697b05",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2038,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.898481358999561,
+        "case_id": "R01",
+        "split": "development",
+        "strategy": "A",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "05af4cc8c41948f9b2683c3e27020a9f",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "来源"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1788,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9038880449952558,
+        "case_id": "R02",
+        "split": "development",
+        "strategy": "F",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "87b8d8fd4e7c43dba83461d841155253",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "来源"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1788,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9113625819954905,
+        "case_id": "R02",
+        "split": "development",
+        "strategy": "P",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "e34459f53b0e467e88da4a6eb4f141f5",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "来源"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1758,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.8999898029942415,
+        "case_id": "R02",
+        "split": "development",
+        "strategy": "A",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "2e11fa6151f24698a5cd4e2bbb93c0c9",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2322,
+        "host_policy_steps_including_parent": 12,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9642797079941374,
+        "case_id": "R06",
+        "split": "development",
+        "strategy": "F",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "b6779cbf142b41fbbfb09155d9a0bfd6",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2322,
+        "host_policy_steps_including_parent": 12,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9617316660005599,
+        "case_id": "R06",
+        "split": "development",
+        "strategy": "P",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "55d7938868b8403bbf121357a690b66c",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2292,
+        "host_policy_steps_including_parent": 12,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9700540849953541,
+        "case_id": "R06",
+        "split": "development",
+        "strategy": "A",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "de1d37e2cbda44f1bc6f212606897d16",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 4,
+        "leaf_reads": 1,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          }
+        ],
+        "policy_context_max_bytes": 1977,
+        "host_policy_steps_including_parent": 10,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.8360373060058919,
+        "case_id": "R07",
+        "split": "development",
+        "strategy": "F",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "57201ba420c54093a44ab0418e0d61bb",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 4,
+        "leaf_reads": 1,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          }
+        ],
+        "policy_context_max_bytes": 1977,
+        "host_policy_steps_including_parent": 10,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.8430469240047387,
+        "case_id": "R07",
+        "split": "development",
+        "strategy": "P",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "a0534ef1bd33430b91e6ba0067668056",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 4,
+        "leaf_reads": 1,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          }
+        ],
+        "policy_context_max_bytes": 1947,
+        "host_policy_steps_including_parent": 10,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.8416906919956091,
+        "case_id": "R07",
+        "split": "development",
+        "strategy": "A",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "waiting_input",
+        "errors": [],
+        "workspace_id": "5a1c1bfaa09745fcabb8bf48d9ac8f70",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 3,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1411,
+        "host_policy_steps_including_parent": 3,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.2891081560010207,
+        "case_id": "H01",
+        "split": "development",
+        "strategy": "F",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "waiting_input",
+        "errors": [],
+        "workspace_id": "e19ad99b1e2b42edb1603bf40617ebfc",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 3,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1411,
+        "host_policy_steps_including_parent": 3,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.2958404180026264,
+        "case_id": "H01",
+        "split": "development",
+        "strategy": "P",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "waiting_input",
+        "errors": [],
+        "workspace_id": "c27abad51d014234afefcae2deb7fac8",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 3,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1399,
+        "host_policy_steps_including_parent": 3,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.29590437399747316,
+        "case_id": "H01",
+        "split": "development",
+        "strategy": "A",
+        "category": "human_recovery"
+      },
+      {
+        "status": "failed",
+        "outcome": "exception",
+        "error_type": "TypeError",
+        "errors": [],
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.2917544430019916,
+        "case_id": "H02",
+        "split": "development",
+        "strategy": "F",
+        "category": "human_recovery"
+      },
+      {
+        "status": "failed",
+        "outcome": "exception",
+        "error_type": "TypeError",
+        "errors": [],
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.2829980169990449,
+        "case_id": "H02",
+        "split": "development",
+        "strategy": "P",
+        "category": "human_recovery"
+      },
+      {
+        "status": "failed",
+        "outcome": "exception",
+        "error_type": "TypeError",
+        "errors": [],
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.2915997640011483,
+        "case_id": "H02",
+        "split": "development",
+        "strategy": "A",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "failed",
+        "reason": "source_unavailable",
+        "external_model_calls": 0,
+        "route": "source_failure_guard",
+        "case_id": "H04",
+        "split": "development",
+        "strategy": "F",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "failed",
+        "reason": "source_unavailable",
+        "external_model_calls": 0,
+        "route": "source_failure_guard",
+        "case_id": "H04",
+        "split": "development",
+        "strategy": "P",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "failed",
+        "reason": "source_unavailable",
+        "external_model_calls": 0,
+        "route": "source_failure_guard",
+        "case_id": "H04",
+        "split": "development",
+        "strategy": "A",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "rejected",
+        "external_model_calls": 0,
+        "route": "schema_guard",
+        "case_id": "X02",
+        "split": "development",
+        "strategy": "F",
+        "category": "out_of_scope"
+      },
+      {
+        "status": "passed",
+        "outcome": "rejected",
+        "external_model_calls": 0,
+        "route": "schema_guard",
+        "case_id": "X02",
+        "split": "development",
+        "strategy": "P",
+        "category": "out_of_scope"
+      },
+      {
+        "status": "passed",
+        "outcome": "rejected",
+        "external_model_calls": 0,
+        "route": "schema_guard",
+        "case_id": "X02",
+        "split": "development",
+        "strategy": "A",
+        "category": "out_of_scope"
+      }
+    ],
+    "network_attempts": 0,
+    "external_model_calls": 0,
+    "source_unchanged": true,
+    "elapsed_seconds": 22.022687812001095,
+    "real_model_comparison": "not_run",
+    "natural_language_goal_compilation": "not_evaluated",
+    "holdout_note": "Author-designed prospective combinations. Once executed they are regression cases, not unseen holdout.",
+    "no_llm_improvement_claim": true
+  },
+  "development_after_fix": {
+    "status": "passed",
+    "cases": 18,
+    "strategy_runs": 54,
+    "split": "development",
+    "suite_sha256": "39411e98dcfffc2751d3e79afdd84f94585944725a01562ff7b9952dbd7b1893",
+    "protocol_sha256": "aca50a9c5441de3ffcdb2390aa36ea5937e7a9061e3410d588aa822b9e1dde1c",
+    "reference_sha256": "2529c6e68380103f9ce59d5ffe822e6a20a8a30e6686e396e4da49189eae8afd",
+    "strategies": {
+      "F": {
+        "executed": 18,
+        "contract_passed": 18,
+        "outcomes": {
+          "query_complete": 4,
+          "complete": 11,
+          "waiting_input": 1,
+          "failed": 1,
+          "rejected": 1
+        },
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null
+      },
+      "P": {
+        "executed": 18,
+        "contract_passed": 18,
+        "outcomes": {
+          "query_complete": 4,
+          "complete": 11,
+          "waiting_input": 1,
+          "failed": 1,
+          "rejected": 1
+        },
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null
+      },
+      "A": {
+        "executed": 18,
+        "contract_passed": 18,
+        "outcomes": {
+          "query_complete": 4,
+          "complete": 11,
+          "waiting_input": 1,
+          "failed": 1,
+          "rejected": 1
+        },
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null
+      }
+    },
+    "results": [
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.048355553997680545,
+        "case_id": "Q01",
+        "split": "development",
+        "strategy": "F",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.0451699959958205,
+        "case_id": "Q01",
+        "split": "development",
+        "strategy": "P",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.047684568002296146,
+        "case_id": "Q01",
+        "split": "development",
+        "strategy": "A",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.053613431002304424,
+        "case_id": "Q02",
+        "split": "development",
+        "strategy": "F",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.04603941700042924,
+        "case_id": "Q02",
+        "split": "development",
+        "strategy": "P",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.04620468700159108,
+        "case_id": "Q02",
+        "split": "development",
+        "strategy": "A",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.05177628000092227,
+        "case_id": "Q03",
+        "split": "development",
+        "strategy": "F",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.04612392600392923,
+        "case_id": "Q03",
+        "split": "development",
+        "strategy": "P",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.04799631200148724,
+        "case_id": "Q03",
+        "split": "development",
+        "strategy": "A",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.04991664800036233,
+        "case_id": "Q04",
+        "split": "development",
+        "strategy": "F",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.04904245099896798,
+        "case_id": "Q04",
+        "split": "development",
+        "strategy": "P",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.048971739000990056,
+        "case_id": "Q04",
+        "split": "development",
+        "strategy": "A",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "ab9c8252b93c4739b5490b9cb9db92e4",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1965,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 1.0939655820038752,
+        "case_id": "B01",
+        "split": "development",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "4494987a50ee4ac0bb14b3ec7251ef44",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1965,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9104034909978509,
+        "case_id": "B01",
+        "split": "development",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "35297f9fc30441a1b84a10448a4aeddb",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1935,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9024425660027191,
+        "case_id": "B01",
+        "split": "development",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "dac693a6dba14517ad276321a986a458",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1797,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9333190870020189,
+        "case_id": "B02",
+        "split": "development",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "8a96514e2b99421aa62adb357c3f5d6d",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1797,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.7841929269998218,
+        "case_id": "B02",
+        "split": "development",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "c158f30630504cf0b751d6fcbbf9f32c",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1767,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.4841770639977767,
+        "case_id": "B02",
+        "split": "development",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "cad04e0e7d1b428493048bae906e3076",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:110abfafddbc347006d8c002febdbed0f8be204e902c2e123f9ae39f1864b12b",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1460,
+        "host_policy_steps_including_parent": 5,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.4362255570013076,
+        "case_id": "B03",
+        "split": "development",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "85c5b1b439bc435b8a47820c26afcb44",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:110abfafddbc347006d8c002febdbed0f8be204e902c2e123f9ae39f1864b12b",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1460,
+        "host_policy_steps_including_parent": 5,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.4234733379998943,
+        "case_id": "B03",
+        "split": "development",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "b1b6bf4629bc4ec38571f493ed9aaccb",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:110abfafddbc347006d8c002febdbed0f8be204e902c2e123f9ae39f1864b12b",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1436,
+        "host_policy_steps_including_parent": 5,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.4400562910013832,
+        "case_id": "B03",
+        "split": "development",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "09c8a10b92544300a0e1837e65ad3834",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1898,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.6035365229981835,
+        "case_id": "B04",
+        "split": "development",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "62222a9b5aeb4704825d33fe5462b55c",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1898,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5944903920026263,
+        "case_id": "B04",
+        "split": "development",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "3295b20be0e1444f99bdf026a6fa29b8",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1880,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5910302019983646,
+        "case_id": "B04",
+        "split": "development",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "dd4ca730d3674393973671eb24ebeede",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1572,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5288245409974479,
+        "case_id": "B05",
+        "split": "development",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "f1ab1135a8ee4a7b9f41b7bf25cd0ea3",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1572,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5378208510010154,
+        "case_id": "B05",
+        "split": "development",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "ff96166bac6c410c86799f870d2bb2de",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1560,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5295631150002009,
+        "case_id": "B05",
+        "split": "development",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "996e457b171c4232ac4f8a7bffd581a6",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1826,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5159542109977338,
+        "case_id": "B06",
+        "split": "development",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "f49b0277e6ee42fd844c41458c88c3c3",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1826,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.49828112599789165,
+        "case_id": "B06",
+        "split": "development",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "92ef2ae9da544e57888efd2b5b43313c",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1796,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.49033842499920866,
+        "case_id": "B06",
+        "split": "development",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "0b4f628600d84060b0f9647b8008fb8f",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2062,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.902596108004218,
+        "case_id": "R01",
+        "split": "development",
+        "strategy": "F",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "fd983d69905d4db09bd6f3a8f7b6a3f6",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2062,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9020985980023397,
+        "case_id": "R01",
+        "split": "development",
+        "strategy": "P",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "28898ff3d0cc495ab77a2074b487ea5e",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2038,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9056130269964342,
+        "case_id": "R01",
+        "split": "development",
+        "strategy": "A",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "224ab06faab44133a863ec100d76c784",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "来源"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1788,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9002269619959407,
+        "case_id": "R02",
+        "split": "development",
+        "strategy": "F",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "bdd8901193184192a7b9fb4409fe3839",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "来源"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1788,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9010982320032781,
+        "case_id": "R02",
+        "split": "development",
+        "strategy": "P",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "7d9fe103f1aa4dd998b8578d1b1e49f7",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "来源"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1758,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.8844084689990268,
+        "case_id": "R02",
+        "split": "development",
+        "strategy": "A",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "d105503d47284f4eb841e7106dabb12b",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2322,
+        "host_policy_steps_including_parent": 12,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.969484827000997,
+        "case_id": "R06",
+        "split": "development",
+        "strategy": "F",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "827c085c51f5434dbd7b004838d24a0a",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2322,
+        "host_policy_steps_including_parent": 12,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9563539279988618,
+        "case_id": "R06",
+        "split": "development",
+        "strategy": "P",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "1438a9fc13a042dcbeb04a96bf2f91eb",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2292,
+        "host_policy_steps_including_parent": 12,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9967551219961024,
+        "case_id": "R06",
+        "split": "development",
+        "strategy": "A",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "096b325a72e24748a8a296598262899d",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 4,
+        "leaf_reads": 1,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          }
+        ],
+        "policy_context_max_bytes": 1977,
+        "host_policy_steps_including_parent": 10,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.8603414080062066,
+        "case_id": "R07",
+        "split": "development",
+        "strategy": "F",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "511281127ce74ba0a37677046dc043ad",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 4,
+        "leaf_reads": 1,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          }
+        ],
+        "policy_context_max_bytes": 1977,
+        "host_policy_steps_including_parent": 10,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.8424970800042502,
+        "case_id": "R07",
+        "split": "development",
+        "strategy": "P",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "f52dca44f97640d6995963d302be1bdd",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 4,
+        "leaf_reads": 1,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          }
+        ],
+        "policy_context_max_bytes": 1947,
+        "host_policy_steps_including_parent": 10,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.8491995619988302,
+        "case_id": "R07",
+        "split": "development",
+        "strategy": "A",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "waiting_input",
+        "errors": [],
+        "workspace_id": "eb8a4badf79646e88d93a740edfb935f",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 3,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1411,
+        "host_policy_steps_including_parent": 3,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.2832065699985833,
+        "case_id": "H01",
+        "split": "development",
+        "strategy": "F",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "waiting_input",
+        "errors": [],
+        "workspace_id": "73976617be534d8fbd13a1989b8cf280",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 3,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1411,
+        "host_policy_steps_including_parent": 3,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.28758554899832234,
+        "case_id": "H01",
+        "split": "development",
+        "strategy": "P",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "waiting_input",
+        "errors": [],
+        "workspace_id": "92ceebcc831648c5a1cfb04f1657579a",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 3,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1399,
+        "host_policy_steps_including_parent": 3,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.29400147699925583,
+        "case_id": "H01",
+        "split": "development",
+        "strategy": "A",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "dc00a56b27f744a68271875c7308caa1",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1910,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5894268850024673,
+        "case_id": "H02",
+        "split": "development",
+        "strategy": "F",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "57ebde52086d4dd198791ae483873084",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1910,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5888086490012938,
+        "case_id": "H02",
+        "split": "development",
+        "strategy": "P",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "77546e4ae12c4220af62dc553b9376c4",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1892,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.598574487004953,
+        "case_id": "H02",
+        "split": "development",
+        "strategy": "A",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "failed",
+        "reason": "source_unavailable",
+        "external_model_calls": 0,
+        "route": "source_failure_guard",
+        "case_id": "H04",
+        "split": "development",
+        "strategy": "F",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "failed",
+        "reason": "source_unavailable",
+        "external_model_calls": 0,
+        "route": "source_failure_guard",
+        "case_id": "H04",
+        "split": "development",
+        "strategy": "P",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "failed",
+        "reason": "source_unavailable",
+        "external_model_calls": 0,
+        "route": "source_failure_guard",
+        "case_id": "H04",
+        "split": "development",
+        "strategy": "A",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "rejected",
+        "external_model_calls": 0,
+        "route": "schema_guard",
+        "case_id": "X02",
+        "split": "development",
+        "strategy": "F",
+        "category": "out_of_scope"
+      },
+      {
+        "status": "passed",
+        "outcome": "rejected",
+        "external_model_calls": 0,
+        "route": "schema_guard",
+        "case_id": "X02",
+        "split": "development",
+        "strategy": "P",
+        "category": "out_of_scope"
+      },
+      {
+        "status": "passed",
+        "outcome": "rejected",
+        "external_model_calls": 0,
+        "route": "schema_guard",
+        "case_id": "X02",
+        "split": "development",
+        "strategy": "A",
+        "category": "out_of_scope"
+      }
+    ],
+    "network_attempts": 0,
+    "external_model_calls": 0,
+    "source_unchanged": true,
+    "elapsed_seconds": 25.936136502998124,
+    "real_model_comparison": "not_run",
+    "natural_language_goal_compilation": "not_evaluated",
+    "holdout_note": "Author-designed prospective combinations. Once executed they are regression cases, not unseen holdout.",
+    "no_llm_improvement_claim": true
+  },
+  "prospective_first": {
+    "status": "passed",
+    "cases": 12,
+    "strategy_runs": 36,
+    "split": "prospective_holdout",
+    "suite_sha256": "39411e98dcfffc2751d3e79afdd84f94585944725a01562ff7b9952dbd7b1893",
+    "protocol_sha256": "326908be5ded95ed6baa075656f412c3f91c30f25286759683f77dff7d331a4e",
+    "reference_sha256": "0b8d202e1335d3a364208db959047456b542ee4cfd022eb9d5eeca98307700e4",
+    "strategies": {
+      "F": {
+        "executed": 12,
+        "contract_passed": 12,
+        "outcomes": {
+          "query_complete": 2,
+          "partial": 2,
+          "complete": 7,
+          "rejected": 1
+        },
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null
+      },
+      "P": {
+        "executed": 12,
+        "contract_passed": 12,
+        "outcomes": {
+          "query_complete": 2,
+          "partial": 2,
+          "complete": 7,
+          "rejected": 1
+        },
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null
+      },
+      "A": {
+        "executed": 12,
+        "contract_passed": 12,
+        "outcomes": {
+          "query_complete": 2,
+          "partial": 2,
+          "complete": 7,
+          "rejected": 1
+        },
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null
+      }
+    },
+    "results": [
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.02554416500061052,
+        "case_id": "Q05",
+        "split": "prospective_holdout",
+        "strategy": "F",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.024630593994515948,
+        "case_id": "Q05",
+        "split": "prospective_holdout",
+        "strategy": "P",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.026066263002576306,
+        "case_id": "Q05",
+        "split": "prospective_holdout",
+        "strategy": "A",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.024528820998966694,
+        "case_id": "Q06",
+        "split": "prospective_holdout",
+        "strategy": "F",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.0258823600015603,
+        "case_id": "Q06",
+        "split": "prospective_holdout",
+        "strategy": "P",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "query_complete",
+        "errors": [],
+        "route": "shared_direct_query",
+        "leaf_reads": 1,
+        "external_model_calls": 0,
+        "elapsed_seconds": 0.025987736000388395,
+        "case_id": "Q06",
+        "split": "prospective_holdout",
+        "strategy": "A",
+        "category": "query"
+      },
+      {
+        "status": "passed",
+        "outcome": "partial",
+        "errors": [],
+        "workspace_id": "4e25a976cd984631a45654f3af0f8ca1",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1804,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.6302955520004616,
+        "case_id": "B07",
+        "split": "prospective_holdout",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "partial",
+        "errors": [],
+        "workspace_id": "371da9ab4eb5470dac8db62da1f77c12",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1804,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.4913815130057628,
+        "case_id": "B07",
+        "split": "prospective_holdout",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "partial",
+        "errors": [],
+        "workspace_id": "5f57aacd38a54ab08dddfc1c8dff4d5e",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1774,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.49693302199739264,
+        "case_id": "B07",
+        "split": "prospective_holdout",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "3e67b376fc5345e1934db43b63ab7356",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 8,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:110abfafddbc347006d8c002febdbed0f8be204e902c2e123f9ae39f1864b12b",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2898,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.612559469002008,
+        "case_id": "B08",
+        "split": "prospective_holdout",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "a10a02240b7d42f98dc014fed9a193f3",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 8,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:110abfafddbc347006d8c002febdbed0f8be204e902c2e123f9ae39f1864b12b",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2898,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.606360161997145,
+        "case_id": "B08",
+        "split": "prospective_holdout",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "0b1736111dd84130b89ee60e8cfc8a43",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 8,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:110abfafddbc347006d8c002febdbed0f8be204e902c2e123f9ae39f1864b12b",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2880,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.6115033720052452,
+        "case_id": "B08",
+        "split": "prospective_holdout",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "cbb505bd41f044b49e867828d38ade1d",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1994,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5085681709970231,
+        "case_id": "B09",
+        "split": "prospective_holdout",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "9bce8f9e6341464da3931eb95f953a6c",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1994,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.49275488900457276,
+        "case_id": "B09",
+        "split": "prospective_holdout",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "648702a6f2cd4471a7776962124f7511",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1964,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5040282480040332,
+        "case_id": "B09",
+        "split": "prospective_holdout",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "partial",
+        "errors": [],
+        "workspace_id": "2174961ebee143f5a6699edb431e7478",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1997,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.4977204980023089,
+        "case_id": "B10",
+        "split": "prospective_holdout",
+        "strategy": "F",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "partial",
+        "errors": [],
+        "workspace_id": "304efd20aba444d68c17087c821d9a02",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1997,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.4895680400004494,
+        "case_id": "B10",
+        "split": "prospective_holdout",
+        "strategy": "P",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "partial",
+        "errors": [],
+        "workspace_id": "385bc4189c434a35884cb12d285275a3",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1967,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5199749120001798,
+        "case_id": "B10",
+        "split": "prospective_holdout",
+        "strategy": "A",
+        "category": "batch"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "c2f59d6f1fab41128c3b93e2d8f2bd5b",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "性味与归经"
+            ]
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "性味与归经"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2500,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9001942300019437,
+        "case_id": "R03",
+        "split": "prospective_holdout",
+        "strategy": "F",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "4fa075fddcea4974a0fca50888253322",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "性味与归经"
+            ]
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "性味与归经"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2500,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9321527080028318,
+        "case_id": "R03",
+        "split": "prospective_holdout",
+        "strategy": "P",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "ced08c787cb3494ea2f85679c6e54160",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "性味与归经"
+            ]
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "性味与归经"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2476,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9354490900004748,
+        "case_id": "R03",
+        "split": "prospective_holdout",
+        "strategy": "A",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "d5922b5d163e46f6ad6fcfc049dde857",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2317,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.896332952004741,
+        "case_id": "R04",
+        "split": "prospective_holdout",
+        "strategy": "F",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "0be535d65ec34fc0a23a8f3560c21674",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2317,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9209799789969111,
+        "case_id": "R04",
+        "split": "prospective_holdout",
+        "strategy": "P",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "f1cdb77c61b84291a5a962d53fbe2cc6",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2287,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9178396969946334,
+        "case_id": "R04",
+        "split": "prospective_holdout",
+        "strategy": "A",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "b05db151dc4b48b1a1df7368b850b8b6",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1916,
+        "host_policy_steps_including_parent": 12,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9936147379994509,
+        "case_id": "R05",
+        "split": "prospective_holdout",
+        "strategy": "F",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "4bad1cd06b984fbbaaef1008f455bbcb",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1916,
+        "host_policy_steps_including_parent": 12,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 1.0280759029992623,
+        "case_id": "R05",
+        "split": "prospective_holdout",
+        "strategy": "P",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "b5c885fcfb3f4b788223bee6832a6067",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1898,
+        "host_policy_steps_including_parent": 12,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 1.0104094790003728,
+        "case_id": "R05",
+        "split": "prospective_holdout",
+        "strategy": "A",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "99fe2d6b81854a36ad23d89103a54c10",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 4,
+        "leaf_reads": 1,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          }
+        ],
+        "policy_context_max_bytes": 1970,
+        "host_policy_steps_including_parent": 10,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.863706975003879,
+        "case_id": "R08",
+        "split": "prospective_holdout",
+        "strategy": "F",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "ba6357f500e241cf98cc9ae8d7abced6",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 4,
+        "leaf_reads": 1,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          }
+        ],
+        "policy_context_max_bytes": 1970,
+        "host_policy_steps_including_parent": 10,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.8439081390024512,
+        "case_id": "R08",
+        "split": "prospective_holdout",
+        "strategy": "P",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "88e4c53d6ee74796a24e6aaf71afda03",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 4,
+        "leaf_reads": 1,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          }
+        ],
+        "policy_context_max_bytes": 1940,
+        "host_policy_steps_including_parent": 10,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.8357045149969053,
+        "case_id": "R08",
+        "split": "prospective_holdout",
+        "strategy": "A",
+        "category": "revision"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "747ed150fcd14fe180803a826d0a4da7",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1573,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5261032540001906,
+        "case_id": "H03",
+        "split": "prospective_holdout",
+        "strategy": "F",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "d9dc6588941f446cbed10a7fc28735c2",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1573,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 1,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5232681449997472,
+        "case_id": "H03",
+        "split": "prospective_holdout",
+        "strategy": "P",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "03974245ed4640a080127c7e08e9a89b",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          }
+        ],
+        "policy_context_max_bytes": 1561,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.5275441120029427,
+        "case_id": "H03",
+        "split": "prospective_holdout",
+        "strategy": "A",
+        "category": "human_recovery"
+      },
+      {
+        "status": "passed",
+        "outcome": "rejected",
+        "external_model_calls": 0,
+        "route": "schema_guard",
+        "case_id": "X01",
+        "split": "prospective_holdout",
+        "strategy": "F",
+        "category": "out_of_scope"
+      },
+      {
+        "status": "passed",
+        "outcome": "rejected",
+        "external_model_calls": 0,
+        "route": "schema_guard",
+        "case_id": "X01",
+        "split": "prospective_holdout",
+        "strategy": "P",
+        "category": "out_of_scope"
+      },
+      {
+        "status": "passed",
+        "outcome": "rejected",
+        "external_model_calls": 0,
+        "route": "schema_guard",
+        "case_id": "X01",
+        "split": "prospective_holdout",
+        "strategy": "A",
+        "category": "out_of_scope"
+      }
+    ],
+    "network_attempts": 0,
+    "external_model_calls": 0,
+    "source_unchanged": true,
+    "elapsed_seconds": 19.351092675002292,
+    "real_model_comparison": "not_run",
+    "natural_language_goal_compilation": "not_evaluated",
+    "holdout_note": "Author-designed prospective combinations. Once executed they are regression cases, not unseen holdout.",
+    "no_llm_improvement_claim": true
+  },
+  "holdout_consumed": true,
+  "real_model_comparison_separate": true
+}

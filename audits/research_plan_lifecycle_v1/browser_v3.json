@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "data": "synthetic_only",
+  "external_model_calls": 0,
+  "page_closed_while_running": true,
+  "completed_after_page_closed": true,
+  "same_job_after_refresh": true,
+  "source_reads": 6,
+  "field_rows": 3,
+  "terminal_cursor_replay": true,
+  "evidence_download": true,
+  "cancel_button_and_refresh": true,
+  "web_resume_without_requery": true,
+  "cross_session_404": true,
+  "javascript_errors": [],
+  "blocked_external_assets": 20,
+  "font_layout_reviewed": false
+}

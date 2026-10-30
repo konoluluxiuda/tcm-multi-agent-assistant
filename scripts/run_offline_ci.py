@@ -67,7 +67,11 @@ def run(output):
     output.mkdir(parents=True, exist_ok=True)
     # Syntax validation of tracked code, without importing heavyweight modules.
     tracked = subprocess.check_output(['git', 'ls-files', '*.py'], cwd=ROOT, text=True).splitlines()
-    candidates = set(tracked) | {str(p.relative_to(ROOT)) for p in (ROOT / 'scripts').glob('*.py')}
+    # Worktree deletions need not be staged before validation. Include newly
+    # created source/tests as well, while excluding corpus/venv/audit snapshots.
+    candidates = {name for name in tracked if (ROOT / name).is_file()}
+    for folder in ('agents','tcm','scripts','tests','experiments'):
+        candidates.update(str(p.relative_to(ROOT)) for p in (ROOT / folder).rglob('*.py'))
     for name in sorted(candidates):
         ast.parse((ROOT / name).read_text(encoding='utf-8'), filename=name)
     modules = []

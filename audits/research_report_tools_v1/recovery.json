@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "inner_pending",
+      "status": "partial",
+      "reason": "uncertain_tool_dispatch",
+      "source_reads_before": 1,
+      "source_reads_after": 1,
+      "tool_calls": 1,
+      "action_calls": 1,
+      "replayed_reads": 0
+    },
+    {
+      "case": "report_saved",
+      "status": "complete",
+      "reason": "declared_actions_complete",
+      "source_reads_before": 6,
+      "source_reads_after": 6,
+      "tool_calls": 6,
+      "action_calls": 1,
+      "replayed_reads": 0
+    }
+  ],
+  "external_model_calls": 0,
+  "data": "synthetic_only",
+  "limits": [
+    "composite pending stops rather than resuming individual inner leaves",
+    "not web queue lifecycle or machine power-loss testing"
+  ]
+}

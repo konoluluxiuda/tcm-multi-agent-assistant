@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "driver": "synthetic_observation_policy",
+  "records": 20,
+  "v1_source_field_checks": 80,
+  "v2_source_field_checks": 100,
+  "v1_workspace": "826892451c0e49f79873acace33b923c",
+  "v2_workspace": "549d25dc6a88474ba13b8debb425b4fb",
+  "v1_preserved": true,
+  "v2_reused_cells": 80,
+  "v2_leaf_reads": 12,
+  "v2_diff_count": 20,
+  "source_catalogs_unchanged": true,
+  "external_model_calls": 0,
+  "true_model_effectiveness": "not_run",
+  "cross_process_hitl": {
+    "status": "passed",
+    "different_processes": true,
+    "wait_pid": 24,
+    "resume_pid": 28,
+    "model_decisions_total": 7,
+    "external_model_calls": 0,
+    "selected_candidate": "entry-2"
+  },
+  "review_status": "source_reconciled_pending_human_signoff"
+}

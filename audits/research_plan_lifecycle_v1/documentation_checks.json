@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "documents": 15,
+  "local_links": 186,
+  "missing": [],
+  "syntax_files": 462,
+  "docs_markdown_count": 147,
+  "initial_check_note": "Initial run checked the output file before creating it; links rechecked after report creation."
+}

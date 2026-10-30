@@ -3,6 +3,9 @@ WORKDIR /app
 ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
 COPY requirements-tcm.txt requirements-research-preview.txt requirements-research-chat.txt constraints-research-chat.txt ./
 RUN pip install --no-cache-dir -r requirements-research-chat.txt && pip check
+# Fail a stale dependency layer during build rather than serving with the old graph runtime.
+RUN python -c "from importlib.metadata import version; assert version('langgraph') == '1.2.18'"
+RUN python -c "from importlib.metadata import version; assert version('langgraph-checkpoint-sqlite') == '3.1.2'; assert version('openpyxl') == '3.1.5'"
 # Allowlist code only. No source corpus, local .env, model weights or audit outputs.
 COPY app.py config.py features.py source_access.py ./
 COPY agents/*.py ./agents/

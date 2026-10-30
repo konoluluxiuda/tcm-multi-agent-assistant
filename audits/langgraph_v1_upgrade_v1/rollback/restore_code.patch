@@ -1,0 +1,209 @@
+--- a/tcm/pair_research_report.py
++++ b/tcm/pair_research_report.py
+@@ -142,8 +142,7 @@
+     names = validate_pair(payload['herbs'])
+     question = payload['question']
+     all_targets = requires_all_targets(question)
+-    from tcm.runtime_versions import framework_versions
+-    contract = {'version': 3, 'framework': framework_versions(), 'herbs': names, 'question': question, 'all_targets': all_targets,
++    contract = {'version': 2, 'herbs': names, 'question': question, 'all_targets': all_targets,
+                 'max_target_pages': MAX_TARGET_PAGES}
+     if checkpointer and (not thread_id or researcher is not run_report):
+         raise ValueError('Durable pair graph requires a private thread and standard leaf contract')
+@@ -241,17 +240,27 @@
+                 raise ValueError('Pair report execution contract changed')
+             state=dict(previous.values);initial=None
+             if not previous.next and state.get('report'):return state['report']
+-    async for update in compiled.astream(initial, config=config, stream_mode='updates',
+-        **({'durability': 'sync'} if checkpointer else {})):
+-        for name, values in update.items():
+-            if name not in (*leaf_nodes, 'left_research', 'right_research', 'shared_target_query', 'comparison_review') or not values:
+-                continue
+-            state.update(values)
+-            events.append({'tool': name, 'status': next(iter(values.values())).get('status', 'complete')})
+-            if on_state:
+-                # Count actual leaf queries, not the outer graph's node count.
+-                count = (sum(bool(state.get(key.removesuffix('_query'))) for key in leaf_nodes) if checkpointer else
+-                         sum(2 for x in ('left', 'right') if state.get(x) and state[x].get('status') != 'failed'))
+-                count += state.get('targets', {}).get('page_calls', 0)
+-                await on_state({'last_node': name, 'tool_calls': count, 'model_calls': 0, 'events': list(events)})
++    # LangGraph 0.3 writes checkpoints asynchronously. Exit the stream at each
++    # page boundary so pending writes finish before dispatching the next page.
++    while True:
++        async for update in compiled.astream(initial, config=config, stream_mode='updates',
++            interrupt_after=['shared_target_query'] if checkpointer and all_targets else None):
++            for name, values in update.items():
++                if name not in (*leaf_nodes, 'left_research', 'right_research', 'shared_target_query', 'comparison_review') or not values:
++                    continue
++                state.update(values)
++                events.append({'tool': name, 'status': next(iter(values.values())).get('status', 'complete')})
++                if on_state:
++                    # Count actual leaf queries, not the outer graph's node count.
++                    count = (sum(bool(state.get(key.removesuffix('_query'))) for key in leaf_nodes) if checkpointer else
++                             sum(2 for x in ('left', 'right') if state.get(x) and state[x].get('status') != 'failed'))
++                    count += state.get('targets', {}).get('page_calls', 0)
++                    await on_state({'last_node': name, 'tool_calls': count, 'model_calls': 0, 'events': list(events)})
++        if not (checkpointer and all_targets):
++            break
++        saved = await compiled.aget_state(config)
++        state.update(saved.values)
++        if not saved.next:
++            break
++        initial = None
+     return state['report']
+--- a/tcm/cross_source_report.py
++++ b/tcm/cross_source_report.py
+@@ -192,10 +192,10 @@
+                 return previous.values['report']
+     if on_state is None:
+         # LangGraph 0.3 forces values mode for nested graphs; consume its final state.
+-        final = await compiled.ainvoke(initial,config=config, **({'durability': 'sync'} if checkpointer else {}))
++        final = await compiled.ainvoke(initial,config=config)
+         return final['report']
+     state = {}; events = []
+-    async for update in compiled.astream(initial, config=config, stream_mode='updates', **({'durability': 'sync'} if checkpointer else {})):
++    async for update in compiled.astream(initial, config=config, stream_mode='updates'):
+         for name, values in update.items():
+             # Nested graphs may attach __metadata__ to update frames.
+             if name not in ('text_research', 'structured_research', 'assemble') or not values:
+--- a/tcm/report_checkpoint.py
++++ b/tcm/report_checkpoint.py
+@@ -5,7 +5,6 @@
+ import os
+ from pathlib import Path
+ from tcm.cross_source_report import run_report, CONFIG
+-from tcm.runtime_versions import framework_versions
+ 
+ 
+ def source_fingerprint():
+@@ -21,7 +20,7 @@
+             for chunk in iter(lambda:f.read(1024*1024),b''):h.update(chunk)
+         return h.hexdigest()
+     content={'files':{str(p.resolve()):digest(p) for p in files},
+-             'config':{k:os.getenv(k) for k in CONFIG}, 'framework':framework_versions()}
++             'config':{k:os.getenv(k) for k in CONFIG}}
+     return hashlib.sha256(json.dumps(content,sort_keys=True).encode()).hexdigest()
+ 
+ 
+@@ -30,8 +29,7 @@
+     from tcm.mcp_client import report_branch
+     thread=hashlib.sha256((owner+':'+doc['id']).encode()).hexdigest()
+     lock=int(thread[:15],16)
+-    binding=hashlib.sha256(json.dumps({'payload':doc['payload'],'source':fingerprint or await asyncio.to_thread(source_fingerprint),
+-                                     'framework':framework_versions()},sort_keys=True).encode()).hexdigest()
++    binding=hashlib.sha256(json.dumps({'payload':doc['payload'],'source':fingerprint or await asyncio.to_thread(source_fingerprint)},sort_keys=True).encode()).hexdigest()
+     async with AsyncPostgresSaver.from_conn_string(os.environ['RESEARCH_CHECKPOINT_DSN']) as saver:
+         # Session lock fences simultaneous resumptions, in addition to queue lease checks.
+         cur=await saver.conn.execute('SELECT pg_try_advisory_lock(%s) AS locked',(lock,))
+@@ -53,8 +51,7 @@
+             else:
+                 raise ValueError('Unsupported checkpoint report kind')
+             if fingerprint is None:
+-                final=hashlib.sha256(json.dumps({'payload':doc['payload'],'source':await asyncio.to_thread(source_fingerprint),
+-                                               'framework':framework_versions()},sort_keys=True).encode()).hexdigest()
++                final=hashlib.sha256(json.dumps({'payload':doc['payload'],'source':await asyncio.to_thread(source_fingerprint)},sort_keys=True).encode()).hexdigest()
+                 if final!=binding:raise ValueError('Source changed during execution')
+             return result
+         finally:
+--- a/tcm/research_run.py
++++ b/tcm/research_run.py
+@@ -196,8 +196,7 @@
+     entry='decide'
+     if journal is not None:
+         code={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in Path(__file__).parent.glob('*.py')}
+-        from tcm.runtime_versions import framework_versions
+-        contract={'framework':framework_versions(), 'question':question,'required':required,'scope':scope.model_dump() if scope else None,
++        contract={'question':question,'required':required,'scope':scope.model_dump() if scope else None,
+                   'limits':limits.model_dump(),'context':context_policy.model_dump(),
+                   'input_budget':input_budget.model_dump(),'estimator':token_estimator.label,
+                   'schemas':tool_schemas,'execution':journal.contract,'code':code}
+--- a/tcm/research_run_durable.py
++++ b/tcm/research_run_durable.py
+@@ -1,6 +1,5 @@
+ """Private JSON journal for bounded tool loops; uncertain dispatches never auto-replay."""
+ from contextlib import contextmanager, closing
+-import asyncio
+ import fcntl
+ import hashlib
+ import json
+@@ -10,7 +9,6 @@
+ import sqlite3
+ import time
+ from langchain_core.messages import messages_to_dict, messages_from_dict
+-from tcm.research_run_local import run_local_profile
+ 
+ 
+ class RunConflict(RuntimeError):pass
+@@ -92,20 +90,3 @@
+     journal=RunJournal(path,owner,identifier,contract,resume=resume,expected_revision=expected_revision)
+     with journal.locked():return await run(question,sdk,backend,journal=journal,**kwargs)
+ 
+-
+-async def local_profile(store, owner, path, disease):
+-    """Compatibility audit wrapper for explicit local runs; no checkpoint auto-resume."""
+-    doc = store.create(owner, disease)
+-    async def persist(snapshot):
+-        nonlocal doc
+-        doc = store.save(owner, doc, snapshot=snapshot)
+-    try:
+-        result = await run_local_profile(path, disease, on_state=persist)
+-        doc = store.save(owner, doc, result=result, status=result['status'])
+-    except asyncio.CancelledError:
+-        store.save(owner, doc, status='cancelled')
+-        raise
+-    except Exception:
+-        store.save(owner, doc, status='failed')
+-        raise
+-    return {'run_id': doc['id'], 'revision': doc['revision'], **result}
+--- a/tcm/qdrant_dense.py
++++ b/tcm/qdrant_dense.py
+@@ -74,9 +74,8 @@
+         client.close();client=None
+         hashes = {str(p.relative_to(stage)): digest(p) for p in (stage/'store').rglob('*')
+                   if p.is_file() and p.name != '.lock'}
+-        from importlib.metadata import version
+         receipt = {**dense.receipt, 'format_version':1, 'collection':'pharmacopoeia',
+-                   'qdrant_client_version':version('qdrant-client'), 'files':hashes}
++                   'qdrant_client_version':'1.13.3', 'files':hashes}
+         (stage/'receipt.json').write_text(json.dumps(receipt, indent=2))
+         # Refuse replacement: immutable build paths are the deployment/rollback unit.
+         if output.exists():raise FileExistsError('Generation appeared during build')
+--- a/agents/rag_agent/vectorstore_qdrant.py
++++ b/agents/rag_agent/vectorstore_qdrant.py
+@@ -7,8 +7,7 @@
+ from typing import List, Dict, Any, Tuple, Optional
+ 
+ from langchain_core.documents import Document
+-from langchain_core.stores import InMemoryStore
+-from langchain_classic.storage import LocalFileStore
++from langchain.storage import InMemoryStore, LocalFileStore
+ from langchain_qdrant import FastEmbedSparse, QdrantVectorStore, RetrievalMode
+ from qdrant_client import QdrantClient, models
+ from qdrant_client.http.models import Distance, SparseVectorParams, VectorParams, OptimizersConfigDiff
+--- a/tcm/runtime_versions.py
++++ /dev/null
+@@ -1,13 +0,0 @@
+-"""Version binding for persisted execution; data snapshots remain separately bound."""
+-from importlib.metadata import PackageNotFoundError, version
+-
+-
+-def framework_versions():
+-    result = {}
+-    for name in ('langgraph', 'langgraph-checkpoint', 'langgraph-checkpoint-postgres',
+-                 'langchain-core', 'langchain-openai', 'openai'):
+-        try:
+-            result[name] = version(name)
+-        except PackageNotFoundError:
+-            result[name] = None
+-    return result
+--- a/Dockerfile.research
++++ b/Dockerfile.research
+@@ -3,8 +3,6 @@
+ ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+ COPY requirements-tcm.txt requirements-research-preview.txt requirements-research-chat.txt constraints-research-chat.txt ./
+ RUN pip install --no-cache-dir -r requirements-research-chat.txt && pip check
+-# Fail a stale dependency layer during build rather than serving with the old graph runtime.
+-RUN python -c "from importlib.metadata import version; assert version('langgraph') == '1.2.18'"
+ # Allowlist code only. No source corpus, local .env, model weights or audit outputs.
+ COPY app.py config.py features.py source_access.py ./
+ COPY agents/*.py ./agents/

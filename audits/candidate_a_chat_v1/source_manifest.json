@@ -1,0 +1,15 @@
+{
+  "agents/agent_decision.py": "bbdd197c6e9ae4bc9a26d3fcc99298e1d736cc46b61c6d3678f4190c5db911c0",
+  "app.py": "8e4d7171a4b5333a03ef315fa224bb1bd6da0e6f69b4b08836a7da2b576c3bd2",
+  "templates/index.html": "083e290ff76380b730d955ce3dbcf2ddbaf97b51dc93750ec4f35cf503ea22cc",
+  "tcm/assistant_router.py": "50f18d3a24ad849cd2efb2bf4f12cff37faadbdddd268a2c02278a6ad27a5126",
+  "tcm/intent_planner.py": "8bd43ee9cda0d6500c7fc228a275979e430121ed1bb355fa72454e9a93188a96",
+  "tcm/research_run_api.py": "7788f447ee1825f65babed13159ff733dce2864d3660c62fbbefc7213a6ab597",
+  "tcm/research_run_local.py": "7d045ff2b924faa88f2728fc2d91e5e7ecff19b854757eaf46bc3ae2916825b3",
+  "tcm/research_plan_intent.py": "542cba88bfefd0bbbe4e9f7f287e7159763d6f5f159d807d3d190c0a151c5a8a",
+  "tcm/research_plan_run.py": "327863b34d219bce85346a90cfd17ca4123b2c7d3d9b65add6334269188ec907",
+  "tcm/research_plan.js": "8c2230faf564bfb30761cb395a7374ae0c449aea25e4ddd962ed75ccf540e8dd",
+  "tests/test_research_plan_chat.py": "b298d3709edd21685732978966a52befa607f07d13f826ec1dbb480fb9f35da8",
+  "tests/research_plan_http_fixture.py": "0df587cc797642dd7b5bbbdd4cda6529263d8c4392378626c47fb2142fb39575",
+  "scripts/check_research_plan_browser.py": "4d9091555ca9b593c2471841711d8d392ae874d6171c49a268ca60ffd999cbbf"
+}

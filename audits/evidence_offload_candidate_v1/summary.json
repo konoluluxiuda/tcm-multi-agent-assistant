@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "external_calls": 0,
+  "synthetic_only": true,
+  "separate_process_read": true,
+  "original_structure_preserved": true,
+  "marker_recovered": true,
+  "latest_reference_fits": {
+    "input_bytes_before": 987,
+    "input_bytes_after": 987,
+    "input_byte_limit": 16000,
+    "compacted_call_ids": [],
+    "fits": true,
+    "measurement": "serialized_utf8_bytes_not_tokens"
+  },
+  "pretty_payload_bytes": 406597,
+  "reference_bytes": 614,
+  "source_binding_preserved": true,
+  "limits": [
+    "Not integrated into research_run or chat",
+    "No model comprehension evaluation",
+    "Graceful writer exit then new reader process; not SIGKILL",
+    "Private SQLite authority; not tamperproof against a database administrator"
+  ],
+  "source_sha256": {
+    "experiments/architecture_candidates/evidence_store.py": "bb33d5835f5da766080ee103da747782f92acd9f57d45869396fcce2b82617bc",
+    "scripts/check_evidence_offload.py": "a72ebf445a51f5b8cb31dd51470085f8ad3fe451399a16e5855d72cdb1056219",
+    "tcm/research_evidence_read.py": "9efd5f007f23d12efaf38a1bf2360ed6731af531a9fba8a8bca5c0d10ea7dbea"
+  }
+}

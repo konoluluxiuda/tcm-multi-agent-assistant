@@ -1,0 +1,15 @@
+{
+  "status": "failed",
+  "tests": 18,
+  "errors": 1,
+  "failures": 1,
+  "cases": [
+    "HttpTests.test_private_read_download_and_refresh_without_tool_dispatch: source-contract canonicalization fix pending in running process",
+    "HttpTests.test_changed_database_requires_new_query: changed schema raised 503 instead of source-change 409"
+  ],
+  "fixes": [
+    "canonical comparison of persisted source contract",
+    "translate source construction/validation errors to evidence/source conflict"
+  ],
+  "external_model_calls": 0
+}

@@ -56,17 +56,18 @@ class PubMedRuntime:
         action = request.get('action')
         if action == 'clear':
             return status_result('context_cleared', '已清除本会话的文献批次焦点；文献台账按独立保留策略管理。'), None
-        if action == 'invalid':
-            return status_result('invalid_query', '用法：/pubmed Astragalus membranaceus[Title/Abstract]；/pubmed-last 回看本会话上次批次。'), None
-        if not env_bool('ENABLE_PUBMED'):
-            return status_result('pubmed_disabled', 'PubMed文献工具尚未启用。'), None
+        if action != 'last':
+            return status_result('pubmed_retired', '文献检索已退役。可查询本地药材与药典，或打开资料核对工作台；历史文献批次仍可回看。'), context
         if action == 'last' and not context:
             return status_result('no_active_run', '当前会话没有文献批次，请用 /pubmed 加明确检索式查询。'), None
         if not self.slot.acquire(blocking=False):
             return status_result('pubmed_busy', '文献工具正在处理其他请求，请稍后重试。'), None
         store = None
         try:
-            store = LiteratureStore(os.getenv('PUBMED_DB') or ROOT / 'var/literature/pubmed.sqlite3')
+            path = Path(os.getenv('PUBMED_DB') or ROOT / 'var/literature/pubmed.sqlite3')
+            if not path.is_file():
+                return status_result('snapshot_unavailable', '历史文献台账不存在。'), None
+            store = LiteratureStore(path, read_only=True)
             if action == 'last':
                 if not isinstance(context, dict) or context.get('kind') != 'pubmed_run_v1':
                     return status_result('snapshot_unavailable', '文献批次引用无效，请重新检索。'), None
@@ -74,10 +75,6 @@ class PubMedRuntime:
                 if data is None or _hash(data) != context.get('snapshot_sha256'):
                     return status_result('snapshot_unavailable', '已保存文献批次缺失或改变，请重新检索。'), None
                 run_id = context['run_id']
-            else:
-                data = PubMedClient().search(request['query'], limit=5)
-                run_id = store.save(data)
-                data = store.get(run_id)
             selected = {'kind': 'pubmed_run_v1', 'run_id': run_id, 'snapshot_sha256': _hash(data)}
             messages = {'ok': f"找到{data['total_count']}条文献，展示{len(data['articles'])}条。",
                         'no_results': '本次有效检索式未命中；这不代表没有相关研究。',

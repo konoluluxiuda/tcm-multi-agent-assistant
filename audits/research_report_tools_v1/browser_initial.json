@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "failure": "Timeout waiting for P00019 in the first evidence page",
+  "stage": "browser_initial",
+  "finding": "Browser assumed 20 records per page; existing 6000-byte guard returned 4 with next_offset=4. Corrected browser to follow actual cursors, not the backend byte budget. V2 traversed 6 pages and checked all 23 unique identifiers.",
+  "original_trace": "tool transcript; this file is an error summary, not full raw stdout",
+  "external_model_calls": 0
+}

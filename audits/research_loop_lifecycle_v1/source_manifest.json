@@ -1,0 +1,13 @@
+{
+  "tcm/research_loop_api.py": "0083055ada01a952a90837ac05a8956c7c84a4c3bd9a88c6922e4f5a64581521",
+  "tcm/research_loop_store.py": "9f39dd3173b90a8128fc9ebd3c710fb6809f92bf284c049bb4bc39b141e68a75",
+  "tcm/research_loop.js": "a93079478915df20ec898460cf847e74a05964fef1b30b66e270b7a6f08cb465",
+  "tcm/research_run_durable.py": "4d5209c779d0eb0a8feb15564d428c04f889ecc84961d1ab69920e21033358a4",
+  "tcm/runtime_backup.py": "909cbc0462540fe36ff4877be59105a163237fb92409505fc56aed1121c429e2",
+  "scripts/backup_runtime.py": "cb75f0119f346e8d82cb3067de991d6f814d8e90d96b44c30219f00540e6ccc2",
+  "scripts/preview_local_tasks.py": "0159b377ff4814813295623d8ed841fe8cdb030f938184ac7f9ceeb727380d7d",
+  "app.py": "20ddffff9b7e72ff6ce40fd9af1a360b5594ef118871fee5e7bc0b15dde8c616",
+  "templates/index.html": "230eb10060cb1282cd0fe9ae0c0c2e0a6c687e36128c8db6887360c69c955fad",
+  "tests/test_research_loop_api.py": "c5dcbcc5f9eb551893a93fa28b843f86f97e2f610de51c99ae20f216c213c4fa",
+  "scripts/check_research_loop_browser.py": "64741138ce6bec2ab809d28a2f58473486ace316df7b9b534ee95c6a9fffe9f4"
+}

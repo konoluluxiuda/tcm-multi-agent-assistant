@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "url": "http://127.0.0.1:7896/",
+  "runtime": {
+    "pid": 20167,
+    "port": "7896",
+    "launch": "scripts.preview_local_tasks without intent model",
+    "external_model_calls": 0
+  },
+  "job_status": "complete",
+  "field_rows": 2,
+  "same_run_after_refresh": true,
+  "external_model_calls": 0
+}

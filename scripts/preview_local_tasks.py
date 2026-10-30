@@ -24,11 +24,14 @@ def main():
     parser.add_argument('--semantic-memory', action='store_true', help='Enable local project memory retrieval; requires --dense-python, never sends memory to providers')
     parser.add_argument('--qdrant-generation',type=Path,help='Optional immutable local Qdrant generation; requires --dense-python')
     parser.add_argument('--reranker-model',type=Path,help='Optional pinned local ONNX cross-encoder directory; requires --dense-python')
+    parser.add_argument('--synthetic-loop',action='store_true',help='Enable authenticated synthetic loop lifecycle; no external models')
+    parser.add_argument('--dataops-synthetic', action='store_true',
+                        help='Enable D2 observation/HITL/revision with a labelled local model substitute; no network')
     args = parser.parse_args()
     if not 1 <= args.port <= 65535:
         parser.error('--port must be between 1 and 65535')
     missing_modules = [name for name in ('uvicorn', 'fastapi', 'langgraph', 'langchain_openai',
-                                         'pydantic', 'jinja2', 'dotenv', 'multipart')
+                                         'pydantic', 'jinja2', 'dotenv', 'multipart', 'openpyxl')
                        if importlib.util.find_spec(name) is None]
     if missing_modules:
         parser.error('当前Python环境缺少依赖：' + ', '.join(missing_modules) +
@@ -36,6 +39,8 @@ def main():
                      '\n请切换到已安装项目依赖的环境，或在项目虚拟环境中运行：'
                      '\npython -m pip install -r requirements-research-chat.txt'
                      '\n环境准备见 docs/PROJECT_DEMO.md 的“启动与复现”。')
+    if args.dataops_synthetic and importlib.util.find_spec('langgraph.checkpoint.sqlite') is None:
+        parser.error('D2需要 langgraph-checkpoint-sqlite；请安装 requirements-research-chat.txt。')
 
     state = args.state.resolve()
     files = {
@@ -56,6 +61,7 @@ def main():
 
     state_files = {key: state / name for key, name in {
         'CHAT_MEMORY_DB': 'preview-memory.sqlite3',
+        'RESEARCH_LOOP_DB': 'research_loop.sqlite3',
         'RESEARCH_TASK_DB': 'preview-tasks.sqlite3',
         'RESEARCH_BOOKMARK_DB': 'preview-bookmarks.sqlite3',
         'PUBMED_DB': 'preview-pubmed.sqlite3',
@@ -66,13 +72,18 @@ def main():
     cookie = ('task_literature_preview_session' if state == DEFAULT_STATE.resolve() else
               'tcm_local_tasks_' + hashlib.sha256(str(state).encode()).hexdigest()[:16])
     environment = {
+        'ENABLE_DATAOPS': '1', 'DATAOPS_ROOT': str(state / 'dataops'),
+        'ENABLE_DATAOPS_AGENT': '1' if args.dataops_synthetic else '0',
+        'DATAOPS_DRIVER': 'synthetic' if args.dataops_synthetic else 'disabled',
+        'ENABLE_SYNTHETIC_LOOP':'1' if args.synthetic_loop else '0',
         'RESEARCH_TOOLS_ONLY': '1', 'ENABLE_NATURAL_ROUTING': '1',
-        'ENABLE_RESEARCH_TASKS': '1', 'ENABLE_RESEARCH_BOOKMARKS': '1',
+        'ENABLE_RESEARCH_TASKS': '1', 'ENABLE_RESEARCH_PLAN_JOBS':'1', 'ENABLE_RESEARCH_BOOKMARKS': '1',
         'ENABLE_PHARMACOPOEIA_RESEARCH': '1', 'ENABLE_PUBMED': '0',
         'ENABLE_EVIDENCE_ASSISTANT': '0', 'ENABLE_EVIDENCE_AUTO_ROUTING': '0',
         'ENABLE_INTENT_PLANNER':'1' if args.with_intent_model else '0',
         'ENABLE_WEB_SEARCH': '0', 'ENABLE_IMAGE_ANALYSIS': '0', 'ENABLE_SPEECH': '0',
         'LANGCHAIN_TRACING_V2': 'false', 'LANGSMITH_TRACING': 'false',
+        'RESEARCH_JOB_DSN':'', 'RESEARCH_CHECKPOINT_DSN':'',
         'CHAT_MODEL': 'local-demo-disabled', 'CHAT_API_KEY': 'local-demo-disabled',
         'CHAT_BASE_URL': 'http://127.0.0.1:9/v1',
         'EMBEDDING_MODEL': 'local-demo-disabled', 'EMBEDDING_API_KEY': 'local-demo-disabled',
@@ -138,6 +149,7 @@ def main():
 
     print(f'任务页：http://127.0.0.1:{args.port}/research-tasks', flush=True)
     print(f'聊天页：http://127.0.0.1:{args.port}/', flush=True)
+    print(f'资料工作台：http://127.0.0.1:{args.port}/dataops', flush=True)
     print(('仅未识别问句可调用意图模型一次；本地资料和会话历史不外发。' if args.with_intent_model else
            '本地资料模式；外部模型关闭。')+' 联网工具和追踪关闭。Ctrl+C停止，同一状态目录可恢复记录。',flush=True)
     import uvicorn

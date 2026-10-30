@@ -1,0 +1,37 @@
+{
+  "kind": "git_publication_preflight",
+  "date": "2026-10-30",
+  "status": "passed",
+  "target": "origin/main",
+  "origin_url": "git@github.com:konoluluxiuda/tcm-multi-agent-assistant.git",
+  "local_base_head": "95256ef718620e1cf12091f6544340dc383c191b",
+  "origin_before_push": "1e5cc41deb6bb37f0e966ff1492daa85d36848b4",
+  "previous_unpushed_commits": 14,
+  "remote_commits_not_in_local": 0,
+  "ci_modules": 155,
+  "ci_tests": 1307,
+  "ci_skipped": 0,
+  "offline_network_attempts": 0,
+  "changed_python_syntax_files": 176,
+  "checked_markdown_links": 536,
+  "missing_links": [],
+  "historical_readme_links_repaired": 3,
+  "publication_scan": {
+    "status": "passed",
+    "worktree_pattern_hits": [],
+    "unpublished_history_pattern_types": [],
+    "reviewed_new_screenshots": "three synthetic-only browser fixtures",
+    "excluded_local_only": [
+      ".env",
+      "var/",
+      "data/《中国药典》*.pdf",
+      "虚构 Agent 项目的架构设计与面试追问.pdf",
+      "audits/documentation_review_20261029/before-documents.tar.gz"
+    ]
+  },
+  "git_diff_check": "passed",
+  "external_model_calls": 0,
+  "docker_build_or_publish": false,
+  "push_result": "See Git history; this is the preflight record.",
+  "local_only_log_links_disclosed": 15
+}

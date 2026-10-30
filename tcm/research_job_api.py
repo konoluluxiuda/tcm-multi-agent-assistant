@@ -18,6 +18,17 @@ class SubmitJob(ProfileRequest):
     request_key: str = Field(min_length=8,max_length=100,pattern=r'^[A-Za-z0-9_-]+$')
 
 
+class SubmitPlan(BaseModel):
+    model_config={'extra':'forbid'}
+    question:str=Field(min_length=1,max_length=2000)
+    request_key:str=Field(min_length=8,max_length=100,pattern=r'^[A-Za-z0-9_-]+$')
+
+
+class ResumeRevision(BaseModel):
+    model_config={'extra':'forbid'}
+    revision:int=Field(strict=True,ge=0)
+
+
 class SubmitReport(BaseModel):
     model_config = {'extra': 'forbid'}
     herb: str = Field(min_length=1, max_length=80)
@@ -52,15 +63,12 @@ class SubmitPairReport(BaseModel):
 
 def create_router(memory_provider,cookie_name,*,runner=None):
     def storage():
-        if os.getenv('RESEARCH_CHECKPOINT_DSN') and os.getenv('RESEARCH_CHECKPOINT_DSN') != os.getenv('RESEARCH_JOB_DSN'):
-            raise ValueError('Queue and checkpoint must use the same dedicated database')
-        if os.getenv('RESEARCH_JOB_DSN'):
-            from tcm.postgres_jobs import PostgresJobStore
-            return PostgresJobStore(os.environ['RESEARCH_JOB_DSN'])
-        configured=os.getenv('RESEARCH_JOB_DB')
-        path=Path(configured) if configured else memory_provider().path.with_name('research_jobs.sqlite3')
-        return JobStore(path)
-    worker=ResearchWorker(storage,lambda:os.environ['ETCM_DISEASE_DB'],**({'runner':runner} if runner else {}))
+        from tcm.research_jobs import storage as queue_storage
+        return queue_storage(getattr(memory_provider(),'path',None))
+    def run_path():
+        return Path(os.getenv('RESEARCH_RUN_DB') or memory_provider().path.with_name('research_runs.sqlite3'))
+    worker=ResearchWorker(storage,lambda:os.environ['ETCM_DISEASE_DB'],run_path=run_path,
+                          **({'runner':runner} if runner else {}))
     @asynccontextmanager
     async def lifespan(app):
         if enabled():worker.start()
@@ -80,9 +88,12 @@ def create_router(memory_provider,cookie_name,*,runner=None):
         return hashlib.sha256(cookie.encode()).hexdigest()
 
     def translate(exc):
+        from tcm.research_run_durable import RunConflict as JournalConflict
+        from tcm.research_evidence_store import EvidenceConflict
+        from tcm.target_similarity import SnapshotChanged
         if isinstance(exc,KeyError):return HTTPException(404,'未找到本会话的任务。')
         if isinstance(exc,JobBusy):return HTTPException(429,'已有任务运行或队列已满，请稍后再试。')
-        if isinstance(exc,JobConflict):return HTTPException(409,'任务状态、请求标识或事件位置冲突，请刷新查看。')
+        if isinstance(exc,(JobConflict,JournalConflict,EvidenceConflict,SnapshotChanged)):return HTTPException(409,'任务状态、请求标识、代码或来源版本冲突，请刷新查看。')
         return HTTPException(503,'任务存储暂不可用，未启动无记录执行。')
 
     @router.post('/api/research/jobs',status_code=202)
@@ -112,12 +123,38 @@ def create_router(memory_provider,cookie_name,*,runner=None):
         worker.start();response.headers['Cache-Control']='no-store'
         return {'run_id':doc['id'],'status':doc['status'],'created':created}
 
-    @router.post('/api/research/jobs/{identifier}/resume',status_code=202)
-    async def resume_job(identifier:str,request:Request):
+    @router.post('/api/research/jobs/plan',status_code=202)
+    async def submit_plan(body:SubmitPlan,request:Request,response:Response):
         owner=authorize(request)
-        if not os.getenv('RESEARCH_CHECKPOINT_DSN'):
-            raise HTTPException(409,'此部署未启用执行恢复。')
-        try:doc=storage().resume(owner,identifier)
+        from tcm.research_plan_jobs import enabled as plans_enabled,make_payload,submit
+        from tcm.research_plan_intent import local_plan
+        from tcm.research_plan_run import compile_scope,signature
+        if not plans_enabled():raise HTTPException(404,'聊天后台执行尚未启用。')
+        plan=local_plan(body.question)
+        if plan is None:raise HTTPException(422,'未完整识别计划；此入口不调用模型。')
+        try:
+            scope,unresolved=compile_scope(plan,{})
+            if unresolved:raise HTTPException(422,'请在聊天中核对具体来源后提交。')
+            rendered,focus,created=submit(owner,run_path(),make_payload(body.question,plan,{},signature(plan),scope),body.request_key)
+        except HTTPException:raise
+        except Exception as exc:raise translate(exc)
+        worker.start();response.headers['Cache-Control']='no-store'
+        return {'run_id':focus['run_id'],'status':rendered['status'],'created':created}
+
+    @router.post('/api/research/jobs/{identifier}/resume',status_code=202)
+    async def resume_job(identifier:str,request:Request,body:ResumeRevision|None=None):
+        owner=authorize(request)
+        try:
+            queue=storage();prior=queue.get(owner,identifier)
+            if prior.get('recovery')=='journal':
+                from tcm.research_plan_jobs import get as get_plan
+                get_plan(owner,identifier,run_path())
+                if body is None:raise HTTPException(422,'请提供当前任务版本。')
+                doc=queue.resume(owner,identifier,expected_revision=body.revision)
+            else:
+                if not os.getenv('RESEARCH_CHECKPOINT_DSN'):raise HTTPException(409,'此部署未启用执行恢复。')
+                doc=queue.resume(owner,identifier)
+        except HTTPException:raise
         except Exception as exc:raise translate(exc)
         worker.start()
         return {'run_id':doc['id'],'status':doc['status']}
@@ -131,7 +168,12 @@ def create_router(memory_provider,cookie_name,*,runner=None):
     @router.get('/api/research/jobs/{identifier}')
     async def get(identifier:str,request:Request,response:Response):
         owner=authorize(request);response.headers['Cache-Control']='no-store'
-        try:return storage().get(owner,identifier)
+        try:
+            doc=storage().get(owner,identifier)
+            if doc.get('payload',{}).get('kind')=='analysis_plan':
+                from tcm.research_plan_jobs import get as get_plan
+                doc=get_plan(owner,identifier,run_path())
+            return doc
         except Exception as exc:raise translate(exc)
 
     @router.post('/api/research/jobs/{identifier}/cancel')
@@ -143,7 +185,13 @@ def create_router(memory_provider,cookie_name,*,runner=None):
     @router.delete('/api/research/jobs/{identifier}')
     async def delete(identifier:str,request:Request):
         owner=authorize(request)
-        try:storage().delete(owner,identifier);return {'status':'deleted'}
+        try:
+            queue=storage();doc=queue.get(owner,identifier)
+            if doc.get('payload',{}).get('kind')=='analysis_plan':
+                from tcm.research_plan_jobs import cleanup
+                cleanup(owner,identifier,run_path(),queue)
+            else:queue.delete(owner,identifier)
+            return {'status':'deleted'}
         except Exception as exc:raise translate(exc)
 
     @router.get('/api/research/jobs/{identifier}/events')

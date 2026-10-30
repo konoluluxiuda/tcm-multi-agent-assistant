@@ -52,13 +52,6 @@ window.ResearchWorkspaces = (() => {
             if (name.startsWith('/')) { feedback.textContent = '此处填写药名或来源ID，工具指令请在下方聊天框输入。'; return; }
             send(source.value === 'herb' ? '/herb ' + name : '/research ' + name + '的' + field.value);
         });
-        const literatureForm = root.querySelector('[data-workspace-literature-form]');
-        literatureForm.addEventListener('submit', event => {
-            event.preventDefault();
-            if (busy || !literatureForm.reportValidity() || literatureForm.closest('fieldset')?.disabled) return;
-            const term = literatureForm.elements.term.value.trim();
-            if (term) send('/pubmed ' + term);
-        });
         function focusFrom(data) {
             if (data.evidence_answer) {
                 status.textContent = '当前为AI资料整理任务，来源见回答；未建立药典与文献对象等价关系。';

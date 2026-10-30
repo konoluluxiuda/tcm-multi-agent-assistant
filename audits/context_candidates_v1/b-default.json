@@ -1,0 +1,82 @@
+{
+  "observation_checks_passed": true,
+  "candidate": "b-default",
+  "cases": [
+    {
+      "count": 100,
+      "fixture_sha256": "a709dcd526aed15bb781e19a15845ef517b8df8a41112a9215cb598913d6aad8",
+      "pretty_json_bytes": 3495,
+      "offloaded": false,
+      "full_payload_preserved": null,
+      "marker_visible_in_first_result": true,
+      "marker_recovered": true,
+      "model_substitute_calls": 2,
+      "message_bytes_per_call": [
+        321,
+        4698
+      ],
+      "first_tool_result_bytes": 3495,
+      "retrieval_result_preview": null,
+      "stored_paths": [],
+      "source_binding_in_stored_payload": false,
+      "typed_source_binding_in_grep_result": false,
+      "policy": "default 20000 token heuristic",
+      "note": "Grep returns textual matches, not project evidence IDs. State-backed files are not independent disk persistence."
+    },
+    {
+      "count": 2000,
+      "fixture_sha256": "ca267ceec1f4d5ad682c761672ce24aae1b88ce087b71c585633a55d5a3e633d",
+      "pretty_json_bytes": 58596,
+      "offloaded": false,
+      "full_payload_preserved": null,
+      "marker_visible_in_first_result": true,
+      "marker_recovered": true,
+      "model_substitute_calls": 2,
+      "message_bytes_per_call": [
+        321,
+        65499
+      ],
+      "first_tool_result_bytes": 58596,
+      "retrieval_result_preview": null,
+      "stored_paths": [],
+      "source_binding_in_stored_payload": false,
+      "typed_source_binding_in_grep_result": false,
+      "policy": "default 20000 token heuristic",
+      "note": "Grep returns textual matches, not project evidence IDs. State-backed files are not independent disk persistence."
+    },
+    {
+      "count": 14000,
+      "fixture_sha256": "80f57b071be4bde7c356be4dff7cfadd657efb499acb5f27c1f479ab921c9c96",
+      "pretty_json_bytes": 406597,
+      "offloaded": true,
+      "full_payload_preserved": true,
+      "marker_visible_in_first_result": false,
+      "marker_recovered": true,
+      "model_substitute_calls": 3,
+      "message_bytes_per_call": [
+        321,
+        1719,
+        2389
+      ],
+      "first_tool_result_bytes": 849,
+      "retrieval_result_preview": "/large_tool_results/probe-0:\n  7017:       \"SYNTHETIC_MARKER_MIDDLE_017\",",
+      "stored_paths": [
+        "/large_tool_results/probe-0"
+      ],
+      "source_binding_in_stored_payload": true,
+      "typed_source_binding_in_grep_result": false,
+      "policy": "default 20000 token heuristic",
+      "note": "Grep returns textual matches, not project evidence IDs. State-backed files are not independent disk persistence."
+    }
+  ],
+  "external_calls": 0,
+  "data": "synthetic_only",
+  "business_accuracy": "not_measured",
+  "provider_tokens": "not_measured",
+  "limits": [
+    "Fixed driver knows retrieval procedure; not model comprehension",
+    "A reads known offset, B literal grep; retrieval tasks differ",
+    "No LLM summarization measured",
+    "Byte measures exclude bound tool schemas in B; not a cost comparison"
+  ]
+}

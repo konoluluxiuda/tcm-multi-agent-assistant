@@ -1,0 +1,159 @@
+{
+  "method": "static rule routing with preview feature flags; no service/model requests or application changes",
+  "cases": [
+    {
+      "id": "BC01",
+      "outcome": "unsupported_intent",
+      "rule_route": null,
+      "clauses": [
+        "请给我当前资料库的数据概览"
+      ]
+    },
+    {
+      "id": "BC03",
+      "outcome": "requirements_not_met",
+      "rule_route": {
+        "tool": "research",
+        "request": {
+          "question": "查看白术的药用部位和科名"
+        },
+        "reason": "pharmacopoeia_field_query",
+        "mode": "natural"
+      },
+      "clauses": [
+        "查看白术的药用部位和科名"
+      ]
+    },
+    {
+      "id": "BC06",
+      "outcome": "clarification",
+      "rule_route": {
+        "tool": "assistant",
+        "request": {
+          "topic": "target_analysis",
+          "call": {
+            "tool": "herb_target_profile",
+            "arguments": {
+              "name": "看一下当归"
+            }
+          }
+        },
+        "reason": "target_analysis_query",
+        "mode": "natural"
+      },
+      "clauses": [
+        "帮我看一下当归的靶点画像"
+      ]
+    },
+    {
+      "id": "BC07",
+      "outcome": "clarification",
+      "rule_route": {
+        "tool": "assistant",
+        "request": {
+          "topic": "research_plan",
+          "question": "哪些药材与川芎的靶点最接近？按Jaccard列前5项",
+          "plan": null
+        },
+        "reason": "multi_step_analysis",
+        "mode": "natural"
+      },
+      "clauses": [
+        "哪些药材与川芎的靶点最接近",
+        "按Jaccard列前5项"
+      ]
+    },
+    {
+      "id": "BC08",
+      "outcome": "clarification",
+      "rule_route": {
+        "tool": "assistant",
+        "request": {
+          "topic": "research_task_review",
+          "question": "核对黄芪和白术的共同靶点，给出双方原始记录位置"
+        },
+        "reason": "local_task_inventory_review",
+        "mode": "natural"
+      },
+      "clauses": [
+        "核对黄芪和白术的共同靶点",
+        "给出双方原始记录位置"
+      ]
+    },
+    {
+      "id": "BC10",
+      "outcome": "clarification",
+      "rule_route": {
+        "tool": "assistant",
+        "request": {
+          "topic": "research_plan",
+          "question": "我正在整理白术与黄芪的资料，请分别对照药典中的功效、用量，然后给出两者共同的靶点和原始出处",
+          "plan": null
+        },
+        "reason": "multi_step_analysis",
+        "mode": "natural"
+      },
+      "clauses": [
+        "我正在整理白术与黄芪的资料",
+        "请分别对照药典中的功效、用量",
+        "然后给出两者共同的靶点和原始出处"
+      ]
+    },
+    {
+      "id": "BC12",
+      "outcome": "clarification",
+      "rule_route": {
+        "tool": "assistant",
+        "request": {
+          "topic": "research_plan",
+          "question": "帮我把黄芪的药典功效和白术在ETCM的药用部位整理到一起，附各自出处",
+          "plan": null
+        },
+        "reason": "multi_step_analysis",
+        "mode": "natural"
+      },
+      "clauses": [
+        "帮我把黄芪的药典功效和白术在ETCM的药用部位整理到一起",
+        "附各自出处"
+      ]
+    },
+    {
+      "id": "BC14",
+      "outcome": "unsupported_intent",
+      "rule_route": null,
+      "clauses": [
+        "查看疾病etcm-disease:482d905401f31766a0cbf04b59a11a27dfeb462897e369d7f1aa2fcace441a59的全部靶点原始记录"
+      ]
+    },
+    {
+      "id": "BC15",
+      "outcome": "clarification",
+      "rule_route": {
+        "tool": "assistant",
+        "request": {
+          "topic": "research_plan",
+          "question": "查找Diabetes Mellitus, Insulin-Dependent, 20的来源，读取全部靶点原始记录，再按Jaccard列出前五个药材候选，保留出处",
+          "plan": null
+        },
+        "reason": "multi_step_analysis",
+        "mode": "natural"
+      },
+      "clauses": [
+        "查找Diabetes Mellitus",
+        "Insulin-Dependent",
+        "20的来源",
+        "读取全部靶点原始记录",
+        "再按Jaccard列出前五个药材候选",
+        "保留出处"
+      ]
+    },
+    {
+      "id": "BC18",
+      "outcome": "unsupported_intent",
+      "rule_route": null,
+      "clauses": [
+        "药典的数据能查到哪些字段"
+      ]
+    }
+  ]
+}

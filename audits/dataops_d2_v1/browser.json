@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "fixture": "synthetic_data_and_model",
+  "external_model_calls": 0,
+  "persistent_human_decision_ui": true,
+  "reload_waiting_and_finished": true,
+  "incremental_v2": true,
+  "v1_preserved": true,
+  "five_sheets_download_hash_checked": true,
+  "owner_isolation": true,
+  "javascript_errors": [],
+  "external_requests": [],
+  "font_layout_reviewed": false,
+  "first_workspace": "c850cb4c18674d9a9d3d0cacf5e42adf",
+  "second_workspace": "39eda9542e4f4ab8ba37c3c8c3512491"
+}

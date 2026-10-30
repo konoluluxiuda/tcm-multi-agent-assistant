@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "records": 50,
+  "versions": [
+    {
+      "version": 1,
+      "records": 50,
+      "source_field_checks": 200,
+      "elapsed_seconds": 4.146230534999631,
+      "context_max_bytes": 11439,
+      "policy_steps": 6,
+      "leaf_reads": 63,
+      "reused_cells": 0,
+      "artifact_bytes": 41587,
+      "verification": {
+        "status": "passed",
+        "sheets": 4,
+        "verified_cells": 1817,
+        "rows": 50,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "external_model_calls": 0
+    },
+    {
+      "version": 2,
+      "records": 50,
+      "source_field_checks": 250,
+      "elapsed_seconds": 3.3914162310029496,
+      "context_max_bytes": 11244,
+      "policy_steps": 5,
+      "leaf_reads": 13,
+      "reused_cells": 200,
+      "artifact_bytes": 48800,
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 2414,
+        "rows": 50,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "external_model_calls": 0
+    }
+  ],
+  "v1_preserved": true,
+  "sources_unchanged": true,
+  "external_model_calls": 0,
+  "real_model_performance": "not_run",
+  "cost": null,
+  "interpretation": "Single local warm-cache run, not a production latency percentile or LLM accuracy score."
+}

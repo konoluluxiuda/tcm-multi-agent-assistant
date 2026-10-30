@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "date": "2026-10-30",
+  "syntax_files": 511,
+  "relative_document_links": 147,
+  "missing_links": [],
+  "git_diff_check": "passed",
+  "suite_unchanged_after_first_holdout": true,
+  "original_v2_frozen_files_unchanged": true,
+  "latest_affected_checks": 45,
+  "latest_regression": {
+    "cases": 30,
+    "strategy_runs": 90,
+    "status": "passed",
+    "network_attempts": 0
+  },
+  "provider_requests_this_step": 0,
+  "authorized_provider_requests_by_run": {
+    "v1": 6,
+    "v2": 8
+  },
+  "provider_v3": "not_run",
+  "docker_build": "not_run_engine_unavailable",
+  "git_commit": "not_requested_not_created",
+  "remote_push": "not_requested_not_run",
+  "previous_final_checks": {
+    "status": "passed",
+    "date": "2026-10-30",
+    "syntax_files": 510,
+    "relative_document_links": 142,
+    "missing_links": [],
+    "git_diff_check": "passed",
+    "suite_unchanged_after_first_holdout": true,
+    "original_development_and_provider_failure_preserved": true,
+    "v2_run_frozen_files_unchanged": true,
+    "raw_source_data_not_modified": true,
+    "offline_network_attempts": 0,
+    "authorized_provider_requests_by_run": {
+      "v1": 6,
+      "v2": 8
+    },
+    "authorized_provider_requests": 14,
+    "provider_v2_retest": "executed_once_8_http200_F3_P3_A0",
+    "provider_requests_after_v2": 0,
+    "latest_affected_checks": 37,
+    "docker_build": "not_run_engine_unavailable",
+    "remote_push": "not_requested_not_run",
+    "git_commit": "not_requested_not_created",
+    "source_snapshot_note": "V2 retains its dispatch-time source hashes. Later local diagnostics have 37 overlapping affected checks, not a new provider or full-suite run.",
+    "previous_final_checks": {
+      "status": "passed",
+      "date": "2026-10-30",
+      "syntax_files": 487,
+      "relative_document_links": 138,
+      "missing_links": [],
+      "git_diff_check": "passed",
+      "suite_unchanged_after_first_holdout": true,
+      "original_development_and_provider_failure_preserved": true,
+      "raw_source_data_not_modified": true,
+      "offline_network_attempts": 0,
+      "authorized_provider_requests": 6,
+      "provider_v2_retest": "not_run_pending_authorization",
+      "docker_build": "not_run_engine_unavailable",
+      "remote_push": "not_requested_not_run",
+      "git_commit": "not_requested_not_created",
+      "source_snapshot_note": "Prior runs retain their frozen code hashes; final native-plan/provider hooks have 12 affected offline rechecks."
+    }
+  }
+}

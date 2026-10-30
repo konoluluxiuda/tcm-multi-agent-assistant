@@ -1,0 +1,11 @@
+{
+  "case": "leaf_saved",
+  "status": "complete",
+  "reason": "declared_actions_complete",
+  "reads_before_kill": 1,
+  "reads_after_resume": 2,
+  "tool_calls": 2,
+  "same_job_id": true,
+  "replayed_saved_reads": 0,
+  "killed_process_exit": -9
+}

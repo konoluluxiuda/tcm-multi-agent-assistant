@@ -28,6 +28,8 @@ def size(messages, tools):
 
 def compact(message):
     payload=json.loads(message.content)
+    if payload.get('externalized'):
+        return message
     data=payload.get('data') or {}
     summary={k:payload[k] for k in ('evidence_id','tool','status','error') if k in payload}
     summary['compacted']=True
@@ -38,7 +40,7 @@ def compact(message):
     if 'profile' in data:
         summary['data']['profile']={k:data['profile'][k] for k in ('name','target_count','species_status','detail_status') if k in data['profile']}
     if 'items' in data:
-        summary['data']['items']=[{k:item[k] for k in ('record_id','name','target_count') if k in item} for item in data['items']]
+        summary['data']['items']=[{k:item[k] for k in ('record_id','name','target_count','match_kind') if k in item} for item in data['items']]
     return message.model_copy(update={'content':json.dumps(summary,ensure_ascii=False,separators=(',',':'))})
 
 

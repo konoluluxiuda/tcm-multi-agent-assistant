@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "url": "http://127.0.0.1:7896/",
+  "health_status": 200,
+  "data": "existing_local_ETCM",
+  "question": "当归的靶点画像，查找与川芎靶点最相似的药材，前5个",
+  "run_id": "937ec7448e4f4901b0229142cddf16ca",
+  "external_model_calls": 0,
+  "tool_calls": 2,
+  "coverage_complete": true,
+  "externalized_observations": [
+    {
+      "tool": "herb_target_similarity",
+      "payload_bytes": 21189,
+      "read_status": "ok",
+      "download_sha_matches": true
+    }
+  ],
+  "refresh_same_run": true,
+  "source_query_redone_on_refresh": false,
+  "scope": "local smoke only; no independent efficacy or model-quality evaluation"
+}

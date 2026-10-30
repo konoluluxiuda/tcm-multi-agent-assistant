@@ -1,0 +1,267 @@
+{
+  "version": "dataops-d1-dev-v1",
+  "origin": "author_designed_development",
+  "independent": false,
+  "materialized_after_development": true,
+  "reference_frozen_before_execution": true,
+  "private_reference_path": "var/dataops_d1_scope_final/reference.json",
+  "private_reference_sha256": "e0f7eaf898d82126f8fd0694cc737fe72d1901fca67b0313f6c1f377ee55e5e4",
+  "review_status": "source_reconciled_pending_human_signoff",
+  "source_revision": {
+    "dataset_version": "local-2026-10-10",
+    "sources": [
+      "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+      "9d3f9c6f8a5c7ececbde957e2a1ea6a74d6f225ff5194c094e3e45f4578a0980",
+      "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+      "6daa88391f6f5dd3d2cb91e15564f8cb7d4a61dde09b0620ed1d94cf193ce040"
+    ],
+    "rules": "dataops-d1-v2-scope-aware"
+  },
+  "selection_counts": {
+    "existing_identity_comparison": 3,
+    "name_candidate_only": 8,
+    "no_name_candidate": 9
+  },
+  "cases": [
+    {
+      "id": "D1-0",
+      "goal": {
+        "title": "批量资料核对",
+        "query": {
+          "source_ids": [
+            "etcm2-local:00324e5bf297b84eb676b654c9ca432a46686eae99d0f993a0066cda599adcf5",
+            "etcm2-local:00387eb339c8a492dc8175d1f7203f349a1aad0cb6f718ba6c1c0967474dcf1f",
+            "etcm2-local:0048666ece7463a40ad9c5b5b514f68314907f736eff1848c413ca4c3e9c2efd",
+            "etcm2-local:004eee77c7408cacd5a32a5c494d41a31fe6edf5ff0c492d36a680ff83255be4",
+            "etcm2-local:00881739d5b70d18e1e88f8a0169c48e87025d1e1a017ce475f9ddc811f0fbd5",
+            "etcm2-local:00d468d96681a4c94e13714b54617aeebde5cfbd1a51059489f5b18b23cbb778",
+            "etcm2-local:00edc27ee3b794c4b083f42e3b0dd0b2a425fb3b9a32a4891132f814284c98a6",
+            "etcm2-local:010bae9220da9558e5302fe1307c50d5e4b732aaa823d4d0e8843108ba8a63bb",
+            "etcm2-local:0162ba53c53772e1020d1795c32855d0f49b1acccf9310d2d9fe346ef97e2452",
+            "etcm2-local:019a80d254a8d569117433473102bdc29606b08f15daef23bb6171f5d951738a",
+            "etcm2-local:01f30ffbd87fda4733b7ac034636bf98c78df0f88b79d134d57edc5e31bd1f45",
+            "etcm2-local:0223da9453914f483541c903a1c7d3b99331730aaf8ae1baee97fc38b5994475",
+            "etcm2-local:02be6d099f74dbcd13ac033149cdfd54798024692023aad078f8c8f35c380f80",
+            "etcm2-local:048453a74b8de54c085d2ae354bf3964ef2141499c60f3f0b6ff636002671106",
+            "etcm2-local:056594d4c1771586108e74b456502f6e7439a7fb43855c3b5e0d069d145a2bf6",
+            "etcm2-local:05990032ac1e9152134b081e7d1a697db8e06e5450ac1bf70c25d42fad5724ae",
+            "etcm2-local:05f7af46d74add3eab9edf4d780bac677f3ee8c179b6d9f559c4aa39ccffcc0a",
+            "etcm2-local:9d22988dcf884595f9d12aa47aa53582baf54b22eefb285f99a9cdf701b11ca6",
+            "etcm2-local:bb7bedc6e884dcbf5ff8336c6550991c6e121a3d3f641e34487b55e497ce692a",
+            "etcm2-local:bb9bdfc31be669d2dba160554ef1673b626d91166376c70fd1a79ec13ecc7613"
+          ],
+          "names": [],
+          "filters": [],
+          "group_by": null,
+          "limit": 20,
+          "offset": 0
+        },
+        "attributes": [
+          "medicinal_part",
+          "latin_name"
+        ],
+        "document_fields": [
+          "功能与主治",
+          "注意"
+        ],
+        "completion_policy": "audit"
+      },
+      "expected_source_ids": [
+        "etcm2-local:00324e5bf297b84eb676b654c9ca432a46686eae99d0f993a0066cda599adcf5",
+        "etcm2-local:00387eb339c8a492dc8175d1f7203f349a1aad0cb6f718ba6c1c0967474dcf1f",
+        "etcm2-local:0048666ece7463a40ad9c5b5b514f68314907f736eff1848c413ca4c3e9c2efd",
+        "etcm2-local:004eee77c7408cacd5a32a5c494d41a31fe6edf5ff0c492d36a680ff83255be4",
+        "etcm2-local:00881739d5b70d18e1e88f8a0169c48e87025d1e1a017ce475f9ddc811f0fbd5",
+        "etcm2-local:00d468d96681a4c94e13714b54617aeebde5cfbd1a51059489f5b18b23cbb778",
+        "etcm2-local:00edc27ee3b794c4b083f42e3b0dd0b2a425fb3b9a32a4891132f814284c98a6",
+        "etcm2-local:010bae9220da9558e5302fe1307c50d5e4b732aaa823d4d0e8843108ba8a63bb",
+        "etcm2-local:0162ba53c53772e1020d1795c32855d0f49b1acccf9310d2d9fe346ef97e2452",
+        "etcm2-local:019a80d254a8d569117433473102bdc29606b08f15daef23bb6171f5d951738a",
+        "etcm2-local:01f30ffbd87fda4733b7ac034636bf98c78df0f88b79d134d57edc5e31bd1f45",
+        "etcm2-local:0223da9453914f483541c903a1c7d3b99331730aaf8ae1baee97fc38b5994475",
+        "etcm2-local:02be6d099f74dbcd13ac033149cdfd54798024692023aad078f8c8f35c380f80",
+        "etcm2-local:048453a74b8de54c085d2ae354bf3964ef2141499c60f3f0b6ff636002671106",
+        "etcm2-local:056594d4c1771586108e74b456502f6e7439a7fb43855c3b5e0d069d145a2bf6",
+        "etcm2-local:05990032ac1e9152134b081e7d1a697db8e06e5450ac1bf70c25d42fad5724ae",
+        "etcm2-local:05f7af46d74add3eab9edf4d780bac677f3ee8c179b6d9f559c4aa39ccffcc0a",
+        "etcm2-local:9d22988dcf884595f9d12aa47aa53582baf54b22eefb285f99a9cdf701b11ca6",
+        "etcm2-local:bb7bedc6e884dcbf5ff8336c6550991c6e121a3d3f641e34487b55e497ce692a",
+        "etcm2-local:bb9bdfc31be669d2dba160554ef1673b626d91166376c70fd1a79ec13ecc7613"
+      ],
+      "required_fields": [
+        "medicinal_part",
+        "latin_name",
+        "功能与主治",
+        "注意"
+      ]
+    },
+    {
+      "id": "D1-1",
+      "goal": {
+        "title": "批量资料核对",
+        "query": {
+          "source_ids": [
+            "etcm2-local:00324e5bf297b84eb676b654c9ca432a46686eae99d0f993a0066cda599adcf5",
+            "etcm2-local:00387eb339c8a492dc8175d1f7203f349a1aad0cb6f718ba6c1c0967474dcf1f",
+            "etcm2-local:0048666ece7463a40ad9c5b5b514f68314907f736eff1848c413ca4c3e9c2efd",
+            "etcm2-local:004eee77c7408cacd5a32a5c494d41a31fe6edf5ff0c492d36a680ff83255be4",
+            "etcm2-local:00881739d5b70d18e1e88f8a0169c48e87025d1e1a017ce475f9ddc811f0fbd5"
+          ],
+          "names": [],
+          "filters": [],
+          "group_by": null,
+          "limit": 20,
+          "offset": 0
+        },
+        "attributes": [
+          "medicinal_part",
+          "latin_name"
+        ],
+        "document_fields": [
+          "功能与主治",
+          "注意"
+        ],
+        "completion_policy": "audit"
+      },
+      "expected_source_ids": [
+        "etcm2-local:00324e5bf297b84eb676b654c9ca432a46686eae99d0f993a0066cda599adcf5",
+        "etcm2-local:00387eb339c8a492dc8175d1f7203f349a1aad0cb6f718ba6c1c0967474dcf1f",
+        "etcm2-local:0048666ece7463a40ad9c5b5b514f68314907f736eff1848c413ca4c3e9c2efd",
+        "etcm2-local:004eee77c7408cacd5a32a5c494d41a31fe6edf5ff0c492d36a680ff83255be4",
+        "etcm2-local:00881739d5b70d18e1e88f8a0169c48e87025d1e1a017ce475f9ddc811f0fbd5"
+      ],
+      "required_fields": [
+        "medicinal_part",
+        "latin_name",
+        "功能与主治",
+        "注意"
+      ]
+    },
+    {
+      "id": "D1-2",
+      "goal": {
+        "title": "批量资料核对",
+        "query": {
+          "source_ids": [
+            "etcm2-local:00d468d96681a4c94e13714b54617aeebde5cfbd1a51059489f5b18b23cbb778",
+            "etcm2-local:00edc27ee3b794c4b083f42e3b0dd0b2a425fb3b9a32a4891132f814284c98a6",
+            "etcm2-local:010bae9220da9558e5302fe1307c50d5e4b732aaa823d4d0e8843108ba8a63bb",
+            "etcm2-local:0162ba53c53772e1020d1795c32855d0f49b1acccf9310d2d9fe346ef97e2452",
+            "etcm2-local:019a80d254a8d569117433473102bdc29606b08f15daef23bb6171f5d951738a"
+          ],
+          "names": [],
+          "filters": [],
+          "group_by": null,
+          "limit": 20,
+          "offset": 0
+        },
+        "attributes": [
+          "medicinal_part",
+          "latin_name"
+        ],
+        "document_fields": [
+          "功能与主治",
+          "注意"
+        ],
+        "completion_policy": "audit"
+      },
+      "expected_source_ids": [
+        "etcm2-local:00d468d96681a4c94e13714b54617aeebde5cfbd1a51059489f5b18b23cbb778",
+        "etcm2-local:00edc27ee3b794c4b083f42e3b0dd0b2a425fb3b9a32a4891132f814284c98a6",
+        "etcm2-local:010bae9220da9558e5302fe1307c50d5e4b732aaa823d4d0e8843108ba8a63bb",
+        "etcm2-local:0162ba53c53772e1020d1795c32855d0f49b1acccf9310d2d9fe346ef97e2452",
+        "etcm2-local:019a80d254a8d569117433473102bdc29606b08f15daef23bb6171f5d951738a"
+      ],
+      "required_fields": [
+        "medicinal_part",
+        "latin_name",
+        "功能与主治",
+        "注意"
+      ]
+    },
+    {
+      "id": "D1-3",
+      "goal": {
+        "title": "批量资料核对",
+        "query": {
+          "source_ids": [
+            "etcm2-local:01f30ffbd87fda4733b7ac034636bf98c78df0f88b79d134d57edc5e31bd1f45",
+            "etcm2-local:0223da9453914f483541c903a1c7d3b99331730aaf8ae1baee97fc38b5994475",
+            "etcm2-local:02be6d099f74dbcd13ac033149cdfd54798024692023aad078f8c8f35c380f80",
+            "etcm2-local:048453a74b8de54c085d2ae354bf3964ef2141499c60f3f0b6ff636002671106",
+            "etcm2-local:056594d4c1771586108e74b456502f6e7439a7fb43855c3b5e0d069d145a2bf6"
+          ],
+          "names": [],
+          "filters": [],
+          "group_by": null,
+          "limit": 20,
+          "offset": 0
+        },
+        "attributes": [
+          "medicinal_part",
+          "latin_name"
+        ],
+        "document_fields": [
+          "功能与主治",
+          "注意"
+        ],
+        "completion_policy": "audit"
+      },
+      "expected_source_ids": [
+        "etcm2-local:01f30ffbd87fda4733b7ac034636bf98c78df0f88b79d134d57edc5e31bd1f45",
+        "etcm2-local:0223da9453914f483541c903a1c7d3b99331730aaf8ae1baee97fc38b5994475",
+        "etcm2-local:02be6d099f74dbcd13ac033149cdfd54798024692023aad078f8c8f35c380f80",
+        "etcm2-local:048453a74b8de54c085d2ae354bf3964ef2141499c60f3f0b6ff636002671106",
+        "etcm2-local:056594d4c1771586108e74b456502f6e7439a7fb43855c3b5e0d069d145a2bf6"
+      ],
+      "required_fields": [
+        "medicinal_part",
+        "latin_name",
+        "功能与主治",
+        "注意"
+      ]
+    },
+    {
+      "id": "D1-4",
+      "goal": {
+        "title": "批量资料核对",
+        "query": {
+          "source_ids": [
+            "etcm2-local:05990032ac1e9152134b081e7d1a697db8e06e5450ac1bf70c25d42fad5724ae",
+            "etcm2-local:05f7af46d74add3eab9edf4d780bac677f3ee8c179b6d9f559c4aa39ccffcc0a",
+            "etcm2-local:9d22988dcf884595f9d12aa47aa53582baf54b22eefb285f99a9cdf701b11ca6",
+            "etcm2-local:bb7bedc6e884dcbf5ff8336c6550991c6e121a3d3f641e34487b55e497ce692a",
+            "etcm2-local:bb9bdfc31be669d2dba160554ef1673b626d91166376c70fd1a79ec13ecc7613"
+          ],
+          "names": [],
+          "filters": [],
+          "group_by": null,
+          "limit": 20,
+          "offset": 0
+        },
+        "attributes": [
+          "medicinal_part",
+          "latin_name"
+        ],
+        "document_fields": [
+          "功能与主治",
+          "注意"
+        ],
+        "completion_policy": "audit"
+      },
+      "expected_source_ids": [
+        "etcm2-local:05990032ac1e9152134b081e7d1a697db8e06e5450ac1bf70c25d42fad5724ae",
+        "etcm2-local:05f7af46d74add3eab9edf4d780bac677f3ee8c179b6d9f559c4aa39ccffcc0a",
+        "etcm2-local:9d22988dcf884595f9d12aa47aa53582baf54b22eefb285f99a9cdf701b11ca6",
+        "etcm2-local:bb7bedc6e884dcbf5ff8336c6550991c6e121a3d3f641e34487b55e497ce692a",
+        "etcm2-local:bb9bdfc31be669d2dba160554ef1673b626d91166376c70fd1a79ec13ecc7613"
+      ],
+      "required_fields": [
+        "medicinal_part",
+        "latin_name",
+        "功能与主治",
+        "注意"
+      ]
+    }
+  ]
+}

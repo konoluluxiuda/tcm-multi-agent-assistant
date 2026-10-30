@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "date": "2026-10-30",
+  "syntax_files": 514,
+  "relative_document_links": 133,
+  "missing_links": [],
+  "git_diff_check": "passed",
+  "affected_checks": 72,
+  "final_question_recheck": 11,
+  "original_V2_preserved": true,
+  "suite_unchanged": true,
+  "external_provider_calls": 0,
+  "browser_fixture_service": "started_for_test_then_stopped",
+  "browser": "passed",
+  "real_catalog_resolution": "passed",
+  "new_full_ci": "not_run_affected_checks_only",
+  "git_commit": "not_requested_not_created",
+  "remote_push": "not_requested_not_run",
+  "docker": "not_built_or_published"
+}

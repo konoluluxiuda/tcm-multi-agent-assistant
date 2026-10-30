@@ -1,0 +1,13 @@
+{
+  "status": "failed",
+  "documents": 15,
+  "local_links": 186,
+  "missing": [
+    {
+      "document": "audits/research_plan_lifecycle_v1/README.md",
+      "target": "documentation_checks.json"
+    }
+  ],
+  "syntax_files": 462,
+  "docs_markdown_count": 147
+}

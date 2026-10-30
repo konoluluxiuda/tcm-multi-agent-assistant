@@ -1,0 +1,25 @@
+{
+  "case": "BC03",
+  "original_grader_outcome": "requirements_not_met",
+  "finding": "grader_label_schema_mismatch",
+  "detail": "Frozen grader expects family label 科; attribute worker returns 科名. Both requested values and original JSON anchors match the original frozen reference.",
+  "checks": [
+    {
+      "raw_field_key": "Family",
+      "returned_label": "科名",
+      "original_value_matches": true,
+      "source_sha_and_pointer_match": true
+    },
+    {
+      "raw_field_key": "Medicinal Part",
+      "returned_label": "药用部位",
+      "original_value_matches": true,
+      "source_sha_and_pointer_match": true
+    }
+  ],
+  "application_status": "ok",
+  "official_replay_result_changed": false,
+  "original_grader_changed": false,
+  "human_signoff": false,
+  "clinical_or_ocr_quality_claim": false
+}

@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "stages": [
+    {
+      "stage": "contracts",
+      "exit_code": 0,
+      "passed": true,
+      "log": "contracts.log"
+    },
+    {
+      "stage": "loop_crashes",
+      "exit_code": 0,
+      "passed": true,
+      "log": "loop_crashes.log"
+    },
+    {
+      "stage": "real_pair_browser",
+      "exit_code": 0,
+      "passed": true,
+      "log": "real_pair_browser.log"
+    },
+    {
+      "stage": "synthetic_loop_browser",
+      "exit_code": 0,
+      "passed": true,
+      "log": "synthetic_loop_browser.log"
+    }
+  ],
+  "source_files_unchanged": true,
+  "browser_requested": true,
+  "live_model_calls": 0,
+  "business_accuracy": "not_measured",
+  "latency_and_cost_benchmark": "not_measured",
+  "limits": [
+    "Known development scenarios; not independent users",
+    "Historical audit metrics are not recomputed",
+    "Does not verify that an existing preview process loaded the current files",
+    "No new PostgreSQL SIGKILL or full database restore drill in this rehearsal"
+  ]
+}

@@ -204,3 +204,7 @@ data/*.bak_*/
 
 # User-provided pharmacopoeia scans stay local
 /data/《中国药典》*.pdf
+
+# User-supplied reference and local pre-review document backup stay local.
+/虚构 Agent 项目的架构设计与面试追问.pdf
+/audits/documentation_review_20261029/before-documents.tar.gz

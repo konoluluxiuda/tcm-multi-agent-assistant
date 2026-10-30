@@ -1,0 +1,409 @@
+{
+  "status": "completed",
+  "dataset_kind": "author_written_synthetic_transfer_set_not_independent_user_evaluation",
+  "dataset_sha256": "7c8e57431cc2526f8d64cf939d4d01b607496a072dc000f9af1f60e7da4ce0aa",
+  "cases": [
+    {
+      "query": "我想接着整理那两味补血又活血的药",
+      "relevant": [
+        "blood",
+        "blood_other"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "blood_other",
+          "blood",
+          "spleen"
+        ],
+        "dense": [
+          "blood_other",
+          "blood",
+          "spleen"
+        ],
+        "hybrid": [
+          "blood_other",
+          "blood",
+          "spleen"
+        ]
+      },
+      "cosine": {
+        "blood_other": 0.7071,
+        "blood": 0.6951,
+        "spleen": 0.5071,
+        "storage": 0.3846
+      },
+      "elapsed_ms": 1221.1
+    },
+    {
+      "query": "以前那份白术配茯苓的资料在哪里",
+      "relevant": [
+        "spleen"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "spleen"
+        ],
+        "dense": [
+          "spleen"
+        ],
+        "hybrid": [
+          "spleen"
+        ]
+      },
+      "cosine": {
+        "spleen": 0.6479,
+        "blood": 0.4932,
+        "storage": 0.489,
+        "blood_other": 0.4706
+      },
+      "elapsed_ms": 799.1
+    },
+    {
+      "query": "回到甘草存放条件的那个项目",
+      "relevant": [
+        "storage"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "storage"
+        ],
+        "dense": [
+          "storage"
+        ],
+        "hybrid": [
+          "storage"
+        ]
+      },
+      "cosine": {
+        "storage": 0.6228,
+        "spleen": 0.3127,
+        "blood": 0.301,
+        "blood_other": 0.2754
+      },
+      "elapsed_ms": 858.8
+    },
+    {
+      "query": "丹参和鸡血藤那份笔记继续做",
+      "relevant": [
+        "blood_other"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "blood_other"
+        ],
+        "dense": [
+          "blood_other",
+          "blood"
+        ],
+        "hybrid": [
+          "blood_other",
+          "blood"
+        ]
+      },
+      "cosine": {
+        "blood_other": 0.663,
+        "blood": 0.5009,
+        "spleen": 0.433,
+        "storage": 0.3912
+      },
+      "elapsed_ms": 784.9
+    },
+    {
+      "query": "当归、川芎的资料还没整理完",
+      "relevant": [
+        "blood"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "blood",
+          "spleen"
+        ],
+        "dense": [
+          "blood",
+          "blood_other",
+          "spleen"
+        ],
+        "hybrid": [
+          "blood",
+          "spleen",
+          "blood_other"
+        ]
+      },
+      "cosine": {
+        "blood": 0.6614,
+        "blood_other": 0.5341,
+        "spleen": 0.5001,
+        "storage": 0.475
+      },
+      "elapsed_ms": 817.9
+    },
+    {
+      "query": "之前讨论如何防止甘草受潮的研究",
+      "relevant": [
+        "storage"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "storage"
+        ],
+        "dense": [
+          "storage"
+        ],
+        "hybrid": [
+          "storage"
+        ]
+      },
+      "cosine": {
+        "storage": 0.5919,
+        "spleen": 0.3343,
+        "blood": 0.3141,
+        "blood_other": 0.2676
+      },
+      "elapsed_ms": 873.2
+    },
+    {
+      "query": "那份关于调理脾胃的药材资料",
+      "relevant": [
+        "spleen"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "storage",
+          "blood_other",
+          "blood"
+        ],
+        "dense": [
+          "spleen",
+          "blood",
+          "storage"
+        ],
+        "hybrid": [
+          "storage",
+          "spleen",
+          "blood"
+        ]
+      },
+      "cosine": {
+        "spleen": 0.6717,
+        "blood": 0.5171,
+        "storage": 0.5111,
+        "blood_other": 0.4619
+      },
+      "elapsed_ms": 848.0
+    },
+    {
+      "query": "补血那两味究竟是哪一组",
+      "relevant": [
+        "blood",
+        "blood_other"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "blood_other",
+          "blood"
+        ],
+        "dense": [
+          "blood_other",
+          "blood"
+        ],
+        "hybrid": [
+          "blood_other",
+          "blood"
+        ]
+      },
+      "cosine": {
+        "blood_other": 0.6352,
+        "blood": 0.5837,
+        "spleen": 0.4641,
+        "storage": 0.3371
+      },
+      "elapsed_ms": 868.8
+    },
+    {
+      "query": "当归川芎这组，这次只关心保存要求",
+      "relevant": [
+        "blood"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "blood",
+          "storage"
+        ],
+        "dense": [
+          "blood",
+          "storage"
+        ],
+        "hybrid": [
+          "blood",
+          "storage"
+        ]
+      },
+      "cosine": {
+        "blood": 0.5936,
+        "storage": 0.513,
+        "blood_other": 0.4945,
+        "spleen": 0.4723
+      },
+      "elapsed_ms": 814.2
+    },
+    {
+      "query": "上次讨论过的所有药材项目",
+      "relevant": [
+        "blood",
+        "blood_other",
+        "spleen",
+        "storage"
+      ],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "storage",
+          "blood_other",
+          "blood"
+        ],
+        "dense": [],
+        "hybrid": []
+      },
+      "cosine": {
+        "blood_other": 0.4494,
+        "spleen": 0.4464,
+        "storage": 0.4415,
+        "blood": 0.4267
+      },
+      "elapsed_ms": 811.7
+    },
+    {
+      "query": "帮我找一下之前关于黄芪的研究项目",
+      "relevant": [],
+      "results": {
+        "no_memory": [],
+        "lexical": [
+          "storage"
+        ],
+        "dense": [
+          "spleen",
+          "blood",
+          "blood_other"
+        ],
+        "hybrid": [
+          "spleen",
+          "blood",
+          "blood_other"
+        ]
+      },
+      "cosine": {
+        "spleen": 0.5171,
+        "blood": 0.5105,
+        "blood_other": 0.5068,
+        "storage": 0.4938
+      },
+      "elapsed_ms": 826.7
+    },
+    {
+      "query": "继续上次那个旅行安排",
+      "relevant": [],
+      "results": {
+        "no_memory": [],
+        "lexical": [],
+        "dense": [],
+        "hybrid": []
+      },
+      "cosine": {
+        "blood": 0.2293,
+        "spleen": 0.2239,
+        "blood_other": 0.2224,
+        "storage": 0.2115
+      },
+      "elapsed_ms": 791.9
+    },
+    {
+      "query": "我的数据库备份脚本在哪",
+      "relevant": [],
+      "results": {
+        "no_memory": [],
+        "lexical": [],
+        "dense": [],
+        "hybrid": []
+      },
+      "cosine": {
+        "storage": 0.3294,
+        "blood": 0.2523,
+        "blood_other": 0.2407,
+        "spleen": 0.2372
+      },
+      "elapsed_ms": 872.2
+    },
+    {
+      "query": "帮我写一段秋招自我介绍",
+      "relevant": [],
+      "results": {
+        "no_memory": [],
+        "lexical": [],
+        "dense": [],
+        "hybrid": []
+      },
+      "cosine": {
+        "blood_other": 0.285,
+        "spleen": 0.2843,
+        "blood": 0.243,
+        "storage": 0.2169
+      },
+      "elapsed_ms": 759.9
+    }
+  ],
+  "metrics": {
+    "no_memory": {
+      "top1_hits": 0,
+      "positive_cases": 10,
+      "mean_recall_at_3": 0.0,
+      "negative_no_candidate": 4,
+      "negative_cases": 4,
+      "returned_candidates": 0,
+      "relevant_candidates": 0,
+      "candidate_precision": null
+    },
+    "lexical": {
+      "top1_hits": 9,
+      "positive_cases": 10,
+      "mean_recall_at_3": 0.875,
+      "negative_no_candidate": 3,
+      "negative_cases": 4,
+      "returned_candidates": 20,
+      "relevant_candidates": 13,
+      "candidate_precision": 0.65
+    },
+    "dense": {
+      "top1_hits": 9,
+      "positive_cases": 10,
+      "mean_recall_at_3": 0.9,
+      "negative_no_candidate": 3,
+      "negative_cases": 4,
+      "returned_candidates": 21,
+      "relevant_candidates": 11,
+      "candidate_precision": 0.5238095238095238
+    },
+    "hybrid": {
+      "top1_hits": 8,
+      "positive_cases": 10,
+      "mean_recall_at_3": 0.9,
+      "negative_no_candidate": 3,
+      "negative_cases": 4,
+      "returned_candidates": 21,
+      "relevant_candidates": 11,
+      "candidate_precision": 0.5238095238095238
+    }
+  },
+  "external_model_calls": 0,
+  "threshold": 0.5,
+  "automatic_application": false,
+  "interpretation": "No-memory returns no candidates by definition; this is not business task accuracy. Scores are not probabilities. Development labels only."
+}

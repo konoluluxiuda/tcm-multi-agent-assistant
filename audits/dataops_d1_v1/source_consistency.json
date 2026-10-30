@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "source_records": 20,
+  "development_cases": [
+    {
+      "case": 0,
+      "workspace_id": "4cd837564240463692edc74f225afe11",
+      "status": "passed",
+      "records": 20,
+      "fields_compared_to_reference": 80,
+      "workbook": {
+        "status": "passed",
+        "sheets": 4,
+        "verified_cells": 771,
+        "rows": 20,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "mapping_states": {
+        "unmatched": 9,
+        "insufficient_evidence": 5,
+        "fields_consistent_not_verified": 5,
+        "medicinal_part_difference": 1
+      },
+      "missing_cells": 25
+    },
+    {
+      "case": 1,
+      "workspace_id": "f2240a786c934b37b4ba83b9c46f99e2",
+      "status": "passed",
+      "records": 5,
+      "fields_compared_to_reference": 20,
+      "workbook": {
+        "status": "passed",
+        "sheets": 4,
+        "verified_cells": 214,
+        "rows": 5,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "mapping_states": {
+        "unmatched": 4,
+        "insufficient_evidence": 1
+      },
+      "missing_cells": 8
+    },
+    {
+      "case": 2,
+      "workspace_id": "56176b93bb8c46abab1795d40d33d7d6",
+      "status": "passed",
+      "records": 5,
+      "fields_compared_to_reference": 20,
+      "workbook": {
+        "status": "passed",
+        "sheets": 4,
+        "verified_cells": 218,
+        "rows": 5,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "mapping_states": {
+        "unmatched": 4,
+        "insufficient_evidence": 1
+      },
+      "missing_cells": 9
+    },
+    {
+      "case": 3,
+      "workspace_id": "5e85423480c54f2f95cade7f001c464a",
+      "status": "passed",
+      "records": 5,
+      "fields_compared_to_reference": 20,
+      "workbook": {
+        "status": "passed",
+        "sheets": 4,
+        "verified_cells": 222,
+        "rows": 5,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "mapping_states": {
+        "insufficient_evidence": 2,
+        "unmatched": 1,
+        "fields_consistent_not_verified": 2
+      },
+      "missing_cells": 6
+    },
+    {
+      "case": 4,
+      "workspace_id": "300cff3b9da8406bb08ffe3bab4bf22a",
+      "status": "passed",
+      "records": 5,
+      "fields_compared_to_reference": 20,
+      "workbook": {
+        "status": "passed",
+        "sheets": 4,
+        "verified_cells": 234,
+        "rows": 5,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "mapping_states": {
+        "fields_consistent_not_verified": 3,
+        "insufficient_evidence": 1,
+        "medicinal_part_difference": 1
+      },
+      "missing_cells": 2
+    }
+  ],
+  "review_status": "source_reconciled_pending_human_signoff",
+  "raw_and_catalogs_unchanged": true,
+  "external_model_calls": 0,
+  "reference_frozen_before_execution": true,
+  "unique_source_field_checks": 80,
+  "independent_model_accuracy": "not_evaluated"
+}

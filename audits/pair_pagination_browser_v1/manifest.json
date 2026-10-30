@@ -1,0 +1,15 @@
+{
+  "source_sha256": {
+    "tcm/pair_research_report.py": "0d97c1ac85c3f63f962d45de77cf55f2c0f00ea9ae103b1caa1fb28d0f599dc9",
+    "tcm/research_runs.js": "21993f74934e43c00ce98a43acdeb89fccc5cc96d8e5b7086e12acede0ed76b1",
+    "tests/test_pair_report_pagination.py": "18989d7982d79319e2333077df8c678534e763361781b14397bf71f0c5aead2f",
+    "tests/pair_pagination_http_fixture.py": "6503df8373c399b3fe7ea070899bc4111451f4497173af8417cbb742591ce9d1",
+    "scripts/check_pair_pagination_browser.py": "3867d7e64b867de209c6045176a95a9b6be8ecb709c1b28301f16aed194d559e"
+  },
+  "artifact_sha256": {
+    "var/pair_pagination_browser_v3/complete.png": "cf1c8cddb82f7e09d9d44a53baed9f6498511149b5c776337232ee74803b8b99",
+    "var/pair_pagination_browser_v3/partial.png": "682431bef326a21b44ba0263d384285da6629d42dd0d15282df3dbe448956729",
+    "var/pair_pagination_browser_v3/download.json": "56ca6f56d5e6be9ebbae6f37ce4391bfacec40df8302f52b179cdc713966e338",
+    "var/pair_pagination_browser_v3/calls.jsonl": "2aac31394d8c54e1c8bcb183df36fe83021bb902d6e1d8f4b705809bc243cd64"
+  }
+}

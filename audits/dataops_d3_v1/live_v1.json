@@ -1,0 +1,358 @@
+{
+  "executed_protocol": {
+    "version": "dataops-synthetic-live-pilot-v1",
+    "status": "prepared_not_run",
+    "cases": [
+      {
+        "case_id": "B01",
+        "question": "核对Alpha的功能与主治和注意",
+        "goal": {
+          "query": {
+            "names": [
+              "Alpha"
+            ],
+            "limit": 50
+          }
+        },
+        "parent_goal": null
+      },
+      {
+        "case_id": "B04",
+        "question": "Gamma选丙草后继续整理",
+        "goal": {
+          "query": {
+            "names": [
+              "Gamma"
+            ],
+            "limit": 50
+          }
+        },
+        "parent_goal": null
+      },
+      {
+        "case_id": "R01",
+        "question": "为Alpha增加贮藏，保留旧值",
+        "goal": {
+          "query": {
+            "names": [
+              "Alpha"
+            ],
+            "limit": 50
+          },
+          "document_fields": [
+            "功能与主治",
+            "注意",
+            "贮藏"
+          ]
+        },
+        "parent_goal": {
+          "query": {
+            "names": [
+              "Alpha"
+            ],
+            "limit": 50
+          }
+        }
+      }
+    ],
+    "suite_sha256": "39411e98dcfffc2751d3e79afdd84f94585944725a01562ff7b9952dbd7b1893",
+    "strategies": {
+      "F": "fixed host, no model",
+      "P": "one native plan per goal, then host tools",
+      "A": "native observation tool loop"
+    },
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "model": "deepseek-flash",
+    "max_requests_total": 36,
+    "max_A_requests_per_goal": 8,
+    "max_P_requests_per_goal": 1,
+    "max_output_tokens": 1200,
+    "max_request_bytes": 65536,
+    "request_timeout_seconds": 30,
+    "retries": 0,
+    "data": "Only fixed synthetic goals, static instructions/tool definitions, synthetic observations and test evidence.",
+    "excluded": [
+      "real ETCM",
+      "real pharmacopoeia",
+      "PDF",
+      "user history",
+      "credentials in prompts"
+    ],
+    "real_model_calls": 0,
+    "authorization_required_for_execution": true
+  },
+  "result": {
+    "status": "failed",
+    "kind": "three_known_development_synthetic_provider_pilot",
+    "results": [
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "0b07c2c874074d16a915630bf7db79ae",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1965,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.7145298190007452,
+        "case_id": "B01",
+        "strategy": "F"
+      },
+      {
+        "status": "failed",
+        "outcome": "interrupted",
+        "errors": [
+          "unexpected_task_status",
+          "missing_delivery"
+        ],
+        "workspace_id": "5b49ac2baa044a039525ee0bc2ce7784",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 0,
+        "leaf_reads": 0,
+        "logical_adapter_reads": [],
+        "policy_context_max_bytes": 674,
+        "host_policy_steps_including_parent": 1,
+        "planning_stub_steps": 0,
+        "external_model_calls": 1,
+        "provider_usage": [],
+        "cost": null,
+        "elapsed_seconds": 0.26182130000233883,
+        "case_id": "B01",
+        "strategy": "P"
+      },
+      {
+        "status": "failed",
+        "outcome": "interrupted",
+        "errors": [
+          "unexpected_task_status",
+          "missing_delivery"
+        ],
+        "workspace_id": "21b2e5a007924cf18d33389a7d9fc398",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 0,
+        "leaf_reads": 0,
+        "logical_adapter_reads": [],
+        "policy_context_max_bytes": 674,
+        "host_policy_steps_including_parent": 1,
+        "planning_stub_steps": 0,
+        "external_model_calls": 1,
+        "provider_usage": [],
+        "cost": null,
+        "elapsed_seconds": 0.21046973900229204,
+        "case_id": "B01",
+        "strategy": "A"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "e1d2104cc984492a867d96a957fcd42c",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1898,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.608774305001134,
+        "case_id": "B04",
+        "strategy": "F"
+      },
+      {
+        "status": "failed",
+        "outcome": "interrupted",
+        "errors": [
+          "unexpected_task_status",
+          "missing_delivery"
+        ],
+        "workspace_id": "61958f58ac8d4d178f0ec108707f848b",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 0,
+        "leaf_reads": 0,
+        "logical_adapter_reads": [],
+        "policy_context_max_bytes": 665,
+        "host_policy_steps_including_parent": 1,
+        "planning_stub_steps": 0,
+        "external_model_calls": 1,
+        "provider_usage": [],
+        "cost": null,
+        "elapsed_seconds": 0.25021881900465814,
+        "case_id": "B04",
+        "strategy": "P"
+      },
+      {
+        "status": "failed",
+        "outcome": "interrupted",
+        "errors": [
+          "unexpected_task_status",
+          "missing_delivery"
+        ],
+        "workspace_id": "a046a34ba1aa4591a7fcb9d69a03dac1",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 0,
+        "leaf_reads": 0,
+        "logical_adapter_reads": [],
+        "policy_context_max_bytes": 665,
+        "host_policy_steps_including_parent": 1,
+        "planning_stub_steps": 0,
+        "external_model_calls": 1,
+        "provider_usage": [],
+        "cost": null,
+        "elapsed_seconds": 0.2435454220030806,
+        "case_id": "B04",
+        "strategy": "A"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "5a4170ada46c4320a2c3d2d5e6b009cb",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2062,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9028635480062803,
+        "case_id": "R01",
+        "strategy": "F"
+      },
+      {
+        "status": "failed",
+        "outcome": "exception",
+        "error_type": "KeyError",
+        "errors": [],
+        "external_model_calls": 1,
+        "elapsed_seconds": 0.21602571599942166,
+        "case_id": "R01",
+        "strategy": "P",
+        "planning_stub_steps": 0,
+        "provider_usage": [],
+        "cost": null
+      },
+      {
+        "status": "failed",
+        "outcome": "exception",
+        "error_type": "KeyError",
+        "errors": [],
+        "external_model_calls": 1,
+        "elapsed_seconds": 0.21545388500089757,
+        "case_id": "R01",
+        "strategy": "A",
+        "planning_stub_steps": 0,
+        "provider_usage": [],
+        "cost": null
+      }
+    ],
+    "actual_provider_requests": 6,
+    "cost": null,
+    "real_data_or_history_sent": false,
+    "holdout_or_business_accuracy_claim": false
+  },
+  "dispatch": [
+    {
+      "sequence": 1,
+      "bytes": 1305,
+      "outcome": "http_400"
+    },
+    {
+      "sequence": 2,
+      "bytes": 3905,
+      "outcome": "http_400"
+    },
+    {
+      "sequence": 3,
+      "bytes": 1296,
+      "outcome": "http_400"
+    },
+    {
+      "sequence": 4,
+      "bytes": 3896,
+      "outcome": "http_400"
+    },
+    {
+      "sequence": 5,
+      "bytes": 1302,
+      "outcome": "http_400"
+    },
+    {
+      "sequence": 6,
+      "bytes": 3902,
+      "outcome": "http_400"
+    }
+  ],
+  "error_body_recorded": false,
+  "http_400_root_cause": "not_uniquely_confirmed",
+  "verified_compatibility_defect": "required tool choice without explicitly disabling default thinking",
+  "fix_offline_verified": true,
+  "fix_provider_retest": "not_run_pending_separate_authorization",
+  "official_sources": [
+    "https://api-docs.deepseek.com/api/create-chat-completion/",
+    "https://api-docs.deepseek.com/guides/thinking_mode/"
+  ],
+  "fixes_offline_verified": [
+    "thinking explicitly disabled",
+    "max_tokens provider alias",
+    "SDK native tool-call JSON",
+    "global recipient/request budget",
+    "redacted error receipt"
+  ]
+}

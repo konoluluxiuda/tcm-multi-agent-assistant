@@ -1,0 +1,37 @@
+[
+  {
+    "module": "tests.test_pair_checkpoint",
+    "exit_code": 0,
+    "output": "Executing <Task pending name='Task-2' coro=<PairCheckpointTests.test_durable_and_original_outputs_match() running at /home/zry/workspace/Multi-Agent-Medical-Assistant/tests/test_pair_checkpoint.py:59> wait_for=<Task pending name='Task-3' coro=<ChannelWrite._awrite() running at /tmp/tcm-ci-mail-env/lib/python3.12/site-packages/langgraph/pregel/write.py:103> cb=[Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/tasks.py:422> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.124 seconds\n----------------------------------------------------------------------\nRan 5 tests in 0.425s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_pair_research_report",
+    "exit_code": 0,
+    "output": "Executing <Task pending name='Task-2' coro=<PairTests.test_actual_nested_report_graph() running at /home/zry/workspace/Multi-Agent-Medical-Assistant/tests/test_pair_research_report.py:47> wait_for=<Task pending name='Task-3' coro=<ChannelWrite._awrite() running at /tmp/tcm-ci-mail-env/lib/python3.12/site-packages/langgraph/pregel/write.py:103> cb=[Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/tasks.py:422> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.294 seconds\n----------------------------------------------------------------------\nRan 7 tests in 0.398s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_cross_source_report",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 6 tests in 0.167s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_job_resume",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 3 tests in 0.180s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_research_jobs",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 6 tests in 1.027s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_research_job_api",
+    "exit_code": 0,
+    "output": "Executing <Task finished name='Task-1' coro=<JobApiTests.asyncSetUp() done, defined at /home/zry/workspace/Multi-Agent-Medical-Assistant/tests/test_research_job_api.py:16> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.172 seconds\nExecuting <Task finished name='Task-69' coro=<JobApiTests.asyncSetUp() done, defined at /home/zry/workspace/Multi-Agent-Medical-Assistant/tests/test_research_job_api.py:16> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.172 seconds\nExecuting <Task finished name='Task-80' coro=<JobApiTests.asyncSetUp() done, defined at /home/zry/workspace/Multi-Agent-Medical-Assistant/tests/test_research_job_api.py:16> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.167 seconds\nExecuting <Task finished name='Task-98' coro=<JobApiTests.asyncSetUp() done, defined at /home/zry/workspace/Multi-Agent-Medical-Assistant/tests/test_research_job_api.py:16> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.167 seconds\n----------------------------------------------------------------------\nRan 4 tests in 1.897s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_mcp_contract",
+    "exit_code": 0,
+    "output": "Executing <Task pending name='Task-23' coro=<ContractTests.test_graph_keeps_available_branch_on_mcp_failure() running at /home/zry/workspace/Multi-Agent-Medical-Assistant/tests/test_mcp_contract.py:75> wait_for=<Task pending name='Task-24' coro=<ChannelWrite._awrite() running at /tmp/tcm-ci-mail-env/lib/python3.12/site-packages/langgraph/pregel/write.py:103> cb=[Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/tasks.py:422> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.222 seconds\n----------------------------------------------------------------------\nRan 8 tests in 0.242s\n\nOK\n"
+  }
+]

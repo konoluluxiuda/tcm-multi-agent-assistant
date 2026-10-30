@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "sigkill_cases": [
+    {
+      "case": "saved",
+      "status": "complete",
+      "reason": "tool_scope_complete",
+      "calls": {
+        "model": 4,
+        "tool": 3
+      },
+      "model_budget_used": 4,
+      "tool_budget_used": 3,
+      "estimated_input_units": 17465
+    },
+    {
+      "case": "model",
+      "status": "partial",
+      "reason": "uncertain_model_dispatch",
+      "calls": {
+        "model": 1
+      },
+      "model_budget_used": 1,
+      "tool_budget_used": 0,
+      "estimated_input_units": 2963
+    },
+    {
+      "case": "tool",
+      "status": "partial",
+      "reason": "uncertain_tool_dispatch",
+      "calls": {
+        "model": 1,
+        "tool": 1
+      },
+      "model_budget_used": 1,
+      "tool_budget_used": 1,
+      "estimated_input_units": 2963
+    }
+  ],
+  "data": "synthetic_only",
+  "external_calls": 0,
+  "limitation": "Uncertain dispatches stop; no provider idempotency or production UI integration claimed."
+}

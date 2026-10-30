@@ -1,0 +1,25 @@
+{
+  "status": "failed",
+  "tests": 57,
+  "errors": 2,
+  "failures": 1,
+  "cases": [
+    {
+      "test": "BusinessTests.test_new_actions_api_real_tools_and_owner_isolation",
+      "symptom": "retrieve returned no result; JSON serialized file tokens were compared as lists against tuples"
+    },
+    {
+      "test": "ApiTests.test_history_reopen_isolation_and_delete",
+      "symptom": "same source-contract list/tuple mismatch"
+    },
+    {
+      "test": "DurableTests.test_failed_pre_dispatch_write_prevents_tool_invocation",
+      "symptom": "overbroad OSError handler swallowed injected journal save failure"
+    }
+  ],
+  "fixes": [
+    "canonical comparison of source contracts",
+    "only handle EvidenceConflict in graph wrapper; propagate journal write failures"
+  ],
+  "external_model_calls": 0
+}

@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "related_tests": 50,
+  "external_calls": 0,
+  "real_sigkill_cases": 3,
+  "web_or_live_provider_enabled": false,
+  "scope": "opt-in loop runtime and synthetic CLI",
+  "backup_coverage": "journal not yet included in core bundle"
+}

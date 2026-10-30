@@ -1,0 +1,33 @@
+{
+  "records": [
+    {
+      "phase": "development_first",
+      "case_ids": [
+        "B04",
+        "H02"
+      ],
+      "strategies_failed": 6,
+      "cause": "Repeated candidate_id keyword in evaluation answer constructor",
+      "fix": "Build answer by dictionary merge",
+      "after_fix": "54/54 development strategy contracts passed"
+    },
+    {
+      "phase": "scale50_first",
+      "cause": "Independent reference omitted contract-required surrounding whitespace trim on one medicinal_part value",
+      "fix": "Trim reference per documented catalog contract, preserve raw values/evidence",
+      "after_fix": "v1 200/v2 250 fields verified"
+    },
+    {
+      "phase": "retrieval_optional_runtime_first",
+      "cause": "Diagnostic imported the full DataOps engine into ONNX-only environment without LangGraph",
+      "fix": "Use lightweight stdlib writer and existing digest helper",
+      "after_fix": "6-case same-pool diagnostic passed"
+    },
+    {
+      "phase": "live_v1",
+      "cause": "6 HTTP400 responses; original response bodies not saved",
+      "fix": "Explicit thinking disabled plus SDK/MockTransport wire validation and redacted error receipt",
+      "after_fix": "offline_only; no external retry yet"
+    }
+  ]
+}

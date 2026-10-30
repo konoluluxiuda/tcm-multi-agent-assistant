@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "data": "synthetic_only",
+  "external_model_calls": 0,
+  "chat_form_completed": true,
+  "profile_rows": 24,
+  "ranking_candidates": 2,
+  "provenance_folded_by_default": true,
+  "source_choice_retains_full_question": true,
+  "refresh_restores_saved_result": true,
+  "javascript_errors": [],
+  "blocked_external_assets": 10,
+  "visual_font_quality_reviewed": false
+}

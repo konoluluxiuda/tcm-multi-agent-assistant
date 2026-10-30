@@ -1,0 +1,49 @@
+{
+  "question": "比较当归与川芎的药典功效和用量，核对全部共同靶点，保留双方原始记录的位置",
+  "status": "ok",
+  "message": "当归 / 川芎 · 资料对照；共同靶点172个。",
+  "external_model_calls": 0,
+  "elapsed_seconds": 1.12,
+  "execution": {
+    "mode": "local_declared_actions",
+    "driver_steps": 2,
+    "tool_calls": 13,
+    "action_calls": 1
+  },
+  "stop_reason": "declared_actions_complete",
+  "incomplete_requirements": [],
+  "blocks": [
+    {
+      "tool": "pair_evidence_report",
+      "report_kind": "pair",
+      "herbs": [
+        "当归",
+        "川芎"
+      ],
+      "shared_total": 172,
+      "all_targets": true,
+      "targets_complete": true,
+      "missing": [],
+      "externalized": true
+    }
+  ],
+  "saved_evidence": {
+    "sha256": "1bb3f9e046889564f234a66b2ed5ef4dfc2804cf4c2a8b1441f36526eec24008",
+    "bytes": 406180,
+    "complete": true,
+    "shared_target_items": 172,
+    "shared_target_total": 172,
+    "leaf_calls": 13,
+    "pair_sources": 2
+  },
+  "refresh_same_run": true,
+  "field_preview": {
+    "rows": 2,
+    "labels": [
+      "功能与主治",
+      "用法与用量"
+    ],
+    "preview_omitted": false,
+    "shared_preview_items": 5
+  }
+}

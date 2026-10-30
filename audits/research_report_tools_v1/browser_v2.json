@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "data": "synthetic_only",
+  "external_model_calls": 0,
+  "field_rows": 3,
+  "source_reads": 6,
+  "outer_actions": 1,
+  "shared_targets": 23,
+  "source_folds": true,
+  "paged_read_and_full_download": true,
+  "read_pages": 6,
+  "refresh_same_run": true,
+  "partial_fields_explicit": true,
+  "javascript_errors": [],
+  "blocked_external_assets": 10,
+  "font_layout_reviewed": false
+}

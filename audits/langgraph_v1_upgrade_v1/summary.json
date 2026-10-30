@@ -1,0 +1,46 @@
+{
+  "status": "local_runtime_upgraded",
+  "framework": {
+    "langgraph": "1.2.18",
+    "langgraph-checkpoint": "4.3.1",
+    "langgraph-checkpoint-postgres": "3.2.0",
+    "langchain-core": "1.7.0",
+    "langchain-openai": "1.7.3",
+    "openai": "2.54.0"
+  },
+  "tests": {
+    "modules": 136,
+    "passed": 1150,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": "passed",
+  "python311": "wheel_resolution_passed_not_runtime_tested",
+  "docker": "blocked_by_WSL_integration",
+  "image_built": false,
+  "image_pushed": false,
+  "git_committed": false,
+  "external_model_calls": 0,
+  "preview": "http://127.0.0.1:7895/",
+  "old_state_migrated": false,
+  "source_sha256": {
+    "requirements-research-chat.txt": "12e3b8fbe0ca374f0383e75f9cc9e3c6b70e427ca831ff2b0d4d13e1bc8b2b71",
+    "constraints-research-chat.txt": "2d3679a82648426609501342b0f71b0811cb45de85daf0aaafd1b3040c101749",
+    "requirements-ci.txt": "793f5712c7c12c7ede46776385fea5f4532e423bf91847d4880a3587b917f8a0",
+    "requirements-checkpoint-postgres.txt": "9fab4886020c4a3979bb276e5325774277d43abcd48739fae81472424d87cbff",
+    "requirements-research-rag.txt": "3bb692e292ea8a9674d9c6ef21cdf6d5ef23a4371b5db467bd6d92bf89245707",
+    "requirements-local-qdrant.txt": "719cbdea137f9fd3571186af509e87f651d04a5262c058339f600a7b5cbd374b",
+    "requirements.txt": "652edf7074a81f225636673eca17ebbfafc6599d67af0314203c04205bbc819c",
+    "Dockerfile.research": "b2f795317ede014a99aa39dad746ef6505be190a5fb5f543f1c53dc9c91ed553",
+    ".github/workflows/offline-regression.yml": "4ed78044808e33e83538efb5cddb4c2f0e2e5f3157ba98a7a1b4f6cb4251fc1f",
+    "tcm/runtime_versions.py": "3032bbcd3915acc89380789d97b810c88901e7a5d66b430e824cc73bef179478",
+    "tcm/pair_research_report.py": "a66f0723abce181df299d2e73ca2cf9ee2ce14ff88b1ca1170ab1d007fc4b483",
+    "tcm/cross_source_report.py": "ad37f89e887d6607b8ff833edf0d49ce81ed143a497296f046e99c69dba1ba04",
+    "tcm/report_checkpoint.py": "2877269c750d05f798189002d9d6db538ce37cfd4a3aa4c126c5a9b026a85c1d",
+    "tcm/research_run.py": "00b5ae327efeccaeb73e47131fa48372aece1988f44526dca0f81c2a825eb63a",
+    "tcm/research_run_durable.py": "6ae7c21e7ba8d7e1b9a83b7b16ddbd9501e2a3f1190891277571e08b5fb76522",
+    "tcm/qdrant_dense.py": "42998472facd3ef8f6e33df96a83ab328e916764f00bd74f79e097319c0f27ce",
+    "agents/rag_agent/vectorstore_qdrant.py": "4784ebb92598cdbeef8fb4ee53bd633e6a832cefb8ce12fafed2f9aee430abef",
+    "tests/test_framework_upgrade.py": "129fcff9fa5a42e747aa40f354c20ce312072106bdfd288f11ef501bc03136bd"
+  }
+}

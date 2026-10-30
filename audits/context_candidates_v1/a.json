@@ -1,0 +1,140 @@
+{
+  "observation_checks_passed": true,
+  "candidate": "a",
+  "cases": [
+    {
+      "count": 100,
+      "fixture_sha256": "a709dcd526aed15bb781e19a15845ef517b8df8a41112a9215cb598913d6aad8",
+      "pretty_json_bytes": 3495,
+      "end_to_end_default_status": "complete",
+      "end_to_end_default_reason": "tool_scope_complete",
+      "profile_observation_status": "ok",
+      "default_latest_projection": {
+        "input_bytes_before": 3394,
+        "input_bytes_after": 3394,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      "runtime_observation_admitted": true,
+      "latest_projection": {
+        "input_bytes_before": 3394,
+        "input_bytes_after": 3394,
+        "input_byte_limit": 16000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      "historical_projection": {
+        "input_bytes_before": 3638,
+        "input_bytes_after": 3638,
+        "input_byte_limit": 16000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      "exact_slice_recovered": true,
+      "source_binding_preserved": true,
+      "unknown_evidence_rejected": true,
+      "original_unchanged": true,
+      "context_limit_bytes": 16000,
+      "provider_calls": 0,
+      "note": "Direct component probe; rejected observations are not claimed as supported by the full loop. Slice offset supplied by fixture."
+    },
+    {
+      "count": 2000,
+      "fixture_sha256": "ca267ceec1f4d5ad682c761672ce24aae1b88ce087b71c585633a55d5a3e633d",
+      "pretty_json_bytes": 58596,
+      "end_to_end_default_status": "complete",
+      "end_to_end_default_reason": "tool_scope_complete",
+      "profile_observation_status": "ok",
+      "default_latest_projection": {
+        "input_bytes_before": 50895,
+        "input_bytes_after": 50895,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      "runtime_observation_admitted": true,
+      "latest_projection": {
+        "input_bytes_before": 50895,
+        "input_bytes_after": 50895,
+        "input_byte_limit": 16000,
+        "compacted_call_ids": [],
+        "fits": false,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      "historical_projection": {
+        "input_bytes_before": 51139,
+        "input_bytes_after": 1244,
+        "input_byte_limit": 16000,
+        "compacted_call_ids": [
+          "original"
+        ],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      "exact_slice_recovered": true,
+      "source_binding_preserved": true,
+      "unknown_evidence_rejected": true,
+      "original_unchanged": true,
+      "context_limit_bytes": 16000,
+      "provider_calls": 0,
+      "note": "Direct component probe; rejected observations are not claimed as supported by the full loop. Slice offset supplied by fixture."
+    },
+    {
+      "count": 14000,
+      "fixture_sha256": "80f57b071be4bde7c356be4dff7cfadd657efb499acb5f27c1f479ab921c9c96",
+      "pretty_json_bytes": 406597,
+      "end_to_end_default_status": "partial",
+      "end_to_end_default_reason": "unresolved_scope",
+      "profile_observation_status": "error",
+      "default_latest_projection": {
+        "input_bytes_before": 350896,
+        "input_bytes_after": 350896,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": false,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      "runtime_observation_admitted": false,
+      "latest_projection": {
+        "input_bytes_before": 350896,
+        "input_bytes_after": 350896,
+        "input_byte_limit": 16000,
+        "compacted_call_ids": [],
+        "fits": false,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      "historical_projection": {
+        "input_bytes_before": 351140,
+        "input_bytes_after": 1246,
+        "input_byte_limit": 16000,
+        "compacted_call_ids": [
+          "original"
+        ],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens"
+      },
+      "exact_slice_recovered": true,
+      "source_binding_preserved": true,
+      "unknown_evidence_rejected": true,
+      "original_unchanged": true,
+      "context_limit_bytes": 16000,
+      "provider_calls": 0,
+      "note": "Direct component probe; rejected observations are not claimed as supported by the full loop. Slice offset supplied by fixture."
+    }
+  ],
+  "external_calls": 0,
+  "data": "synthetic_only",
+  "business_accuracy": "not_measured",
+  "provider_tokens": "not_measured",
+  "limits": [
+    "Fixed driver knows retrieval procedure; not model comprehension",
+    "A reads known offset, B literal grep; retrieval tasks differ",
+    "No LLM summarization measured",
+    "Byte measures exclude bound tool schemas in B; not a cost comparison"
+  ]
+}

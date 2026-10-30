@@ -2,6 +2,8 @@
 
 日期：2026-10-12。用于 `app.py` / `agents.agent_decision`，独立药材查询服务无需这些开关。
 
+2026-10-29增量：`ENABLE_DATAOPS`默认false，启用本地批量资料核对与表格交付；`preview_local_tasks`会开启并使用独立`DATAOPS_ROOT`。需要现有药材/关系目录/药典索引及表格依赖，详见[D1说明](DATAOPS_D1_DELIVERY.md)。该模式不调用模型。文献搜索已永久退役，`ENABLE_PUBMED=1`不再激活联网；历史批次只读回看保留。
+
 ## 默认文本模式
 
 | 环境变量 | 默认 | 启用条件 |

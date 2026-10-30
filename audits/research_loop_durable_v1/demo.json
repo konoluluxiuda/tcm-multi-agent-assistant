@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "new_and_resumed_output_equal": true,
+  "model_calls": 4,
+  "tool_calls": 3,
+  "external_calls": 0
+}

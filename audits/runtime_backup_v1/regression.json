@@ -1,0 +1,32 @@
+[
+  {
+    "module": "tests.test_runtime_backup",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 8 tests in 1.446s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_memory_backup",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 13 tests in 1.611s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_project_memory",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 8 tests in 0.468s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_pair_checkpoint",
+    "exit_code": 0,
+    "output": "Executing <Task pending name='Task-2' coro=<PairCheckpointTests.test_durable_and_original_outputs_match() running at /home/zry/workspace/Multi-Agent-Medical-Assistant/tests/test_pair_checkpoint.py:59> wait_for=<Task pending name='Task-3' coro=<ChannelWrite._awrite() running at /tmp/tcm-ci-mail-env/lib/python3.12/site-packages/langgraph/pregel/write.py:103> cb=[Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/tasks.py:422> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.103 seconds\n----------------------------------------------------------------------\nRan 5 tests in 0.379s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_job_resume",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 3 tests in 0.172s\n\nOK\n"
+  },
+  {
+    "module": "tests.test_research_jobs",
+    "exit_code": 0,
+    "output": "----------------------------------------------------------------------\nRan 6 tests in 1.002s\n\nOK\n"
+  }
+]

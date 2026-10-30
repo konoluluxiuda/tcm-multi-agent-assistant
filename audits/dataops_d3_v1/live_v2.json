@@ -1,0 +1,498 @@
+{
+  "version": "dataops-d3-live-v2-result",
+  "date": "2026-10-30",
+  "protocol": {
+    "version": "dataops-synthetic-live-pilot-v2",
+    "status": "prepared_not_run",
+    "cases": [
+      {
+        "case_id": "B01",
+        "question": "核对Alpha的功能与主治和注意",
+        "goal": {
+          "query": {
+            "names": [
+              "Alpha"
+            ],
+            "limit": 50
+          }
+        },
+        "parent_goal": null
+      },
+      {
+        "case_id": "B04",
+        "question": "Gamma选丙草后继续整理",
+        "goal": {
+          "query": {
+            "names": [
+              "Gamma"
+            ],
+            "limit": 50
+          }
+        },
+        "parent_goal": null
+      },
+      {
+        "case_id": "R01",
+        "question": "为Alpha增加贮藏，保留旧值",
+        "goal": {
+          "query": {
+            "names": [
+              "Alpha"
+            ],
+            "limit": 50
+          },
+          "document_fields": [
+            "功能与主治",
+            "注意",
+            "贮藏"
+          ]
+        },
+        "parent_goal": {
+          "query": {
+            "names": [
+              "Alpha"
+            ],
+            "limit": 50
+          }
+        }
+      }
+    ],
+    "suite_sha256": "39411e98dcfffc2751d3e79afdd84f94585944725a01562ff7b9952dbd7b1893",
+    "strategies": {
+      "F": "fixed host, no model",
+      "P": "one native plan per goal, then host tools",
+      "A": "native observation tool loop"
+    },
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "model": "deepseek-flash",
+    "max_requests_total": 36,
+    "max_A_requests_per_goal": 8,
+    "max_P_requests_per_goal": 1,
+    "max_output_tokens": 1200,
+    "max_request_bytes": 65536,
+    "request_timeout_seconds": 30,
+    "retries": 0,
+    "thinking": {
+      "type": "disabled"
+    },
+    "provider_token_parameter": "max_tokens",
+    "data": "Only fixed synthetic goals, static instructions/tool definitions, synthetic observations and test evidence.",
+    "excluded": [
+      "real ETCM",
+      "real pharmacopoeia",
+      "PDF",
+      "user history",
+      "credentials in prompts"
+    ],
+    "real_model_calls": 0,
+    "authorization_required_for_execution": true
+  },
+  "summary": {
+    "status": "failed",
+    "kind": "three_known_development_synthetic_provider_pilot",
+    "results": [
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "3f83419ebc2947519e3b42e44a4feaeb",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1965,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.7804652609993354,
+        "case_id": "B01",
+        "strategy": "F"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "15b71bc1452c425a87561a4c274886e6",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2179,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 0,
+        "external_model_calls": 1,
+        "provider_usage": [
+          {
+            "input_tokens": 493,
+            "output_tokens": 70,
+            "total_tokens": 563,
+            "input_token_details": {
+              "cache_read": 0
+            },
+            "output_token_details": {}
+          }
+        ],
+        "cost": null,
+        "elapsed_seconds": 1.5637408849943313,
+        "case_id": "B01",
+        "strategy": "P"
+      },
+      {
+        "status": "failed",
+        "outcome": "interrupted",
+        "errors": [
+          "unexpected_task_status",
+          "missing_delivery"
+        ],
+        "workspace_id": "d0fa07131c504cbc9a624f882ec5f5b8",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 1,
+        "leaf_reads": 1,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          }
+        ],
+        "policy_context_max_bytes": 1022,
+        "host_policy_steps_including_parent": 2,
+        "planning_stub_steps": 0,
+        "external_model_calls": 2,
+        "provider_usage": [
+          {
+            "input_tokens": 1154,
+            "output_tokens": 38,
+            "total_tokens": 1192,
+            "input_token_details": {
+              "cache_read": 0
+            },
+            "output_token_details": {}
+          }
+        ],
+        "cost": null,
+        "elapsed_seconds": 1.778674563000095,
+        "case_id": "B01",
+        "strategy": "A"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "fbc774c4b4104272a1105904ac36e7c9",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 1898,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.6043916790004005,
+        "case_id": "B04",
+        "strategy": "F"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "a46a78a08067489ca6912ec76e8665db",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 8,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2112,
+        "host_policy_steps_including_parent": 8,
+        "planning_stub_steps": 0,
+        "external_model_calls": 1,
+        "provider_usage": [
+          {
+            "input_tokens": 493,
+            "output_tokens": 70,
+            "total_tokens": 563,
+            "input_token_details": {
+              "cache_read": 256
+            },
+            "output_token_details": {}
+          }
+        ],
+        "cost": null,
+        "elapsed_seconds": 1.5661068139961571,
+        "case_id": "B04",
+        "strategy": "P"
+      },
+      {
+        "status": "failed",
+        "outcome": "interrupted",
+        "errors": [
+          "unexpected_task_status",
+          "missing_delivery"
+        ],
+        "workspace_id": "581eb1dda13c4097bdf2ea6d37a85d8a",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 0,
+        "leaf_reads": 0,
+        "logical_adapter_reads": [],
+        "policy_context_max_bytes": 665,
+        "host_policy_steps_including_parent": 1,
+        "planning_stub_steps": 0,
+        "external_model_calls": 1,
+        "provider_usage": [],
+        "cost": null,
+        "elapsed_seconds": 0.7698659070010763,
+        "case_id": "B04",
+        "strategy": "A"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "73f69b8749084c429cbaf5f39f42543b",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2062,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9208984619981493,
+        "case_id": "R01",
+        "strategy": "F"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "workspace_id": "c6ccdac7e9364544b749e33cc341974b",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2261,
+        "host_policy_steps_including_parent": 13,
+        "planning_stub_steps": 0,
+        "external_model_calls": 2,
+        "provider_usage": [
+          {
+            "input_tokens": 494,
+            "output_tokens": 70,
+            "total_tokens": 564,
+            "input_token_details": {
+              "cache_read": 256
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 496,
+            "output_tokens": 70,
+            "total_tokens": 566,
+            "input_token_details": {
+              "cache_read": 256
+            },
+            "output_token_details": {}
+          }
+        ],
+        "cost": null,
+        "elapsed_seconds": 2.612381857004948,
+        "case_id": "R01",
+        "strategy": "P"
+      },
+      {
+        "status": "failed",
+        "outcome": "exception",
+        "error_type": "KeyError",
+        "errors": [],
+        "external_model_calls": 1,
+        "elapsed_seconds": 1.1654646999959368,
+        "case_id": "R01",
+        "strategy": "A",
+        "planning_stub_steps": 0,
+        "provider_usage": [],
+        "cost": null
+      }
+    ],
+    "actual_provider_requests": 8,
+    "cost": null,
+    "real_data_or_history_sent": false,
+    "holdout_or_business_accuracy_claim": false
+  },
+  "http_dispatch": [
+    {
+      "sequence": 1,
+      "bytes": 1325,
+      "outcome": "http_200"
+    },
+    {
+      "sequence": 2,
+      "bytes": 3925,
+      "outcome": "http_200"
+    },
+    {
+      "sequence": 3,
+      "bytes": 4309,
+      "outcome": "http_200"
+    },
+    {
+      "sequence": 4,
+      "bytes": 1316,
+      "outcome": "http_200"
+    },
+    {
+      "sequence": 5,
+      "bytes": 3916,
+      "outcome": "http_200"
+    },
+    {
+      "sequence": 6,
+      "bytes": 1322,
+      "outcome": "http_200"
+    },
+    {
+      "sequence": 7,
+      "bytes": 1333,
+      "outcome": "http_200"
+    },
+    {
+      "sequence": 8,
+      "bytes": 3922,
+      "outcome": "http_200"
+    }
+  ],
+  "run_source_hashes": {
+    "tcm/dataops/api.py": "dcecf6d7fafada9d9904dbe8ac6e2a155302e679fced4a74df9d31a5ceace6a5",
+    "tcm/dataops/workspace.py": "3812bffb5e027cbdd025bd897cfe9b60652ef4e4faba589c93e890a55f11707a",
+    "tcm/dataops/model.py": "7cbe8db8fd064777254b52a96c63ed3137762797cfc63fb31a326051f1ea9276",
+    "tcm/dataops/evaluation.py": "e3614da72b9dd07da5e2a1e371a98d31e6996acdc5483fb25029d3333f67b5ab",
+    "tcm/dataops/artifacts.py": "ae076a37723d4ba4279b9ccbf1023df5e9bb7b2ec99539b1a490c3315a9c938a",
+    "tcm/dataops/baseline.py": "acaa77e2e5e7a92b8e59bf3d542200d724a47b0a76ffbb44822cca212bb3c922",
+    "tcm/dataops/planning.py": "6eeb9c319cebcea8ffba4dca9eacf3210e7d746027882a56910ca4009549fa60",
+    "tcm/dataops/graph.py": "b57cf4262e4d93727cd116668ebf3693148a528952d930e31d583f5923f60499",
+    "tcm/dataops/jobs.py": "ad6380edecf7580bcceec84b4a5edf4506288f81f62ad4cb51558dd64a6a8ed0",
+    "tcm/dataops/data_access.py": "3fbbdd4b4348e9ae92b3addd770db3fca59de9ee91d37c66268d4fb97c1ea34b",
+    "tcm/dataops/contracts.py": "946715251b0ceb3dd235cfe80fc435b0281bff68f7c90a9cab89bb0dbe8371c9",
+    "tcm/dataops/__init__.py": "a1259b05d1579d154c72b88922394c4012039dc4f85305b8251d2e80515f0ea7",
+    "scripts/eval_dataops_live.py": "4e7f0fc6b2d9b2406f857afc9c8c2da311a5b110c42d1bda9bda32d03075184f",
+    "tests/dataops_fixture.py": "0b4ad6a49af8f1bd37a6f7494722c1bad52df52031e7d39e8a611405f866cb6a"
+  },
+  "frozen_run_file_hashes": {
+    "protocol.json": "ee76722c3344fb1a1c92f1628e6d2ab82c71c6c8d101eb6465e24a2d51e3342a",
+    "summary.json": "9e719c05a66a5b21d7e3570199f3b619c32759a902f6295d14915f43fa542862",
+    "dispatch.json": "0c9b94b529f128caac1d1a413132e1e7ffb915a1a91fe876bb11d30e1a37c3f2",
+    "reference.json": "6699547cc9abac19a23b27dc857e9118bc0fde5b8388a4b1e4ef789afb77287e",
+    "source_code.json": "1c30debd1ce71417097cd6551e0d862df3d1bc7aa8b4a60aefcc1d9ab783eef4"
+  },
+  "usage_coverage": {
+    "responses_with_recorded_usage": 5,
+    "total_http_responses": 8,
+    "known_total_tokens": 3448,
+    "complete_total_tokens": null,
+    "cost": null,
+    "note": "Three A responses returned HTTP 200 but adapter acceptance/usage was not recorded. Missing usage is not zero."
+  },
+  "findings": [
+    "F passed 3/3 without model calls; native once-plan P passed 3/3 using four requests including parent and child goals.",
+    "A passed 0/3 using four requests. B01 ran one query before interruption; B04 interrupted before tools; R01 parent had no delivery and the harness reported KeyError.",
+    "All eight requests returned HTTP 200. The earlier HTTP 400 was not observed in V2.",
+    "Original response text/tool-call counts were not retained for the three rejected A responses; exact root cause is unconfirmed.",
+    "These are three known synthetic development tasks with structured goals, not held-out free-text or general business/model accuracy.",
+    "V2 authorization executed once without automatic retries; remaining budget is not authority for another run.",
+    "Later offline diagnostics changes are not included in this run and have no new provider validation."
+  ],
+  "private_run_directory": "var/dataops_d3_live_v2",
+  "new_external_calls_after_this_run": 0
+}

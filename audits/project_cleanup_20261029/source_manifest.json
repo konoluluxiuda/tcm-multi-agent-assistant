@@ -1,0 +1,16 @@
+{
+  "README.md": "4b2db4c796ccc87b3327ab667e70c0ae5a9d2cfaaf6b0bd904bba375c43268da",
+  "docs/README.md": "cc32e4f95be72e4443f69840ba2a203adbcb87416d19c0b626020174c5245d45",
+  "docs/TCM_PROJECT_ROADMAP.md": "3fdf036a191bb59c99a566e78c6806ab96fe38e7340217b1f350587c1f5b7da1",
+  "docs/ARCHITECTURE_DECISION_REVIEW.md": "9e301a2ccffc66f2ec9d4dae0eb1dbffbd87140dcca90cd06371d2992bcd84be",
+  "docs/PROJECT_DEMO.md": "8a8ec0784fc61e38b0ede952f9df58b6c58c4c1b189d8eba7589b8677d204ca9",
+  "docs/RESEARCH_ANALYTICS_PLAN.md": "dd2ab677ea76bccea57dabc0f83d3e278c7e37710a74ddf2f1141492b0c645f4",
+  "scripts/run_offline_ci.py": "d1a5ff3e89d01eab429b3701740b3985cf7712e1d30cad79f0d300ee8ee182e0",
+  "tests/large_observation_fixture.py": "74b4d1191079132d535c44b10adf85b05f31b920fe59639e0f209d30069d1e75",
+  "tests/test_evidence_offload_candidate.py": "330738fc6b7a56bcb98f3b7542e7261378aff5c27ddec5768ac2ce3f47ac7260",
+  "tests/test_offload_journal_candidate.py": "97964a2b67b1b9a530f7636511a5cf0571a0312a128c6f93af2053421347b145",
+  "tests/test_offload_loop_candidate.py": "1d98c03b0cc5801c254b403442e4ba573b53dd029e4768b16c0a40ded0934c38",
+  "scripts/check_evidence_offload.py": "6734dcc134910f7149d46888d01518d1bb2470af889000424cf7a2799967a5eb",
+  "scripts/check_offload_journal_recovery.py": "60f63c9d4a961151f462de4305444e5207367b619520718527b589d07d566f7f",
+  "scripts/check_offload_loop_recovery.py": "b376eabb9793c183c11dc9971c2985cfc996b61a08973322b7af5e8b95ada402"
+}

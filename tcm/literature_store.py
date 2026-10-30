@@ -9,8 +9,20 @@ from tcm.literature_evidence import annotate_batch, doi_key
 
 
 class LiteratureStore:
-    def __init__(self, path):
+    def __init__(self, path, *, read_only=False):
         path = Path(path).resolve()
+        if read_only:
+            self.migration_backup = None
+            self.db = sqlite3.connect(path.as_uri() + '?mode=ro', uri=True, timeout=10)
+            try:
+                self.db.execute('PRAGMA query_only=ON')
+                if (self.db.execute('PRAGMA user_version').fetchone()[0] not in (1, 2) or
+                        self.db.execute("SELECT value FROM metadata WHERE key='store_kind'").fetchone() != ('pubmed_literature_v1',)):
+                    raise ValueError('Not a literature database')
+            except Exception:
+                self.db.close()
+                raise
+            return
         path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
         try:
             descriptor = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)

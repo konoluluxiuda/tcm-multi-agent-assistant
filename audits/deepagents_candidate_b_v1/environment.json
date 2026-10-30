@@ -1,0 +1,6 @@
+{
+  "python": "Python 3.13.5",
+  "pip_check": "No broken requirements found",
+  "environment": "isolated /tmp/tcm-deepagents-candidate-b",
+  "project_dependencies_changed": false
+}

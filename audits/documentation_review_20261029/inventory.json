@@ -1,0 +1,1166 @@
+{
+  "date": "2026-10-29",
+  "docs_markdown_count": 144,
+  "categories": {
+    "stage_or_experiment_record": 101,
+    "current_guide": 8,
+    "topic_reference_record": 26,
+    "decision_record": 2,
+    "release_snapshot": 7
+  },
+  "root_readme_counted_separately": true,
+  "files": [
+    {
+      "path": "docs/AGENT_RESEARCH_TOOL.md",
+      "title": "主Agent显式药典研究工具",
+      "category": "stage_or_experiment_record",
+      "sha256": "35fa8a46d168eb2370dd1427cae7a01458a65ff3cf7f1d7da3a478d0b2f1c491",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/APPLICATION_EVALUATION_PROTOCOL.md",
+      "title": "下一轮业务验收约定",
+      "category": "stage_or_experiment_record",
+      "sha256": "ec69b8f8e71d4fbb0f584bb03b53306ac1dbd8b5675cf3d9330b8495d6d9f659",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/ARCHITECTURE_ABC_LIVE_V1_RESULT.md",
+      "title": "A/B/C同环境真实模型对照：首轮结果与协议缺口",
+      "category": "stage_or_experiment_record",
+      "sha256": "7383114515394afc2f0f1f74a89bd63c0c17142e844d2c25f2e2530135d561df",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/ARCHITECTURE_ABC_LIVE_V2_RESULT.md",
+      "title": "A/B/C V2结果与受控批次修正",
+      "category": "stage_or_experiment_record",
+      "sha256": "5658b4dea18f5cfa4ed68692e3859867f9c2c1869f590e64fe0bcd7386a70ee7",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/ARCHITECTURE_ABC_V1_REVIEW.md",
+      "title": "LangGraph 1.x后的A/B/C选型续审",
+      "category": "stage_or_experiment_record",
+      "sha256": "5efcdc70ba08f316a15940cb0861ea76b11cb570b6616fc6261673ea995015b6",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/ARCHITECTURE_DECISION_REVIEW.md",
+      "title": "架构选择：A为生产主线，B/C保留隔离对照",
+      "category": "current_guide",
+      "sha256": "9e301a2ccffc66f2ec9d4dae0eb1dbffbd87140dcca90cd06371d2992bcd84be",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/BACKGROUND_RESEARCH_MILESTONE.md",
+      "title": "后台研究执行闭环：本轮交付",
+      "category": "stage_or_experiment_record",
+      "sha256": "86ec26324aa9cc5dc6a859281470e61ce1ed42f506173fc7f342930b22305c20",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/BOOKMARK_EVIDENCE_NOTES.md",
+      "title": "收藏研究证据笔记",
+      "category": "topic_reference_record",
+      "sha256": "3c6b79c64511f16c63c8c49dbaaeaef446a5bb5298ba72229065ac712d8e9937",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/BOUNDED_RESEARCH_TASK.md",
+      "title": "有限工具循环：合成关系证据核查任务",
+      "category": "stage_or_experiment_record",
+      "sha256": "7a6c24f711f7265aac3ca3add6aefbaa2f19da3a8093edae59045d9a10a1af41",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/BUSINESS_ACCEPTANCE_V1.md",
+      "title": "固定版本24项业务筛查：首轮与评分复核",
+      "category": "stage_or_experiment_record",
+      "sha256": "34313b87eced755ae69a28b24e18ede5d958dff0798a0802183d8034d932a575",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/BUSINESS_COMPLETENESS_REVIEW_20261020.md",
+      "title": "当前业务完整度与任务完成情况评估",
+      "category": "stage_or_experiment_record",
+      "sha256": "38febdfcf8a5b06b99e8fd0b7e5809b1775ae5ff1868b9dc29e882bf901986e3",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/CANDIDATE_A_BUSINESS_INTEGRATION.md",
+      "title": "A方案：正式工具循环的业务接入",
+      "category": "stage_or_experiment_record",
+      "sha256": "5432bfff8b93ec9130ae30a3e04cf2966127e013d91b055f9343dca35b5f3f0e",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/CANDIDATE_A_CHAT_INTEGRATION.md",
+      "title": "A方案：多步骤意图到本地执行的聊天接入",
+      "category": "stage_or_experiment_record",
+      "sha256": "0cda7906881e0bf468b76987f762eb25dbb126e64cee08dd341fe80db6c46484",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/CHANGELOG.md",
+      "title": "开发变更记录",
+      "category": "stage_or_experiment_record",
+      "sha256": "e6803e0ac2baf7ee37cdf2b437e6e4ec7a2355a36ac2b9eb7bd321e467a9c9cb",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/CHAT_FIELD_REQUEST_MILESTONE.md",
+      "title": "普通聊天复用字段请求解析",
+      "category": "stage_or_experiment_record",
+      "sha256": "38ddc0f644a9007515616e31bd1e04bcf943502f7083cf3ac57d791c25fed913",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/CHAT_REQUEST_DIAGNOSTICS.md",
+      "title": "聊天请求诊断",
+      "category": "stage_or_experiment_record",
+      "sha256": "866731c578b6caa13a148ed7c93a1527fe213a3cdc8cc49c25f5f95cb662951e",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/COMBINED_EVIDENCE_REPORT.md",
+      "title": "药典与现代文献证据清单",
+      "category": "stage_or_experiment_record",
+      "sha256": "edf19749a02ea6481adfeb5b3c09d2d5e84f89b17dea5d17ecec761e3b2c7e49",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/COMPARISON_EVIDENCE_EXPORT.md",
+      "title": "双药药典对比证据导出",
+      "category": "stage_or_experiment_record",
+      "sha256": "30695547fdae2c63417ccde7a410932f43aa98c021ec738ce2900fa27894bad5",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/CORE_WORKFLOW_COMPARISON.md",
+      "title": "核心任务控制：是否需要模型",
+      "category": "stage_or_experiment_record",
+      "sha256": "adacd22cd1aed7bdb43ccf1245acb221b08a7acaaece4b8003aae030daea7d2b",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/CROSS_SOURCE_REPORT_MILESTONE.md",
+      "title": "跨来源资料报告：本地交付与检索对照",
+      "category": "stage_or_experiment_record",
+      "sha256": "3ada6c898ab20ffd85eed3839a9bc52e82fb1ca97e9b3d0a056377956a15f560",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/DISEASE_CANDIDATE_ANALYSIS.md",
+      "title": "疾病来源靶点查询与药材候选排序",
+      "category": "topic_reference_record",
+      "sha256": "a84cfdd5a53a9a144a16dd1d351014208be1dcffaf89d209425c1962b493d7ce",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/DISEASE_GENE_CATALOG.md",
+      "title": "疾病来源靶点索引",
+      "category": "topic_reference_record",
+      "sha256": "64ab51e44a383d4106bf0a22ab6ac131c29c2bd655092b25c80d723fb71b08a0",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/DISEASE_NAME_SEARCH.md",
+      "title": "疾病名称查找",
+      "category": "topic_reference_record",
+      "sha256": "79a509c41e7dcce03811b7d3d780e15c1338d4a36e37c3b46dccac26bd473508",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/DISEASE_RANKING_EVALUATION.md",
+      "title": "疾病候选排序：基线诊断（P2d）",
+      "category": "stage_or_experiment_record",
+      "sha256": "8204ed6cbea7a9710c84b6019af4295b9f271f5802619b00d9151297179da19e",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/DISEASE_SIZE_CONTEXT.md",
+      "title": "聊天候选规模对照（P2f）",
+      "category": "stage_or_experiment_record",
+      "sha256": "e571815773ffad5f25b9775afa4197291934697af65d9d39ed89ba78e69af0f4",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/DISEASE_SIZE_NULL_EVALUATION.md",
+      "title": "按集合大小匹配的随机对照（P2e）",
+      "category": "stage_or_experiment_record",
+      "sha256": "73a3f1432dab7d49d54e3f2e41e26c3c14332ce3538e0cacb81615599440f3e8",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/DISEASE_WORKFLOW_DELIVERY.md",
+      "title": "疾病候选检索：当前交付与五分钟演示",
+      "category": "stage_or_experiment_record",
+      "sha256": "b12c12f3fd8d845c3f476ad9521a00f57b3e2eff905d3c4c51453c0c47355252",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/ETCM2_DATA_AUDIT.md",
+      "title": "ETCM2.0 本地快照：首轮数据审计",
+      "category": "topic_reference_record",
+      "sha256": "aac972e15da10b4d800759e48ab4eade822dd79cf0389346127314c5e9c3418d",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/ETCM2_FIELD_MAPPING.md",
+      "title": "ETCM2.0 数据映射草案",
+      "category": "topic_reference_record",
+      "sha256": "3e63a3bc9d6dbd26cf5c93d46ac0b7ecbe7d4e9691eb500d27ec7634206e6ef4",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/ETCM2_MVP_USAGE.md",
+      "title": "药材结构化查询 MVP：运行与验收",
+      "category": "stage_or_experiment_record",
+      "sha256": "8a659c660cec343f188f5db30306d3071b27e9795b2bb02c8bdbe8fde0ab518c",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/ETCM_DISEASE_ENRICHMENT.md",
+      "title": "ETCM疾病富集来源查询",
+      "category": "topic_reference_record",
+      "sha256": "fa6793b9b95416577f322fb4b45102842d4196ea8961e9af89b932744e470a95",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/ETCM_LOCALIZATION_AND_LINKS.md",
+      "title": "ETCM药材中文对照与来源关联",
+      "category": "topic_reference_record",
+      "sha256": "adae64d2a031adbb58a4591f9703fe9b6e3cdb1ba8144dff7400453137577fc7",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/EVIDENCE_OFFLOAD_CANDIDATE.md",
+      "title": "大结果外置＋结构化回读：隔离原型",
+      "category": "stage_or_experiment_record",
+      "sha256": "f7c8646a14e99cdfd828ee62a4b8b67e122660b37207da8a76cf6285110f6162",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/INTENT_BOUNDARY_FIX_MILESTONE.md",
+      "title": "意图契约加固与原始输出离线回放",
+      "category": "stage_or_experiment_record",
+      "sha256": "d500c169a002580fb59880cfb23e60a1445956faaf52560398e15a5dcac39633",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/INTENT_FIELD_CONTRACT_MILESTONE.md",
+      "title": "模型意图与本地字段查询契约",
+      "category": "stage_or_experiment_record",
+      "sha256": "e9a0e0569b2e1bfcb20879063985bdb38015d41bc745f6785c93497258b3b90c",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/INTENT_GUIDANCE_FIX.md",
+      "title": "通用403与复合任务澄清修复",
+      "category": "stage_or_experiment_record",
+      "sha256": "6ec57b9849a3e8beefdd33e32e929bbc5a71e55d0714c1d9c5fccc6c62f3a2e2",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/INTENT_ROUTING.md",
+      "title": "自然问法与模型意图兜底",
+      "category": "stage_or_experiment_record",
+      "sha256": "54c2b037acca85d6606e37af81e7a294e0bc1cda1572e5c5f27b009a079bd45d",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/INTENT_SYNTHETIC_LIVE_MILESTONE.md",
+      "title": "真实模型意图契约验收：保留3/8失败基线",
+      "category": "stage_or_experiment_record",
+      "sha256": "043064a59a75c098520cdf57d4e1290fdd4c6f9e48b83b602da45e993cd05819",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/INTERVIEW_EVIDENCE.md",
+      "title": "项目面试：贡献、证据和追问",
+      "category": "current_guide",
+      "sha256": "a90fe71e6b106b8676b5089ffc657c33ac74e12555b8d5e1220d220fd3f8c153",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/LANGGRAPH_V1_UPGRADE.md",
+      "title": "LangGraph 1.x整体升级记录",
+      "category": "stage_or_experiment_record",
+      "sha256": "b1565d1ec717ac9201a1638c8c1b3c8164be4fba111c394e3fe04924ceadc7e3",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/LLM_APPLICATION_EXPERIMENTS.md",
+      "title": "大模型应用主线：实现与实验记录",
+      "category": "stage_or_experiment_record",
+      "sha256": "f9b57012a7562d93ed6cc6daaf70f2559f78556f6760bddbcbcb86a576ecae0f",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/LOCAL_RERANKER_MILESTONE.md",
+      "title": "本地 Cross-Encoder 重排接入与对照",
+      "category": "topic_reference_record",
+      "sha256": "e571c02016405fca00a5d31fa4510cd35541d20d2e2c8028bf15ceab57803425",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/LOCAL_TASK_REQUEST.md",
+      "title": "ETCM问句、请求清单与本地执行",
+      "category": "stage_or_experiment_record",
+      "sha256": "4720995d649bd3fccb07409775882894eb96a1cf8e6670728a4fad183159317f",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MCP_READONLY_MILESTONE.md",
+      "title": "只读资料工具的MCP互操作",
+      "category": "topic_reference_record",
+      "sha256": "b2b001fc5a6764f11cde41748c77131fd49f455892746374aa8d377d4df43812",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MEMORY_BACKUP.md",
+      "title": "会话在线备份与隔离恢复",
+      "category": "topic_reference_record",
+      "sha256": "4f5e7d3c40d26a31d699e1b18e9116590f14771bb018750e2adc1547c027b308",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MINERU_CHALLENGE_V1.md",
+      "title": "50题新问法与炮制范围挑战",
+      "category": "stage_or_experiment_record",
+      "sha256": "9c8f7953c4b5c37d5c4e0069290de2bef0b32d0db9b284749d861ef59d9d1800",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MINERU_HEADING_RECOVERY.md",
+      "title": "MinerU无标题级别漏切修复与来源身份迁移",
+      "category": "stage_or_experiment_record",
+      "sha256": "f68451a70767c2a24bdfda3997063cf090537f1bfd30614d41c01c07530079e1",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MINERU_QUERY_FORMS.md",
+      "title": "药典研究查询：字段改述与有限字形支持",
+      "category": "stage_or_experiment_record",
+      "sha256": "5b089904aefeeddb52c25ba7b955dc89920a1ad55bbaed4a68bc971f8ec01a82",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MINERU_RESEARCH_CHAT.md",
+      "title": "独立研究聊天入口",
+      "category": "stage_or_experiment_record",
+      "sha256": "50afa68fb1a1fc4bd43429cbbcb896d0e81e20708c07964fa397fd130a785652",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MINERU_RESEARCH_UI.md",
+      "title": "MinerU 只读研究页面",
+      "category": "stage_or_experiment_record",
+      "sha256": "8f82c6fd3cd940a8768f5ef73dec0b5e8488f673c2a8e7b7010fad1040af479b",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MINERU_RESULTS_IMPORT.md",
+      "title": "MinerU结果迁入与图片查看",
+      "category": "topic_reference_record",
+      "sha256": "23cd843cb82a6e12251fc4016b442b690455e7410139b825396b3e8fe6e91eb2",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MINERU_RETRIEVAL_BASELINE.md",
+      "title": "药典研究检索基线与实际失败记录",
+      "category": "topic_reference_record",
+      "sha256": "4ef1ff5641ba7ae0e6681a6869d70eeb5eca7ec6630dfadf46b20a614668fe34",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MINERU_RETRIEVAL_GUARDS.md",
+      "title": "研究检索的范围与引用保护",
+      "category": "stage_or_experiment_record",
+      "sha256": "239fb5d1a60d12701a42ad5fb7f52ae393aef8794f82fd0a37c28018d7f66982",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MINERU_REVIEW.md",
+      "title": "MinerU风险复核与跨栏表格修复",
+      "category": "topic_reference_record",
+      "sha256": "2415e9ce94d8472e3d674f7a4556a06a82757c5e4b8198f8d3fc666c7bba1948",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MINERU_REVISIONS.md",
+      "title": "MinerU修订层与图表正文字段恢复",
+      "category": "stage_or_experiment_record",
+      "sha256": "60c9f78d604fa08b3863e398756f2e0b25708c997292072ec331aca3b50a7aba",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/MULTI_HERB_COMPARISON.md",
+      "title": "多药、多字段的药典原文比较",
+      "category": "stage_or_experiment_record",
+      "sha256": "77186eceb15395623ea1aeaeb575857dbc96852b4d1009964b1166c413bfb9f5",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/NATURAL_ROUTING.md",
+      "title": "自然语言入口与资料概览",
+      "category": "stage_or_experiment_record",
+      "sha256": "fd025f73ee58aead474ce04844d4f58e24cc66c6139b6746da38f3398ef72805",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/NEW_USER_GUIDE.md",
+      "title": "新用户使用说明与示例问题",
+      "category": "current_guide",
+      "sha256": "5c9f31ae8792ac5223f40456ed37c880c48e363a5cbfdb73a6bf85d4ceef3a62",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/NEW_USER_WORDING_FIX.md",
+      "title": "模拟用户入口失败修复",
+      "category": "stage_or_experiment_record",
+      "sha256": "42b85c240d74e30d823030f7fa7213a356919b75f1c6b4c2751c6a73393b312a",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/OFFLINE_CI.md",
+      "title": "离线回归与 CI",
+      "category": "current_guide",
+      "sha256": "2b25c14d0cf5340ff6cd719a48531061e9d62e3abcd56c37b93ca315332ff0e2",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/OFFLOAD_JOURNAL_RECOVERY.md",
+      "title": "外置证据与执行journal：发布边界验证",
+      "category": "stage_or_experiment_record",
+      "sha256": "13b7d55aaaf6a900a7a9ca24d152321de31de153e8fdda45658398892a57acc9",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/OFFLOAD_LOOP_CANDIDATE.md",
+      "title": "大结果外置的完整隔离工具循环",
+      "category": "stage_or_experiment_record",
+      "sha256": "dedf98606c248e78c4fcdca88e37b366dab8e211d2bb9cae18a71eb8bc8e8253",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/OPTIONAL_FEATURES.md",
+      "title": "M0-04：原医疗应用可选功能开关",
+      "category": "topic_reference_record",
+      "sha256": "081a783131e63a70a99b42e41431a6958032e63b1a5f01fd082d2cf203ee1604",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PAIR_ARCHITECTURE_PREFLIGHT.md",
+      "title": "两药复合任务：架构对照前置验收",
+      "category": "stage_or_experiment_record",
+      "sha256": "273a099474a662f23c5060afa13a187aaa7f6b897d8d4f68a320bd95be2c5399",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PAIR_CHECKPOINT_MILESTONE.md",
+      "title": "两药报告的持久化执行与恢复",
+      "category": "stage_or_experiment_record",
+      "sha256": "88f6cc0a3ed2ac164224e5ce3afdf0293449bb32ce311b50fd7507d8cd75c8fa",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PAIR_LIVE_SYNTHETIC_RESULT.md",
+      "title": "A/C真实模型合成对照结果",
+      "category": "stage_or_experiment_record",
+      "sha256": "8793611678e380b8d10e24c96cc7496c9628478e49669110d8684acb1ff1ac85",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PAIR_PAGINATION_BROWSER.md",
+      "title": "全分页报告：浏览器、队列与真实强杀验收",
+      "category": "stage_or_experiment_record",
+      "sha256": "1974e820b1dfc9dddaea367f25890792ccc2296583477957e46e07bacd502e4b",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PAIR_PAGINATION_INTEGRATION.md",
+      "title": "正式两药报告：完整分页与请求覆盖",
+      "category": "stage_or_experiment_record",
+      "sha256": "38716f0d9e6836d765840f39ddbf1d004b4680bc0baf30ccce46d92fd34586a0",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PAIR_PROTOCOL_CANDIDATES.md",
+      "title": "A/C复合任务协议：分页、委派与完成判定",
+      "category": "stage_or_experiment_record",
+      "sha256": "636f3dcd593ff3efc131d88ea5525c56292f97e4083cebd28ed139ce0babb3a2",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PAIR_RESEARCH_REPORT_MILESTONE.md",
+      "title": "两味药联合比较报告",
+      "category": "stage_or_experiment_record",
+      "sha256": "b0bf63e8e683c7427cdc67a98ce02d024356b2fd5fef94cf64448948c212ada4",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PERSISTENT_MEMORY.md",
+      "title": "可恢复的本地会话记忆",
+      "category": "topic_reference_record",
+      "sha256": "b6cd08b73fba0afaeb267c444716f9b69810b3fa8dcd416a633190ad6bcae376",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_AUTOMATED_QC.md",
+      "title": "自动质检、异常复核与研究检索预览",
+      "category": "stage_or_experiment_record",
+      "sha256": "f20063d8ce9d8bc21323e5c76964a7a852c4ca1ab815ae094078e13e3ba54138",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_BATCH_EXTRACTION.md",
+      "title": "药典自动切分与可续跑提取试验",
+      "category": "stage_or_experiment_record",
+      "sha256": "126e83624b1e15816bc5692e50013cf90a42b33548c8572bd95723dda20a87f0",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_BOUNDARY_REPAIR.md",
+      "title": "药典边界修复：缺字、漏行与未知身份",
+      "category": "stage_or_experiment_record",
+      "sha256": "ba2240113756c4264621261e050100508771026a99cdd984b5eef9237f6c0971",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_BOUNDARY_VALIDATION.md",
+      "title": "药材章节30页冻结规则验证",
+      "category": "stage_or_experiment_record",
+      "sha256": "798d6843ab94393b0e79222bd29a744b148ad465b253eb7a816699901716a367",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_CHAPTER_LAYOUT.md",
+      "title": "药典按章节选择来源与解析规则",
+      "category": "stage_or_experiment_record",
+      "sha256": "c732b08585ee78d19494d36f36a185e209fbd08049242919e557d775760e5b4b",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_DUAL_REVIEW.md",
+      "title": "四味药的双引擎字段复核",
+      "category": "stage_or_experiment_record",
+      "sha256": "374125600aadf24ac966fd7e4ee61d7bbae8bd4ffcf24fe3ecd56ca2458f0c43",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_FIELD_CANDIDATES.md",
+      "title": "四味药材的字段候选与来源复核",
+      "category": "stage_or_experiment_record",
+      "sha256": "fc7a477eb3db702ee293b8d66c90f53ff4a83beb803729fa7a05bac8d4eace99",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_FULL_REVIEW.md",
+      "title": "四味药九类目标字段的转录覆盖",
+      "category": "stage_or_experiment_record",
+      "sha256": "ec48b9c6f1fc6c3d4d7b28a055a5fc10aa668ed956c0623fbe411c99781eb7b2",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_HERB_PDF_EXPORT.md",
+      "title": "仅药材和饮片章节的PDF导出",
+      "category": "stage_or_experiment_record",
+      "sha256": "8c986daced8847b06d377fe644527928891fc5046bd592bbcd8f1fd464acf5d7",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_OCR_PILOT.md",
+      "title": "中国药典小样本 OCR 试验",
+      "category": "stage_or_experiment_record",
+      "sha256": "a0d8393c5df002cfac4cf1038ed15eb520e1536f54aee0a147b2bb30543996c2",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_PDF_BENCHMARK.md",
+      "title": "药典 PDF 解析器对照实验",
+      "category": "stage_or_experiment_record",
+      "sha256": "fe4da4ca156f0ef45ccbd3bd889ed72d066d366f4f14eaf3904a1812df443e40",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_VISUAL_TRIAGE.md",
+      "title": "六个差异字段的原图诊断与AI转录草案",
+      "category": "stage_or_experiment_record",
+      "sha256": "7cfe3ac617f18eaab4e7cc084cd94102b9f2db9457fce05debcf941b63ac320b",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/POSTGRES_CHECKPOINT_MILESTONE.md",
+      "title": "PostgreSQL运行队列与单药报告checkpoint恢复",
+      "category": "stage_or_experiment_record",
+      "sha256": "ecb638a2764f37686a27d26142d826ba9922c5f993d31f56448efb6683be76ae",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PROJECT_CLEANUP_20261029.md",
+      "title": "仓库整理记录",
+      "category": "stage_or_experiment_record",
+      "sha256": "41bc13577edde46691fc533731bde43dca7bfc1e85fc274bcafb082e0a3a6b24",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PROJECT_DEMO.md",
+      "title": "中草药研究助手：求职演示",
+      "category": "current_guide",
+      "sha256": "fcd5c02886eb3892c078f5dbf454ca270fda48165fc1304f08b22bf143b321f4",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PROJECT_EVIDENCE_PLAN.md",
+      "title": "TCM 项目：用实验留下能力证据",
+      "category": "stage_or_experiment_record",
+      "sha256": "bf2951799b80f54eec220c74e89dfddc4b7f7242674464f51c62d8891465603a",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PROJECT_MEMORY_MILESTONE.md",
+      "title": "项目记忆第一阶段：显式背景复用",
+      "category": "stage_or_experiment_record",
+      "sha256": "1249d1c484a082233bfc9f21cb8192516abcf3451651aecdcc4da61716b3022c",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PROJECT_MEMORY_POLICY_MILESTONE.md",
+      "title": "项目记忆入口与范围约束",
+      "category": "topic_reference_record",
+      "sha256": "b7dbf56a14e2c4848dc820471642b84df7ffe592daa50e99244cb6c144d279a0",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PROJECT_MEMORY_TRANSFER_EVALUATION.md",
+      "title": "连续研究记忆诊断与上下文修复",
+      "category": "stage_or_experiment_record",
+      "sha256": "fde0f49f779bc332e3f6e8845a56850a5576ab0b291e36012b8152d55690970d",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PROJECT_SEMANTIC_MEMORY_MILESTONE.md",
+      "title": "本地语义项目记忆：召回、核对与报告应用",
+      "category": "topic_reference_record",
+      "sha256": "c58259d31600cbe0558a32c21434d60f0b37dac6aaf076a62f28a58e80f394e8",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PUBMED_CHAT.md",
+      "title": "主聊天PubMed显式工具",
+      "category": "stage_or_experiment_record",
+      "sha256": "add6b737af9abdf548ad5265fe307b1e6bcda88318a4e548fc50f41554ae7d46",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PUBMED_EVIDENCE.md",
+      "title": "PubMed来源关系、保守查重与文献库升级",
+      "category": "stage_or_experiment_record",
+      "sha256": "020339fdece04b44abeea34533d234420931fcddfedcf6b74ed156c2c0ae74e1",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/PUBMED_LITERATURE.md",
+      "title": "PubMed文献工具：第一阶段",
+      "category": "stage_or_experiment_record",
+      "sha256": "6b92a6bdf679384616df9253ca0a4d95ebddc07fdbb1a0b0eba257f85b1dc365",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/QDRANT_LOCAL_MILESTONE.md",
+      "title": "当前药典研究链路的 Qdrant 本地接入",
+      "category": "topic_reference_record",
+      "sha256": "a570b40d7f0da11d1c1d344d1c50a126de58f53855abe8833a0573e0370aa6d8",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/README.md",
+      "title": "文档导航",
+      "category": "current_guide",
+      "sha256": "eb9b6857d1a4359b7b75e196adb64fc9d4ecf2678348e9b2addef4a3b8e20b51",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RELATION_QUERY_PROVENANCE_FIX.md",
+      "title": "关联查询附原始记录：P20组合意图修复",
+      "category": "stage_or_experiment_record",
+      "sha256": "32682c969907055df722bcf1ddb96a14a7d94ee119ed06c71ef86176b2f57d70",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/REPORT_REQUEST_MILESTONE.md",
+      "title": "报告入口：结构化字段请求与展示优先级",
+      "category": "stage_or_experiment_record",
+      "sha256": "2334486ab8b28a39c8f1771d0b4aa883e60949603027c9c9938689d76042644d",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/REQUEST_COVERAGE.md",
+      "title": "请求覆盖契约与明确缩小范围（2026-10-21）",
+      "category": "stage_or_experiment_record",
+      "sha256": "674629fa4f7f36bfb5539b9cf4b78a0ce2ec0a3f8b894b8114a82b9574cf612a",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_ANALYTICS_PLAN.md",
+      "title": "从资料查询到靶点关联分析",
+      "category": "stage_or_experiment_record",
+      "sha256": "3eaec11cdc9f33de0e141677535af3d561c4ab65468bd55133b727eeb7ccd131",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_BOOKMARKS.md",
+      "title": "研究收藏：显式长期留存",
+      "category": "topic_reference_record",
+      "sha256": "3df96dd9b212b3d8d3a086ec65501efb1dc2a7a6bcea6e8f1711066de6ff3b43",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_CONTEXT_BUDGET.md",
+      "title": "Agent循环上下文预算第一版",
+      "category": "stage_or_experiment_record",
+      "sha256": "9704944b96c95f4d1a4cadcc2d9a8b6c6f79dcee54ddf1e88f2efd7f6bbbf369",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_DOCKER.md",
+      "title": "精简药典研究聊天 Docker 部署",
+      "category": "current_guide",
+      "sha256": "1c285367ccd4d278c1ba37aac3d4f982b0960d25cfcce7f74986f63f16a573fb",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_EVIDENCE_EXPORT.md",
+      "title": "本轮单药证据清单导出",
+      "category": "stage_or_experiment_record",
+      "sha256": "89e1af7aabf5e99875efdbe022d22cc00de306b2b5f53137bd73c503254427b9",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_LIVE_SYNTHETIC.md",
+      "title": "J01：两题合成资料真实模型验收",
+      "category": "stage_or_experiment_record",
+      "sha256": "c7f60eb5c439019ef032de85d15bdfa60656ce5893772b6b1f1ea5e40b65430f",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_LOOP_DURABLE_MILESTONE.md",
+      "title": "模型工具循环的持久化与故障恢复",
+      "category": "stage_or_experiment_record",
+      "sha256": "3c9fc536740cf76cfc843977b786fa3ee604593e75cd0632f7a6accd17eb65cd",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_LOOP_LIFECYCLE_MILESTONE.md",
+      "title": "合成循环的会话生命周期与备份接入",
+      "category": "stage_or_experiment_record",
+      "sha256": "654385f925ebbdf21a6940a74a5e9cc8839e98839eb1a33a98cd69c7f733d686",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_OBJECT_REVIEW.md",
+      "title": "研究对象线索与来源绑定的用户标注",
+      "category": "topic_reference_record",
+      "sha256": "32c284e39b96db1859134b3bf882e1699d76a700a3eba0ddb25fb56eba010dd6",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_RUN_CHAT.md",
+      "title": "J01：聊天页本地研究入口",
+      "category": "stage_or_experiment_record",
+      "sha256": "c02fa6c88c93a12ed6a096edb4e25995918eea9c83bf3fd1a30d3b2fb9345cf8",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_RUN_JOURNAL.md",
+      "title": "J04准备：本地运行审计日志",
+      "category": "stage_or_experiment_record",
+      "sha256": "bcdcbca77476643523668dc726a6feebd0023124cc376ed59980cf9a4aa5a868",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_RUN_SCOPE.md",
+      "title": "J01第二个增量：具体请求范围和真实本地工具适配",
+      "category": "stage_or_experiment_record",
+      "sha256": "d505d0851a1c6870b2b96ecc8b089880c99f427fba94fea817cae847946bcfd8",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_RUN_SDK.md",
+      "title": "J01：真实 SDK 的离线协议验收",
+      "category": "stage_or_experiment_record",
+      "sha256": "000e48c420a7319f1fee4e29379dc884b7e45ea75f92e20326e21866b8ddfe48",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_RUN_V1.md",
+      "title": "J01首个增量：有界原生工具调用执行器",
+      "category": "stage_or_experiment_record",
+      "sha256": "f382fe6105f1738174e8670ff2eeed48646d7a05f1fa9324c4a8b13b03c05b75",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_TASK_ETCM.md",
+      "title": "ETCM本地来源关系任务",
+      "category": "stage_or_experiment_record",
+      "sha256": "f5dd2e1487588c82f1f17b7dde365fd40991aedd9debc6be8a3fd9534bcdd1e8",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_TASK_WEB.md",
+      "title": "研究任务页面：合成资料流程验收",
+      "category": "stage_or_experiment_record",
+      "sha256": "23596bd4d1623045b6da8909d04c7eb547e8fa6d2e5a2f3cc9114047140222c1",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RESEARCH_WORKSPACES.md",
+      "title": "三个功能页签与共用任务记录",
+      "category": "stage_or_experiment_record",
+      "sha256": "62a6dde9ac0902e4fc2a630452caa1f52681d96f093dcce689963070149997f5",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RETRIEVAL_ROBUSTNESS_MILESTONE.md",
+      "title": "自然问法检索诊断与下一阶段入口改造",
+      "category": "stage_or_experiment_record",
+      "sha256": "d33a184eb9f2c37aea1fa11684881a4ffeee06875cdc52bb7bdb5bc489fd4b52",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/RUNTIME_BACKUP_MILESTONE.md",
+      "title": "核心运行状态备份与恢复演练",
+      "category": "topic_reference_record",
+      "sha256": "e3c8992f0da803963795d45f7ab0b088c4a61cb90a18d6a80e24fac00283b74e",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/SCOPED_RECALL_EVALUATION.md",
+      "title": "限定字段定位召回评测",
+      "category": "topic_reference_record",
+      "sha256": "cf9c5abd73e216a93f23104936dafee7b87e0860f0a737261cec4365152e74ce",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/SOURCE_ACCESS.md",
+      "title": "M0-05：受控来源与上传结果",
+      "category": "topic_reference_record",
+      "sha256": "1635f19748bf1bb6c4b31480b64dcb9f27b0df78284271f3abf8463a4bcb090d",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TARGET_HERB_LOOKUP.md",
+      "title": "靶点反查药材来源",
+      "category": "topic_reference_record",
+      "sha256": "6edcb7e9e92ba91a3cb7f69ad10db1bc9de44de5218caf005d0e69f474ba19f3",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TARGET_SIMILARITY.md",
+      "title": "药材靶点画像与来源集合相似度",
+      "category": "topic_reference_record",
+      "sha256": "109565ae7824fdbc88759f7b94c9dfffb867c479cc484a743a1ce0dd6b1c00fb",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TASK_COMPLETION_SCOPE.md",
+      "title": "本地关系任务的完成范围（2026-10-21）",
+      "category": "stage_or_experiment_record",
+      "sha256": "23ef53a414a24fc4fe940fd42bdba8c9deacd546ba4d7150e24558fdf648341d",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TASK_LITERATURE.md",
+      "title": "任务来源文献线索与对象核验契约",
+      "category": "stage_or_experiment_record",
+      "sha256": "a5d6a097b1827a7550eb4cec5e08461692dbf67995e399b7e3275637aae30b61",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TASK_PLANNER_SYNTHETIC.md",
+      "title": "自由问句到严格计划：合成模型验证（2026-10-21）",
+      "category": "stage_or_experiment_record",
+      "sha256": "0301092d54530241aa253a3a3f2af3891ea9827a18258ff622ac4a76dafefdaa",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TASK_PLAN_CLARIFICATION.md",
+      "title": "有界计划与持久澄清（合成验证，2026-10-21）",
+      "category": "stage_or_experiment_record",
+      "sha256": "a3dcc24c0a5199df421a5b972e0c849f8346e8ecb3e5057b89c2424f25d2fefa",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TASK_TOOL_REGISTRY.md",
+      "title": "ETCM任务工具注册与返回契约（2026-10-21）",
+      "category": "stage_or_experiment_record",
+      "sha256": "93524f8fa3554262a790f9b57ddfc24f45b9592a5272c43de00065c52260dd01",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TCM_AI_REVIEW.md",
+      "title": "固定用例的独立 AI 复核",
+      "category": "stage_or_experiment_record",
+      "sha256": "d6d43ada17f3c24e45c070dd58bdb484f6b9c1636d85a65eda93c93eeacac2a2",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TCM_CHAT_CONTEXT.md",
+      "title": "药材会话状态与字段追问",
+      "category": "stage_or_experiment_record",
+      "sha256": "004e88b95473e68e570caaad039c7fae64eee86bf32d52ac303f2c8beaf515e4",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TCM_CHAT_LOOKUP.md",
+      "title": "聊天入口的药材来源查询",
+      "category": "stage_or_experiment_record",
+      "sha256": "284301fdb64927087c9e963a8aff574481b3d4dcb9dd1b42c0ce1e600767686c",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TCM_GOLDEN_REVIEW.md",
+      "title": "固定验收集复核说明",
+      "category": "stage_or_experiment_record",
+      "sha256": "9fec59aaf74f1e23abfc5cf1aaa9942194b71099869b592061fd50c3d390ecc0",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TCM_PROJECT_ROADMAP.md",
+      "title": "TCM Research Agent：统一大纲与实现状态",
+      "category": "current_guide",
+      "sha256": "3f09fda0d0de7ef575afd44ee83a6a7787d53675cfc349770690360c8767d0a2",
+      "changed_in_review": true,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TCM_TASK_CANDIDATES.md",
+      "title": "60 条任务候选：审核与后续评测",
+      "category": "stage_or_experiment_record",
+      "sha256": "48b7e2eb33f06cb48736d6aa9f12d8ea788bcbaa598821b56100a59201c7093a",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TCM_TASK_EXECUTION.md",
+      "title": "任务候选逐题执行：API 检查与人工目标分开",
+      "category": "stage_or_experiment_record",
+      "sha256": "ac11f4415c86e5eef3760df677347fabfbaa0b4e78647b6016eaa6c0790caa17",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/TCM_TASK_UI.md",
+      "title": "任务候选的浏览器验收与部分验证项梳理",
+      "category": "stage_or_experiment_record",
+      "sha256": "31048b7f22a5408a361fc909274c927abbb59056ea8ec74f7ed1f5c530aa0fa0",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/decisions/0001-text-normalization.md",
+      "title": "ADR-0001：来源展示与查询的空白规范",
+      "category": "decision_record",
+      "sha256": "a5c20e0963b5250b2aca622db03df8313b87dcb2cb9f92322c05c89ef3b745c9",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/decisions/0002-completed-turn-memory.md",
+      "title": "ADR-0002：先持久化每轮完成后的会话快照",
+      "category": "decision_record",
+      "sha256": "495dd6e209136b934b60e712c7622edff2fa49eb8e20afd268b02f1b8517e615",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/releases/RESEARCH_45F3C8D.md",
+      "title": "研究工具镜像发布：45f3c8d",
+      "category": "release_snapshot",
+      "sha256": "2e1e9d8c606d5372683d08016b51b31ffb74d9ea9aa3424ac8b7298844570a8a",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/releases/RESEARCH_B227F35.md",
+      "title": "PubMed研究镜像发布：b227f35",
+      "category": "release_snapshot",
+      "sha256": "a61ce4c44f3852b082bafa0745517d93ebc768abad75c740c38bceac226ead53",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/releases/RESEARCH_B227F35_LOCAL.md",
+      "title": "PubMed研究镜像本地验收：b227f35",
+      "category": "release_snapshot",
+      "sha256": "9709ff22747a83f7386c41f9470fc6ec29f182e7aa71a63e5f4c9efe5600e397",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/releases/RESEARCH_D0D3BC3.md",
+      "title": "自然语言与三页签研究镜像：d0d3bc3",
+      "category": "release_snapshot",
+      "sha256": "72cf3a277759e0eb544b599abbee09df4664789c26b4b572116e9389a5ec620a",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/releases/RESEARCH_LOCAL_20261020.md",
+      "title": "本地候选更新：2026-10-20",
+      "category": "release_snapshot",
+      "sha256": "76075bdec8975737dcaf81e3717fd3c51b55bebaca071b05d6a4d0e9ff0afb86",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/releases/RESEARCH_LOCAL_20261024.md",
+      "title": "2026-10-24 本地源码基线",
+      "category": "release_snapshot",
+      "sha256": "f81d5793cea95f89a7e6209d3f35b1293cc9a8eb77edb1d59e392b63cceba70d",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    },
+    {
+      "path": "docs/releases/RESEARCH_LOCAL_C4DE8BC.md",
+      "title": "本地Docker交付：c4de8bc",
+      "category": "release_snapshot",
+      "sha256": "291172994c22ccab843647a04fb3e9e497bd37d7f86df298be4120c454b3b8b7",
+      "changed_in_review": false,
+      "coverage": "inventory_link_and_status_marker_scan; targeted semantic checks listed separately in review.json"
+    }
+  ]
+}

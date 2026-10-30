@@ -1,0 +1,11 @@
+{
+  "case": "inner_pending",
+  "status": "partial",
+  "reason": "uncertain_tool_dispatch",
+  "reads_before_kill": 1,
+  "reads_after_resume": 1,
+  "tool_calls": 1,
+  "same_job_id": true,
+  "replayed_saved_reads": 0,
+  "killed_process_exit": -9
+}

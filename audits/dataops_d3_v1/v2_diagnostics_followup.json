@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-30",
+  "status": "offline_checks_passed_provider_not_retested",
+  "changes": [
+    "Settled model response rejection is distinguished from unknown dispatch.",
+    "Save only tool counts, allowlisted names, finish reason and numeric usage for rejected responses.",
+    "Unknown exception messages are not stored; exception type and HTTP status only.",
+    "Future pilot HTTP receipts save allowlisted tool counts/names and numeric usage, never text or arguments.",
+    "Strict one-action policy and no automatic retries unchanged."
+  ],
+  "tests": [
+    {
+      "module": "test_dataops_d2.py",
+      "status": "passed",
+      "total": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_d2_api.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_evaluation.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_live_protocol.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_planning.py",
+      "status": "passed",
+      "total": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "total": 37,
+  "external_calls": 0,
+  "original_v2_results_rewritten": false,
+  "recovery_note": "Core implementation hash changed. Existing checkpoints must not be resumed across implementation mismatch.",
+  "unresolved": [
+    "Exact cause of original A V2 interruptions unknown; original response data not available.",
+    "A real-model delivery not validated after diagnostic changes.",
+    "R01 harness reports KeyError when parent artifact is absent; original result preserved."
+  ],
+  "files": {
+    "tcm/dataops/model.py": "544c7629d7d44bad0a5480c8c71b983710e36dd5301322d98254e42015e71d8a",
+    "tcm/dataops/graph.py": "c06f8c308fb0f08420cd49b4d4aab37bf58a458b75927841b0aabd7f226888e1",
+    "scripts/eval_dataops_live.py": "d04f247179c0d93b98e9c9b43cfca993663cc28bc4c732ccec40303e0d217582",
+    "tests/test_dataops_d2.py": "bd65357793cd0ddfefae911da945fac3d13843053d2cf8ca4eb9421617f1a602",
+    "tests/test_dataops_live_protocol.py": "ca1272aec23bf9ec56c149daa39adb71e9da7df8bbd87829f3b65cf04bd95f74"
+  }
+}

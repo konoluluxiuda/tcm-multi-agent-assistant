@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "qdrant_client": "1.20.0",
+  "local_vector_write_and_query": true,
+  "legacy_storage_roundtrip": true,
+  "rag_adapter_module_import": true,
+  "external_requests": 0,
+  "real_models": false
+}

@@ -22,19 +22,9 @@ class PubMedError(Exception):
 
 
 def _download(endpoint, params):
-    # Shared across clients in this process; multi-process deployments need a
-    # shared rate limiter because NCBI's quota applies to the public IP.
-    global _LAST_REQUEST
-    with _LOCK:
-        time.sleep(max(0, .4 - (time.monotonic() - _LAST_REQUEST)))
-        _LAST_REQUEST = time.monotonic()
-        request = Request(BASE + endpoint + '?' + urlencode(params),
-                          headers={'User-Agent': 'tcm-research-assistant/1.0'})
-        with urlopen(request, timeout=15) as response:
-            body = response.read(MAX_BYTES + 1)
-    if len(body) > MAX_BYTES:
-        raise PubMedError('response_too_large')
-    return body
+    # Kept as a compatibility boundary for historical parsers/snapshots.
+    # No environment flag can reactivate the retired production transport.
+    raise PubMedError('pubmed_retired')
 
 
 def _text(node):

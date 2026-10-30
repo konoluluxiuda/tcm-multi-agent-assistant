@@ -1,0 +1,200 @@
+{
+  "status": "observed",
+  "versions": {
+    "deepagents": "0.7.32",
+    "langchain": "1.4.7",
+    "langchain-core": "1.7.0",
+    "langgraph": "1.2.18",
+    "langgraph-checkpoint-sqlite": "3.1.2"
+  },
+  "cases": [
+    {
+      "status": "complete",
+      "error": null,
+      "gate_reason": null,
+      "dependency_complete": true,
+      "trace": [
+        {
+          "event": "dispatch",
+          "tool": "search_disease_sources",
+          "arguments": {
+            "page_size": 20,
+            "name": "Synthetic disease",
+            "page": 1
+          }
+        },
+        {
+          "event": "validated",
+          "tool": "search_disease_sources"
+        },
+        {
+          "event": "dispatch",
+          "tool": "disease_gene_profile",
+          "arguments": {
+            "name": "etcm-disease:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "page": 1
+          }
+        },
+        {
+          "event": "validated",
+          "tool": "disease_gene_profile"
+        }
+      ],
+      "case": "normal",
+      "calls": {
+        "model": 3,
+        "tool": 2
+      },
+      "tool_dispatches": {
+        "search_disease_sources": 1,
+        "disease_gene_profile": 1
+      }
+    },
+    {
+      "status": "partial",
+      "error": "DependencyRejected",
+      "gate_reason": "unbound_profile",
+      "dependency_complete": false,
+      "trace": [
+        {
+          "event": "dispatch",
+          "tool": "search_disease_sources",
+          "arguments": {
+            "page_size": 20,
+            "name": "Synthetic disease",
+            "page": 1
+          }
+        },
+        {
+          "event": "validated",
+          "tool": "search_disease_sources"
+        },
+        {
+          "event": "blocked",
+          "reason": "unbound_profile"
+        }
+      ],
+      "case": "forged",
+      "calls": {
+        "model": 2,
+        "tool": 1
+      },
+      "tool_dispatches": {
+        "search_disease_sources": 1
+      }
+    },
+    {
+      "status": "partial",
+      "error": "DependencyRejected",
+      "gate_reason": "unbound_profile",
+      "dependency_complete": false,
+      "trace": [
+        {
+          "event": "blocked",
+          "reason": "unbound_profile"
+        }
+      ],
+      "case": "saved_native",
+      "calls": {
+        "model": 3,
+        "tool": 1
+      },
+      "tool_dispatches": {
+        "search_disease_sources": 1
+      }
+    },
+    {
+      "status": "complete",
+      "error": null,
+      "gate_reason": null,
+      "dependency_complete": true,
+      "trace": [
+        {
+          "event": "dispatch",
+          "tool": "search_disease_sources",
+          "arguments": {
+            "page_size": 20,
+            "name": "Synthetic disease",
+            "page": 1
+          }
+        },
+        {
+          "event": "validated",
+          "tool": "search_disease_sources"
+        },
+        {
+          "event": "dispatch",
+          "tool": "disease_gene_profile",
+          "arguments": {
+            "name": "etcm-disease:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "page": 1
+          }
+        },
+        {
+          "event": "validated",
+          "tool": "disease_gene_profile"
+        }
+      ],
+      "case": "saved_rebuild",
+      "calls": {
+        "model": 4,
+        "tool": 2
+      },
+      "tool_dispatches": {
+        "search_disease_sources": 1,
+        "disease_gene_profile": 1
+      }
+    },
+    {
+      "status": "complete",
+      "error": null,
+      "gate_reason": null,
+      "dependency_complete": true,
+      "trace": [
+        {
+          "event": "dispatch",
+          "tool": "search_disease_sources",
+          "arguments": {
+            "page_size": 20,
+            "name": "Synthetic disease",
+            "page": 1
+          }
+        },
+        {
+          "event": "validated",
+          "tool": "search_disease_sources"
+        },
+        {
+          "event": "dispatch",
+          "tool": "disease_gene_profile",
+          "arguments": {
+            "name": "etcm-disease:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "page": 1
+          }
+        },
+        {
+          "event": "validated",
+          "tool": "disease_gene_profile"
+        }
+      ],
+      "case": "pending_profile",
+      "calls": {
+        "model": 3,
+        "tool": 3
+      },
+      "tool_dispatches": {
+        "search_disease_sources": 1,
+        "disease_gene_profile": 2
+      }
+    }
+  ],
+  "external_model_calls": 0,
+  "data": "synthetic_only",
+  "limits": [
+    "Not provider accuracy or cost measurement",
+    "Native final text differs from A finish tool",
+    "No business gate persistence in native configuration; rebuild is explicit experiment code",
+    "No custom dispatch journal or durable budget added to B",
+    "No application integration"
+  ]
+}

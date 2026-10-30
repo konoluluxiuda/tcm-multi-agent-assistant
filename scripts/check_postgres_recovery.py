@@ -21,16 +21,23 @@ def store():return PostgresJobStore(os.environ['RESEARCH_JOB_DSN'])
 
 async def worker(args):
     db=store();doc=db.get(args.owner,args.job)
-    async def backend(branch,*unused):
-        with (args.out/'calls.jsonl').open('a') as f:f.write(json.dumps({'branch':branch})+'\n')
-        if branch=='structured':
+    async def backend(branch,herb,question):
+        with (args.out/'calls.jsonl').open('a') as f:f.write(json.dumps({'branch':herb+'_'+branch if args.pair else branch})+'\n')
+        if branch=='structured' and (not args.pair or herb=='b'):
             while not (args.out/'release').exists():await asyncio.sleep(.05)
-            return {'status':'ok','rows':[{'label':'合成属性','value':'fixture'}]}
+            if not args.pair:return {'status':'ok','rows':[{'label':'合成属性','value':'fixture'}]}
+        if args.pair:
+            from tests.test_pair_research_report import report
+            return report(herb)[branch]
         return {'status':'candidates','hits':[{'name':'示例叶','label':'功能与主治','text':'fixture','evidence':[]}]}
+    async def target(branch,herb,question):
+        from tests.test_pair_research_report import targets
+        with (args.out/'calls.jsonl').open('a') as f:f.write(json.dumps({'branch':'target'})+'\n')
+        return targets(json.loads(question))
     async def persist(snapshot):
         nonlocal doc
         doc=db.save(args.owner,doc,args.worker,snapshot=snapshot)
-    result=await run_checkpoint_report(args.owner,doc,backend=backend,on_state=persist,fingerprint='synthetic-snapshot-v1')
+    result=await run_checkpoint_report(args.owner,doc,backend=backend,target_backend=target,on_state=persist,fingerprint='synthetic-snapshot-v1')
     db.save(args.owner,doc,args.worker,status=result['status'],result=result)
 
 
@@ -39,18 +46,21 @@ async def main(args):
         await worker(args);return
     args.out.mkdir(parents=True,exist_ok=False)
     db=store();owner='acceptance-'+uuid4().hex
-    payload={'kind':'cross_source','herb':'示例叶','question':'功效'}
+    payload=({'kind':'pair_report','herbs':['a','b'],'question':'功效'} if args.pair else
+             {'kind':'cross_source','herb':'示例叶','question':'功效'})
     doc,_=db.enqueue(owner,'合成恢复验收',uuid4().hex,payload=payload)
     claimed=db.claim('crash');assert claimed and claimed[1]['id']==doc['id']
     doc=db.save(owner,{**claimed[1],'recovery':'checkpoint'},'crash')
     thread=hashlib.sha256((owner+':'+doc['id']).encode()).hexdigest()
     cmd=[sys.executable,'-m','scripts.check_postgres_recovery','--out',str(args.out),'--owner',owner,'--job',doc['id']]
+    if args.pair:cmd.append('--pair')
     child=await asyncio.create_subprocess_exec(*cmd,'--worker','crash')
     try:
         ready=False
         for _ in range(300):
             with psycopg.connect(os.environ['RESEARCH_CHECKPOINT_DSN']) as conn:
-                ready=bool(conn.execute("SELECT 1 FROM checkpoint_writes WHERE thread_id=%s AND channel='text'",(thread,)).fetchone())
+                channels={r[0] for r in conn.execute('SELECT channel FROM checkpoint_writes WHERE thread_id=%s',(thread,))}
+                ready=({'left_text','left_structured','right_text'} if args.pair else {'text'}) <= channels
             if ready:break
             if child.returncode is not None:raise RuntimeError('Worker exited before checkpoint')
             await asyncio.sleep(.05)
@@ -80,7 +90,8 @@ async def main(args):
     assert child.returncode==0
     final=db.get(owner,doc['id']);assert final['status']=='complete'
     counts=Counter(json.loads(line)['branch'] for line in (args.out/'calls.jsonl').read_text().splitlines())
-    assert counts=={'text':1,'structured':2},counts
+    expected={'a_text':1,'a_structured':1,'b_text':1,'b_structured':2,'target':1} if args.pair else {'text':1,'structured':2}
+    assert counts==expected,counts
     _,events=db.events(owner,doc['id'],-1)
     assert [r['revision'] for r in events]==list(range(final['revision']+1))
     db.delete(owner,doc['id'])
@@ -95,5 +106,5 @@ async def main(args):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True)
-    p.add_argument('--worker');p.add_argument('--owner');p.add_argument('--job')
+    p.add_argument('--pair',action='store_true');p.add_argument('--worker');p.add_argument('--owner');p.add_argument('--job')
     asyncio.run(main(p.parse_args()))

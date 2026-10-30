@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "files": 7,
+  "local_links_checked": 113,
+  "missing": [],
+  "original_first_run_sha256": "cd43ac04576d4dd0c5dd3aa25b1973d72e0b8ff0377ea8b9ff21b3350df27416",
+  "final_runtime_matches_replay_snapshot": true,
+  "original_question_and_oracle_unchanged": true
+}

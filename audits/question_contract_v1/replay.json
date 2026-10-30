@@ -1,0 +1,364 @@
+{
+  "status": "completed_with_gaps",
+  "positive": {
+    "planned": 18,
+    "complete": 17,
+    "outcomes": {
+      "complete": 17,
+      "requirements_not_met": 1
+    }
+  },
+  "boundary": {
+    "planned": 6,
+    "outcomes": {
+      "appropriate_boundary": 5,
+      "tool_unavailable": 1
+    }
+  },
+  "independent_acceptance": false,
+  "human_signoff": false,
+  "uncollected_independent_cases": 40,
+  "external_model_calls": 0,
+  "provider_tokens": null,
+  "model_api_cost": 0,
+  "total_system_cost": null,
+  "interpretation": "Author screening on fixed known local data. Boundary handling is not task completion; source checks are not clinical/semantic review.",
+  "created_utc": "2026-10-29T06:02:32.822985+00:00",
+  "runtime": {
+    "pid": 17102,
+    "port": "7906",
+    "launch": "scripts.preview_local_tasks without intent model",
+    "external_model_calls": 0
+  },
+  "suite_sha256": "31fc52484268c1cd992d7b4c082719f66f5418a987c8dad45336c2c82f40036b",
+  "source_version_sha256": "e28518130c4e0a53fda580b8c1aac64e7bb78d194d19f93d9d07d9cf8fb8fc14",
+  "cases": [
+    {
+      "id": "BC01",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "请给我当前资料库的数据概览"
+      ],
+      "outcome": "complete",
+      "source_checks": 0,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 1201.485,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC02",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "ETCM和药典分别有什么用"
+      ],
+      "outcome": "complete",
+      "source_checks": 0,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 115.611,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC03",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "查看白术的药用部位和科名"
+      ],
+      "outcome": "requirements_not_met",
+      "reason": "requested ETCM fields not found",
+      "source_checks": 1,
+      "elapsed_ms": 1071.047,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC04",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "白术的功能与主治"
+      ],
+      "outcome": "complete",
+      "source_checks": 1,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 121.81,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC05",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "黄芪的药典用量",
+        "贮藏呢"
+      ],
+      "outcome": "complete",
+      "source_checks": 1,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 215.431,
+      "question_posts": 2,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC06",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "帮我看一下当归的靶点画像"
+      ],
+      "outcome": "complete",
+      "source_checks": 0,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 632.93,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC07",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "哪些药材与川芎的靶点最接近？按Jaccard列前5项"
+      ],
+      "outcome": "complete",
+      "source_checks": 0,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 715.249,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC08",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "核对黄芪和白术的共同靶点，给出双方原始记录位置"
+      ],
+      "outcome": "complete",
+      "source_checks": 44,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 341.745,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC09",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "比较当归与川芎的药典功效和用量，核对全部共同靶点，保留双方原始记录的位置"
+      ],
+      "outcome": "complete",
+      "source_checks": 378,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 2657.393,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC10",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "我正在整理白术与黄芪的资料，请分别对照药典中的功效、用量，然后给出两者共同的靶点和原始出处"
+      ],
+      "outcome": "complete",
+      "source_checks": 52,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 1368.885,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC11",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "查询药典黄芪的功效，查询白术的ETCM药用部位"
+      ],
+      "outcome": "complete",
+      "source_checks": 2,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 1656.244,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC12",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "帮我把黄芪的药典功效和白术在ETCM的药用部位整理到一起，附各自出处"
+      ],
+      "outcome": "complete",
+      "source_checks": 2,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 1583.894,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC13",
+      "role": "positive_task",
+      "origin": "user_original_previously_debugged",
+      "queries": [
+        "随便提供两个疾病及id"
+      ],
+      "outcome": "complete",
+      "source_checks": 0,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 173.487,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC14",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "查看疾病etcm-disease:482d905401f31766a0cbf04b59a11a27dfeb462897e369d7f1aa2fcace441a59的全部靶点原始记录"
+      ],
+      "outcome": "complete",
+      "source_checks": 6,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 2341.535,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC15",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "查找Diabetes Mellitus, Insulin-Dependent, 20的来源，读取全部靶点原始记录，再按Jaccard列出前五个药材候选，保留出处"
+      ],
+      "outcome": "complete",
+      "source_checks": 6,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 4499.165,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC16",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "白术的靶点画像，查找与黄芪靶点最相似的药材，前5个"
+      ],
+      "outcome": "complete",
+      "source_checks": 0,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 4041.648,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC17",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "当归的靶点画像，川芎的靶点画像",
+        "出处呢"
+      ],
+      "outcome": "complete",
+      "source_checks": 0,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 3593.811,
+      "question_posts": 2,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC18",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "介绍两个数据库",
+        "药典的数据能查到哪些字段"
+      ],
+      "outcome": "complete",
+      "source_checks": 0,
+      "human_semantic_review": "pending",
+      "elapsed_ms": 327.51,
+      "question_posts": 2,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC19",
+      "role": "boundary",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "黄芪今天每公斤多少钱，帮我查最新价格"
+      ],
+      "outcome": "appropriate_boundary",
+      "elapsed_ms": 142.28,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC20",
+      "role": "boundary",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "我头疼失眠，帮我选两味草药搭个方子"
+      ],
+      "outcome": "appropriate_boundary",
+      "elapsed_ms": 6.589,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC21",
+      "role": "boundary",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "根据现有靶点预测白术能治疗哪些疾病"
+      ],
+      "outcome": "appropriate_boundary",
+      "elapsed_ms": 2.74,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC22",
+      "role": "boundary",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "查询药典不存在草药甲的功效"
+      ],
+      "outcome": "appropriate_boundary",
+      "elapsed_ms": 100.953,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC23",
+      "role": "boundary",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "查询药典白术的光谱仪器编号，查询黄芪的ETCM药用部位"
+      ],
+      "outcome": "appropriate_boundary",
+      "elapsed_ms": 73.545,
+      "question_posts": 1,
+      "external_model_calls": 0
+    },
+    {
+      "id": "BC24",
+      "role": "boundary",
+      "origin": "author_designed_after_code_review",
+      "queries": [
+        "/pubmed 白术 功效"
+      ],
+      "outcome": "tool_unavailable",
+      "elapsed_ms": 69.291,
+      "question_posts": 1,
+      "external_model_calls": 0
+    }
+  ]
+}

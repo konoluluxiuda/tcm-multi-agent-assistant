@@ -1,0 +1,19 @@
+# Add to compose.research.yaml. Never sends source text to an external model.
+services:
+  chat:
+    environment:
+      ENABLE_DATAOPS: "1"
+      ENABLE_DATAOPS_AGENT: "1"
+      DATAOPS_DRIVER: synthetic
+      DATAOPS_ROOT: /app-memory/dataops
+      RESEARCH_JOB_DB: /app-memory/dataops-jobs.sqlite3
+      RESEARCH_JOB_DSN: ""
+      RESEARCH_CHECKPOINT_DSN: ""
+      ETCM_ENRICHMENT_DB: /etcm-data/enrichment.sqlite3
+    volumes:
+      - type: bind
+        source: ${ETCM_RUNTIME_DIR:-./var/research_update_20261020/runtime_catalogs/catalogs}
+        target: /etcm-data
+        read_only: true
+        bind:
+          create_host_path: false

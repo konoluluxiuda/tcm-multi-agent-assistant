@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function render(result) {
             output.replaceChildren();
+            if(result.display?.topic==='research_plan'){output.append(node('p',result.display.message));renderResearchPlan(output,result.display,()=>{});return;}
             if (result.kind === 'pair_report') {
                 output.append(node('h4', result.herbs.join(' / ') + ' · 联合比较'));
                 if (result.status !== 'complete') output.append(node('p', '部分资料未取得，已保留可用结果。'));
@@ -46,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 output.append(table, node('h5', '共同靶点'));
                 const target = result.targets || {};
-                if (target.status === 'ok') {
+                if (target.status === 'ok' || (target.items && target.items.length)) {
+                    if (target.status !== 'ok') output.append(node('p', '查询未完成，以下保留已获取的共同靶点。'));
                     output.append(node('p', `${target.total} 个共同 UniProt 标识，当前显示 ${target.items.length} 个。`));
                     const targets = node('table', '');targets.className = 'table table-sm';
                     for (const item of target.items) {
@@ -57,10 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         targets.append(tr);
                     }
                     output.append(targets);
-                    if (target.next_offset !== null) {
+                    if (Number.isInteger(target.next_offset)) {
                         const next = node('button', '在聊天中查询后续靶点');next.type='button';
                         next.addEventListener('click', () => {
-                            document.getElementById('message-input').value = '/relations 共同靶点 ' + target.source_ids.join(' | ') + ' 第2页';
+                            document.getElementById('message-input').value = '/relations 共同靶点 ' + target.source_ids.join(' | ') + ' 第' + (Math.floor(target.next_offset / 20) + 1) + '页';
                             document.getElementById('chat-form').requestSubmit();
                         });output.append(next);
                     }
@@ -72,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 download.addEventListener('click', () => {
                     const url=URL.createObjectURL(new Blob([JSON.stringify(result,null,2)],{type:'application/json'}));
                     const a=document.createElement('a');a.href=url;a.download='herb-comparison-report.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-                });output.append(download,detail('查询范围与缺项', {scope:result.scope,status:result.status,sources:result.source_reports.map(r=>({herb:r.herb,status:r.status,text_status:r.text?.status,missing_fields:r.text?.missing_fields,structured_status:r.structured?.status}))}));
+                });output.append(download,detail('查询范围与缺项', {scope:result.scope,status:result.status,completion:result.completion,sources:result.source_reports.map(r=>({herb:r.herb,status:r.status,text_status:r.text?.status,missing_fields:r.text?.missing_fields,structured_status:r.structured?.status}))}));
                 return;
             }
             if (result.kind === 'cross_source') {
@@ -108,7 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const run = result.run || {};
             output.append(node('p', result.status === 'complete' ? '查询完成：疾病靶点集合与第一页原始记录。' : '查询未全部完成，请查看执行记录。'));
-            for (const evidence of Object.values(run.evidence || {})) {
+            for (const [eid,evidence] of Object.entries(run.evidence || {})) {
+                if(evidence.externalized){
+                    output.append(node('p','完整证据已保存，列表为预览；可按需读取或下载。'));
+                    const reads=Object.entries(evidence.field_counts||{}).filter(([,count])=>count>0).map(([field,count])=>({evidence_id:eid,field,count}));
+                    renderRunEvidence(output,result.run_id||activeJob||'',reads);
+                    continue;
+                }
                 if (!['ok', 'empty'].includes(evidence.status) || !evidence.data?.profile) continue;
                 const data = evidence.data;
                 output.append(node('p', `${data.profile.source.name}：${data.target_ids.length} 个来源靶点标识。`));
@@ -190,7 +198,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.renderProjectMemory = function(container, result) {
         container.replaceChildren();
         const messages = {candidates:'找到相关项目。选择后可修改本次问题：',no_memory:'还没有保存项目。',no_match:'没有找到足够相关的项目，请补充药材或研究方向。',unavailable:'本地语义检索暂不可用，请手动选择项目。'};
-        container.append(node('p',messages[result.status] || '无法读取项目。'));
+        const message = result.method === 'project_list' ? '共 ' + result.total + ' 个已保存项目：'
+            : result.reason === 'explicit_objects_not_saved' ? '没有保存包含这些药材的项目。'
+            : messages[result.status] || '无法读取项目。';
+        container.append(node('p',message));
         for (const doc of result.items || []) {
             const row = node('div',''); row.append(node('p',doc.title + ' · ' + doc.herbs.join(' / ') + ' · ' + doc.question));
             const select = node('button','继续这个项目'); select.type='button';
@@ -255,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (item.job && !terminal.has(item.status)) { attach(item.id); return; }
                         const saved = await api((item.job ? '/api/research/jobs/' : '/api/research/runs/') + item.id);
                         if (controller) return;
-                        render(saved.result || {status:saved.status,mode:'saved_snapshot',run:saved.snapshot});
+                        render({...saved.result,run_id:saved.id,...(!saved.result?{status:saved.status,mode:'saved_snapshot',run:saved.snapshot}:{})});
                         output.prepend(node('p', '历史快照 · ' + new Date(saved.updated * 1000).toLocaleString() + '；未重新查询资料。'));
                     } catch (e) { output.replaceChildren(node('p', e.message)); }
                 });
@@ -267,12 +278,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     catch (e) { history.append(node('p', e.message)); remove.disabled = false; }
                 });
                 row.append(view, remove);
-                if (item.job && item.status === 'interrupted' && item.recovery === 'checkpoint') {
+                if (item.job && item.status === 'interrupted' && ['checkpoint','journal'].includes(item.recovery)) {
                     const resume = node('button', '继续执行'); resume.type = 'button';
                     resume.addEventListener('click', async () => {
                         if (controller) return;
                         resume.disabled = true;
-                        try { await api('/api/research/jobs/' + item.id + '/resume', {method:'POST'}); attach(item.id); }
+                        try { await api('/api/research/jobs/' + item.id + '/resume', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({revision:item.revision})}); attach(item.id); }
                         catch (e) { output.replaceChildren(node('p',e.message)); resume.disabled = false; }
                     });
                     row.append(resume);
@@ -298,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const saved = await api('/api/research/jobs/' + id);
             if (activeJob !== id) return;
             if (!terminal.has(saved.status)) return;
-            render(saved.result || {status:saved.status,mode:'saved_snapshot',run:saved.snapshot});
+            render({...saved.result,run_id:saved.id,...(!saved.result?{status:saved.status,mode:'saved_snapshot',run:saved.snapshot}:{})});
             if (!saved.result) output.prepend(node('p', {cancelled:'任务已取消。',interrupted:'任务中断，已保留执行记录；可以重新发起查询。',failed:'任务失败，执行记录已保留。'}[saved.status] || saved.status));
             release(); await loadHistory();
         } catch (e) { output.append(node('p', e.message)); }

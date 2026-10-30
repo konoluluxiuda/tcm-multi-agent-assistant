@@ -1,0 +1,7 @@
+{
+  "scripts/eval_business_closure.py": "5416f46bff339ca2fc054b8bb2fa1cb89a97b72ab089a7a8d7a432cb59c5177f",
+  "tests/test_business_closure.py": "488620f16b508af49f7aa28b277a6f1f75c339c14fca15ce7130f5bebe9d0698",
+  "eval/business_closure_v1.json": "0d2037c86618e902b3bacd2700cca66923bcaa9681c0ed5122967fd6aa9bd518",
+  "docs/BUSINESS_CLOSURE_REVIEW.md": "d07b8ef1131f070f030929a8706d829749b798921a1229a7fff8b1f2bfa23047",
+  "docs/TCM_PROJECT_ROADMAP.md": "48e93d2c5c72fb76ac266c1afa132bd7971b86b3051fcd2061072db084910133"
+}

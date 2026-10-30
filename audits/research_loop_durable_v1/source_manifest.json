@@ -1,0 +1,7 @@
+{
+  "tcm/research_run.py": "6734eed71e88ad61f3b82d15cb2816f22c022cbeb302cae73e9467dfc5085b70",
+  "tcm/research_run_durable.py": "ace74fa7ebbc88ea84a19c0895a5e179b34fd567f6eec338a10cada7b3bca306",
+  "tests/test_research_run_durable.py": "f2ffb557f54de8870fd189444c16764ccff32a1ac2f417917f7397b539b922de",
+  "scripts/check_research_loop_recovery.py": "ab3da06f9bb19200e940f4f3715ef6b36a810ab26976e7a4d74ee3f0d0fc29d1",
+  "scripts/persistent_research_demo.py": "124eff0805b6590dced9bdd8ca3a3d4048d568c04b7175e7817f326095d674d5"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "pause_reload_resume": true,
+  "owner_isolation": true,
+  "delete_verified": true,
+  "counts_scope": "completed run; session rotation adds a paused run with 1 model and 1 tool call",
+  "session_rotation_clears_list": true,
+  "model_calls": 4,
+  "tool_calls": 3,
+  "external_calls": 0,
+  "javascript_errors": [],
+  "data": "synthetic_only"
+}

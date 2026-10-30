@@ -34,15 +34,16 @@ async def check(args):
                 raise RuntimeError('Preview did not start')
             await ready();await page.goto(url)
             await page.locator('#local-research-panel > summary').click()
-            await page.locator('[data-research-mode]').select_option('report')
-            await page.locator('#local-research-form input').first.fill('示例叶')
+            await page.locator('[data-research-mode]').select_option('compare' if args.pair else 'report')
+            await page.locator('#local-research-form input').first.fill('a' if args.pair else '示例叶')
+            if args.pair:await page.locator('[data-second-herb] input').fill('b')
             await page.locator('[data-report-question] input').fill('功效')
-            async with page.expect_response(lambda r:r.url.endswith('/api/research/jobs/report')) as response:
+            async with page.expect_response(lambda r:r.url.endswith('/api/research/jobs/compare' if args.pair else '/api/research/jobs/report')) as response:
                 await page.locator('#local-research-form [type=submit]').click()
             submitted=await (await response.value).json();identifier=submitted['run_id']
             for _ in range(100):
                 saved=await (await context.request.get(url+'api/research/jobs/'+identifier)).json()
-                if saved.get('snapshot',{}).get('last_node')=='text_research':break
+                if (saved.get('snapshot',{}).get('tool_calls',0)>=3 if args.pair else saved.get('snapshot',{}).get('last_node')=='text_research'):break
                 await asyncio.sleep(.1)
             else:raise AssertionError('Text branch did not complete')
             # Allow LangGraph pending writes to flush before killing the whole HTTP process.
@@ -56,11 +57,12 @@ async def check(args):
             await page.locator('#local-research-panel details > summary').click()
             await page.locator('#local-research-refresh').click()
             await page.get_by_role('button',name='继续执行',exact=True).click(timeout=10000)
-            await page.wait_for_function("document.querySelector('#local-research-output').innerText.includes('合成恢复验收文本')",timeout=30000)
+            await page.wait_for_function("expected => document.querySelector('#local-research-output').innerText.includes(expected)",arg='synthetic-a' if args.pair else '合成恢复验收文本',timeout=30000)
             saved=await (await context.request.get(url+'api/research/jobs/'+identifier)).json()
             assert saved['status']=='complete',saved['status']
             counts=Counter(json.loads(x)['branch'] for x in (args.out/'calls.jsonl').read_text().splitlines())
-            assert counts=={'text':1,'structured':2},counts
+            expected={'a_text':1,'a_structured':1,'b_text':1,'b_structured':2,'target':1} if args.pair else {'text':1,'structured':2}
+            assert counts==expected,counts
             assert not errors,errors
             receipt={'status':'passed','real_http_process_sigkill':True,'lease_expiry_seconds':31,
                      'history_resume_button':True,'same_cookie_after_restart':True,'branch_calls':dict(counts),
@@ -79,5 +81,5 @@ async def check(args):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True)
     p.add_argument('--server-python',type=Path,required=True);p.add_argument('--browser',type=Path,required=True)
-    p.add_argument('--port',type=int,default=7885)
+    p.add_argument('--port',type=int,default=7885);p.add_argument('--pair',action='store_true')
     asyncio.run(check(p.parse_args()))

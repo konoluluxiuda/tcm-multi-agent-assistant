@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "date": "2026-10-30",
+  "syntax_files": 518,
+  "relative_links": 138,
+  "missing_links": [],
+  "git_diff_check": "passed",
+  "affected_modules": 14,
+  "affected_tests": 102,
+  "real_local_browser": "passed_on_chat_homepage",
+  "original_7912_smoke": "passed_after_graceful_restart",
+  "state_directory_preserved": true,
+  "new_external_model_calls": 0,
+  "V2_frozen_files_unchanged": true,
+  "temporary_7913_service": "stopped",
+  "7912_preview": "left_running",
+  "git_commit": "not_requested_not_created",
+  "remote_push": "not_requested_not_run",
+  "docker": "not_built_or_published"
+}

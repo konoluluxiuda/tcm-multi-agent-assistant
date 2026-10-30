@@ -7,7 +7,8 @@ from tcm.pair_research_report import run_pair_report, validate_pair, verify_targ
 def report(name):
     source={'file_sha256':name*64}
     return {'status':'complete','herb':name,
-            'text':{'status':'candidates','hits':[{'label':'功能','text':'synthetic-'+name,'chunk_id':name}]},
+            'text':{'status':'candidates','hits':[{'label':'功能与主治','text':'synthetic-'+name,'chunk_id':name,
+                                                'evidence':[{'block_id':name}]}]},
             'structured':{'status':'ok','source_record_id':name,'source':source,'dataset_version':'v1',
                           'rows':[{'label':'科','value':'same','source':{'json_pointer':'/test'}}]}}
 

@@ -74,8 +74,9 @@ def build_generation(dense, output):
         client.close();client=None
         hashes = {str(p.relative_to(stage)): digest(p) for p in (stage/'store').rglob('*')
                   if p.is_file() and p.name != '.lock'}
+        from importlib.metadata import version
         receipt = {**dense.receipt, 'format_version':1, 'collection':'pharmacopoeia',
-                   'qdrant_client_version':'1.13.3', 'files':hashes}
+                   'qdrant_client_version':version('qdrant-client'), 'files':hashes}
         (stage/'receipt.json').write_text(json.dumps(receipt, indent=2))
         # Refuse replacement: immutable build paths are the deployment/rollback unit.
         if output.exists():raise FileExistsError('Generation appeared during build')

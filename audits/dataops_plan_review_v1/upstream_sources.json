@@ -1,0 +1,142 @@
+{
+  "review_date": "2026-10-29",
+  "method": "GitHub public tree and pinned raw file reads; upstream code not executed",
+  "files": [
+    {
+      "repo": "langchain-ai/docs",
+      "commit": "c08c01a65acbf06aab96efc02ec954aab78791e9",
+      "path": "src/oss/langchain/deep-agent-from-scratch.mdx",
+      "sha256": "b219db54b5e20f3a5011990f26b3fd324553e9d98ee5cee57cd9a6d4f689b980",
+      "bytes": 14645,
+      "url": "https://github.com/langchain-ai/docs/blob/c08c01a65acbf06aab96efc02ec954aab78791e9/src/oss/langchain/deep-agent-from-scratch.mdx"
+    },
+    {
+      "repo": "langchain-ai/docs",
+      "commit": "c08c01a65acbf06aab96efc02ec954aab78791e9",
+      "path": "src/snippets/code-samples/deep-agent-from-scratch-minimal-py.mdx",
+      "sha256": "d20ff7cbf53dbddd7a97b5c148dd328e06a09910be6365cf974fb6e8282b0d64",
+      "bytes": 1100,
+      "url": "https://github.com/langchain-ai/docs/blob/c08c01a65acbf06aab96efc02ec954aab78791e9/src/snippets/code-samples/deep-agent-from-scratch-minimal-py.mdx"
+    },
+    {
+      "repo": "langchain-ai/docs",
+      "commit": "c08c01a65acbf06aab96efc02ec954aab78791e9",
+      "path": "src/snippets/code-samples/deep-agent-from-scratch-sandbox-py.mdx",
+      "sha256": "2a8769d9a2a844de5946f49423668e1d27cbabb24f3cb9a0f95ffcf2f80519bd",
+      "bytes": 4068,
+      "url": "https://github.com/langchain-ai/docs/blob/c08c01a65acbf06aab96efc02ec954aab78791e9/src/snippets/code-samples/deep-agent-from-scratch-sandbox-py.mdx"
+    },
+    {
+      "repo": "langchain-ai/docs",
+      "commit": "c08c01a65acbf06aab96efc02ec954aab78791e9",
+      "path": "src/snippets/code-samples/deep-agent-from-scratch-summarization-py.mdx",
+      "sha256": "586f3f340dd7a3668375585c67d2e0da8599d132c60d460a0beeda63bdcfbee9",
+      "bytes": 2738,
+      "url": "https://github.com/langchain-ai/docs/blob/c08c01a65acbf06aab96efc02ec954aab78791e9/src/snippets/code-samples/deep-agent-from-scratch-summarization-py.mdx"
+    },
+    {
+      "repo": "langchain-ai/docs",
+      "commit": "c08c01a65acbf06aab96efc02ec954aab78791e9",
+      "path": "src/snippets/code-samples/deep-agent-from-scratch-skills-py.mdx",
+      "sha256": "7ed5e37b2c5d0ff3261e2834a4d9cb8da94aa7840f2d1c8fc0e50f7b6e242471",
+      "bytes": 3347,
+      "url": "https://github.com/langchain-ai/docs/blob/c08c01a65acbf06aab96efc02ec954aab78791e9/src/snippets/code-samples/deep-agent-from-scratch-skills-py.mdx"
+    },
+    {
+      "repo": "langchain-ai/lca-deepagents",
+      "commit": "c39d80a2c81bfc4879cbbd3a552c9b37b4f81937",
+      "path": "python/README.md",
+      "sha256": "6948c159d8215c90a66d31f0bc3ba400b38350b4d1d9590ce7fd38eadff92e9d",
+      "bytes": 4403,
+      "url": "https://github.com/langchain-ai/lca-deepagents/blob/c39d80a2c81bfc4879cbbd3a552c9b37b4f81937/python/README.md"
+    },
+    {
+      "repo": "langchain-ai/lca-deepagents",
+      "commit": "c39d80a2c81bfc4879cbbd3a552c9b37b4f81937",
+      "path": "python/pyproject.toml",
+      "sha256": "23b198c4d2117284f36e01f8ac7ac46b6af2fd65860db3561de767512d3424a4",
+      "bytes": 1291,
+      "url": "https://github.com/langchain-ai/lca-deepagents/blob/c39d80a2c81bfc4879cbbd3a552c9b37b4f81937/python/pyproject.toml"
+    },
+    {
+      "repo": "langchain-ai/lca-deepagents",
+      "commit": "c39d80a2c81bfc4879cbbd3a552c9b37b4f81937",
+      "path": "python/m1/m1.2_scratch_agent.py",
+      "sha256": "066c2a1236f344bd55e7df292255ab0624ce22d8e1f5a1edc4ac2d1f83b84afe",
+      "bytes": 230,
+      "url": "https://github.com/langchain-ai/lca-deepagents/blob/c39d80a2c81bfc4879cbbd3a552c9b37b4f81937/python/m1/m1.2_scratch_agent.py"
+    },
+    {
+      "repo": "langchain-ai/lca-deepagents",
+      "commit": "c39d80a2c81bfc4879cbbd3a552c9b37b4f81937",
+      "path": "python/m1/m1.7_messages_threads_checkpointers.py",
+      "sha256": "8c53a45a065e562b5df3489e69966894a864ed95468341c1084f0497aa886716",
+      "bytes": 904,
+      "url": "https://github.com/langchain-ai/lca-deepagents/blob/c39d80a2c81bfc4879cbbd3a552c9b37b4f81937/python/m1/m1.7_messages_threads_checkpointers.py"
+    },
+    {
+      "repo": "langchain-ai/lca-deepagents",
+      "commit": "c39d80a2c81bfc4879cbbd3a552c9b37b4f81937",
+      "path": "python/m1/m1.8_hitl.py",
+      "sha256": "6f1e5bbebb7c15a38f2adb8b3a563015640e012833ad5967caed5e12483b4921",
+      "bytes": 2346,
+      "url": "https://github.com/langchain-ai/lca-deepagents/blob/c39d80a2c81bfc4879cbbd3a552c9b37b4f81937/python/m1/m1.8_hitl.py"
+    },
+    {
+      "repo": "langchain-ai/lca-deepagents",
+      "commit": "c39d80a2c81bfc4879cbbd3a552c9b37b4f81937",
+      "path": "python/m1/m1.8_hitl_respond.py",
+      "sha256": "bffaa434de8f18480826414520a108a9aa332cf61e5df06e93a86dc38cf4d534",
+      "bytes": 3468,
+      "url": "https://github.com/langchain-ai/lca-deepagents/blob/c39d80a2c81bfc4879cbbd3a552c9b37b4f81937/python/m1/m1.8_hitl_respond.py"
+    },
+    {
+      "repo": "langchain-ai/lca-deepagents",
+      "commit": "c39d80a2c81bfc4879cbbd3a552c9b37b4f81937",
+      "path": "python/m2/m2.2_agent.py",
+      "sha256": "92daba06098b91666926c3102825d1bb3bfc67598f5f24353e7a7528bd539a10",
+      "bytes": 1555,
+      "url": "https://github.com/langchain-ai/lca-deepagents/blob/c39d80a2c81bfc4879cbbd3a552c9b37b4f81937/python/m2/m2.2_agent.py"
+    },
+    {
+      "repo": "langchain-ai/lca-deepagents",
+      "commit": "c39d80a2c81bfc4879cbbd3a552c9b37b4f81937",
+      "path": "python/m2/m2.4_eval_agent.py",
+      "sha256": "3f5e1ab05c8a1c7620b79f0671ebfca4612c8b187281f16c97b9bb78f9856bf3",
+      "bytes": 484,
+      "url": "https://github.com/langchain-ai/lca-deepagents/blob/c39d80a2c81bfc4879cbbd3a552c9b37b4f81937/python/m2/m2.4_eval_agent.py"
+    },
+    {
+      "repo": "langchain-ai/lca-deepagents",
+      "commit": "c39d80a2c81bfc4879cbbd3a552c9b37b4f81937",
+      "path": "python/m3/m3.1_summarization.py",
+      "sha256": "2acba3257280600fd64c450632255e47654e73633220d62ca323a53886f98e33",
+      "bytes": 2252,
+      "url": "https://github.com/langchain-ai/lca-deepagents/blob/c39d80a2c81bfc4879cbbd3a552c9b37b4f81937/python/m3/m3.1_summarization.py"
+    },
+    {
+      "repo": "langchain-ai/lca-deepagents",
+      "commit": "c39d80a2c81bfc4879cbbd3a552c9b37b4f81937",
+      "path": "python/m3/m3.2_scratch_agent_skills.py",
+      "sha256": "d410f27e8bfbf824df5c0a156143716efbd08eb7c7cc26753eee38e393d476f3",
+      "bytes": 818,
+      "url": "https://github.com/langchain-ai/lca-deepagents/blob/c39d80a2c81bfc4879cbbd3a552c9b37b4f81937/python/m3/m3.2_scratch_agent_skills.py"
+    },
+    {
+      "repo": "langchain-ai/lca-deepagents",
+      "commit": "c39d80a2c81bfc4879cbbd3a552c9b37b4f81937",
+      "path": "python/m5/sales_assistant/agent.py",
+      "sha256": "87ab8fb143dadd228d3aef2831ec1434b815f2a7f3ea2a6fd9b9f8064510fe91",
+      "bytes": 1943,
+      "url": "https://github.com/langchain-ai/lca-deepagents/blob/c39d80a2c81bfc4879cbbd3a552c9b37b4f81937/python/m5/sales_assistant/agent.py"
+    },
+    {
+      "repo": "langchain-ai/lca-deepagents",
+      "commit": "c39d80a2c81bfc4879cbbd3a552c9b37b4f81937",
+      "path": "python/m5/sales_assistant/tools/sql.py",
+      "sha256": "35049beefb1e6ed00c9e41e15123c106d64c63d17e4e22f248b36a77536c5583",
+      "bytes": 5429,
+      "url": "https://github.com/langchain-ai/lca-deepagents/blob/c39d80a2c81bfc4879cbbd3a552c9b37b4f81937/python/m5/sales_assistant/tools/sql.py"
+    }
+  ]
+}

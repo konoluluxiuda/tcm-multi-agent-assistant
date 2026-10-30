@@ -1,0 +1,49 @@
+{
+  "status": "completed_with_evaluation_caveat",
+  "date": "2026-10-29",
+  "milestone": "P0-4b bounded question contracts and source routing",
+  "offline": {
+    "status": "passed",
+    "modules": 145,
+    "tests": 1231,
+    "syntax_files_ci_snapshot": 466,
+    "final_python_syntax_files": 467,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "added_tests": 14,
+  "original_screen_complete": 8,
+  "development_replay": {
+    "planned": 18,
+    "complete": 17,
+    "outcomes": {
+      "complete": 17,
+      "requirements_not_met": 1
+    }
+  },
+  "grading_caveat": {
+    "case": "BC03",
+    "finding": "family display label 科名 vs frozen grader 科",
+    "original_result_preserved": true,
+    "source_fields_verified": 2,
+    "human_signoff": false
+  },
+  "independent_cases_received": 0,
+  "external_model_calls": 0,
+  "browser_cases": 3,
+  "sigkill_cases": 4,
+  "preview_url": "http://127.0.0.1:7896/",
+  "publication": {
+    "git_committed": false,
+    "docker_built": false,
+    "remote_uploaded": false
+  },
+  "not_evaluated": [
+    "independent business generalization",
+    "live question-model quality or paid cost",
+    "pharmacopoeia OCR/medical semantic signoff",
+    "arbitrary compound research planning",
+    "new chat PostgreSQL/multi-host load",
+    "new deployment image"
+  ]
+}

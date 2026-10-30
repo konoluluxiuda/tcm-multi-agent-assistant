@@ -6,6 +6,9 @@ It dynamically routes user queries to the appropriate agent based on content and
 """
 
 import json
+import hashlib
+import asyncio
+from pathlib import Path
 import atexit
 from agents.runtime import session_turn, SharedRAG
 from typing import Dict, List, Optional, Any, Literal, TypedDict, Union, Annotated
@@ -135,6 +138,8 @@ class AgentState(MessagesState):
     evidence_request: Optional[Dict]
     evidence_answer: Optional[Dict]
     routing: Optional[Dict]
+    request_key: Optional[str]
+    run_owner: str
 
 
 class AgentDecision(TypedDict):
@@ -194,6 +199,14 @@ def create_agent_graph():
         selected = resolve_tool_request(current_input, herb_context=state.get('tcm_context'),
                                         research_context=state.get('research_context'),
                                         pubmed_context=state.get('pubmed_context'),relation_context=state.get('relation_context'))
+        if (selected is not None and selected['request'].get('topic')=='research_plan'
+                and not selected['request'].get('plan') and not selected['request'].get('selection') and not selected['request'].get('replay')
+                and can_plan_intent(current_input)):
+            from tcm.intent_planner import plan_question
+            proposal=plan_question(current_input)
+            if proposal['request'].get('topic') not in ('research_plan','intent_clarification'):
+                proposal={**proposal,'tool':'assistant','request':{'topic':'intent_clarification'}}
+            selected=proposal
         if selected is None and can_plan_intent(current_input):
             from tcm.intent_planner import plan_question
             selected=plan_question(current_input)
@@ -204,7 +217,7 @@ def create_agent_graph():
             changes = {key: selected['request'], 'has_image': False, 'image_type': None,
                        'bypass_routing': False, 'routing': {k:selected[k] for k in
                            ('tool','reason','mode','intent_status','intent_model_calls','intent_duration_ms') if k in selected}}
-            if tool == 'assistant' and selected['request'].get('topic') in ('etcm_relations','target_analysis'):
+            if tool == 'assistant' and selected['request'].get('topic') in ('etcm_relations','target_analysis','research_plan'):
                 changes.update(tcm_context=None, research_context=None, pubmed_context=None)
             elif tool == 'assistant' and selected['request'].get('topic') == 'research_task_review':
                 changes.update(tcm_context=None, research_context=None, pubmed_context=None,relation_context=None)
@@ -290,7 +303,13 @@ def create_agent_graph():
 
     def run_assistant_info_agent(state: AgentState) -> Dict:
         relation=state.get('relation_context')
-        if state['assistant_request'].get('topic')=='etcm_relations':
+        if state['assistant_request'].get('topic')=='research_plan':
+            from tcm.research_plan_run import execute as execute_plan
+            path=Path(os.getenv('RESEARCH_RUN_DB') or memory.path.with_name('research_runs.sqlite3'))
+            result,relation=asyncio.run(execute_plan({**state['assistant_request'],
+                'request_key':state.get('request_key')},relation,
+                owner=state['run_owner'],path=path))
+        elif state['assistant_request'].get('topic')=='etcm_relations':
             result,relation=execute_relation_turn(state['assistant_request'],relation)
         elif state['assistant_request'].get('topic')=='target_analysis':
             from tcm.analysis_tools import execute_turn as analysis_turn
@@ -882,7 +901,7 @@ def init_agent_state() -> AgentState:
     }
 
 
-def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='auto') -> Dict:
+def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='auto',request_key=None) -> Dict:
     """
     Process a user query through the agent decision system.
     
@@ -910,6 +929,8 @@ def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='a
     state['pubmed_context'] = pubmed_context_from(snapshot.tcm_context)
     state['relation_context']=relation_context_from(snapshot.tcm_context)
     state['task_mode'] = task_mode
+    state['request_key'] = request_key
+    state['run_owner']=hashlib.sha256(session_id.encode()).hexdigest()
     
     # Add the current query
     state["current_input"] = query
@@ -938,11 +959,11 @@ def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='a
     # Add the response to conversation history
     return result
 
-def process_query(query: Union[str, Dict], conversation_history=None, *, session_id=None, task_mode='auto') -> Dict:
+def process_query(query: Union[str, Dict], conversation_history=None, *, session_id=None, task_mode='auto',request_key=None) -> Dict:
     """Run a turn in its own session; omitted IDs create isolated one-shot calls.
 
     Completed turns live in SQLite and survive restart. Client-supplied
     history is intentionally not trusted as server-side state.
     """
     with session_turn(session_id) as thread_config:
-        return _process_query(query, thread_config, task_mode=task_mode)
+        return _process_query(query, thread_config, task_mode=task_mode,request_key=request_key)

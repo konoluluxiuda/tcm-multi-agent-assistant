@@ -94,10 +94,14 @@ def text_search(herb, question):
         with_retriever.close()
 
 
-def structured_search(herb):
+def structured_search(herb,source_record_id=None):
     from tcm.chat import execute_request, FIELD_NAMES
     labels = {value: key for key, value in reversed(list(FIELD_NAMES.items()))}
-    result = execute_request({'name': herb})
+    if source_record_id and herb!=source_record_id:
+        candidates=execute_request({'name':herb})
+        if source_record_id not in {r['source_record_id'] for r in candidates['records']}:
+            return {'status':'source_object_mismatch','rows':[]}
+    result = execute_request({'source_record_id':source_record_id} if source_record_id else {'name': herb})
     records = result['records']
     base = {key: result.get(key) for key in ('status', 'dataset_version', 'total_record_count')}
     if len(records) != 1:
@@ -113,10 +117,11 @@ def structured_search(herb):
             'identity_verified': False}
 
 
-async def local_branch(branch, herb, question, timeout=45):
+async def local_branch(branch, herb, question, timeout=45, *, source_record_id=None, config=None):
     env = {k: v for k, v in os.environ.items() if k in ('PATH', 'LANG', 'SYSTEMROOT', 'TEMP', 'TMP', *CONFIG)}
+    if config:env.update(config)
     env.update(PYTHONPATH=str(ROOT), PYTHONUTF8='1', PYTHONDONTWRITEBYTECODE='1')
-    executable = os.getenv('LOCAL_DENSE_PYTHON') if branch == 'text' else None
+    executable = env.get('LOCAL_DENSE_PYTHON') if branch == 'text' else None
     paths = ([Path(env['PHARMACOPOEIA_INDEX']) / 'research.sqlite3',
               Path(env['PHARMACOPOEIA_INDEX']) / 'manifest.json'] if branch == 'text'
              else [Path(env[k]) for k in ('TCM_DB', 'ETCM_ENRICHMENT_DB') if env.get(k)])
@@ -128,7 +133,7 @@ async def local_branch(branch, herb, question, timeout=45):
         stderr=asyncio.subprocess.DEVNULL, cwd=ROOT, env=env)
     try:
         raw, _ = await asyncio.wait_for(proc.communicate(json.dumps(
-            {'branch': branch, 'herb': herb, 'question': question}).encode()), timeout)
+            {'branch': branch, 'herb': herb, 'question': question,'source_record_id':source_record_id}).encode()), timeout)
         if proc.returncode or len(raw) > 400000:
             raise ValueError('Local branch failed')
         if before != tokens():
@@ -137,6 +142,18 @@ async def local_branch(branch, herb, question, timeout=45):
     finally:
         if proc.returncode is None:
             proc.kill(); await proc.wait()
+
+
+def assemble_report(state, herb, question):
+    text, structured = state['text'], state['structured']
+    available = bool(text.get('hits')), bool(structured.get('rows'))
+    usable_text = text['status'] == 'candidates'
+    usable_structure = structured['status'] in ('ok', 'name_mapping_candidates')
+    status = 'complete' if all(available) and usable_text and usable_structure else 'partial' if any(available) else 'needs_input'
+    return {'report': {'kind': 'cross_source', 'mode': 'local_evidence_graph', 'status': status,
+            'herb': herb, 'question': question, 'text': text, 'structured': structured,
+            'identity_merged': False, 'answer_generated': False,
+            'scope': '药典相关字段与ETCM基础属性并列展示，不代表已回答全部研究问题。'}}
 
 
 class ReportState(TypedDict, total=False):
@@ -162,15 +179,7 @@ async def run_report(payload, *, on_state=None, backend=None, checkpointer=None,
     async def text_node(state): return await branch('text')
     async def structured_node(state): return await branch('structured')
     def assemble(state):
-        text, structured = state['text'], state['structured']
-        available = bool(text.get('hits')), bool(structured.get('rows'))
-        usable_text = text['status'] == 'candidates'
-        usable_structure = structured['status'] in ('ok', 'name_mapping_candidates')
-        status = 'complete' if all(available) and usable_text and usable_structure else 'partial' if any(available) else 'needs_input'
-        return {'report': {'kind': 'cross_source', 'mode': 'local_evidence_graph', 'status': status,
-                'herb': herb, 'question': question, 'text': text, 'structured': structured,
-                'identity_merged': False, 'answer_generated': False,
-                'scope': '药典相关字段与ETCM基础属性并列展示，不代表已回答全部研究问题。'}}
+        return assemble_report(state, herb, question)
     graph = StateGraph(ReportState)
     graph.add_node('text_research', text_node); graph.add_node('structured_research', structured_node)
     graph.add_node('assemble', assemble)
@@ -188,10 +197,10 @@ async def run_report(payload, *, on_state=None, backend=None, checkpointer=None,
                 return previous.values['report']
     if on_state is None:
         # LangGraph 0.3 forces values mode for nested graphs; consume its final state.
-        final = await compiled.ainvoke(initial,config=config)
+        final = await compiled.ainvoke(initial,config=config, **({'durability': 'sync'} if checkpointer else {}))
         return final['report']
     state = {}; events = []
-    async for update in compiled.astream(initial, config=config, stream_mode='updates'):
+    async for update in compiled.astream(initial, config=config, stream_mode='updates', **({'durability': 'sync'} if checkpointer else {})):
         for name, values in update.items():
             # Nested graphs may attach __metadata__ to update frames.
             if name not in ('text_research', 'structured_research', 'assemble') or not values:
@@ -213,11 +222,12 @@ def worker():
     if request['branch'] == 'text':
         result = text_search(request['herb'], request['question'])
     elif request['branch'] == 'structured':
-        result = structured_search(request['herb'])
+        result = structured_search(request['herb'],request.get('source_record_id'))
     elif request['branch'] == 'shared_targets':
         from tcm.relation_queries import shared_targets
         selection = json.loads(request['question'])
-        result = shared_targets(os.environ['ETCM_ENRICHMENT_DB'], selection['records'], selection['version'])
+        result = shared_targets(os.environ['ETCM_ENRICHMENT_DB'], selection['records'], selection['version'],
+                                offset=selection.get('offset', 0))
         result.update(status='ok', source_ids=[r['source_record_id'] for r in selection['records']],
                       dataset_version=selection['version'])
     else:

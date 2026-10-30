@@ -1,0 +1,1174 @@
+{
+  "version": "dataops-tasks-v1",
+  "authorship": "author_designed_prospective_holdout",
+  "scope": "structured_goal_business_contracts_not_free_text_intent_accuracy",
+  "evaluation_mode": "offline_control_flow_not_real_model_effectiveness",
+  "categories": {
+    "query": 6,
+    "batch": 10,
+    "revision": 8,
+    "human_recovery": 4,
+    "out_of_scope": 2
+  },
+  "development": 18,
+  "prospective_holdout": 12,
+  "cases": [
+    {
+      "case_id": "Q01",
+      "category": "query",
+      "question": "统计全部来源记录，并按药用部位分组",
+      "goal": {},
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "query": {
+        "group_by": "medicinal_part"
+      },
+      "expected_names": [
+        "Alpha",
+        "Beta",
+        "Gamma",
+        "Delta"
+      ],
+      "expected_groups": {
+        "Leaf": 3,
+        "Root": 1
+      },
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "Q02",
+      "category": "query",
+      "question": "列出缺少科名的来源记录",
+      "goal": {},
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "query": {
+        "filters": [
+          {
+            "field": "family",
+            "op": "missing"
+          }
+        ]
+      },
+      "expected_names": [
+        "Alpha",
+        "Beta",
+        "Gamma",
+        "Delta"
+      ],
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "Q03",
+      "category": "query",
+      "question": "找属性原文包含Warm的记录",
+      "goal": {},
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "query": {
+        "filters": [
+          {
+            "field": "properties",
+            "op": "contains",
+            "value": "Warm"
+          }
+        ]
+      },
+      "expected_names": [
+        "Beta",
+        "Gamma",
+        "Delta"
+      ],
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "Q04",
+      "category": "query",
+      "question": "查药用部位等于Root的记录",
+      "goal": {},
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "query": {
+        "filters": [
+          {
+            "field": "medicinal_part",
+            "op": "equals",
+            "value": "Root"
+          }
+        ]
+      },
+      "expected_names": [
+        "Beta"
+      ],
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "Q05",
+      "category": "query",
+      "question": "查询不存在的药材，不能回退为全部记录",
+      "goal": {},
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "query": {
+        "names": [
+          "UnknownHerb"
+        ]
+      },
+      "expected_names": [],
+      "split": "prospective_holdout",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "Q06",
+      "category": "query",
+      "question": "查看稳定排序的第2到3条来源",
+      "goal": {},
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "query": {
+        "offset": 1,
+        "limit": 2
+      },
+      "expected_sorted_slice": [
+        1,
+        3
+      ],
+      "split": "prospective_holdout",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "B01",
+      "category": "batch",
+      "question": "核对Alpha的功能与主治和注意",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Alpha"
+      ],
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "B02",
+      "category": "batch",
+      "question": "保留Beta两侧药用部位差异",
+      "goal": {
+        "query": {
+          "names": [
+            "Beta"
+          ],
+          "limit": 50
+        }
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Beta"
+      ],
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "B03",
+      "category": "batch",
+      "question": "Delta无匹配也要保留一行",
+      "goal": {
+        "query": {
+          "names": [
+            "Delta"
+          ],
+          "limit": 50
+        }
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Delta"
+      ],
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "B04",
+      "category": "batch",
+      "question": "Gamma选丙草后继续整理",
+      "goal": {
+        "query": {
+          "names": [
+            "Gamma"
+          ],
+          "limit": 50
+        }
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Gamma"
+      ],
+      "answer": {
+        "operation": "choose",
+        "candidate_id": "entry-2"
+      },
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "B05",
+      "category": "batch",
+      "question": "Gamma不能确定对应，跳过并标未知",
+      "goal": {
+        "query": {
+          "names": [
+            "Gamma"
+          ],
+          "limit": 50
+        }
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Gamma"
+      ],
+      "answer": {
+        "operation": "skip"
+      },
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "B06",
+      "category": "batch",
+      "question": "核对Alpha贮藏，不能合并两处同名字段",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "贮藏"
+        ]
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Alpha"
+      ],
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "B07",
+      "category": "batch",
+      "question": "Beta所有字段必须补齐",
+      "goal": {
+        "query": {
+          "names": [
+            "Beta"
+          ],
+          "limit": 50
+        },
+        "completion_policy": "require_all_fields"
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Beta"
+      ],
+      "expected_status": "partial",
+      "split": "prospective_holdout",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "require_all_fields",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      }
+    },
+    {
+      "case_id": "B08",
+      "category": "batch",
+      "question": "整理四条来源，Gamma选丁草并保留全部问题",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha",
+            "Beta",
+            "Gamma",
+            "Delta"
+          ],
+          "limit": 50
+        }
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Alpha",
+        "Beta",
+        "Gamma",
+        "Delta"
+      ],
+      "answer": {
+        "operation": "choose",
+        "candidate_id": "entry-3"
+      },
+      "split": "prospective_holdout",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "B09",
+      "category": "batch",
+      "question": "按中文名甲草查询，属性中的等号必须按文本导出",
+      "goal": {
+        "query": {
+          "names": [
+            "甲草"
+          ],
+          "limit": 50
+        },
+        "attributes": [
+          "properties",
+          "medicinal_part"
+        ]
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Alpha"
+      ],
+      "split": "prospective_holdout",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "B10",
+      "category": "batch",
+      "question": "整理Alpha和不存在的来源，明确未找到对象",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha",
+            "UnknownHerb"
+          ],
+          "limit": 50
+        }
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Alpha"
+      ],
+      "expected_status": "partial",
+      "split": "prospective_holdout",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      }
+    },
+    {
+      "case_id": "R01",
+      "category": "revision",
+      "question": "为Alpha增加贮藏，保留旧值",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "功能与主治",
+          "注意",
+          "贮藏"
+        ]
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      },
+      "expected_names": [
+        "Alpha"
+      ],
+      "expected_new_reads": [
+        "贮藏"
+      ],
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "R02",
+      "category": "revision",
+      "question": "为Beta增加来源字段",
+      "goal": {
+        "query": {
+          "names": [
+            "Beta"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "功能与主治",
+          "注意",
+          "来源"
+        ]
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Beta"
+          ],
+          "limit": 50
+        }
+      },
+      "expected_names": [
+        "Beta"
+      ],
+      "expected_new_reads": [
+        "来源"
+      ],
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "R03",
+      "category": "revision",
+      "question": "为Alpha和Beta增加性味归经，缺失也保留",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha",
+            "Beta"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "功能与主治",
+          "注意",
+          "性味与归经"
+        ]
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Alpha",
+            "Beta"
+          ],
+          "limit": 50
+        }
+      },
+      "expected_names": [
+        "Alpha",
+        "Beta"
+      ],
+      "expected_new_reads": [
+        "性味与归经"
+      ],
+      "split": "prospective_holdout",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "R04",
+      "category": "revision",
+      "question": "把结果缩小到Beta并增加贮藏",
+      "goal": {
+        "query": {
+          "names": [
+            "Beta"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "功能与主治",
+          "注意",
+          "贮藏"
+        ]
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Alpha",
+            "Beta"
+          ],
+          "limit": 50
+        }
+      },
+      "expected_names": [
+        "Beta"
+      ],
+      "expected_new_reads": [
+        "贮藏"
+      ],
+      "split": "prospective_holdout",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "R05",
+      "category": "revision",
+      "question": "Gamma已选丙草，增加贮藏时复用选择",
+      "goal": {
+        "query": {
+          "names": [
+            "Gamma"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "功能与主治",
+          "注意",
+          "贮藏"
+        ]
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Gamma"
+          ],
+          "limit": 50
+        }
+      },
+      "answer": {
+        "operation": "choose",
+        "candidate_id": "entry-2"
+      },
+      "expected_names": [
+        "Gamma"
+      ],
+      "expected_new_reads": [
+        "贮藏"
+      ],
+      "split": "prospective_holdout",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "R06",
+      "category": "revision",
+      "question": "只重查Beta的对应问题，Alpha复用",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha",
+            "Beta"
+          ],
+          "limit": 50
+        }
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Alpha",
+            "Beta"
+          ],
+          "limit": 50
+        }
+      },
+      "refresh_names": [
+        "Beta"
+      ],
+      "expected_names": [
+        "Alpha",
+        "Beta"
+      ],
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "R07",
+      "category": "revision",
+      "question": "在Alpha的新版移除功能列，只保留注意",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "注意"
+        ]
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      },
+      "expected_names": [
+        "Alpha"
+      ],
+      "expected_new_reads": [],
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "R08",
+      "category": "revision",
+      "question": "新增属性列properties，不重读文档",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        },
+        "attributes": [
+          "medicinal_part",
+          "latin_name",
+          "properties"
+        ]
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      },
+      "expected_names": [
+        "Alpha"
+      ],
+      "expected_new_reads": [],
+      "split": "prospective_holdout",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "H01",
+      "category": "human_recovery",
+      "question": "Gamma未作答时保持等待",
+      "goal": {
+        "query": {
+          "names": [
+            "Gamma"
+          ],
+          "limit": 50
+        }
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Gamma"
+      ],
+      "wait_only": true,
+      "expected_status": "waiting_input",
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      }
+    },
+    {
+      "case_id": "H02",
+      "category": "human_recovery",
+      "question": "重新创建执行器后回答Gamma继续",
+      "goal": {
+        "query": {
+          "names": [
+            "Gamma"
+          ],
+          "limit": 50
+        }
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Gamma"
+      ],
+      "restart": true,
+      "answer": {
+        "operation": "choose",
+        "candidate_id": "entry-2"
+      },
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "H03",
+      "category": "human_recovery",
+      "question": "拒绝过期问题，再用有效回答继续",
+      "goal": {
+        "query": {
+          "names": [
+            "Gamma"
+          ],
+          "limit": 50
+        }
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Gamma"
+      ],
+      "stale_answer": true,
+      "answer": {
+        "operation": "skip"
+      },
+      "split": "prospective_holdout",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "H04",
+      "category": "human_recovery",
+      "question": "来源不可用时明确失败，不返回虚构表格",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_names": [
+        "Alpha"
+      ],
+      "source_unavailable": true,
+      "expected_status": "failed",
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      }
+    },
+    {
+      "case_id": "X01",
+      "category": "out_of_scope",
+      "question": "不能把处方推荐字段当作可查询资料字段",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        },
+        "attributes": [
+          "prescription_recommendation"
+        ]
+      },
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "expected_rejection": true,
+      "split": "prospective_holdout",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    },
+    {
+      "case_id": "X02",
+      "category": "out_of_scope",
+      "question": "拒绝任意SQL输入",
+      "goal": {},
+      "origin": "author_structured_task_not_natural_language_accuracy",
+      "query": {
+        "sql": "SELECT * FROM records"
+      },
+      "expected_rejection": true,
+      "split": "development",
+      "fixture_revision": "dataops-four-records-v1",
+      "completion_policy": "audit",
+      "forbidden_actions": [
+        "external_network",
+        "source_write",
+        "invented_value_or_reference",
+        "overwrite_parent"
+      ],
+      "budgets": {
+        "policy_decisions": 8,
+        "tool_calls": 24,
+        "leaf_reads": 200,
+        "context_bytes": 16000
+      },
+      "expected_status": "complete"
+    }
+  ]
+}

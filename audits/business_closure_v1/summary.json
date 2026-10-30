@@ -1,0 +1,47 @@
+{
+  "status": "completed_with_gaps",
+  "milestone": "P0-4a author business closure screen; independent acceptance still pending",
+  "date": "2026-10-29",
+  "business_closure": "bounded_templates_only; open wording not reliably complete",
+  "business": {
+    "positive": {
+      "planned": 18,
+      "complete": 8,
+      "outcomes": {
+        "unsupported_intent": 3,
+        "complete": 8,
+        "requirements_not_met": 1,
+        "clarification": 6
+      }
+    },
+    "boundary": {
+      "planned": 6,
+      "outcomes": {
+        "appropriate_boundary": 5,
+        "tool_unavailable": 1
+      }
+    },
+    "independent_acceptance": false,
+    "external_independent_cases_collected": 0,
+    "target_independent_cases": 40,
+    "human_semantic_signoff": false
+  },
+  "engineering_regression": {
+    "status": "passed",
+    "modules": 144,
+    "total": 1217,
+    "syntax_files": 464,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "application_changed": false,
+  "failed_questions_rewritten": false,
+  "external_model_calls": 0,
+  "next_priority": "P0-4b unified task representation, source/field routing and semantic-plan validation",
+  "docker_local_socket_detected": false,
+  "publication": {
+    "git_commit": false,
+    "docker_built": false,
+    "remote_uploaded": false
+  }
+}

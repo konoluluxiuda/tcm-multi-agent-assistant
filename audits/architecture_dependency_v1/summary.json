@@ -1,0 +1,336 @@
+{
+  "status": "passed",
+  "live_model_calls": 0,
+  "data": "synthetic_only",
+  "normal": {
+    "events": [
+      {
+        "call_id": "0",
+        "tool": "search_disease_sources",
+        "arguments": {
+          "page_size": 20,
+          "name": "Synthetic disease",
+          "page": 1
+        },
+        "status": "ok",
+        "evidence_id": "obs-1",
+        "elapsed_ms": 1.161
+      },
+      {
+        "call_id": "1",
+        "tool": "disease_gene_profile",
+        "arguments": {
+          "name": "etcm-disease:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "page": 1
+        },
+        "status": "ok",
+        "evidence_id": "obs-2",
+        "elapsed_ms": 0.938
+      },
+      {
+        "call_id": "2",
+        "tool": "finish_research",
+        "status": "complete",
+        "evidence_ids": [
+          "obs-1",
+          "obs-2"
+        ],
+        "unresolved": []
+      }
+    ],
+    "evidence": {
+      "obs-1": {
+        "version": 1,
+        "tool": "search_disease_sources",
+        "status": "ok",
+        "data": {
+          "page_size": 20,
+          "query": "Synthetic disease",
+          "dataset_version": "synthetic-v1",
+          "catalog_revision": "synthetic",
+          "total": 1,
+          "page": 1,
+          "has_next": false,
+          "items": [
+            {
+              "record_id": "etcm-disease:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "name": "Synthetic disease",
+              "target_count": 1,
+              "capture_state": "synthetic",
+              "species_status": "synthetic",
+              "source": {
+                "file_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              },
+              "match_kind": "exact"
+            }
+          ]
+        },
+        "error": null,
+        "elapsed_ms": 0.0
+      },
+      "obs-2": {
+        "version": 1,
+        "tool": "disease_gene_profile",
+        "status": "ok",
+        "data": {
+          "record_id": "etcm-disease:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "dataset_version": "synthetic-v1",
+          "catalog_revision": "synthetic",
+          "profile": {
+            "name": "Synthetic disease",
+            "target_count": 1,
+            "source": {
+              "file_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            }
+          },
+          "target_ids": [
+            "P12345"
+          ],
+          "rows": [],
+          "page": 1,
+          "has_next": false,
+          "identical_set_sources": 1
+        },
+        "error": null,
+        "elapsed_ms": 0.0
+      }
+    },
+    "model_calls": 3,
+    "tool_calls": 2,
+    "status": "complete",
+    "reason": "tool_scope_complete",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "coverage": {},
+    "context_checks": [
+      {
+        "input_bytes_before": 3013,
+        "input_bytes_after": 3013,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens",
+        "input_estimate": 3013,
+        "input_estimator": "utf8_byte_proxy",
+        "remaining_input_budget": 160000,
+        "per_call_input_budget": 56000
+      },
+      {
+        "input_bytes_before": 4127,
+        "input_bytes_after": 4127,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens",
+        "input_estimate": 4127,
+        "input_estimator": "utf8_byte_proxy",
+        "remaining_input_budget": 156987,
+        "per_call_input_budget": 56000
+      },
+      {
+        "input_bytes_before": 5208,
+        "input_bytes_after": 5208,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens",
+        "input_estimate": 5208,
+        "input_estimator": "utf8_byte_proxy",
+        "remaining_input_budget": 152860,
+        "per_call_input_budget": 56000
+      }
+    ],
+    "estimated_input_units": 12348,
+    "input_estimator": "utf8_byte_proxy",
+    "usage_reported_calls": 0,
+    "completion_scope": "declared_tool_types",
+    "dependency_trace": [
+      {
+        "event": "dispatch",
+        "tool": "search_disease_sources",
+        "arguments": {
+          "page_size": 20,
+          "name": "Synthetic disease",
+          "page": 1
+        }
+      },
+      {
+        "event": "validated",
+        "tool": "search_disease_sources"
+      },
+      {
+        "event": "dispatch",
+        "tool": "disease_gene_profile",
+        "arguments": {
+          "name": "etcm-disease:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "page": 1
+        }
+      },
+      {
+        "event": "validated",
+        "tool": "disease_gene_profile"
+      }
+    ],
+    "dependency_complete": true,
+    "experiment": "candidate_a_discovery_spike_synthetic_only",
+    "resume_supported": false
+  },
+  "forged_id": {
+    "events": [
+      {
+        "call_id": "0",
+        "tool": "search_disease_sources",
+        "arguments": {
+          "page_size": 20,
+          "name": "Synthetic disease",
+          "page": 1
+        },
+        "status": "ok",
+        "evidence_id": "obs-1",
+        "elapsed_ms": 0.172
+      },
+      {
+        "call_id": "1",
+        "tool": "disease_gene_profile",
+        "arguments": {
+          "name": "etcm-disease:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "page": 1
+        },
+        "status": "error",
+        "evidence_id": "obs-2",
+        "elapsed_ms": 0.07
+      },
+      {
+        "call_id": "2",
+        "tool": "finish_research",
+        "status": "partial",
+        "evidence_ids": [
+          "obs-1"
+        ],
+        "unresolved": []
+      }
+    ],
+    "evidence": {
+      "obs-1": {
+        "version": 1,
+        "tool": "search_disease_sources",
+        "status": "ok",
+        "data": {
+          "page_size": 20,
+          "query": "Synthetic disease",
+          "dataset_version": "synthetic-v1",
+          "catalog_revision": "synthetic",
+          "total": 1,
+          "page": 1,
+          "has_next": false,
+          "items": [
+            {
+              "record_id": "etcm-disease:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "name": "Synthetic disease",
+              "target_count": 1,
+              "capture_state": "synthetic",
+              "species_status": "synthetic",
+              "source": {
+                "file_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              },
+              "match_kind": "exact"
+            }
+          ]
+        },
+        "error": null,
+        "elapsed_ms": 0.0
+      },
+      "obs-2": {
+        "tool": "disease_gene_profile",
+        "status": "error",
+        "error": {
+          "code": "invalid_or_failed_tool"
+        }
+      }
+    },
+    "model_calls": 3,
+    "tool_calls": 2,
+    "status": "partial",
+    "reason": "unbound_profile",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "coverage": {},
+    "context_checks": [
+      {
+        "input_bytes_before": 3013,
+        "input_bytes_after": 3013,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens",
+        "input_estimate": 3013,
+        "input_estimator": "utf8_byte_proxy",
+        "remaining_input_budget": 160000,
+        "per_call_input_budget": 56000
+      },
+      {
+        "input_bytes_before": 4127,
+        "input_bytes_after": 4127,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens",
+        "input_estimate": 4127,
+        "input_estimator": "utf8_byte_proxy",
+        "remaining_input_budget": 156987,
+        "per_call_input_budget": 56000
+      },
+      {
+        "input_bytes_before": 4744,
+        "input_bytes_after": 4744,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens",
+        "input_estimate": 4744,
+        "input_estimator": "utf8_byte_proxy",
+        "remaining_input_budget": 152860,
+        "per_call_input_budget": 56000
+      }
+    ],
+    "estimated_input_units": 11884,
+    "input_estimator": "utf8_byte_proxy",
+    "usage_reported_calls": 0,
+    "completion_scope": "declared_tool_types",
+    "dependency_trace": [
+      {
+        "event": "dispatch",
+        "tool": "search_disease_sources",
+        "arguments": {
+          "page_size": 20,
+          "name": "Synthetic disease",
+          "page": 1
+        }
+      },
+      {
+        "event": "validated",
+        "tool": "search_disease_sources"
+      },
+      {
+        "event": "blocked",
+        "reason": "unbound_profile"
+      }
+    ],
+    "dependency_complete": false,
+    "experiment": "candidate_a_discovery_spike_synthetic_only",
+    "resume_supported": false
+  },
+  "limitations": [
+    "Not a business accuracy evaluation",
+    "No B/C runtime comparison",
+    "No cross-process recovery for the new dependency gate",
+    "Only unique exact search and one complete profile page supported"
+  ],
+  "source_sha256": {
+    "experiments/architecture_candidates/dynamic_dependency.py": "c610a3aa681304bebaa4111eb21df3acce427dcfeadca7c43a1d06c823d06bb8",
+    "experiments/architecture_candidates/synthetic.py": "e3253a5b924a7220b4ab0b739df88c08c6d11960cfaba6a4f127af64ffd4bbc2",
+    "tcm/research_run.py": "6734eed71e88ad61f3b82d15cb2816f22c022cbeb302cae73e9467dfc5085b70",
+    "tcm/analysis_tools.py": "f2459d76260a4d83a7d02d18503fc2f2f546e7ccbcbdfeea9a6528648f3bde0a",
+    "scripts/check_architecture_dependency.py": "12d53838aa4543b0606684dd54f641374e6114d73047eabbaf952dba99df470c"
+  }
+}

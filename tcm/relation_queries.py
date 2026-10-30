@@ -21,7 +21,7 @@ def common_target_sentence(body):
     goal = r'(?:共同靶点|共同标识)'
     evidence = (r'(?:[，,；;]\s*(?:并|同时)?(?:请)?'
                 r'(?:保留|附上|给出|列出|展示)(?:双方|两边|各自)?的?'
-                r'(?:原始记录|原始行|出处)(?:的位置|和出处|与出处|及出处)?)?')
+                r'(?:原始记录|原始行|出处)(?:(?:的)?位置|和出处|与出处|及出处)?)?')
     patterns = (
         r'(?:请帮我|帮我|麻烦|请)?\s*我(?:正在|在)?(?:整理|比较|核对|研究)\s*'+pair+
         r'[，,]\s*(?:我)?(?:想|需要|希望)(?:查询|查一下|核对|查看|比较|查)\s*(?:两者的|双方的|它们的)?'+goal,
@@ -122,6 +122,12 @@ def parse(text, *, explicit=False):
 
 def shared_targets(path, records, version, *, offset=0):
     """Intersect explicit source-declared UniProt groups; names alone never qualify."""
+    import hashlib
+    import json
+    from tcm.target_similarity import file_token
+    if type(offset) is not int or offset < 0 or offset % LIMIT:
+        raise ValueError('Invalid target page offset')
+    before = file_token(path)
     if len(records) != 2 or records[0]['source_record_id'] == records[1]['source_record_id']:
         raise ValueError('Choose two different sources')
     with closing(connect(path)) as con:
@@ -154,7 +160,10 @@ def shared_targets(path, records, version, *, offset=0):
                                 'witnesses': [{**dict(e), 'raw_row': json.loads(e['raw_row']),
                                                'capture_status': json.loads(e['capture_status'])} for e in edges]})
             items.append({**dict(node), 'sources': sources})
-        return {'total': total, 'offset': offset, 'limit': LIMIT, 'returned_count': len(items),
+        if before != file_token(path):
+            raise ValueError('Source snapshot changed during query')
+        revision = hashlib.sha256(json.dumps([version, before], sort_keys=True).encode()).hexdigest()
+        return {'catalog_revision': revision, 'total': total, 'offset': offset, 'limit': LIMIT, 'returned_count': len(items),
                 'next_offset': offset + LIMIT if offset + LIMIT < total else None,
                 'count_unit': 'distinct_source_declared_uniprot', 'items': items}
 

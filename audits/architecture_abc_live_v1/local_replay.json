@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "external_model_calls": 0,
+  "results": [
+    {
+      "candidate": "B_deepagents",
+      "first_response_actions": 4,
+      "serial_replay_admitted": [
+        {
+          "tool": "read_source",
+          "arguments": {
+            "herb": "Alpha",
+            "branch": "text"
+          }
+        },
+        {
+          "tool": "read_source",
+          "arguments": {
+            "herb": "Alpha",
+            "branch": "structured"
+          }
+        },
+        {
+          "tool": "read_source",
+          "arguments": {
+            "herb": "Beta",
+            "branch": "text"
+          }
+        },
+        {
+          "tool": "read_source",
+          "arguments": {
+            "herb": "Beta",
+            "branch": "structured"
+          }
+        }
+      ],
+      "local_tool_calls": 4,
+      "child_sdk_substitute_calls": 0,
+      "full_task_replayed": false
+    },
+    {
+      "candidate": "C_protocol",
+      "first_response_actions": 2,
+      "serial_replay_admitted": [
+        {
+          "tool": "delegate",
+          "arguments": {
+            "herb": "Alpha"
+          }
+        },
+        {
+          "tool": "delegate",
+          "arguments": {
+            "herb": "Beta"
+          }
+        }
+      ],
+      "local_tool_calls": 4,
+      "child_sdk_substitute_calls": 6,
+      "full_task_replayed": false
+    }
+  ],
+  "limitation": "Only first-response actions replayed serially; not a repaired model rerun or concurrency test"
+}

@@ -18,6 +18,9 @@ class DeploymentTests(unittest.TestCase):
         self.app = app
         self.temp = tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
         root = Path(self.temp.name); fixture(root / 'view'); build(root / 'view', root / 'index')
+        from agents.conversation_store import ConversationStore
+        memory_patch = patch.object(app.agent_runtime, 'memory', ConversationStore(root / 'chat.sqlite3'))
+        memory_patch.start(); self.addCleanup(memory_patch.stop)
         self.service = Service(root / 'index')
         self.client = TestClient(app.app); self.addCleanup(self.client.close)
 

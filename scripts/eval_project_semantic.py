@@ -25,7 +25,7 @@ def evaluate(source,out):
             results={'no_memory':[],
                      'lexical':[labels[d['id']] for d in lexical if lexical_score(case['query'],document_text(d))>0][:3],
                      'dense':[labels[d['id']] for d in dense if scores[d['id']]>=0.50][:3],
-                     'hybrid':[labels[d['id']] for d in hybrid['items']]}
+                     'hybrid':[labels[d['id']] for d in hybrid['items'][:3]]}
             rows.append({**case,'results':results,'cosine':{labels[k]:round(v,4) for k,v in scores.items()},'elapsed_ms':round((time.monotonic()-start)*1000,1)})
             print(json.dumps({'query':case['query'],'hybrid':results['hybrid']},ensure_ascii=False),flush=True)
     metrics={}
@@ -42,7 +42,7 @@ def evaluate(source,out):
         metrics[mode]['candidate_precision']=correct/returned if returned else None
     report={'status':'completed','dataset_kind':dataset['kind'],'dataset_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
             'cases':rows,'metrics':metrics,'external_model_calls':0,'threshold':0.50,'automatic_application':False,
-            'interpretation':'No-memory returns no candidates by definition; this is not business task accuracy. Scores are not probabilities. Development labels only.'}
+            'interpretation':'Hybrid includes current scope/list policy; list output is capped at 3 here for Recall@3, not full listing coverage. No-memory returns no candidates by definition; this is not business task accuracy. Scores are not probabilities. Development labels only.'}
     out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');print(json.dumps(metrics))
 
 

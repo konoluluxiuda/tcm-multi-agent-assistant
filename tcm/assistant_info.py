@@ -106,10 +106,9 @@ def execute(request):
         from tcm.analysis_tools import tool_specs
         analyses='、'.join(s['label'] for s in tool_specs() if s['configured'])
         research='已启用' if env_bool('ENABLE_PHARMACOPOEIA_RESEARCH') else '未启用'
-        pubmed='已启用' if env_bool('ENABLE_PUBMED') else '未启用'
         result['message']=(f'可以查询：\n• 药典功效、用量和出处（{research}）\n'
                            '• 药材属性、成分、靶点及来源关联\n• 药典字段对比、数据概览\n'
-                           f'• PubMed文献（{pubmed}）\n• 收藏和证据下载')
+                           '• 收藏和证据下载\n• 资料核对工作台：批量字段与表格交付（需启用）')
         result['notes']=['不提供个体选药或处方。中文名称对应关系与研究结论仍须核对。',
                          '工具已启用不等于资料已就绪，可问“数据概览”查看当前资料。']
         if analyses:result['message']+='\n• '+analyses
@@ -137,9 +136,8 @@ def execute(request):
             'research_name_needed':'当前选择的是ETCM来源记录，尚不能将其自动映射到药典条目。请明确中文药名和字段，例如“黄芪的用量”。',
         }
         result.update(status='clarification_needed',message=messages[topic])
-        if topic in ('literature_term', 'clarify_sources') and not env_bool('ENABLE_PUBMED'):
-            result['message'] = ('当前部署的PubMed文献工具未启用，不能检索最新论文；提供检索词也不会自动开启联网。'
-                                 '仍可查询本地药典/ETCM资料，或请管理员启用文献工具后使用明确检索式。')
+        if topic in ('literature_term', 'clarify_sources'):
+            result['message'] = '文献检索已退役。可查询本地药典/ETCM资料，或使用资料核对工作台；原始资料的参考出处继续保留。'
         if topic == 'literature_term' and request.get('wants_export'):
             result['message'] += (' 你还要求下载笔记：当前不会自动把这段不明确的对话整理成报告，'
                                   '需要先完成明确来源的查询，再用卡片的证据Markdown或收藏的“导出证据笔记”；'

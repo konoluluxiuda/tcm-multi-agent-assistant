@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "tool": "herb_attributes",
+      "field_rows": 2,
+      "same_run_after_refresh": true,
+      "evidence_download": true,
+      "source_fold_interactive": true
+    },
+    {
+      "tool": "pair_evidence_report",
+      "field_rows": 2,
+      "same_run_after_refresh": true,
+      "evidence_download": true,
+      "source_fold_interactive": true
+    },
+    {
+      "tool": "pharmacopoeia_lookup",
+      "field_rows": 1,
+      "same_run_after_refresh": true,
+      "evidence_download": true,
+      "source_fold_interactive": true
+    }
+  ],
+  "javascript_errors": [],
+  "blocked_external_assets": 30,
+  "external_model_calls": 0,
+  "font_layout_reviewed": false
+}

@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "data": "synthetic_only",
+  "external_calls": 0,
+  "databases": [
+    "tcm_backup_e5f808e6a2_source",
+    "tcm_backup_e5f808e6a2_restored"
+  ],
+  "session_signing_key_continuity": true,
+  "project_revision": 2,
+  "owner_isolation": true,
+  "job_events_equal_before_resume": true,
+  "source_unchanged": true,
+  "nonempty_target_refused": true,
+  "active_job_backup_refused": true,
+  "checkpoint_binding_preserved": true,
+  "new_process_checkpoint_resumed": true,
+  "source_pointers_preserved": true,
+  "branch_calls": {
+    "a_text": 1,
+    "a_structured": 1,
+    "b_text": 1,
+    "b_structured": 2,
+    "target": 1
+  },
+  "bundle_manifest_sha256": "d8522f3b72ba67601ef59d8df654830a00c5d25c610385f4ff89019c573c9c8e"
+}

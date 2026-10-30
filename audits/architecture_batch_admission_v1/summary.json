@@ -1,0 +1,35 @@
+{
+  "status": "local_tests_passed",
+  "tests_passed": 33,
+  "new_live_model_calls": 0,
+  "live_v2_http_requests": 19,
+  "live_v2_passed": 2,
+  "production_integrated": false,
+  "batch_limit": 4,
+  "allowed_batches": [
+    "distinct host-bound reads",
+    "distinct host-bound delegates"
+  ],
+  "rejected": [
+    "duplicate IDs/reads",
+    "out-of-scope objects",
+    "mixed finish/work",
+    "dependent pages",
+    "known tool budget excess"
+  ],
+  "sdk_substitute_full_task_counts": {
+    "A": 4,
+    "B": 4,
+    "C": 8
+  },
+  "backend_calls_each": 6,
+  "verified_targets_each": 23,
+  "verified_witness_rows_each": 48,
+  "source_sha256": {
+    "experiments/architecture_candidates/pair_protocol.py": "cdfbb5b673f3b70ab0b8d1b1d6f0a3c37ce52cd37734d69e6b0b45367a9babd0",
+    "experiments/architecture_candidates/deepagents_pair.py": "bec02047077963df45aa4b47a4facbe8804668b2da3a529bf86b33af2d2a0af4",
+    "experiments/architecture_candidates/test_pair_batches.py": "563386c230e495e94b3f068c09da0a736a1f13f450f4e11d9d5d33a89a7b5f5d",
+    "scripts/eval_architecture_abc_live_synthetic.py": "8f53a9d7fb0d80f6fb1fe5a9bfa399d1598f3c5b46cc0468afb978ca302de320",
+    "scripts/replay_abc_batch_diagnostic.py": "863c05b2823aef38744a6b8ffc7195dcecb0ba192293af9f871ca8f3fd89ccda"
+  }
+}

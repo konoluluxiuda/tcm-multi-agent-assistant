@@ -1,3 +1,3 @@
 # Optional, installed into the local ONNX retrieval environment; core API does not need it.
-# Existing repository Qdrant SDK pin. No remote inference extras.
-qdrant-client==1.13.3
+# Compatible with the LangChain 1.x Qdrant adapter. No remote inference extras.
+qdrant-client==1.20.0

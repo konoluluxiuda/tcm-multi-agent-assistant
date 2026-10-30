@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "current_entity_preserved": "白术",
+  "all_current_clauses_preserved": true,
+  "negative_entity_application_rejected": true,
+  "all_four_projects_listed": true,
+  "unsaved_herb_no_candidate": true,
+  "listing_selection_retains_saved_focus": true,
+  "no_automatic_job_submission": true,
+  "javascript_errors": [],
+  "external_model_calls": 0
+}

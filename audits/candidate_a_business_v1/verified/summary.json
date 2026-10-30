@@ -1,0 +1,1821 @@
+{
+  "status": "passed",
+  "data": "synthetic_only",
+  "external_model_calls": 0,
+  "driver": "deterministic_declared_actions_not_llm_planning",
+  "framework": {
+    "langgraph": "1.2.18",
+    "langgraph-checkpoint": "4.3.1",
+    "langgraph-checkpoint-postgres": "3.2.0",
+    "langchain-core": "1.7.0",
+    "langchain-openai": "1.7.3",
+    "openai": "2.54.0"
+  },
+  "business_tools": 5,
+  "tool_calls": 6,
+  "driver_steps": 4,
+  "verified_profile_original_rows": 24,
+  "verified_ranking_witness_rows": 14,
+  "source_databases_unchanged": true,
+  "run": {
+    "events": [
+      {
+        "call_id": "local-0",
+        "tool": "search_disease_sources",
+        "arguments": {
+          "page_size": 20,
+          "name": "Synthetic disease",
+          "page": 1
+        },
+        "status": "ok",
+        "evidence_id": "obs-1",
+        "elapsed_ms": 752.001
+      },
+      {
+        "call_id": "local-1",
+        "tool": "herb_target_profile",
+        "arguments": {
+          "name": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf"
+        },
+        "status": "ok",
+        "evidence_id": "obs-2",
+        "elapsed_ms": 764.583
+      },
+      {
+        "call_id": "local-2",
+        "tool": "herb_target_similarity",
+        "arguments": {
+          "name": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+          "metric": "jaccard",
+          "top_k": 5
+        },
+        "status": "ok",
+        "evidence_id": "obs-3",
+        "elapsed_ms": 775.805
+      },
+      {
+        "call_id": "local-3",
+        "tool": "disease_gene_profile",
+        "arguments": {
+          "name": "etcm-disease:768fe4b9aaba2beaebd553f60681db4c6bfef243e85ec47becd70663ccb20456",
+          "page": 1
+        },
+        "status": "ok",
+        "evidence_id": "obs-4",
+        "elapsed_ms": 741.386
+      },
+      {
+        "call_id": "local-4",
+        "tool": "rank_herbs_for_gene_set",
+        "arguments": {
+          "name": "etcm-disease:768fe4b9aaba2beaebd553f60681db4c6bfef243e85ec47becd70663ccb20456",
+          "metric": "jaccard",
+          "top_k": 5
+        },
+        "status": "ok",
+        "evidence_id": "obs-5",
+        "elapsed_ms": 750.102
+      },
+      {
+        "call_id": "local-5",
+        "tool": "disease_gene_profile",
+        "arguments": {
+          "name": "etcm-disease:768fe4b9aaba2beaebd553f60681db4c6bfef243e85ec47becd70663ccb20456",
+          "page": 2
+        },
+        "status": "ok",
+        "evidence_id": "obs-6",
+        "elapsed_ms": 773.206
+      },
+      {
+        "call_id": "local-6",
+        "tool": "finish_research",
+        "status": "complete",
+        "evidence_ids": [
+          "obs-1",
+          "obs-2",
+          "obs-3",
+          "obs-4",
+          "obs-5",
+          "obs-6"
+        ],
+        "unresolved": []
+      }
+    ],
+    "evidence": {
+      "obs-1": {
+        "version": 1,
+        "tool": "search_disease_sources",
+        "status": "ok",
+        "data": {
+          "page_size": 20,
+          "query": "Synthetic disease",
+          "dataset_version": "disease-v1",
+          "catalog_revision": "ff63bd66f46cde7919dda319cd56ffdfcee250e91038fb07a72ec0953cb9829a",
+          "total": 1,
+          "page": 1,
+          "has_next": false,
+          "items": [
+            {
+              "record_id": "etcm-disease:768fe4b9aaba2beaebd553f60681db4c6bfef243e85ec47becd70663ccb20456",
+              "name": "Synthetic disease",
+              "target_count": 3,
+              "capture_state": "source_reported_complete",
+              "species_status": "not_recorded",
+              "source": {
+                "relative_path": "etcm_diseases/Synthetic_disease.json",
+                "file_sha256": "768fe4b9aaba2beaebd553f60681db4c6bfef243e85ec47becd70663ccb20456",
+                "name": "Synthetic disease"
+              },
+              "match_kind": "exact"
+            }
+          ]
+        },
+        "error": null,
+        "elapsed_ms": 0.8673880074638873
+      },
+      "obs-2": {
+        "version": 1,
+        "tool": "herb_target_profile",
+        "status": "ok",
+        "data": {
+          "algorithm_version": "source_target_sets_v1",
+          "dataset_version": "v1",
+          "catalog_revision": "47005fbdbf78ff552b9c1d77041b5846df889dd741ecc2a4c3f860fbf8ce37ba",
+          "profile": {
+            "source": {
+              "source_record_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+              "name": "测试甲草",
+              "name_pinyin": "Alpha",
+              "source": {
+                "source_namespace": "etcm2-local",
+                "dataset_version": "v1",
+                "relative_file_path": "etcm_herbs/Alpha.json",
+                "file_sha256": "be15b580fd1a3dfd137ee6aba3acf9453dfdd21adcda3439219b784f525cbb95",
+                "section_id": "base_information",
+                "normalization_rule_version": 1,
+                "review_status": "unverified"
+              },
+              "capture_status": [
+                {
+                  "section": "related_table",
+                  "type": "target",
+                  "status": "partial"
+                }
+              ],
+              "name_identity_verified": false
+            },
+            "target_ids": [
+              "P00000",
+              "P00001",
+              "P00002",
+              "P00003",
+              "P00004",
+              "P00005",
+              "P00006",
+              "P00007",
+              "P00008",
+              "P00009",
+              "P00010",
+              "P00011",
+              "P00012",
+              "P00013",
+              "P00014",
+              "P00015",
+              "P00016",
+              "P00017",
+              "P00018",
+              "P00019",
+              "P00020",
+              "P00021",
+              "P00022",
+              "Q00000"
+            ],
+            "target_count": 24,
+            "source_row_count": 26,
+            "unidentified_rows": 1,
+            "duplicate_identifier_rows": 1
+          },
+          "coverage": {
+            "source_records": 2,
+            "with_targets": 2,
+            "without_targets": 0,
+            "distinct_identifiers": 25
+          }
+        },
+        "error": null,
+        "elapsed_ms": 1.3118120259605348
+      },
+      "obs-3": {
+        "version": 1,
+        "tool": "herb_target_similarity",
+        "status": "ok",
+        "data": {
+          "algorithm_version": "source_target_sets_v1",
+          "dataset_version": "v1",
+          "catalog_revision": "47005fbdbf78ff552b9c1d77041b5846df889dd741ecc2a4c3f860fbf8ce37ba",
+          "profile": {
+            "source": {
+              "source_record_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+              "name": "测试甲草",
+              "name_pinyin": "Alpha",
+              "source": {
+                "source_namespace": "etcm2-local",
+                "dataset_version": "v1",
+                "relative_file_path": "etcm_herbs/Alpha.json",
+                "file_sha256": "be15b580fd1a3dfd137ee6aba3acf9453dfdd21adcda3439219b784f525cbb95",
+                "section_id": "base_information",
+                "normalization_rule_version": 1,
+                "review_status": "unverified"
+              },
+              "capture_status": [
+                {
+                  "section": "related_table",
+                  "type": "target",
+                  "status": "partial"
+                }
+              ],
+              "name_identity_verified": false
+            },
+            "target_ids": [
+              "P00000",
+              "P00001",
+              "P00002",
+              "P00003",
+              "P00004",
+              "P00005",
+              "P00006",
+              "P00007",
+              "P00008",
+              "P00009",
+              "P00010",
+              "P00011",
+              "P00012",
+              "P00013",
+              "P00014",
+              "P00015",
+              "P00016",
+              "P00017",
+              "P00018",
+              "P00019",
+              "P00020",
+              "P00021",
+              "P00022",
+              "Q00000"
+            ],
+            "target_count": 24,
+            "source_row_count": 26,
+            "unidentified_rows": 1,
+            "duplicate_identifier_rows": 1
+          },
+          "coverage": {
+            "source_records": 2,
+            "with_targets": 2,
+            "without_targets": 0,
+            "distinct_identifiers": 25
+          },
+          "metric": "jaccard",
+          "top_k": 5,
+          "eligible_peers": 1,
+          "overlapping_peers": 1,
+          "items": [
+            {
+              "source_record_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "source": {
+                "source_record_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+                "name": "测试乙草",
+                "name_pinyin": "Beta",
+                "source": {
+                  "source_namespace": "etcm2-local",
+                  "dataset_version": "v1",
+                  "relative_file_path": "etcm_herbs/Beta.json",
+                  "file_sha256": "ba090ef230d45d430571d3f196dcdd37287f687d0f05dc4ac10895e926350c39",
+                  "section_id": "base_information",
+                  "normalization_rule_version": 1,
+                  "review_status": "unverified"
+                },
+                "capture_status": [
+                  {
+                    "section": "related_table",
+                    "type": "target",
+                    "status": "partial"
+                  }
+                ],
+                "name_identity_verified": false
+              },
+              "shared_ids": [
+                "P00000",
+                "P00001",
+                "P00002",
+                "P00003",
+                "P00004",
+                "P00005",
+                "P00006",
+                "P00007",
+                "P00008",
+                "P00009",
+                "P00010",
+                "P00011",
+                "P00012",
+                "P00013",
+                "P00014",
+                "P00015",
+                "P00016",
+                "P00017",
+                "P00018",
+                "P00019",
+                "P00020",
+                "P00021",
+                "P00022"
+              ],
+              "query_only_ids": [
+                "Q00000"
+              ],
+              "candidate_only_ids": [
+                "Q00001"
+              ],
+              "shared_count": 23,
+              "union_count": 25,
+              "target_count": 24,
+              "jaccard": 0.92
+            }
+          ]
+        },
+        "error": null,
+        "elapsed_ms": 1.5161200135480613
+      },
+      "obs-4": {
+        "version": 1,
+        "tool": "disease_gene_profile",
+        "status": "ok",
+        "data": {
+          "record_id": "etcm-disease:768fe4b9aaba2beaebd553f60681db4c6bfef243e85ec47becd70663ccb20456",
+          "dataset_version": "disease-v1",
+          "catalog_revision": "4791cba77da4f955366669cdf45f8a59270d787e65d0131d0e699c6085c68cf0",
+          "profile": {
+            "name": "Synthetic disease",
+            "identity_status": "source_identity_consistent_not_externally_verified",
+            "identity_fields": {
+              "Disease Name": [
+                "Synthetic disease"
+              ]
+            },
+            "identity_pointers": {
+              "Disease Name": [
+                "/data/0/value/0/value"
+              ]
+            },
+            "capture_status": [
+              {
+                "section": "related_table",
+                "type": "target",
+                "status": "ok",
+                "actual": 24,
+                "expected": 24
+              }
+            ],
+            "capture_state": "source_reported_complete",
+            "target_tables": 1,
+            "target_row_count": 24,
+            "target_count": 3,
+            "unidentified_rows": 0,
+            "duplicate_identifier_rows": 21,
+            "conflicting_gene_identifiers": [],
+            "species_fields": {},
+            "rows_with_species_fields": 0,
+            "species_status": "not_recorded",
+            "external_disease_id_status": "not_mapped",
+            "target_row_keys": [
+              "Gene Symbol",
+              "UniProt Accession Number"
+            ],
+            "association_scope": "source_reported_disease_target_not_independent_validation",
+            "source": {
+              "relative_path": "etcm_diseases/Synthetic_disease.json",
+              "file_sha256": "768fe4b9aaba2beaebd553f60681db4c6bfef243e85ec47becd70663ccb20456",
+              "name": "Synthetic disease"
+            },
+            "background_overlap": {
+              "target_count": 2,
+              "outside_background_count": 1,
+              "herb_background_target_count": 25
+            },
+            "target_set_sha256": "51df59f851584b74a87313abd33c3c4fe2292dd9d3ba3b91359e58c0aca662cc"
+          },
+          "target_ids": [
+            "P00000",
+            "Q00000",
+            "R99999"
+          ],
+          "rows": [
+            {
+              "ordinal": 0,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/0",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 1,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/1",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 2,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/2",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 3,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/3",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 4,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/4",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 5,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/5",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 6,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/6",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 7,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/7",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 8,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/8",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 9,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/9",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 10,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/10",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 11,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/11",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 12,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/12",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 13,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/13",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 14,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/14",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 15,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/15",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 16,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/16",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 17,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/17",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 18,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/18",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 19,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/19",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            }
+          ],
+          "page": 1,
+          "has_next": true,
+          "identical_set_sources": 1
+        },
+        "error": null,
+        "elapsed_ms": 1.0639299871399999
+      },
+      "obs-5": {
+        "version": 1,
+        "tool": "rank_herbs_for_gene_set",
+        "status": "ok",
+        "data": {
+          "record_id": "etcm-disease:768fe4b9aaba2beaebd553f60681db4c6bfef243e85ec47becd70663ccb20456",
+          "dataset_version": "disease-v1",
+          "catalog_revision": "1075943fd797cc0a7092ad82bacf1541e9f259730b1f527c65b9adebcf8344f9",
+          "profile": {
+            "name": "Synthetic disease",
+            "identity_status": "source_identity_consistent_not_externally_verified",
+            "identity_fields": {
+              "Disease Name": [
+                "Synthetic disease"
+              ]
+            },
+            "identity_pointers": {
+              "Disease Name": [
+                "/data/0/value/0/value"
+              ]
+            },
+            "capture_status": [
+              {
+                "section": "related_table",
+                "type": "target",
+                "status": "ok",
+                "actual": 24,
+                "expected": 24
+              }
+            ],
+            "capture_state": "source_reported_complete",
+            "target_tables": 1,
+            "target_row_count": 24,
+            "target_count": 3,
+            "unidentified_rows": 0,
+            "duplicate_identifier_rows": 21,
+            "conflicting_gene_identifiers": [],
+            "species_fields": {},
+            "rows_with_species_fields": 0,
+            "species_status": "not_recorded",
+            "external_disease_id_status": "not_mapped",
+            "target_row_keys": [
+              "Gene Symbol",
+              "UniProt Accession Number"
+            ],
+            "association_scope": "source_reported_disease_target_not_independent_validation",
+            "source": {
+              "relative_path": "etcm_diseases/Synthetic_disease.json",
+              "file_sha256": "768fe4b9aaba2beaebd553f60681db4c6bfef243e85ec47becd70663ccb20456",
+              "name": "Synthetic disease"
+            },
+            "background_overlap": {
+              "target_count": 2,
+              "outside_background_count": 1,
+              "herb_background_target_count": 25
+            },
+            "target_set_sha256": "51df59f851584b74a87313abd33c3c4fe2292dd9d3ba3b91359e58c0aca662cc"
+          },
+          "target_ids": [
+            "P00000",
+            "Q00000",
+            "R99999"
+          ],
+          "rows": [
+            {
+              "ordinal": 0,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/0",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 1,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/1",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 2,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/2",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 3,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/3",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 4,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/4",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 5,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/5",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 6,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/6",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 7,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/7",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 8,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/8",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 9,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/9",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 10,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/10",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 11,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/11",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 12,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/12",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 13,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/13",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 14,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/14",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 15,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/15",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 16,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/16",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 17,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/17",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 18,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/18",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 19,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/19",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            }
+          ],
+          "page": 1,
+          "has_next": true,
+          "identical_set_sources": 1,
+          "size_context": {
+            "background_size": 25,
+            "query_background_count": 2
+          },
+          "algorithm_version": "source_target_sets_v1",
+          "herb_dataset_version": "v1",
+          "coverage": {
+            "source_records": 2,
+            "with_targets": 2,
+            "without_targets": 0,
+            "distinct_identifiers": 25
+          },
+          "metric": "jaccard",
+          "top_k": 5,
+          "eligible_peers": 2,
+          "overlapping_peers": 2,
+          "items": [
+            {
+              "source_record_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+              "source": {
+                "source_record_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+                "name": "测试甲草",
+                "name_pinyin": "Alpha",
+                "source": {
+                  "source_namespace": "etcm2-local",
+                  "dataset_version": "v1",
+                  "relative_file_path": "etcm_herbs/Alpha.json",
+                  "file_sha256": "be15b580fd1a3dfd137ee6aba3acf9453dfdd21adcda3439219b784f525cbb95",
+                  "section_id": "base_information",
+                  "normalization_rule_version": 1,
+                  "review_status": "unverified"
+                },
+                "capture_status": [
+                  {
+                    "section": "related_table",
+                    "type": "target",
+                    "status": "partial"
+                  }
+                ],
+                "name_identity_verified": false
+              },
+              "shared_ids": [
+                "P00000",
+                "Q00000"
+              ],
+              "query_only_ids": [
+                "R99999"
+              ],
+              "candidate_only_ids": [
+                "P00001",
+                "P00002",
+                "P00003",
+                "P00004",
+                "P00005",
+                "P00006",
+                "P00007",
+                "P00008",
+                "P00009",
+                "P00010",
+                "P00011",
+                "P00012",
+                "P00013",
+                "P00014",
+                "P00015",
+                "P00016",
+                "P00017",
+                "P00018",
+                "P00019",
+                "P00020",
+                "P00021",
+                "P00022"
+              ],
+              "shared_count": 2,
+              "union_count": 25,
+              "target_count": 24,
+              "jaccard": 0.08,
+              "evidence": [
+                {
+                  "uniprot": "P00000",
+                  "herb_rows": [
+                    {
+                      "json_pointer": "/data/1/value/0/value/0",
+                      "raw_row": {
+                        "Target Name": [
+                          "Alpha target 0"
+                        ],
+                        "UniProt Accession Number": [
+                          "P00000"
+                        ]
+                      }
+                    },
+                    {
+                      "json_pointer": "/data/1/value/0/value/23",
+                      "raw_row": {
+                        "Target Name": [
+                          "Alpha target 0"
+                        ],
+                        "UniProt Accession Number": [
+                          "P00000"
+                        ]
+                      }
+                    }
+                  ],
+                  "disease_rows": [
+                    {
+                      "json_pointer": "/data/1/value/0/value/0",
+                      "raw_row": {
+                        "UniProt Accession Number": [
+                          "P00000"
+                        ],
+                        "Gene Symbol": [
+                          "SYNTHETIC"
+                        ]
+                      }
+                    },
+                    {
+                      "json_pointer": "/data/1/value/0/value/3",
+                      "raw_row": {
+                        "UniProt Accession Number": [
+                          "P00000"
+                        ],
+                        "Gene Symbol": [
+                          "SYNTHETIC"
+                        ]
+                      }
+                    },
+                    {
+                      "json_pointer": "/data/1/value/0/value/6",
+                      "raw_row": {
+                        "UniProt Accession Number": [
+                          "P00000"
+                        ],
+                        "Gene Symbol": [
+                          "SYNTHETIC"
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "uniprot": "Q00000",
+                  "herb_rows": [
+                    {
+                      "json_pointer": "/data/1/value/0/value/25",
+                      "raw_row": {
+                        "Target Name": [
+                          "Different ID same name"
+                        ],
+                        "UniProt Accession Number": [
+                          "Q00000"
+                        ]
+                      }
+                    }
+                  ],
+                  "disease_rows": [
+                    {
+                      "json_pointer": "/data/1/value/0/value/1",
+                      "raw_row": {
+                        "UniProt Accession Number": [
+                          "Q00000"
+                        ],
+                        "Gene Symbol": [
+                          "SYNTHETIC"
+                        ]
+                      }
+                    },
+                    {
+                      "json_pointer": "/data/1/value/0/value/4",
+                      "raw_row": {
+                        "UniProt Accession Number": [
+                          "Q00000"
+                        ],
+                        "Gene Symbol": [
+                          "SYNTHETIC"
+                        ]
+                      }
+                    },
+                    {
+                      "json_pointer": "/data/1/value/0/value/7",
+                      "raw_row": {
+                        "UniProt Accession Number": [
+                          "Q00000"
+                        ],
+                        "Gene Symbol": [
+                          "SYNTHETIC"
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "expected_shared_count": 1.92,
+              "observed_minus_expected": 0.08000000000000007
+            },
+            {
+              "source_record_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "source": {
+                "source_record_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+                "name": "测试乙草",
+                "name_pinyin": "Beta",
+                "source": {
+                  "source_namespace": "etcm2-local",
+                  "dataset_version": "v1",
+                  "relative_file_path": "etcm_herbs/Beta.json",
+                  "file_sha256": "ba090ef230d45d430571d3f196dcdd37287f687d0f05dc4ac10895e926350c39",
+                  "section_id": "base_information",
+                  "normalization_rule_version": 1,
+                  "review_status": "unverified"
+                },
+                "capture_status": [
+                  {
+                    "section": "related_table",
+                    "type": "target",
+                    "status": "partial"
+                  }
+                ],
+                "name_identity_verified": false
+              },
+              "shared_ids": [
+                "P00000"
+              ],
+              "query_only_ids": [
+                "Q00000",
+                "R99999"
+              ],
+              "candidate_only_ids": [
+                "P00001",
+                "P00002",
+                "P00003",
+                "P00004",
+                "P00005",
+                "P00006",
+                "P00007",
+                "P00008",
+                "P00009",
+                "P00010",
+                "P00011",
+                "P00012",
+                "P00013",
+                "P00014",
+                "P00015",
+                "P00016",
+                "P00017",
+                "P00018",
+                "P00019",
+                "P00020",
+                "P00021",
+                "P00022",
+                "Q00001"
+              ],
+              "shared_count": 1,
+              "union_count": 26,
+              "target_count": 24,
+              "jaccard": 0.038461538461538464,
+              "evidence": [
+                {
+                  "uniprot": "P00000",
+                  "herb_rows": [
+                    {
+                      "json_pointer": "/data/1/value/0/value/0",
+                      "raw_row": {
+                        "Target Name": [
+                          "Beta target 0"
+                        ],
+                        "UniProt Accession Number": [
+                          "P00000"
+                        ]
+                      }
+                    },
+                    {
+                      "json_pointer": "/data/1/value/0/value/23",
+                      "raw_row": {
+                        "Target Name": [
+                          "Beta target 0"
+                        ],
+                        "UniProt Accession Number": [
+                          "P00000"
+                        ]
+                      }
+                    }
+                  ],
+                  "disease_rows": [
+                    {
+                      "json_pointer": "/data/1/value/0/value/0",
+                      "raw_row": {
+                        "UniProt Accession Number": [
+                          "P00000"
+                        ],
+                        "Gene Symbol": [
+                          "SYNTHETIC"
+                        ]
+                      }
+                    },
+                    {
+                      "json_pointer": "/data/1/value/0/value/3",
+                      "raw_row": {
+                        "UniProt Accession Number": [
+                          "P00000"
+                        ],
+                        "Gene Symbol": [
+                          "SYNTHETIC"
+                        ]
+                      }
+                    },
+                    {
+                      "json_pointer": "/data/1/value/0/value/6",
+                      "raw_row": {
+                        "UniProt Accession Number": [
+                          "P00000"
+                        ],
+                        "Gene Symbol": [
+                          "SYNTHETIC"
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ],
+              "expected_shared_count": 1.92,
+              "observed_minus_expected": -0.9199999999999999
+            }
+          ],
+          "background_target_ids": [
+            "P00000",
+            "Q00000"
+          ],
+          "outside_background_ids": [
+            "R99999"
+          ]
+        },
+        "error": null,
+        "elapsed_ms": 2.5534110027365386
+      },
+      "obs-6": {
+        "version": 1,
+        "tool": "disease_gene_profile",
+        "status": "ok",
+        "data": {
+          "record_id": "etcm-disease:768fe4b9aaba2beaebd553f60681db4c6bfef243e85ec47becd70663ccb20456",
+          "dataset_version": "disease-v1",
+          "catalog_revision": "4791cba77da4f955366669cdf45f8a59270d787e65d0131d0e699c6085c68cf0",
+          "profile": {
+            "name": "Synthetic disease",
+            "identity_status": "source_identity_consistent_not_externally_verified",
+            "identity_fields": {
+              "Disease Name": [
+                "Synthetic disease"
+              ]
+            },
+            "identity_pointers": {
+              "Disease Name": [
+                "/data/0/value/0/value"
+              ]
+            },
+            "capture_status": [
+              {
+                "section": "related_table",
+                "type": "target",
+                "status": "ok",
+                "actual": 24,
+                "expected": 24
+              }
+            ],
+            "capture_state": "source_reported_complete",
+            "target_tables": 1,
+            "target_row_count": 24,
+            "target_count": 3,
+            "unidentified_rows": 0,
+            "duplicate_identifier_rows": 21,
+            "conflicting_gene_identifiers": [],
+            "species_fields": {},
+            "rows_with_species_fields": 0,
+            "species_status": "not_recorded",
+            "external_disease_id_status": "not_mapped",
+            "target_row_keys": [
+              "Gene Symbol",
+              "UniProt Accession Number"
+            ],
+            "association_scope": "source_reported_disease_target_not_independent_validation",
+            "source": {
+              "relative_path": "etcm_diseases/Synthetic_disease.json",
+              "file_sha256": "768fe4b9aaba2beaebd553f60681db4c6bfef243e85ec47becd70663ccb20456",
+              "name": "Synthetic disease"
+            },
+            "background_overlap": {
+              "target_count": 2,
+              "outside_background_count": 1,
+              "herb_background_target_count": 25
+            },
+            "target_set_sha256": "51df59f851584b74a87313abd33c3c4fe2292dd9d3ba3b91359e58c0aca662cc"
+          },
+          "target_ids": [
+            "P00000",
+            "Q00000",
+            "R99999"
+          ],
+          "rows": [
+            {
+              "ordinal": 20,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/20",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 21,
+              "uniprot": "P00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/21",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "P00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 22,
+              "uniprot": "Q00000",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/22",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "Q00000"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            },
+            {
+              "ordinal": 23,
+              "uniprot": "R99999",
+              "gene": "SYNTHETIC",
+              "json_pointer": "/data/1/value/0/value/23",
+              "raw_row": {
+                "UniProt Accession Number": [
+                  "R99999"
+                ],
+                "Gene Symbol": [
+                  "SYNTHETIC"
+                ]
+              },
+              "row_status": "source_identifier_format_valid",
+              "species_fields": {}
+            }
+          ],
+          "page": 2,
+          "has_next": false,
+          "identical_set_sources": 1
+        },
+        "error": null,
+        "elapsed_ms": 1.5228730044327676
+      }
+    },
+    "model_calls": 4,
+    "tool_calls": 6,
+    "status": "complete",
+    "reason": "declared_actions_complete",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "coverage": {
+      "requirements": [
+        {
+          "requirement_id": "discover",
+          "fulfilled": true,
+          "evidence_ids": [
+            "obs-1"
+          ]
+        },
+        {
+          "requirement_id": "original-rows",
+          "fulfilled": true,
+          "evidence_ids": [
+            "obs-4",
+            "obs-6"
+          ]
+        },
+        {
+          "requirement_id": "candidates",
+          "fulfilled": true,
+          "evidence_ids": [
+            "obs-5"
+          ]
+        },
+        {
+          "requirement_id": "herb-profile",
+          "fulfilled": true,
+          "evidence_ids": [
+            "obs-2"
+          ]
+        },
+        {
+          "requirement_id": "herb-neighbours",
+          "fulfilled": true,
+          "evidence_ids": [
+            "obs-3"
+          ]
+        }
+      ],
+      "unhandled_requirements": [],
+      "complete": true
+    },
+    "context_checks": [
+      {
+        "input_bytes_before": 5874,
+        "input_bytes_after": 5874,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens",
+        "input_estimate": 5874,
+        "input_estimator": "utf8_byte_proxy",
+        "remaining_input_budget": 160000,
+        "per_call_input_budget": 56000
+      },
+      {
+        "input_bytes_before": 12188,
+        "input_bytes_after": 12188,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens",
+        "input_estimate": 12188,
+        "input_estimator": "utf8_byte_proxy",
+        "remaining_input_budget": 154126,
+        "per_call_input_budget": 56000
+      },
+      {
+        "input_bytes_before": 33400,
+        "input_bytes_after": 33400,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens",
+        "input_estimate": 33400,
+        "input_estimator": "utf8_byte_proxy",
+        "remaining_input_budget": 141938,
+        "per_call_input_budget": 56000
+      },
+      {
+        "input_bytes_before": 36867,
+        "input_bytes_after": 36867,
+        "input_byte_limit": 56000,
+        "compacted_call_ids": [],
+        "fits": true,
+        "measurement": "serialized_utf8_bytes_not_tokens",
+        "input_estimate": 36867,
+        "input_estimator": "utf8_byte_proxy",
+        "remaining_input_budget": 108538,
+        "per_call_input_budget": 56000
+      }
+    ],
+    "estimated_input_units": 88329,
+    "input_estimator": "utf8_byte_proxy",
+    "usage_reported_calls": 0,
+    "completion_scope": "explicit_actions"
+  },
+  "limits": [
+    "Not a live-model quality or latency evaluation",
+    "The HTTP actions endpoint uses this local driver, not an external model",
+    "Free-text multi-requirement compilation and large-result offload are not integrated here"
+  ],
+  "network_attempts": 0,
+  "source_sha256": {
+    "scripts/check_candidate_a_business.py": "32d420b92d9d09ffeb9a81300cfda26d4a1356fb62673eba09c281803bb750c4",
+    "tests/research_business_fixture.py": "9ec0a59ffd7e5123497c2c0c383430607edfda52dc19c5ddba2604aca2cb9885",
+    "tests/test_research_run_business.py": "3406c682e31deef0b6eaf8e45db96daecf9a471a2c898bafee35efd0c88d4e66",
+    "tcm/api.py": "e6272e811a70afb2829c985dc340eeb6b2d2110daa6b8fe28936f7236b8c80b6",
+    "tcm/task_errors.py": "393e8662c9ed376d8add01c7c278a3808e77787a994e0fd1bbdd89a8421bea97",
+    "tcm/pubmed.py": "d4ac0658cd556dad2db3ba9a866351e2806af5fecec447ba2ee608c3abb80361",
+    "tcm/research_task_local.py": "23d187da93df6e82ab518cf2b77a75075b8dfda39169de91411c019b639d586f",
+    "tcm/evidence_bundle.py": "cf02496fa65aed8e1631c87c64ba70fc88191818bf53e042f7aadf714469d4e6",
+    "tcm/agent_pubmed.py": "8bc3849481aaf96033b5e28fea236ffefbc3419f1820d97376f0dd1cd99b27a1",
+    "tcm/research_run.py": "5bb5826e540628cd3e18fb6d6d9c02e88cd07e327847b73fcac0ad1528c22b0c",
+    "tcm/research_task_store.py": "13678791ac9f7e8c260c795250b06ca74107da8cfb296b2f802973df6791aaa8",
+    "tcm/local_translation.py": "4e5e2513c4ec9b0767dcc77c483feee87adf4c510ac5ed07d7dee5b85c86dce4",
+    "tcm/research_run_durable.py": "6ae7c21e7ba8d7e1b9a83b7b16ddbd9501e2a3f1190891277571e08b5fb76522",
+    "tcm/evidence_assistant.py": "376abe75cb4a187fca36b096f209fbbfe26c68aef718d11939d599411df5c39d",
+    "tcm/pharmacopoeia.py": "e42972de65d96fc81f192abb4462d85a0bd16c51a89083de3f92d2305dd755d2",
+    "tcm/task_planner.py": "d0956e19c2fe7058dc200e3c0b767fd7ef996c9e94cdddd8d597ef77fa18db7b",
+    "tcm/etcm_enrichment.py": "47ab0d3eb88afbf46e910a439cb4db98c0734fa009b64967c75cc1ec57546d48",
+    "tcm/mcp_server.py": "da1d4bf1f548b3d12d1a3a37c19b599de733fb642d352feacc4b16d9546c2b3a",
+    "tcm/research_job_api.py": "de3f04ad1d7cc38fd197184de59e93e618966c783cdf1b366c2a23c213c95eef",
+    "tcm/research_actions.py": "95a9aa40fcdfad009afe80ad60f048f58904a4c591c04feabcee5b3fd7404de7",
+    "tcm/research_evidence_read.py": "9efd5f007f23d12efaf38a1bf2360ed6731af531a9fba8a8bca5c0d10ea7dbea",
+    "tcm/research_task_fixtures.py": "455fc6e3d1c30db7eda383c6f741d0b2e6bc878cebaa84a0451ddd75668f7232",
+    "tcm/project_memory.py": "c6d399bc943572c5c7fb1d73867ff2197d2ac32e73bd78654768394ca602880f",
+    "tcm/mcp_client.py": "044a40917b9bad532d0eec802f6bc1af8fa31f8ad475b43c44c56e191b9d8436",
+    "tcm/research_run_protocol.py": "3ae10be76668371ff2df232a03e7047933b1f9c377dbd5e189f0134bfa61e83a",
+    "tcm/local_dense.py": "ca9c724b8f016d4456c94d7f3c29320ad9d1b26e2b615cb617017e69a4551f9b",
+    "tcm/herb_target_paths.py": "c415d370a92f244f989a4223116e23ae987bb21df9701c44b406817d61f9ea64",
+    "tcm/research_run_demo.py": "649ac4202aaa31f49d35b56899233a760722708189b2b2a32a2fab91806ad5ee",
+    "tcm/pharmacopoeia_quality.py": "b12713d8be2ede3b656547931eced72b4e9c9966c0d54389cd4330727010a646",
+    "tcm/postgres_jobs.py": "74a3886c7b3ceac5615b4f8f133530ad38fd1cac3ea5928907f4238c7633221b",
+    "tcm/herbs.py": "11766cbbd9aedbe637c97794cf097ae9e1332d9c0aa4bff4012344bde6d02de0",
+    "tcm/agent_research.py": "78017735eb1726fc188cbd33b59a771bfd953c45f144b56f901cf26e7d6a142a",
+    "tcm/mineru_revisions.py": "eeb614db294bbb31942ae4be33a7911a4800dc1e24c9a2c5c160be5a3bd93cf3",
+    "tcm/project_memory_api.py": "bcfee58fdf19bd8db6a38b3f9bdea3908eff3c412399c0b68603be628976a798",
+    "tcm/mineru_retrieval.py": "5d4082e6b485ff63774e1d855fb9e9d4e480413ea84736ac0cf3e2027343aa01",
+    "tcm/mcp_contract.py": "9b796797cf44994a7343b2784468e169da85c4707c372ed76a3a75f7366a200f",
+    "tcm/task_tools.py": "c263a7f796a2a9e61427e9b7444614111b06fb261bd77c2f5fbcae2ccc251885",
+    "tcm/request_observability.py": "440850c263cddcac7bbe856f053cabf3f1664d905bf738fe71fbaaf92c30928f",
+    "tcm/request_coverage.py": "ca1edd784634930a9ae52cbca77d84aee393831dcbe9b008a831346b81772c3b",
+    "tcm/pharmacopoeia_comparison.py": "c23acb2410dc2e04e2857f9014cb405b76f2ec064f05d72dc6e92889e6cc7e3b",
+    "tcm/ingredient_details.py": "bf2c0d17670aaea41469f6ebcda860a67a144dab44aa777555b97f6aa5fa0f3e",
+    "tcm/assistant_fixtures.py": "57c6a110bc69c6265b32f9630a2fb0b8e2ad3d8ce11d07ed1240f594e92e1721",
+    "tcm/assistant_router.py": "29b754111fca56b9d4c6f2946b0f888a392b6e061d0669cf2d7c6314044678ef",
+    "tcm/request_boundaries.py": "4e179cd51e41af08a86e9e0e2fdcccd2a6e5ed848da7c814a2ab038f154092f5",
+    "tcm/task_plan.py": "47e3f83c669cfb26f9373ddef7f2cb5340e189f4286084b7aaf7c50b7e984bd7",
+    "tcm/target_ingredients.py": "d96eb7694084ad62c4f8f7f360dd123ddc33a8b0f1b4eb141a85e6bc16ad3403",
+    "tcm/research_run_api.py": "75037e55a57b1b3cc9837e116110dc20120f3cfb51d2cc58b35ce4d27b9b6f41",
+    "tcm/mineru_pharmacopoeia.py": "061e595624095760762ed4f8730dd39de762d4435a4e774501588ad245847921",
+    "tcm/mineru_guards.py": "9beb03849c4ce25c3152f8c7dba674aa3df165be6aa37d4a2e6b71efd797f4ae",
+    "tcm/research_run_store.py": "2cd7fe10a42dfa26c5c475afdf0dfc4de920b947438c10ae898341ac52f46790",
+    "tcm/relation_queries.py": "aead7e27f47b6968c01c9ba1880624cf14d566f52fe702e98952f674387bdf91",
+    "tcm/task_request.py": "68740a7291d1ea7e77c2a8f5abe9970ce1ec6f4aa76af74b7ea174258eb43434",
+    "tcm/__main__.py": "a7a7acbda60c5d17d503513fc5c8996ac8e5f824f828a81f72c1cac1ef4239ac",
+    "tcm/assistant_info.py": "137d9558daf700e3484b064b08a701e1ee355802aa5214c01d1eccda80629a77",
+    "tcm/bookmark_backup.py": "2be7a96a4270c1a19d3aabb96d009b1a64c904ccb962e1d39c847a2935682d14",
+    "tcm/research_task_report.py": "0e298f933c19f9e41f98ccd39546acb306dca1332aae99ae0a36ceb7af3baa08",
+    "tcm/comparison_report.py": "f34a1d157464cd1c12313e29587eb200ac8be7538409ff21965106a8eceaa8f5",
+    "tcm/runtime_versions.py": "3032bbcd3915acc89380789d97b810c88901e7a5d66b430e824cc73bef179478",
+    "tcm/bookmark_api.py": "94e3d7a5365593292a5feaa7014be8e22a6121806c33c8424c7faec3b9787fa3",
+    "tcm/target_herbs.py": "4c969f85760e376f8c9a8f4abc2e38fe3fef76f7ebd9ee487c8d76b0f04d4869",
+    "tcm/disease_catalog.py": "8d5cf7a4547c1427a31fa0a39c62a7254ef0ff86dea3a132db8d07db2fd82039",
+    "tcm/research_loop_store.py": "9f39dd3173b90a8128fc9ebd3c710fb6809f92bf284c049bb4bc39b141e68a75",
+    "tcm/runtime_backup.py": "909cbc0462540fe36ff4877be59105a163237fb92409505fc56aed1121c429e2",
+    "tcm/mineru_report.py": "51568c69b4de103c8a88e25638936b22b99350b25486c532f67195293ce952b5",
+    "tcm/research_objects.py": "990251ed0bde3711ae8c5089b44406a067a7c3b77a29fc086ff9cec596865e99",
+    "tcm/task_literature.py": "ecb8195488231ee6c6e68cda3cf7033936b6ddf4c63ac61c18c9901874fee503",
+    "tcm/research_run_local.py": "02b0f3b06b6e42079a0ab1bf55496ea3caf45262601f84a524a8e6ce525a0eef",
+    "tcm/pair_research_report.py": "a66f0723abce181df299d2e73ca2cf9ee2ce14ff88b1ca1170ab1d007fc4b483",
+    "tcm/research_run_sdk.py": "362ea72992075e476f1b5cc8cd43515bb6ffba746978ef8e2d0252e0b8595a45",
+    "tcm/pharmacopoeia_boundary_eval.py": "b1b975ff26fb022c19d9784dee3254edc7f10791fdff09089dc58239d2025abe",
+    "tcm/target_similarity.py": "cbe13634124fa714ad333bad21c771d3e5a3554d5110c2b53f80bd01311e263e",
+    "tcm/intent_guidance.py": "48d007dc68b4f0e18a9984939339b2c2418b2a370045b8bb847fdc67efd388d6",
+    "tcm/intent_planner.py": "3de6c9f25a770dac1f6bd5fe03a3b7c1ec6e49ba1e0877473da70c862682645b",
+    "tcm/research_context.py": "5e1c1c5750ada184e66a0adb78e3277884b18c3f1ce83ac8822016ee7dad2e57",
+    "tcm/analysis_chat.py": "f1bc15a9be5ae60c98dd9597f85e50cbc87b5a07b4e9db1ce413a56db5a68a5d",
+    "tcm/etcm_identity.py": "4c6056d4751db87117836877daf345d070cfbac1be1e5d43936dc281f5a34c06",
+    "tcm/mineru_chat.py": "9b7b1a97420c3ec14fc6036c7f2910b90880ceb181b009389a2a475af3047ef6",
+    "tcm/research_task.py": "6f4b5646c8571c7c4407c82358ffbff42726927de63907da148ee043eb90e422",
+    "tcm/__init__.py": "09a731cb2c684266ccd1c50b789de5bd78826c7e4169a78912c40ad04ae123ed",
+    "tcm/report_checkpoint.py": "2877269c750d05f798189002d9d6db538ce37cfd4a3aa4c126c5a9b026a85c1d",
+    "tcm/chat.py": "07ca4f367eeb383f22d53358d7eab04cacfe46a660446e3baa832b886c69177d",
+    "tcm/etcm_localization.py": "c230eeb89657b44651219128c4f90b07e9bca11626965c5b83d17ef05bf8039a",
+    "tcm/qdrant_dense.py": "42998472facd3ef8f6e33df96a83ab328e916764f00bd74f79e097319c0f27ce",
+    "tcm/attribute_intent.py": "ca88b4dfec38e51039d00ddcecbaf45b19cf4edac317ec6011b1ea9b3f0525b1",
+    "tcm/research_jobs.py": "42567189a585029b073863d79d68015deb0e035bc4d4cba834701780c6defcd6",
+    "tcm/analysis_tools.py": "f2459d76260a4d83a7d02d18503fc2f2f546e7ccbcbdfeea9a6528648f3bde0a",
+    "tcm/bookmark_report.py": "512513c476693475cf8823a797a0d1cd0e5688942a98603c1b197a68c0a7dfa7",
+    "tcm/compound_identity.py": "a732b7b676647116e2fb2d847cae3cdc3616af44748c6afb102c87ac5a386a06",
+    "tcm/research_observation.py": "c87405b6fe6689d0d9528a769b6143873a9e8880a1525dbc961f8c8043fc6fc5",
+    "tcm/research_synthetic_v2.py": "5900a664834947b651aabb37b5459d620d8fae4bec84c9479c81e41e5ef96435",
+    "tcm/mineru_research.py": "a42b44c67156011b02bd0284a9f3dbd977476d0eea3852db4abca5ca7c346092",
+    "tcm/dataset_info.py": "8e90494258734b67d2004932057468270b6a5bc5cf4de39adf28f17b990d5dcd",
+    "tcm/report_request.py": "afc07366bfc1378867434b3d5aec7f71897e1b225ef31a27f7e0367aff666a68",
+    "tcm/literature_store.py": "d29a397544cb9dd5bc5f8fc9930ee740ad4c5b2c2b6ae6187d65086130d2903f",
+    "tcm/research_bookmarks.py": "2bec5d8d352c426fcc8b54ac4063ee1947f35e95bc012537057b1bdebac56fec",
+    "tcm/research_task_api.py": "c005499ae4062f19ee287956d0d0412d733390241e65bfebfada751142e55b5c",
+    "tcm/disease_search.py": "481368fc3d9ddf0849612248bee14ff43f5796203761b6b6a63720516f117d32",
+    "tcm/disease_discovery_intent.py": "b41b7a75a945868ede629681b2050b898075043f2e50617b7178ea766f11cec5",
+    "tcm/literature_evidence.py": "089d89a19091c52c3ed6084b23d3aa07d39a283bc22fb752230d9b3d35c4310a",
+    "tcm/mineru_challenge.py": "92a5f98370dacf444c3a49fd3076613c936560b57ae0f00fe2ec147528098f64",
+    "tcm/disease_analysis.py": "4109b6d80ad3c21035e31a3f81f07c120f671157aaced893afd8f7761b0bf765",
+    "tcm/cross_source_report.py": "ad37f89e887d6607b8ff833edf0d49ce81ed143a497296f046e99c69dba1ba04",
+    "tcm/pharmacopoeia_research.py": "1ea441e0ded899986e35a5cd6bc5732423d6d85147f7bcceb22ff824873b0a16",
+    "tcm/project_semantic.py": "978052ac42f536ad02e38680d7ddb636fcc50ebf2f4ea6c65f358a0fdcd3ead8",
+    "tcm/target_size_null.py": "c7b7e39c4d13400d74f3a0299b625faae36d303146845c97a177cb261043b727",
+    "tcm/research_run_scope.py": "cc428da727473489c08e6ef46cc77eb6256b2209c936f16eea7d6af87a5b72d5",
+    "tcm/ranking_diagnostics.py": "9c445eabcea743f9f8063015975664dff647760cce10908240aebc25d17ebfef",
+    "tcm/task_contracts.py": "bdaf440d2d56f7b24eba5558e5d955480885506f2113ae6d64cbd5a8b994caf8",
+    "tcm/pharmacopoeia_segmentation.py": "208e4f3b8a8922563e24601b6e831905e22b25b6acde6f6e127a17365e15a198",
+    "tcm/research_token_budget.py": "55c95e6f2edaf51babe0378fc849f4cf08b995ed76a096c7b1345a4281cbb5c1",
+    "tcm/local_reranker.py": "4280d05cd0ab5d848340d4229861ae23ba06ccd113b4e3607f85fcf398adf4b7",
+    "tcm/research_loop_api.py": "0083055ada01a952a90837ac05a8956c7c84a4c3bd9a88c6922e4f5a64581521",
+    "tcm/relation_memory.py": "651e7fb61934a74935aa87221931ab94002aaf44087cfedff36074919c28fe18"
+  }
+}

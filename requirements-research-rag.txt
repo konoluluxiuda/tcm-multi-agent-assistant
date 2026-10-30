@@ -1,0 +1,10 @@
+# Optional original RAG adapters; no automatic model downloads.
+-r requirements-research-chat.txt
+langchain==1.4.7
+langchain-classic==1.0.8
+langchain-community==0.4.2
+langchain-qdrant==1.1.0
+langchain-text-splitters==1.1.3
+qdrant-client==1.20.0
+pydantic-settings==2.16.2
+numpy==1.26.4

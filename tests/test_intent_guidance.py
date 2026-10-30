@@ -110,10 +110,10 @@ class IntentGuidanceTests(unittest.TestCase):
 
     def test_disabled_literature_does_not_offer_to_search_after_asking_for_terms(self):
         request=resolve('如果这里没写清楚，你能不能找几篇最近的论文补一下，再把刚才这些内容和出处一起整理成一份我能下载的笔记？')['request']
-        result=execute(request);self.assertIn('未启用',result['message']);self.assertIn('下载笔记',result['message'])
+        result=execute(request);self.assertIn('已退役',result['message']);self.assertIn('下载笔记',result['message'])
         self.assertIn('不会写成已获取证据',result['message'])
         with patch.dict(os.environ,{'ENABLE_PUBMED':'1'}):
-            result=execute(request);self.assertNotIn('未启用',result['message']);self.assertIn('英文/拉丁名',result['message'])
+            result=execute(request);self.assertIn('已退役',result['message']);self.assertNotIn('请提供英文',result['message'])
         self.assertEqual(resolve('在PubMed检索 Example Herb')['tool'],'pubmed')
 
     def test_new_guidance_respects_natural_routing_switch_and_command_overrides(self):

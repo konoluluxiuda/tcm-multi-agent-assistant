@@ -1,0 +1,1210 @@
+{
+  "created_at": "2026-10-29T09:12:38.325097+00:00",
+  "mode": "read_only",
+  "raw_root": "/home/zry/workspace/HDCTI/dataset/ETCM2.0",
+  "sidecar": "var/research_update_20261020/runtime_catalogs/catalogs/enrichment.sqlite3",
+  "limitations": [
+    "Sidecar node groups are not verified unique formulas.",
+    "Ingredient sampling is bounded and not a prevalence estimate.",
+    "Filename matching is only a name candidate, not entity validation."
+  ],
+  "raw_inventory": {
+    "etcm_diseases": {
+      "json_files": 7705,
+      "bytes": 34542210363
+    },
+    "etcm_herbs": {
+      "json_files": 2076,
+      "bytes": 1553044450
+    },
+    "etcm_ingredients": {
+      "json_files": 38281,
+      "bytes": 138578840653
+    },
+    "etcm_targets": {
+      "json_files": 260,
+      "bytes": 7093716655
+    }
+  },
+  "sidecar_metadata": {
+    "kind": "\"etcm_enrichment_v1\"",
+    "build_complete": "true",
+    "dataset_version": "\"local-2026-10-10\"",
+    "base_database_sha256": "\"0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec\"",
+    "relations_are_source_assertions": "true",
+    "source_fingerprint": "\"9921499429128fa21b4b8dc2c5100f359970d8fa796a1dcee32ca8259fe02d80\""
+  },
+  "edges": [
+    {
+      "kind": "chinese_patent_drug",
+      "rows": 70007,
+      "herb_sources": 898,
+      "node_groups": 8927
+    },
+    {
+      "kind": "disease",
+      "rows": 14176,
+      "herb_sources": 801,
+      "node_groups": 1110
+    },
+    {
+      "kind": "external_reference",
+      "rows": 2626,
+      "herb_sources": 1621,
+      "node_groups": 2626
+    },
+    {
+      "kind": "ingredient",
+      "rows": 67342,
+      "herb_sources": 1898,
+      "node_groups": 38199
+    },
+    {
+      "kind": "reference_pmid",
+      "rows": 91,
+      "herb_sources": 65,
+      "node_groups": 89
+    },
+    {
+      "kind": "target",
+      "rows": 126775,
+      "herb_sources": 1849,
+      "node_groups": 969
+    },
+    {
+      "kind": "traditional_chinese_medicine_formula",
+      "rows": 303566,
+      "herb_sources": 654,
+      "node_groups": 46273
+    }
+  ],
+  "formula_details": {
+    "traditional_chinese_medicine_formula": {
+      "rows": 303566,
+      "keys": {
+        "linkformat": 303566,
+        "Formula Name in Chinese Pinyin": 303566,
+        "Dosage Form": 303566,
+        "Herbs Contained in This Formula (Chinese Pinyin)": 303566,
+        "Major Symptoms or Signs": 303566,
+        "Reference (Ancient Books of Traditional Chinese Medicine)": 303566
+      },
+      "nonempty_fields": {
+        "linkformat": 303566,
+        "Formula Name in Chinese Pinyin": 303566,
+        "Dosage Form": 303566,
+        "Herbs Contained in This Formula (Chinese Pinyin)": 303566,
+        "Major Symptoms or Signs": 281107,
+        "Reference (Ancient Books of Traditional Chinese Medicine)": 303566
+      },
+      "node_groups": 46273,
+      "groups_with_distinct_payloads": 797,
+      "distinct_payloads_per_group_total": 47115,
+      "capture_status_items": {
+        "ok": 302002,
+        "skipped": 1355
+      },
+      "distinct_component_labels": 3639,
+      "component_labels_with_case_space_only_filename_candidate": 684,
+      "component_occurrences": 3158210,
+      "component_occurrences_with_case_space_only_filename_candidate": 2722854
+    },
+    "chinese_patent_drug": {
+      "rows": 70007,
+      "keys": {
+        "linkformat": 70007,
+        "Formula Name in Chinese Pinyin": 70007,
+        "Dosage Form": 70007,
+        "Herbs Contained in This Formula (Chinese Pinyin)": 70007,
+        "Indications": 70007,
+        "Formula Type": 70007
+      },
+      "nonempty_fields": {
+        "linkformat": 70007,
+        "Formula Name in Chinese Pinyin": 70007,
+        "Dosage Form": 70007,
+        "Herbs Contained in This Formula (Chinese Pinyin)": 70007,
+        "Indications": 70007,
+        "Formula Type": 70007
+      },
+      "node_groups": 8927,
+      "groups_with_distinct_payloads": 47,
+      "distinct_payloads_per_group_total": 8976,
+      "capture_status_items": {
+        "ok": 66885,
+        "skipped": 2385
+      },
+      "distinct_component_labels": 5545,
+      "component_labels_with_case_space_only_filename_candidate": 1457,
+      "component_occurrences": 1116054,
+      "component_occurrences_with_case_space_only_filename_candidate": 877902
+    }
+  },
+  "ingredient_sample": {
+    "selection": "12 evenly spaced indices of size-sorted JSON files <=8 MiB",
+    "eligible_files": 34968,
+    "population_files": 38281,
+    "records": [
+      {
+        "file": "2,2'.json",
+        "bytes": 81,
+        "sha256": "894447d6c472bcec5a04dee1007918a92b2ee56354e54be446ab90b8eb16991f",
+        "root_keys": [
+          "code",
+          "msg",
+          "complete_fetch_summary"
+        ],
+        "source_status": {
+          "code": 2,
+          "msg": "No Data for 2,2'!"
+        },
+        "sections": []
+      },
+      {
+        "file": "(7S,8S)-Syringoylglycerol_9-O-(6'-O-cinnamoyl)-B-D-glucopyranoside.json",
+        "bytes": 23434,
+        "sha256": "9fb7a458aa0d90d02a82a1773a84d75b69d87f75436a32a0b3e1c171358b375c",
+        "root_keys": [
+          "code",
+          "msg",
+          "data",
+          "name",
+          "page_title",
+          "complete_fetch_summary"
+        ],
+        "source_status": {
+          "code": 1,
+          "msg": "success!!"
+        },
+        "sections": [
+          {
+            "type": "base_information",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "str",
+              "children": "list:3"
+            },
+            "value_schema": "str",
+            "tables": []
+          },
+          {
+            "type": "related_table",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "list:2"
+            },
+            "value_schema": "list",
+            "tables": [
+              {
+                "type": "chinese_patent_drug",
+                "label": "Chinese Patent Drugs",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Formula Type",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Indications",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "herb",
+                "label": "Herbs",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Flavor",
+                  "Herb Name in Latin",
+                  "Herb Name in Pinyin",
+                  "Meridian Tropism",
+                  "Property",
+                  "linkformat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "Isomerazin.json",
+        "bytes": 44309,
+        "sha256": "13b5d513706e5532e51f954832f8d6caf82a0f1458adbd4da1c63d133669ce03",
+        "root_keys": [
+          "code",
+          "msg",
+          "data",
+          "name",
+          "page_title",
+          "complete_fetch_summary"
+        ],
+        "source_status": {
+          "code": 1,
+          "msg": "success!!"
+        },
+        "sections": [
+          {
+            "type": "base_information",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "str",
+              "children": "list:3"
+            },
+            "value_schema": "str",
+            "tables": []
+          },
+          {
+            "type": "related_table",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "list:4"
+            },
+            "value_schema": "list",
+            "tables": [
+              {
+                "type": "chinese_patent_drug",
+                "label": "Chinese Patent Drugs",
+                "declared_count": 10,
+                "rows": 10,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Formula Type",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Indications",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "traditional_chinese_medicine_formula",
+                "label": "Traditional Chinese Medicine Formulas",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Major Symptoms or Signs",
+                  "Reference (Ancient Books of Traditional Chinese Medicine)",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "herb",
+                "label": "Herbs",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Flavor",
+                  "Herb Name in Latin",
+                  "Herb Name in Pinyin",
+                  "Meridian Tropism",
+                  "Property",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "similar_target",
+                "label": "Potential Targets",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Activity",
+                  "Gene Symbol",
+                  "References",
+                  "Similar Score",
+                  "linkformat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "Mulberofuran_Q.json",
+        "bytes": 185800,
+        "sha256": "3fa2cad84dcb93142f27e200d17ce3f023aa50d2a6e4620328a4528bd2289702",
+        "root_keys": [
+          "code",
+          "msg",
+          "data",
+          "name",
+          "page_title",
+          "complete_fetch_summary"
+        ],
+        "source_status": {
+          "code": 1,
+          "msg": "success!!"
+        },
+        "sections": [
+          {
+            "type": "base_information",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "str",
+              "children": "list:3"
+            },
+            "value_schema": "str",
+            "tables": []
+          },
+          {
+            "type": "related_table",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "list:3"
+            },
+            "value_schema": "list",
+            "tables": [
+              {
+                "type": "chinese_patent_drug",
+                "label": "Chinese Patent Drugs",
+                "declared_count": 48,
+                "rows": 48,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Formula Type",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Indications",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "traditional_chinese_medicine_formula",
+                "label": "Traditional Chinese Medicine Formulas",
+                "declared_count": 70,
+                "rows": 70,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Major Symptoms or Signs",
+                  "Reference (Ancient Books of Traditional Chinese Medicine)",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "herb",
+                "label": "Herbs",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Flavor",
+                  "Herb Name in Latin",
+                  "Herb Name in Pinyin",
+                  "Meridian Tropism",
+                  "Property",
+                  "linkformat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "(6R,9R)-3-oxo-R-ionyl-9-O-glc.json",
+        "bytes": 542568,
+        "sha256": "900119ac4f6e6313c304af9daa0ec50eaccefb3c639e488cbbed5e98a60b1fd0",
+        "root_keys": [
+          "code",
+          "msg",
+          "data",
+          "name",
+          "page_title",
+          "complete_fetch_summary"
+        ],
+        "source_status": {
+          "code": 1,
+          "msg": "success!!"
+        },
+        "sections": [
+          {
+            "type": "base_information",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "str",
+              "children": "list:3"
+            },
+            "value_schema": "str",
+            "tables": []
+          },
+          {
+            "type": "related_table",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "list:3"
+            },
+            "value_schema": "list",
+            "tables": [
+              {
+                "type": "chinese_patent_drug",
+                "label": "Chinese Patent Drugs",
+                "declared_count": 142,
+                "rows": 142,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Formula Type",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Indications",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "traditional_chinese_medicine_formula",
+                "label": "Traditional Chinese Medicine Formulas",
+                "declared_count": 287,
+                "rows": 287,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Major Symptoms or Signs",
+                  "Reference (Ancient Books of Traditional Chinese Medicine)",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "herb",
+                "label": "Herbs",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Flavor",
+                  "Herb Name in Latin",
+                  "Herb Name in Pinyin",
+                  "Meridian Tropism",
+                  "Property",
+                  "linkformat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "1,11(Z)-Tridecadien-3,5,7,9-tetrayne.json",
+        "bytes": 1957140,
+        "sha256": "695e899083e00d6a585afba8ebde7a34f2f4b96f0712356e1b763b02a6debac2",
+        "root_keys": [
+          "code",
+          "msg",
+          "data",
+          "name",
+          "page_title",
+          "complete_fetch_summary"
+        ],
+        "source_status": {
+          "code": 1,
+          "msg": "success!!"
+        },
+        "sections": [
+          {
+            "type": "base_information",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "str",
+              "children": "list:3"
+            },
+            "value_schema": "str",
+            "tables": []
+          },
+          {
+            "type": "related_table",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "list:3"
+            },
+            "value_schema": "list",
+            "tables": [
+              {
+                "type": "chinese_patent_drug",
+                "label": "Chinese Patent Drugs",
+                "declared_count": 816,
+                "rows": 816,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Formula Type",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Indications",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "traditional_chinese_medicine_formula",
+                "label": "Traditional Chinese Medicine Formulas",
+                "declared_count": 619,
+                "rows": 619,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Major Symptoms or Signs",
+                  "Reference (Ancient Books of Traditional Chinese Medicine)",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "herb",
+                "label": "Herbs",
+                "declared_count": 2,
+                "rows": 2,
+                "row_keys": [
+                  "Flavor",
+                  "Herb Name in Latin",
+                  "Herb Name in Pinyin",
+                  "Meridian Tropism",
+                  "Property",
+                  "linkformat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "Spathalenol.json",
+        "bytes": 2825861,
+        "sha256": "5be94fe5fdcfd552afac529a71c194e85630c32d60f425fd40888abf24908735",
+        "root_keys": [
+          "code",
+          "msg",
+          "data",
+          "name",
+          "page_title",
+          "complete_fetch_summary"
+        ],
+        "source_status": {
+          "code": 1,
+          "msg": "success!!"
+        },
+        "sections": [
+          {
+            "type": "base_information",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "str",
+              "children": "list:3"
+            },
+            "value_schema": "str",
+            "tables": []
+          },
+          {
+            "type": "related_table",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "list:5"
+            },
+            "value_schema": "list",
+            "tables": [
+              {
+                "type": "chinese_patent_drug",
+                "label": "Chinese Patent Drugs",
+                "declared_count": 195,
+                "rows": 195,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Formula Type",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Indications",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "traditional_chinese_medicine_formula",
+                "label": "Traditional Chinese Medicine Formulas",
+                "declared_count": 291,
+                "rows": 291,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Major Symptoms or Signs",
+                  "Reference (Ancient Books of Traditional Chinese Medicine)",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "herb",
+                "label": "Herbs",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Flavor",
+                  "Herb Name in Latin",
+                  "Herb Name in Pinyin",
+                  "Meridian Tropism",
+                  "Property",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "similar_target",
+                "label": "Potential Targets",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Activity",
+                  "Gene Symbol",
+                  "References",
+                  "Similar Score",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "disease",
+                "label": "Enriched Diseases",
+                "declared_count": 3995,
+                "rows": 3995,
+                "row_keys": [
+                  "Anatomical category",
+                  "Disease Name",
+                  "Global category",
+                  "linkformat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "Equisetrin.json",
+        "bytes": 4044568,
+        "sha256": "37e4bc78bfd8141cce73141662c107c98284bced0619a9c58615e46f7d4e7ea0",
+        "root_keys": [
+          "code",
+          "msg",
+          "data",
+          "name",
+          "page_title",
+          "complete_fetch_summary"
+        ],
+        "source_status": {
+          "code": 1,
+          "msg": "success!!"
+        },
+        "sections": [
+          {
+            "type": "base_information",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "str",
+              "children": "list:3"
+            },
+            "value_schema": "str",
+            "tables": []
+          },
+          {
+            "type": "related_table",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "list:3"
+            },
+            "value_schema": "list",
+            "tables": [
+              {
+                "type": "herb",
+                "label": "Herbs",
+                "declared_count": 2,
+                "rows": 2,
+                "row_keys": [
+                  "Flavor",
+                  "Herb Name in Latin",
+                  "Herb Name in Pinyin",
+                  "Meridian Tropism",
+                  "Property",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "similar_target",
+                "label": "Potential Targets",
+                "declared_count": 6,
+                "rows": 6,
+                "row_keys": [
+                  "Activity",
+                  "Gene Symbol",
+                  "References",
+                  "Similar Score",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "disease",
+                "label": "Enriched Diseases",
+                "declared_count": 7249,
+                "rows": 7249,
+                "row_keys": [
+                  "Anatomical category",
+                  "Disease Name",
+                  "Global category",
+                  "linkformat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "4-hydroxy_benzoic_acid.json",
+        "bytes": 4304154,
+        "sha256": "e009c817e10a5ec24dee34ca1640c4ba544988be4b37b68aa1d8220a62898b2a",
+        "root_keys": [
+          "code",
+          "msg",
+          "data",
+          "name",
+          "page_title",
+          "complete_fetch_summary"
+        ],
+        "source_status": {
+          "code": 1,
+          "msg": "success!!"
+        },
+        "sections": [
+          {
+            "type": "base_information",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "str",
+              "children": "list:3"
+            },
+            "value_schema": "str",
+            "tables": []
+          },
+          {
+            "type": "related_table",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "list:5"
+            },
+            "value_schema": "list",
+            "tables": [
+              {
+                "type": "traditional_chinese_medicine_formula",
+                "label": "Traditional Chinese Medicine Formulas",
+                "declared_count": 4,
+                "rows": 4,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Major Symptoms or Signs",
+                  "Reference (Ancient Books of Traditional Chinese Medicine)",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "herb",
+                "label": "Herbs",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Flavor",
+                  "Herb Name in Latin",
+                  "Herb Name in Pinyin",
+                  "Meridian Tropism",
+                  "Property",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "target",
+                "label": "Confirmed Targets",
+                "declared_count": 16,
+                "rows": 16,
+                "row_keys": [
+                  "Activity",
+                  "Gene Symbol",
+                  "References",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "similar_target",
+                "label": "Potential Targets",
+                "declared_count": 16,
+                "rows": 16,
+                "row_keys": [
+                  "Activity",
+                  "Gene Symbol",
+                  "References",
+                  "Similar Score",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "disease",
+                "label": "Enriched Diseases",
+                "declared_count": 7659,
+                "rows": 7659,
+                "row_keys": [
+                  "Anatomical category",
+                  "Disease Name",
+                  "Global category",
+                  "linkformat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "3-O-(2'E,4'E-Decadienoyl)ingenol.json",
+        "bytes": 4577453,
+        "sha256": "53110ddfdc0a3a45541a2d37584ce7412078bfc1e3c3cc88c7002f4f4ff9d69d",
+        "root_keys": [
+          "code",
+          "msg",
+          "data",
+          "name",
+          "page_title",
+          "complete_fetch_summary"
+        ],
+        "source_status": {
+          "code": 1,
+          "msg": "success!!"
+        },
+        "sections": [
+          {
+            "type": "base_information",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "str",
+              "children": "list:3"
+            },
+            "value_schema": "str",
+            "tables": []
+          },
+          {
+            "type": "related_table",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "list:5"
+            },
+            "value_schema": "list",
+            "tables": [
+              {
+                "type": "chinese_patent_drug",
+                "label": "Chinese Patent Drugs",
+                "declared_count": 11,
+                "rows": 11,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Formula Type",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Indications",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "traditional_chinese_medicine_formula",
+                "label": "Traditional Chinese Medicine Formulas",
+                "declared_count": 333,
+                "rows": 333,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Major Symptoms or Signs",
+                  "Reference (Ancient Books of Traditional Chinese Medicine)",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "herb",
+                "label": "Herbs",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Flavor",
+                  "Herb Name in Latin",
+                  "Herb Name in Pinyin",
+                  "Meridian Tropism",
+                  "Property",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "similar_target",
+                "label": "Potential Targets",
+                "declared_count": 3,
+                "rows": 3,
+                "row_keys": [
+                  "Activity",
+                  "Gene Symbol",
+                  "References",
+                  "Similar Score",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "disease",
+                "label": "Enriched Diseases",
+                "declared_count": 7466,
+                "rows": 7466,
+                "row_keys": [
+                  "Anatomical category",
+                  "Disease Name",
+                  "Global category",
+                  "linkformat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "4-(2-(2,5-dioxopyrrolidin-1-yl)ethyl)phenyl_acetate.json",
+        "bytes": 5527907,
+        "sha256": "0d3bb4bdd2339d861b231923aacc11bf7ad062fc39ef521fd8676001cf12d315",
+        "root_keys": [
+          "code",
+          "msg",
+          "data",
+          "name",
+          "page_title",
+          "complete_fetch_summary"
+        ],
+        "source_status": {
+          "code": 1,
+          "msg": "success!!"
+        },
+        "sections": [
+          {
+            "type": "base_information",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "str",
+              "children": "list:3"
+            },
+            "value_schema": "str",
+            "tables": []
+          },
+          {
+            "type": "related_table",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "list:4"
+            },
+            "value_schema": "list",
+            "tables": [
+              {
+                "type": "chinese_patent_drug",
+                "label": "Chinese Patent Drugs",
+                "declared_count": 163,
+                "rows": 163,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Formula Type",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Indications",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "traditional_chinese_medicine_formula",
+                "label": "Traditional Chinese Medicine Formulas",
+                "declared_count": 4212,
+                "rows": 4212,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Major Symptoms or Signs",
+                  "Reference (Ancient Books of Traditional Chinese Medicine)",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "herb",
+                "label": "Herbs",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Flavor",
+                  "Herb Name in Latin",
+                  "Herb Name in Pinyin",
+                  "Meridian Tropism",
+                  "Property",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "similar_target",
+                "label": "Potential Targets",
+                "declared_count": 1,
+                "rows": 1,
+                "row_keys": [
+                  "Activity",
+                  "Gene Symbol",
+                  "References",
+                  "Similar Score",
+                  "linkformat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "Cadaverine.json",
+        "bytes": 8385862,
+        "sha256": "b67c1a9c7aa36c95ff960808a98d5596ccbaae76aae5f44de3a919e080eaf0b2",
+        "root_keys": [
+          "code",
+          "msg",
+          "data",
+          "name",
+          "page_title",
+          "complete_fetch_summary"
+        ],
+        "source_status": {
+          "code": 1,
+          "msg": "success!!"
+        },
+        "sections": [
+          {
+            "type": "base_information",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "str",
+              "children": "list:3"
+            },
+            "value_schema": "str",
+            "tables": []
+          },
+          {
+            "type": "related_table",
+            "schema": {
+              "key": "str",
+              "id": "str",
+              "value": "list:4"
+            },
+            "value_schema": "list",
+            "tables": [
+              {
+                "type": "chinese_patent_drug",
+                "label": "Chinese Patent Drugs",
+                "declared_count": 1039,
+                "rows": 1039,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Formula Type",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Indications",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "traditional_chinese_medicine_formula",
+                "label": "Traditional Chinese Medicine Formulas",
+                "declared_count": 5501,
+                "rows": 5501,
+                "row_keys": [
+                  "Dosage Form",
+                  "Formula Name in Chinese Pinyin",
+                  "Herbs Contained in This Formula (Chinese Pinyin)",
+                  "Major Symptoms or Signs",
+                  "Reference (Ancient Books of Traditional Chinese Medicine)",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "herb",
+                "label": "Herbs",
+                "declared_count": 4,
+                "rows": 4,
+                "row_keys": [
+                  "Flavor",
+                  "Herb Name in Latin",
+                  "Herb Name in Pinyin",
+                  "Meridian Tropism",
+                  "Property",
+                  "linkformat"
+                ]
+              },
+              {
+                "type": "target",
+                "label": "Confirmed Targets",
+                "declared_count": 8,
+                "rows": 8,
+                "row_keys": [
+                  "Activity",
+                  "Gene Symbol",
+                  "References",
+                  "linkformat"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "disease_enrichment_sample": {
+    "file": "Dermatosis_Papulosa_Nigra.json",
+    "sections": [
+      {
+        "type": "Enrichment",
+        "schema": {
+          "key": "str",
+          "id": "str",
+          "value": [
+            "show",
+            "submit",
+            "title",
+            "lazy",
+            "data",
+            "controls",
+            "Bubble"
+          ]
+        },
+        "value_schema": {
+          "show": "bool",
+          "submit": "str",
+          "title": "str",
+          "lazy": "bool",
+          "data": "list:5",
+          "controls": [
+            "Selected_terms"
+          ],
+          "Bubble": [
+            "table",
+            "div",
+            "script",
+            "download"
+          ]
+        },
+        "table_ids": []
+      }
+    ]
+  }
+}

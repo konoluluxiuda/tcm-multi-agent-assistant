@@ -1,0 +1,9 @@
+{
+  "experiments/architecture_candidates/durable_dependency.py": "8f9cd821808c6f16b397f0ca5107ee3af15e83be2881dbc53b62149a00b94043",
+  "experiments/architecture_candidates/dynamic_dependency.py": "c610a3aa681304bebaa4111eb21df3acce427dcfeadca7c43a1d06c823d06bb8",
+  "experiments/architecture_candidates/synthetic.py": "e3253a5b924a7220b4ab0b739df88c08c6d11960cfaba6a4f127af64ffd4bbc2",
+  "scripts/check_architecture_dependency_recovery.py": "2aabc4ba8e9e7968ba0113fc83e8590a68cd900eceec92174c2ba1f30b03e1b5",
+  "tests/test_architecture_dependency_durable.py": "c5c659d64bca295eaec13fde16066623913ab5d2e984aa52ad0fb8714a24d6a9",
+  "tcm/research_run.py": "6734eed71e88ad61f3b82d15cb2816f22c022cbeb302cae73e9467dfc5085b70",
+  "tcm/research_run_durable.py": "4d5209c779d0eb0a8feb15564d428c04f889ecc84961d1ab69920e21033358a4"
+}

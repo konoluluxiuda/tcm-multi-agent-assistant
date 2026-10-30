@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-29",
+  "external_model_calls": 0,
+  "test_setup_failures": [
+    "direct file worker entry lost repository import path",
+    "manual worker invocation missed synthetic provider environment",
+    "browser control POST rejected outside research path",
+    "second browser context not initialized via conversation endpoint"
+  ],
+  "product_fixes": [
+    "limited broad string replacement introduced syntax error in run delete route; restored original delete block",
+    "busy enqueue now preserves existing chat task focus"
+  ],
+  "retained_initial_ci": "ci_initial.json, passed before busy-focus refinement",
+  "final_checks": "rerun against final production code, preserved separately"
+}

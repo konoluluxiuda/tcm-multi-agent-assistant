@@ -32,9 +32,7 @@ class EvidenceBundleTests(unittest.TestCase):
         p.start();self.addCleanup(p.stop)
         self.api=TestClient(app.app); self.api.__enter__()
         self.addCleanup(lambda:self.api.__exit__(None,None,None))
-        response=self.api.post('/chat',json={'query':'/pubmed fixture-herb'})
-        self.assertEqual(response.status_code,200,response.text)
-        self.batch=response.json()['pubmed']['tool_result']
+        self.batch,_=pubmed_tests.seed_snapshot(self,api=self.api,query='fixture-herb')
         self.body={'question':'示例叶炭的功效','index_sha256':self.sha,'run_id':self.batch['run_id']}
 
     def post(self,body=None):
@@ -65,7 +63,7 @@ class EvidenceBundleTests(unittest.TestCase):
         self.assertEqual(self.post(dict(self.body,run_id='0'*32)).status_code,409)
 
     def test_old_card_cannot_export_after_new_batch_task_switch_or_delete(self):
-        self.api.post('/chat',json={'query':'/pubmed another-query'})
+        pubmed_tests.seed_snapshot(self,api=self.api,query='another-query')
         self.assertEqual(self.post().status_code,409)
         self.api.post('/chat',json={'query':'/research-clear'})
         self.assertEqual(self.post().status_code,409)
@@ -78,7 +76,7 @@ class EvidenceBundleTests(unittest.TestCase):
         self.assertEqual(self.post().status_code,409)
         self.service.available=True
         with patch.dict('os.environ',{'ENABLE_PUBMED':'0'}):
-            self.assertEqual(self.post().status_code,503)
+            self.assertEqual(self.post().status_code,200)  # Historical export survives online-search retirement.
         with patch.object(self.app.research_runtime,'get_service',return_value=None):
             self.assertEqual(self.post().status_code,503)
         with sqlite3.connect(self.root/'literature.sqlite3') as db:

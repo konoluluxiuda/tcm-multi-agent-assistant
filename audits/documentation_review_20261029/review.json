@@ -1,0 +1,309 @@
+{
+  "date": "2026-10-29",
+  "status": "completed_with_scoped_verification",
+  "scope": "Inventory and local-link scan of all 144 docs plus root README; targeted semantic review of high-traffic entry, planning and recent implementation documents against code/config and existing audits. Not a line-by-line revalidation of all historical claims.",
+  "documentation_categories": {
+    "stage_or_experiment_record": 101,
+    "current_guide": 8,
+    "topic_reference_record": 26,
+    "decision_record": 2,
+    "release_snapshot": 7
+  },
+  "changed_files": [
+    {
+      "path": "README.md",
+      "before_sha256": "4b2db4c796ccc87b3327ab667e70c0ae5a9d2cfaaf6b0bd904bba375c43268da",
+      "after_sha256": "2abea2bf4860d4e80f5f6ee80522b85fe8216ed58011ec78de4682490d851f78"
+    },
+    {
+      "path": "docs/APPLICATION_EVALUATION_PROTOCOL.md",
+      "before_sha256": "ef3c57592996eae22111ba218146b31b8e535c777ea69e444c17083460c81aeb",
+      "after_sha256": "ec69b8f8e71d4fbb0f584bb03b53306ac1dbd8b5675cf3d9330b8495d6d9f659"
+    },
+    {
+      "path": "docs/ARCHITECTURE_ABC_V1_REVIEW.md",
+      "before_sha256": "98a1fbff1b417faa489699063a91d9f8e284fc2b15261b2e24fff5fe1613efd9",
+      "after_sha256": "5efcdc70ba08f316a15940cb0861ea76b11cb570b6616fc6261673ea995015b6"
+    },
+    {
+      "path": "docs/BUSINESS_COMPLETENESS_REVIEW_20261020.md",
+      "before_sha256": "f3d05cf9ec6bd008a5e31923898816ee6e491450efd7d18297020692b837e814",
+      "after_sha256": "38febdfcf8a5b06b99e8fd0b7e5809b1775ae5ff1868b9dc29e882bf901986e3"
+    },
+    {
+      "path": "docs/CANDIDATE_A_BUSINESS_INTEGRATION.md",
+      "before_sha256": "10f96d5fa9848f62e9e896418bbb122365c9495ff91ab80aca60df9b76e664a5",
+      "after_sha256": "5432bfff8b93ec9130ae30a3e04cf2966127e013d91b055f9343dca35b5f3f0e"
+    },
+    {
+      "path": "docs/CANDIDATE_A_CHAT_INTEGRATION.md",
+      "before_sha256": "5279432c1ef8c4fe5f6a5e6f7047b2b95010abaeeb1f7b285530cd7e80a394e6",
+      "after_sha256": "0cda7906881e0bf468b76987f762eb25dbb126e64cee08dd341fe80db6c46484"
+    },
+    {
+      "path": "docs/DISEASE_WORKFLOW_DELIVERY.md",
+      "before_sha256": "3b7d21f6bb6668a8b4952b276b48195bb9954dad632f8ff1cd9d814ecfadf6e7",
+      "after_sha256": "b12c12f3fd8d845c3f476ad9521a00f57b3e2eff905d3c4c51453c0c47355252"
+    },
+    {
+      "path": "docs/INTENT_ROUTING.md",
+      "before_sha256": "1653119924ffb02a2e3b2490960142dfa1df185c45d03481c398592098743e55",
+      "after_sha256": "54c2b037acca85d6606e37af81e7a294e0bc1cda1572e5c5f27b009a079bd45d"
+    },
+    {
+      "path": "docs/INTERVIEW_EVIDENCE.md",
+      "before_sha256": "249847597a8d1ea81f705ffac9a1de0604e38905332f0f8f1b30f021c58807b0",
+      "after_sha256": "a90fe71e6b106b8676b5089ffc657c33ac74e12555b8d5e1220d220fd3f8c153"
+    },
+    {
+      "path": "docs/LLM_APPLICATION_EXPERIMENTS.md",
+      "before_sha256": "3fa6012b77116c66df496a4953797a4696cb36e037009f497302cbd4332d0734",
+      "after_sha256": "f9b57012a7562d93ed6cc6daaf70f2559f78556f6760bddbcbcb86a576ecae0f"
+    },
+    {
+      "path": "docs/NEW_USER_GUIDE.md",
+      "before_sha256": "279904cf505c3233b74bebc5050db0e38a77aa9e9ac74920c5e883a12ac36251",
+      "after_sha256": "5c9f31ae8792ac5223f40456ed37c880c48e363a5cbfdb73a6bf85d4ceef3a62"
+    },
+    {
+      "path": "docs/OFFLINE_CI.md",
+      "before_sha256": "a5bca2069aedb1c2c4ac2232dcc1cc53ff16f46fed930c341503d59448591c33",
+      "after_sha256": "2b25c14d0cf5340ff6cd719a48531061e9d62e3abcd56c37b93ca315332ff0e2"
+    },
+    {
+      "path": "docs/PAIR_PAGINATION_BROWSER.md",
+      "before_sha256": "3ab817350ffab572e77855e99c002f24aa9242be0ba95a60b82a4afe387dd3e9",
+      "after_sha256": "1974e820b1dfc9dddaea367f25890792ccc2296583477957e46e07bacd502e4b"
+    },
+    {
+      "path": "docs/PROJECT_DEMO.md",
+      "before_sha256": "8a8ec0784fc61e38b0ede952f9df58b6c58c4c1b189d8eba7589b8677d204ca9",
+      "after_sha256": "fcd5c02886eb3892c078f5dbf454ca270fda48165fc1304f08b22bf143b321f4"
+    },
+    {
+      "path": "docs/PROJECT_EVIDENCE_PLAN.md",
+      "before_sha256": "f2de5555861983c41d1d965478afb1e68508170f48955d52e2585ea9ff3c3f3c",
+      "after_sha256": "bf2951799b80f54eec220c74e89dfddc4b7f7242674464f51c62d8891465603a"
+    },
+    {
+      "path": "docs/PROJECT_SEMANTIC_MEMORY_MILESTONE.md",
+      "before_sha256": "e3417b55d64eabfbe5daf839e8ae4304bb4b88dafc0cc9afd3a3885079b08e25",
+      "after_sha256": "c58259d31600cbe0558a32c21434d60f0b37dac6aaf076a62f28a58e80f394e8"
+    },
+    {
+      "path": "docs/README.md",
+      "before_sha256": "cc32e4f95be72e4443f69840ba2a203adbcb87416d19c0b626020174c5245d45",
+      "after_sha256": "eb9b6857d1a4359b7b75e196adb64fc9d4ecf2678348e9b2addef4a3b8e20b51"
+    },
+    {
+      "path": "docs/RESEARCH_ANALYTICS_PLAN.md",
+      "before_sha256": "dd2ab677ea76bccea57dabc0f83d3e278c7e37710a74ddf2f1141492b0c645f4",
+      "after_sha256": "3eaec11cdc9f33de0e141677535af3d561c4ab65468bd55133b727eeb7ccd131"
+    },
+    {
+      "path": "docs/RESEARCH_DOCKER.md",
+      "before_sha256": "94f13693b718f9ed0b0052376274ea38a764ae5f55c690589050ee381d9b1ca0",
+      "after_sha256": "1c285367ccd4d278c1ba37aac3d4f982b0960d25cfcce7f74986f63f16a573fb"
+    },
+    {
+      "path": "docs/RESEARCH_RUN_CHAT.md",
+      "before_sha256": "09037ea360b6bdf733f843a20df5c63def1d408e4024d4564fac617bba8a99df",
+      "after_sha256": "c02fa6c88c93a12ed6a096edb4e25995918eea9c83bf3fd1a30d3b2fb9345cf8"
+    },
+    {
+      "path": "docs/TCM_PROJECT_ROADMAP.md",
+      "before_sha256": "3fdf036a191bb59c99a566e78c6806ab96fe38e7340217b1f350587c1f5b7da1",
+      "after_sha256": "3f09fda0d0de7ef575afd44ee83a6a7787d53675cfc349770690360c8767d0a2"
+    }
+  ],
+  "findings": [
+    {
+      "issue": "Mixed 7876/7877/7878 instances and outdated new-user setup",
+      "resolution": "Replaced active user guide with one preview entry and examples; Docker now distinguishes Compose default 7872/container 8000 and missing full-preview configuration."
+    },
+    {
+      "issue": "Already implemented target similarity, disease search, MCP, memory and chat left as pending in old plans",
+      "resolution": "Current state remains in one roadmap; 11 older entry records receive explicit historical warnings rather than changing old evaluation outcomes."
+    },
+    {
+      "issue": "Core A document still lists chat integration as its next task",
+      "resolution": "Added a progress pointer to completed bounded chat integration; latest remaining priorities live in roadmap."
+    },
+    {
+      "issue": "Interview narrative implied result offload and read-back were in production",
+      "resolution": "Clarified 48000-byte production rejection and isolated experiment status."
+    },
+    {
+      "issue": "Demo said pair reports only showed first page; restore paths conflated",
+      "resolution": "Documented controlled complete pagination and separated finished-chat restore, report checkpoint recovery and synthetic model-loop recovery."
+    },
+    {
+      "issue": "Old LangGraph 0.3 runtime analysis could be read as current version behavior",
+      "resolution": "Marked pagination experiment runtime as historical and linked LangGraph 1.x upgrade."
+    },
+    {
+      "issue": "Two full CI numbers looked contradictory",
+      "resolution": "Roadmap now leads with 136 modules/1154 tests; 138/1178 remains historical, with 2 retired modules/24 tests explained."
+    }
+  ],
+  "source_checks": [
+    {
+      "claim": "chat uses the local declared-action path",
+      "source": "tcm/research_plan_run.py",
+      "status": "verified",
+      "matching_lines": [
+        {
+          "line": 10,
+          "text": "from tcm.research_run_local import run_local_actions"
+        },
+        {
+          "line": 117,
+          "text": "execution={'mode':'local_declared_actions','driver_steps':run['model_calls'],'tool_calls':run['tool_calls']})"
+        }
+      ]
+    },
+    {
+      "claim": "new plan is bounded to 2-8 steps",
+      "source": "tcm/research_plan_intent.py",
+      "status": "verified",
+      "matching_lines": [
+        {
+          "line": 21,
+          "text": "steps: list[PlanStep] = Field(min_length=2, max_length=8)"
+        }
+      ]
+    },
+    {
+      "claim": "production large observations are still rejected",
+      "source": "tcm/research_observation.py",
+      "status": "verified",
+      "matching_lines": [
+        {
+          "line": 60,
+          "text": "if len(json.dumps(payload).encode()) > 48000:"
+        },
+        {
+          "line": 61,
+          "text": "raise ValueError('Observation exceeds context budget')"
+        }
+      ]
+    },
+    {
+      "claim": "pair report supports at most 10 pages of 20 entries",
+      "source": "tcm/pair_research_report.py",
+      "status": "verified",
+      "matching_lines": [
+        {
+          "line": 11,
+          "text": "MAX_TARGET_PAGES = 10"
+        },
+        {
+          "line": 29,
+          "text": "if (page.get('offset') != offset or page.get('limit') != 20 or"
+        },
+        {
+          "line": 169,
+          "text": "if result['next_offset'] is not None and calls >= MAX_TARGET_PAGES:"
+        }
+      ]
+    },
+    {
+      "claim": "preview port and optional switches",
+      "source": "scripts/preview_local_tasks.py",
+      "status": "verified",
+      "matching_lines": [
+        {
+          "line": 15,
+          "text": "parser.add_argument('--port', type=int, default=7877, help='Local HTTP port (default: 7877)')"
+        },
+        {
+          "line": 18,
+          "text": "parser.add_argument('--with-intent-model',action='store_true',"
+        },
+        {
+          "line": 27,
+          "text": "parser.add_argument('--synthetic-loop',action='store_true',help='Enable authenticated synthetic loop lifecycle; no external models')"
+        },
+        {
+          "line": 30,
+          "text": "parser.error('--port must be between 1 and 65535')"
+        },
+        {
+          "line": 76,
+          "text": "'ENABLE_INTENT_PLANNER':'1' if args.with_intent_model else '0',"
+        }
+      ]
+    },
+    {
+      "claim": "Compose defaults differ from the local preview",
+      "source": "compose.research.yaml",
+      "status": "verified",
+      "matching_lines": [
+        {
+          "line": 7,
+          "text": "- \"127.0.0.1:${RESEARCH_PORT:-7872}:8000\""
+        },
+        {
+          "line": 20,
+          "text": "ENABLE_RESEARCH_TASKS: ${ENABLE_RESEARCH_TASKS:-0}"
+        }
+      ]
+    },
+    {
+      "claim": "five structural tools in the shared registry",
+      "source": "tcm/analysis_tools.py",
+      "method": "AST of SPECS literal keys",
+      "tools": [
+        "herb_target_profile",
+        "herb_target_similarity",
+        "disease_gene_profile",
+        "rank_herbs_for_gene_set",
+        "search_disease_sources"
+      ],
+      "status": "verified"
+    }
+  ],
+  "latest_full_offline_regression": {
+    "source": "audits/project_cleanup_20261029/ci.json",
+    "modules": 136,
+    "total": 1154,
+    "skipped": 0,
+    "network_attempts": 0,
+    "rerun_in_this_review": false
+  },
+  "link_check": "links.json",
+  "not_performed": [
+    "full code regression rerun",
+    "external URL or upstream-version verification",
+    "live provider evaluation",
+    "Docker build/deploy/publish",
+    "Git commit or push"
+  ],
+  "remaining_work": "Roadmap P0-1: integrate evidence offload and bounded read-back into the existing production loop. Other planned P0 deliverables remain pending.",
+  "rollback": {
+    "archive": "before-documents.tar.gz",
+    "sha256": "5851be3b6962faef2f22456befa481757ec2faedcdb28a880ec436eb0b180665",
+    "verified_files": 21,
+    "policy": "Originals of reviewed files before this turn; compare before restoring to avoid overwriting subsequent edits. No corpus, secrets or runtime state included."
+  },
+  "reviewed_source_hashes": {
+    "README.md": "2abea2bf4860d4e80f5f6ee80522b85fe8216ed58011ec78de4682490d851f78",
+    "docs/README.md": "eb9b6857d1a4359b7b75e196adb64fc9d4ecf2678348e9b2addef4a3b8e20b51",
+    "docs/TCM_PROJECT_ROADMAP.md": "3f09fda0d0de7ef575afd44ee83a6a7787d53675cfc349770690360c8767d0a2",
+    "docs/NEW_USER_GUIDE.md": "5c9f31ae8792ac5223f40456ed37c880c48e363a5cbfdb73a6bf85d4ceef3a62",
+    "docs/PROJECT_DEMO.md": "fcd5c02886eb3892c078f5dbf454ca270fda48165fc1304f08b22bf143b321f4",
+    "docs/INTERVIEW_EVIDENCE.md": "a90fe71e6b106b8676b5089ffc657c33ac74e12555b8d5e1220d220fd3f8c153",
+    "docs/RESEARCH_DOCKER.md": "1c285367ccd4d278c1ba37aac3d4f982b0960d25cfcce7f74986f63f16a573fb",
+    "docs/OFFLINE_CI.md": "2b25c14d0cf5340ff6cd719a48531061e9d62e3abcd56c37b93ca315332ff0e2",
+    "scripts/preview_local_tasks.py": "0159b377ff4814813295623d8ed841fe8cdb030f938184ac7f9ceeb727380d7d",
+    "scripts/run_offline_ci.py": "d1a5ff3e89d01eab429b3701740b3985cf7712e1d30cad79f0d300ee8ee182e0",
+    "compose.research.yaml": "1f91825fed13ebee623519224ef76e391654d0700e3e670b927db92c5c58d88e",
+    "tcm/research_plan_run.py": "327863b34d219bce85346a90cfd17ca4123b2c7d3d9b65add6334269188ec907",
+    "tcm/research_plan_intent.py": "542cba88bfefd0bbbe4e9f7f287e7159763d6f5f159d807d3d190c0a151c5a8a",
+    "tcm/research_run_local.py": "7d045ff2b924faa88f2728fc2d91e5e7ecff19b854757eaf46bc3ae2916825b3",
+    "tcm/research_observation.py": "c87405b6fe6689d0d9528a769b6143873a9e8880a1525dbc961f8c8043fc6fc5",
+    "tcm/pair_research_report.py": "a66f0723abce181df299d2e73ca2cf9ee2ce14ff88b1ca1170ab1d007fc4b483",
+    "tcm/analysis_tools.py": "f2459d76260a4d83a7d02d18503fc2f2f546e7ccbcbdfeea9a6528648f3bde0a",
+    "audits/project_cleanup_20261029/ci.json": "0928c3fabea500f649e3f3308c4e3b408eb7fa3a1c9a01895dcde648e65940f3"
+  }
+}

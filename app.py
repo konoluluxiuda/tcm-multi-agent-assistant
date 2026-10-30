@@ -1,4 +1,6 @@
 import os
+import re
+import sqlite3
 from contextlib import asynccontextmanager
 import uuid
 import tempfile
@@ -30,10 +32,13 @@ from tcm.assistant_router import resolve as resolve_tool_request
 from source_access import SourceCatalog, PrivateArtifacts, create_source_router
 from tcm.bookmark_api import create_router as create_bookmark_router, enabled as bookmarks_enabled
 from tcm.research_job_api import create_router as create_job_router
+from tcm.research_loop_api import create_router as create_loop_router
 from tcm.project_memory_api import create_router as create_project_router
 from tcm.research_run_api import create_router as create_run_router, enabled as runs_enabled
 from tcm.research_task_api import create_router as create_task_router, enabled as tasks_enabled
 from tcm.request_observability import install as install_chat_observability, mark as mark_chat_request
+from tcm.dataops.api import create_router as create_dataops_router, validate_origin as validate_dataops_origin
+from tcm.dataops.service import DataOpsService
 
 # Load configuration
 config = Config()
@@ -68,6 +73,9 @@ app.include_router(create_task_router(lambda: agent_runtime.memory, lambda: SESS
 app.include_router(create_run_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME))
 app.include_router(create_job_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME))
 app.include_router(create_project_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME))
+app.include_router(create_loop_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME))
+dataops_service = DataOpsService(lambda: agent_runtime.memory)
+app.include_router(create_dataops_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME, service=dataops_service))
 image_request_lock = threading.Lock()
 
 
@@ -116,10 +124,14 @@ async def enforce_features(request: Request, call_next):
     if (env_bool('RESEARCH_TOOLS_ONLY') and request.method in ('POST', 'PUT', 'PATCH', 'DELETE')
             and request.url.path not in ('/chat', '/conversation', '/api/evidence/report', '/api/research/runs/profile')
             and not (request.url.path == '/api/research/bookmarks' or request.url.path.startswith('/api/research/bookmarks/'))
+            and not (request.url.path == '/api/research/loops' or request.url.path.startswith('/api/research/loops/'))
             and not (request.url.path == '/api/research/projects' or request.url.path.startswith('/api/research/projects/'))
             and not (request.url.path == '/api/research/jobs' or request.url.path.startswith('/api/research/jobs/'))
             and not (request.url.path == '/api/research/runs' or request.url.path.startswith('/api/research/runs/'))
-            and not (request.url.path == '/api/research/tasks' or request.url.path.startswith('/api/research/tasks/'))):
+            and not (request.url.path == '/api/research/tasks' or request.url.path.startswith('/api/research/tasks/'))
+            and not (request.url.path in ('/api/dataops/query', '/api/dataops/workspaces', '/api/dataops/agent-runs',
+                                         '/api/dataops/proposals', '/api/dataops/task-requests')
+                     or re.fullmatch(r'/api/dataops/agent-runs/[a-f0-9]{32}/(answer|cancel|recover)', request.url.path))):
         return JSONResponse(status_code=403, content={'detail': '此部署仅支持药材与药典研究工具及会话管理。'})
     # Check before parsing upload bodies or invoking optional clients.
     feature = {'/upload': 'image_analysis', '/transcribe': 'speech', '/generate-speech': 'speech'}.get(request.url.path)
@@ -165,6 +177,7 @@ class QueryRequest(BaseModel):
     query: str
     answer_mode: Literal['auto', 'evidence'] = 'auto'
     conversation_history: List = []
+    request_key: Optional[str] = Field(default=None,min_length=8,max_length=100,pattern=r'^[A-Za-z0-9_-]+$')
 
 class SpeechRequest(BaseModel):
     text: str
@@ -194,7 +207,8 @@ async def index(request: Request):
     """Serve the main HTML page"""
     return templates.TemplateResponse(request=request, name="index.html", context={
         "features": config.features.as_dict(), "research_tools_only": env_bool('RESEARCH_TOOLS_ONLY'),
-        "pubmed_enabled": env_bool('ENABLE_PUBMED'),
+        "pubmed_enabled": False,
+        "dataops_enabled": env_bool('ENABLE_DATAOPS'),
         "natural_routing_enabled": env_bool('ENABLE_NATURAL_ROUTING'),
         "research_bookmarks_enabled": bookmarks_enabled(),
         "research_tasks_enabled": tasks_enabled(),
@@ -203,7 +217,7 @@ async def index(request: Request):
         "evidence_auto_routing_enabled": evidence_auto_routing_enabled(),
         "intent_planner_enabled": env_bool('ENABLE_INTENT_PLANNER'),
         "evidence_assistant_synthetic": os.getenv('EVIDENCE_ASSISTANT_DATA_MODE','synthetic') == 'synthetic',
-        "combined_report_enabled": env_bool('ENABLE_PUBMED') and env_bool('ENABLE_PHARMACOPOEIA_RESEARCH')})
+        "combined_report_enabled": False})
 
 def session_cookie(value):
     store = agent_runtime.memory
@@ -257,13 +271,23 @@ def conversation(response: Response, session_id: Optional[str] = Cookie(None, al
             result['pubmed'], _ = pubmed_runtime.execute({'action': 'last'}, pubmed_context)
         from tcm.relation_memory import context_from as relation_context_from,execute_turn as relation_turn
         relation=relation_context_from(snapshot.tcm_context)
-        if relation:
+        if relation and relation.get('kind')=='analysis_plan_focus_v1':
+            from tcm.research_plan_run import restore
+            import hashlib
+            restored=restore(relation,owner=hashlib.sha256(session_id.encode()).hexdigest(),
+                path=Path(os.getenv('RESEARCH_RUN_DB') or agent_runtime.memory.path.with_name('research_runs.sqlite3')))
+            if restored is not None:result['assistant']=restored
+        elif relation:
             result['assistant'],_=relation_turn({'followup':True,'action':'replay'},relation)
         from tcm.task_request import chat_review_from_context
         pending=chat_review_from_context(snapshot.tcm_context)
         if pending:
             from tcm.assistant_info import execute as execute_assistant_info
             result['assistant']=execute_assistant_info(pending)
+        from tcm.dataops.chat import restore as restore_dataops
+        restored_dataops = restore_dataops(snapshot, dataops_service, agent_runtime.memory.key(session_id))
+        if restored_dataops is not None:
+            result['assistant'] = restored_dataops
     set_session_cookie(response, session_id)
     response.headers['Cache-Control'] = 'private, no-store'
     return result
@@ -488,9 +512,33 @@ def chat(
 ):
     """Process user text query through the multi-agent system."""
     mark_chat_request(http_request, phase='routing')
-    from tcm.project_semantic import enabled as memory_enabled, memory_reference, recall as recall_projects, store_for, owner_key
+    from tcm.dataops.chat import matches as matches_dataops, execute as execute_dataops
+    if request.answer_mode == 'auto' and env_bool('ENABLE_DATAOPS') and matches_dataops(request.query):
+        validate_dataops_origin(http_request)
+        if not 1 <= len(request.query.strip()) <= 2000:
+            raise HTTPException(422, '整理要求须为1–2000字符。')
+        session_id = session_cookie(session_id)
+        from tcm.dataops.workspace import Conflict as DataOpsConflict
+        from tcm.dataops.data_access import SourceChanged
+        from tcm.research_jobs import JobBusy, JobConflict
+        try:
+            assistant = execute_dataops(dataops_service, agent_runtime.memory, session_id, request.query,
+                request_key=request.request_key, history_limit=config.max_conversation_history)
+        except JobBusy:
+            raise HTTPException(429, '已有整理任务运行，请稍后再提交。') from None
+        except (DataOpsConflict, SourceChanged, JobConflict):
+            raise HTTPException(409, '整理功能未启用或任务/来源版本已改变，请打开资料工作台查看当前任务。') from None
+        except KeyError:
+            raise HTTPException(404, '当前会话的整理任务不存在，请新建任务。') from None
+        except (OSError, sqlite3.Error, ImportError):
+            raise HTTPException(503, '资料整理所需的本地目录或存储暂不可用。') from None
+        set_session_cookie(response, session_id)
+        response.headers['Cache-Control'] = 'no-store'
+        mark_chat_request(http_request, phase='response', tool='dataops', model_calls=0)
+        return {'status': 'success', 'response': assistant['message'], 'agent': '资料整理', 'assistant': assistant}
+    from tcm.project_semantic import enabled as memory_enabled, memory_reference, project_listing, recall as recall_projects, store_for, owner_key
     from tcm.research_run_api import enabled as research_enabled
-    if request.answer_mode == 'auto' and research_enabled() and memory_enabled() and memory_reference(request.query):
+    if request.answer_mode == 'auto' and research_enabled() and (memory_enabled() or project_listing(request.query)) and memory_reference(request.query):
         if not 1 <= len(request.query.strip()) <= 400:
             raise HTTPException(422, '记忆检索问题须为1–400字符。')
         session_id = session_cookie(session_id)
@@ -503,12 +551,16 @@ def chat(
         mark_chat_request(http_request, phase='response', tool='project_memory', model_calls=0)
         text = {'candidates':'找到以下研究项目，请选择要继续的项目。', 'no_memory':'还没有保存研究项目，可在“本地研究”中创建。',
                 'no_match':'没有找到足够相关的项目，请补充项目名称或药材。', 'unavailable':'本地记忆检索暂不可用，可在“本地研究”中手动选择项目。'}[memory_result['status']]
+        if memory_result.get('method') == 'project_list':
+            text = f"共找到 {memory_result['total']} 个已保存项目，请选择要继续的项目。"
+        elif memory_result.get('reason') == 'explicit_objects_not_saved':
+            text = '没有保存包含这些药材的项目。可以在“本地研究”中新建项目。'
         return {'status':'success', 'response':text, 'agent':'项目记忆', 'project_memory':memory_result}
     selected = resolve_tool_request(request.query)
     mark_chat_request(http_request, tool=selected['tool'] if selected else 'unknown')
     mode = request.answer_mode
     if selected and ((selected['tool']=='assistant' and (
-            selected['request'].get('topic') in ('overview', 'capabilities', 'dataset_info', 'target_analysis', 'research_task_review') or
+            selected['request'].get('topic') in ('overview', 'capabilities', 'dataset_info', 'target_analysis', 'research_plan', 'research_task_review') or
             selected['request'].get('kind') == 'common_target')) or
             selected['tool']=='herb' and selected['request'].get('profile') is True):
         mode = 'auto'
@@ -519,14 +571,15 @@ def chat(
             raise HTTPException(status_code=422, detail='AI整理问题须为1–1000字符。')
     if mode=='auto' and env_bool('RESEARCH_TOOLS_ONLY') and selected is None and not (
             can_auto_plan(request.query) or can_plan_intent(request.query)):
-        raise HTTPException(status_code=403, detail='此部署支持资料查询。可问“你能做什么”“有多少药材”“黄芪有什么作用”；也保留 /herb、/research、/pubmed 指令。')
+        raise HTTPException(status_code=403, detail='此部署支持资料查询。可问“你能做什么”“有多少药材”“黄芪有什么作用”；也可使用 /herb、/research 或资料核对工作台。')
     # Generate session ID for cookie if it doesn't exist
     session_id = session_cookie(session_id)
     
     try:
         mark_chat_request(http_request, phase='execution')
-        response_data = (process_query(request.query, session_id=session_id, task_mode='evidence')
-                         if mode == 'evidence' else process_query(request.query, session_id=session_id))
+        key_args={'request_key':request.request_key} if request.request_key else {}
+        response_data = (process_query(request.query, session_id=session_id, task_mode='evidence',**key_args)
+                         if mode == 'evidence' else process_query(request.query, session_id=session_id,**key_args))
         mark_chat_request(http_request, phase='response')
         tool = next((tool for key, tool in (('evidence_answer', 'evidence'), ('assistant_result', 'assistant'),
                     ('tcm_result', 'herb'), ('research_result', 'research'), ('pubmed_result', 'pubmed'))
@@ -581,7 +634,7 @@ def chat(
         if response_data.get('pubmed_result') is not None:
             result['pubmed'] = response_data['pubmed_result']
             status = result['pubmed']['status']
-            response.status_code = {'invalid_query': 400, 'pubmed_disabled': 503, 'pubmed_busy': 503,
+            response.status_code = {'pubmed_retired': 410, 'invalid_query': 400, 'pubmed_disabled': 503, 'pubmed_busy': 503,
                                     'pubmed_unavailable': 503, 'snapshot_unavailable': 409,
                                     'error': 502}.get(status, 200)
             if status == 'partial_fetch':

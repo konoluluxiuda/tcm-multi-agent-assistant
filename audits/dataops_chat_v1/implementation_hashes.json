@@ -1,0 +1,18 @@
+{
+  "README.md": "96f505be496cd315ca5c57f0a817ba1e1cbb120fcbef56c45c1c086f24de6ac4",
+  "app.py": "07fa3085d3d2f2ebb899ae6e63b8a865a5b92946bbb01789ca1aeded62d3aebf",
+  "audits/dataops_chat_v1/README.md": "42ab8b3b5ffb3b5d2c0fd265af6b50a6705677ce19460892e022492857d51e80",
+  "docs/DATAOPS_D3_EVALUATION.md": "a76d66b938874dee21768086da6eeed4bec683cba97cce87efe52a524b1b5545",
+  "docs/DATAOPS_DEMO.md": "0eb7a50a927f6b98647ed502591eee62c95ec8cdf4d7d5658f38299fa12eed48",
+  "docs/DATAOPS_WORKBENCH_PLAN.md": "4c238f0baf225948d1bdefd76600094f7694a6073835e8eb2d23418e5c0810da",
+  "docs/README.md": "4250bd88acfb55cfb475760d7ff916bfcd2eb6e79028f0e3218802f6d5d7332b",
+  "docs/TCM_PROJECT_ROADMAP.md": "c09adfc102e1cca4309096c4f8e6202ea96f7a6de82540a8841b8ec2ce3a8f4f",
+  "scripts/check_dataops_chat_browser.py": "d130563ad81ed0f396f997b38c1745993015a81a256f9a41e80e7c086e8a9de4",
+  "tcm/dataops/api.py": "530a5b43425398da35a42b45d7ef4a915898e8d4b9a0bf60752ab1ae78dd4754",
+  "tcm/dataops/chat.py": "a09621bf21c515d8e569208b887aff0bae4305c24fe05d44f9aa16f2d27e848f",
+  "tcm/dataops/service.py": "4e7195febd0cb861f4e9fee0241ba7a80e4ae404003106ee41f97dafc8d596cf",
+  "tcm/dataops/workbench.html": "a623df33709ecb7cb3ed2873c9eb93301d86d3e8df70e5bf99ab933c93ef7ad0",
+  "tcm/dataops/workspace.py": "2fdc9da99116206fd1737854b7c2e4861929777ab56334ccc9c4e14b5c58e543",
+  "templates/index.html": "3c1072fabb200704a8efa859978eec6b511b1315bf323be9a37aaddd591b6844",
+  "tests/test_dataops_chat.py": "aaa5d4a5a927180b131898f330012746728285481da1b34da4ad3006e2b74128"
+}

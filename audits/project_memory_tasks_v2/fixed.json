@@ -1,0 +1,127 @@
+{
+  "status": "completed",
+  "dataset_sha256": "7c8e57431cc2526f8d64cf939d4d01b607496a072dc000f9af1f60e7da4ce0aa",
+  "dataset_kind": "author_written_synthetic_transfer_set_not_independent_user_evaluation",
+  "retrieval_metrics": {
+    "no_memory": {
+      "top1_hits": 0,
+      "positive_cases": 10,
+      "mean_recall_at_3": 0.0,
+      "negative_no_candidate": 4,
+      "negative_cases": 4,
+      "returned_candidates": 0,
+      "relevant_candidates": 0,
+      "candidate_precision": null
+    },
+    "lexical": {
+      "top1_hits": 9,
+      "positive_cases": 10,
+      "mean_recall_at_3": 0.875,
+      "negative_no_candidate": 3,
+      "negative_cases": 4,
+      "returned_candidates": 20,
+      "relevant_candidates": 13,
+      "candidate_precision": 0.65
+    },
+    "dense": {
+      "top1_hits": 9,
+      "positive_cases": 10,
+      "mean_recall_at_3": 0.9,
+      "negative_no_candidate": 3,
+      "negative_cases": 4,
+      "returned_candidates": 21,
+      "relevant_candidates": 11,
+      "candidate_precision": 0.5238095238095238
+    },
+    "hybrid": {
+      "top1_hits": 8,
+      "positive_cases": 10,
+      "mean_recall_at_3": 0.9,
+      "negative_no_candidate": 3,
+      "negative_cases": 4,
+      "returned_candidates": 21,
+      "relevant_candidates": 11,
+      "candidate_precision": 0.5238095238095238
+    }
+  },
+  "application": {
+    "total": 12,
+    "passed": 12,
+    "failed_ids": []
+  },
+  "routing": [
+    {
+      "query": "我想接着整理那两味补血又活血的药",
+      "memory_route_triggered": true,
+      "has_relevant_project": true
+    },
+    {
+      "query": "以前那份白术配茯苓的资料在哪里",
+      "memory_route_triggered": false,
+      "has_relevant_project": true
+    },
+    {
+      "query": "回到甘草存放条件的那个项目",
+      "memory_route_triggered": true,
+      "has_relevant_project": true
+    },
+    {
+      "query": "丹参和鸡血藤那份笔记继续做",
+      "memory_route_triggered": false,
+      "has_relevant_project": true
+    },
+    {
+      "query": "当归、川芎的资料还没整理完",
+      "memory_route_triggered": false,
+      "has_relevant_project": true
+    },
+    {
+      "query": "之前讨论如何防止甘草受潮的研究",
+      "memory_route_triggered": true,
+      "has_relevant_project": true
+    },
+    {
+      "query": "那份关于调理脾胃的药材资料",
+      "memory_route_triggered": false,
+      "has_relevant_project": true
+    },
+    {
+      "query": "补血那两味究竟是哪一组",
+      "memory_route_triggered": false,
+      "has_relevant_project": true
+    },
+    {
+      "query": "当归川芎这组，这次只关心保存要求",
+      "memory_route_triggered": false,
+      "has_relevant_project": true
+    },
+    {
+      "query": "上次讨论过的所有药材项目",
+      "memory_route_triggered": true,
+      "has_relevant_project": true
+    },
+    {
+      "query": "帮我找一下之前关于黄芪的研究项目",
+      "memory_route_triggered": true,
+      "has_relevant_project": false
+    },
+    {
+      "query": "继续上次那个旅行安排",
+      "memory_route_triggered": true,
+      "has_relevant_project": false
+    },
+    {
+      "query": "我的数据库备份脚本在哪",
+      "memory_route_triggered": false,
+      "has_relevant_project": false
+    },
+    {
+      "query": "帮我写一段秋招自我介绍",
+      "memory_route_triggered": false,
+      "has_relevant_project": false
+    }
+  ],
+  "external_model_calls": 0,
+  "retrieval_replayed": true,
+  "limitation": "Known-project application is evaluated separately; no automatic top-1 selection and no clinical or end-to-end success claim."
+}

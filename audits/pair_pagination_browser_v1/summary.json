@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "data": "synthetic_only",
+  "external_model_calls": 0,
+  "real_postgres": true,
+  "real_http_sigkill": true,
+  "lease_expiry_seconds": 31,
+  "same_browser_cookie": true,
+  "history_resume_button": true,
+  "resumed_branch_calls": {
+    "Alpha_text": 1,
+    "Alpha_structured": 1,
+    "Beta_text": 1,
+    "Beta_structured": 1,
+    "target_1": 1,
+    "target_2": 2
+  },
+  "complete_targets": 23,
+  "downloaded_targets": 23,
+  "partial_targets_visible": 20,
+  "next_page_button_visible": true,
+  "javascript_errors": [],
+  "regression_tests_passed": 54,
+  "production_deployed": false,
+  "visual_limitations": "External CDN requests blocked; headless environment lacks Chinese font glyphs. DOM/functionality verified, visual typography not approved.",
+  "attempts": [
+    {
+      "run": "var/pair_pagination_browser_v1",
+      "result": "startup panel absent; harness missing disease catalog flag"
+    },
+    {
+      "run": "var/pair_pagination_browser_v2",
+      "result": "failed: page 1 queried twice after SIGKILL; async checkpoint race"
+    },
+    {
+      "run": "var/pair_pagination_browser_v3",
+      "result": "passed after checkpoint stream flush boundary"
+    }
+  ]
+}

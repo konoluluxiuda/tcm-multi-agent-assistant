@@ -1,3 +1,5 @@
+> 后续更新：两药报告已接入持久化节点并通过强杀、网页与真实资料验收，见[两药恢复增量](PAIR_CHECKPOINT_MILESTONE.md)。本文保留原单药阶段的实现范围和历史结果。
+
 # PostgreSQL运行队列与单药报告checkpoint恢复
 
 2026-10-26。本轮交付可选PostgreSQL运行库、LangGraph节点持久化、网页恢复入口及实际进程强杀验收。默认SQLite部署仍可用；本轮没有迁移用户已有任务，没有将ETCM/药典来源数据库改成PostgreSQL。

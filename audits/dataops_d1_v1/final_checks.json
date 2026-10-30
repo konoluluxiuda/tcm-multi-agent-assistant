@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "syntax_files": 468,
+  "local_document_links": "passed",
+  "source_and_implementation_hashes": "passed",
+  "models_called": 0,
+  "git_committed": false,
+  "docker_built": false,
+  "preview_url": "http://127.0.0.1:7908/dataops"
+}

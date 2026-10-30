@@ -1,0 +1,12 @@
+{
+  "health": 200,
+  "status": "passed",
+  "data": "local_source_catalogs",
+  "summary": "当归 · 靶点画像：287个靶点；川芎 · 靶点画像：247个靶点。",
+  "tools": [
+    "herb_target_profile",
+    "herb_target_profile"
+  ],
+  "result_restored": true,
+  "external_model_calls": 0
+}

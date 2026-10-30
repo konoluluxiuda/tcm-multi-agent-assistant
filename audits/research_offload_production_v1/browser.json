@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "data": "synthetic_only",
+  "external_model_calls": 0,
+  "profile_targets": 14000,
+  "externalized_blocks": 2,
+  "read_next_previous": true,
+  "download_preserves_full_payload": true,
+  "refresh_restores_same_run": true,
+  "initially_folded": true,
+  "javascript_errors": [],
+  "blocked_external_assets": 10,
+  "font_layout_reviewed": false,
+  "run_id": "71830ad693ba4712b67e798b89a7612a"
+}

@@ -1,0 +1,429 @@
+{
+  "version": "business_closure_v1",
+  "created_date": "2026-10-29",
+  "independent_acceptance": false,
+  "human_signoff": false,
+  "scope": "prospective_author_screening_with_known_templates_not_holdout",
+  "positive_tasks": 18,
+  "boundary_cases": 6,
+  "uncollected_independent_cases": 40,
+  "note": "Freeze before this batch is executed. Author knows implementation; historical user/templates recur. Results become development evidence after first run. No application changes during the batch.",
+  "cases": [
+    {
+      "id": "BC01",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "请给我当前资料库的数据概览"
+      ],
+      "goals": [
+        {
+          "kind": "overview"
+        }
+      ]
+    },
+    {
+      "id": "BC02",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "ETCM和药典分别有什么用"
+      ],
+      "goals": [
+        {
+          "kind": "dataset_info",
+          "ids": [
+            "etcm",
+            "pharmacopoeia"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BC03",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "查看白术的药用部位和科名"
+      ],
+      "goals": [
+        {
+          "kind": "herb_fields",
+          "herb": "BaiZhu",
+          "fields": [
+            "medicinal_part",
+            "family"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BC04",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "白术的功能与主治"
+      ],
+      "goals": [
+        {
+          "kind": "pharma_fields",
+          "name": "白术",
+          "fields": [
+            "功能与主治"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BC05",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "黄芪的药典用量",
+        "贮藏呢"
+      ],
+      "goals": [
+        {
+          "kind": "pharma_fields",
+          "name": "黄芪",
+          "fields": [
+            "贮藏"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BC06",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "帮我看一下当归的靶点画像"
+      ],
+      "goals": [
+        {
+          "kind": "profile",
+          "herb": "DangGui"
+        }
+      ]
+    },
+    {
+      "id": "BC07",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "哪些药材与川芎的靶点最接近？按Jaccard列前5项"
+      ],
+      "goals": [
+        {
+          "kind": "similarity",
+          "herb": "ChuanXiong",
+          "top_k": 5
+        }
+      ]
+    },
+    {
+      "id": "BC08",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "核对黄芪和白术的共同靶点，给出双方原始记录位置"
+      ],
+      "goals": [
+        {
+          "kind": "shared",
+          "herbs": [
+            "HuangQi",
+            "BaiZhu"
+          ],
+          "all_targets": false
+        }
+      ]
+    },
+    {
+      "id": "BC09",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "比较当归与川芎的药典功效和用量，核对全部共同靶点，保留双方原始记录的位置"
+      ],
+      "goals": [
+        {
+          "kind": "pharma_fields",
+          "name": "当归",
+          "fields": [
+            "功能与主治",
+            "用法与用量"
+          ]
+        },
+        {
+          "kind": "pharma_fields",
+          "name": "川芎",
+          "fields": [
+            "功能与主治",
+            "用法与用量"
+          ]
+        },
+        {
+          "kind": "shared",
+          "herbs": [
+            "DangGui",
+            "ChuanXiong"
+          ],
+          "all_targets": true
+        }
+      ]
+    },
+    {
+      "id": "BC10",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "我正在整理白术与黄芪的资料，请分别对照药典中的功效、用量，然后给出两者共同的靶点和原始出处"
+      ],
+      "goals": [
+        {
+          "kind": "pharma_fields",
+          "name": "白术",
+          "fields": [
+            "功能与主治",
+            "用法与用量"
+          ]
+        },
+        {
+          "kind": "pharma_fields",
+          "name": "黄芪",
+          "fields": [
+            "功能与主治",
+            "用法与用量"
+          ]
+        },
+        {
+          "kind": "shared",
+          "herbs": [
+            "BaiZhu",
+            "HuangQi"
+          ],
+          "all_targets": false
+        }
+      ]
+    },
+    {
+      "id": "BC11",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "查询药典黄芪的功效，查询白术的ETCM药用部位"
+      ],
+      "goals": [
+        {
+          "kind": "pharma_fields",
+          "name": "黄芪",
+          "fields": [
+            "功能与主治"
+          ]
+        },
+        {
+          "kind": "herb_fields",
+          "herb": "BaiZhu",
+          "fields": [
+            "medicinal_part"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BC12",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "帮我把黄芪的药典功效和白术在ETCM的药用部位整理到一起，附各自出处"
+      ],
+      "goals": [
+        {
+          "kind": "pharma_fields",
+          "name": "黄芪",
+          "fields": [
+            "功能与主治"
+          ]
+        },
+        {
+          "kind": "herb_fields",
+          "herb": "BaiZhu",
+          "fields": [
+            "medicinal_part"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BC13",
+      "role": "positive_task",
+      "origin": "user_original_previously_debugged",
+      "turns": [
+        "随便提供两个疾病及id"
+      ],
+      "goals": [
+        {
+          "kind": "directory",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "BC14",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "查看疾病{disease_id}的全部靶点原始记录"
+      ],
+      "goals": [
+        {
+          "kind": "disease_profile",
+          "all_rows": true
+        }
+      ]
+    },
+    {
+      "id": "BC15",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "查找{disease_name}的来源，读取全部靶点原始记录，再按Jaccard列出前五个药材候选，保留出处"
+      ],
+      "goals": [
+        {
+          "kind": "disease_profile",
+          "all_rows": true
+        },
+        {
+          "kind": "disease_rank",
+          "top_k": 5
+        }
+      ]
+    },
+    {
+      "id": "BC16",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "白术的靶点画像，查找与黄芪靶点最相似的药材，前5个"
+      ],
+      "goals": [
+        {
+          "kind": "profile",
+          "herb": "BaiZhu"
+        },
+        {
+          "kind": "similarity",
+          "herb": "HuangQi",
+          "top_k": 5
+        }
+      ]
+    },
+    {
+      "id": "BC17",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "当归的靶点画像，川芎的靶点画像",
+        "出处呢"
+      ],
+      "goals": [
+        {
+          "kind": "profile",
+          "herb": "DangGui"
+        },
+        {
+          "kind": "profile",
+          "herb": "ChuanXiong"
+        }
+      ],
+      "require_same_run": true
+    },
+    {
+      "id": "BC18",
+      "role": "positive_task",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "介绍两个数据库",
+        "药典的数据能查到哪些字段"
+      ],
+      "goals": [
+        {
+          "kind": "dataset_info",
+          "ids": [
+            "pharmacopoeia"
+          ]
+        },
+        {
+          "kind": "text",
+          "contains": [
+            "功效",
+            "用量",
+            "出处"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BC19",
+      "role": "boundary",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "黄芪今天每公斤多少钱，帮我查最新价格"
+      ],
+      "goals": [],
+      "boundary": "unsupported"
+    },
+    {
+      "id": "BC20",
+      "role": "boundary",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "我头疼失眠，帮我选两味草药搭个方子"
+      ],
+      "goals": [],
+      "boundary": "unsupported"
+    },
+    {
+      "id": "BC21",
+      "role": "boundary",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "根据现有靶点预测白术能治疗哪些疾病"
+      ],
+      "goals": [],
+      "boundary": "unsupported"
+    },
+    {
+      "id": "BC22",
+      "role": "boundary",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "查询药典不存在草药甲的功效"
+      ],
+      "goals": [],
+      "boundary": "no_facts"
+    },
+    {
+      "id": "BC23",
+      "role": "boundary",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "查询药典白术的光谱仪器编号，查询黄芪的ETCM药用部位"
+      ],
+      "goals": [],
+      "boundary": "no_facts"
+    },
+    {
+      "id": "BC24",
+      "role": "boundary",
+      "origin": "author_designed_after_code_review",
+      "turns": [
+        "/pubmed 白术 功效"
+      ],
+      "goals": [],
+      "boundary": "pubmed_disabled"
+    }
+  ]
+}

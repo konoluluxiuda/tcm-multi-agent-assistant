@@ -1,0 +1,10 @@
+{
+  "status": "failed",
+  "total": 78,
+  "failures": 5,
+  "errors": 3,
+  "scope": "new report tests plus selected existing loop/intent/offload regressions",
+  "finding": "new full-pagination test harness used default 8-call Limits while declared maximum cost is 14; updated only new harness to explicit 16-call business budget",
+  "original_output": "tool transcript; subsequent command logs stored separately",
+  "external_model_calls": 0
+}

@@ -332,7 +332,6 @@
                         <div class="workspace-tabs" role="tablist" aria-label="研究功能">
                             <button type="button" role="tab" id="workspace-tab-overview" aria-controls="workspace-overview" aria-selected="true">数据概览</button>
                             <button type="button" role="tab" id="workspace-tab-herbs" aria-controls="workspace-herbs" aria-selected="false" tabindex="-1">药材与药典</button>
-                            <button type="button" role="tab" id="workspace-tab-literature" aria-controls="workspace-literature" aria-selected="false" tabindex="-1">现代文献</button>
                         </div>
                         <section id="workspace-overview" class="workspace-panel" role="tabpanel" aria-labelledby="workspace-tab-overview">
                             <p>了解当前资料覆盖范围。ETCM来源记录与药典候选条目分别统计，分类缺失会明确显示。</p>
@@ -351,22 +350,12 @@
                             </form>
                             <p class="workspace-note">药典字段候选需核对原页；ETCM返回来源记录的可用属性。查询后可在下方继续追问。两库中文名映射尚未核验。</p>
                         </section>
-                        <section id="workspace-literature" class="workspace-panel" role="tabpanel" aria-labelledby="workspace-tab-literature" hidden>
-                            {% if not pubmed_enabled %}<p>当前未启用PubMed，文献查询不可用。</p>{% endif %}
-                            <fieldset {% if not pubmed_enabled %}disabled{% endif %}>
-                                <form class="workspace-form" data-workspace-literature-form>
-                                    <label>PubMed检索式<input name="term" required maxlength="2000" autocomplete="off" placeholder="英文/拉丁名或明确检索式" data-workspace-control></label>
-                                    <button type="submit" data-workspace-control>检索文献</button>
-                                </form>
-                                <div class="workspace-actions" style="margin-top:8px"><button type="button" data-workspace-control data-workspace-query="/pubmed-last">回看当前批次</button></div>
-                            </fieldset>
-                            <p class="workspace-note">只获取摘要及元数据。药典中文名不会自动填入检索式；对象对应未核验。取得文献后，可在下方卡片导出药典＋文献证据清单。</p>
-                        </section>
                         <p class="workspace-note" data-workspace-status role="status">当前没有选择资料对象。</p>
                         <p class="workspace-note" data-workspace-feedback role="status"></p>
                     </section>
                     {% endif %}
 
+                    {% if dataops_enabled %}<p class="px-3 py-2"><a href="/dataops">资料核对工作台 · 批量整理与表格下载</a></p>{% endif %}
                     {% if research_tasks_enabled %}<p class="px-3 py-2"><a href="/research-tasks">研究任务（ETCM本地 / 合成演示）</a></p>{% endif %}
                     {% if research_bookmarks_enabled %}
                     <details id="research-bookmarks" class="px-3 py-2">
@@ -431,6 +420,13 @@
                         </details>
                     </details>
                     <script src="/research-runs.js" defer></script>
+                    <details id="synthetic-loop-panel" class="px-3" hidden><summary>合成 Agent 循环演示</summary>
+                      <p>固定虚构资料，不调用外部模型。暂停后请在两分钟内继续。</p>
+                      <button type="button" id="loop-start">运行演示</button>
+                      <button type="button" id="loop-pause">演示暂停与恢复</button>
+                      <button type="button" id="loop-refresh">刷新记录</button>
+                      <p id="loop-status" role="status"></p><div id="loop-history"></div>
+                    </details><script src="/research-loop.js" defer></script>
                     {% endif %}
                     <small id="memory-status" class="text-muted px-3" role="status">正在恢复已保存会话…</small>
                     <div id="chat-body" class="chat-body">
@@ -499,6 +495,7 @@
     {% if pubmed_enabled %}<script src="/research-objects.js"></script>{% endif %}
     {% if research_tools_only and natural_routing_enabled %}<script src="/research-workspaces.js"></script>{% endif %}
     {% if research_bookmarks_enabled %}<script src="/research-bookmarks.js"></script>{% endif %}
+    <script src="/research-plan.js"></script>
     <script>
         function renderPubmedResult(container,result){
             container.classList.add('research-result');container.dataset.pubmedStatus=result.status;
@@ -1321,8 +1318,22 @@
         function renderAssistantResult(container,result,send){
             container.dataset.assistantTopic=result.topic;
             const message=el('p',result.message);message.style.whiteSpace='pre-wrap';container.append(message);
+            if(result.topic==='dataops_task'){
+                if(!/^[a-f0-9]{32}$/.test(result.workspace_id||''))return;
+                const frame=document.createElement('iframe');frame.title='资料整理结果';
+                frame.dataset.dataopsTask=result.workspace_id;
+                frame.src='/dataops?embed=1&run='+result.workspace_id;
+                frame.style.cssText='width:100%;height:360px;border:0;display:block';
+                frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-downloads');
+                const resize=event=>{if(!frame.isConnected){window.removeEventListener('message',resize);return}
+                    if(event.origin===location.origin&&event.source===frame.contentWindow&&event.data?.type==='dataops-height'&&
+                       Number.isInteger(event.data.height))frame.style.height=Math.min(900,Math.max(160,event.data.height))+'px'};
+                window.addEventListener('message',resize);container.append(frame);
+                const link=el('a','在资料工作台查看');link.href='/dataops?run='+result.workspace_id;container.append(link);return;
+            }
             if(result.topic==='etcm_relations'){renderRelationQuery(container,result,send);return}
             if(result.topic==='target_analysis'){renderTargetAnalysis(container,result,send);return}
+            if(result.topic==='research_plan'){renderResearchPlan(container,result,send);return}
             renderTaskReview(container,result);
             if(result.topic==='target_direction_needed')for(const choice of result.choices||[]){const button=el('button',choice.label,'btn btn-sm btn-outline-primary');button.type='button';button.addEventListener('click',()=>send(choice.query));container.append(button)}
             const values=result.herbs?.raw_efficacy_values||[];
@@ -1745,6 +1756,8 @@
                 }
                 workspaces?.restore(history);
                 memoryStatus.textContent = '会话已自动保存，闲置 ' + history.retention_days + ' 天后过期；清除会话会删除聊天记忆。';
+                window.tcmSessionReady=true;
+                window.dispatchEvent(new Event('tcm-session-ready'));
                 chatBody.scrollTop = chatBody.scrollHeight;
                 setBusy(false);
             } catch (error) {
@@ -1796,6 +1809,7 @@
                     if (!response.ok) throw new Error('清除失败，请重试。');
                     displayMessages = [];
                     workspaces?.clear();
+                    window.dispatchEvent(new Event('tcm-session-ready'));
                     chatBody.replaceChildren();
                     memoryStatus.textContent = '已删除服务器保存的会话记忆，当前为新会话。' +
                         (document.getElementById('research-bookmarks') ? '研究收藏保留。' : '');
@@ -1882,6 +1896,7 @@
                             },
                             body: JSON.stringify({
                                 query: message,
+                                request_key: crypto.randomUUID(),
                                 answer_mode: document.getElementById('evidence-answer-mode')?.checked ? 'evidence' : 'auto',
                                 conversation_history: [] // You might want to maintain this if needed
                             }),

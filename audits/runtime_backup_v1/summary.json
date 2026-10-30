@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "related_tests": 43,
+  "external_calls": 0,
+  "data": "synthetic_only",
+  "scope": "core runtime only; legacy tasks/bookmarks/PubMed and source assets excluded",
+  "original_runtime_migrated": false,
+  "known_warning": "psycopg pipeline rollback warning on synthetic cancellation; persisted state and new-process recovery verified"
+}

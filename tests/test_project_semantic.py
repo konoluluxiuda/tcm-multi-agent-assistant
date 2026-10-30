@@ -121,3 +121,72 @@ class SemanticTests(unittest.TestCase):
                 client.cookies.set('chat','bob')
                 self.assertEqual(client.post(url,json=body).status_code,404)
                 self.assertEqual(client.post('/api/research/projects/recall',json={'query':'继续'}).json()['status'],'no_memory')
+
+    def test_multiple_current_markers_keep_all_requirements(self):
+        query='继续上次的研究，这次只看白术的贮藏，现在还要注意事项'
+        x=apply_context(self.store,'alice',self.a['id'],1,query,names=self.names)
+        self.assertEqual(x['herbs'],['白术'])
+        self.assertEqual(x['question'],'看白术的贮藏，现在还要注意事项')
+        self.assertEqual(x['original_query'],query)
+
+    def test_excluded_herb_does_not_become_report_subject(self):
+        for exclusion in ['不要当归','不用当归','不查当归','不看当归','排除当归','去掉当归','不含当归']:
+            with self.subTest(exclusion=exclusion),self.assertRaises(ProjectConflict):
+                apply_context(self.store,'alice',self.a['id'],1,'继续上次的研究，这次'+exclusion+'，只看白术的贮藏',names=self.names)
+
+    def test_natural_project_references_and_query_boundaries(self):
+        for query in ['以前那份白术配茯苓的资料在哪里','丹参和鸡血藤那份笔记继续做',
+                      '当归、川芎的资料还没整理完','那份关于调理脾胃的药材资料',
+                      '补血那两味究竟是哪一组','当归川芎这组，这次只关心保存要求',
+                      '上次讨论过的所有药材项目']:
+            with self.subTest(query=query):self.assertTrue(memory_reference(query))
+        for query in ['白术相关属性','有哪些药材','列出所有靶点','刚才那味药的用量',
+                      '不要找历史项目，只查白术功效','介绍项目使用的数据库']:
+            with self.subTest(query=query):self.assertFalse(memory_reference(query))
+
+    def test_explicit_unsaved_herb_does_not_encode_other_projects(self):
+        result=recall(self.store,'alice','找之前黄芪的研究项目',names=self.names+['黄芪'],
+                      ranker=lambda q,d:self.fail('Unsaved object must not trigger encoding'))
+        self.assertEqual(result['reason'],'explicit_objects_not_saved')
+        self.assertEqual(result['items'],[])
+
+    def test_recall_old_object_then_apply_new_object(self):
+        self.store.save('alice',{'title':'白术项目','herbs':['白术'],'question':'功效'})
+        def ranker(query,docs):
+            self.assertEqual(query,'继续当归项目')
+            self.assertEqual([d['id'] for d in docs],[self.a['id']])
+            return {self.a['id']:0.8}
+        query='继续当归项目，这次看白术的贮藏'
+        result=recall(self.store,'alice',query,ranker=ranker,names=self.names)
+        self.assertEqual(result['query'],query)
+        applied=apply_context(self.store,'alice',result['items'][0]['id'],1,query,names=self.names)
+        self.assertEqual(applied['herbs'],['白术'])
+
+    def test_list_returns_all_owner_projects_without_embedding_and_preserves_focus(self):
+        for i in range(4):
+            self.store.save('alice',{'title':f'项目{i}','herbs':['白术'],'question':'贮藏'})
+        query='列出所有药材项目'
+        result=recall(self.store,'alice',query,names=self.names,ranker=lambda q,d:self.fail('List must not encode'))
+        self.assertEqual(result['total'],5)
+        self.assertNotIn(self.b['id'],[d['id'] for d in result['items']])
+        applied=apply_context(self.store,'alice',self.a['id'],1,query,names=self.names)
+        self.assertEqual(applied['question'],self.a['question'])
+        self.assertEqual(applied['herbs'],self.a['herbs'])
+        filtered=recall(self.store,'alice','列出所有当归项目',names=self.names)
+        self.assertEqual(filtered['total'],1)
+        applied=apply_context(self.store,'alice',self.a['id'],1,filtered['query'],names=self.names)
+        self.assertEqual(applied['herbs'],self.a['herbs'])
+
+    def test_listing_chat_works_without_embedding_configuration(self):
+        from fastapi.testclient import TestClient
+        import app
+        from agents.conversation_store import ConversationStore
+        memory=ConversationStore(Path(self.temp.name)/'list-chat.db')
+        with patch.dict(os.environ,{'ENABLE_RESEARCH_TASKS':'1','ETCM_DISEASE_DB':'fixture','PROJECT_MEMORY_PYTHON':'','PROJECT_MEMORY_MODEL':''}), \
+             patch.object(app.agent_runtime,'memory',memory), \
+             patch('tcm.project_semantic.recall',return_value={'status':'candidates','method':'project_list','total':4,'items':[],'external_calls':0}), \
+             patch.object(app,'process_query',side_effect=AssertionError('Provider path used')):
+            with TestClient(app.app) as client:
+                response=client.post('/chat',json={'query':'列出所有研究项目'})
+                self.assertEqual(response.status_code,200,response.text)
+                self.assertIn('4 个',response.json()['response'])

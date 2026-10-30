@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "sigkill_recovered": true,
+  "branch_calls": {
+    "text": 1,
+    "structured": 2
+  },
+  "owner_isolation": true,
+  "stale_worker_fenced": true,
+  "source_change_rejected": true,
+  "events_monotonic": true,
+  "checkpoint_delete_atomic": true,
+  "external_model_calls": 0,
+  "data": "synthetic_only"
+}

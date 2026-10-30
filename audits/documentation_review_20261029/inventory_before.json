@@ -1,0 +1,1710 @@
+{
+  "count": 144,
+  "method": "all Markdown files read; status markers and hashes inventoried, not a semantic endorsement of every historical claim",
+  "files": [
+    {
+      "path": "docs/AGENT_RESEARCH_TOOL.md",
+      "title": "主Agent显式药典研究工具",
+      "sha256": "35fa8a46d168eb2370dd1427cae7a01458a65ff3cf7f1d7da3a478d0b2f1c491",
+      "lines": 91,
+      "status_mentions": [
+        {
+          "line": 50,
+          "text": "本机验证使用 `/tmp/tcm-ci-20261013/bin/python`。当前7871预览会话单独存于 `var/agent_research_preview/conversations.sqlite3`，不修改现有Docker的会话卷。"
+        }
+      ]
+    },
+    {
+      "path": "docs/APPLICATION_EVALUATION_PROTOCOL.md",
+      "title": "下一轮业务验收约定",
+      "sha256": "ef3c57592996eae22111ba218146b31b8e535c777ea69e444c17083460c81aeb",
+      "lines": 63,
+      "status_mentions": [
+        {
+          "line": 37,
+          "text": "源码已增加显式任务类型和规范字段输出，并继续复用工具的实体/炮制品守卫；有歧义先澄清，不靠向量兜底强行返回药材正文。现有字符串计划只约束查询条数，无法核对任务/字段选择；新格式使这一判断可以逐题检查，但任务选错或字段漏选仍可能发生。合成模型替身与真实本地检索器的工程检查，以及8条真实模型合成规划烟测已通过。没有旧提示同题模型对照或新格式真实药典任务成绩，尚未证明业务收益；下一步比较未见题上的规则与模型结果，避免预先假定模型一定更好。这8条合成题也已成为开发题，不能并入未来独立验收成绩。"
+        }
+      ]
+    },
+    {
+      "path": "docs/ARCHITECTURE_ABC_LIVE_V1_RESULT.md",
+      "title": "A/B/C同环境真实模型对照：首轮结果与协议缺口",
+      "sha256": "7383114515394afc2f0f1f74a89bd63c0c17142e844d2c25f2e2530135d561df",
+      "lines": 57,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/ARCHITECTURE_ABC_LIVE_V2_RESULT.md",
+      "title": "A/B/C V2结果与受控批次修正",
+      "sha256": "5658b4dea18f5cfa4ed68692e3859867f9c2c1869f590e64fe0bcd7386a70ee7",
+      "lines": 61,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/ARCHITECTURE_ABC_V1_REVIEW.md",
+      "title": "LangGraph 1.x后的A/B/C选型续审",
+      "sha256": "98a1fbff1b417faa489699063a91d9f8e284fc2b15261b2e24fff5fe1613efd9",
+      "lines": 85,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/ARCHITECTURE_DECISION_REVIEW.md",
+      "title": "架构选择：A为生产主线，B/C保留隔离对照",
+      "sha256": "9e301a2ccffc66f2ec9d4dae0eb1dbffbd87140dcca90cd06371d2992bcd84be",
+      "lines": 51,
+      "status_mentions": [
+        {
+          "line": 28,
+          "text": "下一阶段复用[证据外置存储](EVIDENCE_OFFLOAD_CANDIDATE.md)、[发布与恢复](OFFLOAD_JOURNAL_RECOVERY.md)、[外置循环](OFFLOAD_LOOP_CANDIDATE.md)。这些实验及其共享大观察fixture保留；当前生产单条结果48KB限制尚未解决，不另维护第二套生产循环。"
+        },
+        {
+          "line": 35,
+          "text": "- 固定集合运算交给工具；仅下一步依赖观察时使用循环，不要求输出隐藏思维链。"
+        }
+      ]
+    },
+    {
+      "path": "docs/BACKGROUND_RESEARCH_MILESTONE.md",
+      "title": "后台研究执行闭环：本轮交付",
+      "sha256": "86ec26324aa9cc5dc6a859281470e61ce1ed42f506173fc7f342930b22305c20",
+      "lines": 81,
+      "status_mentions": [
+        {
+          "line": 7,
+          "text": "当前已更新的预览：http://127.0.0.1:7879/ 。展开“本地研究 · 疾病靶点”，输入 `Dermatosis Papulosa Nigra`，点击查询。后台读取283个靶点标识，页面展示首20条原始行与出处。刷新/关闭页面不会取消；重新打开面板会从历史发现未完成任务并重新订阅。点击取消才停止任务，结果可从历史回看或删除。"
+        }
+      ]
+    },
+    {
+      "path": "docs/BOOKMARK_EVIDENCE_NOTES.md",
+      "title": "收藏研究证据笔记",
+      "sha256": "3c6b79c64511f16c63c8c49dbaaeaef446a5bb5298ba72229065ac712d8e9937",
+      "lines": 34,
+      "status_mentions": [
+        {
+          "line": 34,
+          "text": "本轮模型、嵌入和外部网络调用均为0。下一步应把已有查询和证据笔记用于真实研究任务，按使用阻塞补功能；不继续追加收藏标签、更多导出格式或管理页签。"
+        }
+      ]
+    },
+    {
+      "path": "docs/BOUNDED_RESEARCH_TASK.md",
+      "title": "有限工具循环：合成关系证据核查任务",
+      "sha256": "7a6c24f711f7265aac3ca3add6aefbaa2f19da3a8093edae59045d9a10a1af41",
+      "lines": 109,
+      "status_mentions": [
+        {
+          "line": 7,
+          "text": "**当前交付为独立CLI，只有合成工具。** 7876页面/镜像仍运行上一版关系查询修复，未自动启用此任务。没有发送真实药典、ETCM、真实文献或既有用户会话，没有把本轮烟测当成真实科研任务验收。"
+        },
+        {
+          "line": 13,
+          "text": "模型可以决定检索与核查的下一步，服务器控制权限和状态："
+        },
+        {
+          "line": 105,
+          "text": "## 下一步"
+        },
+        {
+          "line": 107,
+          "text": "独立任务入口已补齐待选项、工具动作、预算及证据表，当前仅合成资料规则驱动。下一步定义实际只读ETCM/PubMed适配与对象核验契约，在本地验证资料一致性。真实资料进入外部模型仍需遵守授权范围，不能因合成烟测成功自动放开。"
+        }
+      ]
+    },
+    {
+      "path": "docs/BUSINESS_ACCEPTANCE_V1.md",
+      "title": "固定版本24项业务筛查：首轮与评分复核",
+      "sha256": "34313b87eced755ae69a28b24e18ede5d958dff0798a0802183d8034d932a575",
+      "lines": 101,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/BUSINESS_COMPLETENESS_REVIEW_20261020.md",
+      "title": "当前业务完整度与任务完成情况评估",
+      "sha256": "f3d05cf9ec6bd008a5e31923898816ee6e491450efd7d18297020692b837e814",
+      "lines": 158,
+      "status_mentions": [
+        {
+          "line": 3,
+          "text": "评估时间：2026-10-20。对象为当前仓库及本地7876实例，按可完成的用户任务评估，不按代码量、测试数或历史大纲勾选数评分。本次只读核对代码、已有实验/审计和Docker运行配置，没有重新调用模型、检索真实文献或运行整套643项回归，也没有改变业务开关、来源数据及部署。"
+        },
+        {
+          "line": 48,
+          "text": "| 16. 文献检索 | 实现且有历史真实验收；当前关闭 | 官方PubMed查询、摘要、PMID/DOI、批次台账和回放，保守关系/冲突提示 | 当前7876不检索；尚无自动全文获取、完整质量评议或跨库实体核验 |"
+        },
+        {
+          "line": 131,
+          "text": "| M4-02 PubMed接入 | 实现与历史真实工具验收完成；当前7876关闭 |"
+        }
+      ]
+    },
+    {
+      "path": "docs/CANDIDATE_A_BUSINESS_INTEGRATION.md",
+      "title": "A方案：正式工具循环的业务接入",
+      "sha256": "10f96d5fa9848f62e9e896418bbb122365c9495ff91ab80aca60df9b76e664a5",
+      "lines": 97,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/CANDIDATE_A_CHAT_INTEGRATION.md",
+      "title": "A方案：多步骤意图到本地执行的聊天接入",
+      "sha256": "5279432c1ef8c4fe5f6a5e6f7047b2b95010abaeeb1f7b285530cd7e80a394e6",
+      "lines": 64,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/CHANGELOG.md",
+      "title": "开发变更记录",
+      "sha256": "e6803e0ac2baf7ee37cdf2b437e6e4ec7a2355a36ac2b9eb7bd321e467a9c9cb",
+      "lines": 425,
+      "status_mentions": [
+        {
+          "line": 39,
+          "text": "- 本轮形成本地提交与镜像，未push、未更新Hub。下一步推送后检查远程CI并按版本标签发布；正式多用户鉴权、临床质量和对象映射不在本轮完成范围。见[部署记录](releases/RESEARCH_B227F35_LOCAL.md)及[验收](../audits/docker_research_update_v1/report.json)。"
+        },
+        {
+          "line": 47,
+          "text": "- 本轮未提交push、未切换原容器或发布新镜像；下一步先构建新版Docker整体验收。ETCM结果接入、对象核验、跨药材比较和综合解释仍待M4-04后续，不能将并列清单当作完整综合报告完成。"
+        },
+        {
+          "line": 55,
+          "text": "- 本轮未提交push、未升级原在用库、未重建/发布镜像；下一步M4-04先做带关系/身份提示的受限证据清单。人工判重、证据质量评议、全文获取和跨库映射仍未完成。"
+        },
+        {
+          "line": 79,
+          "text": "- 本轮仅本地代码/文档与验收记录，未提交push、未更新已发布镜像。下一步M4-02b显式聊天入口，备份恢复按M3-07推进。"
+        },
+        {
+          "line": 144,
+          "text": "- 新增独立挑战评测、范围行为计分、原图包重建与8项评分/冻结保护测试；相关工程回归94项通过，逐题结果重跑一致，43裁图重建SHA一致。保留失败基线，下一步优先修复炮制范围、未知名称误匹配和引用未展开状态。见[挑战报告](MINERU_CHALLENGE_V1.md)。"
+        },
+        {
+          "line": 174,
+          "text": "中文名称映射继续暂缓，未接入原医疗聊天入口，未常驻部署或发布 Docker 镜像。下一步建立人工核对的固定查询验收集，再集成聊天入口。"
+        },
+        {
+          "line": 218,
+          "text": "- 大纲新增 8.1 与 EV-01–05 追踪；下一步仍为 M0-06 离线 CI，中文映射暂缓，现有冻结集与待人工签核状态不变。"
+        },
+        {
+          "line": 366,
+          "text": "- 新增6项评估测试，192/192离线回归通过；30页缓存重跑SHA稳定，缓存篡改副本被拒绝，PDF/ETCM不变。下一步先修边界，再以新页面验证。见[验证说明](PHARMACOPOEIA_BOUNDARY_VALIDATION.md)。"
+        },
+        {
+          "line": 374,
+          "text": "- 新增11项测试，203/203离线回归通过；最后4页缓存重跑稳定、篡改副本被拒绝，原PDF/ETCM与失败基线均未修改。下一步做异常区域局部重识别对照。见[修复说明](PHARMACOPOEIA_BOUNDARY_REPAIR.md)。"
+        },
+        {
+          "line": 394,
+          "text": "- 新增11项工程回归，与原切分测试合计37项通过；15个既有难例边界回归、稳定重建及输入篡改拒绝检查完成。未验证全文正确率，未更新正式知识库。下一步复核异常及抽查未标记条目。见[接入说明](MINERU_RESULTS_IMPORT.md)。"
+        },
+        {
+          "line": 413,
+          "text": "- 新增9项检索回归，相关测试65项通过；索引重建SHA一致、只读与篡改拒绝验证完成。下一步修边界及修订重基。见[基线说明](MINERU_RETRIEVAL_BASELINE.md)。"
+        }
+      ]
+    },
+    {
+      "path": "docs/CHAT_FIELD_REQUEST_MILESTONE.md",
+      "title": "普通聊天复用字段请求解析",
+      "sha256": "38ddc0f644a9007515616e31bd1e04bcf943502f7083cf3ac57d791c25fed913",
+      "lines": 50,
+      "status_mentions": [
+        {
+          "line": 19,
+          "text": "当前预览：http://127.0.0.1:7883/ 。直接在普通聊天输入："
+        }
+      ]
+    },
+    {
+      "path": "docs/CHAT_REQUEST_DIAGNOSTICS.md",
+      "title": "聊天请求诊断",
+      "sha256": "866731c578b6caa13a148ed7c93a1527fe213a3cdc8cc49c25f5f95cb662951e",
+      "lines": 53,
+      "status_mentions": [
+        {
+          "line": 3,
+          "text": "当前本地交付：本功能已进入7876的`tcm-research-chat:c4de8bc`镜像，见[版本、启动及容器验收](releases/RESEARCH_LOCAL_C4DE8BC.md)。下方源码阶段记录保留其当时的验收边界；7875源码预览需按命令另行启动，不视为当前运行状态。"
+        }
+      ]
+    },
+    {
+      "path": "docs/COMBINED_EVIDENCE_REPORT.md",
+      "title": "药典与现代文献证据清单",
+      "sha256": "edf19749a02ea6481adfeb5b3c09d2d5e84f89b17dea5d17ecec761e3b2c7e49",
+      "lines": 53,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/COMPARISON_EVIDENCE_EXPORT.md",
+      "title": "双药药典对比证据导出",
+      "sha256": "30695547fdae2c63417ccde7a410932f43aa98c021ec738ce2900fa27894bad5",
+      "lines": 33,
+      "status_mentions": [
+        {
+          "line": 5,
+          "text": "当前本地交付：本功能已进入7876的`tcm-research-chat:c4de8bc`镜像，见[版本、启动及容器验收](releases/RESEARCH_LOCAL_C4DE8BC.md)。下方源码阶段记录保留其当时的验收边界；7875源码预览需按命令另行启动，不视为当前运行状态。"
+        }
+      ]
+    },
+    {
+      "path": "docs/CORE_WORKFLOW_COMPARISON.md",
+      "title": "核心任务控制：是否需要模型",
+      "sha256": "adacd22cd1aed7bdb43ccf1245acb221b08a7acaaece4b8003aae030daea7d2b",
+      "lines": 59,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/CROSS_SOURCE_REPORT_MILESTONE.md",
+      "title": "跨来源资料报告：本地交付与检索对照",
+      "sha256": "3ada6c898ab20ffd85eed3839a9bc52e82fb1ca97e9b3d0a056377956a15f560",
+      "lines": 71,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/DISEASE_CANDIDATE_ANALYSIS.md",
+      "title": "疾病来源靶点查询与药材候选排序",
+      "sha256": "a84cfdd5a53a9a144a16dd1d351014208be1dcffaf89d209425c1962b493d7ce",
+      "lines": 73,
+      "status_mentions": [
+        {
+          "line": 25,
+          "text": "该英文名称沿用来源数据库原名。中文疾病别名尚未核验，不自动翻译或替换；同名多来源先选择。保留 `--with-intent-model` 可启用已经授权的当前问句意图兜底，仅发送问句和静态工具定义；上述示例都通过本地规则，无需模型。2026-10-23本次启动排障后，7877按用户命令加载疾病索引并关闭外部模型；需要模型意图兜底时，重启命令显式加 `--with-intent-model`。"
+        }
+      ]
+    },
+    {
+      "path": "docs/DISEASE_GENE_CATALOG.md",
+      "title": "疾病来源靶点索引",
+      "sha256": "64ab51e44a383d4106bf0a22ab6ac131c29c2bd655092b25c80d723fb71b08a0",
+      "lines": 73,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/DISEASE_NAME_SEARCH.md",
+      "title": "疾病名称查找",
+      "sha256": "79a509c41e7dcce03811b7d3d780e15c1338d4a36e37c3b46dccac26bd473508",
+      "lines": 67,
+      "status_mentions": [
+        {
+          "line": 7,
+          "text": "当前服务入口：http://127.0.0.1:7877/ 。可输入："
+        },
+        {
+          "line": 67,
+          "text": "下一步转向候选排序的基线评估：检查大靶点集合偏差、相同疾病集合的等价排名与跨疾病Top-K重叠程度。没有独立标签时只报告这些诊断指标，不生成虚构预测准确率；中文别名和外部疾病ID仍需有依据的对应资料。"
+        }
+      ]
+    },
+    {
+      "path": "docs/DISEASE_RANKING_EVALUATION.md",
+      "title": "疾病候选排序：基线诊断（P2d）",
+      "sha256": "8204ed6cbea7a9710c84b6019af4295b9f271f5802619b00d9151297179da19e",
+      "lines": 65,
+      "status_mentions": [
+        {
+          "line": 57,
+          "text": "## 下一步与回滚"
+        }
+      ]
+    },
+    {
+      "path": "docs/DISEASE_SIZE_CONTEXT.md",
+      "title": "聊天候选规模对照（P2f）",
+      "sha256": "e571815773ffad5f25b9775afa4197291934697af65d9d39ed89ba78e69af0f4",
+      "lines": 25,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/DISEASE_SIZE_NULL_EVALUATION.md",
+      "title": "按集合大小匹配的随机对照（P2e）",
+      "sha256": "73a3f1432dab7d49d54e3f2e41e26c3c14332ce3538e0cacb81615599440f3e8",
+      "lines": 74,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/DISEASE_WORKFLOW_DELIVERY.md",
+      "title": "疾病候选检索：当前交付与五分钟演示",
+      "sha256": "3b7d21f6bb6668a8b4952b276b48195bb9954dad632f8ff1cd9d814ecfadf6e7",
+      "lines": 56,
+      "status_mentions": [
+        {
+          "line": 3,
+          "text": "更新：2026-10-24（补齐当前工作树全量回归）。源码工作树包含疾病名称查找、排序基线、规模随机对照和聊天规模解释。当前已验证入口为 **http://127.0.0.1:7878/**，外部模型关闭。7877旧进程未重新加载本轮实现，Docker镜像和Git远程未更新；本页优先于旧阶段的端口/进度说明。"
+        },
+        {
+          "line": 37,
+          "text": "当前链路：浏览器聊天 → FastAPI → 现有聊天路由/LangGraph本地执行路径 → 严格参数分析工具 → SQLite只读来源目录 → 类型化结果 → 前端表格及出处。疾病名称查找、集合运算及规模期望都在本地计算；本次演示模型调用为0。Qdrant不是本条结构化查询的检索引擎，DeepSeek意图兜底在这个预览中关闭，MCP和模型自主分析循环未实现。"
+        }
+      ]
+    },
+    {
+      "path": "docs/ETCM2_DATA_AUDIT.md",
+      "title": "ETCM2.0 本地快照：首轮数据审计",
+      "sha256": "aac972e15da10b4d800759e48ab4eade822dd79cf0389346127314c5e9c3418d",
+      "lines": 119,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/ETCM2_FIELD_MAPPING.md",
+      "title": "ETCM2.0 数据映射草案",
+      "sha256": "3e63a3bc9d6dbd26cf5c93d46ac0b7ecbe7d4e9691eb500d27ec7634206e6ef4",
+      "lines": 90,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/ETCM2_MVP_USAGE.md",
+      "title": "药材结构化查询 MVP：运行与验收",
+      "sha256": "8a659c660cec343f188f5db30306d3071b27e9795b2bb02c8bdbe8fde0ab518c",
+      "lines": 148,
+      "status_mentions": [
+        {
+          "line": 110,
+          "text": "真实数据导入、重复导入和查询验证结果见 [本次验收报告](../audits/etcm2_mvp/report.md)。repository 已接入独立文本 API（见上文「HTTP API」）。下一步是建立少量人工核验的中文名称映射与黄金查询集；不需要先增加新的 Agent。"
+        }
+      ]
+    },
+    {
+      "path": "docs/ETCM_DISEASE_ENRICHMENT.md",
+      "title": "ETCM疾病富集来源查询",
+      "sha256": "fa6793b9b95416577f322fb4b45102842d4196ea8961e9af89b932744e470a95",
+      "lines": 39,
+      "status_mentions": [
+        {
+          "line": 39,
+          "text": "下一阶段优先根据真实研究问题使用这些来源关联，找出需要补证据的缺口；暂不增加疾病反向推荐药材、自动翻译全量疾病或扩展疾病“知识图谱事实”。"
+        }
+      ]
+    },
+    {
+      "path": "docs/ETCM_LOCALIZATION_AND_LINKS.md",
+      "title": "ETCM药材中文对照与来源关联",
+      "sha256": "adae64d2a031adbb58a4591f9703fe9b6e3cdb1ba8144dff7400453137577fc7",
+      "lines": 284,
+      "status_mentions": [
+        {
+          "line": 93,
+          "text": "## 本轮验证与下一步"
+        },
+        {
+          "line": 125,
+          "text": "当前7875已支持下列问法，保持“AI整理回答”未勾选："
+        },
+        {
+          "line": 156,
+          "text": "当前7875已启用原始ETCM目录的按需只读访问。保持AI未勾选，发送“白术有哪些成分”，选择来源后，在某条成分记录中展开“查看成分标识与直接靶点记录”。它会读取已有文件候选，核对内部名称、分子式和分子量，展示来源声明的CAS、PubChem CID及原始字段位置。"
+        },
+        {
+          "line": 170,
+          "text": "下一步需先确认本地是否另有明确的成分—靶点数据源及稳定标识。若没有，应保留链条断点，先用现有药材关联与化学标识完成真实资料查阅任务；不以同名或模型推测补齐缺失边。"
+        },
+        {
+          "line": 239,
+          "text": "当前7875可输入“白术的成分关联哪些靶点”“黄芪的成分对应哪些靶点”，或使用`/relations 成分靶点 BaiZhu`。保持AI未勾选。中文药名先选择ETCM来源，随后按每页20条展示候选路径，并可从某条路径进入该UniProt的全部来源成分。"
+        },
+        {
+          "line": 268,
+          "text": "记录位于`var/etcm_target_links_v1/paths_ci/summary.json`、`paths_browser_02.json`和`paths_data_check.json`；首轮浏览器脚本误写提示文案断言的失败保留在`paths_browser_01.json`。下一步优先冻结这组行为，收集实际科研问题检验查询是否有用，不继续仅为框架数量增加图数据库或Agent。"
+        }
+      ]
+    },
+    {
+      "path": "docs/EVIDENCE_OFFLOAD_CANDIDATE.md",
+      "title": "大结果外置＋结构化回读：隔离原型",
+      "sha256": "f7c8646a14e99cdfd828ee62a4b8b67e122660b37207da8a76cf6285110f6162",
+      "lines": 44,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/INTENT_BOUNDARY_FIX_MILESTONE.md",
+      "title": "意图契约加固与原始输出离线回放",
+      "sha256": "d500c169a002580fb59880cfb23e60a1445956faaf52560398e15a5dcac39633",
+      "lines": 47,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/INTENT_FIELD_CONTRACT_MILESTONE.md",
+      "title": "模型意图与本地字段查询契约",
+      "sha256": "e9a0e0569b2e1bfcb20879063985bdb38015d41bc745f6785c93497258b3b90c",
+      "lines": 39,
+      "status_mentions": [
+        {
+          "line": 37,
+          "text": "下一步应在冻结的、未参与规则设计的合成问句上验证真实模型输出，并记录错误动作、遗漏字段、错误优先级与澄清比例。每题最多一次，不自动扩大既有授权，不以假模型测试通过代替真实模型有效性。真实资料继续留在本地。"
+        }
+      ]
+    },
+    {
+      "path": "docs/INTENT_GUIDANCE_FIX.md",
+      "title": "通用403与复合任务澄清修复",
+      "sha256": "6ec57b9849a3e8beefdd33e32e929bbc5a71e55d0714c1d9c5fccc6c62f3a2e2",
+      "lines": 36,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/INTENT_ROUTING.md",
+      "title": "自然问法与模型意图兜底",
+      "sha256": "1653119924ffb02a2e3b2490960142dfa1df185c45d03481c398592098743e55",
+      "lines": 60,
+      "status_mentions": [
+        {
+          "line": 3,
+          "text": "2026-10-22。当前7877预览可直接问“我需要查看白术的相关属性”“帮我看看黄芪的基本信息”，读取ETCM来源属性，不要求输入指令。唯一中文候选直接使用并保留来源说明；多来源再选择，未知药名和炮制品不替换为母药。“它的基本信息呢”等追问沿用已选ETCM来源。"
+        },
+        {
+          "line": 34,
+          "text": "2026-10-22用户明确授权“允许，仅外发当前问句做意图识别”。当前7877已启用下面的选项；只有规则未识别的当前问句会发送给已配置的DeepSeek模型。该授权不包含ETCM/药典片段、数据库或会话历史，也不扩展为使用真实资料生成答案。"
+        }
+      ]
+    },
+    {
+      "path": "docs/INTENT_SYNTHETIC_LIVE_MILESTONE.md",
+      "title": "真实模型意图契约验收：保留3/8失败基线",
+      "sha256": "043064a59a75c098520cdf57d4e1290fdd4c6f9e48b83b602da45e993cd05819",
+      "lines": 42,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/INTERVIEW_EVIDENCE.md",
+      "title": "项目面试：贡献、证据和追问",
+      "sha256": "249847597a8d1ea81f705ffac9a1de0604e38905332f0f8f1b30f021c58807b0",
+      "lines": 103,
+      "status_mentions": [
+        {
+          "line": 21,
+          "text": "我重点做了故障验证：只读报告步骤落盘后可以续跑；模型请求已经发出却没保存响应时，无法证明重试安全，所以恢复会停止，而不是自动再调用。现阶段循环恢复用合成模型验收，真实模型只做过有限组件测试，不能说所有业务都已模型化。检索对照也有负结果，混合记忆检索没有证明优于简单词面方法。下一步最有价值的是补新问题的独立标注与真实模型受控验收。”"
+        },
+        {
+          "line": 67,
+          "text": "循环具备动作—观察—下一步的ReAct式控制结构，并通过native tool_calls表达动作。没有要求保存或展示隐藏CoT，也不能用隐藏思维链文本证明可靠性；可审计证据是调用、参数校验、观察、状态和预算。"
+        }
+      ]
+    },
+    {
+      "path": "docs/LANGGRAPH_V1_UPGRADE.md",
+      "title": "LangGraph 1.x整体升级记录",
+      "sha256": "b1565d1ec717ac9201a1638c8c1b3c8164be4fba111c394e3fe04924ceadc7e3",
+      "lines": 91,
+      "status_mentions": [
+        {
+          "line": 26,
+          "text": "- 单药/两药checkpoint图使用原生`durability=\"sync\"`，确保下一步开始前checkpoint写入完成。移除两药图为0.3.x增加的内部逐页interrupt/重启循环；用户无须逐页确认。"
+        }
+      ]
+    },
+    {
+      "path": "docs/LLM_APPLICATION_EXPERIMENTS.md",
+      "title": "大模型应用主线：实现与实验记录",
+      "sha256": "3fa6012b77116c66df496a4953797a4696cb36e037009f497302cbd4332d0734",
+      "lines": 413,
+      "status_mentions": [
+        {
+          "line": 95,
+          "text": "## 下一步与求职证据边界"
+        },
+        {
+          "line": 167,
+          "text": "AP-04资料准备完成，项目本人独立复现、录屏与模拟面试仍待完成。讲稿区分上游开源基础和本项目改造，不将未验证的Qdrant、混合检索、自由总结、生产能力写成成果。下一步应先亲自按稿讲一次，暴露具体理解缺口，再安排新的有效实验。"
+        },
+        {
+          "line": 238,
+          "text": "本轮选择：保留名称字段默认，名称BM25保留显式正文词实验；dense留在独立实验脚本，不接入自动兜底或网页。该小批诊断没有显示足够收益，暂不增加hybrid/重排。下一步更需要独立题和任务/字段理解的验证，而不是默认堆更大的嵌入模型。"
+        },
+        {
+          "line": 288,
+          "text": "用户随后输入`/research 白术的功效`得到未启用提示，原因是纯合成启动配置主动关闭真实工具，并非白术未收录。新增显式`--with-local-research`选项，使用已有本地v2索引及两份PDF；只开放确定性的药典检索和预览，AI的`EVIDENCE_ASSISTANT_DATA_MODE`仍强制synthetic，其他真实服务不打开。当前7875已用该选项重启，沿用原独立会话库，未修改`.env`或Docker。"
+        },
+        {
+          "line": 300,
+          "text": "另用当前本地索引做两条开发验收：白术/黄芪的功效与用量四个单元均返回候选；功效与注意的对比中两条注意字段均未检出，保留缺失和partial。浏览器5项通过，包括表格与返回原文逐项一致、来源分组、缺失状态、后续追问、移动端及页面异常检查；记录在`var/evidence_assistant_v1/research_comparison/browser_01.json`。本轮模型/外部调用0，当前7875已更新，未改Docker、发布或push。这些是已见开发问题的工程验证，不是独立内容准确率。"
+        },
+        {
+          "line": 304,
+          "text": "在既有药材工具上新增预览选项`--with-local-herbs`，默认读取`var/tcm/herbs.sqlite3`并固定`local-2026-10-10`版本。可显式选择`--herb-db`/`--herb-version`，启动前验证所选库/版本有效且至少有一条有效记录；不存在的文件不创建、不回退成空库。新增主服务`GET /ready/herbs`，返回版本、来源记录数及计数单位，异常返回脱敏503；`/health`仍只是进程存活。当前7875启用ETCM与药典，本地AI模式仍为synthetic，没有开放真实ETCM片段外发。"
+        },
+        {
+          "line": 393,
+          "text": "65模块566项离线回归与12项真实浏览器检查通过，7875源码预览已更新，Docker未变，模型/嵌入调用0。四项输入SHA一致性和实际源码副本保留，原失败不覆盖；[详细对照及限制](SCOPED_RECALL_EVALUATION.md#用途改述修复与同题回归2026-10-20)。下一步冻结这些已知题，采集真实科研任务验收整条聊天，不继续围绕同题扩规则或宣称独立语义准确率。"
+        }
+      ]
+    },
+    {
+      "path": "docs/LOCAL_RERANKER_MILESTONE.md",
+      "title": "本地 Cross-Encoder 重排接入与对照",
+      "sha256": "e571c02016405fca00a5d31fa4510cd35541d20d2e2c8028bf15ceab57803425",
+      "lines": 66,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/LOCAL_TASK_REQUEST.md",
+      "title": "ETCM问句、请求清单与本地执行",
+      "sha256": "4720995d649bd3fccb07409775882894eb96a1cf8e6670728a4fad183159317f",
+      "lines": 127,
+      "status_mentions": [
+        {
+          "line": 7,
+          "text": "当前源码预览：**http://127.0.0.1:7877/research-tasks**。Docker镜像尚未更新；已有双药直接输入入口和合成任务仍可使用。"
+        },
+        {
+          "line": 99,
+          "text": "本次新增4项回归，聊天衔接模块共12项；完整88模块794项离线通过，跳过/网络尝试0。16个浏览器场景检查通过，其中11个完成当前本地范围，另外5个为未支持要求、缺来源、缺字段、联网工具关闭、个人用药边界，各1个，不能算完整任务成功。实际下载11份文件，20条选定来源见证核对原JSON位置及SHA；不是全部关系记录验收或独立用户准确率。另用独立端口和状态库执行18项检查，含真实进程重启恢复核对操作、继续完成资料任务和浏览器隔离。外部模型调用0，7877预览已加载应用修复；Git/Docker未更新。脱敏记录见[本次摘要](../audits/user_flow_v1/summary.json)。"
+        }
+      ]
+    },
+    {
+      "path": "docs/MCP_READONLY_MILESTONE.md",
+      "title": "只读资料工具的MCP互操作",
+      "sha256": "b2b001fc5a6764f11cde41748c77131fd49f455892746374aa8d377d4df43812",
+      "lines": 77,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/MEMORY_BACKUP.md",
+      "title": "会话在线备份与隔离恢复",
+      "sha256": "4f5e7d3c40d26a31d699e1b18e9116590f14771bb018750e2adc1547c027b308",
+      "lines": 59,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/MINERU_CHALLENGE_V1.md",
+      "title": "50题新问法与炮制范围挑战",
+      "sha256": "9c8f7953c4b5c37d5c4e0069290de2bef0b32d0db9b284749d861ef59d9d1800",
+      "lines": 79,
+      "status_mentions": [
+        {
+          "line": 3,
+          "text": "2026-10-18完成首轮。结论：当前框架可以支持可追溯的研究检索，但目前的药名子串规则和字段词表不足以承担通用药材问答。下一步优先修复炮制品范围与错误药名匹配，再扩展别名；本轮不调整检索规则，保留失败基线。"
+        },
+        {
+          "line": 39,
+          "text": "下一步先增加明确的“炮制范围未解析”状态，阻止静默替代；保留可核对的父条目来源入口。不得为提高通过率直接把所有炮制前缀删除。"
+        }
+      ]
+    },
+    {
+      "path": "docs/MINERU_HEADING_RECOVERY.md",
+      "title": "MinerU无标题级别漏切修复与来源身份迁移",
+      "sha256": "f68451a70767c2a24bdfda3997063cf090537f1bfd30614d41c01c07530079e1",
+      "lines": 90,
+      "status_mentions": [
+        {
+          "line": 3,
+          "text": "2026-10-17。已修复本轮确认的4处漏切，当前研究候选为616条，索引为 `var/mineru_retrieval_v2/`。全部原始识别内容保留，修订及候选仍未人审，未接入正式聊天知识库。"
+        },
+        {
+          "line": 90,
+          "text": "新版只读检索已接入[研究页面](MINERU_RESEARCH_UI.md)，支持原文/AI修订对照、字段/标题原页证据及未审核标记。下一步补充未用于这次修复的新问题，继续验证名称/字段别名、多个炮制范围及词法检索失败；不把这次20题回归当作独立泛化证明。"
+        }
+      ]
+    },
+    {
+      "path": "docs/MINERU_QUERY_FORMS.md",
+      "title": "药典研究查询：字段改述与有限字形支持",
+      "sha256": "5b089904aefeeddb52c25ba7b955dc89920a1ad55bbaed4a68bc971f8ec01a82",
+      "lines": 62,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/MINERU_RESEARCH_CHAT.md",
+      "title": "独立研究聊天入口",
+      "sha256": "50afa68fb1a1fc4bd43429cbbcb896d0e81e20708c07964fa397fd130a785652",
+      "lines": 79,
+      "status_mentions": [
+        {
+          "line": 79,
+          "text": "下一步可把这套状态契约封装为现有Agent的显式研究工具入口，保持未完成字段和来源隔离；是否增加模型改写或复杂路由应由明确任务收益决定，保留当前确定性路径作为对照，不再为增加框架而扩展框架。"
+        }
+      ]
+    },
+    {
+      "path": "docs/MINERU_RESEARCH_UI.md",
+      "title": "MinerU 只读研究页面",
+      "sha256": "8f82c6fd3cd940a8768f5ef73dec0b5e8488f673c2a8e7b7010fad1040af479b",
+      "lines": 60,
+      "status_mentions": [
+        {
+          "line": 60,
+          "text": "2026-10-18已完成[50题新问题挑战](MINERU_CHALLENGE_V1.md)，并增加[炮制范围、名称上下文与引用保护](MINERU_RETRIEVAL_GUARDS.md)。未完成片段单独展示，不作为有效命中。下一步可转向独立研究聊天入口，按检索状态展示证据或澄清；不自动补缺项。全部条目仍未人工审核，尚未接入正式聊天、没有发布新Docker镜像，M2全文质量验收尚未完成。"
+        }
+      ]
+    },
+    {
+      "path": "docs/MINERU_RESULTS_IMPORT.md",
+      "title": "MinerU结果迁入与图片查看",
+      "sha256": "23cd843cb82a6e12251fc4016b442b690455e7410139b825396b3e8fe6e91eb2",
+      "lines": 73,
+      "status_mentions": [
+        {
+          "line": 73,
+          "text": "上述26条标记及14条未标记样本已完成局部AI原图复核，发现内部一致仍会漏报药名错误。带证据的修订层及caption字段恢复已实现，下一步建立独立的研究检索基线；未标记条目也不是已批准条目。详见 [复核记录](MINERU_REVIEW.md) 与 [修订层交付](MINERU_REVISIONS.md)。"
+        }
+      ]
+    },
+    {
+      "path": "docs/MINERU_RETRIEVAL_BASELINE.md",
+      "title": "药典研究检索基线与实际失败记录",
+      "sha256": "4ef1ff5641ba7ae0e6681a6869d70eeb5eca7ec6630dfadf46b20a614668fe34",
+      "lines": 93,
+      "status_mentions": [
+        {
+          "line": 59,
+          "text": "下一步：支持没有标题级别但具有中文名、拼音/拉丁名、来源句与版面关系的边界；扫描同类漏切。修复可能改变顺序型候选ID，需要先设计稳定来源身份及修订重基，不能直接按旧编号套用11条修订。"
+        }
+      ]
+    },
+    {
+      "path": "docs/MINERU_RETRIEVAL_GUARDS.md",
+      "title": "研究检索的范围与引用保护",
+      "sha256": "239fb5d1a60d12701a42ad5fb7f52ae393aef8794f82fd0a37c28018d7f66982",
+      "lines": 78,
+      "status_mentions": [
+        {
+          "line": 61,
+          "text": "## 运行与下一步"
+        }
+      ]
+    },
+    {
+      "path": "docs/MINERU_REVIEW.md",
+      "title": "MinerU风险复核与跨栏表格修复",
+      "sha256": "2415e9ce94d8472e3d674f7a4556a06a82757c5e4b8198f8d3fc666c7bba1948",
+      "lines": 71,
+      "status_mentions": [
+        {
+          "line": 3,
+          "text": "2026-10-17。本次复核对应的解析候选为 `var/mineru_pharmacopoeia_v2/`，原图对照与复核记录为 `var/mineru_review_v2/`。后续已完成caption字段恢复与11条独立研究修订，当前候选为v3，见 [修订层交付](MINERU_REVISIONS.md)。历史候选与抽样记录保留，尚未接入正式知识库。"
+        }
+      ]
+    },
+    {
+      "path": "docs/MINERU_REVISIONS.md",
+      "title": "MinerU修订层与图表正文字段恢复",
+      "sha256": "60c9f78d604fa08b3863e398756f2e0b25708c997292072ec331aca3b50a7aba",
+      "lines": 79,
+      "status_mentions": [
+        {
+          "line": 3,
+          "text": "2026-10-17。本页记录v3解析及首版修订视图（612候选）。后续已修复缺级别标题、采用来源稳定ID并重基11条修订，当前为v4解析/616候选和 `var/mineru_revisions_v2/`，见 [当前修复记录](MINERU_HEADING_RECOVERY.md)。原始PDF、识别文件及历史候选保留，未接入正式聊天或检索库。"
+        }
+      ]
+    },
+    {
+      "path": "docs/MULTI_HERB_COMPARISON.md",
+      "title": "多药、多字段的药典原文比较",
+      "sha256": "77186eceb15395623ea1aeaeb575857dbc96852b4d1009964b1166c413bfb9f5",
+      "lines": 23,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/NATURAL_ROUTING.md",
+      "title": "自然语言入口与资料概览",
+      "sha256": "fd025f73ee58aead474ce04844d4f58e24cc66c6139b6746da38f3398ef72805",
+      "lines": 59,
+      "status_mentions": [
+        {
+          "line": 19,
+          "text": "后续已交付[三个功能页签](RESEARCH_WORKSPACES.md)：数据概览、药材与药典、现代文献。每个页签有自己的操作面板，共用下方聊天与同一Cookie会话；切换不执行工具、不清除焦点、不丢页面内草稿。当前7873运行d0d3bc3本地镜像；下方03238f8保留前一阶段自然语言验收历史。"
+        }
+      ]
+    },
+    {
+      "path": "docs/NEW_USER_GUIDE.md",
+      "title": "新用户使用说明与模拟测试问题",
+      "sha256": "279904cf505c3233b74bebc5050db0e38a77aa9e9ac74920c5e883a12ac36251",
+      "lines": 160,
+      "status_mentions": [
+        {
+          "line": 3,
+          "text": "**当前统一入口（2026-10-23）：** 新增疾病检索、排序与规模对照的预览在 **http://127.0.0.1:7878/**；请按[当前交付与五分钟演示](DISEASE_WORKFLOW_DELIVERY.md)操作。7877旧进程未更新，以下旧阶段日志中的端口/完成状态按当时范围理解。本轮源码已归入2026-10-24本地Git基线；未push或发布镜像。"
+        },
+        {
+          "line": 6,
+          "text": "**2026-10-22当前用法：** 打开 **http://127.0.0.1:7877/**，直接输入“我在整理当归与川芎，想核对共同靶点”，即可查看当前所用两份来源的172个共同UniProt标识，不需要核对请求清单或确认计划。每项可展开双方原始行和JSON位置，上方可展开来源文件与哈希。当前只有一份候选来源时自动使用并显示；有多个来源才选择，缺来源会提示。中文候选尚未核验药材身份，结果不证明机制或药效。"
+        },
+        {
+          "line": 14,
+          "text": "属性查询可直接问“我需要查看白术的相关属性”“白术有哪些属性”，随后问“它的药用部位是什么”“它的基本信息呢”。这些读取ETCM来源；中文候选唯一时直接展示，多候选才选择。经用户授权，当前7877对规则未识别的问句调用模型识别意图，最多一次，只发送当前问句，不发送资料和历史；“能给我一张白术的资料卡吗”“帮我把白术的档案调出来”已实际跑通。已识别的查询仍直接本地执行；配置及范围见[说明](INTENT_ROUTING.md)。"
+        },
+        {
+          "line": 16,
+          "text": "2026-10-21源码预览更新：当前访问 **http://127.0.0.1:7877/**；研究任务页为 **http://127.0.0.1:7877/research-tasks**，已支持[真实ETCM问句和清单核对](LOCAL_TASK_REQUEST.md)。下方7876镜像说明保留其历史适用范围，Docker尚未更新。"
+        },
+        {
+          "line": 24,
+          "text": "当前入口：**http://127.0.0.1:7876/**。这是部署电脑的本机地址；其他电脑不能直接通过自己的127.0.0.1访问此服务，需要管理员提供访问方式。当前服务没有公开部署或账号登录系统。"
+        },
+        {
+          "line": 148,
+          "text": "当前7877已加载疾病索引，可以输入："
+        }
+      ]
+    },
+    {
+      "path": "docs/NEW_USER_WORDING_FIX.md",
+      "title": "模拟用户入口失败修复",
+      "sha256": "42b85c240d74e30d823030f7fa7213a356919b75f1c6b4c2751c6a73393b312a",
+      "lines": 33,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/OFFLINE_CI.md",
+      "title": "离线回归与 CI",
+      "sha256": "a5bca2069aedb1c2c4ac2232dcc1cc53ff16f46fed930c341503d59448591c33",
+      "lines": 49,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/OFFLOAD_JOURNAL_RECOVERY.md",
+      "title": "外置证据与执行journal：发布边界验证",
+      "sha256": "13b7d55aaaf6a900a7a9ca24d152321de31de153e8fdda45658398892a57acc9",
+      "lines": 41,
+      "status_mentions": [
+        {
+          "line": 37,
+          "text": "## 边界与下一阶段"
+        }
+      ]
+    },
+    {
+      "path": "docs/OFFLOAD_LOOP_CANDIDATE.md",
+      "title": "大结果外置的完整隔离工具循环",
+      "sha256": "dedf98606c248e78c4fcdca88e37b366dab8e211d2bb9cae18a71eb8bc8e8253",
+      "lines": 53,
+      "status_mentions": [
+        {
+          "line": 13,
+          "text": "- 在模型调用前保存pending，动作返回后保存ready；执行工具前再保存pending，引用和工具结果保存后才进入下一步。"
+        }
+      ]
+    },
+    {
+      "path": "docs/OPTIONAL_FEATURES.md",
+      "title": "M0-04：原医疗应用可选功能开关",
+      "sha256": "081a783131e63a70a99b42e41431a6958032e63b1a5f01fd082d2cf203ee1604",
+      "lines": 64,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PAIR_ARCHITECTURE_PREFLIGHT.md",
+      "title": "两药复合任务：架构对照前置验收",
+      "sha256": "273a099474a662f23c5060afa13a187aaa7f6b897d8d4f68a320bd95be2c5399",
+      "lines": 60,
+      "status_mentions": [
+        {
+          "line": 42,
+          "text": "4. 下一阶段应让A模型循环和C主管适配器使用这些相同底层工具、相同总预算与完成条件。先固定SDK替身检查调用协议，再以另行授权的合成真实模型对照检验自主规划。B同样可接入此工具协议，不能被本轮结果排除。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PAIR_CHECKPOINT_MILESTONE.md",
+      "title": "两药报告的持久化执行与恢复",
+      "sha256": "88f6cc0a3ed2ac164224e5ce3afdf0293449bb32ce311b50fd7507d8cd75c8fa",
+      "lines": 49,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PAIR_LIVE_SYNTHETIC_RESULT.md",
+      "title": "A/C真实模型合成对照结果",
+      "sha256": "8793611678e380b8d10e24c96cc7496c9628478e49669110d8684acb1ff1ac85",
+      "lines": 51,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PAIR_PAGINATION_BROWSER.md",
+      "title": "全分页报告：浏览器、队列与真实强杀验收",
+      "sha256": "3ab817350ffab572e77855e99c002f24aa9242be0ba95a60b82a4afe387dd3e9",
+      "lines": 51,
+      "status_mentions": [
+        {
+          "line": 9,
+          "text": "当前LangGraph 0.3运行时异步写checkpoint。正式两药图现在在每个共同靶点页节点之后设置内部interrupt边界，等待本次astream完整退出、pending写入完成，再从checkpoint自动继续下一节点。这个内部边界不要求用户逐页确认。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PAIR_PAGINATION_INTEGRATION.md",
+      "title": "正式两药报告：完整分页与请求覆盖",
+      "sha256": "38716f0d9e6836d765840f39ddbf1d004b4680bc0baf30ccce46d92fd34586a0",
+      "lines": 57,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PAIR_PROTOCOL_CANDIDATES.md",
+      "title": "A/C复合任务协议：分页、委派与完成判定",
+      "sha256": "636f3dcd593ff3efc131d88ea5525c56292f97e4083cebd28ed139ce0babb3a2",
+      "lines": 66,
+      "status_mentions": [
+        {
+          "line": 52,
+          "text": "下一阶段应冻结这组协议与相同输入，再进行限定的合成真实模型对照，检查动态任务选择、无必要委派、缺失处理与完整请求覆盖。没有新增外发授权前仅准备适配与离线检查，不自动调用DeepSeek。是否正式引入主管式架构应在此后判断；不再凭固定脚本成功率做框架选择。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PAIR_RESEARCH_REPORT_MILESTONE.md",
+      "title": "两味药联合比较报告",
+      "sha256": "b0bf63e8e683c7427cdc67a98ce02d024356b2fd5fef94cf64448948c212ada4",
+      "lines": 56,
+      "status_mentions": [
+        {
+          "line": 34,
+          "text": "首次真实验收发现当前LangGraph 0.3在嵌套场景强制使用values流，而旧单药实现按updates解析，导致子图结果丢失。修复为无进度回调时通过ainvoke取得最终状态；新增真实嵌套图测试，避免只用模拟子图掩盖集成问题。失败记录保留于 `var/pair_report_milestone/local_acceptance*.json`，通过结果为 `local_acceptance_v3.json`。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PERSISTENT_MEMORY.md",
+      "title": "可恢复的本地会话记忆",
+      "sha256": "b6cd08b73fba0afaeb267c444716f9b69810b3fa8dcd416a633190ad6bcae376",
+      "lines": 94,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_AUTOMATED_QC.md",
+      "title": "自动质检、异常复核与研究检索预览",
+      "sha256": "f20063d8ce9d8bc21323e5c76964a7a852c4ca1ab815ae094078e13e3ba54138",
+      "lines": 68,
+      "status_mentions": [
+        {
+          "line": 68,
+          "text": "下一步优先扩大独立页面样本、验证自动条目边界及抽样漏检，再用实际复核数据校准规则和人工工作量预算；不再以全书人工逐条签核阻塞研究功能。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_BATCH_EXTRACTION.md",
+      "title": "药典自动切分与可续跑提取试验",
+      "sha256": "126e83624b1e15816bc5692e50013cf90a42b33548c8572bd95723dda20a87f0",
+      "lines": 79,
+      "status_mentions": [
+        {
+          "line": 73,
+          "text": "下一步选取未参与开发的章节前/中/后页面，覆盖长条目、更多炮制品、表格、异常标题、空白和印刷缺页，扩大到约 30–50 页并登记漏切、误切、跨药串接和源缺页。先冻结规则，再独立核对起止位置；不要求人工逐字段校对全书。对明确异常和抽样条目保留复核，之后再分批跑完整“药材和饮片”。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_BOUNDARY_REPAIR.md",
+      "title": "药典边界修复：缺字、漏行与未知身份",
+      "sha256": "ba2240113756c4264621261e050100508771026a99cdd984b5eef9237f6c0971",
+      "lines": 88,
+      "status_mentions": [
+        {
+          "line": 88,
+          "text": "下一步优先对来源漏行、药名漏字、乱码拼音的少量异常区域做局部重识别对照，并确认未知身份仍不进入规范药材映射。边界修复后再逐批扩大章节覆盖，继续抽样检查；不要求人工逐字段审核全书，也不直接把全部未审核OCR接入聊天。当前原始OCR中的专业错字和字段范围准确性仍需单独验证。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_BOUNDARY_VALIDATION.md",
+      "title": "药材章节30页冻结规则验证",
+      "sha256": "798d6843ab94393b0e79222bd29a744b148ad465b253eb7a816699901716a367",
+      "lines": 73,
+      "status_mentions": [
+        {
+          "line": 71,
+          "text": "下一步应先修复“条目边界必须依赖完整来源段”和“中文标题漏字导致吞并”的问题：即使来源或名字未识别完整，也应将可靠的标题组合作为待核实边界，隔离身份/来源未知的条目；再对少量异常标题和来源区域尝试局部重识别。**本轮30页从此成为已知失败回归集**，修复后的独立验证需另取未参与开发的新页面。不能修完这30页再声称它们是独立留出集。"
+        },
+        {
+          "line": 73,
+          "text": "当前不启动完整章节提取。药典批量链路仍未接入正式聊天/ETCM，字段范围和专业词准确性尚未评估；人工批准仍为0。原两份PDF和ETCM数据库SHA均未改变。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_CHAPTER_LAYOUT.md",
+      "title": "药典按章节选择来源与解析规则",
+      "sha256": "c732b08585ee78d19494d36f36a185e209fbd08049242919e557d775760e5b4b",
+      "lines": 57,
+      "status_mentions": [
+        {
+          "line": 26,
+          "text": "复用的是 OCR 引擎、版面阅读顺序、字段和边界规则。不同扫描件的大小、边距、倾斜及置信分数仍须分别检查，不复制另一文件的像素坐标。相同印刷页不重复作为两个独立药材计数；来源分别保留，不能无条件拼接两份 OCR。当前尚未实现自动去重/冲突裁决及补页拼装。"
+        },
+        {
+          "line": 55,
+          "text": "下一步继续原来的30–50页独立边界验证，限药材和饮片双栏正文；其他章节分别建检查样本和提取配置。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_DUAL_REVIEW.md",
+      "title": "四味药的双引擎字段复核",
+      "sha256": "374125600aadf24ac966fd7e4ee61d7bbae8bd4ffcf24fe3ecd56ca2458f0c43",
+      "lines": 51,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_FIELD_CANDIDATES.md",
+      "title": "四味药材的字段候选与来源复核",
+      "sha256": "fc7a477eb3db702ee293b8d66c90f53ff4a83beb803729fa7a05bac8d4eace99",
+      "lines": 66,
+      "status_mentions": [
+        {
+          "line": 66,
+          "text": "下一步应核对这些字段与异常，形成独立的审核后资料集，再用少量来源问题验证检索引用。药典PDF真实性、中文药名规范映射、专家语义审核及生产导入仍待完成；当前复核卡不能代替这些步骤。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_FULL_REVIEW.md",
+      "title": "四味药九类目标字段的转录覆盖",
+      "sha256": "ec48b9c6f1fc6c3d4d7b28a055a5fc10aa668ed956c0623fbe411c99781eb7b2",
+      "lines": 57,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_HERB_PDF_EXPORT.md",
+      "title": "仅药材和饮片章节的PDF导出",
+      "sha256": "8c986daced8847b06d377fe644527928891fc5046bd592bbcd8f1fd464acf5d7",
+      "lines": 47,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_OCR_PILOT.md",
+      "title": "中国药典小样本 OCR 试验",
+      "sha256": "a0d8393c5df002cfac4cf1038ed15eb520e1536f54aee0a147b2bb30543996c2",
+      "lines": 59,
+      "status_mentions": [
+        {
+          "line": 39,
+          "text": "## 使用范围与下一步"
+        },
+        {
+          "line": 43,
+          "text": "下一步先实现有明确边界的“来源、性味归经、功能主治、注意”等字段候选抽取，核对跨页归属，并将拼音/学名不一致项隔离为待审核。确认这一层可靠后，再接入检索和聊天引用；不用先全量OCR两千多页。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_PDF_BENCHMARK.md",
+      "title": "药典 PDF 解析器对照实验",
+      "sha256": "fe4da4ca156f0ef45ccbd3bd889ed72d066d366f4f14eaf3904a1812df443e40",
+      "lines": 73,
+      "status_mentions": [
+        {
+          "line": 57,
+          "text": "**当前决策：保留RapidOCR基线，Paddle作为独立离线复核候选；暂不全量替换，不导入正式知识库。** 尚未完成20页完整字段转录与人工签核，因此不宣布任一方案达到全文准确率目标。下一步优先整理四味药的完整字段参考与双引擎差异，人工复核后再推进条目边界和检索导入。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PHARMACOPOEIA_VISUAL_TRIAGE.md",
+      "title": "六个差异字段的原图诊断与AI转录草案",
+      "sha256": "7cfe3ac617f18eaab4e7cc084cd94102b9f2db9457fce05debcf941b63ac320b",
+      "lines": 61,
+      "status_mentions": [
+        {
+          "line": 61,
+          "text": "下一步补齐其余字段的原图转录，并回收针对具体版本的人工核对结果；来源不清、文字不可辨认或审核未完成的字段继续保留待审状态。"
+        }
+      ]
+    },
+    {
+      "path": "docs/POSTGRES_CHECKPOINT_MILESTONE.md",
+      "title": "PostgreSQL运行队列与单药报告checkpoint恢复",
+      "sha256": "ecb638a2764f37686a27d26142d826ba9922c5f993d31f56448efb6683be76ae",
+      "lines": 77,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PROJECT_CLEANUP_20261029.md",
+      "title": "仓库整理记录",
+      "sha256": "41bc13577edde46691fc533731bde43dca7bfc1e85fc274bcafb082e0a3a6b24",
+      "lines": 40,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PROJECT_DEMO.md",
+      "title": "中草药研究助手：求职演示",
+      "sha256": "8a8ec0784fc61e38b0ede952f9df58b6c58c4c1b189d8eba7589b8677d204ca9",
+      "lines": 96,
+      "status_mentions": [
+        {
+          "line": 23,
+          "text": "当前建议预览入口：http://127.0.0.1:7896/ 。如需重新启动，先确认该端口没有正在运行的服务；不要启动两个不同配置的worker共用同一个队列。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PROJECT_EVIDENCE_PLAN.md",
+      "title": "TCM 项目：用实验留下能力证据",
+      "sha256": "f2de5555861983c41d1d965478afb1e68508170f48955d52e2585ea9ff3c3f3c",
+      "lines": 94,
+      "status_mentions": [
+        {
+          "line": 59,
+          "text": "| 能力覆盖率 | 当前可支持的任务数 / 完整目标集任务数；明确哪些入口还未实现 |"
+        }
+      ]
+    },
+    {
+      "path": "docs/PROJECT_MEMORY_MILESTONE.md",
+      "title": "项目记忆第一阶段：显式背景复用",
+      "sha256": "1249d1c484a082233bfc9f21cb8192516abcf3451651aecdcc4da61716b3022c",
+      "lines": 49,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PROJECT_MEMORY_POLICY_MILESTONE.md",
+      "title": "项目记忆入口与范围约束",
+      "sha256": "b7dbf56a14e2c4848dc820471642b84df7ffe592daa50e99244cb6c144d279a0",
+      "lines": 44,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PROJECT_MEMORY_TRANSFER_EVALUATION.md",
+      "title": "连续研究记忆诊断与上下文修复",
+      "sha256": "fde0f49f779bc332e3f6e8845a56850a5576ab0b291e36012b8152d55690970d",
+      "lines": 66,
+      "status_mentions": [
+        {
+          "line": 33,
+          "text": "2. 原来“不要当归，只看白术”会把两个名称都当作当前对象。现在检测否定片段中的已知药材，返回明确冲突，要求用户在报告表单填写保留对象；尚未实现任意自然语言否定的自动逻辑解析。"
+        },
+        {
+          "line": 56,
+          "text": "## 下一步优先级"
+        }
+      ]
+    },
+    {
+      "path": "docs/PROJECT_SEMANTIC_MEMORY_MILESTONE.md",
+      "title": "本地语义项目记忆：召回、核对与报告应用",
+      "sha256": "e3417b55d64eabfbe5daf839e8ae4304bb4b88dafc0cc9afd3a3885079b08e25",
+      "lines": 89,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/PUBMED_CHAT.md",
+      "title": "主聊天PubMed显式工具",
+      "sha256": "add6b737af9abdf548ad5265fe307b1e6bcda88318a4e548fc50f41554ae7d46",
+      "lines": 57,
+      "status_mentions": [
+        {
+          "line": 49,
+          "text": "## 验证与下一步"
+        },
+        {
+          "line": 53,
+          "text": "文献接口/数据模型详见 [第一阶段](PUBMED_LITERATURE.md)。M3-07[会话在线备份与隔离恢复](MEMORY_BACKUP.md)已完成本机手动运维范围，但不包含本独立文献台账。文献库首次打开v1会先备份再升级为v2，旧批次内容保持不变，详见[迁移手册](PUBMED_EVIDENCE.md)。M4-04a受限组合清单已交付，下一步新版Docker整体验收；研究对象核验、人工判重、临床质量评议和综合解释仍待完成。"
+        }
+      ]
+    },
+    {
+      "path": "docs/PUBMED_EVIDENCE.md",
+      "title": "PubMed来源关系、保守查重与文献库升级",
+      "sha256": "020339fdece04b44abeea34533d234420931fcddfedcf6b74ed156c2c0ae74e1",
+      "lines": 59,
+      "status_mentions": [
+        {
+          "line": 49,
+          "text": "## 验证与下一步"
+        }
+      ]
+    },
+    {
+      "path": "docs/PUBMED_LITERATURE.md",
+      "title": "PubMed文献工具：第一阶段",
+      "sha256": "6b92a6bdf679384616df9253ca0a4d95ebddc07fdbb1a0b0eba257f85b1dc365",
+      "lines": 42,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/QDRANT_LOCAL_MILESTONE.md",
+      "title": "当前药典研究链路的 Qdrant 本地接入",
+      "sha256": "a570b40d7f0da11d1c1d344d1c50a126de58f53855abe8833a0573e0370aa6d8",
+      "lines": 60,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/README.md",
+      "title": "文档导航",
+      "sha256": "cc32e4f95be72e4443f69840ba2a203adbcb87416d19c0b626020174c5245d45",
+      "lines": 41,
+      "status_mentions": [
+        {
+          "line": 3,
+          "text": "更新：2026-10-29。当前入口集中在下表；其余带阶段名/日期的文档是实现与验收记录，端口、测试数字和“下一步”只适用于记录当时，不覆盖统一大纲。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RELATION_QUERY_PROVENANCE_FIX.md",
+      "title": "关联查询附原始记录：P20组合意图修复",
+      "sha256": "32682c969907055df722bcf1ddb96a14a7d94ee119ed06c71ef86176b2f57d70",
+      "lines": 25,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/REPORT_REQUEST_MILESTONE.md",
+      "title": "报告入口：结构化字段请求与展示优先级",
+      "sha256": "2334486ab8b28a39c8f1771d0b4aa883e60949603027c9c9938689d76042644d",
+      "lines": 58,
+      "status_mentions": [
+        {
+          "line": 45,
+          "text": "当前独立预览：http://127.0.0.1:7882/ 。已有旧端口进程可能没有加载新代码，请使用该端口。"
+        }
+      ]
+    },
+    {
+      "path": "docs/REQUEST_COVERAGE.md",
+      "title": "请求覆盖契约与明确缩小范围（2026-10-21）",
+      "sha256": "674629fa4f7f36bfb5539b9cf4b78a0ce2ec0a3f8b894b8114a82b9574cf612a",
+      "lines": 100,
+      "status_mentions": [
+        {
+          "line": 90,
+          "text": "### 验证、回滚与下一步"
+        },
+        {
+          "line": 98,
+          "text": "下一步优先用真实ETCM只读任务验证这条“原问句→用户核对清单→限定执行→来源报告”闭环，保持资料在本地，保留实体/来源选择和未覆盖项；不将合成流程通过解释为真实意图识别已完成，也不继续堆框架或评测平台。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_ANALYTICS_PLAN.md",
+      "title": "从资料查询到靶点关联分析",
+      "sha256": "dd2ab677ea76bccea57dabc0f83d3e278c7e37710a74ddf2f1141492b0c645f4",
+      "lines": 91,
+      "status_mentions": [
+        {
+          "line": 5,
+          "text": "更新：2026-10-24（状态核验；历史实验日期不变）。针对用户提出的“介绍两个数据库”、药材靶点画像和疾病候选筛选，调整下一阶段主线。P0 数据库介绍已完成；P1 已实现药材靶点画像与来源集合相似度。P2a疾病来源审计和独立索引已完成；P2b疾病靶点聊天与来源候选排序、P2c名称查找、P2d排序基线诊断、P2e规模随机对照及P2f聊天候选规模解释已完成；交付演示已跑通，新靶点预测仍待实现。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_BOOKMARKS.md",
+      "title": "研究收藏：显式长期留存",
+      "sha256": "3df96dd9b212b3d8d3a086ec65501efb1dc2a7a6bcea6e8f1711066de6ff3b43",
+      "lines": 70,
+      "status_mentions": [
+        {
+          "line": 13,
+          "text": "当前仅支持药典单药焦点和已选来源的ETCM关联查询，未接入PubMed批次、药典比较表或AI生成回答收藏。"
+        },
+        {
+          "line": 53,
+          "text": "本功能不解冻自动长期语义记忆、多账户系统或通用协同编辑。下一步优先完善已收藏研究任务的证据整理，停止继续扩张收藏管理范围。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_CONTEXT_BUDGET.md",
+      "title": "Agent循环上下文预算第一版",
+      "sha256": "9704944b96c95f4d1a4cadcc2d9a8b6c6f79dcee54ddf1e88f2efd7f6bbbf369",
+      "lines": 85,
+      "status_mentions": [
+        {
+          "line": 37,
+          "text": "下一步优先补按run/evidence ID获取有限明细的只读工具及来源绑定，避免只压缩却无法按需取回。之后再比较有/无压缩的真实合成任务完成率、输入token和延迟。"
+        },
+        {
+          "line": 41,
+          "text": "已增加 `tcm/research_evidence_read.py`，工具名 `read_run_evidence`，注册在研究循环的原生工具Schema中。此前“无法自动取回”的限制现已对当前运行内的三个列表字段解除；跨运行读取、独立后台恢复仍未实现。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_DOCKER.md",
+      "title": "精简药典研究聊天 Docker 部署",
+      "sha256": "94f13693b718f9ed0b0052376274ea38a764ae5f55c690589050ee381d9b1ca0",
+      "lines": 122,
+      "status_mentions": [
+        {
+          "line": 5,
+          "text": "当前7876：`tcm-research-chat:research-task-etcm-20261021`，支持[真实ETCM本地关系任务](RESEARCH_TASK_ETCM.md)与原合成演示，外部模型/PubMed关闭。695项离线、13项真实数据页面和12项合成回归通过，83个运行文件核对，原卷/其他实例保留，未上传远程。以下为历史交付记录。"
+        },
+        {
+          "line": 9,
+          "text": "当前7876本地镜像：`tcm-research-chat:relation-provenance-20261020`，修复“查关联并附原始记录”被提前拦截；655项完整离线与8项页面检查通过，原卷保留，AI/PubMed关闭，未提交Git或上传远程。[当前交付](RELATION_QUERY_PROVENANCE_FIX.md)。下文旧标签保留历史状态。"
+        },
+        {
+          "line": 11,
+          "text": "当前7876本地镜像：`tcm-research-chat:multi-comparison-20261020`，支持最多3味药、4个标准药典字段及证据导出；643项离线测试和8项实际页面检查通过，原卷保留，未上传远程。[当前功能与交付](MULTI_HERB_COMPARISON.md)。下文旧标签保留历史状态。"
+        },
+        {
+          "line": 15,
+          "text": "当前7876已进一步装入`wording-fix-20261020`本地工作树镜像，修复已知口语入口及字段缺失状态；629项离线回归通过，AI/PubMed关闭，原卷保留。[修改与当前镜像说明](NEW_USER_WORDING_FIX.md)。以下c4de8bc为上一已提交基线。"
+        },
+        {
+          "line": 23,
+          "text": "2026-10-19更新：新版 **`8n1eld/tcm-research-assistant:d0d3bc3`** 已发布，提供三个功能页签、自然语言入口与实时概览。cb16678远程回归/构建、Hub摘要和按摘要拉取复验通过；当前 **http://127.0.0.1:7873/** 已运行相同镜像内容，原7860/7863/7872保持不变。新版启停以[发布记录](releases/RESEARCH_D0D3BC3.md)为准，以下默认7872命令保留旧部署含义。"
+        },
+        {
+          "line": 122,
+          "text": "源码还新增[药典＋文献组合清单](COMBINED_EVIDENCE_REPORT.md)，复用已有两个工具开关，不新增依赖或卷。需要新版镜像方可使用；当前45f3c8d仍只有原研究工具范围，下一步构建新版并验证PubMed开/关、迁移/持久化、组合下载和旧药典流程。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_EVIDENCE_EXPORT.md",
+      "title": "本轮单药证据清单导出",
+      "sha256": "89e1af7aabf5e99875efdbe022d22cc00de306b2b5f53137bd73c503254427b9",
+      "lines": 38,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/RESEARCH_LIVE_SYNTHETIC.md",
+      "title": "J01：两题合成资料真实模型验收",
+      "sha256": "c7f60eb5c439019ef032de85d15bdfa60656ce5893772b6b1f1ea5e40b65430f",
+      "lines": 73,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/RESEARCH_LOOP_DURABLE_MILESTONE.md",
+      "title": "模型工具循环的持久化与故障恢复",
+      "sha256": "3c9fc536740cf76cfc843977b786fa3ee604593e75cd0632f7a6accd17eb65cd",
+      "lines": 72,
+      "status_mentions": [
+        {
+          "line": 15,
+          "text": "| ready → decide | 已保存上一工具结果，下一步是模型决策 | 复用消息、证据和累计预算后继续 |"
+        },
+        {
+          "line": 70,
+          "text": "下一步把该执行能力接入受会话鉴权的任务生命周期，先保留合成模式，补齐查看/恢复/删除、备份覆盖及不确定状态展示。只有真实模型接入的外发范围、调用预算和提供方恢复策略明确后，才进行对应在线验收。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_LOOP_LIFECYCLE_MILESTONE.md",
+      "title": "合成循环的会话生命周期与备份接入",
+      "sha256": "654385f925ebbdf21a6940a74a5e9cc8839e98839eb1a33a98cd69c7f733d686",
+      "lines": 80,
+      "status_mentions": [
+        {
+          "line": 78,
+          "text": "## 下一阶段"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_OBJECT_REVIEW.md",
+      "title": "研究对象线索与来源绑定的用户标注",
+      "sha256": "32c284e39b96db1859134b3bf882e1699d76a700a3eba0ddb25fb56eba010dd6",
+      "lines": 52,
+      "status_mentions": [
+        {
+          "line": 42,
+          "text": "刷新 **http://127.0.0.1:7873/** 使用对象原文线索和可选标注。当前镜像为 `tcm-research-chat:bd40e73`，沿用原命名卷和 `research_chat_next_session` Cookie。临时7874预览已停止。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_RUN_CHAT.md",
+      "title": "J01：聊天页本地研究入口",
+      "sha256": "09037ea360b6bdf733f843a20df5c63def1d408e4024d4564fac617bba8a99df",
+      "lines": 47,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/RESEARCH_RUN_JOURNAL.md",
+      "title": "J04准备：本地运行审计日志",
+      "sha256": "bcdcbca77476643523668dc726a6feebd0023124cc376ed59980cf9a4aa5a868",
+      "lines": 52,
+      "status_mentions": [
+        {
+          "line": 30,
+          "text": "工具/模型执行后与日志落盘之间仍有崩溃窗口。写入失败会阻止继续执行，而不是悄悄以无日志方式继续。节点快照不是独立追加事件表，也不是LangGraph checkpointer。下一阶段再设计PostgreSQL事务、运行租约、幂等键及可恢复事件序号。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_RUN_SCOPE.md",
+      "title": "J01第二个增量：具体请求范围和真实本地工具适配",
+      "sha256": "d505d0851a1c6870b2b96ecc8b089880c99f427fba94fea817cae847946bcfd8",
+      "lines": 33,
+      "status_mentions": [
+        {
+          "line": 29,
+          "text": "J01整体仍在进行。下一步把具体请求范围接到显式研究入口，补充可见的动作和结果展示，并实现当前问句到范围提案的有界适配；完整语义覆盖仍要单独验收。保留简单查询直达结果，不恢复逐步强制确认。真实模型、多轮资料外发需要单独明确授权；token硬预算、并行执行、持久恢复尚未交付。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_RUN_SDK.md",
+      "title": "J01：真实 SDK 的离线协议验收",
+      "sha256": "000e48c420a7319f1fee4e29379dc884b7e45ea75f92e20326e21866b8ddfe48",
+      "lines": 38,
+      "status_mentions": [
+        {
+          "line": 32,
+          "text": "下一步是固定合成任务集的真实模型验收：具体端点、输入范围和请求次数确定后获得授权，先验证工具协议兼容及任务完成率，再比较固定流程和观察驱动流程。不要把当前合成响应的成功率写成DeepSeek准确率。持久化、SSE和多worker控制仍属于J04。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_RUN_V1.md",
+      "title": "J01首个增量：有界原生工具调用执行器",
+      "sha256": "f382fe6105f1738174e8670ff2eeed48646d7a05f1fa9324c4a8b13b03c05b75",
+      "lines": 22,
+      "status_mentions": [
+        {
+          "line": 12,
+          "text": "启动需当前项目依赖；本次未常驻启动7879。API返回模式、执行事件、观察证据和结束原因。演示SDK为确定性离线替身：初次搜索空结果后换词，再从工具观察中提取来源ID查询资料，最后引用观察ID结束。共4次替身决策、3次工具执行，真实模型调用0。ASGI HTTP接口通过测试，尚未浏览器接入。"
+        },
+        {
+          "line": 20,
+          "text": "J01仍在进行：主聊天接入、真实工具解析适配、完整任务需求覆盖、token硬预算、更完整异常轨迹，以及获授权的真实SDK测试尚未完成。持久化checkpoint及后台进度属于J04。旧877项成绩不覆盖本增量；本轮仅新增模块专项，未更改原聊天路径，不增加私有资料外发。下一步优先补任务范围与工具适配，再接主聊天的显式研究模式。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_TASK_ETCM.md",
+      "title": "ETCM本地来源关系任务",
+      "sha256": "f5dd2e1487588c82f1f17b7dde365fd40991aedd9debc6be8a3fd9534bcdd1e8",
+      "lines": 59,
+      "status_mentions": [
+        {
+          "line": 5,
+          "text": "后续更新：任务报告已新增[读取来源文献ID及精确原JSON锚点](TASK_LITERATURE.md)，仍未获取真实文献。Docker当前不可用，最新开发预览在7877；下文7876是上一轮成功Docker交付记录。"
+        },
+        {
+          "line": 51,
+          "text": "下一步应明确研究证据的获取、对象对应和来源引用契约：先使用本地/合成文献元数据测试来源ID与药材本体、成分、错对象之间的区别。真实ETCM或药典片段进入外部模型仍受先前授权边界约束，不能自动放开。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_TASK_WEB.md",
+      "title": "研究任务页面：合成资料流程验收",
+      "sha256": "23596bd4d1623045b6da8909d04c7eb547e8fa6d2e5a2f3cc9114047140222c1",
+      "lines": 52,
+      "status_mentions": [
+        {
+          "line": 40,
+          "text": "## 验证与下一步"
+        },
+        {
+          "line": 44,
+          "text": "本阶段解决任务交互和持久执行状态，尚未实现真实ETCM→文献研究闭环。后续已接入只读ETCM来源/靶点任务；下一步确定真实文献工具、对象对应及模型可访问的资料边界。不要以增加CoT文本、Agent数量或框架名称代替这些验收。"
+        }
+      ]
+    },
+    {
+      "path": "docs/RESEARCH_WORKSPACES.md",
+      "title": "三个功能页签与共用任务记录",
+      "sha256": "62a6dde9ac0902e4fc2a630452caa1f52681d96f093dcce689963070149997f5",
+      "lines": 44,
+      "status_mentions": [
+        {
+          "line": 26,
+          "text": "当前临时7874预览通过11组真实浏览器验证，含真实文献与清单下载、显式ETCM/药典、草稿/焦点、刷新、键盘、移动端、合成恶意标签、失败恢复和清除。42模块415项严格离线回归通过。后续干净提交d0d3bc3构建约408 MB本地镜像，已更新7873，并在实际容器完成11组浏览器验收和3组部署/恢复检查；原卷、Cookie与提交消息保留，原三服务未改变。后续已push并发布[Hub版本d0d3bc3](releases/RESEARCH_D0D3BC3.md)，远程CI及摘要/拉取复验通过。公开[浏览器记录](../audits/research_workspaces_v1/host_browser.json)和[离线回归](../audits/research_workspaces_v1/offline_ci.json)只含元数据，截图/下载保留忽略的var目录。浏览器阻断外部CDN，"
+        }
+      ]
+    },
+    {
+      "path": "docs/RETRIEVAL_ROBUSTNESS_MILESTONE.md",
+      "title": "自然问法检索诊断与下一阶段入口改造",
+      "sha256": "d33a184eb9f2c37aea1fa11684881a4ffeee06875cdc52bb7bdb5bc489fd4b52",
+      "lines": 63,
+      "status_mentions": [
+        {
+          "line": 1,
+          "text": "# 自然问法检索诊断与下一阶段入口改造"
+        },
+        {
+          "line": 39,
+          "text": "## 下一阶段调整：结构化请求解释接入报告"
+        }
+      ]
+    },
+    {
+      "path": "docs/RUNTIME_BACKUP_MILESTONE.md",
+      "title": "核心运行状态备份与恢复演练",
+      "sha256": "e3c8992f0da803963795d45f7ab0b088c4a61cb90a18d6a80e24fac00283b74e",
+      "lines": 87,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/SCOPED_RECALL_EVALUATION.md",
+      "title": "限定字段定位召回评测",
+      "sha256": "cf9c5abd73e216a93f23104936dafee7b87e0860f0a737261cec4365152e74ce",
+      "lines": 74,
+      "status_mentions": [
+        {
+          "line": 48,
+          "text": "停止扩题，下一步优先处理已定位的自然问法识别问题。本轮只验证确定性检索接口，不评价已有LLM规划器或整条聊天链路；模型工作流对照仍受资料外发授权约束，不因本文件获得新授权。"
+        },
+        {
+          "line": 74,
+          "text": "下一步停止围绕这24题继续扩充模式，收集少量真实科研任务验证完整聊天链路，记录哪些自然问法仍需要模型规划或澄清。当前仍没有独立人工语义相关性参考；本次有限规则不作为通用意图理解的完成证明。"
+        }
+      ]
+    },
+    {
+      "path": "docs/SOURCE_ACCESS.md",
+      "title": "M0-05：受控来源与上传结果",
+      "sha256": "1635f19748bf1bb6c4b31480b64dcb9f27b0df78284271f3abf8463a4bcb090d",
+      "lines": 59,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/TARGET_HERB_LOOKUP.md",
+      "title": "靶点反查药材来源",
+      "sha256": "6edcb7e9e92ba91a3cb7f69ad10db1bc9de44de5218caf005d0e69f474ba19f3",
+      "lines": 54,
+      "status_mentions": [
+        {
+          "line": 3,
+          "text": "当前本地交付：本功能已进入7876的`tcm-research-chat:c4de8bc`镜像，见[版本、启动及容器验收](releases/RESEARCH_LOCAL_C4DE8BC.md)。下方源码阶段记录保留其当时的验收边界；7875源码预览需按命令另行启动，不视为当前运行状态。"
+        }
+      ]
+    },
+    {
+      "path": "docs/TARGET_SIMILARITY.md",
+      "title": "药材靶点画像与来源集合相似度",
+      "sha256": "109565ae7824fdbc88759f7b94c9dfffb867c479cc484a743a1ce0dd6b1c00fb",
+      "lines": 62,
+      "status_mentions": [
+        {
+          "line": 58,
+          "text": "## 回滚与下一步"
+        },
+        {
+          "line": 62,
+          "text": "下一步先审计疾病JSON并构建可追溯疾病基因集索引，再做候选药材来源排序。需报告疾病身份、物种、背景覆盖和缺失状态；不能直接把现有药材疾病富集标签作为独立真值。详细计划见[关联分析方案](RESEARCH_ANALYTICS_PLAN.md)。"
+        }
+      ]
+    },
+    {
+      "path": "docs/TASK_COMPLETION_SCOPE.md",
+      "title": "本地关系任务的完成范围（2026-10-21）",
+      "sha256": "23ef53a414a24fc4fe940fd42bdba8c9deacd546ba4d7150e24558fdf648341d",
+      "lines": 34,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/TASK_LITERATURE.md",
+      "title": "任务来源文献线索与对象核验契约",
+      "sha256": "a5d6a097b1827a7550eb4cec5e08461692dbf67995e399b7e3275637aae30b61",
+      "lines": 49,
+      "status_mentions": [
+        {
+          "line": 9,
+          "text": "Docker Desktop的WSL集成当前不可用，`docker`命令失败、Docker socket不存在，原7876未监听。**本轮新增功能仅在独立本地预览 http://127.0.0.1:7877/research-tasks 可用**；使用独立会话、任务及收藏数据库，不能读取原Docker卷里的任务。本轮没有成功构建或更新Docker镜像。"
+        },
+        {
+          "line": 49,
+          "text": "下一步接入按明确PMID获取并冻结文献元数据的适配器，区分来源ID存在、对象一致、靶点相关和引用语义支持。真实文献或药典/ETCM片段外发模型仍受原授权边界限制，本轮没有扩大授权。"
+        }
+      ]
+    },
+    {
+      "path": "docs/TASK_PLANNER_SYNTHETIC.md",
+      "title": "自由问句到严格计划：合成模型验证（2026-10-21）",
+      "sha256": "0301092d54530241aa253a3a3f2af3891ea9827a18258ff622ac4a76dafefdaa",
+      "lines": 105,
+      "status_mentions": [
+        {
+          "line": 49,
+          "text": "## 验证、回滚和下一步"
+        },
+        {
+          "line": 55,
+          "text": "下一步优先让未参与设计的问题暴露实际需求，或复用现有完成契约打通真实本地任务入口；在证明收益前不扩大规则表、模型调用和评测平台，也不解冻真实文献扩展。若接入真实问题的外部规划，仍需满足此前资料外发范围，不继承本轮合成授权。"
+        }
+      ]
+    },
+    {
+      "path": "docs/TASK_PLAN_CLARIFICATION.md",
+      "title": "有界计划与持久澄清（合成验证，2026-10-21）",
+      "sha256": "a3dcc24c0a5199df421a5b972e0c849f8346e8ecb3e5057b89c2424f25d2fefa",
+      "lines": 44,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/TASK_TOOL_REGISTRY.md",
+      "title": "ETCM任务工具注册与返回契约（2026-10-21）",
+      "sha256": "93524f8fa3554262a790f9b57ddfc24f45b9592a5272c43de00065c52260dd01",
+      "lines": 45,
+      "status_mentions": [
+        {
+          "line": 37,
+          "text": "## 使用、回滚与下一步"
+        },
+        {
+          "line": 45,
+          "text": "本轮不提交Git、不push、不构建或上传Docker。Docker引擎当前无可用Unix套接字，7877仅为源码预览。"
+        }
+      ]
+    },
+    {
+      "path": "docs/TCM_AI_REVIEW.md",
+      "title": "固定用例的独立 AI 复核",
+      "sha256": "d6d43ada17f3c24e45c070dd58bdb484f6b9c1636d85a65eda93c93eeacac2a2",
+      "lines": 49,
+      "status_mentions": [
+        {
+          "line": 39,
+          "text": "## 审计器验证与下一步"
+        },
+        {
+          "line": 45,
+          "text": "下一步由人类审核展示规范、字段含义与争议记录，按 [人工复核清单](TCM_GOLDEN_REVIEW.md) 签核；同时为 EV-02 收集真实使用题。AI 设计的新题标为 designed，不能写成 observed。"
+        }
+      ]
+    },
+    {
+      "path": "docs/TCM_CHAT_CONTEXT.md",
+      "title": "药材会话状态与字段追问",
+      "sha256": "004e88b95473e68e570caaad039c7fae64eee86bf32d52ac303f2c8beaf515e4",
+      "lines": 71,
+      "status_mentions": [
+        {
+          "line": 71,
+          "text": "下一步优先整理人工复核与真实问题采集，核对现有9条partial及来源语义，再决定中文名称映射、文献证据或模型规划的优先级。当前只能证明工程流程与来源定位通过；需要真实任务和方案对照，才能判断聊天编排相较独立查询页面是否带来收益。"
+        }
+      ]
+    },
+    {
+      "path": "docs/TCM_CHAT_LOOKUP.md",
+      "title": "聊天入口的药材来源查询",
+      "sha256": "284301fdb64927087c9e963a8aff574481b3d4dcb9dd1b42c0ce1e600767686c",
+      "lines": 64,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/TCM_GOLDEN_REVIEW.md",
+      "title": "固定验收集复核说明",
+      "sha256": "9fec59aaf74f1e23abfc5cf1aaa9942194b71099869b592061fd50c3d390ecc0",
+      "lines": 73,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/TCM_PROJECT_ROADMAP.md",
+      "title": "TCM Research Agent：统一大纲与实现状态",
+      "sha256": "3fdf036a191bb59c99a566e78c6806ab96fe38e7340217b1f350587c1f5b7da1",
+      "lines": 55,
+      "status_mentions": [
+        {
+          "line": 55,
+          "text": "清理不等于删除功能：源数据/运行状态、关键失败记录、当前运行与回归，以及下一阶段要复用的证据外置实验均保留。变更配置/代码/数据时以契约和版本检查恢复，不强改旧checkpoint。发布按有业务收益的大里程碑进行，不每个小改动重建镜像。"
+        }
+      ]
+    },
+    {
+      "path": "docs/TCM_TASK_CANDIDATES.md",
+      "title": "60 条任务候选：审核与后续评测",
+      "sha256": "48b7e2eb33f06cb48736d6aa9f12d8ea788bcbaa598821b56100a59201c7093a",
+      "lines": 47,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/TCM_TASK_EXECUTION.md",
+      "title": "任务候选逐题执行：API 检查与人工目标分开",
+      "sha256": "ac11f4415c86e5eef3760df677347fabfbaa0b4e78647b6016eaa6c0790caa17",
+      "lines": 62,
+      "status_mentions": [
+        {
+          "line": 54,
+          "text": "## 失败记录与下一步"
+        },
+        {
+          "line": 60,
+          "text": "下一步人工执行3条页面任务，复核9条partial与候选目标是否充分，收集真实使用题；之后再冻结正式任务基准和评测口径。本轮工程结果不替代M1-06人工签核或真实业务成功率。"
+        }
+      ]
+    },
+    {
+      "path": "docs/TCM_TASK_UI.md",
+      "title": "任务候选的浏览器验收与部分验证项梳理",
+      "sha256": "31048b7f22a5408a361fc909274c927abbb59056ea8ec74f7ed1f5c530aa0fa0",
+      "lines": 47,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/decisions/0001-text-normalization.md",
+      "title": "ADR-0001：来源展示与查询的空白规范",
+      "sha256": "a5c20e0963b5250b2aca622db03df8313b87dcb2cb9f92322c05c89ef3b745c9",
+      "lines": 27,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/decisions/0002-completed-turn-memory.md",
+      "title": "ADR-0002：先持久化每轮完成后的会话快照",
+      "sha256": "495dd6e209136b934b60e712c7622edff2fa49eb8e20afd268b02f1b8517e615",
+      "lines": 15,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/releases/RESEARCH_45F3C8D.md",
+      "title": "研究工具镜像发布：45f3c8d",
+      "sha256": "2e1e9d8c606d5372683d08016b51b31ffb74d9ea9aa3424ac8b7298844570a8a",
+      "lines": 40,
+      "status_mentions": []
+    },
+    {
+      "path": "docs/releases/RESEARCH_B227F35.md",
+      "title": "PubMed研究镜像发布：b227f35",
+      "sha256": "a61ce4c44f3852b082bafa0745517d93ebc768abad75c740c38bceac226ead53",
+      "lines": 41,
+      "status_mentions": [
+        {
+          "line": 31,
+          "text": "访问 **http://127.0.0.1:7873/**，容器内部端口8000。当前7873已经运行同一镜像内容，无须为了镜像改名重启。原7860、7863、7872容器保持不变；旧版45f3c8d远程摘要复核未变，未写latest。"
+        }
+      ]
+    },
+    {
+      "path": "docs/releases/RESEARCH_B227F35_LOCAL.md",
+      "title": "PubMed研究镜像本地验收：b227f35",
+      "sha256": "9709ff22747a83f7386c41f9470fc6ec29f182e7aa71a63e5f4c9efe5600e397",
+      "lines": 47,
+      "status_mentions": [
+        {
+          "line": 43,
+          "text": "## 发布边界与下一步"
+        }
+      ]
+    },
+    {
+      "path": "docs/releases/RESEARCH_D0D3BC3.md",
+      "title": "自然语言与三页签研究镜像：d0d3bc3",
+      "sha256": "72cf3a277759e0eb544b599abbee09df4664789c26b4b572116e9389a5ec620a",
+      "lines": 45,
+      "status_mentions": [
+        {
+          "line": 19,
+          "text": "访问 **http://127.0.0.1:7873/**。当前该入口已经运行同一镜像内容，无须为了标签名称变化重启。原7860、7863、7872服务保留；当前命名卷和Cookie沿用原7873，不会自动迁入7872会话。常规停止使用 `docker compose -p tcm-research-next -f compose.research.yaml stop chat`，不要用down -v删除卷。"
+        }
+      ]
+    },
+    {
+      "path": "docs/releases/RESEARCH_LOCAL_20261020.md",
+      "title": "本地候选更新：2026-10-20",
+      "sha256": "76075bdec8975737dcaf81e3717fd3c51b55bebaca071b05d6a4d0e9ff0afb86",
+      "lines": 56,
+      "status_mentions": [
+        {
+          "line": 13,
+          "text": "- 当前是确定性研究工具配置，PubMed和AI整理关闭，不自动调用模型；7875合成AI预览配置与此不同。"
+        }
+      ]
+    },
+    {
+      "path": "docs/releases/RESEARCH_LOCAL_20261024.md",
+      "title": "2026-10-24 本地源码基线",
+      "sha256": "f81d5793cea95f89a7e6209d3f35b1293cc9a8eb77edb1d59e392b63cceba70d",
+      "lines": 9,
+      "status_mentions": [
+        {
+          "line": 7,
+          "text": "当前源码预览使用7878；启动命令和数据准备条件见演示说明。原始JSON、PDF、数据库、会话和密钥不属于本提交；新机器仍需准备私有数据。候选排序的生物学有效性没有独立验证，MCP、新靶点预测及全工具自主循环未实现。"
+        }
+      ]
+    },
+    {
+      "path": "docs/releases/RESEARCH_LOCAL_C4DE8BC.md",
+      "title": "本地Docker交付：c4de8bc",
+      "sha256": "291172994c22ccab843647a04fb3e9e497bd37d7f86df298be4120c454b3b8b7",
+      "lines": 57,
+      "status_mentions": []
+    }
+  ]
+}

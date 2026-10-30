@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "related_tests": 39,
+  "external_model_calls": 0,
+  "pair_sigkill": true,
+  "http_resume": true,
+  "single_regression": true,
+  "real_source_browser": true,
+  "initial_issue": "LangGraph rejected node names matching state keys; fixed before acceptance",
+  "limitation": "Read-only replay; no exactly-once external side effects, rolling upgrades or model-loop recovery"
+}

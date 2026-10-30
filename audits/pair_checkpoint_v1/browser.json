@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "real_http_process_sigkill": true,
+  "lease_expiry_seconds": 31,
+  "history_resume_button": true,
+  "same_cookie_after_restart": true,
+  "branch_calls": {
+    "a_text": 1,
+    "a_structured": 1,
+    "b_text": 1,
+    "b_structured": 2,
+    "target": 1
+  },
+  "javascript_errors": [],
+  "external_model_calls": 0,
+  "data": "synthetic_only"
+}

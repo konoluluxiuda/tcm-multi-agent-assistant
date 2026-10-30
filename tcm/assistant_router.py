@@ -28,6 +28,8 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
     text = query.strip()
     # Commands preserve the existing parser contracts, including errors and bounds.
     if text.startswith('/'):
+        selection=re.fullmatch(r'/analysis-plan select ([0-7]) ((?:etcm2-local|etcm-disease):[a-f0-9]{64})',text)
+        if selection:return route('assistant',{'topic':'research_plan','selection':{'step':int(selection[1]),'source_id':selection[2]}},'analysis_plan_source_selection','explicit')
         from tcm.analysis_chat import parse as analysis_request
         parsed=analysis_request(text,explicit=True)
         if parsed is not None:return route('assistant',parsed,'explicit_analysis','explicit')
@@ -57,11 +59,16 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
                          'local_task_inventory_review')
         return route('assistant', {'topic':'intent_clarification','unsupported':True},
                      'unsupported_request_requirement')
+    if isinstance(relation_context,dict) and relation_context.get('kind')=='analysis_plan_focus_v1' and text in ('出处呢','查看出处','来源呢','回看分析结果','刚才的分析结果'):
+        return route('assistant',{'topic':'research_plan','replay':True},'analysis_plan_replay')
     short = re.sub(r'\s+', '', text).rstrip('？?。！!')
     from tcm.dataset_info import parse as dataset_request
     dataset = dataset_request(text)
     if dataset is not None:
         return route('assistant', dataset, 'dataset_description')
+    from tcm.research_plan_intent import capture as capture_plan
+    plan=capture_plan(text)
+    if plan is not None:return route('assistant',plan,'multi_step_analysis')
     from tcm.intent_guidance import recognize as guidance
     clarified = guidance(text, relation_context)
     if clarified:
@@ -93,7 +100,8 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
     dataset_question = bool(re.search(r'药材|中草药|中药|数据库|收录|支持|ETCM|索引', short, re.I))
     category_question = bool(re.fullmatch(r'(?:目前|当前|系统|一共|总共)?(?:有)?(?:(?:有哪些|有多少种|有多少类)(?:功效|功能)(?:分类)?|多少种功效|(?:功能|功效)(?:分类)?(?:有多少种|有多少类|有哪些|有几类|有多少))[？?]*', short))
     specific_field = any(a in short for a in ('用量', '几克', '多少克', '剂量', '它的', '这味', '刚才'))
-    if (count_question and dataset_question and not specific_field) or category_question or short in ('数据概览', '查看数据', '数据库概览', '药材概览'):
+    overview=re.fullmatch(r'(?:请|请帮我|帮我)?(?:给我|查看|查询|介绍)?(?:当前|本地)?(?:资料库|数据库|药材库)?(?:的)?数据概览',short)
+    if (count_question and dataset_question and not specific_field) or category_question or overview or short in ('数据概览', '查看数据', '数据库概览', '药材概览'):
         return route('assistant', {'topic': 'overview'}, 'dataset_question')
     usage = usage_paraphrase(text)
     concept = re.fullmatch(r'(?:什么是(.{1,40})|(.{1,40}?)(?:是什么|是什么意思|的概念是什么|怎么理解))', short)

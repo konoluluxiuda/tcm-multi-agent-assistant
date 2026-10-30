@@ -1,0 +1,425 @@
+{
+  "dataset_sha256": "7c8e57431cc2526f8d64cf939d4d01b607496a072dc000f9af1f60e7da4ce0aa",
+  "baseline_sha256": "51e35e6be561a8339f664e3776fe0b4e86fa3b0518f590e82fa1e6d916c49e32",
+  "kind": "known_development_score_replay_not_independent_evaluation",
+  "external_model_calls": 0,
+  "new_embedding_calls": 0,
+  "positive_routes": 10,
+  "positive_cases": 10,
+  "negative_no_candidate": 4,
+  "negative_cases": 4,
+  "exact_candidate_sets": 12,
+  "application_passed": 12,
+  "application_total": 12,
+  "cases": [
+    {
+      "query": "我想接着整理那两味补血又活血的药",
+      "relevant": [
+        "blood",
+        "blood_other"
+      ],
+      "before": [
+        "blood_other",
+        "blood",
+        "spleen"
+      ],
+      "after": [
+        "blood_other",
+        "blood",
+        "spleen"
+      ],
+      "route": true,
+      "method": "local_bge_qdrant_rrf",
+      "ranker_used": true,
+      "candidate_set_exact": false
+    },
+    {
+      "query": "以前那份白术配茯苓的资料在哪里",
+      "relevant": [
+        "spleen"
+      ],
+      "before": [
+        "spleen"
+      ],
+      "after": [
+        "spleen"
+      ],
+      "route": true,
+      "method": "local_bge_qdrant_rrf",
+      "ranker_used": true,
+      "candidate_set_exact": true
+    },
+    {
+      "query": "回到甘草存放条件的那个项目",
+      "relevant": [
+        "storage"
+      ],
+      "before": [
+        "storage"
+      ],
+      "after": [
+        "storage"
+      ],
+      "route": true,
+      "method": "local_bge_qdrant_rrf",
+      "ranker_used": true,
+      "candidate_set_exact": true
+    },
+    {
+      "query": "丹参和鸡血藤那份笔记继续做",
+      "relevant": [
+        "blood_other"
+      ],
+      "before": [
+        "blood_other",
+        "blood"
+      ],
+      "after": [
+        "blood_other"
+      ],
+      "route": true,
+      "method": "local_bge_qdrant_rrf",
+      "ranker_used": true,
+      "candidate_set_exact": true
+    },
+    {
+      "query": "当归、川芎的资料还没整理完",
+      "relevant": [
+        "blood"
+      ],
+      "before": [
+        "blood",
+        "spleen",
+        "blood_other"
+      ],
+      "after": [
+        "blood"
+      ],
+      "route": true,
+      "method": "local_bge_qdrant_rrf",
+      "ranker_used": true,
+      "candidate_set_exact": true
+    },
+    {
+      "query": "之前讨论如何防止甘草受潮的研究",
+      "relevant": [
+        "storage"
+      ],
+      "before": [
+        "storage"
+      ],
+      "after": [
+        "storage"
+      ],
+      "route": true,
+      "method": "local_bge_qdrant_rrf",
+      "ranker_used": true,
+      "candidate_set_exact": true
+    },
+    {
+      "query": "那份关于调理脾胃的药材资料",
+      "relevant": [
+        "spleen"
+      ],
+      "before": [
+        "storage",
+        "spleen",
+        "blood"
+      ],
+      "after": [
+        "storage",
+        "spleen",
+        "blood"
+      ],
+      "route": true,
+      "method": "local_bge_qdrant_rrf",
+      "ranker_used": true,
+      "candidate_set_exact": false
+    },
+    {
+      "query": "补血那两味究竟是哪一组",
+      "relevant": [
+        "blood",
+        "blood_other"
+      ],
+      "before": [
+        "blood_other",
+        "blood"
+      ],
+      "after": [
+        "blood_other",
+        "blood"
+      ],
+      "route": true,
+      "method": "local_bge_qdrant_rrf",
+      "ranker_used": true,
+      "candidate_set_exact": true
+    },
+    {
+      "query": "当归川芎这组，这次只关心保存要求",
+      "relevant": [
+        "blood"
+      ],
+      "before": [
+        "blood",
+        "storage"
+      ],
+      "after": [
+        "blood"
+      ],
+      "route": true,
+      "method": "local_bge_qdrant_rrf",
+      "ranker_used": true,
+      "candidate_set_exact": true
+    },
+    {
+      "query": "上次讨论过的所有药材项目",
+      "relevant": [
+        "blood",
+        "blood_other",
+        "spleen",
+        "storage"
+      ],
+      "before": [],
+      "after": [
+        "blood_other",
+        "storage",
+        "spleen",
+        "blood"
+      ],
+      "route": true,
+      "method": "project_list",
+      "ranker_used": false,
+      "candidate_set_exact": true
+    },
+    {
+      "query": "帮我找一下之前关于黄芪的研究项目",
+      "relevant": [],
+      "before": [
+        "spleen",
+        "blood",
+        "blood_other"
+      ],
+      "after": [],
+      "route": true,
+      "method": null,
+      "ranker_used": false,
+      "candidate_set_exact": true
+    },
+    {
+      "query": "继续上次那个旅行安排",
+      "relevant": [],
+      "before": [],
+      "after": [],
+      "route": true,
+      "method": "local_bge_qdrant_rrf",
+      "ranker_used": true,
+      "candidate_set_exact": true
+    },
+    {
+      "query": "我的数据库备份脚本在哪",
+      "relevant": [],
+      "before": [],
+      "after": [],
+      "route": false,
+      "method": "local_bge_qdrant_rrf",
+      "ranker_used": true,
+      "candidate_set_exact": true
+    },
+    {
+      "query": "帮我写一段秋招自我介绍",
+      "relevant": [],
+      "before": [],
+      "after": [],
+      "route": false,
+      "method": "local_bge_qdrant_rrf",
+      "ranker_used": true,
+      "candidate_set_exact": true
+    }
+  ],
+  "application": [
+    {
+      "id": "A01",
+      "query": "继续上次那组补血活血药的比较",
+      "passed": true,
+      "rejected": false,
+      "expected": {
+        "herbs": [
+          "当归",
+          "川芎"
+        ],
+        "question": "功效及贮藏"
+      },
+      "actual": {
+        "herbs": [
+          "当归",
+          "川芎"
+        ],
+        "question": "功效及贮藏",
+        "question_source": "saved_project"
+      }
+    },
+    {
+      "id": "A02",
+      "query": "继续上次的研究，这次只看贮藏",
+      "passed": true,
+      "rejected": false,
+      "expected": {
+        "herbs": [
+          "当归",
+          "川芎"
+        ],
+        "question": "看贮藏"
+      },
+      "actual": {
+        "herbs": [
+          "当归",
+          "川芎"
+        ],
+        "question": "看贮藏",
+        "question_source": "current_question"
+      }
+    },
+    {
+      "id": "A03",
+      "query": "继续上次的研究，这次看白术的贮藏",
+      "passed": true,
+      "rejected": false,
+      "expected": {
+        "herbs": [
+          "白术"
+        ],
+        "question": "看白术的贮藏"
+      },
+      "actual": {
+        "herbs": [
+          "白术"
+        ],
+        "question": "看白术的贮藏",
+        "question_source": "current_question"
+      }
+    },
+    {
+      "id": "A04",
+      "query": "继续上次的研究，这次只看白术的贮藏，现在还要注意事项",
+      "passed": true,
+      "rejected": false,
+      "expected": {
+        "herbs": [
+          "白术"
+        ],
+        "question": "看白术的贮藏，现在还要注意事项"
+      },
+      "actual": {
+        "herbs": [
+          "白术"
+        ],
+        "question": "看白术的贮藏，现在还要注意事项",
+        "question_source": "current_question"
+      }
+    },
+    {
+      "id": "A05",
+      "query": "继续上次的研究，这次不要当归，只看白术的贮藏",
+      "passed": true,
+      "rejected": true,
+      "expected": {
+        "reject": true
+      },
+      "actual": null
+    },
+    {
+      "id": "A06",
+      "query": "继续上次的研究，这次换成未知药材",
+      "passed": true,
+      "rejected": true,
+      "expected": {
+        "reject": true
+      },
+      "actual": null
+    },
+    {
+      "id": "A07",
+      "query": "继续上次的研究，这次看当归、川芎、白术的功效",
+      "passed": true,
+      "rejected": true,
+      "expected": {
+        "reject": true
+      },
+      "actual": null
+    },
+    {
+      "id": "A08",
+      "query": "继续上次的研究，这次预测治疗效果",
+      "passed": true,
+      "rejected": false,
+      "expected": {
+        "herbs": [
+          "当归",
+          "川芎"
+        ],
+        "question": "预测治疗效果"
+      },
+      "actual": {
+        "herbs": [
+          "当归",
+          "川芎"
+        ],
+        "question": "预测治疗效果",
+        "question_source": "current_question"
+      }
+    },
+    {
+      "id": "A09",
+      "query": "继续上次的研究",
+      "passed": true,
+      "rejected": true,
+      "expected": {
+        "reject": true
+      },
+      "actual": null
+    },
+    {
+      "id": "A10",
+      "query": "继续上次的研究",
+      "passed": true,
+      "rejected": true,
+      "expected": {
+        "reject": true
+      },
+      "actual": null
+    },
+    {
+      "id": "A11",
+      "query": "继续上次的研究",
+      "passed": true,
+      "rejected": true,
+      "expected": {
+        "reject": true
+      },
+      "actual": null
+    },
+    {
+      "id": "A12",
+      "query": "继续上次的研究，这次看川芎和当归的注意事项",
+      "passed": true,
+      "rejected": false,
+      "expected": {
+        "herbs": [
+          "川芎",
+          "当归"
+        ],
+        "question": "看川芎和当归的注意事项"
+      },
+      "actual": {
+        "herbs": [
+          "川芎",
+          "当归"
+        ],
+        "question": "看川芎和当归的注意事项",
+        "question_source": "current_question"
+      }
+    }
+  ],
+  "limitation": "Replayed rounded scores from full original questions; current ranking inputs may differ. Listing coverage is not Recall@3. Verify live local encoding separately."
+}

@@ -12,6 +12,7 @@ def parse(question):
     target = rf'(?:{COLLECTION}|{ALIASES}(?:和|与|、|及){ALIASES}|{ALIASES}(?:数据库|数据集|资料库)?)'
     prefix = r'(?:请|请帮我|帮我|能否|能不能)?(?:分别|简单|详细)?'
     patterns = (
+        prefix + target + r'(?:的)?(?:数据)?(?:能|可以|支持)(?:查到|查询|查)(?:哪些|什么)(?:字段|内容|信息)',
         prefix + r'(?:介绍|解释|说明|讲讲|说说)(?:一下)?(?:这)?' + target + r'(?:分别是什么|有什么区别|的区别|的内容)?(?:吗)?',
         prefix + target + r'(?:分别是什么|是什么|有什么区别|有何区别|的区别|分别有什么用|各有什么用)',
         prefix + target + r'(?:的)?(?:介绍|说明)',
@@ -40,7 +41,7 @@ def describe(inventory, selected=None):
     if 'pharmacopoeia' in selected:
         count = f"当前索引{pharma['entry_count']}个条目、{pharma['field_chunk_count']}个字段块。" if pharma['status']=='ok' else '当前药典索引未启用或不可读取。'
         cards.append({'id':'pharmacopoeia','title':'中国药典：药材标准与记载',
-            'summary':count+' 本项目使用提供的2025年版一部PDF，经识别整理为来源、性味归经、功能主治、用法用量、注意、鉴别及检查等字段，并保留原页位置。',
+            'summary':count+' 本项目使用提供的2025年版一部PDF，经识别整理为来源、性味归经、功能与主治（功效）、用法与用量、注意、鉴别及检查等字段，并保留原页出处。',
             'use':'适合核对原文、比较药材记载并查看出处。',
             'example':'例如：白术的功能与主治；比较当归和川芎的用法用量。',
             'availability':pharma['status']})

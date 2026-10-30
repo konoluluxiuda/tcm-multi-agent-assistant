@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "stage": "first bounded read in real browser",
+  "symptom": "no target page displayed; query strings for offset/limit rejected by strict Pydantic integer schema",
+  "fix": "parse only explicit nonnegative decimal query parameters before strict ReadEvidence validation",
+  "external_model_calls": 0,
+  "data": "synthetic_only"
+}

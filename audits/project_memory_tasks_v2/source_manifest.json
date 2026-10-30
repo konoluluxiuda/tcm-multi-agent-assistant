@@ -1,0 +1,7 @@
+{
+  "tcm/project_semantic.py": "77c22f7f104258e3ed3a68cf4e05dadd193daf1b1f864d0817d5cfdff99c3b79",
+  "scripts/eval_project_memory_tasks.py": "4f005816f28b948c7f1c2d46a90ad2ea6ad39d674f3891ff1ad21edacdee59ce",
+  "scripts/check_memory_context_browser.py": "b21150f376edb23500682c76422704090dbb365dc865dcd19a2e80517e604806",
+  "tests/test_project_semantic.py": "5bfccc8ab71b7cce21fc299854b010573cc9f063eb41bf323d6ebbdf20d794b4",
+  "eval/project_memory_tasks_v2.json": "7c8e57431cc2526f8d64cf939d4d01b607496a072dc000f9af1f60e7da4ce0aa"
+}

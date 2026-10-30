@@ -1,0 +1,26 @@
+{
+  "runtime_code_revision": "297c4eaf31e788c8b35b1ef4ef60d208daddc9fc7ca220443c194913770629c5",
+  "files": {
+    "tcm/research_jobs.py": "ce41ca4e62b24b2fdfd32c71c4931b917248fc7c2bae505525d49c67a5380ccf",
+    "tcm/research_plan_jobs.py": "394e28174d75b1736343d87e518ec763e5e626c1fcb42f0b7f456a67d9d03356",
+    "tcm/research_run_durable.py": "30aa0e8693d85bc5afd9d71681e9c25be452c855d361f43701274619c7a00b28",
+    "tcm/research_run_local.py": "0fed76b45e933a5a5746deb051cb8a47c388dd4a0bdcc4c7e10a828eb3a93504",
+    "tcm/research_plan_run.py": "f5382a8e5b5ce647558c6e7f5906a0c3a9a7d984f491b439cf176c60113db3c9",
+    "tcm/research_run_api.py": "cb11a5b64778c0272b1bc4772f56564b20ace86a635bd8fb99e7c5387e420fa1",
+    "tcm/research_job_api.py": "a76669a1688d1723f733bdfb82f953a61f8c1fed3b2aa75f05e75a59bd0a0c5a",
+    "tcm/research_plan.js": "83410c20a1aca8aa06344946eca6bb45715bbb4c2a266354ee4fa7b056346c14",
+    "tcm/research_runs.js": "af8c2bb4273d81f6fc2da847bde31ef7234ed4075f5c32ec8fe10c2a91846f56",
+    "tcm/runtime_backup.py": "402da557e47e37748f90c42d9dad2d49dc40336b886fce46497669c2bc4a0e49",
+    "scripts/preview_local_tasks.py": "661d25bf0a1369c2b6292905d8093ab54b17b66f81da2c14ce771077d04afdfa",
+    "scripts/backup_runtime.py": "50ae3fca294f3cefacb4e4e1d7fadf6748277f4e41d274901bcc3c3ef50c4f1d",
+    "scripts/check_research_plan_job_recovery.py": "6f5b2013a5eae9832ca3e82334c67ec56adea007c077a969a0435c8b9c72570a",
+    "scripts/check_research_plan_job_browser.py": "59d92ebbfa113c96c37f7a6c70a1b05261c6e7b2127219a78076c3620a3f8f4c",
+    "app.py": "97444e73c95b82d8acbf6a31829fd56a70e7234499a09f42b72cf6095c53297b",
+    "agents/agent_decision.py": "5952165da4408504468e3de3deac13504b1b200f27b6fe5820cf20f240bb67e5",
+    "templates/index.html": "3005af18aa7c702f996234aeff96940487e5de314a7f1de3f87b1d08249354fb",
+    "tests/test_research_plan_jobs.py": "a58cbcf4050d512d02a01669c6a78f460a758ce9f7e31c09acd8574f5f7ba7e4",
+    "tests/test_research_plan_job_api.py": "bf02454291d90a011a85b57c7b0a9d9b9088db45aeeda70febe25d2074aeee24",
+    "tests/test_research_plan_job_chat.py": "e057ef8588f5fdab9c51ee94e413e4260f55fb3efa7792a93cf2cafc6600282b",
+    "tests/research_plan_job_http_fixture.py": "a8a9fb1870f9259e74b667736feba846d664d4f93f7b53f09511bcbca5018fbe"
+  }
+}

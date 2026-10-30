@@ -1,0 +1,86 @@
+{
+  "version": "dataops-synthetic-live-pilot-v2",
+  "status": "prepared_not_run",
+  "cases": [
+    {
+      "case_id": "B01",
+      "question": "核对Alpha的功能与主治和注意",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      },
+      "parent_goal": null
+    },
+    {
+      "case_id": "B04",
+      "question": "Gamma选丙草后继续整理",
+      "goal": {
+        "query": {
+          "names": [
+            "Gamma"
+          ],
+          "limit": 50
+        }
+      },
+      "parent_goal": null
+    },
+    {
+      "case_id": "R01",
+      "question": "为Alpha增加贮藏，保留旧值",
+      "goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "功能与主治",
+          "注意",
+          "贮藏"
+        ]
+      },
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      }
+    }
+  ],
+  "suite_sha256": "39411e98dcfffc2751d3e79afdd84f94585944725a01562ff7b9952dbd7b1893",
+  "strategies": {
+    "F": "fixed host, no model",
+    "P": "one native plan per goal, then host tools",
+    "A": "native observation tool loop"
+  },
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "model": "deepseek-flash",
+  "max_requests_total": 36,
+  "max_A_requests_per_goal": 8,
+  "max_P_requests_per_goal": 1,
+  "max_output_tokens": 1200,
+  "max_request_bytes": 65536,
+  "request_timeout_seconds": 30,
+  "retries": 0,
+  "thinking": {
+    "type": "disabled"
+  },
+  "provider_token_parameter": "max_tokens",
+  "data": "Only fixed synthetic goals, static instructions/tool definitions, synthetic observations and test evidence.",
+  "excluded": [
+    "real ETCM",
+    "real pharmacopoeia",
+    "PDF",
+    "user history",
+    "credentials in prompts"
+  ],
+  "real_model_calls": 0,
+  "authorization_required_for_execution": true
+}

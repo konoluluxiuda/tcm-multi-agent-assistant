@@ -1,0 +1,102 @@
+{
+  "status": "passed",
+  "date": "2026-10-29",
+  "milestone": "P0-3 chat plan lifecycle on existing queue and A journal",
+  "offline": {
+    "modules": 143,
+    "tests": 1209,
+    "syntax_files": 462,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "new_tests": 17,
+  "browser": {
+    "status": "passed",
+    "data": "synthetic_only",
+    "external_model_calls": 0,
+    "page_closed_while_running": true,
+    "completed_after_page_closed": true,
+    "same_job_after_refresh": true,
+    "source_reads": 6,
+    "field_rows": 3,
+    "terminal_cursor_replay": true,
+    "evidence_download": true,
+    "cancel_button_and_refresh": true,
+    "web_resume_without_requery": true,
+    "cross_session_404": true,
+    "javascript_errors": [],
+    "blocked_external_assets": 20,
+    "font_layout_reviewed": false
+  },
+  "sigkill_cases": [
+    {
+      "case": "initial_claim",
+      "status": "complete",
+      "reason": "declared_actions_complete",
+      "reads_before_kill": 0,
+      "reads_after_resume": 6,
+      "tool_calls": 6,
+      "same_job_id": true,
+      "replayed_saved_reads": 0,
+      "killed_process_exit": -9
+    },
+    {
+      "case": "leaf_saved",
+      "status": "complete",
+      "reason": "declared_actions_complete",
+      "reads_before_kill": 1,
+      "reads_after_resume": 2,
+      "tool_calls": 2,
+      "same_job_id": true,
+      "replayed_saved_reads": 0,
+      "killed_process_exit": -9
+    },
+    {
+      "case": "inner_pending",
+      "status": "partial",
+      "reason": "uncertain_tool_dispatch",
+      "reads_before_kill": 1,
+      "reads_after_resume": 1,
+      "tool_calls": 1,
+      "same_job_id": true,
+      "replayed_saved_reads": 0,
+      "killed_process_exit": -9
+    },
+    {
+      "case": "report_saved",
+      "status": "complete",
+      "reason": "declared_actions_complete",
+      "reads_before_kill": 6,
+      "reads_after_resume": 6,
+      "tool_calls": 6,
+      "same_job_id": true,
+      "replayed_saved_reads": 0,
+      "killed_process_exit": -9
+    }
+  ],
+  "real_local_smoke": {
+    "status": "passed",
+    "shared_targets": 172,
+    "internal_reads": 13,
+    "same_request_key_same_job": true,
+    "restored_same_job": true
+  },
+  "external_model_calls": 0,
+  "preview": {
+    "url": "http://127.0.0.1:7896/",
+    "state": "var/candidate_a_chat_preview",
+    "background_plans": true,
+    "external_models": false
+  },
+  "not_evaluated": [
+    "independent business task set",
+    "live provider loop quality or paid cost",
+    "new chat PostgreSQL/multi-host and load acceptance",
+    "machine power-loss consistency"
+  ],
+  "publication": {
+    "git_commit": false,
+    "docker_built": false,
+    "remote_uploaded": false
+  }
+}
