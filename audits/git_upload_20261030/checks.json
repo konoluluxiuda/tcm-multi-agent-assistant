@@ -33,5 +33,12 @@
   "external_model_calls": 0,
   "docker_build_or_publish": false,
   "push_result": "See Git history; this is the preflight record.",
-  "local_only_log_links_disclosed": 15
+  "local_only_log_links_disclosed": 15,
+  "format_check": "passed_with_path_scoped_archive_attributes",
+  "archive_bytes_unchanged": true,
+  "executable_code_changed_after_full_ci": false,
+  "publication_commits": [
+    "integration commit",
+    "archive format declaration follow-up"
+  ]
 }

@@ -1,0 +1,5 @@
+# Preserve byte-identical historical source/patch snapshots and generated CSV.
+/audits/langgraph_v1_upgrade_v1/rollback/** -whitespace
+/audits/dataops_d3_v1/case_results.csv whitespace=cr-at-eol
+# This extracted synthetic fixture retains its original audited EOF layout.
+/tests/large_observation_fixture.py whitespace=-blank-at-eof
