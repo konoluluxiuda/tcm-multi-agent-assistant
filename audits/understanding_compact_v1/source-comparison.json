@@ -1,0 +1,18 @@
+{
+  "changed_after_selected_live_test": [
+    "tcm/dataops/service.py",
+    "tcm/dataops/workspace.py",
+    "tcm/runtime_status.py"
+  ],
+  "understanding_and_compilation_function_hashes": {
+    "tcm/dataops/service.py:submit_research_question": "e86763ab0378c6077b0ddd30a00324a6a7c8efbf6733c93ad819eae6b81a277c",
+    "tcm/dataops/research_question.py:compile_draft": "46c0bd88bc851ab774f8d3a12fedcad6a1e9b03c971367aea806503a8e1c0cc8",
+    "tcm/dataops/research_question.py:understanding_input": "7ebabe0a240fe702338c8d090b7ace4ec5c40a1f6d7f5b5468c83296e5e6f6d8",
+    "tcm/dataops/research_question.py:request_proposal": "df6388d998b404797046dd063bce0a11f7399cada3be4f598865087277dacba5"
+  },
+  "understanding_and_compilation_functions_unchanged": true,
+  "live_built_image_id": "sha256:11eb38e476d2cc170e7922df540046665d5b27e6f59cca71aa5257d72f8f117d",
+  "final_image_id": "sha256:ca633cd6fb523a93a8c15b8276195f309c196dbd5e03508f5c9bdb9d6cecfa7a",
+  "final_enqueue_and_version_changes_checked_offline": true,
+  "final_changes_retested_on_live_model": false
+}

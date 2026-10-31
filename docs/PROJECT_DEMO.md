@@ -1,6 +1,6 @@
 # 中草药资料工作台：三分钟演示与复现
 
-更新：2026-10-31。当前主线为资料任务工作台：问句 → 有界Goal → 字段核对 → 带出处XLSX → 增量v2。主流程采用fixed确定性执行，模型按需理解任务；native多轮是单独实验能力。进度以[统一大纲](TCM_PROJECT_ROADMAP.md)为准，数字与取舍见[组合实测](../audits/research_combined_v1/README.md)。
+更新：2026-10-31。当前主线为资料任务工作台：问句 → 有界Goal → 字段核对 → 带出处XLSX → 增量v2。主流程采用fixed确定性执行，模型按需理解任务；native多轮是单独实验能力。进度以[统一大纲](TCM_PROJECT_ROADMAP.md)为准，最新收益与失败见[新问句首测](../audits/research_acceptance_v1/README.md)，此前[组合实测](../audits/research_combined_v1/README.md)保留。
 
 ## 一句话和实际用途
 
@@ -10,7 +10,7 @@
 
 ## 启动与一条命令排练
 
-当前本机页面：<http://127.0.0.1:7912/dataops/research>；本地Docker：<http://127.0.0.1:7914/dataops/research>。7912可显式勾选一次模型理解，默认不勾选；7914不配置模型。下面的排练始终发送 `use_model=false`，不新增模型请求。
+当前本机页面：<http://127.0.0.1:7912/dataops/research>；本地Docker：<http://127.0.0.1:7914/dataops/research>。7912启用未完整识别问句的一次模型兜底，页面可取消；规范问句优先本地解析，7914不配置模型。下面的排练始终发送 `use_model=false`，不新增模型请求。
 
 已有服务时直接执行；输出目录须是新的：
 
@@ -32,7 +32,7 @@
 
 已安装依赖的解释器为项目 `.venv/bin/python`；新环境使用Python 3.11或以上，并安装 `requirements-research-chat.txt`。真实资料不随Git或镜像提供：需准备ETCM数据库、药典索引、原始PDF及R1发布登记，见[数据构建与回读](DATA_RELEASE_BENCHMARK.md)。缺少资料时不能仅凭镜像复现真实结果。
 
-只有需要单次模型理解时才在启动命令增加 `--research-goal-model`，并在页面勾选。`--research-selection native`会允许每任务最多10次执行模型请求，是另一模式；本排练不替使用者开启它，也不自动复跑已有真实评测。
+只有需要单次模型兜底时才在启动命令增加 `--research-goal-model`；这会同时启用聊天兜底，任务页可取消。`--research-selection native`会允许每任务最多10次执行模型请求，是另一模式；本排练不替使用者开启它，也不自动复跑已有真实评测。
 
 ## 三分钟操作顺序
 
@@ -42,7 +42,7 @@
 | 0:30–1:10 | 输入“整理白术和黄芪的功效、注意事项，保留出处并生成表格” | 两味都保留；注意缺失如实标记，complete表示完成核对 |
 | 1:10–1:50 | 输入“增加贮藏，保留旧字段”，下载v2和原v1 | 绑定父版本，仅追加列，不换对象、不覆盖旧文件 |
 | 1:50–2:20 | 输入“白术的来源做成表” | 基原/出处有歧义时询问具体问题，不执行半个任务 |
-| 2:20–3:00 | 打开[组合实测](../audits/research_combined_v1/README.md)与[面试证据](INTERVIEW_EVIDENCE.md) | 一次模型理解与多轮Agent均交付，但多轮额外消耗未增加结果，因此默认fixed |
+| 2:20–3:00 | 打开[新问句首测](../audits/research_acceptance_v1/README.md)与[面试证据](INTERVIEW_EVIDENCE.md) | 单次理解补自然表达，多轮仍可能提交错误参数；默认fixed，失败保留并由宿主拒绝 |
 
 候选筛选可另演示：“从白术、黄芪、川芎、甘草、大黄中挑两条功效和注意字段齐全的，保留出处并生成表格”。与指定两味核对的差别是，前者只挑字段符合条件的记录，后者保留全部指定记录及缺失。
 

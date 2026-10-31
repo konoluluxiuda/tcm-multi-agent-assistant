@@ -52,6 +52,11 @@ class D2ApiTests(unittest.TestCase):
         events = self.client.get(f'/api/dataops/agent-runs/{identifier}/events')
         self.assertIn('waiting_input', events.text)
         self.assertIn('"terminal": false', events.text)
+        self.assertIn('"decision_steps": 3', events.text)
+        self.assertNotIn('"model_calls"', events.text)
+        self.assertEqual(waiting['workspace']['mode'], 'synthetic')
+        self.assertEqual(waiting['workspace']['execution']['provider_requests'], 0)
+        self.assertEqual(waiting['job']['snapshot']['decision_steps'], 3)
         body = dict(job_revision=waiting['job']['revision'], question_id=pending['question_id'],
                     revision=1, operation='choose', candidate_id=pending['candidates'][0]['entry_id'])
         path = f'/api/dataops/agent-runs/{identifier}/answer'

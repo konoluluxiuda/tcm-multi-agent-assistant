@@ -65,3 +65,13 @@ class QuestionBenchmarkTests(unittest.TestCase):
                 before=len(requests)
                 with self.assertRaises(FileExistsError):evaluation.execute(release,out,model_factory=model)
                 self.assertEqual(len(requests),before)
+
+    def test_strict_scope_reference_is_not_scored_as_default_scope(self):
+        from tcm.dataops.research_contracts import ResearchGoal
+        case={'status':'ready','mode':'select_complete','names':['Alpha','Beta'],
+              'fields':['贮藏'],'target_count':1,'monograph_only':True}
+        goal=ResearchGoal(query={'names':case['names'],'limit':20},attributes=['medicinal_part'],
+                          document_fields=['贮藏'],research={'mode':'select_complete','target_count':1,'monograph_only':True}).model_dump()
+        self.assertTrue(evaluation.score(case,{'status':'ready','goal':goal})['passed'])
+        goal['research']['monograph_only']=False
+        self.assertTrue(evaluation.score(case,{'status':'ready','goal':goal})['wrong_ready_goal'])

@@ -138,6 +138,7 @@ class AgentState(MessagesState):
     evidence_request: Optional[Dict]
     evidence_answer: Optional[Dict]
     routing: Optional[Dict]
+    resolved_request: Optional[Dict]
     request_key: Optional[str]
     run_owner: str
 
@@ -196,7 +197,7 @@ def create_agent_graph():
                     'research_context': None, 'pubmed_context': None, 'has_image': False,
                     'image_type': None, 'bypass_routing': False}
 
-        selected = resolve_tool_request(current_input, herb_context=state.get('tcm_context'),
+        selected = state.get('resolved_request') or resolve_tool_request(current_input, herb_context=state.get('tcm_context'),
                                         research_context=state.get('research_context'),
                                         pubmed_context=state.get('pubmed_context'),relation_context=state.get('relation_context'))
         if (selected is not None and selected['request'].get('topic')=='research_plan'
@@ -216,7 +217,8 @@ def create_agent_graph():
                    'pubmed': 'pubmed_request', 'assistant': 'assistant_request'}[tool]
             changes = {key: selected['request'], 'has_image': False, 'image_type': None,
                        'bypass_routing': False, 'routing': {k:selected[k] for k in
-                           ('tool','reason','mode','intent_status','intent_model_calls','intent_duration_ms') if k in selected}}
+                           ('tool','reason','mode','intent_status','intent_model_calls','intent_duration_ms',
+                            'original_provider_requests','understanding_replayed') if k in selected}}
             if tool == 'assistant' and selected['request'].get('topic') in ('etcm_relations','target_analysis','research_plan'):
                 changes.update(tcm_context=None, research_context=None, pubmed_context=None)
             elif tool == 'assistant' and selected['request'].get('topic') == 'research_task_review':
@@ -897,11 +899,12 @@ def init_agent_state() -> AgentState:
         "assistant_result": None,
         "relation_context":None,
         "routing": None,
+        "resolved_request": None,
         "next": ""
     }
 
 
-def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='auto',request_key=None) -> Dict:
+def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='auto',request_key=None,resolved_request=None) -> Dict:
     """
     Process a user query through the agent decision system.
     
@@ -930,6 +933,7 @@ def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='a
     state['relation_context']=relation_context_from(snapshot.tcm_context)
     state['task_mode'] = task_mode
     state['request_key'] = request_key
+    state['resolved_request'] = resolved_request
     state['run_owner']=hashlib.sha256(session_id.encode()).hexdigest()
     
     # Add the current query
@@ -959,11 +963,13 @@ def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='a
     # Add the response to conversation history
     return result
 
-def process_query(query: Union[str, Dict], conversation_history=None, *, session_id=None, task_mode='auto',request_key=None) -> Dict:
+def process_query(query: Union[str, Dict], conversation_history=None, *, session_id=None, task_mode='auto',request_key=None,resolved_request=None) -> Dict:
     """Run a turn in its own session; omitted IDs create isolated one-shot calls.
 
     Completed turns live in SQLite and survive restart. Client-supplied
     history is intentionally not trusted as server-side state.
     """
     with session_turn(session_id) as thread_config:
-        return _process_query(query, thread_config, task_mode=task_mode,request_key=request_key)
+        args={'task_mode':task_mode,'request_key':request_key}
+        if resolved_request is not None:args['resolved_request']=resolved_request
+        return _process_query(query, thread_config, **args)

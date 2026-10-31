@@ -1,0 +1,169 @@
+{
+  "status": "passed",
+  "modules": 16,
+  "total": 132,
+  "network_attempts": 0,
+  "results": [
+    {
+      "module": "test_dataops_native_loop.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_rag_api.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_research_api.py",
+      "status": "passed",
+      "total": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_chat.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_question.py",
+      "status": "passed",
+      "total": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_research.py",
+      "status": "passed",
+      "total": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_rag_pipeline.py",
+      "status": "passed",
+      "total": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_presentation.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_d2.py",
+      "status": "passed",
+      "total": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_recruitment_delivery.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_api.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_research_context.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_d1.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_combined.py",
+      "status": "passed",
+      "total": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_dataops_d2_api.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_question_api.py",
+      "status": "passed",
+      "total": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "scope": "affected modules only; not a full suite or new live model evaluation"
+}

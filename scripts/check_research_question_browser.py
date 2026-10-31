@@ -25,7 +25,9 @@ async def check(args):
         await page.wait_for_function('!document.querySelector("#question_submit").disabled')
         caps=(await (await ctx.request.get(args.url+'/api/dataops/capabilities')).json())['research_selection']
         assert caps['driver'] in ('fixed','synthetic') and not caps['execution_model_enabled']
-        assert not await page.locator('#question_model').is_checked()
+        assert await page.locator('#question_model').is_checked()==caps['question_model_enabled']
+        # This rehearsal is local-only even when the deployment permits fallback.
+        if caps['question_model_enabled']:await page.locator('#question_model').uncheck()
         assert not (await (await ctx.request.get(args.url+'/api/runtime')).json())['restart_required']
 
         async def submit(question):

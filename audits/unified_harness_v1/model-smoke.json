@@ -1,0 +1,80 @@
+{
+  "version": "unified-harness-synthetic-v1",
+  "status": "passed",
+  "results": [
+    {
+      "id": "U01",
+      "status": "passed",
+      "duration_seconds": 0.887,
+      "replay_added_requests": 0
+    },
+    {
+      "id": "U02",
+      "status": "passed",
+      "duration_seconds": 2.806,
+      "replay_added_requests": 0
+    },
+    {
+      "id": "U03",
+      "status": "passed",
+      "rows": 0,
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 57,
+        "rows": 0,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "decision_steps": 3
+    }
+  ],
+  "actual_requests": 5,
+  "tokens": 20526,
+  "requests": [
+    {
+      "stage": "U01",
+      "number": 1,
+      "outcome": "response",
+      "request_bytes": 26470,
+      "http_status": 200,
+      "tokens": 7426
+    },
+    {
+      "stage": "U02",
+      "number": 2,
+      "outcome": "response",
+      "request_bytes": 26578,
+      "http_status": 200,
+      "tokens": 7645
+    },
+    {
+      "stage": "U03",
+      "number": 3,
+      "outcome": "response",
+      "request_bytes": 3650,
+      "http_status": 200,
+      "tokens": 1051
+    },
+    {
+      "stage": "U03",
+      "number": 4,
+      "outcome": "response",
+      "request_bytes": 5434,
+      "http_status": 200,
+      "tokens": 1901
+    },
+    {
+      "stage": "U03",
+      "number": 5,
+      "outcome": "response",
+      "request_bytes": 7619,
+      "http_status": 200,
+      "tokens": 2503
+    }
+  ],
+  "provider_stopped": false,
+  "real_corpus_sent": false,
+  "independent_accuracy": false,
+  "old_scores_changed": false,
+  "runtime_defaults_changed_by_smoke": false
+}

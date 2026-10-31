@@ -42,7 +42,20 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(r['status'],'composed');self.assertEqual(model.calls,1)
         self.assertIn('共有原文片段：“干燥”',r['message'])
         self.assertFalse(r['validation']['free_paraphrase_semantics_verified'])
+        self.assertEqual(r['composition_effect'], 'reorganized')
         self.assertEqual(set(payload('问题',r['bundle'])['sources'][0]),{'id','kind','name','label','scope','text','truncated'})
+
+    def test_full_excerpts_identical_to_original_are_marked_without_extra_call(self):
+        def excerpts(p):
+            return {'findings': [{'kind': 'excerpt', 'supports': [{'evidence_id': s['id'], 'quote': s['text']}]}
+                                 for s in p['sources']]}
+        model = Model(excerpts)
+        original = RagPipeline(Search(), model).run('资料')
+        composed = RagPipeline(Search(), model).run('资料', True)
+        self.assertEqual(composed['message'], original['message'])
+        self.assertEqual(composed['composition_effect'], 'unchanged')
+        self.assertIn('与原文展示一致', composed['composition_note'])
+        self.assertEqual(model.calls, 1)
 
     def test_repeated_supports_are_rendered_once_without_provider_retest(self):
         def answer(p):

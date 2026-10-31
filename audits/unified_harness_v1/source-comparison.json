@@ -1,0 +1,20 @@
+{
+  "changed_files": [
+    "app.py",
+    "tcm/dataops/chat.py",
+    "templates/index.html"
+  ],
+  "model_goal_tool_policy_unchanged": true,
+  "verified_policy_files": [
+    "tcm/dataops/service.py",
+    "tcm/dataops/research_question.py",
+    "tcm/dataops/research_context.py",
+    "tcm/dataops/research_model.py",
+    "tcm/dataops/research_graph.py",
+    "tcm/dataops/request_policy.py"
+  ],
+  "live_image_id": "sha256:85172a7c507e28ce3f1bc4271cc6434aadf490f7a7f77651edc64e35b779bd05",
+  "final_image_id": "sha256:3de899572b66cd62753debae82653bab1f17cf36c845255ef89933f49ce250bf",
+  "final_chat_counting_tested_offline": true,
+  "final_count_change_retested_on_live_model": false
+}

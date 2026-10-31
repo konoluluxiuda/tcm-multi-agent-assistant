@@ -1,0 +1,194 @@
+{
+  "version": "research-acceptance-v1",
+  "reference_status": "author_prospective_contracts_not_independent_users_or_human_signoff",
+  "independent_users": false,
+  "human_signoff": false,
+  "first_live_execution_only": true,
+  "actual_requests": 13,
+  "http_200": 13,
+  "total_tokens": 26135,
+  "request_budget": 28,
+  "retries": 0,
+  "goal_requests": 8,
+  "goal_tokens": 12993,
+  "native_execution_requests": 5,
+  "native_execution_tokens": 13142,
+  "by_strategy_and_case_kind": {
+    "R": {
+      "business": {
+        "passed": 1,
+        "scheduled": 8,
+        "execution_started": 1
+      },
+      "controls": {
+        "passed": 4,
+        "scheduled": 4,
+        "execution_started": 0
+      }
+    },
+    "G": {
+      "business": {
+        "passed": 7,
+        "scheduled": 8,
+        "execution_started": 7
+      },
+      "controls": {
+        "passed": 4,
+        "scheduled": 4,
+        "execution_started": 0
+      }
+    },
+    "A": {
+      "business": {
+        "passed": 0,
+        "scheduled": 2,
+        "execution_started": 1
+      },
+      "controls": {
+        "passed": 0,
+        "scheduled": 0,
+        "execution_started": 0
+      }
+    }
+  },
+  "native_goal_shared_with_G": true,
+  "goal_rejected_before_execution": [
+    "N06"
+  ],
+  "native_execution_failed_without_artifact": [
+    "N03"
+  ],
+  "control_provider_requests": 0,
+  "legacy_evidence_files_unchanged": 7,
+  "generalization_proven": false,
+  "native_necessity_proven": false,
+  "langfuse_exported": false,
+  "production_defaults_changed": false,
+  "frozen_protocol_sha256": "202fc3afeffddea4069a69f1fee040b4ff1450600c70e6f73e80b178e28efb56",
+  "frozen_suite_sha256": "7beee3b536547920b1bb7a87c3f785f81ef4890cc8bad2ae61f970820ad21b55",
+  "source_release_sha256": "aa65b51215535f824e4c1f6592b25c1e24d9f495aa338a91c99d0d05d5f5df92",
+  "source_code_sha256": {
+    "scripts/eval_research_questions.py": "621d55175c62bd3c2945fb0674b9beb1471dbcfa7241196259e3eb7354daa02d",
+    "eval/research_question_v1.json": "4ffadf50b9aa9476a3f6ceb0a3eab8a5c01aad1d8ff1dad8ed7db9916c3001cf",
+    "tcm/request_journal.py": "579ecab12cf66f31444e7f450b47e62af11d9ccf99e168c7607568b0395e7e3d",
+    "tcm/tracing.py": "95e54ce012d235b41bf60eecf0cd14a939d85f303a38326ee6f50f8ec0889033",
+    "tcm/rag_retrieval.py": "64dbf0fcfd317e360b6170c2723d661e44257da8468a4816a21ffdfb3f86c64f",
+    "tcm/mineru_retrieval.py": "5d4082e6b485ff63774e1d855fb9e9d4e480413ea84736ac0cf3e2027343aa01",
+    "tcm/dataops/research_question.py": "94c7dc81d3bbf7eb91fc981ebea16bcd5d29f2d1259991592ece9db2c92476a3",
+    "tcm/dataops/research_contracts.py": "c0455310cfb7ee72754dc787a55163d57b2680042120c2723cf83d67a3fd430f",
+    "tcm/dataops/goal_proposal.py": "8c1f3349b528564ce8661c76d34e46c9144e59f5fac5a2d459ed9e81d6f27b7c",
+    "tcm/dataops/goal_model.py": "60dc0a1162e4c2a5743834592076056b694b317298aa826bb1abd764bcfa16f5",
+    "tcm/dataops/research_sources.py": "2bc774738e7883b2838de248549a621157070fc54642ef81d7371b6612e4cef4",
+    "tcm/dataops/research_context.py": "3f722ca7e991920923ccda6ea0ebc51eb58fbfade5953ccfa45daa4348fde6af",
+    "tcm/dataops/research_graph.py": "7a65ec2512400d343ba23714c5416b12b6ae64703e456ebafdab72e0d87b157b",
+    "tcm/dataops/research_model.py": "9f7ca831d035dbe89aea7a86e837d5fd462916f23141aab1fdd1f00150de616b",
+    "tcm/dataops/contracts.py": "d0e115e4ceee29dde358e28e9419522d7b9269fab7c7e71e27442a39e3ea6a0f",
+    "tcm/dataops/data_access.py": "b5c74a8c75d5ceae5902bb735e1c05cc53df0b1bf21265eed500fc4051525cfb",
+    "tcm/dataops/workspace.py": "a73161d68ab77ee90694762df2c1a2e18026912199edc3b2a229983b1a04bfde",
+    "tcm/dataops/baseline.py": "e6b17f3e5c8d3630d30da479b1d58790c1dcd3e026200b02fffbaf5a3cd5b8f5",
+    "tcm/dataops/artifacts.py": "fc4dfcceccfb88b8d88c609cbe66b1ebd1451031d23fed20a32e1cfee14a6120",
+    "tcm/dataops/graph.py": "61e11841995031eb24c4e563833428294f2193e92de53d5773c976b69b361d5e",
+    "tcm/dataops/model.py": "df858c7889e0b99840e646484dda07db70c5d59af2b8596a3efcb16eb999de59",
+    "scripts/eval_research_combined.py": "17fe202758859b72a875a27572eff1e4f258644ca9af46dcc00354e839f5dad9",
+    "eval/research_combined_v1.json": "4615949c1b0bfed8934fbc672368dd8a371750463ee1977d2d06c585f94174da"
+  },
+  "artifacts_checked": [
+    {
+      "id": "N01",
+      "strategy": "R",
+      "sha256": "10be9350d470bdeaa889d62d56794a0b7db554a6cc021567311f92b59e88a230",
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 124,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "id": "N01",
+      "strategy": "G",
+      "sha256": "6554462cee9163ef8fa0b2c03cc0f91616b81d0b7513d7d150b789155f3fead6",
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 124,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "id": "N02",
+      "strategy": "G",
+      "sha256": "a128f1d7cf99dbfa98fb032a0f5170d6964cf0e3f5bcb6b354af98259335c2cb",
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 112,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "id": "N03",
+      "strategy": "G",
+      "sha256": "f81c3eab4eb5e4c50456076410f4c0e657d2ae9317023ccffc2cfd9f29a83b72",
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 60,
+        "rows": 0,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "id": "N04",
+      "strategy": "G",
+      "sha256": "ab81d02c33e0b2ddbc383fbe5df08aaad10ea266c837dfd906b3268df213f8b6",
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 128,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "id": "N05",
+      "strategy": "G",
+      "sha256": "0ed5ae15a94a4d50a949ad3dcc2a1e2a896e1dbaca6deb4ef60c29bbcee69a65",
+      "verification": {
+        "status": "passed",
+        "sheets": 6,
+        "verified_cells": 161,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "id": "N07",
+      "strategy": "G",
+      "sha256": "a5d14a852c62b6f55b61591beec407c8888049f19587c2130385ceee1b92e829",
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 95,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "id": "N08",
+      "strategy": "G",
+      "sha256": "1ae3b91610d01493c6df1b899b38d2b35fc5ced0a1f974aad968a2eff3332f68",
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 145,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    }
+  ],
+  "timing_scope": "Goal and execution stage wall clocks; excludes preparation/UI/client queue; shared Goal time attributed to G/A separately"
+}

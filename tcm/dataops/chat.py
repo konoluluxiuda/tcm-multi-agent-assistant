@@ -11,17 +11,7 @@ from agents.runtime import session_turn
 from tcm.dataops.contracts import SubmitQuestion
 from tcm.dataops.service import ProposalNeedsInput
 from tcm.dataops.workspace import Conflict
-
-
-def followup(question):
-    return bool(re.match(r'\s*(?:请|帮我|再|继续|同时)*\s*(?:增加|新增|添加|补充|加一列|只保留|改为|重查)', question))
-
-
-def matches(question):
-    if question.lstrip().startswith('/'):
-        return False
-    return bool(followup(question) or re.search(
-        r'(?:整理|核对|补充|导出|生成|制作|做成)[\s\S]*(?:表格|资料表|对照表|核对表|[Ee]xcel|[Xx][Ll][Ss][Xx])', question))
+from tcm.dataops.request_policy import followup, matches
 
 
 def card(doc):
@@ -34,6 +24,7 @@ def card(doc):
     if research and not result and (driver=='native' or execution_driver.startswith('research_native_')):calls=None
     return {'topic': 'dataops_task', 'status': doc['status'], 'workspace_id': doc['id'],
             'message': '资料整理任务已保存，结果将在下方更新。', 'llm_calls': calls, 'network_calls': calls,
+            'counts_scope':'workspace_total',
             'counts_final':calls is not None and doc['status'] in ('complete','partial','failed','cancelled'),
             'driver':execution_driver}
 
@@ -68,7 +59,9 @@ def execute(service, memory, session_id, question, *, request_key=None, history_
         if existing:
             if existing.get('question') != question:
                 raise Conflict('Request key bound to a different question')
-            output = card(existing)
+            if existing['status']=='queue_busy' and not existing.get('job_id'):
+                existing=anyio.from_thread.run(service.retry_busy,owner,key,question)['workspace']
+            output = {**card(existing),'replayed':True,'understanding_requests_this_submission':0}
             anyio.from_thread.run(service.wake)
             if any(getattr(m, 'additional_kwargs', {}).get('dataops_request_key') == key for m in snapshot.messages):
                 return output
@@ -82,14 +75,30 @@ def execute(service, memory, session_id, question, *, request_key=None, history_
             body_type=ResearchQuestion if research else SubmitQuestion
             body = body_type(question=question, request_key=key,
                 parent_id=parent['id'] if parent else None, expected_revision=parent['revision'] if parent else None)
+            result=None
             try:
-                result = anyio.from_thread.run(service.submit_research_question if research else service.submit, owner, body)
+                async def submit():
+                    return await service.submit_research_question(owner,body,allow_queries=True) if research else await service.submit(owner,body)
+                result = anyio.from_thread.run(submit)
+                if result.get('proposal',{}).get('status')=='query':
+                    proposal=result['proposal'];calls=proposal['external_model_calls']
+                    return {'topic':'query_handoff','route':{**proposal['route'],'mode':'model',
+                        'reason':'unified_request_fallback','intent_model_calls':0 if result['replayed'] else calls,
+                        'original_provider_requests':calls,'understanding_replayed':result['replayed']}}
                 if not result.get('workspace'):raise ProposalNeedsInput(result['proposal'])
-                output = card(result['workspace'])
+                output = {**card(result['workspace']),'replayed':result.get('replayed',False),
+                          'understanding_requests_this_submission':0 if result.get('replayed') else
+                              result.get('proposal',{}).get('external_model_calls',0)}
             except ProposalNeedsInput as exc:
                 output = {'topic': 'dataops_task', 'status': 'clarification_needed',
                           'message': '\n'.join(exc.proposal['issues']), 'question': question,
-                          'unresolved': exc.proposal['unresolved'], 'llm_calls': 0, 'network_calls': 0}
+                          'unresolved': exc.proposal['unresolved'],
+                          'llm_calls':exc.proposal.get('external_model_calls',0),
+                          'network_calls':exc.proposal.get('external_model_calls',0),
+                          'counts_scope':'understanding_result_total',
+                          'replayed':bool(result and result.get('replayed')),
+                          'understanding_requests_this_submission':0 if result and result.get('replayed') else
+                              exc.proposal.get('external_model_calls',0)}
         context = deepcopy(snapshot.tcm_context)
         if output.get('workspace_id'):
             if not isinstance(context, dict) or context.get('kind') != 'agent_contexts_v1':

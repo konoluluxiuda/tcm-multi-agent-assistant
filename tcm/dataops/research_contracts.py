@@ -33,7 +33,8 @@ class ResearchCreate(CreateAgent):
 
 
 class ResearchQuestion(SubmitQuestion):
-    use_model:bool=False
+    # None uses the deployment policy; False explicitly guarantees local-only.
+    use_model:bool|None=None
 
 
 def same_research_scope(parent,goal):

@@ -41,6 +41,26 @@ class ResearchEngine(Engine):
         allowed={'candidate_value'} if self.goal.research.monograph_only else {'candidate_value','candidate_scope_value'}
         return all(inspected['fields'].get(f,{}).get('status') in allowed for f in self.goal.document_fields)
 
+    def candidate_state(self, s, sid):
+        """Explain eligibility using the same field states, not identity guesses."""
+        record = next(r for r in s['selected']['records'] if r['source_record_id'] == sid)
+        inspected = s['inspections'].get(sid, {})
+        status = inspected.get('status', 'not_inspected')
+        reasons = []
+        if not inspected or len(inspected.get('candidates', [])) != 1 or status in ('unmatched', 'source_mismatch', 'ambiguous'):
+            reasons.append({'field': '来源对应', 'status': status})
+        for field in self.goal.attributes:
+            state = record['fields'][field].get('state', 'missing')
+            if state != 'present':
+                reasons.append({'field': field, 'status': state})
+        allowed = {'candidate_value'} if self.goal.research.monograph_only else {'candidate_value', 'candidate_scope_value'}
+        for field in self.goal.document_fields:
+            state = inspected.get('fields', {}).get(field, {}).get('status', 'not_inspected')
+            if state not in allowed:
+                reasons.append({'field': field, 'status': state})
+        return {'source_id': sid, 'name': record['fields']['name_pinyin']['value'], 'status': status,
+                'eligible': self.eligible(s, sid), 'selected': False, 'reasons': reasons}
+
     def context(self,s):
         selected=s['selected'];ids=selected['selected_ids'] if selected else []
         unread=[sid for sid in ids if sid not in s['inspections'] or
@@ -178,6 +198,8 @@ class ResearchEngine(Engine):
                         if audit_named and set(ids)!=set(s['selected']['selected_ids']):raise ToolRejected('preserve_named_records')
                         if s.get('parent_records') and set(ids)!=set(s['parent_records']):raise ToolRejected('preserve_parent_records')
                         qualified=[sid for sid in ids if self.eligible(s,sid)]
+                        if not audit_named and not s.get('parent_records') and len(qualified)!=len(ids):
+                            raise ToolRejected('unqualified_delivery_records')
                         full=len(ids)==self.goal.research.target_count and len(qualified)==len(ids)
                         if audit_named:
                             full=(len(ids)==self.goal.research.target_count and all(sid in s['inspections'] for sid in ids)
@@ -194,8 +216,8 @@ class ResearchEngine(Engine):
                             'task_mode':self.goal.research.mode,'reviewed_count':len(ids),
                             'artifact_format':'sorted-evidence-v1',
                             'candidate_pool_count':len(s['selected']['selected_ids']),'selected_ids':ids,
-                            'candidate_states':[{'source_id':sid,'status':s['inspections'].get(sid,{}).get('status','not_inspected'),
-                                'eligible':self.eligible(s,sid),'selected':sid in ids} for sid in s['selected']['selected_ids']],
+                            'candidate_states':[{**self.candidate_state(s,sid),'selected':sid in ids}
+                                                for sid in s['selected']['selected_ids']],
                             'decision_steps':s['model_calls'],
                             'provider_requests':sum(u.get('provider_requests',0) for u in s['usage']),
                             'identity_verified':False,'exhaustive_search':False,'monograph_only':self.goal.research.monograph_only}

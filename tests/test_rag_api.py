@@ -44,6 +44,18 @@ class ApiTests(unittest.TestCase):
         with patch.dict('os.environ',{'ENABLE_RAG_WORKBENCH':'0'}):
             self.assertEqual(self.client.get('/rag').status_code,404)
 
+    def test_old_cached_composed_answer_gets_display_note_without_redispatch_or_rewrite(self):
+        from tcm.rag_pipeline import assemble, render
+        from tests.test_rag_pipeline import result
+        bundle = assemble(result())
+        cached = {'status': 'composed', 'message': render(bundle), 'bundle': bundle, 'stats': {'requests': 1}}
+        body = {'question': '合成资料', 'request_key': 'old-composed-answer', 'compose': True}
+        with patch.object(Runs, 'reserve', return_value=cached), patch.object(Runs, 'complete') as complete:
+            reply = self.client.post('/api/rag/answers', json=body).json()
+        self.assertTrue(reply['replayed']); self.assertEqual(reply['composition_effect'], 'unchanged')
+        self.assertEqual(reply['stats']['requests'], 1); self.assertEqual(self.calls, [])
+        self.assertNotIn('composition_effect', cached); complete.assert_not_called()
+
     def test_inflight_or_unknown_state_is_not_implicitly_reexecuted(self):
         store=Runs(self.root/'runs.sqlite3')
         self.assertIsNone(store.reserve('owner','key','signature'))

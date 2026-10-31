@@ -1,0 +1,25 @@
+{
+  "version": "research-acceptance-v1",
+  "reference_status": "author_prospective_contracts_not_independent_users_or_human_signoff",
+  "max_total_requests": 28,
+  "native_case_ids": ["N03", "N06"],
+  "hypotheses": [
+    "One Goal call may improve unfamiliar phrasing compared with local grammar; fixed execution then suffices.",
+    "For zero qualified candidates and strict monograph scope, native execution may or may not improve delivery; compare the same Goal and preserve negative results.",
+    "Ambiguity, unsupported prediction, parent replacement and unavailable names should stop before provider dispatch or task creation."
+  ],
+  "cases": [
+    {"id":"N01","question":"整理杜仲、茯苓的功效和贮藏，保留出处并生成表格。","status":"ready","names":["杜仲","茯苓"],"fields":["功能与主治","贮藏"],"mode":"audit_named","target_count":2,"expected_status":"complete","execution_authorized":true},
+    {"id":"N02","question":"想把菊花和金银花放在一张资料卡里：分别摘出主要用途、日常怎么保存；原文没写的就留空并说明，别补写，附页码，给我表格。","status":"ready","names":["菊花","金银花"],"fields":["功能与主治","贮藏"],"mode":"audit_named","target_count":2,"expected_status":"complete","execution_authorized":true},
+    {"id":"N03","question":"麦冬、山药、泽泻这三份里，留两份既写了注意事项又写了贮藏的；少于两份也照实交付，缺项的不算齐全，要出处表。","status":"ready","names":["麦冬","山药","泽泻"],"fields":["注意","贮藏"],"mode":"select_complete","target_count":2,"expected_status":"partial","execution_authorized":true},
+    {"id":"N04","question":"把葛根和砂仁的功效、用量做成一页对照表。两味都要，没找到的项目也列着，逐项注明资料位置。","status":"ready","names":["葛根","砂仁"],"fields":["功能与主治","用法与用量"],"mode":"audit_named","target_count":2,"expected_status":"complete","execution_authorized":true},
+    {"id":"N05","question":"沿用刚才那两行，旧列和值都别动，另加保存条件、注意事项；缺失写明，交付一个新版本。","status":"ready","names":["茯苓","山药"],"fields":["功能与主治","贮藏","注意"],"mode":"audit_named","target_count":2,"parent_fields":["功能与主治"],"expected_status":"complete","execution_authorized":true},
+    {"id":"N06","question":"从甘草、黄芩、山楂中挑两条贮藏字段齐全的，只接受原药材正文，不接受饮片，保留出处生成表格。","status":"ready","names":["甘草","黄芩","山楂"],"fields":["贮藏"],"mode":"select_complete","target_count":2,"monograph_only":true,"expected_status":"partial","execution_authorized":true},
+    {"id":"N07","question":"给杜仲和续断做功效对照表，保留页码，不需要用量、贮藏或ETCM性味。","status":"ready","names":["杜仲","续断"],"fields":["功能与主治"],"mode":"audit_named","target_count":2,"expected_status":"complete","execution_authorized":true},
+    {"id":"N08","question":"把酸枣仁、柏子仁的功效、注意和用量并排整理，缺哪项就标哪项，两个对象都保留，表里要有可回查的位置。","status":"ready","names":["酸枣仁","柏子仁"],"fields":["功能与主治","注意","用法与用量"],"mode":"audit_named","target_count":2,"expected_status":"complete","execution_authorized":true},
+    {"id":"N09","question":"把菊花的来源和功效整理成表格。","status":"needs_input","execution_authorized":false},
+    {"id":"N10","question":"用茯苓和山药的数据预测哪个疾病适合哪个草药，再生成推荐表。","status":"needs_input","execution_authorized":false},
+    {"id":"N11","question":"把茯苓改成黄芪，在原表上加贮藏，其余照旧。","status":"needs_input","names":["茯苓","山药"],"mode":"audit_named","target_count":2,"parent_fields":["功能与主治"],"execution_authorized":false},
+    {"id":"N12","question":"把丹参的功效和贮藏做成带出处的表格。","status":"needs_input","execution_authorized":false}
+  ]
+}

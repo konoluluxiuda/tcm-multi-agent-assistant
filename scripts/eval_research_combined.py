@@ -8,6 +8,7 @@ from copy import deepcopy
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import time
@@ -37,7 +38,8 @@ def hashes():return {p:digest(ROOT/p) for p in CODE}
 def parent_for(store,sources,case):
     if not case.get('parent_fields'):return None
     goal=ResearchGoal(query={'names':case['names'],'limit':20},attributes=['medicinal_part'],
-        document_fields=case['parent_fields'],research={'mode':case['mode'],'target_count':case['target_count']})
+        document_fields=case['parent_fields'],research={'mode':case['mode'],'target_count':case['target_count'],
+                                                       'monograph_only':case.get('monograph_only',False)})
     with sources() as s:
         parent,_=store.reserve_agent('combined-eval','shared-parent',goal.model_dump(),s.revision,question='共同的零模型父版本')
     parent=ResearchEngine(store,'combined-eval',parent['id'],sources,ResearchFixed()).run()
@@ -45,8 +47,17 @@ def parent_for(store,sources,case):
     return parent
 
 
-def prepare(release,out):
-    check(release);out.mkdir(parents=True,exist_ok=False);suite=json.loads(SUITE.read_text());prepared=[]
+def prepare(release,out,suite_path=None):
+    check(release);suite=json.loads(Path(suite_path or SUITE).read_text());prepared=[]
+    ids=[c['id'] for c in suite['cases']]
+    native_ids=suite.get('native_case_ids',[c['id'] for c in suite['cases']])
+    if not 1<=len(ids)<=12 or any(not isinstance(i,str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,40}',i) for i in ids) or len(set(ids))!=len(ids):
+        raise ValueError('Invalid or duplicate case IDs')
+    if len(native_ids)!=len(set(native_ids)) or set(native_ids)-set(ids):raise ValueError('Unknown native cases')
+    budget=suite.get('max_total_requests',24)
+    if type(budget) is not int or not 1<=budget<=132:raise ValueError('Invalid request budget')
+    out.mkdir(parents=True,exist_ok=False,mode=0o700)
+    save(out/'suite.private.json',suite)
     sources=lambda:ReleaseSources(release)
     with sources() as s:catalog=s.name_catalog()
     for case in suite['cases']:
@@ -54,7 +65,8 @@ def prepare(release,out):
         item={'case':case,'catalog':bounded_catalog(case['question'],catalog,parent),'parent':parent}
         if case['status']=='ready':
             goal=ResearchGoal(query={'names':case['names'],'limit':20},attributes=['medicinal_part'],
-                document_fields=case['fields'],research={'mode':case['mode'],'target_count':case['target_count']})
+                document_fields=case['fields'],research={'mode':case['mode'],'target_count':case['target_count'],
+                                                       'monograph_only':case.get('monograph_only',False)})
             with sources() as s:
                 pool=s.query(goal.query);inspections={r['source_record_id']:s.inspect(r,case['fields']) for r in pool['records']}
             item['witness']={'pool':pool,'inspections':inspections}
@@ -63,15 +75,17 @@ def prepare(release,out):
     for p in CODE:
         dst=out/'frozen_source'/p;dst.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/p,dst)
     protocol={'version':suite['version'],'cases':prepared,'code_sha256':hashes(),
+        'suite_sha256':digest(out/'suite.private.json'),'native_case_ids':native_ids,
         'release_sha256':digest(release/'release.json'),'reference_status':suite['reference_status'],
         'strategies':{'R':'local grammar + deterministic executor','G':'one shared model Goal + deterministic executor',
                       'A':'same shared model Goal + native observation executor'},
         'endpoint':'https://api.deepseek.com/chat/completions','model':'deepseek-flash',
-        'budget':{'total_requests':24,'goal_requests_per_case':1,'A_requests_per_authorized_case':10,
+        'budget':{'total_requests':budget,'goal_requests_per_case':1,'A_requests_per_authorized_case':10,
                   'output_tokens':1200,'max_request_bytes':65536,'timeout_seconds':30,'retries':0},
         'goal_call_shared_between_G_and_A':True,'reference_fields_never_sent_to_model':True,
         'data_sent':'fixed questions, static tools, exact name aliases, parent structural metadata; native execution additionally accepted Goal, bounded candidate states/tool interactions and optional <=3x800-char excerpts; no PDF/DB/history/key body',
-        'execution_authorization':'C01/C02 only, read-only sources and private local artifacts; controls never executed even on unsafe acceptance',
+        'execution_authorization':{'ready_cases':[c['id'] for c in suite['cases'] if c['status']=='ready' and c['execution_authorized']],
+                                   'native_cases':native_ids,'controls_never_executed':True,'sources':'read-only; private local artifacts'},
         'stop':'unknown outcome or HTTP error stops later model stages, never retry or auto-continue',
         'source_quality_claim':'frozen source witnesses and delivery contracts, not independent raw extraction or clinical truth'}
     save(out/'protocol.json',protocol);return protocol
@@ -79,7 +93,7 @@ def prepare(release,out):
 
 def grade_goal(case,proposal):
     expected={'status':case['status'],'names':case.get('names',[]),'fields':case.get('fields',[]),
-              'mode':case.get('mode'),'target_count':case.get('target_count')}
+              'mode':case.get('mode'),'target_count':case.get('target_count'),'monograph_only':case.get('monograph_only',False)}
     return questions.score(expected,proposal)
 
 
@@ -88,8 +102,9 @@ def grade_delivery(case,doc,store,witness,parent):
     if not doc.get('artifact') or not doc.get('result'):return detail
     r=doc['result'];validate_result(r);verification=verify(store.root/doc['id']/doc['artifact']['filename'],r)
     rows={x['source_id']:x for x in r['rows']};pool={x['source_record_id']:x for x in witness['pool']['records']}
+    allowed={'candidate_value'} if case.get('monograph_only') else {'candidate_value','candidate_scope_value'}
     eligible={sid for sid,x in witness['inspections'].items() if len(x['candidates'])==1 and x['status'] not in ('unmatched','ambiguous','source_mismatch') and
-              all(x['fields'].get(f,{}).get('status') in ('candidate_value','candidate_scope_value') for f in case['fields']) and
+              all(x['fields'].get(f,{}).get('status') in allowed for f in case['fields']) and
               pool[sid]['fields']['medicinal_part']['state']=='present'}
     selected=(set(rows)==set(pool) if case['mode']=='audit_named' else
               set(rows)<=eligible and len(rows)==min(case['target_count'],len(eligible)))
@@ -138,6 +153,7 @@ class Recorder:
 def execute(release,out,model_factory=None):
     protocol=json.loads((out/'protocol.json').read_text())
     if protocol['code_sha256']!=hashes() or protocol['release_sha256']!=digest(release/'release.json'):raise ValueError('Frozen inputs changed')
+    if protocol.get('suite_sha256')!=digest(out/'suite.private.json'):raise ValueError('Frozen suite changed')
     for c in protocol['cases']:
         if c['sha256']!=digest(out/(c['id']+'_prepared.private.json')):raise ValueError('Frozen witness changed')
     save(out/'execution_started.json',{'consumed_even_if_interrupted':True})
@@ -166,6 +182,9 @@ def execute(release,out,model_factory=None):
             save(out/(case['id']+'_shared_model_goal.json'),shared)
         for strategy,proposal in [('R',local),('G',shared),('A',shared)]:
             folder=out/(case['id']+'_'+strategy);folder.mkdir();started=time.monotonic()
+            if strategy=='A' and case['id'] not in protocol['native_case_ids']:
+                record={'id':case['id'],'strategy':strategy,'status':'not_scheduled','passed':None,'execution_started':False}
+                records.append(record);save(folder/'score.json',record);continue
             if proposal is None:
                 record={'id':case['id'],'strategy':strategy,'status':'not_run_after_provider_error','passed':False,'execution_started':False}
             else:
@@ -196,9 +215,10 @@ def execute(release,out,model_factory=None):
                               goal_seconds=round(0 if strategy=='R' else goal_seconds,3),execution_seconds=round(execution_seconds,3),
                               duration_seconds=round(execution_seconds+(0 if strategy=='R' else goal_seconds),3))
             records.append(record);save(folder/'score.json',record);print(json.dumps(record,ensure_ascii=False),flush=True)
+    scheduled=lambda s:[r for r in records if r['strategy']==s and r.get('status')!='not_scheduled']
     report={'version':protocol['version'],'records':records,'actual_requests':len(recorder.entries),
             'total_tokens':sum(r.get('tokens',0) for r in recorder.entries),'provider_stopped':recorder.stopped,
-            'by_strategy':{s:{'passed':sum(r['passed'] for r in records if r['strategy']==s),'total':len(protocol['cases']),
+            'by_strategy':{s:{'passed':sum(bool(r['passed']) for r in scheduled(s)),'total':len(scheduled(s)),
                               'wrong_goals':sum(r.get('goal',{}).get('wrong_ready_goal',False) for r in records if r['strategy']==s)} for s in ('R','G','A')},
             'request_accounting':'G/A share goal requests; attributed goal counts must not be summed as actual provider calls',
             'generalization_proven':False,'native_necessity_proven':False,'reference_status':protocol['reference_status']}
@@ -208,5 +228,6 @@ def execute(release,out,model_factory=None):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',type=Path,required=True)
     p.add_argument('--release',type=Path,default=ROOT/'var/data_releases/r1_20261030');p.add_argument('--execute',action='store_true')
-    args=p.parse_args();r=execute(args.release,args.out) if args.execute else prepare(args.release,args.out)
+    p.add_argument('--suite',type=Path,help='Freeze an alternate authored suite; execution uses its frozen copy')
+    args=p.parse_args();r=execute(args.release,args.out) if args.execute else prepare(args.release,args.out,args.suite)
     print(json.dumps({k:v for k,v in r.items() if k in ('version','budget','actual_requests','by_strategy','total_tokens')},ensure_ascii=False))

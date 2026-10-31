@@ -1,0 +1,45 @@
+{
+  "version": "unified-harness-synthetic-v1",
+  "inputs": {
+    "runtime_source_tree": "d9131e5db94aff0e1df507212c41613c3ab7831d4390d8a1f1f056ea4cedb1b3",
+    "script_sha256": "b49a2e086c96fbfd6399dfb45368e0c8472aee2319e70fca1e85a804da0d2ad8",
+    "fixture_sha256": "0b4ad6a49af8f1bd37a6f7494722c1bad52df52031e7d39e8a611405f866cb6a",
+    "recorder_sha256": "17fe202758859b72a875a27572eff1e4f258644ca9af46dcc00354e839f5dad9"
+  },
+  "questions": [
+    [
+      "U01",
+      "我刚接触这个服务，想先知道能拿它交付哪些材料"
+    ],
+    [
+      "U02",
+      "Alpha和Beta各占一行，主要用途和存放环境各一列，没写的留空并标明，交一张带出处的表格"
+    ]
+  ],
+  "native_case": {
+    "id": "U03",
+    "names": [
+      "Alpha",
+      "Beta",
+      "Delta"
+    ],
+    "fields": [
+      "注意"
+    ],
+    "target_count": 2,
+    "expected_rows": 0
+  },
+  "endpoint": "https://api.deepseek.com",
+  "model": "deepseek-flash",
+  "max_requests": 7,
+  "goal_requests_per_case": 1,
+  "native_max_requests": 5,
+  "max_output_tokens": 1200,
+  "max_request_bytes": 65536,
+  "timeout_seconds": 30,
+  "retries": 0,
+  "trace_export": false,
+  "stop_on_unknown_or_http_error": true,
+  "data": "fixed synthetic questions, static schemas, synthetic aliases and tool states; optional synthetic fragments only; no real corpus, PDFs, history or key bodies",
+  "claim": "integration smoke, not independent user accuracy; no change to previous experiments"
+}

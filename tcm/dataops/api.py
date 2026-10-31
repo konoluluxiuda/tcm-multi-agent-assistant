@@ -17,6 +17,7 @@ from tcm.dataops.data_access import Sources, SourceChanged
 from tcm.dataops.service import DataOpsService, ProposalNeedsInput
 from tcm.dataops.workspace import Workspaces, Conflict
 from tcm.dataops.baseline import execute
+from tcm.dataops.presentation import public_response, workspace_view
 from tcm.dataops.research_contracts import ResearchCreate,ResearchQuestion,same_research_scope
 
 
@@ -62,13 +63,14 @@ def create_router(memory_provider, cookie_name, *, service=None):
 
     def call(action):
         try:
-            return action()
+            return public_response(action())
         except ProposalNeedsInput as exc:
             raise HTTPException(409, detail=exc.proposal) from None
         except KeyError:
             raise HTTPException(404, '记录或产物不存在。') from None
         except JobBusy:
-            raise HTTPException(429, '已有任务运行或队列已满。') from None
+            raise HTTPException(429, '队列正忙，任务已保留。可稍后使用同一请求编号重试，不会重复模型理解。',
+                                headers={'Retry-After':'2'}) from None
         except (Conflict, SourceChanged, JobConflict):
             raise HTTPException(409, '请求或来源版本冲突；请刷新或使用新的请求编号。') from None
         except (OSError, sqlite3.Error, ImportError):
@@ -136,7 +138,7 @@ def create_router(memory_provider, cookie_name, *, service=None):
         try:
             result=await service.submit_research_question(owner,body)
             response.status_code=202 if result.get('workspace') else 200
-            return result
+            return public_response(result)
         except Exception as exc:
             def failed():raise exc
             return call(failed)
@@ -159,7 +161,7 @@ def create_router(memory_provider, cookie_name, *, service=None):
     async def submit_question(body: SubmitQuestion, request: Request, response: Response):
         store, owner = context(request, response); agent_enabled()
         try:
-            return await service.submit(owner, body)
+            return public_response(await service.submit(owner, body))
         except ProposalNeedsInput as exc:
             raise HTTPException(409, detail=exc.proposal) from None
         except Exception as exc:
@@ -244,6 +246,9 @@ def create_router(memory_provider, cookie_name, *, service=None):
                 job, items = queue().events(owner, doc['job_id'], cursor)
                 for item in items:
                     cursor = item['revision']
+                    item = dict(item)
+                    if 'model_calls' in item:
+                        item['decision_steps'] = item.pop('model_calls')
                     yield 'id: ' + str(cursor) + '\nevent: progress\ndata: ' + json.dumps(item, ensure_ascii=False) + '\n\n'
                 if job['status'] in TERMINAL or job['status'] == 'waiting_input':
                     return
@@ -276,7 +281,13 @@ def create_router(memory_provider, cookie_name, *, service=None):
     @router.get('/api/dataops/workspaces')
     def listing(request: Request, response: Response):
         store, owner = context(request, response)
-        return call(lambda: {'items': store.listing(owner)})
+        def action():
+            items = []
+            for entry in store.listing(owner):
+                doc = workspace_view(store.get(owner, entry['id']))
+                items.append({k: doc[k] for k in ('id', 'revision', 'created', 'status', 'goal', 'mode', 'execution')})
+            return {'items': items}
+        return call(action)
 
     @router.get('/api/dataops/workspaces/{identifier}')
     def get(identifier: str, request: Request, response: Response):

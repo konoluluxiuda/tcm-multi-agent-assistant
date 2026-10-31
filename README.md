@@ -1,12 +1,16 @@
 # TCM DataOps Agent
 
-> **D1已接入：批量资料核对与带来源表格交付。** 支持目录筛选、中文/拼音名称名单、差异与缺失标记、工作区回看和XLSX下载，见[D1运行与验收](docs/DATAOPS_D1_DELIVERY.md)。保留0模型调用的固定流程F；D2已加入原生Tool Calling适配器、持久人工等待和增量v2，网页当前使用合成模型替身，见[D2使用与边界](docs/DATAOPS_D2_DELIVERY.md)。文献搜索已退役，历史台账仍可读取。
+> **当前工作台默认固定执行，按需单次模型理解。** 支持中文/拼音名单、字段核对、缺失与差异标记、带出处XLSX和增量v2；原生Tool Calling、持久人工等待及多轮观察循环作为显式实验保留。见[当前运行说明](docs/RESEARCH_SELECTION_AGENT.md)。文献搜索已退役，历史台账仍可读取。
 
 面向中草药研究资料整理的大模型应用项目，整合ETCM结构化记录与药典文本，提供有出处的查询、比较、来源靶点分析和研究报告。
 
 当前采用 **Python、FastAPI、LangGraph 1.x、SQLite、可选PostgreSQL、Qdrant和DeepSeek兼容接口**。默认本地预览关闭模型和联网工具。当前聊天是多步骤意图解析＋受控本地执行；没有默认开启向模型回传真实资料的自主科研循环。
 
-**最新执行选择：** [组合验收](audits/research_combined_v1/README.md)已完成：新两项业务，一次模型理解＋确定性执行G与多轮A均2/2交付；两项控制零调用拦截。实际12次请求、30,768 token，A额外回读9段但没有新增交付收益。当前7912/7914默认fixed，7912可显式勾选一次模型理解；组合验收时镜像 `tcm-research-chat:r4-combined-v1`，未远程发布。23模块183项及网页/文件回读通过；原A0/2、原8题6/8保留。求职材料与一条命令排练已更新，见[三分钟演示](docs/PROJECT_DEMO.md)、[面试证据](docs/INTERVIEW_EVIDENCE.md)及[交付验收](audits/recruitment_delivery_v2/README.md)。当前本地镜像 `tcm-research-chat:recruitment-v1` 运行源码与提交2cac0d4一致。
+**此前新问句首测：** 8道作者业务题R本地解析1/8、G一次模型理解＋fixed执行7/8；另4道控制零调用拦截。预选多轮A端到端0/2（一题Goal被拒未执行，另一题错误参数被拒），13次HTTP200、26,135 token，见[原记录](audits/research_acceptance_v1/README.md)。更早的[组合验收](audits/research_combined_v1/README.md)G/A各2/2与原R4 A0/2均保留，不外推为独立准确率。求职演示与证据见[三分钟演示](docs/PROJECT_DEMO.md)、[面试材料](docs/INTERVIEW_EVIDENCE.md)。
+
+**随后统一入口与Harness已完成：** 聊天/工作台先本地完整解析，7912已启用未识别输入的一次模型兜底，查询不二次分类；7896/7914保留本地模式。新建/续改Schema和合格集合/数量约束已接入，零合格允许空表。28模块166项受影响离线检查通过，真实模型三项合成烟测通过（5请求、20,526 token），不改写上述真实资料旧分数。该轮本地镜像`tcm-research-chat:unified-harness-v1`，未上传远程；范围与代价见[验收](audits/unified_harness_v1/README.md)。
+
+**当前修复与精简：** 忙碌429后同key可继续原工作区且不重复理解，API字段层级已澄清，服务源码与启动入口分别追踪版本。32模块206项受影响离线检查通过；四题合成开发对照中激进精简3/4未采用，保守版4/4，总token较同题完整基线少29.86%。最新本地镜像为`tcm-research-chat:understanding-compact-v2`，未远程上传。原失败保留，不视为独立准确率，见[完整记录](audits/understanding_compact_v1/README.md)。
 
 **主线与阶段记录（保留各轮当时口径）：** [版本化数据与benchmark → 检索对照 → 带引用RAG → Agent整合部署](docs/DATA_RAG_BENCHMARK_PLAN.md)，状态见[统一大纲](docs/TCM_PROJECT_ROADMAP.md)。R1研究基线已交付：核验2076份原JSON，新建616条目/8665片段同hash词法索引，生成8665个未审核候选并冻结30题原始参考；34项离线及真实发布回读通过，见[R1验收](audits/data_rag_r1/README.md)和[构建/回查命令](docs/DATA_RELEASE_BENCHMARK.md)。R2已完成新8665条/512维向量、Qdrant与受限跨条目CLI对照：开发20/20、保留首测9/10（四方法相同），一项字段别名状态缺陷保留；58项离线检查通过。向量未显示增益，继续默认精确/BM25，见[R2结果与命令](docs/RAG_RETRIEVAL_COMPARISON.md)。**R3已完成受限摘录RAG：状态缺陷修复，4次真实请求、4/4受限生成＋4/4零调用控制、99项离线通过。** 模型整体收益未证，默认仍看原文；[引用资料页](http://127.0.0.1:7912/rag)仅点击整理才调用模型，见[使用与边界](docs/RAG_CITED_ANSWER.md)。**R4最初工程验收时，真实A未通过。** [候选核对任务](http://127.0.0.1:7912/dataops/research)支持限定候选、字段缺项、增量和宿主验证交付；新真实两题F按契约2/2，A0/2，P两次未交付（一次基础设施故障），不能证明模型收益。14模块118项与7912/7914浏览器通过；本地Docker7914运行最终镜像，未发布远程。执行上下文Harness V2已做离线修复（15模块127项，原8动作的4个重复动作被拦截），该轮镜像为 `tcm-research-chat:r4-question-v1`；随后已接通有界问句→Goal→任务→表格/v2，22模块174项与双实例浏览器通过。新8题理解规则4/8、模型方案6/8（含3题宿主零调用控制），实际5次请求/7,754 token，仍有多余澄清和擅加字段失败；事后守卫离线回放不改原成绩，模型理解默认关闭，见[问句验收](audits/research_question_v1/README.md)，见[R4使用与限制](docs/RESEARCH_SELECTION_AGENT.md)。
 

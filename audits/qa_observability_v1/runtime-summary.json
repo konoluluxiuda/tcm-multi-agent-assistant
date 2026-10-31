@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "pages_checked": 12,
+  "old_artifacts_checked": 79,
+  "old_artifacts_unchanged": true,
+  "container_cookie_survived": true,
+  "image": "tcm-research-chat:qa-observability-v1",
+  "image_id": "sha256:1e0f8fbdb15f5f77f633500b84cbb6043b1cffb8b9af1e2a81cd53b1aa3499cc",
+  "image_source_tree_sha256": "df00499cfb19bf1111a425e7489b5a7d9a4c02d6965fe55cb3b1a1ebbe542e09",
+  "ports": [
+    {
+      "port": 7896,
+      "mode": "research_fixed",
+      "decision_steps": 3,
+      "provider_requests": 0,
+      "zero_result_explained": true,
+      "old_history_reopens": true,
+      "storage_has_no_PBS": true,
+      "artifact_sha256": "745bd0ed8799bedfa2ef8d4154489831ca23dcb4dfbc06795047dd1e916ff53b"
+    },
+    {
+      "port": 7912,
+      "mode": "research_fixed",
+      "decision_steps": 3,
+      "provider_requests": 0,
+      "zero_result_explained": true,
+      "old_history_reopens": true,
+      "storage_has_no_PBS": true,
+      "artifact_sha256": "fddf8a34ac24d757809926d64c930359b46b2ec7529401674c3de4f6d93ed552"
+    },
+    {
+      "port": 7914,
+      "mode": "research_fixed",
+      "decision_steps": 3,
+      "provider_requests": 0,
+      "zero_result_explained": true,
+      "old_history_reopens": true,
+      "storage_has_no_PBS": true,
+      "artifact_sha256": "02c758802f954488854ca20103daf9552c45c7bb930439ed91b606575464e7f8"
+    }
+  ],
+  "page_errors": [],
+  "new_external_model_requests": 0,
+  "rag_composed_browser_check": "synthetic cached response injected into browser only; not a live model evaluation",
+  "docker_hub_published": false,
+  "new_live_benchmark": false,
+  "human_signoff": false
+}

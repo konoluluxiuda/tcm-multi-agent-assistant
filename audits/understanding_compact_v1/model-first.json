@@ -1,0 +1,264 @@
+{
+  "version": "understanding-compact-v1",
+  "status": "failed",
+  "records": [
+    {
+      "id": "S01",
+      "profile": "full_v1",
+      "passed": true,
+      "provider_requests": 1,
+      "input_utf8_bytes": 27176,
+      "exposed_tools": [
+        "propose_research_goal",
+        "submit_query_intent"
+      ],
+      "status": "passed",
+      "proposal_status": "query",
+      "usage": {
+        "input_tokens": 7389,
+        "output_tokens": 35,
+        "total_tokens": 7424
+      },
+      "tokens": 7424
+    },
+    {
+      "id": "S01",
+      "profile": "compact_v1",
+      "passed": true,
+      "provider_requests": 1,
+      "input_utf8_bytes": 17898,
+      "exposed_tools": [
+        "propose_research_goal",
+        "submit_query_intent"
+      ],
+      "status": "passed",
+      "proposal_status": "query",
+      "usage": {
+        "input_tokens": 5132,
+        "output_tokens": 35,
+        "total_tokens": 5167
+      },
+      "tokens": 5167
+    },
+    {
+      "id": "S02",
+      "profile": "compact_v1",
+      "passed": true,
+      "provider_requests": 1,
+      "input_utf8_bytes": 17895,
+      "exposed_tools": [
+        "propose_research_goal",
+        "submit_query_intent"
+      ],
+      "status": "passed",
+      "proposal_status": "query",
+      "usage": {
+        "input_tokens": 5132,
+        "output_tokens": 62,
+        "total_tokens": 5194
+      },
+      "tokens": 5194
+    },
+    {
+      "id": "S02",
+      "profile": "full_v1",
+      "passed": true,
+      "provider_requests": 1,
+      "input_utf8_bytes": 27173,
+      "exposed_tools": [
+        "propose_research_goal",
+        "submit_query_intent"
+      ],
+      "status": "passed",
+      "proposal_status": "query",
+      "usage": {
+        "input_tokens": 7389,
+        "output_tokens": 35,
+        "total_tokens": 7424
+      },
+      "tokens": 7424
+    },
+    {
+      "id": "S03",
+      "profile": "full_v1",
+      "passed": true,
+      "provider_requests": 1,
+      "input_utf8_bytes": 27292,
+      "exposed_tools": [
+        "propose_research_goal",
+        "submit_query_intent"
+      ],
+      "delivery_verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 120,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "status": "passed",
+      "proposal_status": "ready",
+      "usage": {
+        "input_tokens": 7427,
+        "output_tokens": 218,
+        "total_tokens": 7645
+      },
+      "tokens": 7645
+    },
+    {
+      "id": "S03",
+      "profile": "compact_v1",
+      "passed": false,
+      "provider_requests": 1,
+      "input_utf8_bytes": 4128,
+      "exposed_tools": [
+        "propose_research_goal"
+      ],
+      "status": "failed",
+      "proposal_status": "needs_input",
+      "usage": {
+        "input_tokens": 1306,
+        "output_tokens": 265,
+        "total_tokens": 1571
+      },
+      "tokens": 1571
+    },
+    {
+      "id": "S04",
+      "profile": "compact_v1",
+      "passed": true,
+      "provider_requests": 1,
+      "input_utf8_bytes": 4196,
+      "exposed_tools": [
+        "propose_research_goal"
+      ],
+      "delivery_verification": {
+        "status": "passed",
+        "sheets": 6,
+        "verified_cells": 132,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "parent_preserved": true,
+      "status": "passed",
+      "proposal_status": "ready",
+      "usage": {
+        "input_tokens": 1305,
+        "output_tokens": 209,
+        "total_tokens": 1514
+      },
+      "tokens": 1514
+    },
+    {
+      "id": "S04",
+      "profile": "full_v1",
+      "passed": true,
+      "provider_requests": 1,
+      "input_utf8_bytes": 27335,
+      "exposed_tools": [
+        "propose_research_goal",
+        "submit_query_intent"
+      ],
+      "delivery_verification": {
+        "status": "passed",
+        "sheets": 6,
+        "verified_cells": 132,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "parent_preserved": true,
+      "status": "passed",
+      "proposal_status": "ready",
+      "usage": {
+        "input_tokens": 7420,
+        "output_tokens": 209,
+        "total_tokens": 7629
+      },
+      "tokens": 7629
+    }
+  ],
+  "profiles": {
+    "full_v1": {
+      "passed": 4,
+      "total": 4,
+      "tokens": 30122
+    },
+    "compact_v1": {
+      "passed": 3,
+      "total": 4,
+      "tokens": 13446
+    }
+  },
+  "actual_requests": 8,
+  "requests": [
+    {
+      "stage": "S01_full_v1",
+      "number": 1,
+      "outcome": "response",
+      "request_bytes": 26463,
+      "http_status": 200,
+      "tokens": 7424
+    },
+    {
+      "stage": "S01_compact_v1",
+      "number": 2,
+      "outcome": "response",
+      "request_bytes": 17339,
+      "http_status": 200,
+      "tokens": 5167
+    },
+    {
+      "stage": "S02_compact_v1",
+      "number": 3,
+      "outcome": "response",
+      "request_bytes": 17336,
+      "http_status": 200,
+      "tokens": 5194
+    },
+    {
+      "stage": "S02_full_v1",
+      "number": 4,
+      "outcome": "response",
+      "request_bytes": 26460,
+      "http_status": 200,
+      "tokens": 7424
+    },
+    {
+      "stage": "S03_full_v1",
+      "number": 5,
+      "outcome": "response",
+      "request_bytes": 26577,
+      "http_status": 200,
+      "tokens": 7645
+    },
+    {
+      "stage": "S03_compact_v1",
+      "number": 6,
+      "outcome": "response",
+      "request_bytes": 4218,
+      "http_status": 200,
+      "tokens": 1571
+    },
+    {
+      "stage": "S04_compact_v1",
+      "number": 7,
+      "outcome": "response",
+      "request_bytes": 4304,
+      "http_status": 200,
+      "tokens": 1514
+    },
+    {
+      "stage": "S04_full_v1",
+      "number": 8,
+      "outcome": "response",
+      "request_bytes": 26640,
+      "http_status": 200,
+      "tokens": 7629
+    }
+  ],
+  "tokens": 43568,
+  "provider_stopped": false,
+  "real_corpus_sent": false,
+  "independent_user_accuracy": false,
+  "old_scores_changed": false,
+  "comparison_scope": "authored synthetic integration and provider usage; no broad accuracy or native-loop necessity claim"
+}

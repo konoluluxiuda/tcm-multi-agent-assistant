@@ -28,6 +28,35 @@ class RuntimeTests(unittest.TestCase):
                 (root/name).write_text('# container')
             self.assertFalse(RuntimeStatus(root).describe()['restart_required'])
 
+    def test_common_runtime_hash_excludes_entrypoint_but_detects_its_drift(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory)
+            for name in ('app.py','config.py','features.py'):(root/name).write_text('# app')
+            container=RuntimeStatus(root)
+            (root/'scripts').mkdir();(root/'scripts/preview_local_tasks.py').write_text('# cli')
+            host=RuntimeStatus(root)
+            self.assertEqual(host.source_revision,container.source_revision)
+            self.assertNotEqual(host.entrypoint_revision,container.entrypoint_revision)
+            self.assertTrue(container.describe()['restart_required'])
+            (root/'scripts/preview_local_tasks.py').write_text('# changed cli')
+            result=host.describe();self.assertEqual(result['source_revision'],result['disk_revision'])
+            self.assertTrue(result['restart_required'])
+            self.assertNotEqual(result['entrypoint_revision'],result['disk_entrypoint_revision'])
+
+    def test_optional_host_modules_are_separate_but_still_trigger_restart(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory)
+            for name in ('app.py','config.py','features.py'):(root/name).write_text('# app')
+            container=RuntimeStatus(root)
+            module=root/'agents/rag_agent/legacy.py';module.parent.mkdir(parents=True);module.write_text('# optional')
+            host=RuntimeStatus(root)
+            self.assertEqual(host.source_revision,container.source_revision)
+            self.assertNotEqual(host.optional_modules_revision,container.optional_modules_revision)
+            module.write_text('# optional changed')
+            self.assertTrue(host.describe()['restart_required'])
+            self.assertEqual(host.describe()['source_revision'],host.describe()['disk_revision'])
+            self.assertNotEqual(host.describe()['optional_modules_revision'],host.describe()['disk_optional_modules_revision'])
+
     def test_changes_additions_and_deletions_mark_original_process_stale(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory)

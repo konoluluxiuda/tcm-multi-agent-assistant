@@ -144,7 +144,16 @@ class Workspaces:
             row = db.execute('SELECT document FROM workspaces WHERE owner=? AND id=?', (owner, identifier)).fetchone()
             if not row:
                 raise KeyError(identifier)
-            doc = json.loads(row[0]); doc.update(updates)
+            doc = json.loads(row[0])
+            if updates.get('error') in ('queue_busy','queue_not_enqueued') and doc.get('job_id'):
+                return doc  # A later failed admission cannot overwrite an acknowledged job.
+            if 'job_id' in updates:
+                if doc.get('job_id') not in (None,updates['job_id']):
+                    raise Conflict('Workspace already bound to another queue job')
+                # Inspect the committed state, not a producer's stale snapshot.
+                # A second same-key admission must not regress a running/result state.
+                if doc['status']=='queue_busy':doc.update(status='building',error=None)
+            doc.update(updates)
             if len(canonical(doc).encode()) > 8_000_000:
                 raise Conflict('Workspace exceeds storage limit')
             db.execute('UPDATE workspaces SET status=?,document=? WHERE owner=? AND id=?',

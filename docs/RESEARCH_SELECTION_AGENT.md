@@ -13,9 +13,21 @@
 
 [离线回放验收](../audits/research_harness_v2/README.md)：原8个动作中的4个有用动作仍被允许，4个重复动作会被拦截；15模块127项受影响回归通过。SDK模拟还检查作用域不符后换候选、工具消息配对、缺失新版交付和等待恢复。**这不是新模型成绩，A原始0/2不变；这一离线轮次没有验证新版模型；后续新组合实测见下节。** 随后已接通下述有界问句入口；原A成绩不变。
 
-当前7912/7914部署的新资料任务采用本地确定性执行（fixed）。7912可勾选一次模型理解，默认不勾选；7914不含模型配置。最新本地镜像为 `tcm-research-chat:recruitment-v1`（运行源码与提交2cac0d4一致），旧 `r4-harness-v2` 和 `r4-final` 保留作历史版本。容器更新复用了原状态目录，已有会话与文件继续可读取；没有推送远程。
+当前7912/7914的新资料任务采用fixed确定性执行。7912已启用聊天/工作台共用的一次模型兜底，页面可取消，规范问句不强制调用；7914不含模型配置。最新本地镜像为 `tcm-research-chat:understanding-compact-v2`，以构建清单hash为准；旧镜像保留，原状态目录、会话及文件继续使用，未推送远程。体验修复见[此前验收](../audits/qa_observability_v1/README.md)，新调用链与约束见[本轮验收](../audits/unified_harness_v1/README.md)。
 
-## 最新组合实测与执行选择
+## 统一理解与参数约束
+
+明确且完整的本地查询直接执行；表格/续改要求或未完整识别的输入共用`DataOpsService.submit_research_question`。已启用时最多一次模型选择`propose_research_goal`或`submit_query_intent`，同次返回完整Goal或查询参数；查询以内部已验证路由回到原图，不再调用一次分类模型。工作台仅接受资料Goal，不接受模型偷换成普通查询。规则命中不代表覆盖全部要求；已识别的交付文件和字段不能被查询提案丢弃。
+
+新目标Schema限制允许名称和new操作；父版限制append_fields、空names/filters和空target_count，由宿主绑定旧对象。执行Schema按当前状态限制可交付ID和数量：select_complete只选合格集合，0合格可交付空表；audit_named和父版保留原记录，新增缺失不能删行。调用前再次执行业务校验，Schema不被当作语义正确性证明。
+
+使用现有LangChain原生tool calling/Pydantic和LangGraph持久图，统一策略与校验作为本项目的业务Harness；未整体迁移至Deep Agents或宣称已直接接入create_agent中间件。未知派发不重发，已知提案失败保留原句并提示表单；本轮仍为一次理解预算，未开启自动纠正重试。真实模型合成烟测三项通过，5请求、20,526 token，不能替代真实资料独立验收；更大的静态Schema有token开销，未证明成本下降。
+
+## 最新新问句首测
+
+[12题首测](../audits/research_acceptance_v1/README.md)区分8道作者业务与4道宿主控制：R业务1/8、G一次理解＋fixed业务7/8，控制均正确零调用；预选native两题端到端0/2，其中一题Goal漏药名未执行，另一题错误提交三条不合格记录被拒绝且无文件。实际13请求、26,135 token，没有重试或覆盖旧分数。常规执行继续fixed，单次理解显式选择；下一项先回放并收紧目标/交付参数，不能将该12题当独立用户准确率。
+
+## 此前组合实测与执行选择
 
 [新组合验收](../audits/research_combined_v1/README.md)在原8题之外冻结了两项业务和两项控制：从桔梗/牡丹皮/陈皮/薄荷挑两条注意及贮藏齐全记录（实际仅1条，正确交付partial），以及陈皮/桔梗旧表补贮藏和注意（保留两行及原功效，缺项不补造）。原0/2不重测、不覆盖。
 
@@ -50,7 +62,7 @@
 
 事后加入未请求/明确排除列的宿主拒绝、父对象已绑定标志及“存放环境≠生境”提示。原Q08错误回复离线回放被拒绝，**不改原6/8，不算新增模型通过**；改后提示未做真实复测。22模块174项受影响检查通过；7912/7914新问句流程及下载逐格回读通过，见[本轮验收](../audits/research_question_v1/README.md)。
 
-当前7912页面已提供模型复选框，但默认不勾选；7914复选框禁用。其他部署需要显式实验时，启动预览加 `--research-goal-model`，再勾选“单次模型理解问句”，每个新请求编号最多一次；它不自动打开native执行、不自动兜底重试。不要因为语义覆盖增加而绕过错误目标防护。
+上述是该轮当时的默认配置。当前7912采用统一的本地优先/一次兜底，页面默认允许并可取消；7914复选框禁用。其他部署加`--research-goal-model`才启用；它不自动打开native执行，也不重试已消耗的实验。原模型提案错误仍受宿主约束。
 
 ## 可以直接使用
 
@@ -122,13 +134,13 @@ flowchart LR
   --port 7913 --state var/r4_preview --research-selection fixed --rag
 ```
 
-最新本地镜像 `tcm-research-chat:recruitment-v1`，**没有发布Docker Hub**。代码白名单构建，不包含资料、环境文件、权重或会话；原资料只读挂载，状态独立写入，按主机UID运行以读取原有0600资料注册文件，无需放宽源文件权限。主机7914映射容器8000。
+最新本地镜像 `tcm-research-chat:understanding-compact-v2`，**没有发布Docker Hub**。代码白名单构建，不包含资料、环境文件、权重或会话；原资料只读挂载，状态独立写入，按主机UID运行以读取原有0600资料注册文件，无需放宽源文件权限。主机7914映射容器8000。
 
 ```bash
 .venv/bin/python -m scripts.build_research_image \
-  --tag tcm-research-chat:recruitment-v1 --receipt var/r4_build_new.json
+  --tag tcm-research-chat:understanding-compact-v2 --receipt var/r4_build_new.json
 .venv/bin/python -m scripts.run_research_selection_container \
-  --image tcm-research-chat:recruitment-v1 --name tcm-research-r4-new \
+  --image tcm-research-chat:understanding-compact-v2 --name tcm-research-r4-new \
   --port 7915 --state var/r4_container_new
 ```
 

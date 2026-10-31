@@ -1,0 +1,244 @@
+{
+  "status": "passed",
+  "services": [
+    {
+      "port": 7896,
+      "runtime": {
+        "started_at": "2026-10-31T11:45:08.946165+00:00",
+        "source_revision": "6b4de598b0fece7d757d1d02e5bf7be34b2d146565aa7228aef4be22c40fe345",
+        "disk_revision": "6b4de598b0fece7d757d1d02e5bf7be34b2d146565aa7228aef4be22c40fe345",
+        "source_revision_scope": "research-application-v3",
+        "entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+        "disk_entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+        "optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "disk_optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": false,
+          "driver": "disabled",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1",
+          "research_selection": {
+            "enabled": true,
+            "driver": "fixed",
+            "external_model_enabled": false,
+            "execution_model_enabled": false,
+            "question_model_enabled": false,
+            "question_policy": "local_then_one_model_v1",
+            "chat_question_fallback_enabled": false,
+            "goal_input": "bounded_question_or_form",
+            "identity_approval": false
+          }
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": false
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": true
+      },
+      "cookie_survived": true
+    },
+    {
+      "port": 7912,
+      "runtime": {
+        "started_at": "2026-10-31T11:45:12.575207+00:00",
+        "source_revision": "6b4de598b0fece7d757d1d02e5bf7be34b2d146565aa7228aef4be22c40fe345",
+        "disk_revision": "6b4de598b0fece7d757d1d02e5bf7be34b2d146565aa7228aef4be22c40fe345",
+        "source_revision_scope": "research-application-v3",
+        "entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+        "disk_entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+        "optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "disk_optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": true,
+          "driver": "synthetic",
+          "external_model_enabled": true,
+          "question_compiler": "local_bounded_grammar_v1",
+          "research_selection": {
+            "enabled": true,
+            "driver": "fixed",
+            "external_model_enabled": true,
+            "execution_model_enabled": false,
+            "question_model_enabled": true,
+            "question_policy": "local_then_one_model_v1",
+            "chat_question_fallback_enabled": true,
+            "goal_input": "bounded_question_or_form",
+            "identity_approval": false
+          }
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": true
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": true
+      },
+      "cookie_survived": true
+    },
+    {
+      "port": 7914,
+      "runtime": {
+        "started_at": "2026-10-31T11:45:17.230713+00:00",
+        "source_revision": "6b4de598b0fece7d757d1d02e5bf7be34b2d146565aa7228aef4be22c40fe345",
+        "disk_revision": "6b4de598b0fece7d757d1d02e5bf7be34b2d146565aa7228aef4be22c40fe345",
+        "source_revision_scope": "research-application-v3",
+        "entrypoint_revision": "71b641c40a25bea853d4a43d3a84a48dca692ad85739fd15272764ea42cf2c98",
+        "disk_entrypoint_revision": "71b641c40a25bea853d4a43d3a84a48dca692ad85739fd15272764ea42cf2c98",
+        "optional_modules_revision": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "disk_optional_modules_revision": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": false,
+          "driver": "disabled",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1",
+          "research_selection": {
+            "enabled": true,
+            "driver": "fixed",
+            "external_model_enabled": false,
+            "execution_model_enabled": false,
+            "question_model_enabled": false,
+            "question_policy": "local_then_one_model_v1",
+            "chat_question_fallback_enabled": false,
+            "goal_input": "bounded_question_or_form",
+            "identity_approval": false
+          }
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": false
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": false
+      },
+      "cookie_survived": true
+    }
+  ],
+  "same_shared_research_revision": true,
+  "image": {
+    "image_tag": "tcm-research-chat:understanding-compact-v2",
+    "image_id": "sha256:ca633cd6fb523a93a8c15b8276195f309c196dbd5e03508f5c9bdb9d6cecfa7a",
+    "base_revision": "ca8275c36baae9987aadf48473bd26178f302e02",
+    "working_tree_dirty": true,
+    "source_tree_sha256": "c84bae8010ffedc89a7d30f7208e66b071046c8f93c43574634c06077bebd392"
+  },
+  "deployment": {
+    "port": 7914,
+    "source_mounts_read_only": true,
+    "cookie_survived": true,
+    "old_artifacts_checked": 94,
+    "old_artifacts_unchanged": true,
+    "rollback_container": "tcm-research-r4-before-compact-admission-v2",
+    "docker_hub_published": false,
+    "image_source_files_checked": 190,
+    "image_source_files_match": true
+  },
+  "initial_scope_mismatch": {
+    "status": "scope_mismatch",
+    "host_common_revision_before_fix": "e13b6a63799ab9a623184208955010967aa7072c8edb8f2e66928415964ee923",
+    "container_common_revision_before_fix": "1c70296bef4531d70e1665a421245c6457bda39d7ba7e2a0f0df002c408dca71",
+    "shared_source_files_checked": 189,
+    "different_shared_source_bytes": [],
+    "host_only_optional_python_files": 18,
+    "old_artifacts_checked": 94,
+    "old_artifacts_unchanged": true,
+    "reason": "Legacy nested agents shipped on host only; refine comparison scope and keep separate restart detection."
+  },
+  "browser_end_to_end": {
+    "status": "passed",
+    "port": 7912,
+    "driver": "fixed",
+    "optional_question_model_offered": true,
+    "question_to_goal_to_artifact": true,
+    "named_rows_with_missing_retained": true,
+    "selection_distinct_from_named_audit": true,
+    "parent_scope_preserved": true,
+    "v1_file_unchanged": true,
+    "same_key_replayed": true,
+    "refresh_restores_result": true,
+    "ambiguous_question_creates_no_task": true,
+    "downloads_sha256_verified": true,
+    "provider_requests": 0,
+    "javascript_errors": [],
+    "external_browser_requests": []
+  },
+  "browser_pages": {
+    "status": "passed",
+    "ports": [
+      {
+        "port": 7896,
+        "model_note_and_checkbox_match_configuration": true,
+        "runtime_current": true
+      },
+      {
+        "port": 7912,
+        "model_note_and_checkbox_match_configuration": true,
+        "runtime_current": true
+      },
+      {
+        "port": 7914,
+        "model_note_and_checkbox_match_configuration": true,
+        "runtime_current": true
+      }
+    ],
+    "page_errors": [],
+    "browser_external_requests": []
+  },
+  "local_chat": {
+    "status": "passed",
+    "ports": [
+      {
+        "port": 7896,
+        "local_query_and_repeat": [
+          {
+            "status": 200,
+            "model_calls": 0,
+            "route": "capability_question"
+          },
+          {
+            "status": 200,
+            "model_calls": 0,
+            "route": "capability_question"
+          }
+        ]
+      },
+      {
+        "port": 7912,
+        "local_query_and_repeat": [
+          {
+            "status": 200,
+            "model_calls": 0,
+            "route": "capability_question"
+          },
+          {
+            "status": 200,
+            "model_calls": 0,
+            "route": "capability_question"
+          }
+        ]
+      },
+      {
+        "port": 7914,
+        "local_query_and_repeat": [
+          {
+            "status": 200,
+            "model_calls": 0,
+            "route": "capability_question"
+          },
+          {
+            "status": 200,
+            "model_calls": 0,
+            "route": "capability_question"
+          }
+        ]
+      }
+    ]
+  },
+  "old_evidence_hashes_unchanged": 7,
+  "provider_requests_added_by_browser": 0
+}

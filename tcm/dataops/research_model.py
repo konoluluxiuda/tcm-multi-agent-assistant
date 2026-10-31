@@ -32,6 +32,9 @@ def definitions(context=None):
                 prop='evidence_ids' if name=='read_evidence' else 'source_ids'
                 if allowed[key]:props[prop]['items']['enum']=allowed[key]
                 else:props[prop]['maxItems']=0
+        if name=='deliver_result':
+            props['source_ids'].update(minItems=allowed['delivery_min_items'],maxItems=allowed['delivery_max_items'],uniqueItems=True)
+            if allowed['delivery_requires_partial']:props['allow_partial']['enum']=[True]
     return tools
 
 
@@ -72,7 +75,8 @@ class ResearchDriver(OpenAIToolDriver):
             '遇到已确认缺项应换尚未核对候选，不能重复读取补造。来源歧义可ask_user；字段歧义保留未知。'
             '需要查看具体原文时search_documents或read_evidence，工具不得改变原始目标范围。'
             '足够时deliver_result，宿主一次完成构建验证和结束，不需要再选机械动作。'
-            '不足且没有未查候选时allow_partial=true诚实交付；v2不能删除父记录或默默丢掉新增字段。'
+            'select_complete只能交付eligible中的记录；0条合格时source_ids=[]、allow_partial=true，不能把不合格记录当作交付行。'
+            '不足且没有未查候选时allow_partial=true诚实交付；v2沿用父记录，即使新增字段缺失也不能删除父记录。'
             '每次恰好一个工具调用，不输出隐藏推理；purpose只写简短行动目的。预算包含当前请求，保留一次交付动作。')
         messages=build_messages(context,system);tools=definitions(context)
         if not tools:raise ModelResponseRejected('no_available_tools',{})

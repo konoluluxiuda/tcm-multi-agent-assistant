@@ -6,7 +6,39 @@
 - “增加贮藏，保留旧字段”：接续当前结果生成v2，原文件保留。
 - “从白术、黄芪、川芎、甘草、大黄中挑两条功效和注意字段齐全的”：按字段完整性挑选，当前为甘草、大黄。
 
-默认本地有界解析和本地确定性执行；未识别或有歧义时保留原句供修改，不创建半个任务。7912页面可显式勾选一次模型理解，默认不勾选；7914不调用模型。聊天仅使用本地解析。新版多轮Agent只完成两项限定实测，任意开放问句及跨任务稳定性尚未验收。
+默认先做完整的本地解析并确定性执行。当前7912已配置统一模型兜底：聊天与资料任务页在未完整识别时最多补一次理解；页面的允许模型选项默认勾选，可取消，规范问句仍可零调用。7896/7914未启用目标模型，保持本地解析。模型只接收当前问句、名称候选、字段/工具定义及父表结构，不发送资料正文或聊天历史；查询直接回到原查询链，表格进入工作区。歧义、越界或模型提案不合格时说明原因，保留原句，不静默执行半个任务。见[统一理解与Harness验收](../audits/unified_harness_v1/README.md)。
+
+API的 `use_model` 省略或为 `null` 时沿用部署开关；`false` 强制仅本地解析，`true` 允许本地未识别时的一次模型补充，不强制每题调用。该限制仅指目标理解；另行启用的RAG生成和native执行有独立预算。多轮Agent仍为显式实验，不保证所有任务都能执行；旧评测失败保留。
+
+执行统计中，`decision_steps` 是本地策略或模型的决策步数，`provider_requests` 才是执行阶段的外部模型请求数；一次问句理解另计于 `goal_provider_requests`。未知请求数显示为 `null`，不算作0。工作区 `mode` 区分 `research_fixed`（确定性）、`research_synthetic`（本地模拟）与 `research_native`（多轮模型）；队列尚未记录驱动时显示 `execution_pending_or_unknown`。历史检查点的内部字段保持兼容，API展示采用上述名称。
+
+聊天返回的顶层`model_calls`及`assistant.understanding_requests_this_submission`表示本次提交新增的理解请求，重放为0；`assistant.llm_calls`按`counts_scope`表示原工作区或理解结果累计值，两者不混为重复付费。
+
+以上字段层级适用于聊天的资料任务响应，例如首次理解后的重放：
+
+```json
+{"model_calls":0,"assistant":{"understanding_requests_this_submission":0,"llm_calls":1,"counts_scope":"workspace_total","replayed":true}}
+```
+
+`understanding_requests_this_submission`不在聊天顶层；普通查询的理解回执在`routing`内。队列忙碌返回429及`Retry-After`，工作区标为`queue_busy`，表示已保留目标但尚未入队。使用同一Cookie、同一`request_key`和原始请求重试，会复用目标与理解回执；队列仍忙时继续429，不再调用模型。字段、对象、来源版本改变时返回409，需要核对后新建。旧版的`queue_not_enqueued`失败记录未证明属于忙碌，不自动恢复或重发。
+
+`/api/runtime`的`source_revision_scope=research-application-v3`表示共享服务源码摘要，可跨本地进程和镜像比较；预览启动脚本由`entrypoint_revision`另行记录，未打包进研究镜像的旧影像/RAG/文献子模块由`optional_modules_revision`记录。`restart_required`检查三部分是否漂移。相同服务源码摘要不代表模型开关、数据版本或部署参数相同。
+
+“挑选齐全记录”没有合格项时会直接说明“0条满足”及已保存的排除原因；`partial` 和空表如实保留。指定对象核对仍保留缺失行。引用资料页若模型结果与原文逐字一致，会明确提示本次没有改变展示内容；可选“查看原文”避免生成调用。此提示不是模型效果评分。
+
+## 直接调用资料工作台 API
+
+API按会话隔离任务。先访问页面取得Cookie，再用同一Cookie调用；没有初始化会话时返回401是预期行为。以下命令只列出当前会话的任务，不创建任务、不调用模型；端口按部署调整：
+
+```bash
+umask 077
+curl --fail --silent --show-error --cookie-jar /tmp/tcm-session.cookies \
+  http://127.0.0.1:7896/dataops/research --output /dev/null
+curl --fail --silent --show-error --cookie /tmp/tcm-session.cookies \
+  http://127.0.0.1:7896/api/dataops/workspaces
+```
+
+`POST /api/dataops/research-questions` 和 `/api/dataops/research-tasks` 同样需要该Cookie。若发送 `Origin`，必须与访问地址的协议、主机、端口一致，例如 `Origin: http://127.0.0.1:7896`。Cookie文件应仅供自己读取；丢失Cookie后新会话不能读取旧会话的任务，勿向他人分享。
 
 新增可选[引用资料页](RAG_CITED_ANSWER.md)：7912/rag可查看原文，或点击整理进行一次有界引用生成；7896/rag只看原文。普通聊天与表格模式保持原配置；完整范围、外发与失败回退见该说明。
 

@@ -85,3 +85,28 @@ class CombinedTests(unittest.TestCase):
         p=out/'C01_prepared.private.json';p.write_text(p.read_text()+' ')
         with self.assertRaises(ValueError):ev.execute(self.release,out,model_factory=self.model)
         self.assertFalse(self.calls)
+
+    def test_alternate_suite_only_runs_scheduled_native_cases_and_freezes_input(self):
+        suite=self.root/'alternate.json'
+        suite.write_text(json.dumps({'version':'fixture_subset','cases':self.cases,'reference_status':'synthetic_fixture_only',
+                                     'native_case_ids':['C01'],'max_total_requests':8}))
+        out=self.root/'subset';protocol=ev.prepare(self.release,out,suite)
+        self.assertEqual(protocol['budget']['total_requests'],8)
+        r=ev.execute(self.release,out,model_factory=self.model)
+        self.assertEqual(r['by_strategy']['A']['total'],1)
+        self.assertTrue(all(x['passed'] is None and not x['execution_started'] for x in r['records']
+                            if x['strategy']=='A' and x['id']!='C01'))
+        self.assertFalse(any(json.loads(p.read_text())['stage']=='C02_A' for p in out.glob('request_*.private.json')))
+        changed=self.root/'tampered';ev.prepare(self.release,changed,suite)
+        p=changed/'suite.private.json';p.write_text(p.read_text()+' ')
+        before=len(self.calls)
+        with self.assertRaisesRegex(ValueError,'suite changed'):ev.execute(self.release,changed,model_factory=self.model)
+        self.assertEqual(len(self.calls),before)
+
+    def test_invalid_suite_ids_or_native_ids_rejected_without_creating_output(self):
+        for i,options in enumerate(({'native_case_ids':['missing']},{'cases':[{**self.cases[0],'id':'../escape'}]})):
+            suite=self.root/f'invalid-{i}.json'
+            suite.write_text(json.dumps({'version':'invalid','cases':self.cases,'reference_status':'synthetic',**options}))
+            out=self.root/f'rejected-{i}'
+            with self.assertRaises(ValueError):ev.prepare(self.release,out,suite)
+            self.assertFalse(out.exists())

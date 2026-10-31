@@ -44,7 +44,7 @@ def score(case,proposal):
         goal=ResearchGoal.model_validate(proposal['goal'])
         fields_correct=(set(goal.document_fields)==set(case.get('fields',[])) and goal.attributes==['medicinal_part'])
         scope_correct=(set(goal.query.names)==set(case.get('names',[])) and not goal.query.source_ids and not goal.query.filters and
-            goal.query.limit==20 and goal.research.mode==case.get('mode') and not goal.research.monograph_only and
+            goal.query.limit==20 and goal.research.mode==case.get('mode') and goal.research.monograph_only==case.get('monograph_only',False) and
             goal.research.target_count==case.get('target_count',len(case.get('names',[]))))
     return {'passed':proposal.get('status')==case['status'] and (not wanted or fields_correct and scope_correct),
             'status':proposal.get('status'),'fields_correct':fields_correct if wanted else None,

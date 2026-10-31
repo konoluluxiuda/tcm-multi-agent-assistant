@@ -225,6 +225,7 @@ class EvidenceReportRequest(BaseModel):
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     """Serve the main HTML page"""
+    from tcm.capabilities import research_runtime
     return templates.TemplateResponse(request=request, name="index.html", context={
         "features": config.features.as_dict(), "research_tools_only": env_bool('RESEARCH_TOOLS_ONLY'),
         "pubmed_enabled": False,
@@ -238,6 +239,7 @@ async def index(request: Request):
         "evidence_assistant_enabled": env_bool('ENABLE_EVIDENCE_ASSISTANT'),
         "evidence_auto_routing_enabled": evidence_auto_routing_enabled(),
         "intent_planner_enabled": env_bool('ENABLE_INTENT_PLANNER'),
+        "question_fallback_enabled": research_runtime()['chat_question_fallback_enabled'],
         "evidence_assistant_synthetic": os.getenv('EVIDENCE_ASSISTANT_DATA_MODE','synthetic') == 'synthetic',
         "combined_report_enabled": False})
 
@@ -535,7 +537,14 @@ def chat(
     """Process user text query through the multi-agent system."""
     mark_chat_request(http_request, phase='routing')
     from tcm.dataops.chat import matches as matches_dataops, execute as execute_dataops
-    if request.answer_mode == 'auto' and env_bool('ENABLE_DATAOPS') and matches_dataops(request.query):
+    from tcm.dataops.request_policy import needs_fallback
+    from tcm.capabilities import research_runtime
+    selected=resolve_tool_request(request.query)
+    resolved_request=None
+    from tcm.project_semantic import enabled as memory_enabled, memory_reference, project_listing, recall as recall_projects, store_for, owner_key
+    memory_turn=(memory_enabled() or project_listing(request.query)) and memory_reference(request.query)
+    semantic_fallback=(research_runtime()['question_model_enabled'] and not memory_turn and needs_fallback(request.query,selected))
+    if request.answer_mode == 'auto' and env_bool('ENABLE_DATAOPS') and (matches_dataops(request.query) or semantic_fallback):
         validate_dataops_origin(http_request)
         if not 1 <= len(request.query.strip()) <= 2000:
             raise HTTPException(422, '整理要求须为1–2000字符。')
@@ -547,18 +556,29 @@ def chat(
             assistant = execute_dataops(dataops_service, agent_runtime.memory, session_id, request.query,
                 request_key=request.request_key, history_limit=config.max_conversation_history)
         except JobBusy:
-            raise HTTPException(429, '已有整理任务运行，请稍后再提交。') from None
+            cookie_response=Response();set_session_cookie(cookie_response,session_id)
+            raise HTTPException(429, '队列正忙，任务已保留。可稍后使用同一请求编号重试，不会重复模型理解。',
+                headers={'Set-Cookie':cookie_response.headers['set-cookie'],'Cache-Control':'no-store','Retry-After':'2'}) from None
         except (DataOpsConflict, SourceChanged, JobConflict):
             raise HTTPException(409, '整理功能未启用或任务/来源版本已改变，请打开资料工作台查看当前任务。') from None
         except KeyError:
             raise HTTPException(404, '当前会话的整理任务不存在，请新建任务。') from None
         except (OSError, sqlite3.Error, ImportError):
             raise HTTPException(503, '资料整理所需的本地目录或存储暂不可用。') from None
+        except HTTPException as exc:
+            # Preserve the owner of an unknown dispatch even on a fresh API client.
+            cookie_response=Response();set_session_cookie(cookie_response,session_id)
+            exc.headers={**(exc.headers or {}),'Set-Cookie':cookie_response.headers['set-cookie'],'Cache-Control':'no-store'}
+            raise
         set_session_cookie(response, session_id)
         response.headers['Cache-Control'] = 'no-store'
-        mark_chat_request(http_request, phase='response', tool='dataops', model_calls=0)
-        return {'status': 'success', 'response': assistant['message'], 'agent': '资料整理', 'assistant': assistant}
-    from tcm.project_semantic import enabled as memory_enabled, memory_reference, project_listing, recall as recall_projects, store_for, owner_key
+        if assistant.get('topic')=='query_handoff':
+            resolved_request=assistant['route']
+        else:
+            calls=assistant.get('understanding_requests_this_submission',0)
+            mark_chat_request(http_request, phase='response', tool='dataops', model_calls=calls)
+            return {'status': 'success', 'response': assistant['message'], 'agent': '资料整理',
+                    'model_calls':calls,'assistant': assistant}
     from tcm.research_run_api import enabled as research_enabled
     if request.answer_mode == 'auto' and research_enabled() and (memory_enabled() or project_listing(request.query)) and memory_reference(request.query):
         if not 1 <= len(request.query.strip()) <= 400:
@@ -578,7 +598,7 @@ def chat(
         elif memory_result.get('reason') == 'explicit_objects_not_saved':
             text = '没有保存包含这些药材的项目。可以在“本地研究”中新建项目。'
         return {'status':'success', 'response':text, 'agent':'项目记忆', 'project_memory':memory_result}
-    selected = resolve_tool_request(request.query)
+    selected = resolved_request or selected
     mark_chat_request(http_request, tool=selected['tool'] if selected else 'unknown')
     mode = request.answer_mode
     if selected and ((selected['tool']=='assistant' and (
@@ -600,6 +620,7 @@ def chat(
     try:
         mark_chat_request(http_request, phase='execution')
         key_args={'request_key':request.request_key} if request.request_key else {}
+        if resolved_request is not None:key_args['resolved_request']=resolved_request
         response_data = (process_query(request.query, session_id=session_id, task_mode='evidence',**key_args)
                          if mode == 'evidence' else process_query(request.query, session_id=session_id,**key_args))
         mark_chat_request(http_request, phase='response')

@@ -478,6 +478,7 @@
                                 {% if evidence_assistant_synthetic %}<p class="workspace-note">AI模式当前仅使用合成资料，不读取或发送药典片段。测试示例：整理虚构示例草的功效与注意事项。</p>{% endif %}
                                 {% endif %}
                                 {% if intent_planner_enabled %}<p class="workspace-note" id="model-intent-note">自然问法识别已开启：仅未识别的当前问句发送模型，不发送资料或聊天历史。</p>{% endif %}
+                                {% if question_fallback_enabled %}<p class="workspace-note" id="request-understanding-note">补充理解已启用：本地未完整识别时最多调用一次模型，发送当前问句、名称候选和任务结构，不发送资料正文或聊天历史。资料任务页可选择仅本地解析。</p>{% endif %}
                                 <textarea id="message-input" class="form-control message-input" rows="1" placeholder="{% if natural_routing_enabled %}例如：有哪些功效分类？黄芪有什么作用？{% else %}药材：/herb BaiBu；药典：/research 甘草的功效{% endif %}"></textarea>
                             </div>
                             

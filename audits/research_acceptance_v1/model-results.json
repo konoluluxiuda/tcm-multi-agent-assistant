@@ -1,0 +1,820 @@
+{
+  "version": "research-acceptance-v1",
+  "records": [
+    {
+      "id": "N01",
+      "strategy": "R",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": true,
+        "status": "complete",
+        "artifact": true,
+        "reason": null,
+        "selection_valid": true,
+        "raw_source_witness_match": true,
+        "parent_preserved": true,
+        "qualified_total": 2,
+        "returned": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 124,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "decision_steps": 3,
+        "source_reads": 3
+      },
+      "execution_requests": 0,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 7.762,
+      "duration_seconds": 7.762
+    },
+    {
+      "id": "N01",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": true,
+        "status": "complete",
+        "artifact": true,
+        "reason": null,
+        "selection_valid": true,
+        "raw_source_witness_match": true,
+        "parent_preserved": true,
+        "qualified_total": 2,
+        "returned": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 124,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "decision_steps": 3,
+        "source_reads": 3
+      },
+      "execution_requests": 0,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1602,
+      "execution_tokens": 0,
+      "goal_seconds": 2.152,
+      "execution_seconds": 7.324,
+      "duration_seconds": 9.476
+    },
+    {
+      "id": "N01",
+      "strategy": "A",
+      "status": "not_scheduled",
+      "passed": null,
+      "execution_started": false
+    },
+    {
+      "id": "N02",
+      "strategy": "R",
+      "goal": {
+        "passed": false,
+        "status": "needs_input",
+        "fields_correct": false,
+        "scope_correct": false,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": false,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "N02",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": true,
+        "status": "complete",
+        "artifact": true,
+        "reason": null,
+        "selection_valid": true,
+        "raw_source_witness_match": true,
+        "parent_preserved": true,
+        "qualified_total": 2,
+        "returned": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 112,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "decision_steps": 3,
+        "source_reads": 3
+      },
+      "execution_requests": 0,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1627,
+      "execution_tokens": 0,
+      "goal_seconds": 1.392,
+      "execution_seconds": 7.461,
+      "duration_seconds": 8.853
+    },
+    {
+      "id": "N02",
+      "strategy": "A",
+      "status": "not_scheduled",
+      "passed": null,
+      "execution_started": false
+    },
+    {
+      "id": "N03",
+      "strategy": "R",
+      "goal": {
+        "passed": false,
+        "status": "needs_input",
+        "fields_correct": false,
+        "scope_correct": false,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": false,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "N03",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": true,
+        "status": "partial",
+        "artifact": true,
+        "reason": null,
+        "selection_valid": true,
+        "raw_source_witness_match": true,
+        "parent_preserved": true,
+        "qualified_total": 0,
+        "returned": 0,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 60,
+          "rows": 0,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "decision_steps": 3,
+        "source_reads": 4
+      },
+      "execution_requests": 0,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1629,
+      "execution_tokens": 0,
+      "goal_seconds": 1.446,
+      "execution_seconds": 7.283,
+      "duration_seconds": 8.728
+    },
+    {
+      "id": "N03",
+      "strategy": "A",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": false,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": false,
+        "status": "partial",
+        "artifact": false,
+        "reason": "no_progress"
+      },
+      "execution_requests": 5,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1629,
+      "execution_tokens": 13142,
+      "goal_seconds": 1.446,
+      "execution_seconds": 16.196,
+      "duration_seconds": 17.642
+    },
+    {
+      "id": "N04",
+      "strategy": "R",
+      "goal": {
+        "passed": false,
+        "status": "needs_input",
+        "fields_correct": false,
+        "scope_correct": false,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": false,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "N04",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": true,
+        "status": "complete",
+        "artifact": true,
+        "reason": null,
+        "selection_valid": true,
+        "raw_source_witness_match": true,
+        "parent_preserved": true,
+        "qualified_total": 2,
+        "returned": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 128,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "decision_steps": 3,
+        "source_reads": 3
+      },
+      "execution_requests": 0,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1623,
+      "execution_tokens": 0,
+      "goal_seconds": 1.299,
+      "execution_seconds": 7.258,
+      "duration_seconds": 8.557
+    },
+    {
+      "id": "N04",
+      "strategy": "A",
+      "status": "not_scheduled",
+      "passed": null,
+      "execution_started": false
+    },
+    {
+      "id": "N05",
+      "strategy": "R",
+      "goal": {
+        "passed": false,
+        "status": "needs_input",
+        "fields_correct": false,
+        "scope_correct": false,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": false,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "N05",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": true,
+        "status": "complete",
+        "artifact": true,
+        "reason": null,
+        "selection_valid": true,
+        "raw_source_witness_match": true,
+        "parent_preserved": true,
+        "qualified_total": 0,
+        "returned": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 6,
+          "verified_cells": 161,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "decision_steps": 3,
+        "source_reads": 3
+      },
+      "execution_requests": 0,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1661,
+      "execution_tokens": 0,
+      "goal_seconds": 1.505,
+      "execution_seconds": 14.788,
+      "duration_seconds": 16.293
+    },
+    {
+      "id": "N05",
+      "strategy": "A",
+      "status": "not_scheduled",
+      "passed": null,
+      "execution_started": false
+    },
+    {
+      "id": "N06",
+      "strategy": "R",
+      "goal": {
+        "passed": false,
+        "status": "needs_input",
+        "fields_correct": false,
+        "scope_correct": false,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": false,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "N06",
+      "strategy": "G",
+      "goal": {
+        "passed": false,
+        "status": "proposal_rejected",
+        "fields_correct": false,
+        "scope_correct": false,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": false,
+      "execution_started": false,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1605,
+      "execution_tokens": 0,
+      "goal_seconds": 1.021,
+      "execution_seconds": 0.0,
+      "duration_seconds": 1.021
+    },
+    {
+      "id": "N06",
+      "strategy": "A",
+      "goal": {
+        "passed": false,
+        "status": "proposal_rejected",
+        "fields_correct": false,
+        "scope_correct": false,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": false,
+      "execution_started": false,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1605,
+      "execution_tokens": 0,
+      "goal_seconds": 1.021,
+      "execution_seconds": 0.0,
+      "duration_seconds": 1.021
+    },
+    {
+      "id": "N07",
+      "strategy": "R",
+      "goal": {
+        "passed": false,
+        "status": "needs_input",
+        "fields_correct": false,
+        "scope_correct": false,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": false,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "N07",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": true,
+        "status": "complete",
+        "artifact": true,
+        "reason": null,
+        "selection_valid": true,
+        "raw_source_witness_match": true,
+        "parent_preserved": true,
+        "qualified_total": 2,
+        "returned": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 95,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "decision_steps": 3,
+        "source_reads": 3
+      },
+      "execution_requests": 0,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1610,
+      "execution_tokens": 0,
+      "goal_seconds": 1.305,
+      "execution_seconds": 7.129,
+      "duration_seconds": 8.434
+    },
+    {
+      "id": "N07",
+      "strategy": "A",
+      "status": "not_scheduled",
+      "passed": null,
+      "execution_started": false
+    },
+    {
+      "id": "N08",
+      "strategy": "R",
+      "goal": {
+        "passed": false,
+        "status": "needs_input",
+        "fields_correct": false,
+        "scope_correct": false,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": false,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "N08",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": true,
+        "status": "complete",
+        "artifact": true,
+        "reason": null,
+        "selection_valid": true,
+        "raw_source_witness_match": true,
+        "parent_preserved": true,
+        "qualified_total": 0,
+        "returned": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 145,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "decision_steps": 3,
+        "source_reads": 3
+      },
+      "execution_requests": 0,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1636,
+      "execution_tokens": 0,
+      "goal_seconds": 1.442,
+      "execution_seconds": 7.212,
+      "duration_seconds": 8.653
+    },
+    {
+      "id": "N08",
+      "strategy": "A",
+      "status": "not_scheduled",
+      "passed": null,
+      "execution_started": false
+    },
+    {
+      "id": "N09",
+      "strategy": "R",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "N09",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0.013,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.013
+    },
+    {
+      "id": "N09",
+      "strategy": "A",
+      "status": "not_scheduled",
+      "passed": null,
+      "execution_started": false
+    },
+    {
+      "id": "N10",
+      "strategy": "R",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "N10",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0.012,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.012
+    },
+    {
+      "id": "N10",
+      "strategy": "A",
+      "status": "not_scheduled",
+      "passed": null,
+      "execution_started": false
+    },
+    {
+      "id": "N11",
+      "strategy": "R",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "N11",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0.014,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.014
+    },
+    {
+      "id": "N11",
+      "strategy": "A",
+      "status": "not_scheduled",
+      "passed": null,
+      "execution_started": false
+    },
+    {
+      "id": "N12",
+      "strategy": "R",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "N12",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0.015,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.015
+    },
+    {
+      "id": "N12",
+      "strategy": "A",
+      "status": "not_scheduled",
+      "passed": null,
+      "execution_started": false
+    }
+  ],
+  "actual_requests": 13,
+  "total_tokens": 26135,
+  "provider_stopped": false,
+  "by_strategy": {
+    "R": {
+      "passed": 5,
+      "total": 12,
+      "wrong_goals": 0
+    },
+    "G": {
+      "passed": 11,
+      "total": 12,
+      "wrong_goals": 0
+    },
+    "A": {
+      "passed": 0,
+      "total": 2,
+      "wrong_goals": 0
+    }
+  },
+  "request_accounting": "G/A share goal requests; attributed goal counts must not be summed as actual provider calls",
+  "generalization_proven": false,
+  "native_necessity_proven": false,
+  "reference_status": "author_prospective_contracts_not_independent_users_or_human_signoff"
+}

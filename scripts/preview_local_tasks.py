@@ -36,7 +36,7 @@ def main():
     parser.add_argument('--research-selection', choices=('fixed','synthetic','native'),
                         help='Enable bounded candidate selection at /dataops/research; native permits up to 10 model requests per task')
     parser.add_argument('--research-goal-model',action='store_true',
-                        help='Offer an explicit one-request question-understanding checkbox; requires --research-selection')
+                        help='Enable shared local-first, one-call question fallback for chat/workbench; page can opt out; requires --research-selection')
     parser.add_argument('--langfuse-env', type=Path, default=ROOT/'var/langfuse_local/app.env',
                         help='Private tracing configuration; only tracing keys are loaded')
     args = parser.parse_args()
@@ -194,12 +194,12 @@ def main():
     print(f'资料工作台：http://127.0.0.1:{args.port}/dataops', flush=True)
     if args.rag:print(f'引用资料页：http://127.0.0.1:{args.port}/rag',flush=True)
     if args.research_selection:print(f'候选核对任务：http://127.0.0.1:{args.port}/dataops/research（{args.research_selection}）',flush=True)
-    if args.research_goal_model:print('问句理解：仅勾选模型理解时，每个请求编号最多一次模型调用；任务执行开关独立。',flush=True)
+    if args.research_goal_model:print('问句理解：先本地解析，未完整识别时最多一次模型兜底；聊天与工作台共用，工作台可取消。任务执行开关独立。',flush=True)
     model_modes=[]
     if args.with_intent_model:model_modes.append('未识别问句可调用意图模型一次')
     if args.rag_model:model_modes.append('引用回答可按需调用模型一次')
     if args.research_selection=='native':model_modes.append('候选任务每任务最多10次模型请求')
-    if args.research_goal_model:model_modes.append('勾选模型理解时每请求编号最多一次，执行开关独立')
+    if args.research_goal_model:model_modes.append('未完整识别时每请求编号最多一次模型理解，执行开关独立')
     print(('；'.join(model_modes) if model_modes else '本地资料模式；外部模型关闭。')+' 联网工具关闭。'+
           ('DataOps Langfuse追踪已启用。' if args.with_langfuse else '追踪关闭。')+
           'Ctrl+C停止，同一状态目录可恢复记录。',flush=True)

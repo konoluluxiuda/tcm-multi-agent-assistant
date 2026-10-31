@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "modules": 6,
+  "total": 46,
+  "network_attempts": 0,
+  "scope": "affected evaluator and failure replay tests only",
+  "results": [
+    {
+      "module": "test_dataops_research.py",
+      "status": "passed",
+      "total": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_acceptance_failures.py",
+      "status": "passed",
+      "total": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_combined.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_question.py",
+      "status": "passed",
+      "total": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_question_api.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_research_question_benchmark.py",
+      "status": "passed",
+      "total": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ]
+}

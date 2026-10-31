@@ -29,6 +29,9 @@ def affordances(context):
          all(sid in inspected and sid not in unread for sid in context['parent_records'])))
     if context.get('task_mode')=='audit_named':
         delivery_ready=context['listed'] and not unread and root<=set(inspected)
+    required=(sorted(root) if context.get('task_mode')=='audit_named' else list(context['parent_records']))
+    deliverable=required if required else [sid for sid in context['eligible'] if sid in inspected]
+    count=len(required) if required else min(context['target_count'],len(deliverable))
     tools=[]
     if not context['listed']:tools.append('list_candidates')
     else:
@@ -39,7 +42,9 @@ def affordances(context):
         if delivery_ready:tools.append('deliver_result')
     return {'tools':tools,'inspectable_source_ids':unread,'searchable_source_ids':searchable,
             'ambiguous_source_ids':ambiguous,'unread_evidence_ids':refs,
-            'deliverable_source_ids':list(inspected),'delivery_ready':bool(delivery_ready),
+            'deliverable_source_ids':deliverable,'delivery_ready':bool(delivery_ready),
+            'delivery_min_items':count,'delivery_max_items':count,'required_delivery_source_ids':required,
+            'delivery_requires_partial':context.get('task_mode')!='audit_named' and len(context['eligible'])<context['target_count'],
             'partial_requires_explicit_flag':True,'selection_is_model_owned':True}
 
 
@@ -59,7 +64,16 @@ def action_rejection(context,tool,args):
         if set(args['evidence_ids'])-set(context['evidence_refs']):return 'unknown_evidence_handle'
         if set(args['evidence_ids'])-set(allowed['unread_evidence_ids']):return 'evidence_already_read'
     if tool=='ask_user' and args['source_id'] not in allowed['ambiguous_source_ids']:return 'no_source_ambiguity'
-    if tool=='deliver_result' and not allowed['delivery_ready']:return 'target_or_fields_incomplete'
+    if tool=='deliver_result':
+        if not allowed['delivery_ready']:return 'target_or_fields_incomplete'
+        ids=args['source_ids']
+        if len(ids)>context['target_count']:return 'too_many_delivery_records'
+        required=allowed['required_delivery_source_ids']
+        if required and set(ids)!=set(required):
+            return 'preserve_named_records' if context.get('task_mode')=='audit_named' else 'preserve_parent_records'
+        if set(ids)-set(allowed['deliverable_source_ids']):return 'unqualified_delivery_records'
+        if len(ids)!=allowed['delivery_min_items']:return 'delivery_count_mismatch'
+        if allowed['delivery_requires_partial'] and not args['allow_partial']:return 'target_or_fields_incomplete'
     return None
 
 

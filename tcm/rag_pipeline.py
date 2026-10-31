@@ -145,6 +145,16 @@ def render(bundle,draft=None):
     return '\n\n'.join(lines)
 
 
+def presentation(result):
+    """Derive the display comparison for new and cached answers without dispatch."""
+    if result.get('status') != 'composed' or not result.get('bundle'):
+        return result
+    unchanged = result.get('message') == render(result['bundle'])
+    return {**result, 'composition_effect': 'unchanged' if unchanged else 'reorganized',
+            'composition_note': ('本次模型输出与原文展示一致，未改变展示内容。可用“查看原文”避免生成调用。'
+                                 if unchanged else '已按引用整理原文；文字组织变化不代表准确率或任务效果提升。')}
+
+
 class State(TypedDict,total=False):
     question:str
     compose:bool
@@ -231,4 +241,4 @@ class RagPipeline:
                           human_signoff=False,exhaustive=False,workflow=LIMITS['version'])
             if span.span is not None:result['trace_id']=getattr(span.span,'trace_id',None)
             span.update(output={'status':state['status'],'stats':result['stats']})
-            return result
+            return presentation(result)

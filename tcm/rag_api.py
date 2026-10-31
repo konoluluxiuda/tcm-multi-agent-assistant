@@ -74,7 +74,8 @@ def create_router(memory_provider,cookie_name,*,runner=answer):
                     'release':os.getenv('RAG_RELEASE_PATH'),'generation':generate_enabled(),
                     'model':os.getenv('RAG_MODEL'),'recipient':os.getenv('RAG_BASE_URL')},sort_keys=True).encode()).hexdigest()
         cached=store.reserve(owner,body.request_key,signature)
-        if cached is not None:return {**cached,'replayed':True}
+        from tcm.rag_pipeline import presentation
+        if cached is not None:return {**presentation(cached),'replayed':True}
         try:
             result=runner(body.question,body.compose)
         except Exception:
@@ -83,5 +84,5 @@ def create_router(memory_provider,cookie_name,*,runner=answer):
             raise HTTPException(503,'资料或回答服务暂不可用；本请求未自动重试。') from None
         try:store.complete(owner,body.request_key,result)
         except (OSError,sqlite3.Error):raise HTTPException(503,'结果保存失败；请求状态已保留，未自动重试。') from None
-        return {**result,'replayed':False}
+        return {**presentation(result),'replayed':False}
     return router

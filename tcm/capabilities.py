@@ -32,6 +32,8 @@ def research_runtime():
             'external_model_enabled':execution_model or question_model,
             'execution_model_enabled':execution_model,
             'question_model_enabled':question_model,
+            'question_policy':'local_then_one_model_v1',
+            'chat_question_fallback_enabled':question_model,
             'goal_input': 'bounded_question_or_form', 'identity_approval': False}
 
 

@@ -1,0 +1,29 @@
+{
+  "baseline": {
+    "run": "live_synthetic_v1",
+    "profile": "full_v1",
+    "passed": 4,
+    "total": 4,
+    "tokens": 30122
+  },
+  "rejected_candidate": {
+    "run": "live_synthetic_v1",
+    "profile": "compact_v1",
+    "passed": 3,
+    "total": 4,
+    "tokens": 13446
+  },
+  "selected": {
+    "run": "live_synthetic_v2",
+    "profile": "compact_v2",
+    "passed": 4,
+    "total": 4,
+    "tokens": 21127
+  },
+  "selected_token_reduction_percent": 29.86,
+  "actual_requests_all_runs": 12,
+  "tokens_all_runs": 64695,
+  "independent_user_accuracy": false,
+  "old_scores_changed": false,
+  "claim": "Four authored synthetic questions; same frozen case texts and expected fields. Conservative follow-up reuses recorded full baseline; not a randomized independent benchmark or general model-benefit proof."
+}

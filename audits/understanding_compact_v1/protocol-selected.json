@@ -1,0 +1,56 @@
+{
+  "version": "understanding-compact-v1",
+  "inputs": {
+    "runtime_tree": "c7c681b39e4b643af596378e934cde64007e55814063b974f2867a525a821689",
+    "script": "f08c55e83b56615677510286f3765de8fad122c0542382623ced04768bbbc2f5",
+    "fixture": "0b4ad6a49af8f1bd37a6f7494722c1bad52df52031e7d39e8a611405f866cb6a",
+    "recorder": "17fe202758859b72a875a27572eff1e4f258644ca9af46dcc00354e839f5dad9"
+  },
+  "cases": [
+    {
+      "id": "S01",
+      "question": "刚接触这个平台，我能拿它做些什么事情？",
+      "topic": "capabilities"
+    },
+    {
+      "id": "S02",
+      "question": "这两份数据各记了啥，分别适合干什么？",
+      "topic": "dataset_info"
+    },
+    {
+      "id": "S03",
+      "question": "Alpha与Beta各放一行，主要用途和存放环境各占一列，没记载就空着，给一张附出处的表格",
+      "fields": [
+        "功能与主治",
+        "贮藏"
+      ]
+    },
+    {
+      "id": "S04",
+      "question": "上一份资料保留原有对象和所有列，再添一列存放环境，出处照旧",
+      "parent": true,
+      "fields": [
+        "功能与主治",
+        "贮藏"
+      ]
+    }
+  ],
+  "profiles": [
+    "compact_v2"
+  ],
+  "max_requests": 4,
+  "per_combination": 1,
+  "max_output_tokens": 1200,
+  "max_request_bytes": 65536,
+  "timeout_seconds": 30,
+  "retries": 0,
+  "endpoint": "https://api.deepseek.com",
+  "model": "deepseek-flash",
+  "data": "authored synthetic questions, static schemas, synthetic aliases and parent structural metadata only",
+  "real_corpus_sent": false,
+  "reference_sent": false,
+  "trace_export": false,
+  "stop_on_provider_error": true,
+  "independent_user_accuracy": false,
+  "old_scores_changed": false
+}
