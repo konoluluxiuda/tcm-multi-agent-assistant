@@ -1,0 +1,947 @@
+{
+  "version": 1,
+  "kind": "original_pdf_block_assignment_development_reference",
+  "created": "2026-10-30",
+  "review_status": "ai_visual_review_pending_human_signoff",
+  "human_signoff": false,
+  "independent_of_candidate_index": true,
+  "holdout": false,
+  "source_blocks_sha256": "a1eed2cb59097eb7b404b638b868f6aea5859ffc2749a07101f3007cb63f6001",
+  "visual_reviewed_pdf_pages": [
+    107,
+    108,
+    226,
+    227,
+    285,
+    286,
+    344,
+    392,
+    394,
+    413,
+    427
+  ],
+  "assignment_recipe": "Explicit original-page assignments; expected values reconstructed only from frozen original blocks, never candidate index/view",
+  "cases": [
+    {
+      "case_id": "S01",
+      "name": "水蛭",
+      "entry_id": "mineru-herb-d53977bed4988a6f76ac8da1",
+      "scope": "prepared_slices",
+      "kind": "post_storage_note",
+      "storage_segments": [
+        {
+          "block_id": "part-001-100:3275",
+          "start": 0,
+          "end": 12
+        }
+      ],
+      "annotation_block_ids": [
+        "part-001-100:3276",
+        "part-001-100:3281",
+        "part-001-100:3282"
+      ],
+      "expected_storage_sha256": "cd33b5b0cd8956ec40bfd80dce44a7e909dc674d1a8bb57e0a2dd7762a69d63b",
+      "source_witnesses": {
+        "part-001-100:3275": {
+          "block_sha256": "deb247490a3dcc8a04345bd088dc6a131a809681d9a8ccea39d618a09bac3ee2",
+          "source": {
+            "chapter_pdf_page": 86,
+            "source_document": "high",
+            "source_pdf_page": 107,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 88,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 86
+          },
+          "bbox_0_1000": [
+            541,
+            919,
+            717,
+            934
+          ]
+        },
+        "part-001-100:3276": {
+          "block_sha256": "b250297afef00507b80ba31601d877e927d4a3f261d8e3585426c53261396e70",
+          "source": {
+            "chapter_pdf_page": 86,
+            "source_document": "high",
+            "source_pdf_page": 107,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 88,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 86
+          },
+          "bbox_0_1000": [
+            542,
+            938,
+            882,
+            953
+          ]
+        },
+        "part-001-100:3281": {
+          "block_sha256": "fda768e5981772655f9f202dd879b0cd367f3df81f33600f770f11c07b307471",
+          "source": {
+            "chapter_pdf_page": 87,
+            "source_document": "high",
+            "source_pdf_page": 108,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 89,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 87
+          },
+          "bbox_0_1000": [
+            90,
+            98,
+            485,
+            131
+          ]
+        },
+        "part-001-100:3282": {
+          "block_sha256": "5583eecc1d64dcc0e430da0f82fa6cf74eef02621e6ec355a89caa205d763370",
+          "source": {
+            "chapter_pdf_page": 87,
+            "source_document": "high",
+            "source_pdf_page": 108,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 89,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 87
+          },
+          "bbox_0_1000": [
+            89,
+            135,
+            485,
+            186
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S02",
+      "name": "陈皮",
+      "entry_id": "mineru-herb-916607a51c9876e39d1acf59",
+      "scope": "prepared_slices",
+      "kind": "post_storage_note",
+      "storage_segments": [
+        {
+          "block_id": "part-201-300:135",
+          "start": 0,
+          "end": 17
+        }
+      ],
+      "annotation_block_ids": [
+        "part-201-300:136"
+      ],
+      "expected_storage_sha256": "51a1e3950f3fb14fc5ced8f380675127d282499181b979add3bc5002829b1124",
+      "source_witnesses": {
+        "part-201-300:135": {
+          "block_sha256": "ec36188d966ae96b9e55bf5cafced37867da609d5d1a1fd22b5c4667d21f9ac3",
+          "source": {
+            "chapter_pdf_page": 205,
+            "source_document": "high",
+            "source_pdf_page": 226,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 207,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 5
+          },
+          "bbox_0_1000": [
+            112,
+            668,
+            357,
+            681
+          ]
+        },
+        "part-201-300:136": {
+          "block_sha256": "28b09b0ff72058f166dd81e0b035991a80f2a472201ce577ab9e0c0146a9047e",
+          "source": {
+            "chapter_pdf_page": 205,
+            "source_document": "high",
+            "source_pdf_page": 226,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 207,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 5
+          },
+          "bbox_0_1000": [
+            82,
+            686,
+            487,
+            738
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S03",
+      "name": "附子",
+      "entry_id": "mineru-herb-cb3d01496c5ba6f34d0417a9",
+      "scope": "prepared_slices",
+      "kind": "post_storage_note",
+      "storage_segments": [
+        {
+          "block_id": "part-201-300:184",
+          "start": 0,
+          "end": 32
+        }
+      ],
+      "annotation_block_ids": [
+        "part-201-300:185"
+      ],
+      "expected_storage_sha256": "f1d4a75d2a5b05e111ea21a598ab4632b8f97ddc14a25efd3fee3e07e2492624",
+      "source_witnesses": {
+        "part-201-300:184": {
+          "block_sha256": "6530524a29fdb479abeb9309c816f5ed11f59c68e03ba1aed491cb820c45159b",
+          "source": {
+            "chapter_pdf_page": 206,
+            "source_document": "high",
+            "source_pdf_page": 227,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 208,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 6
+          },
+          "bbox_0_1000": [
+            514,
+            409,
+            917,
+            442
+          ]
+        },
+        "part-201-300:185": {
+          "block_sha256": "e3f37a4565126068a43645fc2fb3965210084b0334d678d7550b712dd6620f18",
+          "source": {
+            "chapter_pdf_page": 206,
+            "source_document": "high",
+            "source_pdf_page": 227,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 208,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 6
+          },
+          "bbox_0_1000": [
+            542,
+            445,
+            734,
+            460
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S04",
+      "name": "枳壳",
+      "entry_id": "mineru-herb-1a51745b464e80539ecc72eb",
+      "scope": "prepared_slices",
+      "kind": "post_storage_note",
+      "storage_segments": [
+        {
+          "block_id": "part-201-300:2438",
+          "start": 0,
+          "end": 14
+        }
+      ],
+      "annotation_block_ids": [
+        "part-201-300:2439"
+      ],
+      "expected_storage_sha256": "12c2eb1570a6c56c1dad6871ec667fe22d60acb3667d02466078b4644d3be0a7",
+      "source_witnesses": {
+        "part-201-300:2438": {
+          "block_sha256": "fd762290f9cfc8feb2a4c81f0df91a1250652f6f6e97180c4271a284af43ea3b",
+          "source": {
+            "chapter_pdf_page": 264,
+            "source_document": "high",
+            "source_pdf_page": 285,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 266,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 64
+          },
+          "bbox_0_1000": [
+            115,
+            720,
+            321,
+            734
+          ]
+        },
+        "part-201-300:2439": {
+          "block_sha256": "aa1c37cc08097d7d044ceb55ed892bb650705923fd81e5b2259f8cedf27b3512",
+          "source": {
+            "chapter_pdf_page": 264,
+            "source_document": "high",
+            "source_pdf_page": 285,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 266,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 64
+          },
+          "bbox_0_1000": [
+            84,
+            740,
+            490,
+            791
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S05",
+      "name": "枳实",
+      "entry_id": "mineru-herb-82ec641a9b51373347caa767",
+      "scope": "prepared_slices",
+      "kind": "post_storage_note",
+      "storage_segments": [
+        {
+          "block_id": "part-201-300:2472",
+          "start": 0,
+          "end": 14
+        }
+      ],
+      "annotation_block_ids": [
+        "part-201-300:2473"
+      ],
+      "expected_storage_sha256": "12c2eb1570a6c56c1dad6871ec667fe22d60acb3667d02466078b4644d3be0a7",
+      "source_witnesses": {
+        "part-201-300:2472": {
+          "block_sha256": "687ffabf20cc6cf5480d56b84faba57eed7c4760c1d76617cdf183c2e49d7b0b",
+          "source": {
+            "chapter_pdf_page": 265,
+            "source_document": "high",
+            "source_pdf_page": 286,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 267,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 65
+          },
+          "bbox_0_1000": [
+            109,
+            432,
+            315,
+            445
+          ]
+        },
+        "part-201-300:2473": {
+          "block_sha256": "22e4c977410fd83da7c84761ccd4234c25386808546e0482d66a6a5576f604ce",
+          "source": {
+            "chapter_pdf_page": 265,
+            "source_document": "high",
+            "source_pdf_page": 286,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 267,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 65
+          },
+          "bbox_0_1000": [
+            110,
+            450,
+            260,
+            463
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S06",
+      "name": "黄芪",
+      "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+      "scope": "prepared_slices",
+      "kind": "post_storage_note",
+      "storage_segments": [
+        {
+          "block_id": "part-301-400:840",
+          "start": 0,
+          "end": 17
+        }
+      ],
+      "annotation_block_ids": [
+        "part-301-400:841",
+        "part-301-400:842"
+      ],
+      "expected_storage_sha256": "a0988b23e4a5141bde8d9092b7f07b7a69b87784cc6647f3a05296faa86485d2",
+      "source_witnesses": {
+        "part-301-400:840": {
+          "block_sha256": "ec9890495bd503f78d98fd092a7d721aaa43370bca09d538b569797c25acb440",
+          "source": {
+            "chapter_pdf_page": 323,
+            "source_document": "high",
+            "source_pdf_page": 344,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 325,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 23
+          },
+          "bbox_0_1000": [
+            102,
+            394,
+            352,
+            407
+          ]
+        },
+        "part-301-400:841": {
+          "block_sha256": "0871cf2304723f53b3dfb2380727ddf3e1a19bf351d7de735034ffa4ebb9fc04",
+          "source": {
+            "chapter_pdf_page": 323,
+            "source_document": "high",
+            "source_pdf_page": 344,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 325,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 23
+          },
+          "bbox_0_1000": [
+            73,
+            412,
+            487,
+            463
+          ]
+        },
+        "part-301-400:842": {
+          "block_sha256": "04e92e05bb148a701d057ab9e34287ab100979e3899467f3c23b1d2df0dd71d6",
+          "source": {
+            "chapter_pdf_page": 323,
+            "source_document": "high",
+            "source_pdf_page": 344,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 325,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 23
+          },
+          "bbox_0_1000": [
+            73,
+            468,
+            485,
+            500
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S07",
+      "name": "番泻叶",
+      "entry_id": "mineru-herb-ac2c47b7966ed035431459da",
+      "scope": "monograph",
+      "kind": "post_storage_note",
+      "storage_segments": [
+        {
+          "block_id": "part-301-400:2637",
+          "start": 0,
+          "end": 14
+        }
+      ],
+      "annotation_block_ids": [
+        "part-301-400:2638"
+      ],
+      "expected_storage_sha256": "72a46bf5bba2dab15d738b1589e8f35990a6009c3b92222850d355ac52786163",
+      "source_witnesses": {
+        "part-301-400:2637": {
+          "block_sha256": "cf8b3f1acfbba67f034eaa1592e485028f574d3d3a599c1496e1c9fa7e718880",
+          "source": {
+            "chapter_pdf_page": 371,
+            "source_document": "high",
+            "source_pdf_page": 392,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 373,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 71
+          },
+          "bbox_0_1000": [
+            542,
+            263,
+            752,
+            278
+          ]
+        },
+        "part-301-400:2638": {
+          "block_sha256": "543861a250f6dfa0be7715a867aad01332e46ba1bccf7a7aa03e0e160b3eaaa0",
+          "source": {
+            "chapter_pdf_page": 371,
+            "source_document": "high",
+            "source_pdf_page": 392,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 373,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 71
+          },
+          "bbox_0_1000": [
+            510,
+            282,
+            924,
+            332
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S08",
+      "name": "滑石粉",
+      "entry_id": "mineru-herb-6955961569af8578645ee607",
+      "scope": "monograph",
+      "kind": "post_storage_note",
+      "storage_segments": [
+        {
+          "block_id": "part-301-400:2710",
+          "start": 0,
+          "end": 8
+        }
+      ],
+      "annotation_block_ids": [
+        "part-301-400:2711",
+        "part-301-400:2712",
+        "part-301-400:2713",
+        "part-301-400:2714"
+      ],
+      "expected_storage_sha256": "7fa12e6ed77ebe08630384b7bb46abb077806f3053c98cdf06290102499ba6cd",
+      "source_witnesses": {
+        "part-301-400:2710": {
+          "block_sha256": "a52cd5ad01844515c322951a5ad7c65590f0d4426b141f0b42f58180fece2961",
+          "source": {
+            "chapter_pdf_page": 373,
+            "source_document": "high",
+            "source_pdf_page": 394,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 375,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 73
+          },
+          "bbox_0_1000": [
+            544,
+            210,
+            652,
+            224
+          ]
+        },
+        "part-301-400:2711": {
+          "block_sha256": "4e5f4f10e3b054fb17dd3981cf99a0021bd0df358184024d04520187fe67a4b0",
+          "source": {
+            "chapter_pdf_page": 373,
+            "source_document": "high",
+            "source_pdf_page": 394,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 375,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 73
+          },
+          "bbox_0_1000": [
+            512,
+            228,
+            924,
+            261
+          ]
+        },
+        "part-301-400:2712": {
+          "block_sha256": "5411331aad8f2708b217cbb6c20c6a42d990eea0fd1ccc4490ee33689dc39607",
+          "source": {
+            "chapter_pdf_page": 373,
+            "source_document": "high",
+            "source_pdf_page": 394,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 375,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 73
+          },
+          "bbox_0_1000": [
+            512,
+            266,
+            922,
+            298
+          ]
+        },
+        "part-301-400:2713": {
+          "block_sha256": "25f3735b2aed279c50ce1a97ed82c9d648f73632ff9efb903778b878b9aa91ed",
+          "source": {
+            "chapter_pdf_page": 373,
+            "source_document": "high",
+            "source_pdf_page": 394,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 375,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 73
+          },
+          "bbox_0_1000": [
+            512,
+            302,
+            924,
+            351
+          ]
+        },
+        "part-301-400:2714": {
+          "block_sha256": "3115e6209688d2a5dfeaea2548e306ca23dd3066b8326b27d776b9f1e2be4d67",
+          "source": {
+            "chapter_pdf_page": 373,
+            "source_document": "high",
+            "source_pdf_page": 394,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 375,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 73
+          },
+          "bbox_0_1000": [
+            514,
+            357,
+            926,
+            388
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S09",
+      "name": "槟榔",
+      "entry_id": "mineru-herb-6426fed1cda4e9db979d7fab",
+      "scope": "prepared_slices",
+      "kind": "post_storage_note",
+      "storage_segments": [
+        {
+          "block_id": "part-301-400:3409",
+          "start": 0,
+          "end": 14
+        }
+      ],
+      "annotation_block_ids": [
+        "part-301-400:3410",
+        "part-301-400:3411"
+      ],
+      "expected_storage_sha256": "7110725b5b6488ff48eeb2d410d623656a5bd36521df91e2059b6b4bab3454a8",
+      "source_witnesses": {
+        "part-301-400:3409": {
+          "block_sha256": "505b428689d332f7aa1729ce45ff425de545ca22a68e5cb16ae5b3dfddc3e95e",
+          "source": {
+            "chapter_pdf_page": 392,
+            "source_document": "high",
+            "source_pdf_page": 413,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 394,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 92
+          },
+          "bbox_0_1000": [
+            115,
+            435,
+            319,
+            448
+          ]
+        },
+        "part-301-400:3410": {
+          "block_sha256": "c04f9b83362bc125de8c9f44df3a2febadf03b943235a4a630e3edaa2be0cd9f",
+          "source": {
+            "chapter_pdf_page": 392,
+            "source_document": "high",
+            "source_pdf_page": 413,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 394,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 92
+          },
+          "bbox_0_1000": [
+            85,
+            453,
+            487,
+            504
+          ]
+        },
+        "part-301-400:3411": {
+          "block_sha256": "6a9bbe58c84370a821df043ec7e234962ccee2a0e78461c7a91c9a48a1735161",
+          "source": {
+            "chapter_pdf_page": 392,
+            "source_document": "high",
+            "source_pdf_page": 413,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 394,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 92
+          },
+          "bbox_0_1000": [
+            85,
+            508,
+            487,
+            541
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S10",
+      "name": "橘红",
+      "entry_id": "mineru-herb-eafa593c55fff8f451aa8165",
+      "scope": "prepared_slices",
+      "kind": "post_storage_note",
+      "storage_segments": [
+        {
+          "block_id": "part-401-413:212",
+          "start": 0,
+          "end": 14
+        }
+      ],
+      "annotation_block_ids": [
+        "part-401-413:213"
+      ],
+      "expected_storage_sha256": "12c2eb1570a6c56c1dad6871ec667fe22d60acb3667d02466078b4644d3be0a7",
+      "source_witnesses": {
+        "part-401-413:212": {
+          "block_sha256": "c3ac75396cfdcab3826d49f97711587b35452db0e70e7ab6eb9f4c56fc73a6be",
+          "source": {
+            "chapter_pdf_page": 406,
+            "source_document": "high",
+            "source_pdf_page": 427,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 408,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第401-413页.pdf",
+            "upload_part_page": 6
+          },
+          "bbox_0_1000": [
+            115,
+            260,
+            317,
+            274
+          ]
+        },
+        "part-401-413:213": {
+          "block_sha256": "f9c127d924c70f29fce46108a98ace49aa65349a962bf9c62a6ac2fee4113117",
+          "source": {
+            "chapter_pdf_page": 406,
+            "source_document": "high",
+            "source_pdf_page": 427,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 408,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第401-413页.pdf",
+            "upload_part_page": 6
+          },
+          "bbox_0_1000": [
+            85,
+            278,
+            485,
+            311
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S11",
+      "name": "橘核",
+      "entry_id": "mineru-herb-4603948dc1388e585406ba8d",
+      "scope": "prepared_slices",
+      "kind": "post_storage_note",
+      "storage_segments": [
+        {
+          "block_id": "part-401-413:231",
+          "start": 0,
+          "end": 15
+        }
+      ],
+      "annotation_block_ids": [
+        "part-401-413:232"
+      ],
+      "expected_storage_sha256": "6b06e90b2b89c75e28e09bddd117d0cafe6bdec7110ff73b7cfe53be246690cc",
+      "source_witnesses": {
+        "part-401-413:231": {
+          "block_sha256": "3da31708fd5b2961aa3f01c0158a5deeaea451db7637eb889dd15296b4bf6718",
+          "source": {
+            "chapter_pdf_page": 406,
+            "source_document": "high",
+            "source_pdf_page": 427,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 408,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第401-413页.pdf",
+            "upload_part_page": 6
+          },
+          "bbox_0_1000": [
+            119,
+            932,
+            331,
+            946
+          ]
+        },
+        "part-401-413:232": {
+          "block_sha256": "593002337c3cb424b50d3f94ea7ecc040c46f7d75f3217e024b65ebcec330df0",
+          "source": {
+            "chapter_pdf_page": 406,
+            "source_document": "high",
+            "source_pdf_page": 427,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 408,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第401-413页.pdf",
+            "upload_part_page": 6
+          },
+          "bbox_0_1000": [
+            505,
+            93,
+            902,
+            126
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S12",
+      "name": "玉竹",
+      "entry_id": "mineru-herb-40bbee2cfd7b5438a9baa143",
+      "scope": "prepared_slices",
+      "kind": "clean_storage_control",
+      "storage_segments": [
+        {
+          "block_id": "part-001-100:3303",
+          "start": 0,
+          "end": 17
+        }
+      ],
+      "annotation_block_ids": [],
+      "expected_storage_sha256": "d588bfa76a4f4a96deaa169654cc68b233bc6dd9ccfe8634f17e02ace14ffd21",
+      "source_witnesses": {
+        "part-001-100:3303": {
+          "block_sha256": "42faac51ba56690c714d234789cd8e0f9f850d77294a650987ec2d97136c6d73",
+          "source": {
+            "chapter_pdf_page": 87,
+            "source_document": "high",
+            "source_pdf_page": 108,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 89,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 87
+          },
+          "bbox_0_1000": [
+            537,
+            485,
+            776,
+            499
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S13",
+      "name": "柏子仁",
+      "entry_id": "mineru-herb-fc3afbedf68d00ada49bfda0",
+      "scope": "prepared_slices",
+      "kind": "clean_storage_control",
+      "storage_segments": [
+        {
+          "block_id": "part-201-300:2490",
+          "start": 0,
+          "end": 17
+        }
+      ],
+      "annotation_block_ids": [],
+      "expected_storage_sha256": "6f5bbcd07e6f2fdc0e6f446df51c602810444c80973d7a7624b2c92f4c9c183c",
+      "source_witnesses": {
+        "part-201-300:2490": {
+          "block_sha256": "e875f4baa871b52d187c48197f737bcedb16efe5843a927be5c1db0b19306495",
+          "source": {
+            "chapter_pdf_page": 265,
+            "source_document": "high",
+            "source_pdf_page": 286,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 267,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 65
+          },
+          "bbox_0_1000": [
+            539,
+            474,
+            784,
+            488
+          ]
+        }
+      }
+    },
+    {
+      "case_id": "S14",
+      "name": "炙黄芪",
+      "entry_id": "mineru-herb-e52aada8b4fe718c2d567116",
+      "scope": "monograph",
+      "kind": "clean_storage_control",
+      "storage_segments": [
+        {
+          "block_id": "part-301-400:858",
+          "start": 0,
+          "end": 17
+        }
+      ],
+      "annotation_block_ids": [],
+      "expected_storage_sha256": "a0988b23e4a5141bde8d9092b7f07b7a69b87784cc6647f3a05296faa86485d2",
+      "source_witnesses": {
+        "part-301-400:858": {
+          "block_sha256": "21eca9c033c59f777e53d7f567a12a05adc89e8102bc040d475e195b927b9715",
+          "source": {
+            "chapter_pdf_page": 323,
+            "source_document": "high",
+            "source_pdf_page": 344,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 325,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 23
+          },
+          "bbox_0_1000": [
+            542,
+            191,
+            789,
+            205
+          ]
+        }
+      }
+    }
+  ]
+}

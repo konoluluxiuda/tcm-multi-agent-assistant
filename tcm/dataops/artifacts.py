@@ -27,7 +27,10 @@ def tables(result):
         rows.append(row)
     problems = [['来源ID', '字段', '问题类型', '说明']] + [[x['source_id'], x['field'], x['kind'], x['message']] for x in result['issues']]
     evidence = [['证据ID', '类型', '来源ID', '原始位置与文本']]
-    for key, value in result['evidence'].items():
+    evidence_items=result['evidence'].items()
+    if result.get('research',{}).get('artifact_format')=='sorted-evidence-v1':
+        evidence_items=sorted(evidence_items)
+    for key, value in evidence_items:
         evidence.append([key, value['kind'], value['source_id'], canonical(value['source'])])
     info = [['项目', '值'], ['执行方式', result.get('execution_label', 'F：固定本地流程，0次模型调用')], ['目标', canonical(goal)],
             ['来源版本', canonical(result['source_revision'])], ['任务状态', result['status']],
@@ -37,6 +40,12 @@ def tables(result):
     if 'diff' in result:
         output['版本差异'] = [['来源ID', '字段', '旧值与状态', '新值与状态']] + [
             [d['source_id'], d['field'], canonical(d['before']), canonical(d['after'])] for d in result['diff']]
+    if 'research' in result:
+        selection=result['research']
+        info.extend([['目标记录数',str(selection['target_count'])],['合格记录数',str(selection['qualified_count'])],
+                     ['候选范围',str(selection['candidate_pool_count'])],['完整性','候选核对不代表穷尽全库或身份确认']])
+        output['候选核对']=[['来源ID','核对状态','满足字段条件','已选择']] + [[
+            x['source_id'],x['status'],str(x['eligible']),str(x['selected'])] for x in selection['candidate_states']]
     return output
 
 

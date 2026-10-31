@@ -13,6 +13,8 @@ class LiveProtocolTests(unittest.TestCase):
         self.assertEqual([c['case_id'] for c in spec['cases']],['B01','B04','R01'])
         self.assertEqual(spec['real_model_calls'],0)
         self.assertEqual(spec['max_requests_total'],36)
+        self.assertEqual(spec['version'],'dataops-synthetic-live-pilot-v4')
+        self.assertIn('no forced next action', spec['context_contract'])
         self.assertIn('real ETCM',spec['excluded'])
         self.assertEqual(spec['thinking'],{'type':'disabled'})
 

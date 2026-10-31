@@ -1,4 +1,5 @@
 import os
+import asyncio
 import re
 import sqlite3
 from contextlib import asynccontextmanager
@@ -14,6 +15,7 @@ from pathlib import Path
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Depends, Request, Response, Cookie
 from fastapi.responses import JSONResponse, HTMLResponse, FileResponse, Response as BinaryResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 import uvicorn
@@ -39,6 +41,8 @@ from tcm.research_task_api import create_router as create_task_router, enabled a
 from tcm.request_observability import install as install_chat_observability, mark as mark_chat_request
 from tcm.dataops.api import create_router as create_dataops_router, validate_origin as validate_dataops_origin
 from tcm.dataops.service import DataOpsService
+from tcm.runtime_status import RuntimeStatus
+from tcm.rag_api import create_router as create_rag_router
 
 # Load configuration
 config = Config()
@@ -49,10 +53,25 @@ async def lifespan(application):
     # Validate storage and purge expired payloads before accepting requests.
     agent_runtime.memory.purge_expired()
     yield
+    from tcm.tracing import flush
+    await asyncio.to_thread(flush)
 
 
 # Initialize FastAPI app
 app = FastAPI(title="Multi-Agent Medical Chatbot", version="2.0", lifespan=lifespan)
+runtime_status = RuntimeStatus()
+app.mount('/static', StaticFiles(directory=Path(__file__).resolve().parent/'assets/web'), name='static')
+
+
+@app.get('/api/runtime')
+def deployed_runtime(response: Response):
+    response.headers['Cache-Control'] = 'no-store'
+    from tcm.capabilities import dataops_runtime
+    from tcm.rag_api import enabled as rag_enabled, generate_enabled
+    return {**runtime_status.describe(), 'dataops': dataops_runtime(),
+            'rag':{'enabled':rag_enabled(),'generation_enabled':rag_enabled() and generate_enabled()},
+            'intent_model_enabled': env_bool('ENABLE_INTENT_PLANNER'),
+            'dataops_tracing_enabled': env_bool('ENABLE_LANGFUSE') and env_bool('LANGFUSE_TRACING_ENABLED')}
 
 # Set up directories
 UPLOAD_FOLDER = "uploads/backend"
@@ -76,6 +95,7 @@ app.include_router(create_project_router(lambda: agent_runtime.memory, lambda: S
 app.include_router(create_loop_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME))
 dataops_service = DataOpsService(lambda: agent_runtime.memory)
 app.include_router(create_dataops_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME, service=dataops_service))
+app.include_router(create_rag_router(lambda: agent_runtime.memory, lambda: SESSION_COOKIE_NAME))
 image_request_lock = threading.Lock()
 
 
@@ -122,7 +142,7 @@ def feature_error(name):
 @app.middleware('http')
 async def enforce_features(request: Request, call_next):
     if (env_bool('RESEARCH_TOOLS_ONLY') and request.method in ('POST', 'PUT', 'PATCH', 'DELETE')
-            and request.url.path not in ('/chat', '/conversation', '/api/evidence/report', '/api/research/runs/profile')
+            and request.url.path not in ('/chat', '/conversation', '/api/evidence/report', '/api/research/runs/profile', '/api/rag/answers')
             and not (request.url.path == '/api/research/bookmarks' or request.url.path.startswith('/api/research/bookmarks/'))
             and not (request.url.path == '/api/research/loops' or request.url.path.startswith('/api/research/loops/'))
             and not (request.url.path == '/api/research/projects' or request.url.path.startswith('/api/research/projects/'))
@@ -130,7 +150,7 @@ async def enforce_features(request: Request, call_next):
             and not (request.url.path == '/api/research/runs' or request.url.path.startswith('/api/research/runs/'))
             and not (request.url.path == '/api/research/tasks' or request.url.path.startswith('/api/research/tasks/'))
             and not (request.url.path in ('/api/dataops/query', '/api/dataops/workspaces', '/api/dataops/agent-runs',
-                                         '/api/dataops/proposals', '/api/dataops/task-requests')
+                                         '/api/dataops/proposals', '/api/dataops/task-requests', '/api/dataops/research-tasks', '/api/dataops/research-questions')
                      or re.fullmatch(r'/api/dataops/agent-runs/[a-f0-9]{32}/(answer|cancel|recover)', request.url.path))):
         return JSONResponse(status_code=403, content={'detail': '此部署仅支持药材与药典研究工具及会话管理。'})
     # Check before parsing upload bodies or invoking optional clients.
@@ -209,7 +229,9 @@ async def index(request: Request):
         "features": config.features.as_dict(), "research_tools_only": env_bool('RESEARCH_TOOLS_ONLY'),
         "pubmed_enabled": False,
         "dataops_enabled": env_bool('ENABLE_DATAOPS'),
+        "rag_enabled": env_bool('ENABLE_RAG_WORKBENCH'),
         "natural_routing_enabled": env_bool('ENABLE_NATURAL_ROUTING'),
+        "synthetic_loop_enabled": env_bool('ENABLE_SYNTHETIC_LOOP'),
         "research_bookmarks_enabled": bookmarks_enabled(),
         "research_tasks_enabled": tasks_enabled(),
         "research_runs_enabled": runs_enabled(),
@@ -641,6 +663,8 @@ def chat(
                 result['status'] = 'partial'
             elif response.status_code != 200:
                 result['status'] = 'unavailable'
+        from tcm.answer_text import plain_answer
+        result['response'] = plain_answer(result)
         http_request.state.chat_outcome = result['status'] if result['status'] in ('success', 'partial', 'unavailable') else 'success'
         return result
     except (MemoryUnavailable, ConversationConflict, SessionExpired):

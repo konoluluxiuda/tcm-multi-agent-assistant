@@ -1,0 +1,50 @@
+{
+  "container": "tcm-research-r4",
+  "id": "5c2bb8399d1a3e664d61c60e5f76a4ce8cd74d7596e2e7f32520c5e1b8138bdb",
+  "port": 7914,
+  "image": "tcm-research-chat:r4-question-v1",
+  "driver": "synthetic",
+  "external_model_enabled": false,
+  "release_content_id": "ade3f558c489da80d7491207140837e6d3c91f79d64ab4ad691692a3d194cee1",
+  "source_mounts_read_only": true,
+  "state": "/home/zry/workspace/Multi-Agent-Medical-Assistant/var/rag_r4_v1/container-final-state",
+  "url": "http://127.0.0.1:7914/dataops/research",
+  "image_id": "sha256:37e7667dabae5139b11e163f99c502beb93f8a5e73f9f16ffee203ca75eb674c",
+  "source_tree_sha256": "8c5e395e40c8f3e18f4f754c9260bfd180d2c78edc231d60b59ae190271d7cf3",
+  "runtime": {
+    "started_at": "2026-10-31T05:20:13.808343+00:00",
+    "source_revision": "efc400bce8db9eb99adf4c150fd4260e3f3a2d9871db30a6a56b8d5da9ca16f6",
+    "disk_revision": "efc400bce8db9eb99adf4c150fd4260e3f3a2d9871db30a6a56b8d5da9ca16f6",
+    "restart_required": false,
+    "source_check": "ok",
+    "dataops": {
+      "agent": false,
+      "driver": "disabled",
+      "external_model_enabled": false,
+      "question_compiler": "local_bounded_grammar_v1",
+      "research_selection": {
+        "enabled": true,
+        "driver": "synthetic",
+        "external_model_enabled": false,
+        "execution_model_enabled": false,
+        "question_model_enabled": false,
+        "goal_input": "bounded_question_or_form",
+        "identity_approval": false
+      }
+    },
+    "rag": {
+      "enabled": true,
+      "generation_enabled": false
+    },
+    "intent_model_enabled": false,
+    "dataops_tracing_enabled": false
+  },
+  "old_cookie_and_artifact_preserved": true,
+  "old_artifact_sha256": "c7239b90fdba66b7593e89ef08cacc8312d24334f2dd1b6750f01bcbcdc59db8",
+  "old_workspace_id": "58f5d9898be041e38c7232b3aeccda82",
+  "read_only_rootfs": true,
+  "user": "1000:1000",
+  "rollback_container": "tcm-research-r4-before-question-v1",
+  "prior_validation_receipt": "deployment.json",
+  "remote_published": false
+}

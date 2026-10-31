@@ -1,0 +1,760 @@
+{
+  "status": "passed",
+  "date": "2026-10-30",
+  "kind": "deterministic_storage_boundary_fix_not_llm_benefit",
+  "runtime_source_revision": "6994e39372aa49d62e25f203f89c46453e511a91086f51beacdb7d290864c50d",
+  "reference_sha256": "01c2ba00b3561dd1931d2c69aeb06f288a2de788edff935744fd990209fd8650",
+  "before": {
+    "status": "failed",
+    "reference_sha256": "01c2ba00b3561dd1931d2c69aeb06f288a2de788edff935744fd990209fd8650",
+    "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+    "total": 14,
+    "passed": 3,
+    "cases": [
+      {
+        "case_id": "S01",
+        "name": "水蛭",
+        "kind": "post_storage_note",
+        "storage_value_exact": false,
+        "storage_evidence_exact": false,
+        "annotations_preserved_separately": false,
+        "status": "failed"
+      },
+      {
+        "case_id": "S02",
+        "name": "陈皮",
+        "kind": "post_storage_note",
+        "storage_value_exact": false,
+        "storage_evidence_exact": false,
+        "annotations_preserved_separately": false,
+        "status": "failed"
+      },
+      {
+        "case_id": "S03",
+        "name": "附子",
+        "kind": "post_storage_note",
+        "storage_value_exact": false,
+        "storage_evidence_exact": false,
+        "annotations_preserved_separately": false,
+        "status": "failed"
+      },
+      {
+        "case_id": "S04",
+        "name": "枳壳",
+        "kind": "post_storage_note",
+        "storage_value_exact": false,
+        "storage_evidence_exact": false,
+        "annotations_preserved_separately": false,
+        "status": "failed"
+      },
+      {
+        "case_id": "S05",
+        "name": "枳实",
+        "kind": "post_storage_note",
+        "storage_value_exact": false,
+        "storage_evidence_exact": false,
+        "annotations_preserved_separately": false,
+        "status": "failed"
+      },
+      {
+        "case_id": "S06",
+        "name": "黄芪",
+        "kind": "post_storage_note",
+        "storage_value_exact": false,
+        "storage_evidence_exact": false,
+        "annotations_preserved_separately": false,
+        "status": "failed"
+      },
+      {
+        "case_id": "S07",
+        "name": "番泻叶",
+        "kind": "post_storage_note",
+        "storage_value_exact": false,
+        "storage_evidence_exact": false,
+        "annotations_preserved_separately": false,
+        "status": "failed"
+      },
+      {
+        "case_id": "S08",
+        "name": "滑石粉",
+        "kind": "post_storage_note",
+        "storage_value_exact": false,
+        "storage_evidence_exact": false,
+        "annotations_preserved_separately": false,
+        "status": "failed"
+      },
+      {
+        "case_id": "S09",
+        "name": "槟榔",
+        "kind": "post_storage_note",
+        "storage_value_exact": false,
+        "storage_evidence_exact": false,
+        "annotations_preserved_separately": false,
+        "status": "failed"
+      },
+      {
+        "case_id": "S10",
+        "name": "橘红",
+        "kind": "post_storage_note",
+        "storage_value_exact": false,
+        "storage_evidence_exact": false,
+        "annotations_preserved_separately": false,
+        "status": "failed"
+      },
+      {
+        "case_id": "S11",
+        "name": "橘核",
+        "kind": "post_storage_note",
+        "storage_value_exact": false,
+        "storage_evidence_exact": false,
+        "annotations_preserved_separately": false,
+        "status": "failed"
+      },
+      {
+        "case_id": "S12",
+        "name": "玉竹",
+        "kind": "clean_storage_control",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S13",
+        "name": "柏子仁",
+        "kind": "clean_storage_control",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S14",
+        "name": "炙黄芪",
+        "kind": "clean_storage_control",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      }
+    ],
+    "reference_kind": "original_pdf_block_assignment_development_reference",
+    "human_signoff": false,
+    "holdout": false,
+    "external_model_calls": 0,
+    "task_completion_or_general_accuracy_claim": false
+  },
+  "after": {
+    "status": "passed",
+    "reference_sha256": "01c2ba00b3561dd1931d2c69aeb06f288a2de788edff935744fd990209fd8650",
+    "index_sha256": "ae9910c2149820930bec103b227eee04f2287f8158501dcebee3ac7f5b5558a3",
+    "total": 14,
+    "passed": 14,
+    "cases": [
+      {
+        "case_id": "S01",
+        "name": "水蛭",
+        "kind": "post_storage_note",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S02",
+        "name": "陈皮",
+        "kind": "post_storage_note",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S03",
+        "name": "附子",
+        "kind": "post_storage_note",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S04",
+        "name": "枳壳",
+        "kind": "post_storage_note",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S05",
+        "name": "枳实",
+        "kind": "post_storage_note",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S06",
+        "name": "黄芪",
+        "kind": "post_storage_note",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S07",
+        "name": "番泻叶",
+        "kind": "post_storage_note",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S08",
+        "name": "滑石粉",
+        "kind": "post_storage_note",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S09",
+        "name": "槟榔",
+        "kind": "post_storage_note",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S10",
+        "name": "橘红",
+        "kind": "post_storage_note",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S11",
+        "name": "橘核",
+        "kind": "post_storage_note",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S12",
+        "name": "玉竹",
+        "kind": "clean_storage_control",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S13",
+        "name": "柏子仁",
+        "kind": "clean_storage_control",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      },
+      {
+        "case_id": "S14",
+        "name": "炙黄芪",
+        "kind": "clean_storage_control",
+        "storage_value_exact": true,
+        "storage_evidence_exact": true,
+        "annotations_preserved_separately": true,
+        "status": "passed"
+      }
+    ],
+    "reference_kind": "original_pdf_block_assignment_development_reference",
+    "human_signoff": false,
+    "holdout": false,
+    "external_model_calls": 0,
+    "task_completion_or_general_accuracy_claim": false
+  },
+  "corpus_conservation": {
+    "status": "passed",
+    "entry_ids_unchanged": 616,
+    "raw_and_revised_text_conserved": true,
+    "title_and_existing_overlays_unchanged": true,
+    "other_fields_unchanged": true,
+    "changed_entries": [
+      {
+        "entry_id": "mineru-herb-d53977bed4988a6f76ac8da1",
+        "name": "水蛭"
+      },
+      {
+        "entry_id": "mineru-herb-916607a51c9876e39d1acf59",
+        "name": "陈皮"
+      },
+      {
+        "entry_id": "mineru-herb-cb3d01496c5ba6f34d0417a9",
+        "name": "附子"
+      },
+      {
+        "entry_id": "mineru-herb-1a51745b464e80539ecc72eb",
+        "name": "枳壳"
+      },
+      {
+        "entry_id": "mineru-herb-82ec641a9b51373347caa767",
+        "name": "枳实"
+      },
+      {
+        "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+        "name": "黄芪"
+      },
+      {
+        "entry_id": "mineru-herb-ac2c47b7966ed035431459da",
+        "name": "番泻叶"
+      },
+      {
+        "entry_id": "mineru-herb-6955961569af8578645ee607",
+        "name": "滑石粉"
+      },
+      {
+        "entry_id": "mineru-herb-6426fed1cda4e9db979d7fab",
+        "name": "槟榔"
+      },
+      {
+        "entry_id": "mineru-herb-eafa593c55fff8f451aa8165",
+        "name": "橘红"
+      },
+      {
+        "entry_id": "mineru-herb-4603948dc1388e585406ba8d",
+        "name": "橘核"
+      }
+    ],
+    "new_annotations": 11
+  },
+  "tests": {
+    "modules": 19,
+    "checks": 185,
+    "reports": [
+      {
+        "module": "test_storage_boundary_eval.py",
+        "status": "passed",
+        "total": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_mineru_pharmacopoeia.py",
+        "status": "passed",
+        "total": 17,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_mineru_heading_recovery.py",
+        "status": "passed",
+        "total": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_mineru_captions.py",
+        "status": "passed",
+        "total": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_mineru_revisions.py",
+        "status": "passed",
+        "total": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_mineru_retrieval.py",
+        "status": "passed",
+        "total": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_mineru_guards.py",
+        "status": "passed",
+        "total": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_mineru_research.py",
+        "status": "passed",
+        "total": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_mineru_chat.py",
+        "status": "passed",
+        "total": 16,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_mineru_query.py",
+        "status": "passed",
+        "total": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_mineru_report.py",
+        "status": "passed",
+        "total": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_agent_research.py",
+        "status": "passed",
+        "total": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_d1.py",
+        "status": "passed",
+        "total": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_d2.py",
+        "status": "passed",
+        "total": 18,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_d2_api.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_chat.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_evaluation.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_capabilities.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_runtime_status.py",
+        "status": "passed",
+        "total": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    ],
+    "final_question_fix_retests": [
+      {
+        "module": "test_mineru_guards.py",
+        "status": "passed",
+        "total": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_mineru_query.py",
+        "status": "passed",
+        "total": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_agent_research.py",
+        "status": "passed",
+        "total": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    ],
+    "overlapping_counts_not_added": true
+  },
+  "retrieval_comparison": {
+    "status": "differences_require_review",
+    "questions": 28,
+    "methods": [
+      "name_field",
+      "bm25"
+    ],
+    "changes": [
+      {
+        "case_id": "new-11",
+        "method": "bm25",
+        "before": [
+          "partial_evidence",
+          [
+            [
+              "mineru-herb-916607a51c9876e39d1acf59:field:012",
+              "陈皮"
+            ],
+            [
+              "mineru-herb-916607a51c9876e39d1acf59:field:005",
+              "陈皮"
+            ],
+            [
+              "mineru-herb-916607a51c9876e39d1acf59:field:010",
+              "陈皮"
+            ]
+          ]
+        ],
+        "after": [
+          "partial_evidence",
+          [
+            [
+              "mineru-herb-916607a51c9876e39d1acf59:field:012",
+              "陈皮"
+            ],
+            [
+              "mineru-herb-916607a51c9876e39d1acf59:field:013",
+              "陈皮"
+            ],
+            [
+              "mineru-herb-916607a51c9876e39d1acf59:field:005",
+              "陈皮"
+            ]
+          ]
+        ]
+      }
+    ],
+    "kind": "previous_development_query_regression_not_new_accuracy",
+    "external_model_calls": 0
+  },
+  "retrieval_diff_review": {
+    "status": "reviewed",
+    "original_diff_report": "retrieval_regression.json",
+    "case_id": "new-11",
+    "question": "陈皮该怎样保存？",
+    "method": "bm25",
+    "status_before_after": "partial_evidence",
+    "top1_unchanged": true,
+    "storage_rank_before": null,
+    "storage_rank_after": 2,
+    "general_improvement_claim": false
+  },
+  "delivery": {
+    "status": "passed",
+    "fixed": {
+      "workspace_id": "a0c857923e5748558e7bffbb1bc17480",
+      "revision": 1,
+      "storage_matches_original_block_reference": true,
+      "storage_citation_exact": true,
+      "download_hash_verified": true,
+      "xlsx_storage_value_verified": true
+    },
+    "dynamic_incremental": {
+      "workspace_id": "ad3bd9f871024fe6acf744b22875363e",
+      "revision": 2,
+      "storage_matches_original_block_reference": true,
+      "storage_citation_exact": true,
+      "download_hash_verified": true,
+      "xlsx_storage_value_verified": true
+    },
+    "reused_cells": 8,
+    "v1_file_preserved": true,
+    "external_model_calls": 0,
+    "driver": "synthetic",
+    "real_data": true,
+    "quality_reference_human_signoff": false
+  },
+  "source_switch": {
+    "status": "passed",
+    "old_workspace_id": "2874483ea3c7454196b3f530ab999853",
+    "old_file_sha256_unchanged": true,
+    "old_result_not_silently_rewritten": true,
+    "mixed_source_incremental_http_status": 409,
+    "no_child_workspace_created": true,
+    "external_model_calls": 0
+  },
+  "chat_browser": {
+    "status": "passed",
+    "question": "整理白术和黄芪的功效、注意事项，保留出处并生成表格",
+    "data": "real_local",
+    "driver": "synthetic",
+    "external_model_calls": 0,
+    "chat_homepage_submission": true,
+    "record_count": 2,
+    "inline_download_hash_verified": true,
+    "reload_restores_task": true,
+    "chat_followup_revision": true,
+    "reused_cells": 8,
+    "v1_preserved": true,
+    "unknown_requirements_not_enqueued": true,
+    "javascript_errors": [],
+    "blocked_external_assets": 0,
+    "font_layout_reviewed": false
+  },
+  "runtime": [
+    {
+      "port": 7896,
+      "runtime_fresh": true,
+      "tracing": true,
+      "dataops": {
+        "agent": false,
+        "driver": "disabled",
+        "external_model_enabled": false,
+        "question_compiler": "local_bounded_grammar_v1"
+      },
+      "readiness_http": {
+        "herbs": 200,
+        "research": 200
+      },
+      "storage_chat": [
+        {
+          "question": "黄芪如何贮藏",
+          "status": "passed",
+          "unrelated_assay_note_absent": true
+        },
+        {
+          "question": "黄芪的贮藏",
+          "status": "passed",
+          "unrelated_assay_note_absent": true
+        }
+      ]
+    },
+    {
+      "port": 7912,
+      "runtime_fresh": true,
+      "tracing": true,
+      "dataops": {
+        "agent": true,
+        "driver": "synthetic",
+        "external_model_enabled": false,
+        "question_compiler": "local_bounded_grammar_v1"
+      },
+      "readiness_http": {
+        "herbs": 200,
+        "research": 200
+      },
+      "storage_chat": [
+        {
+          "question": "黄芪如何贮藏",
+          "status": "passed",
+          "unrelated_assay_note_absent": true
+        },
+        {
+          "question": "黄芪的贮藏",
+          "status": "passed",
+          "unrelated_assay_note_absent": true
+        }
+      ]
+    }
+  ],
+  "trace": {
+    "status": "passed",
+    "workspace_id": "ad3bd9f871024fe6acf744b22875363e",
+    "trace_id": "bbf6cc90e3bbb68486ba466f9cd6dffe",
+    "source_index_matches_v3": true,
+    "metadata_expanded_before_comparison": true,
+    "external_model_calls": 0
+  },
+  "old_index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+  "new_index_sha256": "ae9910c2149820930bec103b227eee04f2287f8158501dcebee3ac7f5b5558a3",
+  "source_block_sha256": "a1eed2cb59097eb7b404b638b868f6aea5859ffc2749a07101f3007cb63f6001",
+  "additional_question_fix": {
+    "question": "黄芪如何贮藏",
+    "before_status": "name_not_resolved",
+    "after_status": "candidates"
+  },
+  "external_model_calls": 0,
+  "human_signoff": false,
+  "holdout": false,
+  "business_image_built": false
+}

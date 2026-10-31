@@ -1,0 +1,21 @@
+{
+  "version": "research-selection-v1",
+  "reference_status": "author_source_checked_development_not_blind_pending_human_signoff",
+  "cases": [
+    {
+      "id": "S01",
+      "question": "从白术、黄芪、川芎、甘草、大黄中，核对两条功效和注意字段都有独立原文的记录，保留药用部位、出处并生成表格；饮片字段须保留原作用域。",
+      "goal": {"query": {"names": ["白术", "黄芪", "川芎", "甘草", "大黄"], "limit": 20}, "attributes": ["medicinal_part"], "document_fields": ["功能与主治", "注意"], "research": {"target_count": 2, "monograph_only": false}},
+      "expected_status": "complete",
+      "type": "candidate_selection"
+    },
+    {
+      "id": "S02",
+      "question": "给上一版白术和黄芪的功效表补上注意字段，保留旧记录、旧字段和出处；没有独立原文就标记缺失，不更换药材。",
+      "goal": {"query": {"names": ["白术", "黄芪"], "limit": 20}, "attributes": ["medicinal_part"], "document_fields": ["功能与主治", "注意"], "research": {"target_count": 2, "monograph_only": false}},
+      "parent_fields": ["功能与主治"],
+      "expected_status": "partial",
+      "type": "incremental_missing_field"
+    }
+  ]
+}

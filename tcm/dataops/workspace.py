@@ -136,7 +136,7 @@ class Workspaces:
 
     def project(self, owner, identifier, **updates):
         """UI projection only; native checkpoints are the sole graph recovery authority."""
-        allowed = {'status', 'pending', 'progress', 'result', 'artifact', 'error', 'job_id'}
+        allowed = {'status', 'pending', 'progress', 'result', 'artifact', 'error', 'job_id', 'goal_understanding'}
         if set(updates) - allowed:
             raise Conflict('Invalid projection fields')
         with closing(sqlite3.connect(self.path)) as db, db:

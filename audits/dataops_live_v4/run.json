@@ -1,0 +1,1230 @@
+{
+  "kind": "known_synthetic_development_compatibility_not_business_accuracy",
+  "run_directory": "var/dataops_live_v4_20261030",
+  "summary": {
+    "status": "failed",
+    "kind": "three_known_development_synthetic_provider_pilot",
+    "results": [
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "stop_reason": null,
+        "artifact_present": true,
+        "verification_action_completed": true,
+        "finish_action_completed": true,
+        "model_diagnostics": null,
+        "workspace_id": "380ef675d48b490484bf0026161a29e5",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2625,
+        "host_policy_steps_including_parent": 6,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.6773406200081808,
+        "case_id": "B01",
+        "strategy": "F"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "stop_reason": null,
+        "artifact_present": true,
+        "verification_action_completed": true,
+        "finish_action_completed": true,
+        "model_diagnostics": null,
+        "workspace_id": "4c70addb7ecc4b5ba4593b5f509493d2",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2839,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 0,
+        "external_model_calls": 1,
+        "provider_usage": [
+          {
+            "input_tokens": 493,
+            "output_tokens": 70,
+            "total_tokens": 563,
+            "input_token_details": {
+              "cache_read": 256
+            },
+            "output_token_details": {}
+          }
+        ],
+        "cost": null,
+        "elapsed_seconds": 1.3629618450067937,
+        "case_id": "B01",
+        "strategy": "P"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "stop_reason": null,
+        "artifact_present": true,
+        "verification_action_completed": true,
+        "finish_action_completed": true,
+        "model_diagnostics": null,
+        "workspace_id": "fe0b0f2d5e5846fdbf602b0e38edc7c8",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 8,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2915,
+        "host_policy_steps_including_parent": 8,
+        "planning_stub_steps": 0,
+        "external_model_calls": 8,
+        "provider_usage": [
+          {
+            "input_tokens": 1551,
+            "output_tokens": 40,
+            "total_tokens": 1591,
+            "input_token_details": {
+              "cache_read": 0
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1685,
+            "output_tokens": 44,
+            "total_tokens": 1729,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1767,
+            "output_tokens": 69,
+            "total_tokens": 1836,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1896,
+            "output_tokens": 80,
+            "total_tokens": 1976,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1923,
+            "output_tokens": 42,
+            "total_tokens": 1965,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1948,
+            "output_tokens": 48,
+            "total_tokens": 1996,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1990,
+            "output_tokens": 43,
+            "total_tokens": 2033,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 2057,
+            "output_tokens": 40,
+            "total_tokens": 2097,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          }
+        ],
+        "cost": null,
+        "elapsed_seconds": 7.518518689001212,
+        "case_id": "B01",
+        "strategy": "A"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "stop_reason": null,
+        "artifact_present": true,
+        "verification_action_completed": true,
+        "finish_action_completed": true,
+        "model_diagnostics": null,
+        "workspace_id": "873578b54c114f659ee8a6861b74e98f",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 7,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2558,
+        "host_policy_steps_including_parent": 7,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.6753218069934519,
+        "case_id": "B04",
+        "strategy": "F"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "stop_reason": null,
+        "artifact_present": true,
+        "verification_action_completed": true,
+        "finish_action_completed": true,
+        "model_diagnostics": null,
+        "workspace_id": "2421370fd45344f58a673f598c3d1f39",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 8,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2772,
+        "host_policy_steps_including_parent": 8,
+        "planning_stub_steps": 0,
+        "external_model_calls": 1,
+        "provider_usage": [
+          {
+            "input_tokens": 493,
+            "output_tokens": 70,
+            "total_tokens": 563,
+            "input_token_details": {
+              "cache_read": 256
+            },
+            "output_token_details": {}
+          }
+        ],
+        "cost": null,
+        "elapsed_seconds": 1.5780275569995865,
+        "case_id": "B04",
+        "strategy": "P"
+      },
+      {
+        "status": "failed",
+        "outcome": "partial",
+        "errors": [
+          "unexpected_task_status"
+        ],
+        "stop_reason": "model_budget",
+        "artifact_present": true,
+        "verification_action_completed": true,
+        "finish_action_completed": false,
+        "model_diagnostics": null,
+        "workspace_id": "7d0967cb830c452a9d388048ce44447c",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 8,
+        "leaf_reads": 3,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": []
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2595,
+        "host_policy_steps_including_parent": 8,
+        "planning_stub_steps": 0,
+        "external_model_calls": 8,
+        "provider_usage": [
+          {
+            "input_tokens": 1551,
+            "output_tokens": 39,
+            "total_tokens": 1590,
+            "input_token_details": {
+              "cache_read": 1152
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1706,
+            "output_tokens": 44,
+            "total_tokens": 1750,
+            "input_token_details": {
+              "cache_read": 1152
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1836,
+            "output_tokens": 79,
+            "total_tokens": 1915,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1814,
+            "output_tokens": 112,
+            "total_tokens": 1926,
+            "input_token_details": {
+              "cache_read": 1152
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1803,
+            "output_tokens": 111,
+            "total_tokens": 1914,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1850,
+            "output_tokens": 66,
+            "total_tokens": 1916,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1976,
+            "output_tokens": 47,
+            "total_tokens": 2023,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1975,
+            "output_tokens": 51,
+            "total_tokens": 2026,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          }
+        ],
+        "cost": null,
+        "elapsed_seconds": 7.82014447900292,
+        "case_id": "B04",
+        "strategy": "A"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "stop_reason": null,
+        "artifact_present": true,
+        "verification_action_completed": true,
+        "finish_action_completed": true,
+        "model_diagnostics": null,
+        "workspace_id": "f31530597cba45fdacddc71fd3e23792",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 5,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2722,
+        "host_policy_steps_including_parent": 11,
+        "planning_stub_steps": 0,
+        "external_model_calls": 0,
+        "provider_usage": null,
+        "cost": null,
+        "elapsed_seconds": 0.9844435490085743,
+        "case_id": "R01",
+        "strategy": "F"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "stop_reason": null,
+        "artifact_present": true,
+        "verification_action_completed": true,
+        "finish_action_completed": true,
+        "model_diagnostics": null,
+        "workspace_id": "29c2826f2171427a9359fb015a7e0e4d",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2921,
+        "host_policy_steps_including_parent": 13,
+        "planning_stub_steps": 0,
+        "external_model_calls": 2,
+        "provider_usage": [
+          {
+            "input_tokens": 494,
+            "output_tokens": 70,
+            "total_tokens": 564,
+            "input_token_details": {
+              "cache_read": 256
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 496,
+            "output_tokens": 70,
+            "total_tokens": 566,
+            "input_token_details": {
+              "cache_read": 256
+            },
+            "output_token_details": {}
+          }
+        ],
+        "cost": null,
+        "elapsed_seconds": 2.543543343010242,
+        "case_id": "R01",
+        "strategy": "P"
+      },
+      {
+        "status": "passed",
+        "outcome": "complete",
+        "errors": [],
+        "stop_reason": null,
+        "artifact_present": true,
+        "verification_action_completed": true,
+        "finish_action_completed": true,
+        "model_diagnostics": null,
+        "workspace_id": "7cef6ff5c03d4b46976a92456736e39d",
+        "route": "shared_graph_tools_and_validator",
+        "tool_calls": 6,
+        "leaf_reads": 2,
+        "logical_adapter_reads": [
+          {
+            "kind": "query"
+          },
+          {
+            "kind": "inspect",
+            "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+            "fields": [
+              "贮藏"
+            ]
+          }
+        ],
+        "policy_context_max_bytes": 2905,
+        "host_policy_steps_including_parent": 13,
+        "planning_stub_steps": 0,
+        "external_model_calls": 13,
+        "provider_usage": [
+          {
+            "input_tokens": 1552,
+            "output_tokens": 39,
+            "total_tokens": 1591,
+            "input_token_details": {
+              "cache_read": 1280
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1685,
+            "output_tokens": 42,
+            "total_tokens": 1727,
+            "input_token_details": {
+              "cache_read": 1280
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1765,
+            "output_tokens": 65,
+            "total_tokens": 1830,
+            "input_token_details": {
+              "cache_read": 1280
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1890,
+            "output_tokens": 77,
+            "total_tokens": 1967,
+            "input_token_details": {
+              "cache_read": 1408
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1914,
+            "output_tokens": 46,
+            "total_tokens": 1960,
+            "input_token_details": {
+              "cache_read": 1408
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1948,
+            "output_tokens": 47,
+            "total_tokens": 1995,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 2019,
+            "output_tokens": 51,
+            "total_tokens": 2070,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1554,
+            "output_tokens": 38,
+            "total_tokens": 1592,
+            "input_token_details": {
+              "cache_read": 1152
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1829,
+            "output_tokens": 59,
+            "total_tokens": 1888,
+            "input_token_details": {
+              "cache_read": 1152
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 1946,
+            "output_tokens": 112,
+            "total_tokens": 2058,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 2072,
+            "output_tokens": 50,
+            "total_tokens": 2122,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 2045,
+            "output_tokens": 44,
+            "total_tokens": 2089,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          },
+          {
+            "input_tokens": 2113,
+            "output_tokens": 47,
+            "total_tokens": 2160,
+            "input_token_details": {
+              "cache_read": 1024
+            },
+            "output_token_details": {}
+          }
+        ],
+        "cost": null,
+        "elapsed_seconds": 11.92521398900135,
+        "case_id": "R01",
+        "strategy": "A"
+      }
+    ],
+    "actual_provider_requests": 33,
+    "cost": null,
+    "real_data_or_history_sent": false,
+    "holdout_or_business_accuracy_claim": false
+  },
+  "dispatch": [
+    {
+      "sequence": 1,
+      "bytes": 1325,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "set_plan"
+        ],
+        "usage": {
+          "prompt_tokens": 493,
+          "completion_tokens": 70,
+          "total_tokens": 563
+        }
+      }
+    },
+    {
+      "sequence": 2,
+      "bytes": 5639,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "query_records"
+        ],
+        "usage": {
+          "prompt_tokens": 1551,
+          "completion_tokens": 40,
+          "total_tokens": 1591
+        }
+      }
+    },
+    {
+      "sequence": 3,
+      "bytes": 6031,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "inspect_sources"
+        ],
+        "usage": {
+          "prompt_tokens": 1685,
+          "completion_tokens": 44,
+          "total_tokens": 1729
+        }
+      }
+    },
+    {
+      "sequence": 4,
+      "bytes": 6313,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "lookup_document_fields"
+        ],
+        "usage": {
+          "prompt_tokens": 1767,
+          "completion_tokens": 69,
+          "total_tokens": 1836
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "bytes": 6765,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "read_evidence"
+        ],
+        "usage": {
+          "prompt_tokens": 1896,
+          "completion_tokens": 80,
+          "total_tokens": 1976
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "bytes": 6882,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "compare_fields"
+        ],
+        "usage": {
+          "prompt_tokens": 1923,
+          "completion_tokens": 42,
+          "total_tokens": 1965
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "bytes": 7033,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "build_artifact"
+        ],
+        "usage": {
+          "prompt_tokens": 1948,
+          "completion_tokens": 48,
+          "total_tokens": 1996
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "bytes": 7132,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "verify_delivery"
+        ],
+        "usage": {
+          "prompt_tokens": 1990,
+          "completion_tokens": 43,
+          "total_tokens": 2033
+        }
+      }
+    },
+    {
+      "sequence": 9,
+      "bytes": 7394,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "finish_task"
+        ],
+        "usage": {
+          "prompt_tokens": 2057,
+          "completion_tokens": 40,
+          "total_tokens": 2097
+        }
+      }
+    },
+    {
+      "sequence": 10,
+      "bytes": 1316,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "set_plan"
+        ],
+        "usage": {
+          "prompt_tokens": 493,
+          "completion_tokens": 70,
+          "total_tokens": 563
+        }
+      }
+    },
+    {
+      "sequence": 11,
+      "bytes": 5630,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "query_records"
+        ],
+        "usage": {
+          "prompt_tokens": 1551,
+          "completion_tokens": 39,
+          "total_tokens": 1590
+        }
+      }
+    },
+    {
+      "sequence": 12,
+      "bytes": 6016,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "inspect_sources"
+        ],
+        "usage": {
+          "prompt_tokens": 1706,
+          "completion_tokens": 44,
+          "total_tokens": 1750
+        }
+      }
+    },
+    {
+      "sequence": 13,
+      "bytes": 6430,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "lookup_document_fields"
+        ],
+        "usage": {
+          "prompt_tokens": 1836,
+          "completion_tokens": 79,
+          "total_tokens": 1915
+        }
+      }
+    },
+    {
+      "sequence": 14,
+      "bytes": 6491,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "ask_user"
+        ],
+        "usage": {
+          "prompt_tokens": 1814,
+          "completion_tokens": 112,
+          "total_tokens": 1926
+        }
+      }
+    },
+    {
+      "sequence": 15,
+      "bytes": 6450,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "ask_user"
+        ],
+        "usage": {
+          "prompt_tokens": 1803,
+          "completion_tokens": 111,
+          "total_tokens": 1914
+        }
+      }
+    },
+    {
+      "sequence": 16,
+      "bytes": 6664,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "lookup_document_fields"
+        ],
+        "usage": {
+          "prompt_tokens": 1850,
+          "completion_tokens": 66,
+          "total_tokens": 1916
+        }
+      }
+    },
+    {
+      "sequence": 17,
+      "bytes": 7007,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "build_artifact"
+        ],
+        "usage": {
+          "prompt_tokens": 1976,
+          "completion_tokens": 47,
+          "total_tokens": 2023
+        }
+      }
+    },
+    {
+      "sequence": 18,
+      "bytes": 7044,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "verify_delivery"
+        ],
+        "usage": {
+          "prompt_tokens": 1975,
+          "completion_tokens": 51,
+          "total_tokens": 2026
+        }
+      }
+    },
+    {
+      "sequence": 19,
+      "bytes": 1322,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "set_plan"
+        ],
+        "usage": {
+          "prompt_tokens": 494,
+          "completion_tokens": 70,
+          "total_tokens": 564
+        }
+      }
+    },
+    {
+      "sequence": 20,
+      "bytes": 1333,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "set_plan"
+        ],
+        "usage": {
+          "prompt_tokens": 496,
+          "completion_tokens": 70,
+          "total_tokens": 566
+        }
+      }
+    },
+    {
+      "sequence": 21,
+      "bytes": 5636,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "query_records"
+        ],
+        "usage": {
+          "prompt_tokens": 1552,
+          "completion_tokens": 39,
+          "total_tokens": 1591
+        }
+      }
+    },
+    {
+      "sequence": 22,
+      "bytes": 6022,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "inspect_sources"
+        ],
+        "usage": {
+          "prompt_tokens": 1685,
+          "completion_tokens": 42,
+          "total_tokens": 1727
+        }
+      }
+    },
+    {
+      "sequence": 23,
+      "bytes": 6294,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "lookup_document_fields"
+        ],
+        "usage": {
+          "prompt_tokens": 1765,
+          "completion_tokens": 65,
+          "total_tokens": 1830
+        }
+      }
+    },
+    {
+      "sequence": 24,
+      "bytes": 6722,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "read_evidence"
+        ],
+        "usage": {
+          "prompt_tokens": 1890,
+          "completion_tokens": 77,
+          "total_tokens": 1967
+        }
+      }
+    },
+    {
+      "sequence": 25,
+      "bytes": 6821,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "build_artifact"
+        ],
+        "usage": {
+          "prompt_tokens": 1914,
+          "completion_tokens": 46,
+          "total_tokens": 1960
+        }
+      }
+    },
+    {
+      "sequence": 26,
+      "bytes": 6921,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "verify_delivery"
+        ],
+        "usage": {
+          "prompt_tokens": 1948,
+          "completion_tokens": 47,
+          "total_tokens": 1995
+        }
+      }
+    },
+    {
+      "sequence": 27,
+      "bytes": 7201,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "finish_task"
+        ],
+        "usage": {
+          "prompt_tokens": 2019,
+          "completion_tokens": 51,
+          "total_tokens": 2070
+        }
+      }
+    },
+    {
+      "sequence": 28,
+      "bytes": 5647,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "query_records"
+        ],
+        "usage": {
+          "prompt_tokens": 1554,
+          "completion_tokens": 38,
+          "total_tokens": 1592
+        }
+      }
+    },
+    {
+      "sequence": 29,
+      "bytes": 6454,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "lookup_document_fields"
+        ],
+        "usage": {
+          "prompt_tokens": 1829,
+          "completion_tokens": 59,
+          "total_tokens": 1888
+        }
+      }
+    },
+    {
+      "sequence": 30,
+      "bytes": 6815,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "read_evidence"
+        ],
+        "usage": {
+          "prompt_tokens": 1946,
+          "completion_tokens": 112,
+          "total_tokens": 2058
+        }
+      }
+    },
+    {
+      "sequence": 31,
+      "bytes": 7189,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "build_artifact"
+        ],
+        "usage": {
+          "prompt_tokens": 2072,
+          "completion_tokens": 50,
+          "total_tokens": 2122
+        }
+      }
+    },
+    {
+      "sequence": 32,
+      "bytes": 7112,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "verify_delivery"
+        ],
+        "usage": {
+          "prompt_tokens": 2045,
+          "completion_tokens": 44,
+          "total_tokens": 2089
+        }
+      }
+    },
+    {
+      "sequence": 33,
+      "bytes": 7376,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "finish_task"
+        ],
+        "usage": {
+          "prompt_tokens": 2113,
+          "completion_tokens": 47,
+          "total_tokens": 2160
+        }
+      }
+    }
+  ],
+  "source_code": {
+    "tcm/dataops/api.py": "e6a3be4c6129bde51e84aee5877ac5543707cd5f35280682425451a625dca4a5",
+    "tcm/dataops/workspace.py": "2fdc9da99116206fd1737854b7c2e4861929777ab56334ccc9c4e14b5c58e543",
+    "tcm/dataops/model.py": "df858c7889e0b99840e646484dda07db70c5d59af2b8596a3efcb16eb999de59",
+    "tcm/dataops/evaluation.py": "2c0b59267a1a3caa6d89c28c1bdaf49dc0d585e7b0d57aeaa6d3284019a248ac",
+    "tcm/dataops/artifacts.py": "ae076a37723d4ba4279b9ccbf1023df5e9bb7b2ec99539b1a490c3315a9c938a",
+    "tcm/dataops/baseline.py": "e6b17f3e5c8d3630d30da479b1d58790c1dcd3e026200b02fffbaf5a3cd5b8f5",
+    "tcm/dataops/goal_proposal.py": "8c1f3349b528564ce8661c76d34e46c9144e59f5fac5a2d459ed9e81d6f27b7c",
+    "tcm/dataops/planning.py": "dd0d2d76ca2ed40c7e33b368ce52a7a266d40e56b05af4a72184495cb1c6201c",
+    "tcm/dataops/graph.py": "61e11841995031eb24c4e563833428294f2193e92de53d5773c976b69b361d5e",
+    "tcm/dataops/jobs.py": "ad6380edecf7580bcceec84b4a5edf4506288f81f62ad4cb51558dd64a6a8ed0",
+    "tcm/dataops/data_access.py": "b5c74a8c75d5ceae5902bb735e1c05cc53df0b1bf21265eed500fc4051525cfb",
+    "tcm/dataops/contracts.py": "d0e115e4ceee29dde358e28e9419522d7b9269fab7c7e71e27442a39e3ea6a0f",
+    "tcm/dataops/__init__.py": "a1259b05d1579d154c72b88922394c4012039dc4f85305b8251d2e80515f0ea7",
+    "tcm/dataops/chat.py": "a09621bf21c515d8e569208b887aff0bae4305c24fe05d44f9aa16f2d27e848f",
+    "tcm/dataops/service.py": "3b00149285a970476282dc66ba4f63fa3fa50943d0a57d60c8ddfb76bda8aa86",
+    "scripts/eval_dataops_live.py": "6990628ac61075a02df31f71f92ac7bb1cdce1915c4b8e7983b2818037d962ce",
+    "tests/dataops_fixture.py": "0b4ad6a49af8f1bd37a6f7494722c1bad52df52031e7d39e8a611405f866cb6a",
+    "tcm/tracing.py": "95e54ce012d235b41bf60eecf0cd14a939d85f303a38326ee6f50f8ec0889033"
+  },
+  "original_file_hashes": {
+    "protocol.json": "ced083528146a006d9a3c363e443ac3d70f3c442d9b7809e222a98c9f52e54e3",
+    "summary.json": "264863d855c0e5fd7ab543217b945d479d0c386c4395753feac69cb63d0f690f",
+    "dispatch.json": "7a2cdd80f4f7c3e19a48f66ad4444ec3724d69167648bacd12ceef380adf5444",
+    "reference.json": "6699547cc9abac19a23b27dc857e9118bc0fde5b8388a4b1e4ef789afb77287e",
+    "source_code.json": "f484297dafe27a801aceffdb5bc7d2ac44aa1c3540079fa29a428e3b77635773",
+    "progress.json": "3c25742fe8dc470a4ecfa53d0954c49225e5b161b07e6878f7f398dc518d51c9"
+  },
+  "V3_original_file_hashes_verified_unchanged": true,
+  "new_source_changes_this_run": false
+}

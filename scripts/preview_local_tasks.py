@@ -18,6 +18,8 @@ def main():
     parser.add_argument('--with-intent-model',action='store_true',
                         help='Allow one configured model call with only an unmatched question; no source text/history')
     parser.add_argument('--diseases',type=Path,help='Optional completed disease source catalog for local analysis')
+    parser.add_argument('--pharmacopoeia-index', type=Path, default=ROOT/'var/mineru_retrieval_v3',
+                        help='Immutable document index; v3 separates post-storage notes; pin an older version only for replay')
     parser.add_argument('--dense-python', type=Path,
                         help='Optional local Python with ONNX/tokenizers/numpy; enables existing local BGE cache, no downloads')
     parser.add_argument('--mcp-python',type=Path,help='Optional isolated MCP SDK runtime; use stdio read-only report tools')
@@ -27,7 +29,20 @@ def main():
     parser.add_argument('--synthetic-loop',action='store_true',help='Enable authenticated synthetic loop lifecycle; no external models')
     parser.add_argument('--dataops-synthetic', action='store_true',
                         help='Enable D2 observation/HITL/revision with a labelled local model substitute; no network')
+    parser.add_argument('--with-langfuse', action='store_true', help='Export DataOps traces to configured Langfuse')
+    parser.add_argument('--rag',action='store_true',help='Enable release-bound original/cited-answer page at /rag')
+    parser.add_argument('--rag-model',action='store_true',help='Allow one configured RAG generation request per submitted task; requires --rag')
+    parser.add_argument('--rag-release',type=Path,default=ROOT/'var/data_releases/r1_20261030')
+    parser.add_argument('--research-selection', choices=('fixed','synthetic','native'),
+                        help='Enable bounded candidate selection at /dataops/research; native permits up to 10 model requests per task')
+    parser.add_argument('--research-goal-model',action='store_true',
+                        help='Offer an explicit one-request question-understanding checkbox; requires --research-selection')
+    parser.add_argument('--langfuse-env', type=Path, default=ROOT/'var/langfuse_local/app.env',
+                        help='Private tracing configuration; only tracing keys are loaded')
     args = parser.parse_args()
+    if args.rag_model and not args.rag:parser.error('--rag-model requires --rag')
+    if args.research_goal_model and not args.research_selection:parser.error('--research-goal-model requires --research-selection')
+    if (args.rag or args.research_selection) and not (args.rag_release/'release.json').is_file():parser.error('RAG release is missing')
     if not 1 <= args.port <= 65535:
         parser.error('--port must be between 1 and 65535')
     missing_modules = [name for name in ('uvicorn', 'fastapi', 'langgraph', 'langchain_openai',
@@ -51,7 +66,7 @@ def main():
         'PHARMACOPOEIA_PDF_FULL': ROOT / 'data/《中国药典》2025年版 一部 全本.pdf',
     }
     directories = {
-        'PHARMACOPOEIA_INDEX': ROOT / 'var/mineru_retrieval_v2',
+        'PHARMACOPOEIA_INDEX': args.pharmacopoeia_index.resolve(),
         'ETCM_SOURCE_ROOT': ROOT.parent / 'HDCTI/dataset/ETCM2.0',
     }
     missing = [str(p) for p in files.values() if not p.is_file()]
@@ -73,8 +88,14 @@ def main():
               'tcm_local_tasks_' + hashlib.sha256(str(state).encode()).hexdigest()[:16])
     environment = {
         'ENABLE_DATAOPS': '1', 'DATAOPS_ROOT': str(state / 'dataops'),
+        'ENABLE_RAG_WORKBENCH':'1' if args.rag else '0',
+        'ENABLE_RAG_GENERATION':'1' if args.rag_model else '0',
+        'RAG_RELEASE_PATH':str(args.rag_release.resolve()),'RAG_RUN_DB':str(state/'rag_answers.sqlite3'),
         'ENABLE_DATAOPS_AGENT': '1' if args.dataops_synthetic else '0',
         'DATAOPS_DRIVER': 'synthetic' if args.dataops_synthetic else 'disabled',
+        'ENABLE_DATAOPS_RESEARCH':'1' if args.research_selection else '0',
+        'DATAOPS_RESEARCH_DRIVER':args.research_selection or 'disabled',
+        'ENABLE_DATAOPS_RESEARCH_GOAL_MODEL':'1' if args.research_goal_model else '0',
         'ENABLE_SYNTHETIC_LOOP':'1' if args.synthetic_loop else '0',
         'RESEARCH_TOOLS_ONLY': '1', 'ENABLE_NATURAL_ROUTING': '1',
         'ENABLE_RESEARCH_TASKS': '1', 'ENABLE_RESEARCH_PLAN_JOBS':'1', 'ENABLE_RESEARCH_BOOKMARKS': '1',
@@ -83,6 +104,7 @@ def main():
         'ENABLE_INTENT_PLANNER':'1' if args.with_intent_model else '0',
         'ENABLE_WEB_SEARCH': '0', 'ENABLE_IMAGE_ANALYSIS': '0', 'ENABLE_SPEECH': '0',
         'LANGCHAIN_TRACING_V2': 'false', 'LANGSMITH_TRACING': 'false',
+        'ENABLE_LANGFUSE': '0', 'LANGFUSE_TRACING_ENABLED': 'false',
         'RESEARCH_JOB_DSN':'', 'RESEARCH_CHECKPOINT_DSN':'',
         'CHAT_MODEL': 'local-demo-disabled', 'CHAT_API_KEY': 'local-demo-disabled',
         'CHAT_BASE_URL': 'http://127.0.0.1:9/v1',
@@ -130,6 +152,26 @@ def main():
                    os.getenv('CHAT_'+key) or configured.get('CHAT_'+key))
             if not value or value=='local-demo-disabled':parser.error('Intent model configuration is missing')
             environment['INTENT_'+key]=value
+    if args.rag_model or args.research_selection=='native' or args.research_goal_model:
+        from dotenv import dotenv_values
+        configured=dotenv_values(ROOT/'.env')
+        for key in ('MODEL','API_KEY','BASE_URL'):
+            value=os.getenv('RAG_'+key) or configured.get('RAG_'+key) or configured.get('CHAT_'+key)
+            if not value or value=='local-demo-disabled':parser.error('RAG model configuration is missing')
+            environment['RAG_'+key]=value
+    if args.with_langfuse:
+        if importlib.util.find_spec('langfuse') is None:
+            parser.error('Install optional requirements-observability.txt first')
+        if not args.langfuse_env.is_file():
+            parser.error('Langfuse configuration missing; run scripts.setup_langfuse_local init')
+        from dotenv import dotenv_values
+        tracing = dotenv_values(args.langfuse_env)
+        for key in ('LANGFUSE_BASE_URL', 'LANGFUSE_PUBLIC_KEY', 'LANGFUSE_SECRET_KEY'):
+            if not tracing.get(key):
+                parser.error('Langfuse configuration incomplete')
+            environment[key] = tracing[key]
+        environment.update(ENABLE_LANGFUSE='1', LANGFUSE_TRACING_ENABLED='true',
+                           TCM_TRACE_CONTENT=tracing.get('TCM_TRACE_CONTENT', '0'))
     state.mkdir(parents=True, exist_ok=True, mode=0o700)
     manifest = state_files['SOURCE_MANIFEST_PATH']
     if not manifest.exists():
@@ -150,8 +192,17 @@ def main():
     print(f'任务页：http://127.0.0.1:{args.port}/research-tasks', flush=True)
     print(f'聊天页：http://127.0.0.1:{args.port}/', flush=True)
     print(f'资料工作台：http://127.0.0.1:{args.port}/dataops', flush=True)
-    print(('仅未识别问句可调用意图模型一次；本地资料和会话历史不外发。' if args.with_intent_model else
-           '本地资料模式；外部模型关闭。')+' 联网工具和追踪关闭。Ctrl+C停止，同一状态目录可恢复记录。',flush=True)
+    if args.rag:print(f'引用资料页：http://127.0.0.1:{args.port}/rag',flush=True)
+    if args.research_selection:print(f'候选核对任务：http://127.0.0.1:{args.port}/dataops/research（{args.research_selection}）',flush=True)
+    if args.research_goal_model:print('问句理解：仅勾选模型理解时，每个请求编号最多一次模型调用；任务执行开关独立。',flush=True)
+    model_modes=[]
+    if args.with_intent_model:model_modes.append('未识别问句可调用意图模型一次')
+    if args.rag_model:model_modes.append('引用回答可按需调用模型一次')
+    if args.research_selection=='native':model_modes.append('候选任务每任务最多10次模型请求')
+    if args.research_goal_model:model_modes.append('勾选模型理解时每请求编号最多一次，执行开关独立')
+    print(('；'.join(model_modes) if model_modes else '本地资料模式；外部模型关闭。')+' 联网工具关闭。'+
+          ('DataOps Langfuse追踪已启用。' if args.with_langfuse else '追踪关闭。')+
+          'Ctrl+C停止，同一状态目录可恢复记录。',flush=True)
     import uvicorn
     uvicorn.run('app:app', host='127.0.0.1', port=args.port, log_level='warning')
 

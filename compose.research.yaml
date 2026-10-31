@@ -40,7 +40,7 @@ services:
     volumes:
       - research-memory:/app-memory
       - type: bind
-        source: ./var/mineru_retrieval_v2
+        source: ./var/mineru_retrieval_v3
         target: /research-index
         read_only: true
         bind:

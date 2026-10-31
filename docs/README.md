@@ -1,8 +1,10 @@
 # 文档导航
 
-更新：2026-10-30。当前主线收敛为**DataOps跨源资料核对与持续交付**。统一大纲管理任务状态，DataOps方案管理需求/技术/评测；D1固定交付与D2持久观察循环/人工等待/增量v2已做本地验收；真实模型V2仅三道合成开发题：F/P各3/3、A为0/3；网页明确标注合成替身。方剂研究、旧结构化分析及早期收题方案均作为历史参考，不能覆盖当前排期。
+更新：2026-10-31。当前主线为**版本化数据与benchmark → 同版本检索对照 → 带引用RAG → Agent任务整合与部署**。统一大纲管理R1–R4状态，新数据RAG方案定义契约，DataOps方案保留为工作区/交付子方案。R1/R2已交付（R2首测9/10保留），R3受限引用页和小样本真实调用已验收，整体模型收益仍未证；**R4工程/本地镜像已验收，真实A未通过；执行上下文V2已离线修复，有界Goal问句已接通，新8题理解模型6/8仍有失败；组合新两题G/A均完成交付，尚无多轮增益；下一项收敛求职演示与复现材料**。普通聊天/DataOps保持原固定/合成模式，7912新引用页可由按钮发起一次生成。方剂研究等旧候选与早期排期不覆盖当前主线。
 
-**阅读顺序：** 开发先读统一大纲→DataOps方案→架构决策；运行现有功能看使用说明。旧演示指南保留历史业务；新工作台使用[DataOps演示](DATAOPS_DEMO.md)。无需顺序阅读全部里程碑。
+真实模型原始成绩保留：V4三题F/P各3/3、A为2/3；G V1十二题规则/模型各8/12，尚未稳定接入网页。G2字段语义与名称候选问题并入R4，不作为R1–R3前置任务。
+
+**阅读顺序：** 开发先读统一大纲→数据/RAG/benchmark方案；涉及工作区/表格时再看DataOps子方案，选型追溯看架构决策。运行现有功能看使用说明和[DataOps演示](DATAOPS_DEMO.md)，新RAG运行与限制见[引用资料页说明](RAG_CITED_ANSWER.md)。
 
 ## 当前入口
 
@@ -11,12 +13,25 @@
 | 安装、能力和目录 | [项目README](../README.md) |
 | 普通用户怎么问、怎么看结果 | [使用说明与示例](NEW_USER_GUIDE.md) |
 | 当前进度与后续任务 | [统一大纲](TCM_PROJECT_ROADMAP.md) |
+| 当前数据、RAG、benchmark与四阶段契约 | [数据/RAG/benchmark方案](DATA_RAG_BENCHMARK_PLAN.md) |
+| 输入与执行组合、真实调用及策略取舍 | [组合验收](../audits/research_combined_v1/README.md)、[当前运行](RESEARCH_SELECTION_AGENT.md) |
+| 问句Goal、两种核对语义与真实理解失败 | [使用说明](RESEARCH_SELECTION_AGENT.md)、[本轮验收](../audits/research_question_v1/README.md) |
+| Harness V2执行层修复（离线） | [已完成与边界](../audits/research_harness_v2/README.md) |
+| R4候选任务、真实负结果和本地容器 | [使用与边界](RESEARCH_SELECTION_AGENT.md)、[实际验收](../audits/data_rag_r4/README.md) |
+| R3引用回答、真实调用与收益边界 | [使用与运行](RAG_CITED_ANSWER.md)、[实际验收](../audits/data_rag_r3/README.md) |
+| R2同版本检索、新向量和真实成绩 | [运行与限制](RAG_RETRIEVAL_COMPARISON.md)、[实际验收](../audits/data_rag_r2/README.md) |
+| R1发布、30题参考和数据回读 | [构建与维护](DATA_RELEASE_BENCHMARK.md)、[实际验收](../audits/data_rag_r1/README.md) |
+| 贮藏注释边界、新索引与回滚 | [质量修复验收](../audits/storage_boundary_v1/README.md) |
+| 本地Langfuse部署、采集与关闭 | [追踪说明](LANGFUSE_OBSERVABILITY.md) |
+| V4原始模型结果与失败 | [有界复测与技术取舍](../audits/dataops_live_v4/README.md) |
+| 单次模型目标理解、实测与边界 | [G对照结果](../audits/dataops_goal_v1/README.md)、[开发与复现](DATAOPS_GOAL_UNDERSTANDING.md) |
+| V3原始失败与后续反馈改进 | [兼容对照与诊断](../audits/dataops_live_v3/README.md) |
 | D1如何运行、下载和查看验收 | [D1交付说明](DATAOPS_D1_DELIVERY.md) |
 | D2人工等待、动态执行及增量v2怎么用 | [D2交付与使用](DATAOPS_D2_DELIVERY.md) |
 | 直接问句整理、增加字段与未识别要求 | [DataOps演示](DATAOPS_DEMO.md)、[问句入口验收](../audits/dataops_question_v1/README.md) |
 | 聊天首页整理、下载与刷新续改 | [聊天接入验收](../audits/dataops_chat_v1/README.md) |
 | D3题集、对照、规模与模型失败怎么看 | [D3评测](DATAOPS_D3_EVALUATION.md)、[DataOps演示](DATAOPS_DEMO.md) |
-| 现行需求、参考源码、技术、模块与评测 | [DataOps工作台实施方案](DATAOPS_WORKBENCH_PLAN.md) |
+| 已有工作区、表格、持久化与增量契约 | [DataOps工作台子方案](DATAOPS_WORKBENCH_PLAN.md) |
 | 为什么选择A、B/C为何保留 | [架构决策](ARCHITECTURE_DECISION_REVIEW.md) |
 | A的五工具、依赖和批次实现记录 | [业务执行核心](CANDIDATE_A_BUSINESS_INTEGRATION.md) |
 | 多步骤聊天接入记录及其真实边界 | [聊天接入](CANDIDATE_A_CHAT_INTEGRATION.md) |
@@ -33,7 +48,7 @@
 
 | 类别 | 用途与更新规则 |
 |---|---|
-| 当前方案 | 统一大纲管理状态；DataOps方案定义需求与验收；架构决策记录取舍，不重复维护三份排期 |
+| 当前方案 | 统一大纲管理状态；数据/RAG方案定义新业务与benchmark契约，DataOps子方案管理工作区/交付；架构决策保留选型证据，不另设排期 |
 | 当前使用说明 | 用户/演示/部署文档描述已经交付的功能，不能提前把新方案写成可运行入口 |
 | 专题与阶段记录 | 数据、检索、记忆、恢复等机制与原始验收；数字只适用于当时，顶部提示后续去向 |
 | 历史计划/候选 | 旧方剂研究、结构化分析和旧评测方案保留追溯；不再列为当前待办，不物理移动造成旧链接失效 |
@@ -45,6 +60,7 @@ D1已交付批量核对、持久工作区和表格下载，完整离线回归147
 
 ## 数据与检索
 
+- [数据发布使用](DATA_RELEASE_BENCHMARK.md)、[30题原始参考](../eval/rag_v1/README.md)、[数据/检索/RAG方案](DATA_RAG_BENCHMARK_PLAN.md)。R1已在独立目录重建8665片段词法索引；旧8654片段向量仍不可用于新索引；[R2](RAG_RETRIEVAL_COMPARISON.md)新建8665条向量/Qdrant代并完成检索对照，R3受限引用页已交付，R4限定候选任务已接入并验收本地容器；有界Goal入口已接通，开放语义稳定性与真实A收益仍待验证。
 - [ETCM原始数据审计](ETCM2_DATA_AUDIT.md)、[字段映射](ETCM2_FIELD_MAPPING.md)、[来源关系与实体对应](ETCM_LOCALIZATION_AND_LINKS.md)。
 - [MinerU导入](MINERU_RESULTS_IMPORT.md)、[药典构建](MINERU_RETRIEVAL_BASELINE.md)、[提取审核](MINERU_REVIEW.md)。
 - [疾病来源目录](DISEASE_GENE_CATALOG.md)、[名称搜索](DISEASE_NAME_SEARCH.md)、[相似度与候选排序](DISEASE_CANDIDATE_ANALYSIS.md)。
@@ -62,10 +78,10 @@ D1已交付批量核对、持久工作区和表格下载，完整离线回归147
 
 ## 实验与历史证据
 
-- [离线CI规则](OFFLINE_CI.md)、[现行DataOps评测设计](DATAOPS_WORKBENCH_PLAN.md#8-评测协议小规模但能解释结果)、[历史业务评测协议](APPLICATION_EVALUATION_PROTOCOL.md)。
+- [离线CI规则](OFFLINE_CI.md)、[新R阶段分层评测](DATA_RAG_BENCHMARK_PLAN.md#6-比较方法与验收口径)、[DataOps任务契约评测](DATAOPS_WORKBENCH_PLAN.md#8-评测协议小规模但能解释结果)、[历史业务评测协议](APPLICATION_EVALUATION_PROTOCOL.md)。
 - [最新A/B/C实验设置](ARCHITECTURE_ABC_V1_REVIEW.md)、[首轮失败](ARCHITECTURE_ABC_LIVE_V1_RESULT.md)、[V2结果](ARCHITECTURE_ABC_LIVE_V2_RESULT.md)。
 - [历史证据外置原型](EVIDENCE_OFFLOAD_CANDIDATE.md)、[发布恢复](OFFLOAD_JOURNAL_RECOVERY.md)、[外置循环](OFFLOAD_LOOP_CANDIDATE.md)。
 - `audits/`保留原始成功、失败、usage和历史源码哈希。已清理脚本的旧路径可能作为历史记录出现，不等于当前可执行命令；删除映射见清理清单。
 - `releases/`和[变更记录](CHANGELOG.md)保留历史交付信息，不能用旧镜像说明证明最新本地代码已经发布。
 - 较早的[证据建设计划](PROJECT_EVIDENCE_PLAN.md)、[业务完整度快照](BUSINESS_COMPLETENESS_REVIEW_20261020.md)、[结构化分析计划](RESEARCH_ANALYTICS_PLAN.md)和[模型实验日志](LLM_APPLICATION_EXPERIMENTS.md)供追溯使用，不另立当前排期。已有内容不重复迁移成长篇新文档，也不删除关键失败证据。
-- [方剂研究候选与数据审计](OBSERVATION_DRIVEN_RESEARCH_REQUIREMENTS.md)已退出主线；其中原始数据统计继续有效，不等于方剂研究功能已实现。未创建第二份DataOps大纲，需求细节集中维护在现行方案。
+- [方剂研究候选与数据审计](OBSERVATION_DRIVEN_RESEARCH_REQUIREMENTS.md)已退出主线；其中原始数据统计继续有效，不等于方剂研究功能已实现。统一大纲仍是唯一排期，新数据RAG方案和工作区子方案各管对应契约，不维护并行任务清单。

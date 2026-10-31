@@ -96,6 +96,10 @@ class D2ApiTests(unittest.TestCase):
             self.assertFalse(self.client.get('/api/dataops/capabilities').json()['agent'])
             self.assertEqual(self.client.post('/api/dataops/agent-runs', json=body).status_code, 409)
         with patch.dict('os.environ', {'DATAOPS_DRIVER': 'deepseek'}):
+            self.assertFalse(self.client.get('/api/dataops/capabilities').json()['agent'])
+            self.assertEqual(self.client.post('/api/dataops/agent-runs', json=body).status_code, 409)
+        with patch.dict('os.environ', {'RESEARCH_JOB_DSN': 'postgresql://not-used'}):
+            self.assertFalse(self.client.get('/api/dataops/capabilities').json()['agent'])
             self.assertEqual(self.client.post('/api/dataops/agent-runs', json=body).status_code, 409)
 
     def test_csrf_and_contract(self):

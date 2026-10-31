@@ -1,0 +1,169 @@
+{
+  "kind": "interface_and_backend_parity_not_relevance_evaluation",
+  "status": "passed",
+  "backend_parity": {
+    "pool_size": 7597,
+    "top_10_same_ids": true,
+    "max_cosine_delta": 7.706362592507787e-08,
+    "latency_ms": 493.305
+  },
+  "embedding": {
+    "count": 8665,
+    "dimension": 512,
+    "truncated_documents": 249,
+    "truncated_by_label": {
+      "含量测定": 116,
+      "性状": 3,
+      "鉴别": 107,
+      "检查": 12,
+      "origin": 8,
+      "特征图谱": 3
+    },
+    "truncated_by_scope": {
+      "monograph": 236,
+      "appendix:part-101-200:3324": 1,
+      "appendix:part-101-200:3336": 1,
+      "appendix:part-101-200:3348": 1,
+      "appendix:part-001-100:131": 1,
+      "appendix:part-001-100:150": 1,
+      "appendix:part-001-100:170": 1,
+      "appendix:part-001-100:190": 1,
+      "appendix:part-001-100:206": 1,
+      "prepared_slices": 5
+    }
+  },
+  "quarantine_checks": [
+    {
+      "source_record_id": "etcm2-local:09fd83a7dfdc555b709da7e085e81a291cb31bd35a72f26cab2c6c4fdf764d21",
+      "entry_id": "mineru-herb-ec5e3556c769ea84a27e40af",
+      "status": "clarification_required",
+      "reason": "quarantined_name_candidate"
+    },
+    {
+      "source_record_id": "etcm2-local:7646aede03dbb609da0d7445dec18dfe952851caabf9264fdd002443e7d723c0",
+      "entry_id": "mineru-herb-51c7ed52b7770d23540b8200",
+      "status": "clarification_required",
+      "reason": "quarantined_name_candidate"
+    },
+    {
+      "source_record_id": "etcm2-local:a5f8a98d49d8b44548d3acc0ecc7bada541c25f72beaf46a743f904c9e7351ba",
+      "entry_id": "mineru-herb-53b3c171f8b9dfb4c1d3b4b7",
+      "status": "clarification_required",
+      "reason": "quarantined_name_candidate"
+    },
+    {
+      "source_record_id": "etcm2-local:bd57810a11012907f6f0634aa815371566c01e52d6f0c16903d90dd7e901f007",
+      "entry_id": "mineru-herb-cad32bc15b7732595c2c1453",
+      "status": "clarification_required",
+      "reason": "quarantined_name_candidate"
+    }
+  ],
+  "network_attempts": 0,
+  "external_calls": 0,
+  "generation_calls": 0,
+  "query_checks": [
+    {
+      "question": "查找与受潮和虫害有关的贮藏说明，保留出处",
+      "method": "bm25",
+      "status": "candidates",
+      "names": [],
+      "fields": [
+        "贮藏"
+      ],
+      "pool_size": 614,
+      "returned": 10,
+      "distinct_entries": 10
+    },
+    {
+      "question": "查找与受潮和虫害有关的贮藏说明，保留出处",
+      "method": "dense",
+      "status": "candidates",
+      "names": [],
+      "fields": [
+        "贮藏"
+      ],
+      "pool_size": 614,
+      "returned": 10,
+      "distinct_entries": 10
+    },
+    {
+      "question": "查找与受潮和虫害有关的贮藏说明，保留出处",
+      "method": "hybrid",
+      "status": "candidates",
+      "names": [],
+      "fields": [
+        "贮藏"
+      ],
+      "pool_size": 614,
+      "returned": 10,
+      "distinct_entries": 10
+    },
+    {
+      "question": "在白术和黄芪条目中，找受潮和虫害相关说明",
+      "method": "bm25",
+      "status": "candidates",
+      "names": [
+        "白术",
+        "黄芪"
+      ],
+      "fields": [],
+      "pool_size": 35,
+      "returned": 10,
+      "distinct_entries": 2
+    },
+    {
+      "question": "在白术和黄芪条目中，找受潮和虫害相关说明",
+      "method": "dense",
+      "status": "candidates",
+      "names": [
+        "白术",
+        "黄芪"
+      ],
+      "fields": [],
+      "pool_size": 35,
+      "returned": 10,
+      "distinct_entries": 2
+    },
+    {
+      "question": "在白术和黄芪条目中，找受潮和虫害相关说明",
+      "method": "hybrid",
+      "status": "candidates",
+      "names": [
+        "白术",
+        "黄芪"
+      ],
+      "fields": [],
+      "pool_size": 35,
+      "returned": 10,
+      "distinct_entries": 2
+    },
+    {
+      "question": "炒白术的贮藏",
+      "method": "dense",
+      "status": "clarification_required",
+      "names": [
+        "白术"
+      ],
+      "fields": [
+        "贮藏"
+      ],
+      "pool_size": null,
+      "returned": 0,
+      "distinct_entries": 0
+    },
+    {
+      "question": "只查白术独立的【注意】字段",
+      "method": "dense",
+      "status": "missing_field",
+      "names": [
+        "白术"
+      ],
+      "fields": [
+        "注意"
+      ],
+      "pool_size": 0,
+      "returned": 0,
+      "distinct_entries": 0
+    }
+  ]
+}

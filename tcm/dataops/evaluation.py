@@ -300,6 +300,12 @@ def run_case(case, reference, oracle, strategy, factory, directory, *, driver_fa
             errors.append('stale_answer_not_rejected')
         progress = doc.get('progress', {})
         return {'status': 'failed' if errors else 'passed', 'outcome': doc['status'], 'errors': errors,
+                'stop_reason': doc.get('error'), 'artifact_present': bool(doc.get('artifact')),
+                'verification_action_completed': any(e['tool']=='verify_delivery' and e['status']=='ok'
+                                                     for e in progress.get('events', [])),
+                'finish_action_completed': any(e['tool']=='finish_task' and e['status']=='ok'
+                                              for e in progress.get('events', [])),
+                'model_diagnostics': progress.get('model_diagnostics'),
                 'workspace_id': doc['id'], 'route': 'shared_graph_tools_and_validator',
                 'tool_calls': progress.get('tool_calls'), 'leaf_reads': progress.get('leaf_reads'),
                 'logical_adapter_reads': reads, 'policy_context_max_bytes': max(driver.context_bytes, default=0),

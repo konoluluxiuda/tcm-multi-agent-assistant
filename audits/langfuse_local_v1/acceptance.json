@@ -1,0 +1,221 @@
+{
+  "status": "passed",
+  "date": "2026-10-30",
+  "scope": "local_langfuse_dataops_optional_instrumentation",
+  "runtime_source_revision": "fc31ba46b70620c2ea18d47f8e3a2f8f45a4a2d49478840f96a4197a5785a5df",
+  "server_version": "4.72.0",
+  "sdk_version": "5.0.4",
+  "tests": {
+    "modules": 13,
+    "checks": 91,
+    "skipped": 0,
+    "network_attempts": 0,
+    "reports": [
+      {
+        "module": "test_tracing.py",
+        "status": "passed",
+        "total": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_langfuse_setup.py",
+        "status": "passed",
+        "total": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_d1.py",
+        "status": "passed",
+        "total": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_d2.py",
+        "status": "passed",
+        "total": 18,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_native_loop.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_planning.py",
+        "status": "passed",
+        "total": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_live_protocol.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_d2_api.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_api.py",
+        "status": "passed",
+        "total": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_chat.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_evaluation.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_runtime_status.py",
+        "status": "passed",
+        "total": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_capabilities.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    ]
+  },
+  "dynamic_browser": {
+    "status": "passed",
+    "question": "整理白术和黄芪的功效、注意事项，保留出处并生成表格",
+    "data": "real_local",
+    "driver": "synthetic",
+    "external_model_calls": 0,
+    "chat_homepage_submission": true,
+    "record_count": 2,
+    "inline_download_hash_verified": true,
+    "reload_restores_task": true,
+    "chat_followup_revision": true,
+    "reused_cells": 8,
+    "v1_preserved": true,
+    "unknown_requirements_not_enqueued": true,
+    "javascript_errors": [],
+    "blocked_external_assets": 0,
+    "font_layout_reviewed": false
+  },
+  "fixed_browser": {
+    "status": "passed",
+    "port": 7896,
+    "runtime_fresh": true,
+    "capability_chat": true,
+    "multi_field_without_queue": true,
+    "unique_ingredient_source": true,
+    "readable_api_text": true,
+    "manual_workbench_download": true,
+    "download_sha256_verified": true,
+    "reload_restores_history": true,
+    "javascript_errors": [],
+    "external_requests": [],
+    "failed_http": [],
+    "external_model_calls": 0
+  },
+  "trace_readback": {
+    "status": "passed",
+    "server_version": "4.72.0",
+    "project_authentication": true,
+    "synthetic_only_check": true,
+    "traces": [
+      {
+        "trace_id": "bc0e0d6d4bd1bf886c1d95ab33b80115",
+        "workspace_id": "c16745a8cd9d4948bf49d94708ba4e58",
+        "revision": 2,
+        "observations": 11,
+        "generations": 0,
+        "parent_links_verified": true,
+        "has_bounded_input_output": true
+      },
+      {
+        "trace_id": "15c323b506044e1f70731d1d0a89cff8",
+        "workspace_id": "0af726eac87f4763a8cdcaef3764a217",
+        "revision": 1,
+        "observations": 13,
+        "generations": 0,
+        "parent_links_verified": true,
+        "has_bounded_input_output": true
+      }
+    ]
+  },
+  "fixed_trace": {
+    "status": "passed",
+    "trace_id": "db2d8725f5ea132fd4059c06ef5bf04d",
+    "name": "dataops.fixed",
+    "provider_requests": 0,
+    "has_output": true
+  },
+  "external_model_calls": 0,
+  "real_model_effectiveness_measured": false,
+  "new_business_image_built": false,
+  "notes": [
+    "Existing V2 dynamic A 0/3 remains unchanged",
+    "Field contamination not fixed by instrumentation",
+    "Cloud tracing not configured"
+  ]
+}

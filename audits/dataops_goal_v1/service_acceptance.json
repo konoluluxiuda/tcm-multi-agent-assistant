@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "services": [
+    {
+      "port": 7896,
+      "runtime_fresh": true,
+      "source_revision": "ff2e2eb94bac13a289d3e4d6910c6b0aadd82404f57780266223457565829d2b",
+      "driver": "disabled",
+      "external_model_enabled": false,
+      "intent_model_enabled": false,
+      "question_compiler": "local_bounded_grammar_v1",
+      "statuses": {
+        "/": 200,
+        "/dataops": 200,
+        "/ready/herbs": 200,
+        "/ready/research": 200
+      },
+      "jobs": {
+        "complete": 8
+      },
+      "state_preserved": true
+    },
+    {
+      "port": 7912,
+      "runtime_fresh": true,
+      "source_revision": "ff2e2eb94bac13a289d3e4d6910c6b0aadd82404f57780266223457565829d2b",
+      "driver": "synthetic",
+      "external_model_enabled": false,
+      "intent_model_enabled": false,
+      "question_compiler": "local_bounded_grammar_v1",
+      "statuses": {
+        "/": 200,
+        "/dataops": 200,
+        "/ready/herbs": 200,
+        "/ready/research": 200
+      },
+      "jobs": {
+        "complete": 12
+      },
+      "state_preserved": true
+    }
+  ],
+  "new_experiment_proposer_wired_to_http": false,
+  "additional_provider_requests": 0
+}

@@ -77,17 +77,17 @@ def parse(text, *, explicit=False):
     else:
         rephrase = re.fullmatch(r'(?:请)?(?:帮我)?把\s*(.{1,256}?)的(?:化学)?成分和(?:相关|关联)?靶点(?:串起来|关联起来|联系起来)', body)
         if rephrase:
-            return parse('/relations 成分靶点 '+rephrase.group(1)+' 第'+str(request['page'])+'页',explicit=True)
+            return natural_source_request('/relations 成分靶点 '+rephrase.group(1)+' 第'+str(request['page'])+'页')
         body = re.sub(r'^(?:请帮我|帮我|麻烦|请)?\s*(?:查询|查一下|查找|查|比较)?\s*', '', body)
         reverse = re.fullmatch(r'(?:靶点\s*)?([A-Za-z0-9][A-Za-z0-9.-]{0,31})(?:关联哪些药材|关联的药材有哪些|有哪些关联药材|对应哪些药材)', body)
         if reverse:
             return parse('/relations 靶点药材 '+reverse.group(1)+' 第'+str(request['page'])+'页', explicit=True)
         disease = re.fullmatch(r'(.+?)(?:有哪些|有什么|的)(?:来源)?(?:疾病富集(?:记录)?|富集疾病(?:记录)?)(?:有哪些|是什么)?', body)
         if disease:
-            return parse('/relations 疾病富集 '+disease.group(1)+' 第'+str(request['page'])+'页', explicit=True)
+            return natural_source_request('/relations 疾病富集 '+disease.group(1)+' 第'+str(request['page'])+'页')
         paths = re.fullmatch(r'(.+?)的(?:化学)?成分(?:关联哪些靶点|对应哪些靶点|关联的靶点有哪些)', body)
         if paths:
-            return parse('/relations 成分靶点 '+paths.group(1)+' 第'+str(request['page'])+'页', explicit=True)
+            return natural_source_request('/relations 成分靶点 '+paths.group(1)+' 第'+str(request['page'])+'页')
         match = re.fullmatch(r'(.+?)(?:有哪些|有什么|的)(?:共同靶点)(?:有哪些|是什么)?', body)
         if match:
             label = '共同靶点'
@@ -108,7 +108,8 @@ def parse(text, *, explicit=False):
                     label, name = '靶点成分', token
             entities = [name.strip()]
     request.update(kind=next(k for k, v in LABELS.items() if v == label), entities=entities)
-    if not explicit and label=='共同靶点':request['resolve_unique_sources']=True
+    if not explicit and label not in ('靶点成分', '靶点药材'):
+        request['resolve_unique_sources']=True
     if (not 1 <= request['page'] <= 1000 or len(entities) != (2 if label == '共同靶点' else 1)
             or any(not x or len(x) > 256 or re.search(r'[\n\r]', x) for x in entities)):
         request['error'] = 'invalid_query'
@@ -118,6 +119,10 @@ def parse(text, *, explicit=False):
     if label in ('靶点成分', '靶点药材') and not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9.-]{0,31}', entities[0]):
         request['error'] = 'invalid_query'
     return request
+
+
+def natural_source_request(command):
+    return {**parse(command, explicit=True), 'resolve_unique_sources': True}
 
 
 def shared_targets(path, records, version, *, offset=0):
@@ -195,8 +200,9 @@ def execute(request):
                                     'name': r['fields']['name_pinyin']['value'],
                                     'medicinal_part': r['fields']['medicinal_part']['value'],
                                     'source': r['source']} for r in record['records']]})
-        if (request.get('resolve_unique_sources') is True and request['kind']=='common_target'
+        if (request.get('resolve_unique_sources') is True
                 and record['status']=='name_mapping_candidates'
+                and record.get('name_candidate_count', record['total_record_count']) == 1
                 and record['total_record_count']==1 and len(record['records'])==1 and not record['truncated']):
             groups[-1]['selection_method']='unique_local_candidate'
         selected.append(record)
@@ -232,12 +238,16 @@ def execute(request):
         result['message']=f"{groups[0]['display_name']}：{data['total']}条成分—靶点候选路径。"
         result['notes']=['仅连接成分名称、分子式和分子量一致的来源行；未验证化学身份、结合或机制。',
                          '未匹配不表示无关联，覆盖及字段缺失见详情。']
+        if any(g.get('selection_method')=='unique_local_candidate' for g in groups):
+            result['notes'].append('按目录唯一候选查询；中文药名对应尚未核验。')
         return result
     if request['kind'] == 'disease':
         payload['source_capture_status'] = data.get('source_capture_status', [])
         result['message']=f"{groups[0]['display_name']}：{data['total']}条疾病富集记录。"
         result['notes']=['富集关联不是适应证或治疗推荐，不证明药材可治疗所列疾病。',
                          '保留来源原名；未评定统计显著性，抓取完整性见原始证据。']
+        if any(g.get('selection_method')=='unique_local_candidate' for g in groups):
+            result['notes'].append('按目录唯一候选查询；中文药名对应尚未核验。')
         if not data['total']:result['message']+='当前来源未记录，不等于不存在。'
         return result
     name='与'.join(g['display_name'] for g in groups)

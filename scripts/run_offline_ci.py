@@ -28,6 +28,7 @@ def test_environment():
         'ENABLE_IMAGE_ANALYSIS': '0', 'ENABLE_SPEECH': '0', 'ENABLE_WEB_SEARCH': '0',
         'TAVILY_API_KEY': '', 'ELEVEN_LABS_API_KEY': '',
         'LANGCHAIN_TRACING_V2': 'false', 'LANGSMITH_TRACING': 'false',
+        'ENABLE_LANGFUSE': '0', 'LANGFUSE_TRACING_ENABLED': 'false',
     })
     return env
 

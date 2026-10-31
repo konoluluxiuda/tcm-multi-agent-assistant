@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "traces": [
+    {
+      "case_id": "G01",
+      "trace_id": "306c9d08517c801221e05bd6da859a86",
+      "observations": 4,
+      "generation_count": 1,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "G02",
+      "trace_id": "fbe4a8902a8a12f594dc7409f7652cbd",
+      "observations": 4,
+      "generation_count": 1,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "G03",
+      "trace_id": "8f3cb5b07d665a99f242cc5f9ef62ceb",
+      "observations": 4,
+      "generation_count": 1,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "G04",
+      "trace_id": "9c8efc47e6a325c6c780aa8275e8fd21",
+      "observations": 4,
+      "generation_count": 1,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "C01",
+      "trace_id": "76841a7a03785d44d1dd8d7c610f47ed",
+      "observations": 2,
+      "generation_count": 0,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "C02",
+      "trace_id": "b32e025f66d141b56336b48b9371715e",
+      "observations": 2,
+      "generation_count": 0,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "C03",
+      "trace_id": "b560b9376e177680f17f424de2f179cf",
+      "observations": 2,
+      "generation_count": 0,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "C04",
+      "trace_id": "8b3d3f6d221eceac052a8dc6c5388578",
+      "observations": 2,
+      "generation_count": 0,
+      "parent_links_verified": true
+    }
+  ],
+  "generation_count": 4,
+  "model_requests_caused_by_readback": 0
+}

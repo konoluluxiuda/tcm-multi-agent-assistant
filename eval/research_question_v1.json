@@ -1,0 +1,14 @@
+{
+  "version":"research-question-v1",
+  "reference_status":"author_semantic_reference_development_pending_human_signoff",
+  "cases":[
+    {"id":"Q01","question":"请把白术和黄芪做成一张资料表，列出有什么作用和需要留意的地方，每格能追溯到原文。","status":"ready","mode":"audit_named","names":["白术","黄芪"],"fields":["功能与主治","注意"]},
+    {"id":"Q02","question":"从白术、黄芪、川芎、甘草、大黄中挑两条功效和注意都有独立原文的，保留出处并生成表格。","status":"ready","mode":"select_complete","target_count":2,"names":["白术","黄芪","川芎","甘草","大黄"],"fields":["功能与主治","注意"]},
+    {"id":"Q03","question":"当归和川芎的资料做个对照，说明药典记载的基原、怎么用多少，以及存放条件；出处也留好。","status":"ready","mode":"audit_named","names":["当归","川芎"],"fields":["来源","用法与用量","贮藏"]},
+    {"id":"Q04","question":"在上一份上再添一栏存放环境，原来的内容别删。","parent":{"names":["白术","黄芪"],"fields":["功能与主治"]},"status":"ready","mode":"audit_named","names":["白术","黄芪"],"fields":["功能与主治","贮藏"]},
+    {"id":"Q05","question":"把白术、黄芪的功效和注意写成表，再给我推荐哪种治糖尿病更合适。","status":"needs_input"},
+    {"id":"Q06","question":"帮我整理它们的功效，再补上存放条件。","status":"needs_input"},
+    {"id":"Q07","question":"白术的来源做成一列。","status":"needs_input"},
+    {"id":"Q08","question":"白术黄芪的功效做成表，别加注意和拉丁名，但保留出处。","status":"ready","mode":"audit_named","names":["白术","黄芪"],"fields":["功能与主治"]}
+  ]
+}

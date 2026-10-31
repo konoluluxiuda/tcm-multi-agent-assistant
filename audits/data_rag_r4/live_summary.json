@@ -1,0 +1,154 @@
+{
+  "version": "research-selection-live-v1",
+  "records": [
+    {
+      "id": "S01_F",
+      "strategy": "F",
+      "status": "complete",
+      "artifact": true,
+      "passed": true,
+      "reason": null,
+      "selection_valid": true,
+      "parent_preserved": true,
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 136,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "frozen_raw_source_match": true,
+      "qualified": 2,
+      "decision_steps": 3,
+      "source_reads": 6,
+      "scope_and_exact_citations_valid": true,
+      "medical_identity_verified": false,
+      "requests": 0,
+      "tokens": 0,
+      "duration_seconds": 7.246,
+      "provider_responses": [],
+      "reused_from_prior": true,
+      "quality_graded": true
+    },
+    {
+      "id": "S01_P",
+      "strategy": "P",
+      "status": "interrupted",
+      "artifact": false,
+      "passed": false,
+      "reason": "model_dispatch_unknown",
+      "requests": 1,
+      "tokens": 1876,
+      "duration_seconds": 6.486,
+      "provider_responses": [
+        200
+      ],
+      "reused_from_prior": true,
+      "quality_graded": false
+    },
+    {
+      "id": "S01_A",
+      "strategy": "A",
+      "status": "partial",
+      "artifact": false,
+      "passed": false,
+      "reason": "no_progress",
+      "requests": 4,
+      "tokens": 8885,
+      "duration_seconds": 13.952,
+      "provider_responses": [
+        200,
+        200,
+        200,
+        200
+      ]
+    },
+    {
+      "id": "S02_F",
+      "strategy": "F",
+      "status": "partial",
+      "artifact": true,
+      "passed": true,
+      "reason": null,
+      "selection_valid": true,
+      "parent_preserved": true,
+      "verification": {
+        "status": "passed",
+        "sheets": 6,
+        "verified_cells": 132,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "frozen_raw_source_match": true,
+      "qualified": 0,
+      "decision_steps": 3,
+      "source_reads": 3,
+      "scope_and_exact_citations_valid": true,
+      "medical_identity_verified": false,
+      "requests": 0,
+      "tokens": 0,
+      "duration_seconds": 13.057,
+      "provider_responses": []
+    },
+    {
+      "id": "S02_P",
+      "strategy": "P",
+      "status": "partial",
+      "artifact": false,
+      "passed": false,
+      "reason": "model_response_rejected",
+      "requests": 1,
+      "tokens": 1979,
+      "duration_seconds": 12.091,
+      "provider_responses": [
+        200
+      ]
+    },
+    {
+      "id": "S02_A",
+      "strategy": "A",
+      "status": "partial",
+      "artifact": false,
+      "passed": false,
+      "reason": "no_progress",
+      "requests": 4,
+      "tokens": 7211,
+      "duration_seconds": 18.089,
+      "provider_responses": [
+        200,
+        200,
+        200,
+        200
+      ]
+    }
+  ],
+  "requests_total": 9,
+  "prior_requests": 1,
+  "combined_requests_total": 10,
+  "by_strategy": {
+    "F": {
+      "passed": 2,
+      "total": 2,
+      "requests": 0
+    },
+    "P": {
+      "passed": 0,
+      "total": 2,
+      "requests": 2
+    },
+    "A": {
+      "passed": 0,
+      "total": 2,
+      "requests": 8
+    }
+  },
+  "reference_status": "author_source_checked_development_not_blind_pending_human_signoff",
+  "universal_model_benefit_proven": false,
+  "total_tokens": 19951,
+  "langfuse_traces": 6,
+  "langfuse_generation_observations": 10,
+  "P_S01_quality_grade": "not_gradable_infrastructure_failure",
+  "actual_document_reread_fragments_sent": 0,
+  "final_artifact_sorting_fix_was_offline_only": true,
+  "model_benefit_proven": false
+}

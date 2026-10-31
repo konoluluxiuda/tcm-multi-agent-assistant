@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "instances": [
+    {
+      "port": 7896,
+      "fresh": true,
+      "source_revision": "c2857d4de2bc4969c36b50e2fdb6af1a51426fb3eeac334633bfebb0d956c9f1",
+      "rag_generation_enabled": false,
+      "selection_external_model_enabled": false
+    },
+    {
+      "port": 7912,
+      "fresh": true,
+      "source_revision": "c2857d4de2bc4969c36b50e2fdb6af1a51426fb3eeac334633bfebb0d956c9f1",
+      "rag_generation_enabled": true,
+      "selection_external_model_enabled": false
+    },
+    {
+      "port": 7914,
+      "fresh": true,
+      "source_revision": "e44b2344eaba87007122c06a961d9eee54eac8415238dbacc494f981b845e6ce",
+      "rag_generation_enabled": false,
+      "selection_external_model_enabled": false
+    }
+  ]
+}

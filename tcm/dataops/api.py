@@ -17,6 +17,7 @@ from tcm.dataops.data_access import Sources, SourceChanged
 from tcm.dataops.service import DataOpsService, ProposalNeedsInput
 from tcm.dataops.workspace import Workspaces, Conflict
 from tcm.dataops.baseline import execute
+from tcm.dataops.research_contracts import ResearchCreate,ResearchQuestion,same_research_scope
 
 
 def enabled():
@@ -88,15 +89,63 @@ def create_router(memory_provider, cookie_name, *, service=None):
         return response
 
     def agent_enabled():
-        if not env_bool('ENABLE_DATAOPS_AGENT') or os.getenv('DATAOPS_DRIVER') != 'synthetic':
+        from tcm.capabilities import dataops_runtime
+        if not dataops_runtime()['agent']:
             raise HTTPException(409, '动态模式尚未启用；当前仅开放明确标注的本地合成模型验证。')
+
+    def research_enabled():
+        from tcm.capabilities import research_runtime
+        if not research_runtime()['enabled']:
+            raise HTTPException(409, '候选核对任务未启用。')
+
+    def run_enabled(store, owner, identifier):
+        if 'research' in call(lambda: store.get(owner, identifier))['goal']:
+            research_enabled()
+        else:
+            agent_enabled()
+
+    @router.get('/dataops/research', response_class=HTMLResponse)
+    def research_page(request: Request):
+        if not enabled():
+            raise HTTPException(404, '资料工作台未启用。')
+        response = page(request)
+        response.body = Path(__file__).with_name('research_workbench.html').read_bytes()
+        response.headers['content-length'] = str(len(response.body))
+        return response
+
+    @router.post('/api/dataops/research-tasks', status_code=202)
+    async def research_task(body: ResearchCreate, request: Request, response: Response):
+        store, owner = context(request, response); research_enabled()
+        def action():
+            from tcm.dataops.jobs import research_sources
+            queue()
+            with research_sources() as sources:
+                if body.parent_id:
+                    parent = store.get(owner, body.parent_id)
+                    goal = body.goal.model_dump()
+                    if not same_research_scope(parent['goal'],goal):
+                        raise Conflict('A revision must preserve parent requirements')
+                return service.enqueue(store, owner, body, sources)
+        result = await asyncio.to_thread(call, action)
+        worker.start()
+        return result
+
+    @router.post('/api/dataops/research-questions')
+    async def research_question(body: ResearchQuestion,request: Request,response: Response):
+        store,owner=context(request,response);research_enabled()
+        try:
+            result=await service.submit_research_question(owner,body)
+            response.status_code=202 if result.get('workspace') else 200
+            return result
+        except Exception as exc:
+            def failed():raise exc
+            return call(failed)
 
     @router.get('/api/dataops/capabilities')
     def capabilities(request: Request, response: Response):
         context(request, response)
-        return {'agent': env_bool('ENABLE_DATAOPS_AGENT') and os.getenv('DATAOPS_DRIVER') == 'synthetic',
-                'driver': os.getenv('DATAOPS_DRIVER', 'disabled'), 'external_model_enabled': False,
-                'question_compiler': 'local_bounded_grammar_v1'}
+        from tcm.capabilities import dataops_runtime
+        return dataops_runtime()
 
     @router.post('/api/dataops/proposals')
     def propose_question(body: TaskQuestion, request: Request, response: Response):
@@ -148,7 +197,7 @@ def create_router(memory_provider, cookie_name, *, service=None):
 
     @router.post('/api/dataops/agent-runs/{identifier}/answer', status_code=202)
     async def answer_agent(identifier: str, body: Answer, request: Request, response: Response):
-        store, owner = context(request, response); agent_enabled()
+        store, owner = context(request, response); run_enabled(store, owner, identifier)
         def action():
             doc = store.get(owner, identifier)
             job = queue().answer_dataops(owner, doc['job_id'], body.model_dump(exclude={'job_revision'}),
@@ -159,7 +208,7 @@ def create_router(memory_provider, cookie_name, *, service=None):
 
     @router.post('/api/dataops/agent-runs/{identifier}/recover', status_code=202)
     async def recover_agent(identifier: str, body: Recover, request: Request, response: Response):
-        store, owner = context(request, response); agent_enabled()
+        store, owner = context(request, response); run_enabled(store, owner, identifier)
         def action():
             doc = store.get(owner, identifier)
             job = queue().resume(owner, doc['job_id'], expected_revision=body.job_revision)

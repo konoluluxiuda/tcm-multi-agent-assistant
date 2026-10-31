@@ -11,11 +11,27 @@ import re
 import unicodedata
 from collections import Counter
 
-VERSION = 4
+VERSION = 5
 MARGINS = {'header', 'footer', 'page_number'}
 OPENERS = ('本品为', '本品由', '本品以', '本品系')
 NAME = re.compile(r'^([\u4e00-\u9fff]{1,16}(?:\([\u4e00-\u9fff、]{1,20}\))?)(.*)$', re.S)
 LABEL = re.compile(r'【([^】\n]{1,24})】')
+NOTE_START = re.compile(r'(?m)^[ \t]*注[：:]')
+
+
+def storage_note_boundary(text, start, end):
+    """Separate explicit non-storage notes; unknown/storage notes stay intact.
+
+    The annotation remains source text in its own field, including continuations.
+    No drug names, source IDs or database values are used as extraction rules.
+    """
+    for match in NOTE_START.finditer(text, start, end):
+        note = compact(text[match.start():end])[:500]
+        if (re.match(r'^注[:：]栽培变种', note)
+                or re.match(r'^注[:：].{0,16}仅[做作].{0,16}(?:检测|检查)', note)
+                or re.search(r'^注[:：].{0,100}(?:缓冲(?:液|溶液).*?(?:制备|配制)|明胶溶液.*?取明胶)', note)):
+            return match.start()
+    return None
 
 
 def compact(value):
@@ -336,7 +352,18 @@ def segment_blocks(all_blocks):
         spans = [(0, matches[0].start() if matches else len(text), None)]
         spans += [(m.start(), matches[i + 1].start() if i + 1 < len(matches) else len(text),
                    compact(m[1])) for i, m in enumerate(matches)]
+        bounded_spans = []
+        active_label = field['label'] if field is not None else None
         for start, end, label in spans:
+            active_label = label or active_label
+            cut = storage_note_boundary(text, start, end) if active_label == '贮藏' else None
+            if cut is not None:
+                bounded_spans.extend([(start, cut, label), (cut, end, '条目注释')])
+                active_label = '条目注释'
+                entry['flags'].append('post_storage_note_separated_pending_review')
+            else:
+                bounded_spans.append((start, end, label))
+        for start, end, label in bounded_spans:
             if not text[start:end].strip():
                 continue
             starts_origin = (value.startswith(OPENERS) and start == 0

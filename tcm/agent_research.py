@@ -53,7 +53,7 @@ class ResearchRuntime:
         if not env_bool('ENABLE_PHARMACOPOEIA_RESEARCH'):
             return None
         key = tuple(Path(os.getenv(name) or default).resolve() for name, default in (
-            ('PHARMACOPOEIA_INDEX', ROOT / 'var/mineru_retrieval_v2'),
+            ('PHARMACOPOEIA_INDEX', ROOT / 'var/mineru_retrieval_v3'),
             ('PHARMACOPOEIA_PDF_HIGH', ROOT / 'data/《中国药典》2025年版 一部.pdf'),
             ('PHARMACOPOEIA_PDF_FULL', ROOT / 'data/《中国药典》2025年版 一部 全本.pdf')))
         with self.lock:

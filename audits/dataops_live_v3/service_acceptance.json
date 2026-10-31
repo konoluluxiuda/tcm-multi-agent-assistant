@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "runtime": [
+    {
+      "port": 7896,
+      "runtime_fresh": true,
+      "dataops": {
+        "agent": false,
+        "driver": "disabled",
+        "external_model_enabled": false,
+        "question_compiler": "local_bounded_grammar_v1"
+      },
+      "local_tracing": true,
+      "health": {
+        "/health": 200,
+        "/dataops": 200,
+        "/ready/herbs": 200,
+        "/ready/research": 200
+      }
+    },
+    {
+      "port": 7912,
+      "runtime_fresh": true,
+      "dataops": {
+        "agent": true,
+        "driver": "synthetic",
+        "external_model_enabled": false,
+        "question_compiler": "local_bounded_grammar_v1"
+      },
+      "local_tracing": true,
+      "health": {
+        "/health": 200,
+        "/dataops": 200,
+        "/ready/herbs": 200,
+        "/ready/research": 200
+      }
+    }
+  ],
+  "delivery": {
+    "status": "passed",
+    "fixed": {
+      "workspace_id": "e4183e1b44664dbc8a82accdaf918b39",
+      "revision": 1,
+      "storage_matches_original_block_reference": true,
+      "storage_citation_exact": true,
+      "download_hash_verified": true,
+      "xlsx_storage_value_verified": true
+    },
+    "dynamic_incremental": {
+      "workspace_id": "5c1ba820447347fb8e877000f0469072",
+      "revision": 2,
+      "storage_matches_original_block_reference": true,
+      "storage_citation_exact": true,
+      "download_hash_verified": true,
+      "xlsx_storage_value_verified": true
+    },
+    "reused_cells": 8,
+    "v1_file_preserved": true,
+    "external_model_calls": 0,
+    "driver": "synthetic",
+    "real_data": true,
+    "quality_reference_human_signoff": false
+  },
+  "external_model_calls": 0
+}

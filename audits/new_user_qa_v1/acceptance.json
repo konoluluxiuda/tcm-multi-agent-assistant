@@ -1,0 +1,406 @@
+{
+  "date": "2026-10-30",
+  "scope": "new-user findings reproduced and fixed; local task and UI regression",
+  "offline": {
+    "modules": 25,
+    "tests": 241,
+    "network_attempts": 0,
+    "skipped": 0,
+    "full_suite_rerun": false,
+    "effective_results": [
+      {
+        "module": "test_answer_text.py",
+        "status": "passed",
+        "total": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_assistant_router.py",
+        "status": "passed",
+        "total": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_capabilities.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_chat_task_handoff.py",
+        "status": "passed",
+        "total": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_chat.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_d2_api.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_disease_relations.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_etcm_runtime.py",
+        "status": "passed",
+        "total": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_eval_tcm_chat_tasks.py",
+        "status": "passed",
+        "total": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_herb_target_paths.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_intent_guidance.py",
+        "status": "passed",
+        "total": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_intent_planner.py",
+        "status": "passed",
+        "total": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_new_user_wording.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_optional_features.py",
+        "status": "passed",
+        "total": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_question_contract.py",
+        "status": "passed",
+        "total": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_relation_memory.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_relation_queries.py",
+        "status": "passed",
+        "total": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_research_loop_api.py",
+        "status": "passed",
+        "total": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_research_plan_chat.py",
+        "status": "passed",
+        "total": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_research_plan_jobs.py",
+        "status": "passed",
+        "total": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_research_report_tools.py",
+        "status": "passed",
+        "total": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_runtime_status.py",
+        "status": "passed",
+        "total": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_source_access.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_tcm_api.py",
+        "status": "passed",
+        "total": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_tcm_chat.py",
+        "status": "passed",
+        "total": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    ],
+    "runtime_module_retested_after_fixture_fix": true
+  },
+  "browser_instances": [
+    {
+      "status": "passed",
+      "port": 7896,
+      "runtime_fresh": true,
+      "capability_chat": true,
+      "multi_field_without_queue": true,
+      "unique_ingredient_source": true,
+      "readable_api_text": true,
+      "manual_workbench_download": true,
+      "download_sha256_verified": true,
+      "reload_restores_history": true,
+      "javascript_errors": [],
+      "external_requests": [],
+      "failed_http": [],
+      "external_model_calls": 0
+    },
+    {
+      "status": "passed",
+      "port": 7912,
+      "runtime_fresh": true,
+      "capability_chat": true,
+      "multi_field_without_queue": true,
+      "unique_ingredient_source": true,
+      "readable_api_text": true,
+      "manual_workbench_download": true,
+      "download_sha256_verified": true,
+      "reload_restores_history": true,
+      "javascript_errors": [],
+      "external_requests": [],
+      "failed_http": [],
+      "external_model_calls": 0
+    }
+  ],
+  "dynamic_table_browser": {
+    "status": "passed",
+    "question": "整理白术和黄芪的功效、注意事项，保留出处并生成表格",
+    "data": "real_local",
+    "driver": "synthetic",
+    "external_model_calls": 0,
+    "chat_homepage_submission": true,
+    "record_count": 2,
+    "inline_download_hash_verified": true,
+    "reload_restores_task": true,
+    "chat_followup_revision": true,
+    "reused_cells": 8,
+    "v1_preserved": true,
+    "unknown_requirements_not_enqueued": true,
+    "javascript_errors": [],
+    "blocked_external_assets": 0,
+    "font_layout_reviewed": false
+  },
+  "live_final": [
+    {
+      "port": 7896,
+      "runtime": {
+        "started_at": "2026-10-30T09:52:29.317559+00:00",
+        "source_revision": "d5cd02ef96b40de235575019ad8c784a2764f2d46685acad53e0b7fbc9a220a6",
+        "disk_revision": "d5cd02ef96b40de235575019ad8c784a2764f2d46685acad53e0b7fbc9a220a6",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": false,
+          "driver": "disabled",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1"
+        },
+        "intent_model_enabled": false
+      },
+      "ready_http": {
+        "/ready/herbs": 200,
+        "/ready/research": 200
+      },
+      "existing_complete_jobs": 5,
+      "active_jobs": 0
+    },
+    {
+      "port": 7912,
+      "runtime": {
+        "started_at": "2026-10-30T09:52:31.072681+00:00",
+        "source_revision": "d5cd02ef96b40de235575019ad8c784a2764f2d46685acad53e0b7fbc9a220a6",
+        "disk_revision": "d5cd02ef96b40de235575019ad8c784a2764f2d46685acad53e0b7fbc9a220a6",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": true,
+          "driver": "synthetic",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1"
+        },
+        "intent_model_enabled": false
+      },
+      "ready_http": {
+        "/ready/herbs": 200,
+        "/ready/research": 200
+      },
+      "existing_complete_jobs": 2,
+      "active_jobs": 0
+    }
+  ],
+  "visual_review": {
+    "chinese_text_and_layout_checked": true,
+    "temporary_host_fontconfig": true,
+    "host_fonts_not_distributed": true
+  },
+  "external_model_calls": 0,
+  "public_static_dependencies_downloaded": true,
+  "static_dependency_manifest": "assets/web/vendor/manifest.json",
+  "docker": {
+    "allowlisted_nested_dataops_and_web_assets_checked": true,
+    "image_built": false,
+    "image_published": false
+  },
+  "retained_failures": [
+    "old tests expected a manual click for unique candidates",
+    "source edited during an intermediate test run triggered the code-version guard",
+    "one single-module test invocation omitted the offline test environment",
+    "first browser script expected HTTP200 instead of successful HTTP201 creation",
+    "browser found a disabled synthetic-loop panel probing its404 API; template now follows feature flag",
+    "new enabled-panel test needed its parent research feature flag enabled"
+  ],
+  "limits": [
+    "web dynamic driver remains synthetic",
+    "real LLM dynamic A not accepted",
+    "general natural-language fallback incomplete",
+    "source identities and extracted pharmacopoeia text not fully human reviewed",
+    "PowerShell and WSL tool restrictions are outside application scope"
+  ],
+  "source_files_sha256": {
+    "app.py": "b797808f6c992c6048190d89fb0ff58a633adc0ad0b2a83bc3da72038969c46b",
+    "tcm/assistant_router.py": "8c5b2eb21a51cc9abfa32da8c07d165397d969f3c411d4c7f2db90963e66d5ae",
+    "tcm/chat.py": "113a554064e58b826ffeb0cc699ff30ddacaf0796fd1f8843b6c08ad6fb4e925",
+    "tcm/relation_queries.py": "9f793ec6db45eb531efb0ef3bce0e4baabdcac973797408441abee80d9bd41be",
+    "tcm/answer_text.py": "fa140ff50e8bdf3b09fec4e2d8e569b150d37c85f810c082650bd726fbafe0a6",
+    "tcm/runtime_status.py": "4becba4b43926426e4827b9cc4458ea3bfc45e09aca9d22311820738768e7149",
+    "templates/index.html": "8b03849b0f44db0cc288bd67072555fc24c09812ee6aaf501901f2edd4991ed9",
+    "scripts/build_research_image.py": "67bd15f86d6bc1c6d3fc3c905e9aea4520937130d25c174bbd9b7e9a5b546f55",
+    "scripts/dataops_source_manifest.py": "d218f6301478f451eb99c6a3aaf934f0d7df20d25028448689f86a3cc2f937e1",
+    "scripts/check_new_user_qa_browser.py": "3cf36abe003230078a084b112b77ab99896326b867582e8a0a73a7763577b231",
+    "assets/web/vendor/manifest.json": "f941a75c8aa54a1d7c19519f8aee93d2c912441441d7d7f150cda5edf9585b69",
+    "Dockerfile.research": "2a88188aad8169d9d0fe0b80ab947b84fdb450b0f007dc168eb9fb0869d0c5c1"
+  }
+}

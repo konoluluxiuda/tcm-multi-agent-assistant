@@ -1,0 +1,26 @@
+{
+  "kind": "local_read_only_boundary_diagnosis",
+  "source_index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+  "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+  "chunk_id": "mineru-herb-4d2e9a34d40176dfd7d25676:field:014",
+  "field": "贮藏",
+  "scope": "prepared_slices",
+  "evidence_block_ids": [
+    "part-301-400:840",
+    "part-301-400:841",
+    "part-301-400:842"
+  ],
+  "source_pdf_page": 344,
+  "printed_page": 325,
+  "visual_review_performed": true,
+  "conclusion": "Unlabelled assay notes appended to the preceding storage field; not proven to be an unrelated appendix.",
+  "dataops_did_not_create_pollution": true,
+  "scope_flag_is_not_contamination_detection": true,
+  "scan": {
+    "storage_chunks": 614,
+    "heuristic_note_candidates": 11,
+    "human_confirmed_count": null
+  },
+  "runtime_or_index_modified": false,
+  "external_model_calls": 0
+}

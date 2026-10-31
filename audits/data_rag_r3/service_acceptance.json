@@ -1,0 +1,64 @@
+{
+  "status": "passed",
+  "services": [
+    {
+      "port": 7896,
+      "runtime": {
+        "started_at": "2026-10-30T17:21:23.443091+00:00",
+        "source_revision": "9b6422cef52e7d30da3d158c0d92ed728f924750965bc5a8a945fa24a91be345",
+        "disk_revision": "9b6422cef52e7d30da3d158c0d92ed728f924750965bc5a8a945fa24a91be345",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": false,
+          "driver": "disabled",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1"
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": false
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": true
+      },
+      "health": {
+        "/": 200,
+        "/rag": 200,
+        "/dataops": 200,
+        "/ready/herbs": 200,
+        "/ready/research": 200
+      }
+    },
+    {
+      "port": 7912,
+      "runtime": {
+        "started_at": "2026-10-30T17:21:27.863000+00:00",
+        "source_revision": "9b6422cef52e7d30da3d158c0d92ed728f924750965bc5a8a945fa24a91be345",
+        "disk_revision": "9b6422cef52e7d30da3d158c0d92ed728f924750965bc5a8a945fa24a91be345",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": true,
+          "driver": "synthetic",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1"
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": true
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": true
+      },
+      "health": {
+        "/": 200,
+        "/rag": 200,
+        "/dataops": 200,
+        "/ready/herbs": 200,
+        "/ready/research": 200
+      }
+    }
+  ],
+  "startup_provider_requests": 0
+}

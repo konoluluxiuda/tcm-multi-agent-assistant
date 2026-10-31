@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ '中草药证据研究' if research_tools_only else 'Medical Assistant' }}</title>
-    <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/chromatography.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+    <link href="/static/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/vendor/fontawesome/css/all.min.css">
     <style>
         body {
             background-color: #f5f5f5;
@@ -356,6 +356,8 @@
                     {% endif %}
 
                     {% if dataops_enabled %}<p class="px-3 py-2"><a href="/dataops">资料核对工作台 · 批量整理与表格下载</a></p>{% endif %}
+                    {% if dataops_enabled %}<p class="px-3 py-2"><a href="/dataops/research">候选资料核对 · 分批补查与表格交付</a></p>{% endif %}
+                    {% if rag_enabled %}<p class="px-3 py-2"><a href="/rag">引用资料回答 · 原文与多来源对照</a></p>{% endif %}
                     {% if research_tasks_enabled %}<p class="px-3 py-2"><a href="/research-tasks">研究任务（ETCM本地 / 合成演示）</a></p>{% endif %}
                     {% if research_bookmarks_enabled %}
                     <details id="research-bookmarks" class="px-3 py-2">
@@ -420,13 +422,13 @@
                         </details>
                     </details>
                     <script src="/research-runs.js" defer></script>
-                    <details id="synthetic-loop-panel" class="px-3" hidden><summary>合成 Agent 循环演示</summary>
+                    {% if synthetic_loop_enabled %}<details id="synthetic-loop-panel" class="px-3" hidden><summary>合成 Agent 循环演示</summary>
                       <p>固定虚构资料，不调用外部模型。暂停后请在两分钟内继续。</p>
                       <button type="button" id="loop-start">运行演示</button>
                       <button type="button" id="loop-pause">演示暂停与恢复</button>
                       <button type="button" id="loop-refresh">刷新记录</button>
                       <p id="loop-status" role="status"></p><div id="loop-history"></div>
-                    </details><script src="/research-loop.js" defer></script>
+                    </details><script src="/research-loop.js" defer></script>{% endif %}
                     {% endif %}
                     <small id="memory-status" class="text-muted px-3" role="status">正在恢复已保存会话…</small>
                     <div id="chat-body" class="chat-body">
@@ -489,8 +491,8 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="/static/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/static/vendor/marked/marked.min.js"></script>
     <script src="/research-evidence.js"></script>
     {% if pubmed_enabled %}<script src="/research-objects.js"></script>{% endif %}
     {% if research_tools_only and natural_routing_enabled %}<script src="/research-workspaces.js"></script>{% endif %}

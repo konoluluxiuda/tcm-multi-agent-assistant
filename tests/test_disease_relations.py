@@ -56,7 +56,9 @@ class DiseaseRelationTests(unittest.TestCase):
     def test_selected_source_paging_retains_duplicate_rows_and_raw_provenance(self):
         before = hashlib.sha256(self.base.read_bytes()).hexdigest()
         choice = execute(parse('测试甲草有哪些疾病富集记录'))
-        self.assertEqual(choice['status'], 'clarification_needed')
+        self.assertEqual(choice['status'], 'ok')
+        self.assertEqual(choice['relations']['groups'][0]['selection_method'], 'unique_local_candidate')
+        self.assertIn('尚未核验', ''.join(choice['notes']))
         identifier = choice['relations']['groups'][0]['options'][0]['source_record_id']
         first = execute(parse('/relations 疾病富集 ' + identifier, explicit=True))
         second = execute(parse('/relations 疾病富集 ' + identifier + ' 第2页', explicit=True))

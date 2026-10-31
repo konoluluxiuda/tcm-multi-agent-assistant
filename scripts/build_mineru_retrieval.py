@@ -76,7 +76,7 @@ def build(revisions, output):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--revisions', type=Path, default=ROOT / 'var/mineru_revisions_v2')
-    parser.add_argument('--out', type=Path, default=ROOT / 'var/mineru_retrieval_v2')
+    parser.add_argument('--revisions', type=Path, default=ROOT / 'var/mineru_revisions_v3')
+    parser.add_argument('--out', type=Path, default=ROOT / 'var/mineru_retrieval_v3')
     args = parser.parse_args()
     print(json.dumps(build(args.revisions, args.out), ensure_ascii=False))

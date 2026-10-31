@@ -1,0 +1,111 @@
+{
+  "container": "tcm-research-r4",
+  "id": "268e0e7f964fd8c06085f1e1c2877c9e079992634ba769c5338f9173c4c0582d",
+  "port": 7914,
+  "image": "tcm-research-chat:r4-harness-v2",
+  "driver": "synthetic",
+  "external_model_enabled": false,
+  "release_content_id": "ade3f558c489da80d7491207140837e6d3c91f79d64ab4ad691692a3d194cee1",
+  "source_mounts_read_only": true,
+  "url": "http://127.0.0.1:7914/dataops/research",
+  "status": "passed",
+  "same_state_directory": true,
+  "existing_cookie_retained": true,
+  "old_artifact_unchanged": true,
+  "old_workspace_id": "b8af8f7a470b441e810456fb322cbc6a",
+  "old_artifact_sha256": "438739dff592859cb7d820cb861ab39d2b42c99745ec33769c1082922f2f6f52",
+  "provider_requests": 0,
+  "image_id": "sha256:750a60fa021abcb8a6d86482c663f6cd5ffe37a0a811294a214ed0a612f8fd32",
+  "source_tree_sha256": "9d3231e9f063bf4f5d315674e0552309c64c641b9a8862b2944f8a92ff5bb85a",
+  "image_matches_current_allowlisted_files": true,
+  "docker_hub_published": false,
+  "browser_7912": {
+    "status": "passed",
+    "port": 7912,
+    "fresh_runtime": true,
+    "selection_correct": true,
+    "v2_preserves_parent": true,
+    "v1_file_unchanged": true,
+    "same_key_replayed": true,
+    "refresh_restores_task": true,
+    "insufficient_candidates_explicit_partial": true,
+    "downloads_sha256_verified": true,
+    "provider_requests": 0,
+    "javascript_errors": [],
+    "external_browser_requests": []
+  },
+  "xlsx_7912": [
+    {
+      "version": "v1",
+      "status": "passed",
+      "sheets": 5,
+      "verified_cells": 136,
+      "rows": 2,
+      "method": "reopen_compare_every_cell_v1"
+    },
+    {
+      "version": "v2",
+      "status": "passed",
+      "sheets": 6,
+      "verified_cells": 161,
+      "rows": 2,
+      "method": "reopen_compare_every_cell_v1"
+    }
+  ],
+  "browser_7914": {
+    "status": "passed",
+    "port": 7914,
+    "fresh_runtime": true,
+    "selection_correct": true,
+    "v2_preserves_parent": true,
+    "v1_file_unchanged": true,
+    "same_key_replayed": true,
+    "refresh_restores_task": true,
+    "insufficient_candidates_explicit_partial": true,
+    "downloads_sha256_verified": true,
+    "provider_requests": 0,
+    "javascript_errors": [],
+    "external_browser_requests": []
+  },
+  "xlsx_7914": [
+    {
+      "version": "v1",
+      "status": "passed",
+      "sheets": 5,
+      "verified_cells": 136,
+      "rows": 2,
+      "method": "reopen_compare_every_cell_v1"
+    },
+    {
+      "version": "v2",
+      "status": "passed",
+      "sheets": 6,
+      "verified_cells": 161,
+      "rows": 2,
+      "method": "reopen_compare_every_cell_v1"
+    }
+  ],
+  "runtime": [
+    {
+      "port": 7896,
+      "fresh": true,
+      "source_revision": "d112a896eb0a483e3220790f16701f4ff5fdecd31dcb585f4d9a865fbe51f96f",
+      "candidate_driver": "synthetic",
+      "rag_generation_enabled": false
+    },
+    {
+      "port": 7912,
+      "fresh": true,
+      "source_revision": "d112a896eb0a483e3220790f16701f4ff5fdecd31dcb585f4d9a865fbe51f96f",
+      "candidate_driver": "synthetic",
+      "rag_generation_enabled": true
+    },
+    {
+      "port": 7914,
+      "fresh": true,
+      "source_revision": "9f5d20adaee95bfee3ec8516aa6127e1d5fe88c0097629c5ce9b8d0c562dc2f5",
+      "candidate_driver": "synthetic",
+      "rag_generation_enabled": false
+    }
+  ]
+}

@@ -1,0 +1,2325 @@
+{
+  "kind": "author_written_known_synthetic_goal_development_not_holdout",
+  "run_directory": "var/dataops_goal_live_v1_20261030",
+  "summary": {
+    "kind": "author-written known development; safe deferral is not a proven high-quality clarification",
+    "status": "completed",
+    "results": [
+      {
+        "case_id": "C01",
+        "category": "control",
+        "strategy": "R",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "ready",
+          "question": "整理Alpha的功效、注意，保留出处并生成表格",
+          "compiler": "local_bounded_grammar_v1",
+          "external_model_calls": 0,
+          "goal": {
+            "title": "批量资料核对",
+            "query": {
+              "source_ids": [],
+              "names": [
+                "Alpha"
+              ],
+              "filters": [],
+              "group_by": null,
+              "limit": 50,
+              "offset": 0
+            },
+            "attributes": [
+              "medicinal_part",
+              "latin_name"
+            ],
+            "document_fields": [
+              "功能与主治",
+              "注意"
+            ],
+            "completion_policy": "audit"
+          },
+          "recognized": [
+            {
+              "kind": "provenance",
+              "text": "保留出处",
+              "start": 14,
+              "end": 18
+            },
+            {
+              "kind": "name",
+              "text": "Alpha",
+              "start": 2,
+              "end": 7
+            },
+            {
+              "kind": "field",
+              "text": "功效",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "kind": "field",
+              "text": "注意",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "kind": "connective",
+              "text": "整理",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "kind": "connective",
+              "text": "并",
+              "start": 18,
+              "end": 19
+            },
+            {
+              "kind": "connective",
+              "text": "生成",
+              "start": 19,
+              "end": 21
+            },
+            {
+              "kind": "connective",
+              "text": "表格",
+              "start": 21,
+              "end": 23
+            }
+          ],
+          "unresolved": [],
+          "issues": [],
+          "defaults": [
+            "附带ETCM药用部位、拉丁名。"
+          ],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null
+        },
+        "error_type": null,
+        "fixed_delivery": {
+          "status": "passed",
+          "outcome": "complete",
+          "errors": [],
+          "stop_reason": null,
+          "artifact_present": true,
+          "verification_action_completed": true,
+          "finish_action_completed": true,
+          "model_diagnostics": null,
+          "workspace_id": "6b4f20d5a5cb4a12941ee6963b3c9f0b",
+          "route": "shared_graph_tools_and_validator",
+          "tool_calls": 6,
+          "leaf_reads": 3,
+          "logical_adapter_reads": [
+            {
+              "kind": "query"
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+              "fields": []
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+              "fields": [
+                "功能与主治",
+                "注意"
+              ]
+            }
+          ],
+          "policy_context_max_bytes": 2646,
+          "host_policy_steps_including_parent": 6,
+          "planning_stub_steps": 0,
+          "external_model_calls": 0,
+          "provider_usage": null,
+          "cost": null,
+          "elapsed_seconds": 0.5270155579928542
+        },
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 0,
+        "elapsed_seconds": 0.5299041429971112,
+        "cost": null
+      },
+      {
+        "case_id": "C01",
+        "category": "control",
+        "strategy": "G",
+        "status": "failed",
+        "passed": false,
+        "errors": [
+          "wrong_ready_or_deferral_status"
+        ],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": true,
+        "proposal": {
+          "status": "needs_input",
+          "question": "整理Alpha的功效、注意，保留出处并生成表格",
+          "compiler": "native_goal_proposal_v1",
+          "goal": null,
+          "issues": [
+            "“功效”不在允许的药典字段中（最接近为“功能与主治”），且“保留出处并生成表格”超出本地只读记录筛选范围，请确认是否仅取“功能与主治”“注意”“来源”三项字段？"
+          ],
+          "unresolved": [
+            "功效与表格生成的具体含义需用户确认"
+          ],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null,
+          "external_model_calls": 1,
+          "usage": {
+            "input_tokens": 1323,
+            "output_tokens": 283,
+            "total_tokens": 1606
+          }
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 1,
+        "elapsed_seconds": 1.8741916979925008,
+        "cost": null
+      },
+      {
+        "case_id": "C02",
+        "category": "control",
+        "strategy": "R",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "ready",
+          "question": "整理Beta的贮藏，保留出处",
+          "compiler": "local_bounded_grammar_v1",
+          "external_model_calls": 0,
+          "goal": {
+            "title": "批量资料核对",
+            "query": {
+              "source_ids": [],
+              "names": [
+                "Beta"
+              ],
+              "filters": [],
+              "group_by": null,
+              "limit": 50,
+              "offset": 0
+            },
+            "attributes": [
+              "medicinal_part",
+              "latin_name"
+            ],
+            "document_fields": [
+              "贮藏"
+            ],
+            "completion_policy": "audit"
+          },
+          "recognized": [
+            {
+              "kind": "provenance",
+              "text": "保留出处",
+              "start": 10,
+              "end": 14
+            },
+            {
+              "kind": "name",
+              "text": "Beta",
+              "start": 2,
+              "end": 6
+            },
+            {
+              "kind": "field",
+              "text": "贮藏",
+              "start": 7,
+              "end": 9
+            },
+            {
+              "kind": "connective",
+              "text": "整理",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 6,
+              "end": 7
+            }
+          ],
+          "unresolved": [],
+          "issues": [],
+          "defaults": [
+            "附带ETCM药用部位、拉丁名。"
+          ],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null
+        },
+        "error_type": null,
+        "fixed_delivery": {
+          "status": "passed",
+          "outcome": "complete",
+          "errors": [],
+          "stop_reason": null,
+          "artifact_present": true,
+          "verification_action_completed": true,
+          "finish_action_completed": true,
+          "model_diagnostics": null,
+          "workspace_id": "9e5e346d95c34e149345189b0c321782",
+          "route": "shared_graph_tools_and_validator",
+          "tool_calls": 6,
+          "leaf_reads": 3,
+          "logical_adapter_reads": [
+            {
+              "kind": "query"
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "fields": []
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "fields": [
+                "贮藏"
+              ]
+            }
+          ],
+          "policy_context_max_bytes": 2390,
+          "host_policy_steps_including_parent": 6,
+          "planning_stub_steps": 0,
+          "external_model_calls": 0,
+          "provider_usage": null,
+          "cost": null,
+          "elapsed_seconds": 0.525231949010049
+        },
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 0,
+        "elapsed_seconds": 0.5257394559885142,
+        "cost": null
+      },
+      {
+        "case_id": "C02",
+        "category": "control",
+        "strategy": "G",
+        "status": "failed",
+        "passed": false,
+        "errors": [
+          "goal_mismatch:document_fields",
+          "fixed_delivery_failed"
+        ],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "ready",
+          "question": "整理Beta的贮藏，保留出处",
+          "compiler": "native_goal_proposal_v1",
+          "goal": {
+            "title": "批量资料核对",
+            "query": {
+              "source_ids": [],
+              "names": [
+                "Beta"
+              ],
+              "filters": [],
+              "group_by": null,
+              "limit": 50,
+              "offset": 0
+            },
+            "attributes": [
+              "medicinal_part",
+              "latin_name"
+            ],
+            "document_fields": [
+              "贮藏",
+              "来源"
+            ],
+            "completion_policy": "audit"
+          },
+          "issues": [],
+          "unresolved": [],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null,
+          "external_model_calls": 1,
+          "usage": {
+            "input_tokens": 1319,
+            "output_tokens": 213,
+            "total_tokens": 1532
+          }
+        },
+        "error_type": null,
+        "fixed_delivery": {
+          "status": "failed",
+          "outcome": "complete",
+          "errors": [
+            "wrong_columns"
+          ],
+          "stop_reason": null,
+          "artifact_present": true,
+          "verification_action_completed": true,
+          "finish_action_completed": true,
+          "model_diagnostics": null,
+          "workspace_id": "20b00412c29b4c4385c32ea7d39dc7f7",
+          "route": "shared_graph_tools_and_validator",
+          "tool_calls": 6,
+          "leaf_reads": 3,
+          "logical_adapter_reads": [
+            {
+              "kind": "query"
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "fields": []
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "fields": [
+                "贮藏",
+                "来源"
+              ]
+            }
+          ],
+          "policy_context_max_bytes": 2448,
+          "host_policy_steps_including_parent": 6,
+          "planning_stub_steps": 0,
+          "external_model_calls": 0,
+          "provider_usage": null,
+          "cost": null,
+          "elapsed_seconds": 0.5312687449913938
+        },
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 1,
+        "elapsed_seconds": 1.74949531799939,
+        "cost": null
+      },
+      {
+        "case_id": "C03",
+        "category": "control",
+        "strategy": "R",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "ready",
+          "question": "整理药用部位包含Root的前2条记录的功效",
+          "compiler": "local_bounded_grammar_v1",
+          "external_model_calls": 0,
+          "goal": {
+            "title": "批量资料核对",
+            "query": {
+              "source_ids": [],
+              "names": [],
+              "filters": [
+                {
+                  "field": "medicinal_part",
+                  "op": "contains",
+                  "value": "Root"
+                }
+              ],
+              "group_by": null,
+              "limit": 2,
+              "offset": 0
+            },
+            "attributes": [
+              "medicinal_part",
+              "latin_name"
+            ],
+            "document_fields": [
+              "功能与主治"
+            ],
+            "completion_policy": "audit"
+          },
+          "recognized": [
+            {
+              "kind": "filter",
+              "text": "药用部位包含Root",
+              "start": 2,
+              "end": 12
+            },
+            {
+              "kind": "limit",
+              "text": "前2条记录",
+              "start": 13,
+              "end": 18
+            },
+            {
+              "kind": "field",
+              "text": "功效",
+              "start": 19,
+              "end": 21
+            },
+            {
+              "kind": "connective",
+              "text": "整理",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 12,
+              "end": 13
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 18,
+              "end": 19
+            }
+          ],
+          "unresolved": [],
+          "issues": [],
+          "defaults": [
+            "附带ETCM药用部位、拉丁名。"
+          ],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null
+        },
+        "error_type": null,
+        "fixed_delivery": {
+          "status": "passed",
+          "outcome": "complete",
+          "errors": [],
+          "stop_reason": null,
+          "artifact_present": true,
+          "verification_action_completed": true,
+          "finish_action_completed": true,
+          "model_diagnostics": null,
+          "workspace_id": "7660f67af52340f4bf9f6dd648d493df",
+          "route": "shared_graph_tools_and_validator",
+          "tool_calls": 6,
+          "leaf_reads": 3,
+          "logical_adapter_reads": [
+            {
+              "kind": "query"
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "fields": []
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "fields": [
+                "功能与主治"
+              ]
+            }
+          ],
+          "policy_context_max_bytes": 2377,
+          "host_policy_steps_including_parent": 6,
+          "planning_stub_steps": 0,
+          "external_model_calls": 0,
+          "provider_usage": null,
+          "cost": null,
+          "elapsed_seconds": 0.5257923080062028
+        },
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 0,
+        "elapsed_seconds": 0.5264469109970378,
+        "cost": null
+      },
+      {
+        "case_id": "C03",
+        "category": "control",
+        "strategy": "G",
+        "status": "failed",
+        "passed": false,
+        "errors": [
+          "goal_mismatch:attributes",
+          "goal_mismatch:document_fields",
+          "fixed_delivery_failed"
+        ],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "ready",
+          "question": "整理药用部位包含Root的前2条记录的功效",
+          "compiler": "native_goal_proposal_v1",
+          "goal": {
+            "title": "批量资料核对",
+            "query": {
+              "source_ids": [],
+              "names": [],
+              "filters": [
+                {
+                  "field": "medicinal_part",
+                  "op": "contains",
+                  "value": "Root"
+                }
+              ],
+              "group_by": null,
+              "limit": 2,
+              "offset": 0
+            },
+            "attributes": [
+              "indications"
+            ],
+            "document_fields": [
+              "功能与主治",
+              "注意"
+            ],
+            "completion_policy": "audit"
+          },
+          "issues": [],
+          "unresolved": [],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null,
+          "external_model_calls": 1,
+          "usage": {
+            "input_tokens": 1322,
+            "output_tokens": 231,
+            "total_tokens": 1553
+          }
+        },
+        "error_type": null,
+        "fixed_delivery": {
+          "status": "failed",
+          "outcome": "complete",
+          "errors": [
+            "wrong_columns",
+            "wrong_field_value_or_status:medicinal_part",
+            "missing_structured_evidence",
+            "wrong_field_value_or_status:latin_name",
+            "missing_structured_evidence"
+          ],
+          "stop_reason": null,
+          "artifact_present": true,
+          "verification_action_completed": true,
+          "finish_action_completed": true,
+          "model_diagnostics": null,
+          "workspace_id": "39956ff6766d44f6bf8f44671ba0b914",
+          "route": "shared_graph_tools_and_validator",
+          "tool_calls": 6,
+          "leaf_reads": 3,
+          "logical_adapter_reads": [
+            {
+              "kind": "query"
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "fields": []
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "fields": [
+                "功能与主治",
+                "注意"
+              ]
+            }
+          ],
+          "policy_context_max_bytes": 2452,
+          "host_policy_steps_including_parent": 6,
+          "planning_stub_steps": 0,
+          "external_model_calls": 0,
+          "provider_usage": null,
+          "cost": null,
+          "elapsed_seconds": 0.5506640569947194
+        },
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 1,
+        "elapsed_seconds": 1.7780778820015257,
+        "cost": null
+      },
+      {
+        "case_id": "C04",
+        "category": "control",
+        "strategy": "R",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "ready",
+          "question": "增加贮藏，保留旧字段",
+          "compiler": "local_bounded_grammar_v1",
+          "external_model_calls": 0,
+          "goal": {
+            "title": "批量资料核对",
+            "query": {
+              "source_ids": [
+                "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf"
+              ],
+              "names": [],
+              "filters": [],
+              "group_by": null,
+              "limit": 50,
+              "offset": 0
+            },
+            "attributes": [
+              "medicinal_part",
+              "latin_name"
+            ],
+            "document_fields": [
+              "功能与主治",
+              "注意",
+              "贮藏"
+            ],
+            "completion_policy": "audit"
+          },
+          "recognized": [
+            {
+              "kind": "revision",
+              "text": "保留旧字段",
+              "start": 5,
+              "end": 10
+            },
+            {
+              "kind": "add_fields",
+              "text": "增加",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "kind": "field",
+              "text": "贮藏",
+              "start": 2,
+              "end": 4
+            }
+          ],
+          "unresolved": [],
+          "issues": [],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": "e8ee1be2f8724d2c9941f53e00822400",
+          "expected_revision": 1
+        },
+        "error_type": null,
+        "fixed_delivery": {
+          "status": "passed",
+          "outcome": "complete",
+          "errors": [],
+          "stop_reason": null,
+          "artifact_present": true,
+          "verification_action_completed": true,
+          "finish_action_completed": true,
+          "model_diagnostics": null,
+          "workspace_id": "eaa9abc8c7f744078298587f4035356c",
+          "route": "shared_graph_tools_and_validator",
+          "tool_calls": 5,
+          "leaf_reads": 2,
+          "logical_adapter_reads": [
+            {
+              "kind": "query"
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+              "fields": [
+                "贮藏"
+              ]
+            }
+          ],
+          "policy_context_max_bytes": 2788,
+          "host_policy_steps_including_parent": 11,
+          "planning_stub_steps": 0,
+          "external_model_calls": 0,
+          "provider_usage": null,
+          "cost": null,
+          "elapsed_seconds": 0.985088250003173
+        },
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 0,
+        "elapsed_seconds": 0.9857265520113287,
+        "cost": null
+      },
+      {
+        "case_id": "C04",
+        "category": "control",
+        "strategy": "G",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "ready",
+          "question": "增加贮藏，保留旧字段",
+          "compiler": "native_goal_proposal_v1",
+          "goal": {
+            "title": "批量资料核对",
+            "query": {
+              "source_ids": [
+                "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf"
+              ],
+              "names": [],
+              "filters": [],
+              "group_by": null,
+              "limit": 50,
+              "offset": 0
+            },
+            "attributes": [
+              "medicinal_part",
+              "latin_name"
+            ],
+            "document_fields": [
+              "功能与主治",
+              "注意",
+              "贮藏"
+            ],
+            "completion_policy": "audit"
+          },
+          "issues": [],
+          "unresolved": [],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": "e8ee1be2f8724d2c9941f53e00822400",
+          "expected_revision": 1,
+          "external_model_calls": 1,
+          "usage": {
+            "input_tokens": 1359,
+            "output_tokens": 209,
+            "total_tokens": 1568
+          }
+        },
+        "error_type": null,
+        "fixed_delivery": {
+          "status": "passed",
+          "outcome": "complete",
+          "errors": [],
+          "stop_reason": null,
+          "artifact_present": true,
+          "verification_action_completed": true,
+          "finish_action_completed": true,
+          "model_diagnostics": null,
+          "workspace_id": "35ff945d471f4dbd9e6ffa08b2a35e17",
+          "route": "shared_graph_tools_and_validator",
+          "tool_calls": 5,
+          "leaf_reads": 2,
+          "logical_adapter_reads": [
+            {
+              "kind": "query"
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+              "fields": [
+                "贮藏"
+              ]
+            }
+          ],
+          "policy_context_max_bytes": 2788,
+          "host_policy_steps_including_parent": 11,
+          "planning_stub_steps": 0,
+          "external_model_calls": 0,
+          "provider_usage": null,
+          "cost": null,
+          "elapsed_seconds": 0.9664109899895266
+        },
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 1,
+        "elapsed_seconds": 2.385529206992942,
+        "cost": null
+      },
+      {
+        "case_id": "G01",
+        "category": "expression",
+        "strategy": "R",
+        "status": "failed",
+        "passed": false,
+        "errors": [
+          "wrong_ready_or_deferral_status"
+        ],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": true,
+        "proposal": {
+          "status": "needs_input",
+          "question": "请做一张Alpha的资料表：一列写药典记载的用途，一列写使用时的提醒，找不到的留空，别编，出处也带上",
+          "compiler": "local_bounded_grammar_v1",
+          "external_model_calls": 0,
+          "goal": null,
+          "recognized": [
+            {
+              "kind": "name",
+              "text": "Alpha",
+              "start": 4,
+              "end": 9
+            },
+            {
+              "kind": "connective",
+              "text": "请",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "kind": "connective",
+              "text": "资料",
+              "start": 10,
+              "end": 12
+            },
+            {
+              "kind": "connective",
+              "text": "一列",
+              "start": 14,
+              "end": 16
+            },
+            {
+              "kind": "connective",
+              "text": "药典",
+              "start": 17,
+              "end": 19
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 21,
+              "end": 22
+            },
+            {
+              "kind": "connective",
+              "text": "一列",
+              "start": 25,
+              "end": 27
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 31,
+              "end": 32
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 38,
+              "end": 39
+            }
+          ],
+          "unresolved": [
+            "做一张",
+            "表",
+            "写",
+            "记载",
+            "用途",
+            "写使用时",
+            "提醒",
+            "找不到",
+            "留空",
+            "别编",
+            "出处也带上"
+          ],
+          "issues": [
+            "以下要求尚不能可靠处理：做一张、表、写、记载、用途、写使用时、提醒、找不到、留空、别编、出处也带上"
+          ],
+          "defaults": [
+            "未指定药典字段，使用功能与主治、注意。",
+            "附带ETCM药用部位、拉丁名。"
+          ],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 0,
+        "elapsed_seconds": 0.0005722230125684291,
+        "cost": null
+      },
+      {
+        "case_id": "G01",
+        "category": "expression",
+        "strategy": "G",
+        "status": "failed",
+        "passed": false,
+        "errors": [
+          "goal_mismatch:document_fields",
+          "fixed_delivery_failed"
+        ],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "ready",
+          "question": "请做一张Alpha的资料表：一列写药典记载的用途，一列写使用时的提醒，找不到的留空，别编，出处也带上",
+          "compiler": "native_goal_proposal_v1",
+          "goal": {
+            "title": "批量资料核对",
+            "query": {
+              "source_ids": [],
+              "names": [
+                "Alpha"
+              ],
+              "filters": [],
+              "group_by": null,
+              "limit": 50,
+              "offset": 0
+            },
+            "attributes": [
+              "medicinal_part",
+              "latin_name"
+            ],
+            "document_fields": [
+              "功能与主治",
+              "注意",
+              "来源"
+            ],
+            "completion_policy": "audit"
+          },
+          "issues": [],
+          "unresolved": [],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null,
+          "external_model_calls": 1,
+          "usage": {
+            "input_tokens": 1346,
+            "output_tokens": 218,
+            "total_tokens": 1564
+          }
+        },
+        "error_type": null,
+        "fixed_delivery": {
+          "status": "failed",
+          "outcome": "complete",
+          "errors": [
+            "wrong_columns"
+          ],
+          "stop_reason": null,
+          "artifact_present": true,
+          "verification_action_completed": true,
+          "finish_action_completed": true,
+          "model_diagnostics": null,
+          "workspace_id": "fe153da8088644db8838e4ae586c1a40",
+          "route": "shared_graph_tools_and_validator",
+          "tool_calls": 6,
+          "leaf_reads": 3,
+          "logical_adapter_reads": [
+            {
+              "kind": "query"
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+              "fields": []
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+              "fields": [
+                "功能与主治",
+                "注意",
+                "来源"
+              ]
+            }
+          ],
+          "policy_context_max_bytes": 2785,
+          "host_policy_steps_including_parent": 6,
+          "planning_stub_steps": 0,
+          "external_model_calls": 0,
+          "provider_usage": null,
+          "cost": null,
+          "elapsed_seconds": 0.5280093990004389
+        },
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 1,
+        "elapsed_seconds": 1.611223472005804,
+        "cost": null
+      },
+      {
+        "case_id": "G02",
+        "category": "expression",
+        "strategy": "R",
+        "status": "failed",
+        "passed": false,
+        "errors": [
+          "wrong_ready_or_deferral_status"
+        ],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": true,
+        "proposal": {
+          "status": "needs_input",
+          "question": "Beta和Delta放在同一个工作簿里；仅摘录药典的保存条件，原始资料的位置要留着",
+          "compiler": "local_bounded_grammar_v1",
+          "external_model_calls": 0,
+          "goal": null,
+          "recognized": [
+            {
+              "kind": "limit",
+              "text": "一个",
+              "start": 13,
+              "end": 15
+            },
+            {
+              "kind": "name",
+              "text": "Delta",
+              "start": 5,
+              "end": 10
+            },
+            {
+              "kind": "name",
+              "text": "Beta",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "kind": "field",
+              "text": "保存条件",
+              "start": 26,
+              "end": 30
+            },
+            {
+              "kind": "connective",
+              "text": "和",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "kind": "connective",
+              "text": "里",
+              "start": 18,
+              "end": 19
+            },
+            {
+              "kind": "connective",
+              "text": "药典",
+              "start": 23,
+              "end": 25
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 25,
+              "end": 26
+            },
+            {
+              "kind": "connective",
+              "text": "资料",
+              "start": 33,
+              "end": 35
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 35,
+              "end": 36
+            }
+          ],
+          "unresolved": [
+            "放在同",
+            "工作簿",
+            "仅摘录",
+            "原始",
+            "位置要留着"
+          ],
+          "issues": [
+            "以下要求尚不能可靠处理：放在同、工作簿、仅摘录、原始、位置要留着"
+          ],
+          "defaults": [
+            "附带ETCM药用部位、拉丁名。"
+          ],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 0,
+        "elapsed_seconds": 0.0005706899974029511,
+        "cost": null
+      },
+      {
+        "case_id": "G02",
+        "category": "expression",
+        "strategy": "G",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "ready",
+          "question": "Beta和Delta放在同一个工作簿里；仅摘录药典的保存条件，原始资料的位置要留着",
+          "compiler": "native_goal_proposal_v1",
+          "goal": {
+            "title": "批量资料核对",
+            "query": {
+              "source_ids": [],
+              "names": [
+                "Beta",
+                "Delta"
+              ],
+              "filters": [],
+              "group_by": null,
+              "limit": 50,
+              "offset": 0
+            },
+            "attributes": [
+              "medicinal_part",
+              "latin_name"
+            ],
+            "document_fields": [
+              "贮藏"
+            ],
+            "completion_policy": "audit"
+          },
+          "issues": [],
+          "unresolved": [],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null,
+          "external_model_calls": 1,
+          "usage": {
+            "input_tokens": 1335,
+            "output_tokens": 213,
+            "total_tokens": 1548
+          }
+        },
+        "error_type": null,
+        "fixed_delivery": {
+          "status": "passed",
+          "outcome": "complete",
+          "errors": [],
+          "stop_reason": null,
+          "artifact_present": true,
+          "verification_action_completed": true,
+          "finish_action_completed": true,
+          "model_diagnostics": null,
+          "workspace_id": "cd1f5cbe945e449f8675033f840c46ea",
+          "route": "shared_graph_tools_and_validator",
+          "tool_calls": 6,
+          "leaf_reads": 4,
+          "logical_adapter_reads": [
+            {
+              "kind": "query"
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:110abfafddbc347006d8c002febdbed0f8be204e902c2e123f9ae39f1864b12b",
+              "fields": []
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "fields": []
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "fields": [
+                "贮藏"
+              ]
+            }
+          ],
+          "policy_context_max_bytes": 2620,
+          "host_policy_steps_including_parent": 6,
+          "planning_stub_steps": 0,
+          "external_model_calls": 0,
+          "provider_usage": null,
+          "cost": null,
+          "elapsed_seconds": 0.5447462690062821
+        },
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 1,
+        "elapsed_seconds": 1.9773841980058933,
+        "cost": null
+      },
+      {
+        "case_id": "G03",
+        "category": "expression",
+        "strategy": "R",
+        "status": "failed",
+        "passed": false,
+        "errors": [
+          "wrong_ready_or_deferral_status"
+        ],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": true,
+        "proposal": {
+          "status": "needs_input",
+          "question": "现有这张表原来的列和值都不要动，另外添上药典里怎么保存的那一列",
+          "compiler": "local_bounded_grammar_v1",
+          "external_model_calls": 0,
+          "goal": null,
+          "recognized": [
+            {
+              "kind": "connective",
+              "text": "原来",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "kind": "connective",
+              "text": "和",
+              "start": 9,
+              "end": 10
+            },
+            {
+              "kind": "connective",
+              "text": "药典",
+              "start": 20,
+              "end": 22
+            },
+            {
+              "kind": "connective",
+              "text": "里",
+              "start": 22,
+              "end": 23
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 27,
+              "end": 28
+            },
+            {
+              "kind": "connective",
+              "text": "一列",
+              "start": 29,
+              "end": 31
+            }
+          ],
+          "unresolved": [
+            "现有这张表",
+            "列",
+            "值都不要动",
+            "另外添上",
+            "怎么保存",
+            "那"
+          ],
+          "issues": [
+            "以下要求尚不能可靠处理：现有这张表、列、值都不要动、另外添上、怎么保存、那",
+            "请说明要增加或修改的字段。"
+          ],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": "36a83858ca414ac28bd89b47d3137d89",
+          "expected_revision": 1
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 0,
+        "elapsed_seconds": 0.0006842410075478256,
+        "cost": null
+      },
+      {
+        "case_id": "G03",
+        "category": "expression",
+        "strategy": "G",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "ready",
+          "question": "现有这张表原来的列和值都不要动，另外添上药典里怎么保存的那一列",
+          "compiler": "native_goal_proposal_v1",
+          "goal": {
+            "title": "批量资料核对",
+            "query": {
+              "source_ids": [
+                "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf"
+              ],
+              "names": [],
+              "filters": [],
+              "group_by": null,
+              "limit": 50,
+              "offset": 0
+            },
+            "attributes": [
+              "medicinal_part",
+              "latin_name"
+            ],
+            "document_fields": [
+              "功能与主治",
+              "注意",
+              "贮藏"
+            ],
+            "completion_policy": "audit"
+          },
+          "issues": [],
+          "unresolved": [],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": "36a83858ca414ac28bd89b47d3137d89",
+          "expected_revision": 1,
+          "external_model_calls": 1,
+          "usage": {
+            "input_tokens": 1374,
+            "output_tokens": 209,
+            "total_tokens": 1583
+          }
+        },
+        "error_type": null,
+        "fixed_delivery": {
+          "status": "passed",
+          "outcome": "complete",
+          "errors": [],
+          "stop_reason": null,
+          "artifact_present": true,
+          "verification_action_completed": true,
+          "finish_action_completed": true,
+          "model_diagnostics": null,
+          "workspace_id": "9c42b1a99db44b5fb96071bee1326c19",
+          "route": "shared_graph_tools_and_validator",
+          "tool_calls": 5,
+          "leaf_reads": 2,
+          "logical_adapter_reads": [
+            {
+              "kind": "query"
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+              "fields": [
+                "贮藏"
+              ]
+            }
+          ],
+          "policy_context_max_bytes": 2851,
+          "host_policy_steps_including_parent": 11,
+          "planning_stub_steps": 0,
+          "external_model_calls": 0,
+          "provider_usage": null,
+          "cost": null,
+          "elapsed_seconds": 1.010688216003473
+        },
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 1,
+        "elapsed_seconds": 2.4513193579914514,
+        "cost": null
+      },
+      {
+        "case_id": "G04",
+        "category": "expression",
+        "strategy": "R",
+        "status": "failed",
+        "passed": false,
+        "errors": [
+          "wrong_ready_or_deferral_status"
+        ],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": true,
+        "proposal": {
+          "status": "needs_input",
+          "question": "原来的药典列都换掉，最终药典只要保存条件这一项；ETCM的列和对象别动",
+          "compiler": "local_bounded_grammar_v1",
+          "external_model_calls": 0,
+          "goal": null,
+          "recognized": [
+            {
+              "kind": "field",
+              "text": "保存条件",
+              "start": 16,
+              "end": 20
+            },
+            {
+              "kind": "connective",
+              "text": "原来",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 2,
+              "end": 3
+            },
+            {
+              "kind": "connective",
+              "text": "药典",
+              "start": 3,
+              "end": 5
+            },
+            {
+              "kind": "connective",
+              "text": "药典",
+              "start": 12,
+              "end": 14
+            },
+            {
+              "kind": "connective",
+              "text": "ETCM",
+              "start": 24,
+              "end": 28
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 28,
+              "end": 29
+            },
+            {
+              "kind": "connective",
+              "text": "和",
+              "start": 30,
+              "end": 31
+            }
+          ],
+          "unresolved": [
+            "列都换掉",
+            "最终",
+            "只要",
+            "这一项",
+            "列",
+            "对象别动"
+          ],
+          "issues": [
+            "以下要求尚不能可靠处理：列都换掉、最终、只要、这一项、列、对象别动"
+          ],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": "0f203629ca2b4c6397e02c762dd25ebf",
+          "expected_revision": 1
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 0,
+        "elapsed_seconds": 0.00047450199781451374,
+        "cost": null
+      },
+      {
+        "case_id": "G04",
+        "category": "expression",
+        "strategy": "G",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "ready",
+          "question": "原来的药典列都换掉，最终药典只要保存条件这一项；ETCM的列和对象别动",
+          "compiler": "native_goal_proposal_v1",
+          "goal": {
+            "title": "批量资料核对",
+            "query": {
+              "source_ids": [
+                "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf"
+              ],
+              "names": [],
+              "filters": [],
+              "group_by": null,
+              "limit": 50,
+              "offset": 0
+            },
+            "attributes": [
+              "medicinal_part",
+              "latin_name"
+            ],
+            "document_fields": [
+              "贮藏"
+            ],
+            "completion_policy": "audit"
+          },
+          "issues": [],
+          "unresolved": [],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": "0f203629ca2b4c6397e02c762dd25ebf",
+          "expected_revision": 1,
+          "external_model_calls": 1,
+          "usage": {
+            "input_tokens": 1378,
+            "output_tokens": 211,
+            "total_tokens": 1589
+          }
+        },
+        "error_type": null,
+        "fixed_delivery": {
+          "status": "passed",
+          "outcome": "complete",
+          "errors": [],
+          "stop_reason": null,
+          "artifact_present": true,
+          "verification_action_completed": true,
+          "finish_action_completed": true,
+          "model_diagnostics": null,
+          "workspace_id": "0d145382dac64fd9a1c3670ae80757bf",
+          "route": "shared_graph_tools_and_validator",
+          "tool_calls": 5,
+          "leaf_reads": 2,
+          "logical_adapter_reads": [
+            {
+              "kind": "query"
+            },
+            {
+              "kind": "inspect",
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+              "fields": [
+                "贮藏"
+              ]
+            }
+          ],
+          "policy_context_max_bytes": 2684,
+          "host_policy_steps_including_parent": 11,
+          "planning_stub_steps": 0,
+          "external_model_calls": 0,
+          "provider_usage": null,
+          "cost": null,
+          "elapsed_seconds": 0.9549282250081887
+        },
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 1,
+        "elapsed_seconds": 2.117464317998383,
+        "cost": null
+      },
+      {
+        "case_id": "N01",
+        "category": "clarification",
+        "strategy": "R",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "needs_input",
+          "question": "把那两味药的资料整理成表格，和刚才一样",
+          "compiler": "local_bounded_grammar_v1",
+          "external_model_calls": 0,
+          "goal": null,
+          "recognized": [
+            {
+              "kind": "limit",
+              "text": "两味",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "kind": "connective",
+              "text": "把",
+              "start": 0,
+              "end": 1
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 5,
+              "end": 6
+            },
+            {
+              "kind": "connective",
+              "text": "资料",
+              "start": 6,
+              "end": 8
+            },
+            {
+              "kind": "connective",
+              "text": "整理",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "kind": "connective",
+              "text": "表格",
+              "start": 11,
+              "end": 13
+            },
+            {
+              "kind": "connective",
+              "text": "和",
+              "start": 14,
+              "end": 15
+            }
+          ],
+          "unresolved": [
+            "那",
+            "药",
+            "成",
+            "刚才一样"
+          ],
+          "issues": [
+            "以下要求尚不能可靠处理：那、药、成、刚才一样"
+          ],
+          "defaults": [
+            "未指定药典字段，使用功能与主治、注意。",
+            "附带ETCM药用部位、拉丁名。"
+          ],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 0,
+        "elapsed_seconds": 0.00048430099559482187,
+        "cost": null
+      },
+      {
+        "case_id": "N01",
+        "category": "clarification",
+        "strategy": "G",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "needs_input",
+          "question": "把那两味药的资料整理成表格，和刚才一样",
+          "compiler": "native_goal_proposal_v1",
+          "goal": null,
+          "issues": [
+            "“那两味药”和“和刚才一样”均无父版本或已收录名称作为指代，请明确要整理的两味药名称及需要保留的字段。"
+          ],
+          "unresolved": [
+            "未确定目标药材名称",
+            "未确定表格字段范围"
+          ],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null,
+          "external_model_calls": 1,
+          "usage": {
+            "input_tokens": 1324,
+            "output_tokens": 260,
+            "total_tokens": 1584
+          }
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 1,
+        "elapsed_seconds": 1.8421502440032782,
+        "cost": null
+      },
+      {
+        "case_id": "N02",
+        "category": "clarification",
+        "strategy": "R",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "needs_input",
+          "question": "现有表格把注意那列换成保存条件，其他药典列是否保留我还没决定",
+          "compiler": "local_bounded_grammar_v1",
+          "external_model_calls": 0,
+          "goal": null,
+          "recognized": [
+            {
+              "kind": "field",
+              "text": "保存条件",
+              "start": 11,
+              "end": 15
+            },
+            {
+              "kind": "field",
+              "text": "注意",
+              "start": 5,
+              "end": 7
+            },
+            {
+              "kind": "connective",
+              "text": "表格",
+              "start": 2,
+              "end": 4
+            },
+            {
+              "kind": "connective",
+              "text": "把",
+              "start": 4,
+              "end": 5
+            },
+            {
+              "kind": "connective",
+              "text": "药典",
+              "start": 18,
+              "end": 20
+            },
+            {
+              "kind": "connective",
+              "text": "保留",
+              "start": 23,
+              "end": 25
+            }
+          ],
+          "unresolved": [
+            "现有",
+            "那列换成",
+            "其他",
+            "列是否",
+            "我还没决定"
+          ],
+          "issues": [
+            "以下要求尚不能可靠处理：现有、那列换成、其他、列是否、我还没决定"
+          ],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": "9de4c1e610684cbe9b50d929fda409eb",
+          "expected_revision": 1
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 0,
+        "elapsed_seconds": 0.0005458209925564006,
+        "cost": null
+      },
+      {
+        "case_id": "N02",
+        "category": "clarification",
+        "strategy": "G",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "needs_input",
+          "question": "现有表格把注意那列换成保存条件，其他药典列是否保留我还没决定",
+          "compiler": "native_goal_proposal_v1",
+          "goal": null,
+          "issues": [
+            "请确认：是否要在父版本表格中用“贮藏”替换“注意”列，并明确除“注意”外的其他药典列（如“功能与主治”）是保留还是全部替换？"
+          ],
+          "unresolved": [
+            "其他药典列是保留还是替换尚未决定"
+          ],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": "9de4c1e610684cbe9b50d929fda409eb",
+          "expected_revision": 1,
+          "external_model_calls": 1,
+          "usage": {
+            "input_tokens": 1372,
+            "output_tokens": 265,
+            "total_tokens": 1637
+          }
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 1,
+        "elapsed_seconds": 1.4722725689935032,
+        "cost": null
+      },
+      {
+        "case_id": "N03",
+        "category": "unsupported",
+        "strategy": "R",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "needs_input",
+          "question": "整理Alpha的功效，再预测它对肺癌的疗效，放进表格",
+          "compiler": "local_bounded_grammar_v1",
+          "external_model_calls": 0,
+          "goal": null,
+          "recognized": [
+            {
+              "kind": "name",
+              "text": "Alpha",
+              "start": 2,
+              "end": 7
+            },
+            {
+              "kind": "field",
+              "text": "功效",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "kind": "connective",
+              "text": "整理",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "kind": "connective",
+              "text": "再",
+              "start": 11,
+              "end": 12
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 18,
+              "end": 19
+            },
+            {
+              "kind": "connective",
+              "text": "表格",
+              "start": 24,
+              "end": 26
+            }
+          ],
+          "unresolved": [
+            "预测它对肺癌",
+            "疗效",
+            "放进"
+          ],
+          "issues": [
+            "以下要求尚不能可靠处理：预测它对肺癌、疗效、放进"
+          ],
+          "defaults": [
+            "附带ETCM药用部位、拉丁名。"
+          ],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 0,
+        "elapsed_seconds": 0.0009993729909183457,
+        "cost": null
+      },
+      {
+        "case_id": "N03",
+        "category": "unsupported",
+        "strategy": "G",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "needs_input",
+          "question": "整理Alpha的功效，再预测它对肺癌的疗效，放进表格",
+          "compiler": "native_goal_proposal_v1",
+          "goal": null,
+          "issues": [
+            "“预测对肺癌的疗效”属于超范围的疗效预测，无法执行；请改为仅整理Alpha已有的功效资料（如功效分类或功能与主治）并放入表格。"
+          ],
+          "unresolved": [
+            "是否只整理Alpha的现有功效资料并输出表格？"
+          ],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null,
+          "external_model_calls": 1,
+          "usage": {
+            "input_tokens": 1325,
+            "output_tokens": 263,
+            "total_tokens": 1588
+          }
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 1,
+        "elapsed_seconds": 1.4250743859884096,
+        "cost": null
+      },
+      {
+        "case_id": "N04",
+        "category": "unsupported",
+        "strategy": "R",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "needs_input",
+          "question": "导出Alpha的功效表，并删除没有注意事项的源记录",
+          "compiler": "local_bounded_grammar_v1",
+          "external_model_calls": 0,
+          "goal": null,
+          "recognized": [
+            {
+              "kind": "name",
+              "text": "Alpha",
+              "start": 2,
+              "end": 7
+            },
+            {
+              "kind": "field",
+              "text": "注意事项",
+              "start": 17,
+              "end": 21
+            },
+            {
+              "kind": "field",
+              "text": "功效",
+              "start": 8,
+              "end": 10
+            },
+            {
+              "kind": "connective",
+              "text": "导出",
+              "start": 0,
+              "end": 2
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 7,
+              "end": 8
+            },
+            {
+              "kind": "connective",
+              "text": "并",
+              "start": 12,
+              "end": 13
+            },
+            {
+              "kind": "connective",
+              "text": "的",
+              "start": 21,
+              "end": 22
+            },
+            {
+              "kind": "connective",
+              "text": "记录",
+              "start": 23,
+              "end": 25
+            }
+          ],
+          "unresolved": [
+            "表",
+            "删除没有",
+            "源"
+          ],
+          "issues": [
+            "以下要求尚不能可靠处理：表、删除没有、源"
+          ],
+          "defaults": [
+            "附带ETCM药用部位、拉丁名。"
+          ],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 0,
+        "elapsed_seconds": 0.0005315429880283773,
+        "cost": null
+      },
+      {
+        "case_id": "N04",
+        "category": "unsupported",
+        "strategy": "G",
+        "status": "passed",
+        "passed": true,
+        "errors": [],
+        "unsafe_acceptance": false,
+        "clear_request_needs_rephrasing": false,
+        "proposal": {
+          "status": "needs_input",
+          "question": "导出Alpha的功效表，并删除没有注意事项的源记录",
+          "compiler": "native_goal_proposal_v1",
+          "goal": null,
+          "issues": [
+            "请求包含“删除没有注意事项的源记录”，属于删除源记录/修改源库的要求，超出本工具只读记录整理范围，无法执行；请确认是否仅需导出 Alpha 的功效（功能与主治）表。"
+          ],
+          "unresolved": [
+            "删除无“注意”字段的源记录的操作不受支持"
+          ],
+          "defaults": [],
+          "refresh_source_ids": [],
+          "parent_id": null,
+          "expected_revision": null,
+          "external_model_calls": 1,
+          "usage": {
+            "input_tokens": 1324,
+            "output_tokens": 275,
+            "total_tokens": 1599
+          }
+        },
+        "error_type": null,
+        "fixed_delivery": null,
+        "unsafe_execution_blocked_by_evaluator": false,
+        "actual_provider_requests": 1,
+        "elapsed_seconds": 1.6451267379889032,
+        "cost": null
+      }
+    ],
+    "actual_provider_requests": 12,
+    "model_strategy_executed": true,
+    "http_integration": false,
+    "real_data_or_history_sent": false,
+    "holdout_or_business_accuracy_claim": false,
+    "cost": null
+  },
+  "dispatch": [
+    {
+      "sequence": 1,
+      "case_id": "C01",
+      "bytes": 4233,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "propose_dataops_goal"
+        ],
+        "usage": {
+          "prompt_tokens": 1323,
+          "completion_tokens": 283,
+          "total_tokens": 1606
+        }
+      }
+    },
+    {
+      "sequence": 2,
+      "case_id": "C02",
+      "bytes": 4208,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "propose_dataops_goal"
+        ],
+        "usage": {
+          "prompt_tokens": 1319,
+          "completion_tokens": 213,
+          "total_tokens": 1532
+        }
+      }
+    },
+    {
+      "sequence": 3,
+      "case_id": "C03",
+      "bytes": 4227,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "propose_dataops_goal"
+        ],
+        "usage": {
+          "prompt_tokens": 1322,
+          "completion_tokens": 231,
+          "total_tokens": 1553
+        }
+      }
+    },
+    {
+      "sequence": 4,
+      "case_id": "C04",
+      "bytes": 4371,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "propose_dataops_goal"
+        ],
+        "usage": {
+          "prompt_tokens": 1359,
+          "completion_tokens": 209,
+          "total_tokens": 1568
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "case_id": "G01",
+      "bytes": 4314,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "propose_dataops_goal"
+        ],
+        "usage": {
+          "prompt_tokens": 1346,
+          "completion_tokens": 218,
+          "total_tokens": 1564
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "case_id": "G02",
+      "bytes": 4279,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "propose_dataops_goal"
+        ],
+        "usage": {
+          "prompt_tokens": 1335,
+          "completion_tokens": 213,
+          "total_tokens": 1548
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "case_id": "G03",
+      "bytes": 4434,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "propose_dataops_goal"
+        ],
+        "usage": {
+          "prompt_tokens": 1374,
+          "completion_tokens": 209,
+          "total_tokens": 1583
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "case_id": "G04",
+      "bytes": 4438,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "propose_dataops_goal"
+        ],
+        "usage": {
+          "prompt_tokens": 1378,
+          "completion_tokens": 211,
+          "total_tokens": 1589
+        }
+      }
+    },
+    {
+      "sequence": 9,
+      "case_id": "N01",
+      "bytes": 4231,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "propose_dataops_goal"
+        ],
+        "usage": {
+          "prompt_tokens": 1324,
+          "completion_tokens": 260,
+          "total_tokens": 1584
+        }
+      }
+    },
+    {
+      "sequence": 10,
+      "case_id": "N02",
+      "bytes": 4431,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "propose_dataops_goal"
+        ],
+        "usage": {
+          "prompt_tokens": 1372,
+          "completion_tokens": 265,
+          "total_tokens": 1637
+        }
+      }
+    },
+    {
+      "sequence": 11,
+      "case_id": "N03",
+      "bytes": 4242,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "propose_dataops_goal"
+        ],
+        "usage": {
+          "prompt_tokens": 1325,
+          "completion_tokens": 263,
+          "total_tokens": 1588
+        }
+      }
+    },
+    {
+      "sequence": 12,
+      "case_id": "N04",
+      "bytes": 4239,
+      "outcome": "http_200",
+      "reply_summary": {
+        "tool_call_count": 1,
+        "tool_names": [
+          "propose_dataops_goal"
+        ],
+        "usage": {
+          "prompt_tokens": 1324,
+          "completion_tokens": 275,
+          "total_tokens": 1599
+        }
+      }
+    }
+  ],
+  "source_code": {
+    "tcm/dataops/api.py": "e6a3be4c6129bde51e84aee5877ac5543707cd5f35280682425451a625dca4a5",
+    "tcm/dataops/workspace.py": "2fdc9da99116206fd1737854b7c2e4861929777ab56334ccc9c4e14b5c58e543",
+    "tcm/dataops/model.py": "df858c7889e0b99840e646484dda07db70c5d59af2b8596a3efcb16eb999de59",
+    "tcm/dataops/evaluation.py": "2c0b59267a1a3caa6d89c28c1bdaf49dc0d585e7b0d57aeaa6d3284019a248ac",
+    "tcm/dataops/artifacts.py": "ae076a37723d4ba4279b9ccbf1023df5e9bb7b2ec99539b1a490c3315a9c938a",
+    "tcm/dataops/baseline.py": "e6b17f3e5c8d3630d30da479b1d58790c1dcd3e026200b02fffbaf5a3cd5b8f5",
+    "tcm/dataops/goal_proposal.py": "8c1f3349b528564ce8661c76d34e46c9144e59f5fac5a2d459ed9e81d6f27b7c",
+    "tcm/dataops/planning.py": "dd0d2d76ca2ed40c7e33b368ce52a7a266d40e56b05af4a72184495cb1c6201c",
+    "tcm/dataops/graph.py": "61e11841995031eb24c4e563833428294f2193e92de53d5773c976b69b361d5e",
+    "tcm/dataops/jobs.py": "ad6380edecf7580bcceec84b4a5edf4506288f81f62ad4cb51558dd64a6a8ed0",
+    "tcm/dataops/data_access.py": "b5c74a8c75d5ceae5902bb735e1c05cc53df0b1bf21265eed500fc4051525cfb",
+    "tcm/dataops/contracts.py": "d0e115e4ceee29dde358e28e9419522d7b9269fab7c7e71e27442a39e3ea6a0f",
+    "tcm/dataops/__init__.py": "a1259b05d1579d154c72b88922394c4012039dc4f85305b8251d2e80515f0ea7",
+    "tcm/dataops/chat.py": "a09621bf21c515d8e569208b887aff0bae4305c24fe05d44f9aa16f2d27e848f",
+    "tcm/dataops/service.py": "3b00149285a970476282dc66ba4f63fa3fa50943d0a57d60c8ddfb76bda8aa86",
+    "tcm/dataops/goal_model.py": "60dc0a1162e4c2a5743834592076056b694b317298aa826bb1abd764bcfa16f5",
+    "scripts/eval_dataops_goals.py": "307ce10207a825b5025f389388bcfe227c7aca0e7c7f9b0a1b058f9cffb2e90a",
+    "scripts/eval_dataops_live.py": "6990628ac61075a02df31f71f92ac7bb1cdce1915c4b8e7983b2818037d962ce",
+    "tests/dataops_fixture.py": "0b4ad6a49af8f1bd37a6f7494722c1bad52df52031e7d39e8a611405f866cb6a",
+    "tcm/tracing.py": "95e54ce012d235b41bf60eecf0cd14a939d85f303a38326ee6f50f8ec0889033"
+  },
+  "original_file_hashes": {
+    "protocol.json": "37280a0da26465759fb6b6b502996d223ab45476d32447defff2bb62995bb20b",
+    "suite.json": "bf5e3ae0e47672192ae2378bcac6dcdb099b2adec5a27ed4f005077a64a54c05",
+    "summary.json": "f82a3ebf61235be19668c73b1f3309476eeb9c4e040ec1bbaa450cbcd2448311",
+    "dispatch.json": "5aa918feacabef26d903c87a0dbfed302aeb4a880b25282ec5f3f5a7d8e0a694",
+    "reference.json": "51974e028353bfa924f25a3d146f9e1c169b61f2e4c72db9b3479dfd780839a5",
+    "source_code.json": "1aa4f6140e58000d9b9530350df20a56bfe6b1df9b60de6ad028ad8c8e2fd497",
+    "catalog.json": "2175429bf999d1c7a97d592672baa0b3f42d5598a7fe025573c34bad373467c8",
+    "progress.json": "5c64d9a985c2cd111f0a0181b9dc8acb2dc3749ed1e875d203f03e2146568641"
+  },
+  "V3_V4_original_hashes_verified_unchanged": true,
+  "http_native_goal_enabled": false
+}

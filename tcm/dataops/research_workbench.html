@@ -1,0 +1,51 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>资料任务工作台</title><style>
+body{font:16px/1.6 system-ui,sans-serif;max-width:1080px;margin:32px auto;padding:0 20px;color:#20323e;background:#f6f8fa}a{color:#126265}section{background:white;padding:22px;margin:18px 0;border:1px solid #dbe4e8;border-radius:10px}input,select,button{font:inherit;padding:7px;margin:5px 8px 5px 0}input[type=text]{width:min(90%,650px)}button{cursor:pointer;background:#126265;color:white;border:0;border-radius:5px}button:disabled{opacity:.5;cursor:default}label{display:block}fieldset label{display:inline-block}table{border-collapse:collapse;width:100%;font-size:14px}td,th{border:1px solid #dbe4e8;padding:10px;text-align:left;vertical-align:top;white-space:pre-wrap}#message{white-space:pre-wrap}small{color:#526470}summary{cursor:pointer}pre{white-space:pre-wrap;word-break:break-all}#actions button{background:#536679}
+</style><nav><a href="/">聊天</a> · <a href="/dataops">固定资料整理</a> · <a href="/rag">原文检索</a></nav>
+<h1>资料任务</h1><p>整理指定药材时保留缺失；从候选中挑选时核对字段齐全性。结果附出处，药材身份仍待核验。</p>
+<section><label>用一句话说明任务<br><textarea id="question" rows="3" style="width:95%;font:inherit;padding:10px">整理白术和黄芪的功效、注意事项，保留出处并生成表格</textarea></label>
+<label><input type="checkbox" id="question_parent" disabled>接续当前结果，增加字段并保留原对象和旧字段</label>
+<label><input type="checkbox" id="question_model" disabled>单次模型理解问句（部署启用后可选；不发送资料正文或会话历史）</label>
+<button type="button" id="question_submit" disabled>理解并执行</button><p id="question_hint">正在读取配置…</p>
+<small>可写“从白术、黄芪、川芎、甘草、大黄中挑两条功效和注意字段齐全的”或在当前表上“增加贮藏，保留旧字段”。有歧义时保留原句供修改，不创建半个任务。</small></section>
+<section><p id="mode">正在读取部署配置…</p><form id="form">
+<label>候选药名（中文或拼音，逗号分隔，最多20条）<br><input id="names" type="text" required value="白术，黄芪，当归，川芎"></label>
+<label>需要几条字段齐全的记录 <input id="count" type="number" min="1" max="5" value="2" required></label>
+<fieldset id="fields"><legend>核对药典字段（1–4项）</legend><label><input type="checkbox" value="功能与主治" checked>功效</label><label><input type="checkbox" value="注意">注意</label><label><input type="checkbox" value="贮藏">贮藏</label><label><input type="checkbox" value="用法与用量">用量</label></fieldset>
+<label><input id="strict" type="checkbox">只接受药材正文作用域（饮片字段不计为齐全）</label>
+<button id="submit" type="submit" disabled>开始核对</button><button id="revision" type="button" disabled>按当前勾选字段生成新版本</button></form>
+<small>也可使用此表单明确指定。ETCM药用部位固定保留；新版保留原记录及旧字段，缺失不由模型补写。</small></section>
+<section aria-live="polite"><p id="message">尚未开始任务。</p><div id="actions"></div><div id="output"></div></section>
+<script>
+let current=null,timer=null,busy=false;const el=id=>document.getElementById(id),savedKey='r4-workspace';
+async function api(path,body){const r=await fetch(path,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined});const v=await r.json();if(!r.ok)throw Error(typeof v.detail==='string'?v.detail:JSON.stringify(v.detail));return v}
+function node(tag,text){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n}
+function button(text,fn){const b=node('button',text);b.type='button';b.onclick=()=>fn().catch(showError);return b}
+function showError(e){el('message').textContent=e.message;busy=false;el('submit').disabled=false}
+function fields(){return [...document.querySelectorAll('#fields input:checked')].map(x=>x.value)}
+function render(value){current=value;const w=value.workspace, j=value.job;localStorage.setItem(savedKey,w.id);el('output').replaceChildren();el('actions').replaceChildren();
+const rr=w.result?.research;el('message').textContent=({queued:'已排队',running:'正在核对',waiting_input:'需要选择来源',complete:'核对完成',partial:'仅部分完成',interrupted:'执行中断，未自动重发模型请求',failed:'执行失败',cancelled:'已取消'})[j.status]||j.status;
+if(w.error)el('message').textContent+='：'+w.error;
+if(rr)el('message').textContent+=rr.task_mode==='audit_named'?`；已核对 ${rr.reviewed_count}/${rr.target_count} 条，字段齐全 ${rr.qualified_count} 条。`:`；符合字段条件 ${rr.qualified_count}/${rr.target_count} 条。`;
+if(w.artifact){const a=node('a','下载带出处的表格 · v'+w.revision);a.href='/api/dataops/workspaces/'+w.id+'/artifact';el('output').append(a)}
+if(w.result){const table=node('table'),head=node('tr');head.append(node('th','记录'),...w.goal.document_fields.map(f=>node('th',f)));table.append(head);for(const row of w.result.rows){const tr=node('tr');tr.append(node('td',row.name||row.source_id));for(const f of w.goal.document_fields){const cell=row.cells[f];tr.append(node('td',cell?.value||'未取得独立字段（'+(cell?.status||'unknown')+'）'))}table.append(tr)}el('output').append(table);const d=node('details'),summary=node('summary','出处、候选核对与数据差异');d.append(summary,node('pre',JSON.stringify({issues:w.result.issues,evidence:w.result.evidence,research:w.result.research},null,2)));el('output').append(d)}
+const progress=node('details');progress.append(node('summary','查看执行动作与统计'),node('pre',JSON.stringify({goal_understanding:w.goal_understanding||null,execution:rr?{decision_steps:rr.decision_steps,provider_requests:rr.provider_requests}:null,plan:w.progress?.plan||[]},null,2)));el('output').append(progress);
+if(j.status==='waiting_input'&&w.pending){const p=w.pending;for(const c of p.candidates)el('actions').append(button('选择 '+c.name_zh,async()=>answer('choose',c.entry_id)));el('actions').append(button('跳过此来源',async()=>answer('skip')))}
+if(['queued','running','waiting_input','interrupted'].includes(j.status))el('actions').append(button('取消任务',async()=>{await api('/api/dataops/agent-runs/'+w.id+'/cancel',{});await poll(w.id)}));
+busy=['queued','running'].includes(j.status);el('submit').disabled=busy;el('question_submit').disabled=busy;el('revision').disabled=!w.artifact||busy;el('question_parent').disabled=!w.artifact||busy;
+clearTimeout(timer);if(busy)timer=setTimeout(()=>poll(w.id).catch(showError),700)}
+async function poll(id){render(await api('/api/dataops/agent-runs/'+id))}
+async function answer(operation,candidate_id){const w=current.workspace,j=current.job;await api('/api/dataops/agent-runs/'+w.id+'/answer',{question_id:w.pending.question_id,revision:w.revision,job_revision:j.revision,operation,candidate_id:candidate_id||null});await poll(w.id)}
+async function submit(revision=false){if(busy)return;let chosen=fields();if(!chosen.length)throw Error('请至少选择一个字段');let names=el('names').value.split(/[，,、\n]/).map(s=>s.trim()).filter(Boolean),count=Number(el('count').value);if(!names.length||names.length>20)throw Error('请输入1–20条候选药名');
+let goal={title:'候选资料核对',query:{names,limit:20},attributes:['medicinal_part'],document_fields:chosen,completion_policy:'audit',research:{target_count:count,monograph_only:el('strict').checked}};
+const body={request_key:crypto.randomUUID(),question:'从限定候选中核对'+count+'条字段齐全的记录，保留出处并生成表格',goal};
+if(revision){const p=current.workspace;goal={...p.goal,document_fields:[...new Set([...p.goal.document_fields,...chosen])]};if(goal.document_fields.length>4)throw Error('新版总字段最多4项');body.goal=goal;body.parent_id=p.id;body.expected_revision=p.revision}
+busy=true;el('submit').disabled=true;try{const result=await api('/api/dataops/research-tasks',body);await poll(result.workspace.id)}catch(e){busy=false;throw e}}
+el('form').onsubmit=e=>{e.preventDefault();submit().catch(showError)};el('revision').onclick=()=>submit(true).catch(showError);
+el('question_submit').onclick=async()=>{if(busy)return;const question=el('question').value.trim();if(!question){el('question_hint').textContent='请输入任务。';return}
+const parent=current?.workspace,continuation=el('question_parent').checked||/上一[份版张]|当前结果|^(?:请|再|继续)*(?:增加|新增|添加|补充|补上)/.test(question);
+const body={question,use_model:el('question_model').checked};if(continuation&&parent?.artifact){body.parent_id=parent.id;body.expected_revision=parent.revision}
+const signature=JSON.stringify(body),saved=JSON.parse(localStorage.getItem('r4-question-request')||'null');body.request_key=saved?.signature===signature?saved.key:crypto.randomUUID();localStorage.setItem('r4-question-request',JSON.stringify({signature,key:body.request_key}));busy=true;el('question_submit').disabled=true;
+try{const result=await api('/api/dataops/research-questions',body);if(result.workspace){el('question_hint').textContent='目标已保存，正在执行。';await poll(result.workspace.id)}else{el('question_hint').textContent=result.proposal.issues.join('\n');el('message').textContent='需要补充任务说明，尚未创建任务。';busy=false;el('question_submit').disabled=false}}catch(e){el('question_hint').textContent=e.message;busy=false;el('question_submit').disabled=false}};
+(async()=>{const c=(await api('/api/dataops/capabilities')).research_selection;el('mode').textContent=!c.enabled?'此部署未启用候选核对任务。':c.execution_model_enabled?'真实模型模式：每个任务最多10次请求，不自动重试。资料片段可能发送到已配置的DeepSeek。':c.driver==='fixed'?'本地确定性执行：按字段状态核对并生成表格，执行阶段不调用外部模型。':'本地模拟策略：不调用外部模型；用于验收工具、任务和交付流程。';el('submit').disabled=!c.enabled;el('question_submit').disabled=!c.enabled;el('question_model').disabled=!c.question_model_enabled;el('question_hint').textContent=c.question_model_enabled?'默认本地解析，可选择单次模型理解。':'当前使用本地有界解析，模型理解未启用。';const old=localStorage.getItem(savedKey);if(old)await poll(old)})().catch(showError);
+</script></html>

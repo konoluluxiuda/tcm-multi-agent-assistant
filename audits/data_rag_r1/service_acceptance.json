@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "services": [
+    {
+      "port": 7896,
+      "source_revision": "561ae0250c72afec611147cba5772da267c21f314bd685a010083ec48ee96296",
+      "runtime_fresh": true,
+      "driver": "disabled",
+      "external_model_enabled": false,
+      "intent_model_enabled": false,
+      "statuses": {
+        "/": 200,
+        "/dataops": 200,
+        "/ready/herbs": 200,
+        "/ready/research": 200
+      },
+      "jobs": {
+        "complete": 8
+      },
+      "state_preserved": true
+    },
+    {
+      "port": 7912,
+      "source_revision": "561ae0250c72afec611147cba5772da267c21f314bd685a010083ec48ee96296",
+      "runtime_fresh": true,
+      "driver": "synthetic",
+      "external_model_enabled": false,
+      "intent_model_enabled": false,
+      "statuses": {
+        "/": 200,
+        "/dataops": 200,
+        "/ready/herbs": 200,
+        "/ready/research": 200
+      },
+      "jobs": {
+        "complete": 12
+      },
+      "state_preserved": true
+    }
+  ],
+  "new_release_selected_for_services": false,
+  "additional_model_calls": 0
+}

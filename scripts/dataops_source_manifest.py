@@ -14,7 +14,7 @@ def manifest(root=ROOT):
         'requirements-research-preview.txt','requirements-research-chat.txt','constraints-research-chat.txt',
         'app.py','config.py','features.py','source_access.py','resources/source_manifest.json')}
     files.update((root/'agents').glob('*.py'));files.update((root/'agents/guardrails').glob('*.py'))
-    for folder in ('tcm','templates'):
+    for folder in ('tcm','templates','assets/web'):
         files.update(p for p in (root/folder).rglob('*') if p.is_file() and '__pycache__' not in p.parts
                      and p.suffix not in ('.pyc','.sqlite3','.sqlite3-wal','.sqlite3-shm'))
     if any(p.is_symlink() or not p.is_file() for p in files):raise ValueError('Build sources missing or symlinked')

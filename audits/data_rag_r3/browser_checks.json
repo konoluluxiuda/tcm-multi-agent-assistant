@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "reports": {
+    "browser_7896": {
+      "status": "passed",
+      "port": 7896,
+      "runtime_fresh": true,
+      "generation_configured": false,
+      "original_answer": true,
+      "source_cards": 2,
+      "same_key_replayed": true,
+      "blocked_requests_no_generation": false,
+      "javascript_errors": [],
+      "external_browser_requests": [],
+      "provider_requests": 0
+    },
+    "browser_7912": {
+      "status": "passed",
+      "port": 7912,
+      "runtime_fresh": true,
+      "generation_configured": true,
+      "original_answer": true,
+      "source_cards": 2,
+      "same_key_replayed": true,
+      "blocked_requests_no_generation": true,
+      "javascript_errors": [],
+      "external_browser_requests": [],
+      "provider_requests": 0
+    },
+    "browser_7912_cjk": {
+      "status": "passed",
+      "port": 7912,
+      "runtime_fresh": true,
+      "generation_configured": true,
+      "original_answer": true,
+      "source_cards": 2,
+      "same_key_replayed": true,
+      "blocked_requests_no_generation": true,
+      "javascript_errors": [],
+      "external_browser_requests": [],
+      "provider_requests": 0
+    }
+  },
+  "visual_check": "7912 CJK font screenshot reviewed; native host font used for QA only; no font bundled"
+}

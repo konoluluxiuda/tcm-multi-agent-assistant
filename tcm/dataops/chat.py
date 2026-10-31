@@ -21,13 +21,21 @@ def matches(question):
     if question.lstrip().startswith('/'):
         return False
     return bool(followup(question) or re.search(
-        r'(?:整理|核对|补充|导出|生成|制作)[\s\S]*(?:表格|核对表|[Ee]xcel|[Xx][Ll][Ss][Xx])', question))
+        r'(?:整理|核对|补充|导出|生成|制作|做成)[\s\S]*(?:表格|资料表|对照表|核对表|[Ee]xcel|[Xx][Ll][Ss][Xx])', question))
 
 
 def card(doc):
+    from tcm.capabilities import research_runtime
+    research='research' in doc.get('goal',{})
+    driver=research_runtime()['driver'] if research else 'synthetic'
+    result=(doc.get('result') or {}).get('research') or {}
+    calls=(doc.get('goal_understanding') or {}).get('provider_requests',0)+result.get('provider_requests',0)
+    execution_driver=(doc.get('progress') or {}).get('driver',driver)
+    if research and not result and (driver=='native' or execution_driver.startswith('research_native_')):calls=None
     return {'topic': 'dataops_task', 'status': doc['status'], 'workspace_id': doc['id'],
-            'message': '资料整理任务已保存，结果将在下方更新。', 'llm_calls': 0, 'network_calls': 0,
-            'driver': 'synthetic'}
+            'message': '资料整理任务已保存，结果将在下方更新。', 'llm_calls': calls, 'network_calls': calls,
+            'counts_final':calls is not None and doc['status'] in ('complete','partial','failed','cancelled'),
+            'driver':execution_driver}
 
 
 def restore(snapshot, service, owner):
@@ -48,7 +56,9 @@ def restore(snapshot, service, owner):
 
 def execute(service, memory, session_id, question, *, request_key=None, history_limit=30):
     """Called from FastAPI's sync worker; bridge to its existing async queue owner."""
-    service.require_agent()
+    from tcm.capabilities import research_runtime
+    research=research_runtime()['enabled']
+    if not research:service.require_agent()
     owner = hashlib.sha256(session_id.encode()).hexdigest()
     key = request_key or uuid4().hex
     with session_turn(session_id):
@@ -67,10 +77,14 @@ def execute(service, memory, session_id, question, *, request_key=None, history_
             parent = None
             if followup(question) and isinstance(focus, dict) and focus.get('workspace_id'):
                 parent = store.get(owner, focus['workspace_id'])
-            body = SubmitQuestion(question=question, request_key=key,
+            if parent and 'research' not in parent['goal']:research=False
+            from tcm.dataops.research_contracts import ResearchQuestion
+            body_type=ResearchQuestion if research else SubmitQuestion
+            body = body_type(question=question, request_key=key,
                 parent_id=parent['id'] if parent else None, expected_revision=parent['revision'] if parent else None)
             try:
-                result = anyio.from_thread.run(service.submit, owner, body)
+                result = anyio.from_thread.run(service.submit_research_question if research else service.submit, owner, body)
+                if not result.get('workspace'):raise ProposalNeedsInput(result['proposal'])
                 output = card(result['workspace'])
             except ProposalNeedsInput as exc:
                 output = {'topic': 'dataops_task', 'status': 'clarification_needed',

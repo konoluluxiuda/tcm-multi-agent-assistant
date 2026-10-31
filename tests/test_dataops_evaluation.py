@@ -79,5 +79,25 @@ class EvaluationTests(unittest.TestCase):
         self.assertFalse(result['child_created'])
         self.assertEqual(len(Workspaces(self.root/'failed-parent').listing('benchmark-owner')),1)
 
+    def test_budget_limited_artifact_is_not_reported_as_completed_delivery(self):
+        from tcm.dataops.evaluation import MeasuredDriver
+        case=self.case('B01');reference=self.oracle.reference(case)
+        class BudgetDriver(MeasuredDriver):
+            def decide(inner, context):
+                inner.context_bytes.append(len(canonical(context).encode()))
+                actions=['query_records','inspect_sources','lookup_document_fields','compare_fields',
+                         'read_evidence','build_artifact','compare_fields','verify_delivery']
+                tool=actions[len(inner.context_bytes)-1]
+                args={'purpose':'重现预算不足但已生成文件'}
+                if tool=='read_evidence': args['evidence_ids']=context['evidence_refs'][:1]
+                return {'tool':tool,'arguments':args}
+        result=run_case(case,reference,self.oracle,'A',self.factory,self.root/'budget-tail',
+            driver_factory=lambda strategy,case:BudgetDriver(strategy,case['goal']))
+        self.assertEqual(result['status'],'failed')
+        self.assertEqual(result['stop_reason'],'model_budget')
+        self.assertTrue(result['artifact_present'])
+        self.assertTrue(result['verification_action_completed'])
+        self.assertFalse(result['finish_action_completed'])
+
 
 if __name__=='__main__':unittest.main()

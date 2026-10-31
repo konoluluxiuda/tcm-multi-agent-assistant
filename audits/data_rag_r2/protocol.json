@@ -1,0 +1,66 @@
+{
+  "kind": "R2_frozen_before_reserved_first_run",
+  "created_at": "2026-10-30T16:52:00.024178+00:00",
+  "bindings": {
+    "release_content_id": "ade3f558c489da80d7491207140837e6d3c91f79d64ab4ad691692a3d194cee1",
+    "release_sha256": "aa65b51215535f824e4c1f6592b25c1e24d9f495aa338a91c99d0d05d5f5df92",
+    "references_sha256": "6f6f0f28728412d00871e069d1d149649892a2339d62453935ac49a3a08c6219",
+    "code_sha256": {
+      "tcm/rag_retrieval.py": "5c214301edfc03d3c664aacf1f1f93c029333112ef89e3e389768de440205a56",
+      "tcm/rag_retrieval_eval.py": "27ab5f34de4cdf744756b5cf78c10c60822dd7359fc4608ffb0bf2b5a6885ccc",
+      "scripts/eval_rag_retrieval.py": "5bcf866327a88371c4250e4e9ae84a8da857347f9eb32a680366cea4a1ffe968",
+      "tcm/mineru_retrieval.py": "5d4082e6b485ff63774e1d855fb9e9d4e480413ea84736ac0cf3e2027343aa01",
+      "tcm/mineru_guards.py": "76db1eb76910c3abc30c27e88484d6576e93c1020ada8aa74249d9bb289e77fd",
+      "tcm/local_dense.py": "ca9c724b8f016d4456c94d7f3c29320ad9d1b26e2b615cb617017e69a4551f9b",
+      "tcm/qdrant_dense.py": "42998472facd3ef8f6e33df96a83ab328e916764f00bd74f79e097319c0f27ce",
+      "tcm/rag_benchmark.py": "421f61717c0bd1fa14feef6d89324e827a5f4e677959521e8ab2078ddcb78150",
+      "tcm/mineru_revisions.py": "eeb614db294bbb31942ae4be33a7911a4800dc1e24c9a2c5c160be5a3bd93cf3",
+      "tcm/herbs.py": "11766cbbd9aedbe637c97794cf097ae9e1332d9c0aa4bff4012344bde6d02de0"
+    },
+    "asset_sha256": {
+      "dense/manifest.json": "23acd655290c531083679895a6e1e3c1b467f3d320360505e498a84908c761d8",
+      "dense/items.json": "c64b50d2bdd70a411813578e233475aa2c3f340cb5384e3dee204a0b07b2ef02",
+      "dense/vectors.npy": "8d5df5a3b160c850bec48ec21400b8b8735dd5cf12558a3d87b44e111e46d2c7",
+      "qdrant/receipt.json": "30486b7c9ca212c667c01f56b6d335c3f1cdad26fab0f89590eea5620b29f088"
+    },
+    "runtime": {
+      "numpy": "2.5.4",
+      "onnxruntime": "1.31.0",
+      "tokenizers": "0.23.3",
+      "qdrant-client": "1.13.3"
+    },
+    "settings": {
+      "methods": [
+        "exact",
+        "bm25",
+        "dense",
+        "hybrid"
+      ],
+      "k": 10,
+      "policy": {
+        "version": "r2-query-v1",
+        "max_question_chars": 500,
+        "max_k": 20,
+        "candidate_k": 20,
+        "rrf_constant": 60,
+        "appendices": false,
+        "dense_acceptance_threshold": null,
+        "semantic_results": "candidates_not_exhaustive",
+        "identity_verified": false
+      },
+      "repeats": 1,
+      "order": "case_then_method",
+      "latency_budget_ms": 5000,
+      "retrieval_backend": "exclusive_local_Qdrant_cosine",
+      "external_model_calls": 0,
+      "rerank": "omitted_unless_development_has_ranking_gap",
+      "default": "exact_for_explicit_fields_else_bm25_candidates",
+      "metrics": "Hit@5/10_and_MRR@10_are_document_only; JSON_and_multi_span_coverage_separate",
+      "review": "author_AI_source_checked_pending_human_signoff_not_independent_blind",
+      "exhaustive_relevance": false
+    }
+  },
+  "development_sha256": "3c31a824daaad79be2eb667ceca1c0d2a31113e8479484bab0e69063b19897a5",
+  "reserved_runs": 1,
+  "no_automatic_retry": true
+}

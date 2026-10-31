@@ -108,7 +108,7 @@ class HerbTargetPathTests(unittest.TestCase):
              patch.object(ad.config.conversation,'llm',RunnableLambda(forbidden)), \
              patch.object(ad.LocalGuardrails,'check_input',forbidden),patch.object(ad.LocalGuardrails,'check_output',forbidden), \
              TestClient(app.app) as client,redirect_stdout(io.StringIO()):
-            first=client.post('/chat',json={'query':'测试药的成分关联哪些靶点'}).json()['assistant']
+            first=client.post('/chat',json={'query':'/relations 成分靶点 测试药'}).json()['assistant']
             self.assertEqual(first['status'],'clarification_needed');self.assertNotIn('data',first['relations'])
             identifier=first['relations']['groups'][0]['options'][0]['source_record_id']
             response=client.post('/chat',json={'query':'/relations 成分靶点 '+identifier})
@@ -121,7 +121,7 @@ class HerbTargetPathTests(unittest.TestCase):
             with patch.dict(os.environ,{'ETCM_TARGET_DB':''}):
                 self.assertEqual(client.post('/chat',json={'query':'TestHerb的成分关联哪些靶点'}).status_code,503)
 
-    def test_named_paths_with_provenance_require_selection_and_keep_both_original_rows(self):
+    def test_named_paths_with_provenance_use_unique_source_and_keep_both_original_rows(self):
         import app
         import agents.agent_decision as ad
         from agents.conversation_store import ConversationStore
@@ -136,11 +136,13 @@ class HerbTargetPathTests(unittest.TestCase):
             response=client.post('/chat',json={'query':'测试药的成分关联哪些靶点，请把对应的原始记录也列出来。','answer_mode':'auto'})
             self.assertEqual(response.status_code,200)
             body=response.json();self.assertEqual(body['routing']['reason'],'relation_query_with_provenance')
-            first=body['assistant'];self.assertEqual(first['status'],'clarification_needed')
-            self.assertNotIn('data',first['relations'])
+            first=body['assistant'];self.assertEqual(first['status'],'ok')
+            self.assertEqual(first['relations']['groups'][0]['selection_method'],'unique_local_candidate')
+            self.assertIn('尚未核验',''.join(first['notes']))
             identifier=first['relations']['groups'][0]['options'][0]['source_record_id']
             chosen=client.post('/chat',json={'query':'/relations 成分靶点 '+identifier,'answer_mode':'auto'}).json()['assistant']
             self.assertEqual(chosen['relations']['data']['total'],26)
+            self.assertEqual(first['relations']['data'],chosen['relations']['data'])
             for row in chosen['relations']['data']['items']:
                 h,t=row['herb_evidence'],row['target_evidence']
                 self.assertIn('raw_row',h);self.assertIn('raw_row',t)

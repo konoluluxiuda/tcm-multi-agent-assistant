@@ -1,0 +1,41 @@
+{
+  "version": "research-combined-v1",
+  "reference_status": "author_development_contracts_frozen_source_witnesses_pending_human_signoff",
+  "cases": [
+    {
+      "id": "C01",
+      "question": "从桔梗、牡丹皮、陈皮、薄荷里挑两条注意和贮藏字段齐全的，缺项不能算合格；不够两条就说明不足，把查到的合格记录做成带出处的表格。",
+      "status": "ready",
+      "names": ["桔梗", "牡丹皮", "陈皮", "薄荷"],
+      "fields": ["注意", "贮藏"],
+      "mode": "select_complete",
+      "target_count": 2,
+      "expected_status": "partial",
+      "execution_authorized": true
+    },
+    {
+      "id": "C02",
+      "question": "把上一份再补充存放条件和注意事项，原有记录及功效列保留，缺项如实标明，给我新版表格。",
+      "status": "ready",
+      "names": ["陈皮", "桔梗"],
+      "fields": ["功能与主治", "注意", "贮藏"],
+      "mode": "audit_named",
+      "target_count": 2,
+      "parent_fields": ["功能与主治"],
+      "expected_status": "complete",
+      "execution_authorized": true
+    },
+    {
+      "id": "C03",
+      "question": "整理陈皮的功效，并联网寻找缺失的注意事项，一起生成表格。",
+      "status": "needs_input",
+      "execution_authorized": false
+    },
+    {
+      "id": "C04",
+      "question": "请把桔梗的来源与贮藏整理成表格。",
+      "status": "needs_input",
+      "execution_authorized": false
+    }
+  ]
+}

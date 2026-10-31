@@ -1,0 +1,14 @@
+{
+  "version": "rag-generation-development-v1",
+  "scope": "Author-written development on exposed R1/R2 sources; no new blind accuracy claim",
+  "cases": [
+    {"id":"G01","question":"比较白术和黄芪的贮藏原文，指出共同用词，保留各自出处。","references":["RAG-P01","RAG-P02"],"compose":true,"terms":["干燥","阴凉","通风"],"require_shared_phrase":true},
+    {"id":"G02","question":"比较白芍与苍术的贮藏原文，找共同用词；没写的防护不要补充，保留各自出处。","references":["RAG-P11"],"compose":true,"terms":["干燥","防蛀"],"require_shared_phrase":true},
+    {"id":"G03","question":"比较黄芪与金银花的保存原文，指出共同用词，并保留双方原文和出处。","references":["RAG-P12"],"compose":true,"terms":["干燥","防潮","防蛀"],"require_shared_phrase":true},
+    {"id":"G04","question":"并列ETCM BaiZhu的药用部位与药典白术来源段的原始用词，保留两边出处，不确认对象身份。","references":["RAG-P14"],"compose":true,"terms":["Root","根茎"],"require_shared_phrase":false},
+    {"id":"C01","question":"黄芪贮藏要注意什么？只摘录保存要求，后面的试剂配制注释另算。","references":["RAG-P02"],"compose":false,"terms":["通风","干燥","防潮","防蛀"],"expected_status":"original"},
+    {"id":"C02","question":"五味子的性味与归经在条目中怎样记载？","references":["RAG-P17"],"compose":false,"terms":[],"expected_status":"original"},
+    {"id":"C03","question":"只查白术独立的【注意】字段，没有就说明资料缺失。","references":["RAG-N01"],"compose":true,"terms":[],"expected_status":"missing_field"},
+    {"id":"C04","question":"我记录的是半夏，也可能是姜半夏或法半夏，炮制形式还没确定。请先核对条目。","references":["RAG-A03"],"compose":true,"terms":[],"expected_status":"clarification_required"}
+  ]
+}

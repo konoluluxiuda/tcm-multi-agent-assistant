@@ -1,0 +1,76 @@
+[
+  {
+    "port": 7912,
+    "version": "v1",
+    "status": "passed",
+    "sheets": 5,
+    "verified_cells": 120,
+    "rows": 2,
+    "method": "reopen_compare_every_cell_v1"
+  },
+  {
+    "port": 7912,
+    "version": "v2",
+    "status": "passed",
+    "sheets": 6,
+    "verified_cells": 157,
+    "rows": 2,
+    "method": "reopen_compare_every_cell_v1"
+  },
+  {
+    "port": 7912,
+    "version": "selection",
+    "status": "passed",
+    "sheets": 5,
+    "verified_cells": 136,
+    "rows": 2,
+    "method": "reopen_compare_every_cell_v1"
+  },
+  {
+    "port": 7914,
+    "version": "v1",
+    "status": "passed",
+    "sheets": 5,
+    "verified_cells": 120,
+    "rows": 2,
+    "method": "reopen_compare_every_cell_v1"
+  },
+  {
+    "port": 7914,
+    "version": "v2",
+    "status": "passed",
+    "sheets": 6,
+    "verified_cells": 157,
+    "rows": 2,
+    "method": "reopen_compare_every_cell_v1"
+  },
+  {
+    "port": 7914,
+    "version": "selection",
+    "status": "passed",
+    "sheets": 5,
+    "verified_cells": 136,
+    "rows": 2,
+    "method": "reopen_compare_every_cell_v1"
+  },
+  {
+    "port": 7896,
+    "entry": "chat",
+    "version": "v1",
+    "status": "passed",
+    "sheets": 5,
+    "verified_cells": 120,
+    "rows": 2,
+    "method": "reopen_compare_every_cell_v1"
+  },
+  {
+    "port": 7896,
+    "entry": "chat",
+    "version": "v2",
+    "status": "passed",
+    "sheets": 6,
+    "verified_cells": 157,
+    "rows": 2,
+    "method": "reopen_compare_every_cell_v1"
+  }
+]

@@ -61,6 +61,49 @@ class D2Tests(unittest.TestCase):
         self.assertFalse(result['result']['rows'][0]['identity_verified'])
         self.assertTrue((self.store.root / doc['id'] / 'graph.sqlite3').is_file())
 
+    def test_context_distinguishes_unfetched_from_read_but_unresolved_fields(self):
+        doc = self.create(fields=('贮藏', '注意')); driver = Driver()
+        result = self.engine(doc, driver).run()
+        self.assertEqual(result['status'], 'complete')
+        first = driver.calls[0]
+        self.assertEqual(first['budget']['decision_slots_remaining_including_current'], 8)
+        after_read = next(c for c in driver.calls if c['field_states'].get('ambiguous_field'))
+        self.assertEqual(after_read['unread_fields'], {})
+        self.assertEqual(after_read['field_states']['missing'], 1)
+        self.assertTrue(after_read['delivery']['ready_to_build'])
+        self.assertTrue(after_read['delivery']['audit_allows_reported_missing_or_ambiguous_values'])
+        self.assertTrue(after_read['delivery']['scope_ambiguity_must_remain_unknown'])
+        self.assertEqual(after_read['delivery']['minimum_delivery_actions_remaining'], 3)
+        final = driver.calls[-1]
+        self.assertTrue(final['delivery']['ready_to_finish'])
+        self.assertEqual(final['delivery']['minimum_delivery_actions_remaining'], 1)
+        self.assertIsNone(result['result']['rows'][0]['cells']['贮藏']['value'])
+
+    def test_custom_budget_and_no_progress_feedback_do_not_relax_stopping_rule(self):
+        doc = self.create(); driver = Driver(['query_records','inspect_sources','lookup_document_fields',
+                                             'compare_fields','inspect_sources'])
+        result = self.engine(doc, driver).run()
+        self.assertEqual(result['error'], 'no_progress')
+        last = driver.calls[-1]
+        self.assertEqual(last['progress_watch']['consecutive_no_progress'], 1)
+        self.assertFalse(last['progress_watch']['inspections_needed'])
+        self.assertFalse(last['progress_watch']['field_reads_needed'])
+        self.assertEqual(last['budget']['decision_slots_remaining_including_current'], 4)
+        tiny = Limits(); tiny.model_calls = 1
+        other = self.create(key='context-tiny-budget'); single = Driver()
+        stopped = self.engine(other, single, limits=tiny).run()
+        self.assertEqual(single.calls[0]['budget']['decision_slots_remaining_including_current'], 1)
+        self.assertEqual(stopped['error'], 'model_budget')
+
+    def test_resume_cannot_increase_checkpoint_execution_budget(self):
+        doc = self.create(('Gamma',)); waiting = self.engine(doc).run()
+        changed = Limits(); changed.model_calls = 9
+        next_driver = Driver()
+        with self.assertRaisesRegex(Conflict, 'limits changed'):
+            self.engine(doc, next_driver, limits=changed).run(self.answer(waiting))
+        self.assertEqual(next_driver.calls, [])
+        self.assertEqual(self.engine(doc).run(self.answer(waiting))['status'], 'complete')
+
     def test_ambiguous_observation_waits_and_survives_new_engine(self):
         doc = self.create(('Gamma',)); driver = Driver()
         waiting = self.engine(doc, driver).run()

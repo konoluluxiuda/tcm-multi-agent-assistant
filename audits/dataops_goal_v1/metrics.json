@@ -1,0 +1,79 @@
+{
+  "kind": "development_contract_not_general_accuracy",
+  "strategies": [
+    {
+      "strategy": "R",
+      "passed": 8,
+      "total": 12,
+      "groups": {
+        "control": {
+          "passed": 4,
+          "total": 4
+        },
+        "expression": {
+          "passed": 0,
+          "total": 4
+        },
+        "clarification": {
+          "passed": 2,
+          "total": 2
+        },
+        "unsupported": {
+          "passed": 2,
+          "total": 2
+        }
+      },
+      "actual_provider_requests": 0,
+      "clear_request_needs_rephrasing": 4,
+      "unsafe_acceptance_of_deferral_cases": 0,
+      "wrong_ready_goals": 0,
+      "passed_fixed_deliveries": 4,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "elapsed_seconds_sum": 2.573,
+      "cost": null
+    },
+    {
+      "strategy": "G",
+      "passed": 8,
+      "total": 12,
+      "groups": {
+        "control": {
+          "passed": 1,
+          "total": 4
+        },
+        "expression": {
+          "passed": 3,
+          "total": 4
+        },
+        "clarification": {
+          "passed": 2,
+          "total": 2
+        },
+        "unsupported": {
+          "passed": 2,
+          "total": 2
+        }
+      },
+      "actual_provider_requests": 12,
+      "clear_request_needs_rephrasing": 1,
+      "unsafe_acceptance_of_deferral_cases": 0,
+      "wrong_ready_goals": 3,
+      "passed_fixed_deliveries": 4,
+      "input_tokens": 16101,
+      "output_tokens": 2850,
+      "total_tokens": 18951,
+      "elapsed_seconds_sum": 22.329,
+      "cost": null
+    }
+  ],
+  "actual_provider_requests": 12,
+  "http_outcomes": {
+    "http_200": 12
+  },
+  "tokens": 18951,
+  "usage_response_coverage": "12/12",
+  "cost": null,
+  "retries": 0
+}

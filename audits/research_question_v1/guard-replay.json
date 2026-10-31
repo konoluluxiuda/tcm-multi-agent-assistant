@@ -1,0 +1,12 @@
+{
+  "type": "posthoc_host_guard_replay",
+  "case": "Q08",
+  "external_requests": 0,
+  "original_status": "ready",
+  "original_wrong_ready_goal": true,
+  "current_status": "needs_input",
+  "current_goal": null,
+  "source_response_sha256": "10398e2548066ea580467b0f37aed9769477c361ab1f25a18ff45fc723ae2884",
+  "original_live_scores_unchanged": true,
+  "new_model_pass_claimed": false
+}

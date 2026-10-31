@@ -1,0 +1,23 @@
+{
+  "release_content_id": "ade3f558c489da80d7491207140837e6d3c91f79d64ab4ad691692a3d194cee1",
+  "private_artifact_root": "var/rag_r2_v1",
+  "sha256": {
+    "dense/manifest.json": "23acd655290c531083679895a6e1e3c1b467f3d320360505e498a84908c761d8",
+    "qdrant/receipt.json": "30486b7c9ca212c667c01f56b6d335c3f1cdad26fab0f89590eea5620b29f088",
+    "development_01/summary.json": "504627ed2b4ba8f622ce70c9458c2401d8a81ab7e0f62e11403453ccde926993",
+    "development_02/summary.json": "98d8ec61d6106ef7f413b6df52a1957fedea3916c627d4786f7ad39258761e70",
+    "development_final/summary.json": "3c31a824daaad79be2eb667ceca1c0d2a31113e8479484bab0e69063b19897a5",
+    "reserved_first/summary.json": "54c3bf24dbae49d522758831ccc98c13342b15b3670312175fe0ba4c20375004",
+    "search_acceptance.json": "52b24bb77e3ba8fa01f26f539f879cd535a7089b141f51b381ba1d3c21dcc148",
+    "search_acceptance_failed_01.json": "19e291e141f861deb73f5ece199b2da4617333435fea0c8838255cc87e1826ea",
+    "checks/summary.json": "2e88087a5470ef0ec1ed04a09ebda04178bba021d98fadc08834c0ee1d20eed5",
+    "checks_final/summary.json": "b769b3a3937f9ba433b39b68cffa14e1c04e8de5ea15bdf5b0b3eaa6e7312477",
+    "protocol.json": "9fe7bcd3bb5e984dfcae22c54e3e66a9037c65740cbe2fca82f5bf5a5c861a7b"
+  },
+  "frozen_source_saved": true,
+  "raw_sources_modified": false,
+  "active_retrieval_generation_switched": false,
+  "new_embedding_calls": "local document encoding and local query encoding; no provider",
+  "external_generation_calls": 0,
+  "benchmark_reference_changed": false
+}

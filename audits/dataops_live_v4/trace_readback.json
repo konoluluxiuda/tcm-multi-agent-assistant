@@ -1,0 +1,98 @@
+{
+  "status": "passed",
+  "evaluation_roots": 9,
+  "generations": 33,
+  "actual_provider_requests": 33,
+  "traces": [
+    {
+      "case_id": "B01",
+      "strategy": "F",
+      "trace_id": "1fcda3cb11cf1147f5fc94434a301039",
+      "root_id": "4adca15af1912c14",
+      "generations": 0,
+      "level": "DEFAULT",
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "B01",
+      "strategy": "P",
+      "trace_id": "fb582f72aec0bfa1061766f30af94055",
+      "root_id": "eac9cccdc4981d89",
+      "generations": 1,
+      "level": "DEFAULT",
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "B01",
+      "strategy": "A",
+      "trace_id": "5fa60ecf24a0a2634e9d1e236f990c0f",
+      "root_id": "b690e361382dd94c",
+      "generations": 8,
+      "level": "DEFAULT",
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "B04",
+      "strategy": "F",
+      "trace_id": "d71c59926266863888ac6b8c166af8d0",
+      "root_id": "89151d81f758f185",
+      "generations": 0,
+      "level": "DEFAULT",
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "B04",
+      "strategy": "P",
+      "trace_id": "6eba6be3dce25502a047df4f291b453b",
+      "root_id": "782154fe0c85e435",
+      "generations": 1,
+      "level": "DEFAULT",
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "B04",
+      "strategy": "A",
+      "trace_id": "4de49016c70553e264a9a18bf6194bac",
+      "root_id": "ae78ae48bf8b4869",
+      "generations": 8,
+      "level": "WARNING",
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "R01",
+      "strategy": "F",
+      "trace_id": "a8a606e683a326eee2c66682efdc3b72",
+      "root_id": "5fb41edf7d9ee93c",
+      "generations": 0,
+      "level": "DEFAULT",
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "R01",
+      "strategy": "P",
+      "trace_id": "aac47513756729a2ffd7d71d94bb381f",
+      "root_id": "3d479a138e5d8d06",
+      "generations": 2,
+      "level": "DEFAULT",
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "R01",
+      "strategy": "A",
+      "trace_id": "dc80666d86d4c11493fd5a8c675bcc90",
+      "root_id": "c639544afd1805a8",
+      "generations": 13,
+      "level": "DEFAULT",
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    }
+  ]
+}

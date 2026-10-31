@@ -1,0 +1,122 @@
+[
+  {
+    "port": 7896,
+    "runtime": {
+      "started_at": "2026-10-31T05:22:56.673740+00:00",
+      "source_revision": "f7e50ce7524c2f51313af080287419cd89a1d16967b727f1930b6ca2cd8843ee",
+      "disk_revision": "f7e50ce7524c2f51313af080287419cd89a1d16967b727f1930b6ca2cd8843ee",
+      "restart_required": false,
+      "source_check": "ok",
+      "dataops": {
+        "agent": false,
+        "driver": "disabled",
+        "external_model_enabled": false,
+        "question_compiler": "local_bounded_grammar_v1",
+        "research_selection": {
+          "enabled": true,
+          "driver": "synthetic",
+          "external_model_enabled": false,
+          "execution_model_enabled": false,
+          "question_model_enabled": false,
+          "goal_input": "bounded_question_or_form",
+          "identity_approval": false
+        }
+      },
+      "rag": {
+        "enabled": true,
+        "generation_enabled": false
+      },
+      "intent_model_enabled": false,
+      "dataops_tracing_enabled": true
+    },
+    "research_selection": {
+      "enabled": true,
+      "driver": "synthetic",
+      "external_model_enabled": false,
+      "execution_model_enabled": false,
+      "question_model_enabled": false,
+      "goal_input": "bounded_question_or_form",
+      "identity_approval": false
+    }
+  },
+  {
+    "port": 7912,
+    "runtime": {
+      "started_at": "2026-10-31T05:20:04.262925+00:00",
+      "source_revision": "f7e50ce7524c2f51313af080287419cd89a1d16967b727f1930b6ca2cd8843ee",
+      "disk_revision": "f7e50ce7524c2f51313af080287419cd89a1d16967b727f1930b6ca2cd8843ee",
+      "restart_required": false,
+      "source_check": "ok",
+      "dataops": {
+        "agent": true,
+        "driver": "synthetic",
+        "external_model_enabled": false,
+        "question_compiler": "local_bounded_grammar_v1",
+        "research_selection": {
+          "enabled": true,
+          "driver": "synthetic",
+          "external_model_enabled": false,
+          "execution_model_enabled": false,
+          "question_model_enabled": false,
+          "goal_input": "bounded_question_or_form",
+          "identity_approval": false
+        }
+      },
+      "rag": {
+        "enabled": true,
+        "generation_enabled": true
+      },
+      "intent_model_enabled": false,
+      "dataops_tracing_enabled": true
+    },
+    "research_selection": {
+      "enabled": true,
+      "driver": "synthetic",
+      "external_model_enabled": false,
+      "execution_model_enabled": false,
+      "question_model_enabled": false,
+      "goal_input": "bounded_question_or_form",
+      "identity_approval": false
+    }
+  },
+  {
+    "port": 7914,
+    "runtime": {
+      "started_at": "2026-10-31T05:20:13.808343+00:00",
+      "source_revision": "efc400bce8db9eb99adf4c150fd4260e3f3a2d9871db30a6a56b8d5da9ca16f6",
+      "disk_revision": "efc400bce8db9eb99adf4c150fd4260e3f3a2d9871db30a6a56b8d5da9ca16f6",
+      "restart_required": false,
+      "source_check": "ok",
+      "dataops": {
+        "agent": false,
+        "driver": "disabled",
+        "external_model_enabled": false,
+        "question_compiler": "local_bounded_grammar_v1",
+        "research_selection": {
+          "enabled": true,
+          "driver": "synthetic",
+          "external_model_enabled": false,
+          "execution_model_enabled": false,
+          "question_model_enabled": false,
+          "goal_input": "bounded_question_or_form",
+          "identity_approval": false
+        }
+      },
+      "rag": {
+        "enabled": true,
+        "generation_enabled": false
+      },
+      "intent_model_enabled": false,
+      "dataops_tracing_enabled": false
+    },
+    "research_selection": {
+      "enabled": true,
+      "driver": "synthetic",
+      "external_model_enabled": false,
+      "execution_model_enabled": false,
+      "question_model_enabled": false,
+      "goal_input": "bounded_question_or_form",
+      "identity_approval": false
+    }
+  }
+]

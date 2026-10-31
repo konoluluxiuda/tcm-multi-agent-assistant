@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--directory', type=Path, default=ROOT / 'var/mineru_retrieval_v2')
+    parser.add_argument('--directory', type=Path, default=ROOT / 'var/mineru_retrieval_v3')
     parser.add_argument('--high', type=Path, default=ROOT / 'data/《中国药典》2025年版 一部.pdf')
     parser.add_argument('--full', type=Path, default=ROOT / 'data/《中国药典》2025年版 一部 全本.pdf')
     parser.add_argument('--port', type=int, default=7869)

@@ -1,0 +1,158 @@
+{
+  "version": "research-harness-v2-offline-replay-v1",
+  "status": "passed",
+  "records": [
+    {
+      "case": "S01_A",
+      "step": 1,
+      "tool": "list_candidates",
+      "old_schema_exposed": true,
+      "new_schema_exposed": true,
+      "host_rejection": null,
+      "admitted": true,
+      "expected_admitted": true,
+      "check_passed": true,
+      "available_alternatives": [
+        "list_candidates"
+      ]
+    },
+    {
+      "case": "S01_A",
+      "step": 2,
+      "tool": "inspect_candidates",
+      "old_schema_exposed": true,
+      "new_schema_exposed": true,
+      "host_rejection": null,
+      "admitted": true,
+      "expected_admitted": true,
+      "check_passed": true,
+      "available_alternatives": [
+        "inspect_candidates"
+      ]
+    },
+    {
+      "case": "S01_A",
+      "step": 3,
+      "tool": "list_candidates",
+      "old_schema_exposed": true,
+      "new_schema_exposed": false,
+      "host_rejection": "already_listed",
+      "admitted": false,
+      "expected_admitted": false,
+      "check_passed": true,
+      "available_alternatives": [
+        "search_documents",
+        "read_evidence",
+        "deliver_result"
+      ]
+    },
+    {
+      "case": "S01_A",
+      "step": 4,
+      "tool": "inspect_candidates",
+      "old_schema_exposed": true,
+      "new_schema_exposed": false,
+      "host_rejection": "no_unread_candidate_fields",
+      "admitted": false,
+      "expected_admitted": false,
+      "check_passed": true,
+      "available_alternatives": [
+        "search_documents",
+        "read_evidence",
+        "deliver_result"
+      ]
+    },
+    {
+      "case": "S02_A",
+      "step": 1,
+      "tool": "list_candidates",
+      "old_schema_exposed": true,
+      "new_schema_exposed": true,
+      "host_rejection": null,
+      "admitted": true,
+      "expected_admitted": true,
+      "check_passed": true,
+      "available_alternatives": [
+        "list_candidates"
+      ]
+    },
+    {
+      "case": "S02_A",
+      "step": 2,
+      "tool": "inspect_candidates",
+      "old_schema_exposed": true,
+      "new_schema_exposed": true,
+      "host_rejection": null,
+      "admitted": true,
+      "expected_admitted": true,
+      "check_passed": true,
+      "available_alternatives": [
+        "inspect_candidates",
+        "search_documents",
+        "read_evidence"
+      ]
+    },
+    {
+      "case": "S02_A",
+      "step": 3,
+      "tool": "list_candidates",
+      "old_schema_exposed": true,
+      "new_schema_exposed": false,
+      "host_rejection": "already_listed",
+      "admitted": false,
+      "expected_admitted": false,
+      "check_passed": true,
+      "available_alternatives": [
+        "search_documents",
+        "read_evidence",
+        "deliver_result"
+      ]
+    },
+    {
+      "case": "S02_A",
+      "step": 4,
+      "tool": "list_candidates",
+      "old_schema_exposed": true,
+      "new_schema_exposed": false,
+      "host_rejection": "already_listed",
+      "admitted": false,
+      "expected_admitted": false,
+      "check_passed": true,
+      "available_alternatives": [
+        "search_documents",
+        "read_evidence",
+        "deliver_result"
+      ]
+    }
+  ],
+  "recorded_actions": 8,
+  "useful_original_actions_admitted": 4,
+  "known_no_progress_actions_blocked": 4,
+  "provider_requests": 0,
+  "new_model_task_completion_measured": false,
+  "historical_A_score": "0/2 unchanged",
+  "input_files_sha256": {
+    "S01_A/request_01.private.json": "8e75c24a171d1be4892e49ebf5db44a8a9c243a732ae1071553276a769de0ac0",
+    "S01_A/response_01.private.json": "cfa8a5406700f1d89af139c6a561e7160d330b26016f2f25282698a2321369c8",
+    "S01_A/request_02.private.json": "5374757e2a481d5ad1d75aabe055947924ae7a580355a22c0a7aedc1983586af",
+    "S01_A/response_02.private.json": "13c8941ac6af00b54674d742f8ce5f3e1d0c68a3abfdc7a32ebc92469894df17",
+    "S01_A/request_03.private.json": "db98b32aa62b0499ff6a3f3afe81b852679ec4ff7ee853f3a04987014fee033f",
+    "S01_A/response_03.private.json": "95c52ad137e1c04d413f36a5ce83b2a02ac7950dc8038908223dcc08772c9ff5",
+    "S01_A/request_04.private.json": "7ec55d17ee7b8f46cdfe61f684b76c50faedb12d5d69b0e698cb9c2da5ca0679",
+    "S01_A/response_04.private.json": "cce28d0e0657b8db8ac80b6849827615a95591cb2aa138314403e1ec7e64deed",
+    "S02_A/request_01.private.json": "59c07627ab62ad1a71cb572efa6ab9a329867b5743b530adfe27daf752bb69c9",
+    "S02_A/response_01.private.json": "053e5ff55073956a69dcb1893181c1adbc1c8f7edc42f875a9f1725275bcf346",
+    "S02_A/request_02.private.json": "8dd03255f10af0f56df93a1fc0540039748068f2ac1f4728571cb9bbccfc30e2",
+    "S02_A/response_02.private.json": "52c2edd1b50b4404739ba21f50d61c3c43ac20fae27249101c1f3da93944b750",
+    "S02_A/request_03.private.json": "6e86c92629058e7f74e1080a5325c16a1e14026dad5a43735f4ecb5555b7d276",
+    "S02_A/response_03.private.json": "45c4f95324319a0d73f7dcbfcac2c729e832e9a68683a1751905706c158634f6",
+    "S02_A/request_04.private.json": "bd2cc64c5eec1dd037f931f1bd48a0e7e1ff916ea4ae091075e88b6e34cff8e0",
+    "S02_A/response_04.private.json": "bb297928c09461777dd8a13ad68037d8959f8da0f377a5aa984ec6305290364b"
+  },
+  "code_sha256": {
+    "tcm/dataops/research_context.py": "54f8d26552cb1164b84e1449bd9dc1fbe8ea94c14b438d13d2f1bebe23984e7e",
+    "tcm/dataops/research_model.py": "5a789bcb2b36bdb954df87011c385e4ed7ddd882c2aec217450bfbf7bf35cb2c",
+    "tcm/dataops/research_graph.py": "73f40f5aee610eafdfdb13fbd870d11942a8372c2df54650ec21fe43cf86c982",
+    "scripts/check_research_harness_replay.py": "19d95d5df2528f1535ae9e630979f3bf0e58a05f85f331917871d110473abdcd"
+  }
+}

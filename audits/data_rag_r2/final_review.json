@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "frozen_code_unchanged": true,
+  "reference_json_unchanged": true,
+  "reserved_ledger_count": 1,
+  "exact_cli_smoke": "passed_without_optional_ONNX_packages",
+  "document_links": "passed",
+  "source_documents_untouched": true,
+  "known_open_issue": "RAG-P17_field_label_alias_coverage_status",
+  "generated_answers_tested": false,
+  "retrieval_enabled_in_http": false,
+  "source_sha256": {
+    "tcm/rag_retrieval.py": "5c214301edfc03d3c664aacf1f1f93c029333112ef89e3e389768de440205a56",
+    "tcm/rag_retrieval_eval.py": "27ab5f34de4cdf744756b5cf78c10c60822dd7359fc4608ffb0bf2b5a6885ccc",
+    "scripts/eval_rag_retrieval.py": "5bcf866327a88371c4250e4e9ae84a8da857347f9eb32a680366cea4a1ffe968",
+    "scripts/check_rag_search.py": "3879afdbb426d1444fbf7d4b944b1ec9baa724d81a457cf103e701902c331893",
+    "tests/test_rag_retrieval.py": "adb2227697b787704d335ba68556cd427f1a281d49618bf329887491f00cfa24"
+  },
+  "artifact_sha256": {
+    "metrics.json": "f19f486149e0312f6d763b06df832993983c007b6220822a18e7d397bf4b9c86",
+    "protocol.json": "9fe7bcd3bb5e984dfcae22c54e3e66a9037c65740cbe2fca82f5bf5a5c861a7b",
+    "offline_checks.json": "b769b3a3937f9ba433b39b68cffa14e1c04e8de5ea15bdf5b0b3eaa6e7312477",
+    "search_checks.json": "332a49e8a547635017af12a3fdc51c65cf583771b6b293a800037cab26f89d5a",
+    "artifact_receipt.json": "cc063ab5edb9589a224c311f6dcc0356847ed0e2f1b19ae836e194252b810857",
+    "service_acceptance.json": "bb2b0fffe0ab518ccc84fbcf21af2be3687205a4a1341064abb17caff3f999e1"
+  }
+}

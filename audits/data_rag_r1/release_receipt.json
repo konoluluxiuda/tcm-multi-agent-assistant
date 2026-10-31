@@ -1,0 +1,167 @@
+{
+  "status": "research_baseline_delivered",
+  "release_directory": "var/data_releases/r1_20261030",
+  "release_manifest_sha256": "aa65b51215535f824e4c1f6592b25c1e24d9f495aa338a91c99d0d05d5f5df92",
+  "manifest": {
+    "version": "tcm-data-release-v1",
+    "status": "ready_research_only",
+    "release_id": "r1_20261030",
+    "sources_sha256": {
+      "herbs": "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+      "enrichment": "9d3f9c6f8a5c7ececbde957e2a1ea6a74d6f225ff5194c094e3e45f4578a0980",
+      "targets": "e9c6576db290d9a333435b85b82c3275ec68e6dfd849922e3de02e449e155fc1",
+      "pdf_high": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+      "pdf_full": "56b9a70444da061db47aa171bf2b01157aeb12dc863934608cde4b688292ffd5",
+      "seeds": "bf2ebc7363abc034a5ab311aada0584ff646416a9519430862f4ad9fd347f65e",
+      "raw_entries": "f4d5f4dc21c829406d25837857db059f176a6fbdac1099ed98a584ebd6bc885e",
+      "raw_blocks": "a1eed2cb59097eb7b404b638b868f6aea5859ffc2749a07101f3007cb63f6001",
+      "raw_summary": "c5ccf89f1619b8a9e0e9fdf8f7abb060343129327cb6d37bbf37a1bcb903070c",
+      "revision_summary": "3a916c2302dcc71f0f2aee547bf56c2a9ffa5720b33bf16451a6c3be5d4a1c0e",
+      "revision_research_view": "9b38ee9efa7bd8f240fe3e6a0d5802c9af910941cc96f28529f447476a7cd21c",
+      "revision_revision_ledger": "28ea04af1f4927cf22ee367c505f74d175e78685820c069c48a73be096004a83",
+      "registered_index": "ae9910c2149820930bec103b227eee04f2287f8158501dcebee3ac7f5b5558a3",
+      "registered_index_manifest": "6ca3fb85ff5e974120287a5523e2358a0b9b2224722d45a82dc0850404f94c64",
+      "legacy_dense_manifest_json": "4a721b89643cc509930965614449c480246d8dabe0711289a2a7ef8c9706c7e7",
+      "legacy_dense_vectors_npy": "a0089f5760d796bec4055f9d9f6aba9f56ba32f2193de64b4364100aa6f5ffe0",
+      "legacy_dense_items_json": "3b803c17351fe6fa2b3e6e6534c46341746dc3a6c4c3c411ff5954ef0dbc02d2",
+      "frozen_reference": "6f6f0f28728412d00871e069d1d149649892a2339d62453935ac49a3a08c6219"
+    },
+    "artifacts": {
+      "sources.private.json": "a002a8d14c272816aa5838dc424aeba5178c3f0e2281b548b0e9afd926cd03fd",
+      "benchmark_references.json": "6f6f0f28728412d00871e069d1d149649892a2339d62453935ac49a3a08c6219",
+      "benchmark_candidates.json": "bc6deb82e1f43ca2d56cb3e8b2e3da057f463ab08ec7d59d7ee9cb0c7061df69",
+      "index_anchor_mapping.json": "f2f9279d93dfe135a00f8cdf1ad7c2c257622c2919a60606cbae3ce46f125988",
+      "raw_herb_files.json": "b348f825fbd17dc77a26a441256775160e80046540cd2a91a6477ed3d4b7045c",
+      "build_started.json": "6542c087ba74b5d546fb7758264280d72cc8c8ec5bc6af2c9177e97b6c5c7532",
+      "benchmark_source_check.json": "5b73add8fdc34e5d282b5528f1efaa8fe61dd1be79dd5aed252e74a37bd90eb7",
+      "index/manifest.json": "21a85a2f65a0f8f08b7045c3cd48e1a716eb1b551ec5a411813c9e4ae9599e2e",
+      "index/research.sqlite3": "ae9910c2149820930bec103b227eee04f2287f8158501dcebee3ac7f5b5558a3"
+    },
+    "code_sha256": {
+      "tcm/data_release.py": "6f9f9a46e6b29ad21efc382c4850284d50111777f203303137df0798cba65788",
+      "tcm/rag_benchmark.py": "421f61717c0bd1fa14feef6d89324e827a5f4e677959521e8ab2078ddcb78150",
+      "scripts/build_data_release.py": "e743c4ac12d9596298e2697dca45873c4a21d4d3e31b4ca2de034e9057ed4a4b",
+      "scripts/build_rag_benchmark.py": "fc62047f660363651f5b484fe597da35f556e18fb17909783ca0fd528540eeb5",
+      "scripts/build_mineru_retrieval.py": "31db867c069ac96b946482331aa14209549e7910d0ae94e6258d9cbe446f5d79"
+    },
+    "herbs": {
+      "dataset_version": "local-2026-10-10",
+      "records": 2076,
+      "valid_records": 2076,
+      "snapshot_counts": [
+        {
+          "dataset_version": "local-2026-10-10",
+          "count": 2076
+        }
+      ],
+      "raw_files_verified": 2076,
+      "source_records_sha256": "46cfaf3d4ac4161a5372187a86c4aa112003a0f19f5125b2e774d0547396e9ef",
+      "raw_files_sha256": "a2c8379c5d1f9dfd4e51cf1821af97b95ca7a06f828c06d7e4a87f3e86b03d94"
+    },
+    "pharmacopoeia": {
+      "entries": 616,
+      "chunks": 8665,
+      "index_sha256": "ae9910c2149820930bec103b227eee04f2287f8158501dcebee3ac7f5b5558a3",
+      "view_sha256": "9b38ee9efa7bd8f240fe3e6a0d5802c9af910941cc96f28529f447476a7cd21c",
+      "fts_rows": 8665,
+      "max_field_chars": 3558,
+      "fields_over_800_chars": 80,
+      "embedding_truncation_risk": "characters_are_diagnostic_not_token_count; R2 must measure tokenizer truncation",
+      "all_index_raw_fields_reconstructed": true,
+      "clinical_or_human_approval": false
+    },
+    "sidecars": {
+      "mapping": {
+        "candidate_rows": 520,
+        "source_entries_sha256_at_build": "74fb0be3381a654069f0f097730e32f404b588b025e76034eb49ac5e7a486861",
+        "source_blocks_sha256_at_build": "a1eed2cb59097eb7b404b638b868f6aea5859ffc2749a07101f3007cb63f6001",
+        "status": "partially_compatible",
+        "quarantined_candidates": [
+          {
+            "source_record_id": "etcm2-local:09fd83a7dfdc555b709da7e085e81a291cb31bd35a72f26cab2c6c4fdf764d21",
+            "entry_id": "mineru-herb-ec5e3556c769ea84a27e40af",
+            "candidate_name": "葫芦巴",
+            "index_name": "胡芦巴",
+            "reason": "candidate_name_changed"
+          },
+          {
+            "source_record_id": "etcm2-local:7646aede03dbb609da0d7445dec18dfe952851caabf9264fdd002443e7d723c0",
+            "entry_id": "mineru-herb-51c7ed52b7770d23540b8200",
+            "candidate_name": "秦芫",
+            "index_name": "秦艽",
+            "reason": "candidate_name_changed"
+          },
+          {
+            "source_record_id": "etcm2-local:a5f8a98d49d8b44548d3acc0ecc7bada541c25f72beaf46a743f904c9e7351ba",
+            "entry_id": "mineru-herb-53b3c171f8b9dfb4c1d3b4b7",
+            "candidate_name": "绵萆薤",
+            "index_name": "绵萆薢",
+            "reason": "candidate_name_changed"
+          },
+          {
+            "source_record_id": "etcm2-local:bd57810a11012907f6f0634aa815371566c01e52d6f0c16903d90dd7e901f007",
+            "entry_id": "mineru-herb-cad32bc15b7732595c2c1453",
+            "candidate_name": "龙腺叶",
+            "index_name": "龙脷叶",
+            "reason": "candidate_name_changed"
+          }
+        ],
+        "identity_verified": false
+      },
+      "targets": {
+        "targets": 211,
+        "ingredient_rows": 34924,
+        "binding_verified": true,
+        "scope": "catalog_integrity_and_binding_not_all_relation_source_truth"
+      }
+    },
+    "legacy_vectors": {
+      "status": "incompatible_source_index",
+      "eligible_for_current_release": false,
+      "index_sha256": "0afce1d75d87550da20623fe8a8f22f97a8cc8b58deb046ca01597a3dbc6eff4",
+      "count": 8654,
+      "dimension": 512,
+      "model_fingerprint": "7e2499793a52ff0a52ceac6460209b938ce3fb1417e0e36918bb527810f47c62",
+      "recipe": {
+        "version": 1,
+        "document": "name + space + label + newline + text",
+        "pooling": "CLS",
+        "normalize": "L2",
+        "max_tokens": 512,
+        "query_prefix": "为这个句子生成表示以用于检索相关文章："
+      },
+      "truncated_documents": 249,
+      "note": "No encoder or Qdrant loaded; R2 must build/validate a new compatible generation"
+    },
+    "benchmark": {
+      "candidate_count": 8665,
+      "frozen_cases": 30,
+      "splits": {
+        "development": 20,
+        "reserved": 10
+      },
+      "counts": {
+        "evidence_found": 20,
+        "missing_field": 5,
+        "clarification_required": 5
+      },
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "retrieval_or_generation_scores": null,
+      "reserved_status": "not_run_for_retrieval_or_generation"
+    },
+    "index_rebuilt": true,
+    "active_service_configuration_changed": false,
+    "raw_inputs_modified": false,
+    "model_calls": 0,
+    "vector_builds": 0,
+    "portability": "registered external sources must remain present and unchanged",
+    "content_id": "ade3f558c489da80d7491207140837e6d3c91f79d64ab4ad691692a3d194cee1"
+  },
+  "canonical_reference_sha256": "6f6f0f28728412d00871e069d1d149649892a2339d62453935ac49a3a08c6219",
+  "canonical_seed_sha256": "bf2ebc7363abc034a5ab311aada0584ff646416a9519430862f4ad9fd347f65e",
+  "canonical_reference_matches_release": true,
+  "past_V3_V4_G_receipts_unchanged": true,
+  "actual_external_model_calls": 0,
+  "vector_builds": 0
+}

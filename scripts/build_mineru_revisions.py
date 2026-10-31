@@ -126,10 +126,10 @@ def build(base, baseline, review, output, disabled=(), without_overlays=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--base', type=Path, default=ROOT / 'var/mineru_pharmacopoeia_v4_checked')
+    parser.add_argument('--base', type=Path, default=ROOT / 'var/mineru_pharmacopoeia_v5')
     parser.add_argument('--baseline', type=Path, default=ROOT / 'var/mineru_pharmacopoeia_v2')
     parser.add_argument('--review', type=Path, default=ROOT / 'var/mineru_review_v2')
-    parser.add_argument('--out', type=Path, default=ROOT / 'var/mineru_revisions_v2')
+    parser.add_argument('--out', type=Path, default=ROOT / 'var/mineru_revisions_v3')
     parser.add_argument('--disable', action='append', default=[], help='Overlay ID; may be repeated')
     parser.add_argument('--without-overlays', action='store_true')
     args = parser.parse_args()

@@ -91,14 +91,20 @@ class ChatTests(unittest.TestCase):
     setUp=chat_fixture.ChatTests.setUp
     turn=chat_fixture.ChatTests.turn
 
-    def test_multi_field_etcm_keeps_missing_field_and_restores_same_run(self):
-        with patch('tcm.intent_planner.plan_question',side_effect=AssertionError('No provider')):
+    def test_multi_field_etcm_is_direct_keeps_missing_field_and_restores_fields(self):
+        with patch('tcm.intent_planner.plan_question',side_effect=AssertionError('No provider')), \
+             patch('tcm.research_plan_run.execute',side_effect=AssertionError('Simple fields queued')):
             data=self.turn('查看Alpha的药用部位和科名').json()
-        result=data['assistant'];self.assertEqual(result['status'],'partial',data)
-        self.assertEqual(result['execution']['tool_calls'],1)
-        fields=result['blocks'][0]['field_rows']
-        self.assertEqual(len(fields),1);self.assertEqual(result['blocks'][0]['missing'],['科'])
-        self.assertEqual(self.client.get('/conversation').json()['assistant']['run_id'],result['run_id'])
+        result=data['tcm'];self.assertEqual(result['status'],'ok',data)
+        self.assertEqual(data['routing']['reason'],'structured_multi_field_query')
+        self.assertEqual(result['requested_fields'],['medicinal_part','family'])
+        fields=result['records'][0]['fields']
+        self.assertEqual(fields['medicinal_part']['state'],'present')
+        self.assertEqual(fields['family']['state'],'missing')
+        restored=self.client.get('/conversation').json()['tcm']
+        self.assertEqual(restored['requested_fields'],result['requested_fields'])
+        self.assertEqual(set(restored['records'][0]['fields']),set(fields))
+        self.assertIn('药用部位',data['response']);self.assertIn('科名：未记录',data['response'])
 
     def test_question_only_model_fields_execute_local_workers(self):
         raw={'action':'analysis_plan','plan':{'steps':[{'call':{'tool':'herb_attributes','arguments':{'name':'Alpha','fields':['medicinal_part']}},'clauses':[0]}]}}

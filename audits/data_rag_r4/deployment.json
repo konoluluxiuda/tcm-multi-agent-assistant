@@ -1,0 +1,87 @@
+{
+  "status": "passed",
+  "workspace_id": "abb3ecc4dea64457aadaca7fbf6d0799",
+  "artifact_sha256": "cd7df55182e97ce49688a77f782d4d96a8a0382ab225b2ac55a4d1399997444f",
+  "restart_preserves_cookie_and_artifact": true,
+  "fresh_runtime": true,
+  "source_mounts_read_only": true,
+  "rootfs_read_only": true,
+  "user": "1000:1000",
+  "image_id": "sha256:e026549a0e59bdc7f19fc695e5e75c721b41e97fc1e90ffb64a50eea1ad72871",
+  "versions": {
+    "langgraph": "1.2.18",
+    "langgraph-checkpoint-sqlite": "3.1.2",
+    "openpyxl": "3.1.5"
+  },
+  "provider_requests": 0,
+  "image_tag": "tcm-research-chat:r4-final",
+  "image_source_tree_sha256": "1c161dbce935a2960bfc92990f6acdb67f07f2f5591eacc25bd480215811a8f5",
+  "image_matches_current_allowlisted_files": true,
+  "docker_hub_published": false,
+  "browser_7912": {
+    "status": "passed",
+    "port": 7912,
+    "fresh_runtime": true,
+    "selection_correct": true,
+    "v2_preserves_parent": true,
+    "v1_file_unchanged": true,
+    "same_key_replayed": true,
+    "refresh_restores_task": true,
+    "insufficient_candidates_explicit_partial": true,
+    "downloads_sha256_verified": true,
+    "provider_requests": 0,
+    "javascript_errors": [],
+    "external_browser_requests": []
+  },
+  "xlsx_7912": [
+    {
+      "version": "v1",
+      "status": "passed",
+      "sheets": 5,
+      "verified_cells": 136,
+      "rows": 2,
+      "method": "reopen_compare_every_cell_v1"
+    },
+    {
+      "version": "v2",
+      "status": "passed",
+      "sheets": 6,
+      "verified_cells": 161,
+      "rows": 2,
+      "method": "reopen_compare_every_cell_v1"
+    }
+  ],
+  "browser_7914": {
+    "status": "passed",
+    "port": 7914,
+    "fresh_runtime": true,
+    "selection_correct": true,
+    "v2_preserves_parent": true,
+    "v1_file_unchanged": true,
+    "same_key_replayed": true,
+    "refresh_restores_task": true,
+    "insufficient_candidates_explicit_partial": true,
+    "downloads_sha256_verified": true,
+    "provider_requests": 0,
+    "javascript_errors": [],
+    "external_browser_requests": []
+  },
+  "xlsx_7914": [
+    {
+      "version": "v1",
+      "status": "passed",
+      "sheets": 5,
+      "verified_cells": 136,
+      "rows": 2,
+      "method": "reopen_compare_every_cell_v1"
+    },
+    {
+      "version": "v2",
+      "status": "passed",
+      "sheets": 6,
+      "verified_cells": 161,
+      "rows": 2,
+      "method": "reopen_compare_every_cell_v1"
+    }
+  ]
+}

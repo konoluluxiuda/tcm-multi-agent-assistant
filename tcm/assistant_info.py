@@ -103,15 +103,8 @@ def execute(request):
         result['message']='\n'.join(lines)
         result['notes']=notes
     elif topic == 'capabilities':
-        from tcm.analysis_tools import tool_specs
-        analyses='、'.join(s['label'] for s in tool_specs() if s['configured'])
-        research='已启用' if env_bool('ENABLE_PHARMACOPOEIA_RESEARCH') else '未启用'
-        result['message']=(f'可以查询：\n• 药典功效、用量和出处（{research}）\n'
-                           '• 药材属性、成分、靶点及来源关联\n• 药典字段对比、数据概览\n'
-                           '• 收藏和证据下载\n• 资料核对工作台：批量字段与表格交付（需启用）')
-        result['notes']=['不提供个体选药或处方。中文名称对应关系与研究结论仍须核对。',
-                         '工具已启用不等于资料已就绪，可问“数据概览”查看当前资料。']
-        if analyses:result['message']+='\n• '+analyses
+        from tcm.capabilities import describe
+        result.update(describe())
 
     else:
         guidance = {

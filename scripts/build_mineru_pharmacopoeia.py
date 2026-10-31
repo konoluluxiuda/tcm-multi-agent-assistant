@@ -111,7 +111,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--import-root', type=Path, default=ROOT / 'var/mineru_import/2026-10-17')
     parser.add_argument('--page-map', type=Path, default=ROOT / 'var/pharmacopoeia_herbs_pdf/page_map.json')
-    parser.add_argument('--out', type=Path, default=ROOT / 'var/mineru_pharmacopoeia_v4')
+    parser.add_argument('--out', type=Path, default=ROOT / 'var/mineru_pharmacopoeia_v5')
     args = parser.parse_args()
     print(json.dumps(build(args.import_root, args.page_map, args.out), ensure_ascii=False))
 

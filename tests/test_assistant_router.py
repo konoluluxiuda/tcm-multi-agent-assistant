@@ -25,8 +25,17 @@ class RouterTests(unittest.TestCase):
     def test_overview_and_capabilities_do_not_require_commands(self):
         for text in ('支持多少药材','药材有多少种','收录了多少药材','有多少种功效','有哪些功效分类','数据概览'):
             self.assertEqual(resolve(text)['request']['topic'],'overview',text)
-        for text in ('你能做什么','系统有什么功能','支持哪些功能','可以查什么'):
+        for text in ('你能做什么','系统有什么功能','支持哪些功能','可以查什么',
+                     '当前能做什么','目前能做什么？','现在可以做什么',
+                     '当前系统有哪些功能','你现在能帮我做什么呀？',
+                     '我想了解当前支持哪些任务', '支持哪些任务'):
             self.assertEqual(resolve(text)['request']['topic'],'capabilities',text)
+
+    def test_capability_help_does_not_consume_herb_or_compound_requirements(self):
+        for text in ('白术有什么功能','你能做什么，顺便查白术的功效',
+                     '系统能做什么；帮我导出当归的靶点', '白术能完成哪些任务'):
+            result = resolve(text)
+            self.assertTrue(result is None or result['request'].get('topic') != 'capabilities', text)
 
     def test_collection_descriptions_do_not_require_herbs_or_swallow_queries(self):
         for text in ('分别介绍两个数据','我想问的是介绍两个数据库','介绍一下当前数据库',
@@ -174,6 +183,16 @@ class GraphTests(unittest.TestCase):
         with TestClient(self.app.app) as other:
             self.assertEqual(self.turn('用量呢',other).json()['research']['status'],'clarify_entity')
         self.assertEqual(self.turn('hello').status_code,403)
+
+    def test_current_capability_wording_reaches_chat_without_a_model(self):
+        for question in ('当前能做什么', '目前能做什么？', '现在支持哪些任务', '你能做什么'):
+            response = self.turn(question)
+            self.assertEqual(response.status_code, 200, response.text)
+            answer = response.json()['assistant']
+            self.assertEqual(answer['topic'], 'capabilities')
+            self.assertEqual((answer['llm_calls'], answer['network_calls']), (0, 0))
+            self.assertFalse(answer['readiness_checked'])
+            self.assertNotIn(str(self.root), str(answer))
 
     def test_inventory_partial_source_failure_and_concept_are_explicit(self):
         data=self.turn('支持多少药材').json()

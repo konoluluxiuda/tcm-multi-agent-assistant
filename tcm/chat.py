@@ -85,6 +85,7 @@ def execute_request(request, *, dataset_version=None):
             if result['status']=='unsupported_name_mapping' and request.get('name'):
                 from tcm.etcm_enrichment import chinese_candidates
                 candidates=chinese_candidates(request['name'],result['dataset_version'])
+                result['name_candidate_count'] = len(candidates)
                 matched=[]
                 for candidate in candidates:
                     selected=lookup(os.environ.get('TCM_DB') or DEFAULT_DATABASE,
@@ -140,8 +141,9 @@ def execute_turn(request, context: HerbContext | None):
             return _status_result('context_stale'), None
     else:
         result = execute_request({k: v for k, v in request.items()
-                                  if k not in ('field','profile','resolve_unique_name')})
+                                  if k not in ('field','fields','profile','resolve_unique_name')})
         if (request.get('resolve_unique_name') is True and result['status']=='name_mapping_candidates'
+                and result.get('name_candidate_count', result['total_record_count']) == 1
                 and result['total_record_count']==1 and len(result['records'])==1 and not result['truncated']):
             result.update(status='ok',message=MESSAGES['ok'],name_resolution_status='name_mapping_candidates',
                           selection_method='unique_local_candidate',
@@ -151,7 +153,8 @@ def execute_turn(request, context: HerbContext | None):
     if result['status'] != 'ok':
         return result, None
     record = result['records'][0]
-    requested_fields = (context.get('last_fields', []) if followup and field == 'source' else
+    requested_fields = (request['fields'] if request.get('fields') else
+                        context.get('last_fields', []) if followup and field == 'source' else
                         [] if field in (None, 'source') else [field])
     new_context: HerbContext = {
         'status': 'selected', 'source_record_id': record['source_record_id'],

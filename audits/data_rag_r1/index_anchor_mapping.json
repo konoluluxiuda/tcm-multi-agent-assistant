@@ -1,0 +1,282 @@
+{
+  "kind": "structural_anchor_mapping_not_retrieval_evaluation",
+  "mappings": [
+    {
+      "case_id": "RAG-P01",
+      "anchor_id": "A-bcdc031a546e327a00c828c0f67cc878",
+      "chunk_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:018"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P02",
+      "anchor_id": "A-b9b8f9e4a95a5d51c5cf28497d3807ad",
+      "chunk_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P03",
+      "anchor_id": "A-616792cace5c7e8510f9290d4d5387f3",
+      "chunk_ids": [
+        "mineru-herb-99364a8410f1ddb60feca9c1:field:013"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P04",
+      "anchor_id": "A-dfdf4a07a0a7079b432a59e1e2ab86e3",
+      "chunk_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128:field:017"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P05",
+      "anchor_id": "A-88c341f02563413456dc839e0e03a7cf",
+      "chunk_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09:field:014"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P06",
+      "anchor_id": "A-6e052479c5ba0ed75bef51d593994240",
+      "chunk_ids": [
+        "mineru-herb-34aa9ec74498c63a17d1e706:field:014"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P07",
+      "anchor_id": "A-1a0e2e412f62747f0901332d8ad0b22a",
+      "chunk_ids": [
+        "mineru-herb-baa41eafc52d0933e14b3c95:field:009"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P08",
+      "anchor_id": "A-0893c9f5283812115a2738c6c5ae4598",
+      "chunk_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59:field:013"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P09",
+      "anchor_id": "A-d57acff12b531e6a54cebd538a6d0b9e",
+      "chunk_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27:field:020"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P10",
+      "anchor_id": "A-6fb3deda6ab0cfd38fafe478604eac41",
+      "chunk_ids": [
+        "mineru-herb-dd86dbface93996013c40232:field:000"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P11",
+      "anchor_id": "A-960fa91f141eb85cc42ae03458ccf8ed",
+      "chunk_ids": [
+        "mineru-herb-95c7a701c60a42443ef0a19c:field:027"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P11",
+      "anchor_id": "A-80dec46b80cedeccc069dd3843644032",
+      "chunk_ids": [
+        "mineru-herb-fcdd96c4c674b5cbc33448f6:field:017"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P12",
+      "anchor_id": "A-b9b8f9e4a95a5d51c5cf28497d3807ad",
+      "chunk_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676:field:014"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P12",
+      "anchor_id": "A-1a0e2e412f62747f0901332d8ad0b22a",
+      "chunk_ids": [
+        "mineru-herb-baa41eafc52d0933e14b3c95:field:009"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P13",
+      "anchor_id": "A-78365abdcea1d54e6815d672dbaa17e8",
+      "chunk_ids": [
+        "mineru-herb-a967b4d1c53114248a6d2c62:field:000"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P14",
+      "anchor_id": "A-b7b87cd89875d8ecb1f2136c98c96d87",
+      "chunk_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36:field:000"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P15",
+      "anchor_id": "A-231bf2cb568ff16b4edbc6a6509acb70",
+      "chunk_ids": [
+        "mineru-herb-a7d62fc2f50f82cd759fe7a9:field:014"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P16",
+      "anchor_id": "A-4af4aa418c230cbabc2fc3ce6396c905",
+      "chunk_ids": [
+        "mineru-herb-81942db6b6cbbe29bd180933:field:014"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P17",
+      "anchor_id": "A-9727db7757956e4b110fc7c42efc666a",
+      "chunk_ids": [
+        "mineru-herb-ee924ec27906f9c3142278ea:field:015"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P18",
+      "anchor_id": "A-a5929b627201b157d3d86b6a44dd5e22",
+      "chunk_ids": [
+        "mineru-herb-e520c127ea3d145aa2bf052a:field:016"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P19",
+      "anchor_id": "A-4d5ee94f997e8d5b95a5ff4ae00f99b7",
+      "chunk_ids": [
+        "mineru-herb-40ff21ea5e60999e5aa4f7e1:field:018"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-P20",
+      "anchor_id": "A-7840d69ff0d2a82b6b6c7f1be21eaf9b",
+      "chunk_ids": [
+        "mineru-herb-3ca5d4a6712691fc0e1bdb0e:field:019"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-A01",
+      "anchor_id": "A-6a302ba3fca4347e29e650dba753478d",
+      "chunk_ids": [
+        "mineru-herb-c8dc913b247ceda3564ef536:field:014"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-A01",
+      "anchor_id": "A-01fc096d642dc36617c3b385471187f0",
+      "chunk_ids": [
+        "mineru-herb-c8dc913b247ceda3564ef536:field:014"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-A01",
+      "anchor_id": "A-c7bf812f93f052a59bc6167bf9074d84",
+      "chunk_ids": [
+        "mineru-herb-c3b2d6d15102df0e955164c2:field:009"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-A02",
+      "anchor_id": "A-7c5b77414429cebd6f9e58d5de39099f",
+      "chunk_ids": [
+        "mineru-herb-839b2c25c719208fb4817784:field:013"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-A02",
+      "anchor_id": "A-72094f192db81202fab62928da0b0b60",
+      "chunk_ids": [
+        "mineru-herb-ea09ad6a4f3da403bf6895d0:field:009"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-A03",
+      "anchor_id": "A-a1eba27af3703648fa4f1d0640276783",
+      "chunk_ids": [
+        "mineru-herb-526746f796513d2e88df4037:field:012"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-A03",
+      "anchor_id": "A-502594d8de874ed84d8f1bbcb1687b88",
+      "chunk_ids": [
+        "mineru-herb-21fc3e6c979a4a819ea1aa94:field:008"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-A03",
+      "anchor_id": "A-b81122d1d4095ee4265fd00998cca159",
+      "chunk_ids": [
+        "mineru-herb-2edbd85194e7fdf04bf45199:field:008"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-A04",
+      "anchor_id": "A-52b98c7f01128a8d0a3f82181f2d9d04",
+      "chunk_ids": [
+        "mineru-herb-26ba11b13e49f36e6c99c5d4:field:012"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-A04",
+      "anchor_id": "A-5f8584ed12fb50d029474f48e6c5a730",
+      "chunk_ids": [
+        "mineru-herb-948ea89af5cf54104018723d:field:008"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-A05",
+      "anchor_id": "A-daea3ee78625672848b0b0a86d29f44e",
+      "chunk_ids": [
+        "mineru-herb-80728a864bb6a51910c6ef0c:field:012"
+      ],
+      "status": "mapped"
+    },
+    {
+      "case_id": "RAG-A05",
+      "anchor_id": "A-6106eb7e09d6ccaa77acdfeed8b015c7",
+      "chunk_ids": [
+        "mineru-herb-261ac009eb2a28876a46f7b0:field:008"
+      ],
+      "status": "mapped"
+    }
+  ],
+  "mapped": 34,
+  "total": 34,
+  "recall": null,
+  "model_calls": 0,
+  "reserved_retrieval_executed": false
+}

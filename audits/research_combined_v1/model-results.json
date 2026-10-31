@@ -1,0 +1,365 @@
+{
+  "version": "research-combined-v1",
+  "records": [
+    {
+      "id": "C01",
+      "strategy": "R",
+      "goal": {
+        "passed": false,
+        "status": "needs_input",
+        "fields_correct": false,
+        "scope_correct": false,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": false,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "C01",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": true,
+        "status": "partial",
+        "artifact": true,
+        "reason": null,
+        "selection_valid": true,
+        "raw_source_witness_match": true,
+        "parent_preserved": true,
+        "qualified_total": 1,
+        "returned": 1,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 100,
+          "rows": 1,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "decision_steps": 3,
+        "source_reads": 5
+      },
+      "execution_requests": 0,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1639,
+      "execution_tokens": 0,
+      "goal_seconds": 2.312,
+      "execution_seconds": 7.179,
+      "duration_seconds": 9.491
+    },
+    {
+      "id": "C01",
+      "strategy": "A",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": true,
+        "status": "partial",
+        "artifact": true,
+        "reason": null,
+        "selection_valid": true,
+        "raw_source_witness_match": true,
+        "parent_preserved": true,
+        "qualified_total": 1,
+        "returned": 1,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 100,
+          "rows": 1,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "decision_steps": 5,
+        "source_reads": 10
+      },
+      "execution_requests": 5,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1639,
+      "execution_tokens": 14798,
+      "goal_seconds": 2.312,
+      "execution_seconds": 15.895,
+      "duration_seconds": 18.208
+    },
+    {
+      "id": "C02",
+      "strategy": "R",
+      "goal": {
+        "passed": false,
+        "status": "needs_input",
+        "fields_correct": false,
+        "scope_correct": false,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": false,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "C02",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": true,
+        "status": "complete",
+        "artifact": true,
+        "reason": null,
+        "selection_valid": true,
+        "raw_source_witness_match": true,
+        "parent_preserved": true,
+        "qualified_total": 0,
+        "returned": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 6,
+          "verified_cells": 161,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "decision_steps": 3,
+        "source_reads": 3
+      },
+      "execution_requests": 0,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1658,
+      "execution_tokens": 0,
+      "goal_seconds": 1.091,
+      "execution_seconds": 13.894,
+      "duration_seconds": 14.986
+    },
+    {
+      "id": "C02",
+      "strategy": "A",
+      "goal": {
+        "passed": true,
+        "status": "ready",
+        "fields_correct": true,
+        "scope_correct": true,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": true,
+      "delivery": {
+        "delivery_passed": true,
+        "status": "complete",
+        "artifact": true,
+        "reason": null,
+        "selection_valid": true,
+        "raw_source_witness_match": true,
+        "parent_preserved": true,
+        "qualified_total": 0,
+        "returned": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 6,
+          "verified_cells": 161,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "decision_steps": 5,
+        "source_reads": 7
+      },
+      "execution_requests": 5,
+      "goal_requests_attributed": 1,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 1658,
+      "execution_tokens": 12673,
+      "goal_seconds": 1.091,
+      "execution_seconds": 22.025,
+      "duration_seconds": 23.116
+    },
+    {
+      "id": "C03",
+      "strategy": "R",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "C03",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0.011,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.011
+    },
+    {
+      "id": "C03",
+      "strategy": "A",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0.011,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.011
+    },
+    {
+      "id": "C04",
+      "strategy": "R",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": false,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "C04",
+      "strategy": "G",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0.01,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.01
+    },
+    {
+      "id": "C04",
+      "strategy": "A",
+      "goal": {
+        "passed": true,
+        "status": "needs_input",
+        "fields_correct": null,
+        "scope_correct": null,
+        "unsafe_acceptance": false,
+        "wrong_ready_goal": false
+      },
+      "passed": true,
+      "execution_started": false,
+      "goal_requests_attributed": 0,
+      "goal_requests_shared": true,
+      "goal_tokens_attributed": 0,
+      "execution_tokens": 0,
+      "goal_seconds": 0.01,
+      "execution_seconds": 0.0,
+      "duration_seconds": 0.01
+    }
+  ],
+  "actual_requests": 12,
+  "total_tokens": 30768,
+  "provider_stopped": false,
+  "by_strategy": {
+    "R": {
+      "passed": 2,
+      "total": 4,
+      "wrong_goals": 0
+    },
+    "G": {
+      "passed": 4,
+      "total": 4,
+      "wrong_goals": 0
+    },
+    "A": {
+      "passed": 4,
+      "total": 4,
+      "wrong_goals": 0
+    }
+  },
+  "request_accounting": "G/A share goal requests; attributed goal counts must not be summed as actual provider calls",
+  "generalization_proven": false,
+  "native_necessity_proven": false,
+  "reference_status": "author_development_contracts_frozen_source_witnesses_pending_human_signoff"
+}

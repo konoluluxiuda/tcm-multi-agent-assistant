@@ -105,6 +105,16 @@ def validate_result(result):
 
 
 def execute(store, owner, key, sources, goal):
+    from tcm.tracing import observation
+    with observation('dataops.fixed', input=Goal.model_validate(goal).model_dump(),
+                     metadata={'strategy': 'F', 'provider_requests': 0}) as trace:
+        doc, created = _execute(store, owner, key, sources, goal)
+        trace.update(output={'workspace_id': doc['id'], 'status': doc['status'],
+                             'artifact': doc.get('artifact'), 'created': created})
+        return doc, created
+
+
+def _execute(store, owner, key, sources, goal):
     goal = Goal.model_validate(goal)
     doc, created = store.reserve(owner, key, goal.model_dump(), sources.revision)
     if not created:

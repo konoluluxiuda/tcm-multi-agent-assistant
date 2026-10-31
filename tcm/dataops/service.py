@@ -3,7 +3,6 @@ import asyncio
 import os
 from pathlib import Path
 
-from features import env_bool
 from tcm.dataops.contracts import CreateAgent
 from tcm.dataops.goal_proposal import propose
 from tcm.dataops.workspace import Workspaces, Conflict
@@ -36,7 +35,8 @@ class DataOpsService:
 
     @staticmethod
     def require_agent():
-        if not env_bool('ENABLE_DATAOPS') or not env_bool('ENABLE_DATAOPS_AGENT') or os.getenv('DATAOPS_DRIVER') != 'synthetic':
+        from tcm.capabilities import dataops_runtime
+        if not dataops_runtime()['agent']:
             raise Conflict('DataOps agent is disabled; only the explicit synthetic driver is available')
 
     @staticmethod
@@ -81,4 +81,59 @@ class DataOpsService:
                 return {**result, 'proposal': plan}
         result = await asyncio.to_thread(action)
         self.worker.start()
+        return result
+
+    async def submit_research_question(self,owner,body):
+        """Understand once, then enqueue through the existing task service."""
+        def action():
+            import hashlib
+            from fastapi import HTTPException
+            from tcm.capabilities import research_runtime
+            from tcm.dataops.jobs import research_sources
+            from tcm.dataops.research_contracts import ResearchCreate
+            from tcm.dataops.research_question import bounded_catalog,local_proposal,request_proposal,needs,VERSION,QuestionNeedsInput
+            from tcm.dataops.goal_model import GoalResponseRejected
+            from tcm.dataops.data_access import canonical,fingerprint
+            from tcm.request_journal import RequestJournal
+            runtime=research_runtime()
+            if not runtime['enabled']:raise Conflict('Research question service disabled')
+            if body.use_model and not runtime['question_model_enabled']:
+                raise HTTPException(409,'本部署未启用单次模型理解，可使用本地解析或表单。')
+            store=self.store();self.queue()
+            with research_sources() as sources:
+                parent=store.get(owner,body.parent_id) if body.parent_id else None
+                if parent and (parent['revision']!=body.expected_revision or parent['source_revision']!=sources.revision):
+                    raise Conflict('Parent/source version changed')
+                journal=RequestJournal(store.root/'question_proposals.sqlite3',label='任务解析')
+                signature=hashlib.sha256(canonical({'body':body.model_dump(),'sources':sources.revision,
+                    'compiler':VERSION,'code':fingerprint(Path(__file__).with_name('research_question.py')),
+                    'parent_artifact':parent.get('artifact') if parent else None,
+                    'model':os.getenv('RAG_MODEL') if body.use_model else None,
+                    'recipient':os.getenv('RAG_BASE_URL') if body.use_model else None}).encode()).hexdigest()
+                proposal=journal.reserve(owner,body.request_key,signature);replayed=proposal is not None
+                if proposal is None:
+                    try:catalog=bounded_catalog(body.question,sources.name_catalog(),parent)
+                    except QuestionNeedsInput as exc:proposal=needs(body.question,str(exc));catalog={}
+                    if proposal is None and body.use_model:
+                        from tcm.dataops.research_model import configured_model
+                        model=configured_model(max_requests=1)
+                        try:
+                            proposal=request_proposal(model,body.question,catalog,parent=parent,authorized=True)
+                        except GoalResponseRejected:
+                            proposal=needs(body.question,'模型未返回可靠的完整目标，请明确字段或使用表单。',compiler='native_research_question_v2',calls=1)
+                        except Exception:
+                            raise HTTPException(503,'目标理解状态未知，本请求未自动重试。') from None
+                        finally:model.http_client.close()
+                    elif proposal is None:proposal=local_proposal(body.question,catalog,parent=parent)
+                    sources.assert_unchanged();journal.complete(owner,body.request_key,proposal)
+                if proposal['status']!='ready':return {'proposal':proposal,'replayed':replayed}
+                task=ResearchCreate(request_key=body.request_key,question=body.question,goal=proposal['goal'],
+                    parent_id=body.parent_id,expected_revision=body.expected_revision)
+                result=self.enqueue(store,owner,task,sources)
+                result['workspace']=store.project(owner,result['workspace']['id'],goal_understanding={
+                    'compiler':proposal['compiler'],'provider_requests':proposal['external_model_calls'],
+                    'usage':proposal.get('usage',{})})
+                return {**result,'proposal':proposal,'replayed':replayed}
+        result=await asyncio.to_thread(action)
+        if result.get('workspace'):self.worker.start()
         return result

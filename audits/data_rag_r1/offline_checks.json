@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "modules": [
+    {
+      "name": "test_rag_benchmark",
+      "exit_code": 0,
+      "report": {
+        "module": "test_rag_benchmark.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    },
+    {
+      "name": "test_data_release",
+      "exit_code": 0,
+      "report": {
+        "module": "test_data_release.py",
+        "status": "passed",
+        "total": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    },
+    {
+      "name": "test_mineru_retrieval",
+      "exit_code": 0,
+      "report": {
+        "module": "test_mineru_retrieval.py",
+        "status": "passed",
+        "total": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    },
+    {
+      "name": "test_storage_boundary_eval",
+      "exit_code": 0,
+      "report": {
+        "module": "test_storage_boundary_eval.py",
+        "status": "passed",
+        "total": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    }
+  ],
+  "total": 34
+}

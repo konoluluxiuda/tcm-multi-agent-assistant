@@ -1,6 +1,8 @@
 # DataOps 3–5分钟演示
 
-当前演示为真实本地资料＋明确标注的模型替身；不将它称为DeepSeek真实推理演示。详细口径见[D3记录](DATAOPS_D3_EVALUATION.md)。另有三题合成真实模型V2：F/P各3/3、A为0/3，不能作为动态Agent成功演示。
+最新有界资料任务请先看[组合实测与执行选择](RESEARCH_SELECTION_AGENT.md)及[本轮验收](../audits/research_combined_v1/README.md)：常规fixed执行，7912可选一次模型Goal理解；两项新业务的多轮A也完成交付，但未显示交付增益。下文保留旧D2演示命令与其当时状态。
+
+原D2演示为真实本地资料＋明确标注的模型替身；不将它称为DeepSeek真实推理演示。详细口径见[D3记录](DATAOPS_D3_EVALUATION.md)。另有三题合成真实模型V2：F/P各3/3、A为0/3，不能作为动态Agent成功演示。
 
 ## 启动
 

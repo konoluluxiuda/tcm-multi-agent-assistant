@@ -6,6 +6,10 @@
 
 当前采用 **Python、FastAPI、LangGraph 1.x、SQLite、可选PostgreSQL、Qdrant和DeepSeek兼容接口**。默认本地预览关闭模型和联网工具。当前聊天是多步骤意图解析＋受控本地执行；没有默认开启向模型回传真实资料的自主科研循环。
 
+**最新执行选择：** [组合验收](audits/research_combined_v1/README.md)已完成：新两项业务，一次模型理解＋确定性执行G与多轮A均2/2交付；两项控制零调用拦截。实际12次请求、30,768 token，A额外回读9段但没有新增交付收益。当前7912/7914默认fixed，7912可显式勾选一次模型理解；最新本地镜像 `tcm-research-chat:r4-combined-v1`，未远程发布。23模块183项及网页/文件回读通过；原A0/2、原8题6/8保留。下一项收敛求职演示与复现材料。
+
+**主线与阶段记录（保留各轮当时口径）：** [版本化数据与benchmark → 检索对照 → 带引用RAG → Agent整合部署](docs/DATA_RAG_BENCHMARK_PLAN.md)，状态见[统一大纲](docs/TCM_PROJECT_ROADMAP.md)。R1研究基线已交付：核验2076份原JSON，新建616条目/8665片段同hash词法索引，生成8665个未审核候选并冻结30题原始参考；34项离线及真实发布回读通过，见[R1验收](audits/data_rag_r1/README.md)和[构建/回查命令](docs/DATA_RELEASE_BENCHMARK.md)。R2已完成新8665条/512维向量、Qdrant与受限跨条目CLI对照：开发20/20、保留首测9/10（四方法相同），一项字段别名状态缺陷保留；58项离线检查通过。向量未显示增益，继续默认精确/BM25，见[R2结果与命令](docs/RAG_RETRIEVAL_COMPARISON.md)。**R3已完成受限摘录RAG：状态缺陷修复，4次真实请求、4/4受限生成＋4/4零调用控制、99项离线通过。** 模型整体收益未证，默认仍看原文；[引用资料页](http://127.0.0.1:7912/rag)仅点击整理才调用模型，见[使用与边界](docs/RAG_CITED_ANSWER.md)。**R4最初工程验收时，真实A未通过。** [候选核对任务](http://127.0.0.1:7912/dataops/research)支持限定候选、字段缺项、增量和宿主验证交付；新真实两题F按契约2/2，A0/2，P两次未交付（一次基础设施故障），不能证明模型收益。14模块118项与7912/7914浏览器通过；本地Docker7914运行最终镜像，未发布远程。执行上下文Harness V2已做离线修复（15模块127项，原8动作的4个重复动作被拦截），该轮镜像为 `tcm-research-chat:r4-question-v1`；随后已接通有界问句→Goal→任务→表格/v2，22模块174项与双实例浏览器通过。新8题理解规则4/8、模型方案6/8（含3题宿主零调用控制），实际5次请求/7,754 token，仍有多余澄清和擅加字段失败；事后守卫离线回放不改原成绩，模型理解默认关闭，见[问句验收](audits/research_question_v1/README.md)，见[R4使用与限制](docs/RESEARCH_SELECTION_AGENT.md)。
+
 ## 当前能做什么
 
 - 批量核对最多50条药材来源，读取药典候选字段，保留差异/缺失/歧义并生成四张工作表；任务与来源可回看。
@@ -24,6 +28,10 @@
 
 DataOps现已增加[30题契约评测与50条规模报告](docs/DATAOPS_D3_EVALUATION.md)及[3–5分钟演示](docs/DATAOPS_DEMO.md)。三题真实模型V2实际8次请求均HTTP200：固定F与一次规划P各通过3/3，动态A为0/3，工具动作中断原因尚未确认。原始失败保留，不宣称Agent优于固定流程。
 
+后续[V3真实模型兼容对照](audits/dataops_live_v3/README.md)F/P各3/3、A为1/3；反馈改进通过77项离线检查。最新[V4有界复测](audits/dataops_live_v4/README.md)实际33次HTTP200，F/P各3/3、A为2/3，多候选题仍因两次工具校验拒绝耗尽预算，未完成结束动作。Langfuse轨迹与评分已核对，原始失败保留。这组三道已知合成题未显示模型优于固定流程；常规整理继续F，随后转向单次LLM目标提案验证，不追加预算重跑兼容题。
+
+[G目标理解对照](audits/dataops_goal_v1/README.md)随后已实现并运行：12道合成开发题，规则与单次模型各8/12；模型自然表达3/4、规范控制1/4，表明它能补一些改写，也会引入错误列。实际12次请求、无重试，46项离线检查及Langfuse回读通过。实验适配器尚未接入网页；G2独立调优暂缓，出处/来源与默认字段语义随R4真实任务处理，不阻塞新的数据/检索/RAG主线，见[运行和边界](docs/DATAOPS_GOAL_UNDERSTANDING.md)。
+
 ## 本地运行
 
 需要已构建的本地ETCM数据库、药典索引及源文件。没有这些资料时，请先阅读[数据入口](docs/README.md#数据与检索)，不要把空目录当作成功部署。
@@ -37,6 +45,12 @@ python3.12 -m venv .venv
 ```
 
 打开 **http://127.0.0.1:7896/dataops** 使用新资料工作台；**http://127.0.0.1:7896/** 保留聊天。工作台中可输入“白术”“黄芪”各一行，勾选字段生成表格。既有多步骤研究仍先排队显示进度，见[后台执行说明](docs/RESEARCH_PLAN_LIFECYCLE.md)。默认不发送问题或资料给模型；启动脚本检查本地资料和openpyxl依赖。项目已有`.venv`可继续使用，缺依赖时先执行上述安装命令。
+
+代码更新后需重启对应端口的旧进程，继续使用原`--state`目录。可访问`/api/runtime`检查`restart_required`，只看磁盘文件更新不代表运行服务已经更新。页面样式、图标和脚本现从本地加载，不依赖公网CDN。7896主入口及7912模拟模式的实际核验、直接多字段和唯一候选修复见[新用户走查记录](docs/NEW_USER_QA_20261030.md)。
+
+预览和研究Compose现默认使用`var/mineru_retrieval_v3`：修复贮藏正文混入后续注释的问题，原文和旧索引保留，见[边界修复与复现](audits/storage_boundary_v1/README.md)。仅有旧数据时先按该说明生成新索引；`--pharmacopoeia-index var/mineru_retrieval_v2`用于显式复现旧版本，不能与新索引任务增量混用。
+
+可选[本地Langfuse追踪](docs/LANGFUSE_OBSERVABILITY.md)：安装`requirements-observability.txt`，运行`.venv/bin/python -m scripts.setup_langfuse_local up`，再为预览命令增加`--with-langfuse`。控制台在`http://localhost:3037`；自动生成的本地登录信息位于被Git忽略的`var/langfuse_local/access.json`。仅接入DataOps，普通查询尚未统一追踪；不开此参数仍无追踪外发。用户已允许任务相关资料外发，当前默认关闭模型的行为保持由运行开关决定。
 
 若要体验D2，在启动参数中增加`--dataops-synthetic`；仍不调用外部模型。页面新增“直接说明要整理什么”：例如“整理白术和黄芪的功效、注意，保留出处并生成表格”；打开结果后输入“增加贮藏，保留旧字段”，点击“修改当前结果”。聊天首页也可直接输入这类“整理并生成表格”的要求，结果在聊天内展示并可下载；再问“增加贮藏，保留旧字段”可续改，见[聊天接入验收](audits/dataops_chat_v1/README.md)。它使用有界本地语法，不是通用LLM理解；原手动表单继续可用。支持后台进度、必要选择和增量修改。合成候选演示及完整说明见[D2交付](docs/DATAOPS_D2_DELIVERY.md)。
 

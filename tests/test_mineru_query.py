@@ -48,7 +48,7 @@ class QueryTests(unittest.TestCase):
     def test_field_paraphrases_route_to_source_labels(self):
         for suffix, label in [('每次多少克', '用法与用量'), ('服用剂量', '用法与用量'),
                               ('每次几克', '用法与用量'), ('有什么药效', '功能与主治'),
-                              ('储藏条件', '贮藏'), ('使用警示', '注意'),
+                              ('储藏条件', '贮藏'), ('如何贮藏', '贮藏'), ('如何储存', '贮藏'), ('使用警示', '注意'),
                               ('使用警告', '注意'), ('取自哪一部分', 'origin')]:
             with self.subTest(suffix=suffix):
                 result = self.query('黄芪' + suffix)

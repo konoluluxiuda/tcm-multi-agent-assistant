@@ -1,0 +1,12 @@
+{
+  "status": "frozen_before_live_execution",
+  "suite_sha256": "bf5e3ae0e47672192ae2378bcac6dcdb099b2adec5a27ed4f005077a64a54c05",
+  "code_sha256": {
+    "tcm/dataops/goal_model.py": "60dc0a1162e4c2a5743834592076056b694b317298aa826bb1abd764bcfa16f5",
+    "scripts/eval_dataops_goals.py": "307ce10207a825b5025f389388bcfe227c7aca0e7c7f9b0a1b058f9cffb2e90a"
+  },
+  "real_provider_requests": 0,
+  "reference_not_sent_to_model": true,
+  "case_origin": "author_written_known_development",
+  "independent_holdout": false
+}

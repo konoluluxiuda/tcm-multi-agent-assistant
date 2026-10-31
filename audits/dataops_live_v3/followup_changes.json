@@ -1,0 +1,30 @@
+{
+  "status": "implemented_offline_checks_passed_provider_retest_not_run",
+  "protocol": "dataops-synthetic-live-pilot-v4",
+  "original_V3_unchanged": true,
+  "provider_calls_after_V3": 0,
+  "changes": [
+    "Expose bounded remaining decision/tool/source-read budgets and delivery preconditions",
+    "Distinguish unfetched fields from read-but-missing or multi-scope values under existing audit/strict policies",
+    "Expose already-read evidence and consecutive no-progress feedback; host stopping thresholds unchanged",
+    "Bind execution limits to persisted checkpoints; reject increases/changes on resume",
+    "Clarify existing tool effects and native action prompt without selecting a forced next tool",
+    "Record stop_reason, artifact presence, verification action and finish action separately in new evaluations",
+    "Mark new partial/interrupted/failed tracing spans as WARNING; do not rewrite old traces"
+  ],
+  "unchanged": [
+    "8 decisions per goal",
+    "one native action per response",
+    "shared F/P/A tools and validation",
+    "2 consecutive no-progress steps stop",
+    "no automatic host completion",
+    "no external model retry",
+    "strict missing values never promoted to complete"
+  ],
+  "code_sha256": {
+    "tcm/dataops/graph.py": "61e11841995031eb24c4e563833428294f2193e92de53d5773c976b69b361d5e",
+    "tcm/dataops/model.py": "df858c7889e0b99840e646484dda07db70c5d59af2b8596a3efcb16eb999de59",
+    "tcm/dataops/evaluation.py": "2c0b59267a1a3caa6d89c28c1bdaf49dc0d585e7b0d57aeaa6d3284019a248ac",
+    "scripts/eval_dataops_live.py": "6990628ac61075a02df31f71f92ac7bb1cdce1915c4b8e7983b2818037d962ce"
+  }
+}

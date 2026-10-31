@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "scores_verified": 9,
+  "meaning": "known_development_contract_only",
+  "scores": [
+    {
+      "case_id": "B01",
+      "strategy": "F",
+      "value": true,
+      "trace_id": "56eb78893be3db02d345a25583f22cb3"
+    },
+    {
+      "case_id": "B01",
+      "strategy": "P",
+      "value": true,
+      "trace_id": "180f3405cbd69a508e63a7399948c09f"
+    },
+    {
+      "case_id": "B01",
+      "strategy": "A",
+      "value": true,
+      "trace_id": "b66d445c9fdd5860088bde5a12b3876c"
+    },
+    {
+      "case_id": "B04",
+      "strategy": "F",
+      "value": true,
+      "trace_id": "ae26a07b654e9bacbae4dd1784b8a3f9"
+    },
+    {
+      "case_id": "B04",
+      "strategy": "P",
+      "value": true,
+      "trace_id": "318bfa3b7fcdd478dcbd4df88056d8fd"
+    },
+    {
+      "case_id": "B04",
+      "strategy": "A",
+      "value": false,
+      "trace_id": "23b774deb67ff670ce8d0868bb6bc99a"
+    },
+    {
+      "case_id": "R01",
+      "strategy": "F",
+      "value": true,
+      "trace_id": "d67cf64b7176ce0f56bfbee88b0ef3c0"
+    },
+    {
+      "case_id": "R01",
+      "strategy": "P",
+      "value": true,
+      "trace_id": "e17c08813727990ca24036b8df1cbbab"
+    },
+    {
+      "case_id": "R01",
+      "strategy": "A",
+      "value": false,
+      "trace_id": "81379fb05143a81e9650334c451490b0"
+    }
+  ]
+}

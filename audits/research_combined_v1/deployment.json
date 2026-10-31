@@ -1,0 +1,49 @@
+{
+  "container": "tcm-research-r4",
+  "id": "6ff5a8b29867742edec4b061dc77eab05cddd0f907d0f15d0e62cdf31875ebaa",
+  "port": 7914,
+  "image": "tcm-research-chat:r4-combined-v1",
+  "driver": "fixed",
+  "external_model_enabled": false,
+  "release_content_id": "ade3f558c489da80d7491207140837e6d3c91f79d64ab4ad691692a3d194cee1",
+  "source_mounts_read_only": true,
+  "state": "/home/zry/workspace/Multi-Agent-Medical-Assistant/var/rag_r4_v1/container-final-state",
+  "url": "http://127.0.0.1:7914/dataops/research",
+  "image_id": "sha256:52a2b189baf1fbdcbdc1ecfc18ca18656309043a5044f2cf555cf3e3b4e4ba77",
+  "source_tree_sha256": "898f5d7cb31bf57ad864b2f985aab143282718f833dc8d61b4f0b3a024974f92",
+  "runtime": {
+    "started_at": "2026-10-31T05:36:42.872992+00:00",
+    "source_revision": "c7d087ecc96ab5a0058a4b50b90c0944c31053c3e981866795c40fe5d63ec2c9",
+    "disk_revision": "c7d087ecc96ab5a0058a4b50b90c0944c31053c3e981866795c40fe5d63ec2c9",
+    "restart_required": false,
+    "source_check": "ok",
+    "dataops": {
+      "agent": false,
+      "driver": "disabled",
+      "external_model_enabled": false,
+      "question_compiler": "local_bounded_grammar_v1",
+      "research_selection": {
+        "enabled": true,
+        "driver": "fixed",
+        "external_model_enabled": false,
+        "execution_model_enabled": false,
+        "question_model_enabled": false,
+        "goal_input": "bounded_question_or_form",
+        "identity_approval": false
+      }
+    },
+    "rag": {
+      "enabled": true,
+      "generation_enabled": false
+    },
+    "intent_model_enabled": false,
+    "dataops_tracing_enabled": false
+  },
+  "old_cookie_and_artifact_preserved": true,
+  "old_artifact_sha256": "a5455db4e7066151e060bdb5683af96ca08533aa2a6042d15d7b579320ff5838",
+  "old_workspace_id": "42f93e1f5aa54ef5a3b06dd66a72228c",
+  "read_only_rootfs": true,
+  "user": "1000:1000",
+  "rollback_container": "tcm-research-r4-before-combined-v1",
+  "remote_published": false
+}

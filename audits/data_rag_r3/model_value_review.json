@@ -1,0 +1,55 @@
+{
+  "scope": "known_source_development_not_blind",
+  "comparisons": [
+    {
+      "case_id": "G01",
+      "original_chars": 59,
+      "original_requests": 0,
+      "model_original_chars": 150,
+      "final_display_chars": 90,
+      "model_requests": 1,
+      "original_excerpts_retained": true
+    },
+    {
+      "case_id": "G02",
+      "original_chars": 51,
+      "original_requests": 0,
+      "model_original_chars": 70,
+      "final_display_chars": 80,
+      "model_requests": 1,
+      "original_excerpts_retained": true
+    },
+    {
+      "case_id": "G03",
+      "original_chars": 63,
+      "original_requests": 0,
+      "model_original_chars": 163,
+      "final_display_chars": 99,
+      "model_requests": 1,
+      "original_excerpts_retained": true
+    },
+    {
+      "case_id": "G04",
+      "original_chars": 135,
+      "original_requests": 0,
+      "model_original_chars": 144,
+      "final_display_chars": 144,
+      "model_requests": 1,
+      "original_excerpts_retained": true
+    }
+  ],
+  "total_prompt_tokens": 2050,
+  "total_completion_tokens": 415,
+  "total_tokens": 2465,
+  "cost": null,
+  "contract_passed": "4/4 composed + 4/4 zero-call controls",
+  "business_accuracy_claim": false,
+  "findings": [
+    "Same evidence originals already contain the required literals; no factual-coverage improvement established",
+    "Model selected shared literal spans in three tasks and parallel JSON/document excerpts in one; a deterministic comparison baseline was not tested",
+    "G01 shared span ends mid-expression; literal membership does not establish meaningful phrasing",
+    "G01 and G03 repeated quotes; deterministic display replay removes duplicates with zero new provider requests",
+    "Default remains original evidence; generation is optional, no general model or Agent benefit established"
+  ],
+  "original_model_records_preserved": true
+}

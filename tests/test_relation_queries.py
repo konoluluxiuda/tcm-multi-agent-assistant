@@ -86,6 +86,35 @@ class RelationQueryTests(unittest.TestCase):
                 self.assertNotIn('data',result['relations'])
             self.assertEqual(len(execute(parse('测试甲草和测试乙草有哪些共同靶点'))['relations']['groups'][0]['options']),2)
 
+    def test_single_herb_relations_use_unique_candidate_without_claiming_identity(self):
+        for question, total in (('测试甲草有哪些成分',25), ('测试甲草的靶点',26)):
+            result=execute(parse(question))
+            self.assertEqual(result['status'],'ok',result)
+            self.assertEqual(result['relations']['groups'][0]['selection_method'],'unique_local_candidate')
+            self.assertEqual(result['relations']['data']['total'],total)
+            self.assertIn('尚未核验',''.join(result['notes']))
+        explicit=execute(parse('/relations 成分 测试甲草',explicit=True))
+        self.assertEqual(explicit['status'],'clarification_needed')
+
+    def test_ambiguous_single_herb_never_queries_relations(self):
+        import sqlite3
+        with sqlite3.connect(self.database) as con:
+            con.execute("INSERT INTO name_candidates SELECT herb_id,'测试甲草',entry_id,evidence FROM name_candidates WHERE name_zh='测试乙草'")
+        with patch('tcm.relation_queries.relations',side_effect=AssertionError('Ambiguous source queried')):
+            result=execute(parse('测试甲草有哪些成分'))
+            self.assertEqual(result['status'],'clarification_needed')
+            self.assertEqual(len(result['relations']['groups'][0]['options']),2)
+
+    def test_one_remaining_record_does_not_hide_a_missing_second_candidate(self):
+        from tcm.etcm_enrichment import chinese_candidates
+        candidates=chinese_candidates('测试甲草','v1')
+        candidates.append({'source_record_id':'etcm2-local:'+'f'*64,'file_sha256':'f'*64})
+        with patch('tcm.etcm_enrichment.chinese_candidates',return_value=candidates), \
+             patch('tcm.relation_queries.relations',side_effect=AssertionError('Incomplete candidate list queried')):
+            result=execute(parse('测试甲草有哪些成分'))
+            self.assertEqual(result['status'],'clarification_needed')
+            self.assertNotIn('data',result['relations'])
+
     def test_background_parser_does_not_discard_third_herbs_extra_tasks_or_clinical_requests(self):
         from tcm.assistant_router import resolve
         for text in (

@@ -1,0 +1,50 @@
+{
+  "version": "dataops-goal-live-v1",
+  "status": "prepared_not_run",
+  "suite_sha256": "bf5e3ae0e47672192ae2378bcac6dcdb099b2adec5a27ed4f005077a64a54c05",
+  "case_ids": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "N01",
+    "N02",
+    "N03",
+    "N04"
+  ],
+  "strategies": {
+    "R": "existing local bounded grammar",
+    "G": "one native Goal proposal"
+  },
+  "executor": "same FixedPlanDriver and graph/tools/source oracle for accepted goals",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "model": "deepseek-flash",
+  "max_requests_total": 12,
+  "max_requests_per_case": 1,
+  "max_output_tokens": 1200,
+  "max_request_bytes": 65536,
+  "request_timeout_seconds": 30,
+  "retries": 0,
+  "response_corrections": 0,
+  "thinking": {
+    "type": "disabled"
+  },
+  "parallel_tool_calls": false,
+  "data": "Current fixed synthetic question, bounded synthetic alias catalog, allowed schema/defaults and parent field summary only.",
+  "excluded": [
+    "reference answers",
+    "real ETCM",
+    "pharmacopoeia",
+    "PDF",
+    "history",
+    "credentials in prompts"
+  ],
+  "stop_on": "Unknown dispatch or provider HTTP error: stop remaining model cases, never resend.",
+  "scope": "author-written known development; safe deferral is not a proven high-quality clarification",
+  "real_model_calls": 0,
+  "http_integration": false
+}

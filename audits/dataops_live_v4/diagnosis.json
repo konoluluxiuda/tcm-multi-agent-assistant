@@ -1,0 +1,366 @@
+{
+  "workspaces": [
+    {
+      "case_id": "B01",
+      "workspace_id": "fe0b0f2d5e5846fdbf602b0e38edc7c8",
+      "revision": 1,
+      "parent_id": null,
+      "status": "complete",
+      "reason": null,
+      "driver_steps": 8,
+      "tool_calls": 8,
+      "leaf_reads": 3,
+      "reused_cells": 0,
+      "response_corrections": 0,
+      "tools": [
+        "query_records",
+        "inspect_sources",
+        "lookup_document_fields",
+        "read_evidence",
+        "compare_fields",
+        "build_artifact",
+        "verify_delivery",
+        "finish_task"
+      ],
+      "events": [
+        {
+          "returned": 1,
+          "reused_cells": 0,
+          "status": "ok",
+          "tool": "query_records",
+          "total": 1,
+          "unknown_names": []
+        },
+        {
+          "reads": [
+            {
+              "fields": [],
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf"
+            }
+          ],
+          "status": "ok",
+          "tool": "inspect_sources"
+        },
+        {
+          "reads": [
+            {
+              "fields": [
+                "功能与主治",
+                "注意"
+              ],
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf"
+            }
+          ],
+          "status": "ok",
+          "tool": "lookup_document_fields"
+        },
+        {
+          "fragments": [
+            {
+              "evidence_id": "E-cae906f0268d818b3e21aca9",
+              "text": "测试原文0",
+              "truncated": false
+            }
+          ],
+          "status": "ok",
+          "tool": "read_evidence"
+        },
+        {
+          "field_states": {
+            "candidate_scope_value": 1,
+            "missing": 1
+          },
+          "mapping_states": {
+            "fields_consistent_not_verified": 1
+          },
+          "status": "ok",
+          "tool": "compare_fields"
+        },
+        {
+          "status": "ok",
+          "tool": "build_artifact"
+        },
+        {
+          "status": "ok",
+          "tool": "verify_delivery",
+          "verification": {
+            "method": "reopen_compare_every_cell_v1",
+            "rows": 1,
+            "sheets": 4,
+            "status": "passed",
+            "verified_cells": 74
+          }
+        },
+        {
+          "status": "ok",
+          "tool": "finish_task"
+        }
+      ],
+      "artifact_present": true,
+      "verification_action_completed": true,
+      "finish_action_completed": true
+    },
+    {
+      "case_id": "B04",
+      "workspace_id": "7d0967cb830c452a9d388048ce44447c",
+      "revision": 1,
+      "parent_id": null,
+      "status": "partial",
+      "reason": "model_budget",
+      "driver_steps": 8,
+      "tool_calls": 8,
+      "leaf_reads": 3,
+      "reused_cells": 0,
+      "response_corrections": 0,
+      "tools": [
+        "query_records",
+        "inspect_sources",
+        "lookup_document_fields",
+        "ask_user",
+        "ask_user",
+        "lookup_document_fields",
+        "build_artifact",
+        "verify_delivery"
+      ],
+      "events": [
+        {
+          "returned": 1,
+          "reused_cells": 0,
+          "status": "ok",
+          "tool": "query_records",
+          "total": 1,
+          "unknown_names": []
+        },
+        {
+          "reads": [
+            {
+              "fields": [],
+              "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35"
+            }
+          ],
+          "status": "ok",
+          "tool": "inspect_sources"
+        },
+        {
+          "reason": "Fields exceed goal scope",
+          "status": "rejected",
+          "tool": "lookup_document_fields"
+        },
+        {
+          "status": "ok",
+          "tool": "ask_user"
+        },
+        {
+          "reason": "No unresolved candidate decision for this record",
+          "status": "rejected",
+          "tool": "ask_user"
+        },
+        {
+          "reads": [
+            {
+              "fields": [
+                "功能与主治",
+                "注意"
+              ],
+              "source_id": "etcm2-local:709604ac6a2f8b1ceb938a5c25a77803f9eb5d30adfe0e9799b9d1f2255d2f35"
+            }
+          ],
+          "status": "ok",
+          "tool": "lookup_document_fields"
+        },
+        {
+          "status": "ok",
+          "tool": "build_artifact"
+        },
+        {
+          "status": "ok",
+          "tool": "verify_delivery",
+          "verification": {
+            "method": "reopen_compare_every_cell_v1",
+            "rows": 1,
+            "sheets": 4,
+            "status": "passed",
+            "verified_cells": 70
+          }
+        }
+      ],
+      "artifact_present": true,
+      "verification_action_completed": true,
+      "finish_action_completed": false
+    },
+    {
+      "case_id": "R01",
+      "workspace_id": "cbd90a7c831c4dc4b8a80e0ddaaa67bb",
+      "revision": 1,
+      "parent_id": null,
+      "status": "complete",
+      "reason": null,
+      "driver_steps": 7,
+      "tool_calls": 7,
+      "leaf_reads": 3,
+      "reused_cells": 0,
+      "response_corrections": 0,
+      "tools": [
+        "query_records",
+        "inspect_sources",
+        "lookup_document_fields",
+        "read_evidence",
+        "build_artifact",
+        "verify_delivery",
+        "finish_task"
+      ],
+      "events": [
+        {
+          "returned": 1,
+          "reused_cells": 0,
+          "status": "ok",
+          "tool": "query_records",
+          "total": 1,
+          "unknown_names": []
+        },
+        {
+          "reads": [
+            {
+              "fields": [],
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf"
+            }
+          ],
+          "status": "ok",
+          "tool": "inspect_sources"
+        },
+        {
+          "reads": [
+            {
+              "fields": [
+                "功能与主治",
+                "注意"
+              ],
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf"
+            }
+          ],
+          "status": "ok",
+          "tool": "lookup_document_fields"
+        },
+        {
+          "fragments": [
+            {
+              "evidence_id": "E-cae906f0268d818b3e21aca9",
+              "text": "测试原文0",
+              "truncated": false
+            }
+          ],
+          "status": "ok",
+          "tool": "read_evidence"
+        },
+        {
+          "status": "ok",
+          "tool": "build_artifact"
+        },
+        {
+          "status": "ok",
+          "tool": "verify_delivery",
+          "verification": {
+            "method": "reopen_compare_every_cell_v1",
+            "rows": 1,
+            "sheets": 4,
+            "status": "passed",
+            "verified_cells": 74
+          }
+        },
+        {
+          "status": "ok",
+          "tool": "finish_task"
+        }
+      ],
+      "artifact_present": true,
+      "verification_action_completed": true,
+      "finish_action_completed": true
+    },
+    {
+      "case_id": "R01",
+      "workspace_id": "7cef6ff5c03d4b46976a92456736e39d",
+      "revision": 2,
+      "parent_id": "cbd90a7c831c4dc4b8a80e0ddaaa67bb",
+      "status": "complete",
+      "reason": null,
+      "driver_steps": 6,
+      "tool_calls": 6,
+      "leaf_reads": 2,
+      "reused_cells": 4,
+      "response_corrections": 0,
+      "tools": [
+        "query_records",
+        "lookup_document_fields",
+        "read_evidence",
+        "build_artifact",
+        "verify_delivery",
+        "finish_task"
+      ],
+      "events": [
+        {
+          "returned": 1,
+          "reused_cells": 4,
+          "status": "ok",
+          "tool": "query_records",
+          "total": 1,
+          "unknown_names": []
+        },
+        {
+          "reads": [
+            {
+              "fields": [
+                "贮藏"
+              ],
+              "source_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf"
+            }
+          ],
+          "status": "ok",
+          "tool": "lookup_document_fields"
+        },
+        {
+          "fragments": [
+            {
+              "evidence_id": "E-cae906f0268d818b3e21aca9",
+              "text": "测试原文0",
+              "truncated": false
+            },
+            {
+              "evidence_id": "E-740a7e82b0cf50957d4b3fc9",
+              "text": "原记录",
+              "truncated": false
+            },
+            {
+              "evidence_id": "E-2c93e7bf612e849151403d69",
+              "text": "另一炮制记录",
+              "truncated": false
+            }
+          ],
+          "status": "ok",
+          "tool": "read_evidence"
+        },
+        {
+          "status": "ok",
+          "tool": "build_artifact"
+        },
+        {
+          "status": "ok",
+          "tool": "verify_delivery",
+          "verification": {
+            "method": "reopen_compare_every_cell_v1",
+            "rows": 1,
+            "sheets": 5,
+            "status": "passed",
+            "verified_cells": 100
+          }
+        },
+        {
+          "status": "ok",
+          "tool": "finish_task"
+        }
+      ],
+      "artifact_present": true,
+      "verification_action_completed": true,
+      "finish_action_completed": true
+    }
+  ]
+}

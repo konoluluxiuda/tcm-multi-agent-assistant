@@ -1,0 +1,91 @@
+{
+  "status": "passed",
+  "modules": [
+    {
+      "name": "test_dataops_goal_model",
+      "exit_code": 0,
+      "report": {
+        "module": "test_dataops_goal_model.py",
+        "status": "passed",
+        "total": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    },
+    {
+      "name": "test_dataops_goal_evaluation",
+      "exit_code": 0,
+      "report": {
+        "module": "test_dataops_goal_evaluation.py",
+        "status": "passed",
+        "total": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    },
+    {
+      "name": "test_dataops_question",
+      "exit_code": 0,
+      "report": {
+        "module": "test_dataops_question.py",
+        "status": "passed",
+        "total": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    },
+    {
+      "name": "test_dataops_live_protocol",
+      "exit_code": 0,
+      "report": {
+        "module": "test_dataops_live_protocol.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    },
+    {
+      "name": "test_tracing",
+      "exit_code": 0,
+      "report": {
+        "module": "test_tracing.py",
+        "status": "passed",
+        "total": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    },
+    {
+      "name": "test_runtime_status",
+      "exit_code": 0,
+      "report": {
+        "module": "test_runtime_status.py",
+        "status": "passed",
+        "total": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    }
+  ],
+  "total": 46,
+  "network_attempts": 0
+}

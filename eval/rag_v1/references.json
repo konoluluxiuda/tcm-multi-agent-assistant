@@ -1,0 +1,3654 @@
+{
+  "version": "rag-source-reference-v1",
+  "cases": [
+    {
+      "case_id": "RAG-P01",
+      "split": "development",
+      "question": "白术的药典保存条件是什么？请保留原文和页码。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-b411d013f6ad7cd93372ad36",
+          "name": "白术"
+        }
+      ],
+      "expected_fields": [
+        "贮藏"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "12c2eb1570a6c56c1dad6871ec667fe22d60acb3667d02466078b4644d3be0a7"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P01.png",
+        "image_sha256": "dd89920207af5c4c1f524280869e740e61ad1bb53443d6470a39c382c0dbb28d"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-b411d013f6ad7cd93372ad36",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:294",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 108,
+            "source_document": "high",
+            "source_pdf_page": 129,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 110,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 8
+          },
+          "bbox_0_1000": [
+            667,
+            542,
+            761,
+            559
+          ],
+          "text_sha256": "0cf44f27533dfd42fb66ba21296378d1af03d6889c47174c7213c30495003a09",
+          "block_sha256": "69c0623ab4368e52f7f824c195795b65fa0f8021f349c2a2b0729d7135ff3a2c",
+          "anchor_id": "A-3ad95c1fa35ac850ad08836959f0378d"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-b411d013f6ad7cd93372ad36",
+          "label": "贮藏",
+          "scope": "prepared_slices",
+          "block_id": "part-101-200:321",
+          "start": 0,
+          "end": 14,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 109,
+            "source_document": "high",
+            "source_pdf_page": 130,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 111,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 9
+          },
+          "bbox_0_1000": [
+            112,
+            775,
+            317,
+            789
+          ],
+          "text_sha256": "12c2eb1570a6c56c1dad6871ec667fe22d60acb3667d02466078b4644d3be0a7",
+          "block_sha256": "aeda01ca476581055e5718b5da8c22ef93bdcebfa2f7959d2b9ffdae98d8fc06",
+          "anchor_id": "A-bcdc031a546e327a00c828c0f67cc878"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P02",
+      "split": "development",
+      "question": "黄芪贮藏要注意什么？只摘录保存要求，后面的试剂配制注释另算。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "known_storage_boundary_regression",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+          "name": "黄芪"
+        }
+      ],
+      "expected_fields": [
+        "贮藏"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "a0988b23e4a5141bde8d9092b7f07b7a69b87784cc6647f3a05296faa86485d2"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在",
+        "不得把PBS或聚山梨酯配制内容归入黄芪贮藏要求"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P02.png",
+        "image_sha256": "bb9d5518c852f28f478f53cc00f87e943d1321c02bd6c6d4871c17896e37a175"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-301-400:798",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 321,
+            "source_document": "high",
+            "source_pdf_page": 342,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 323,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 21
+          },
+          "bbox_0_1000": [
+            668,
+            821,
+            761,
+            838
+          ],
+          "text_sha256": "cb99e9354248f658c6f4fdc46e6a6a1a504d4c98c5f541097fcc1605cf7fc7da",
+          "block_sha256": "f3b6f10ee35ff7f98d27a4e94ed48cb8503a230a56c642bc10dfd6ea37b719bd",
+          "anchor_id": "A-fa75c5d91a1a64e0673bdb1ab851af8d"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+          "label": "贮藏",
+          "scope": "prepared_slices",
+          "block_id": "part-301-400:840",
+          "start": 0,
+          "end": 17,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 323,
+            "source_document": "high",
+            "source_pdf_page": 344,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 325,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 23
+          },
+          "bbox_0_1000": [
+            102,
+            394,
+            352,
+            407
+          ],
+          "text_sha256": "a0988b23e4a5141bde8d9092b7f07b7a69b87784cc6647f3a05296faa86485d2",
+          "block_sha256": "ec9890495bd503f78d98fd092a7d721aaa43370bca09d538b569797c25acb440",
+          "anchor_id": "A-b9b8f9e4a95a5d51c5cf28497d3807ad"
+        }
+      ],
+      "excluded_anchors": [
+        {
+          "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+          "label": "条目注释",
+          "scope": "prepared_slices",
+          "block_id": "part-301-400:841",
+          "start": 0,
+          "end": 89,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 323,
+            "source_document": "high",
+            "source_pdf_page": 344,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 325,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 23
+          },
+          "bbox_0_1000": [
+            73,
+            412,
+            487,
+            463
+          ],
+          "text_sha256": "aa1de81f7efc68fb7e9cdba71fad4fc0087af718b74d58608ff497f28a97d0eb",
+          "block_sha256": "0871cf2304723f53b3dfb2380727ddf3e1a19bf351d7de735034ffa4ebb9fc04",
+          "anchor_id": "A-0e8c6afeacf394d69e3e532c0825ee1f"
+        },
+        {
+          "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+          "label": "条目注释",
+          "scope": "prepared_slices",
+          "block_id": "part-301-400:842",
+          "start": 0,
+          "end": 57,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 323,
+            "source_document": "high",
+            "source_pdf_page": 344,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 325,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 23
+          },
+          "bbox_0_1000": [
+            73,
+            468,
+            485,
+            500
+          ],
+          "text_sha256": "7dc0d4232ae34ac8b1f18aa3755c148552fcf08bc68944fad69f3250934eda1a",
+          "block_sha256": "04e92e05bb148a701d057ab9e34287ab100979e3899467f3c23b1d2df0dd71d6",
+          "anchor_id": "A-bf323478eae484fe0bbcb1e100d0e91a"
+        }
+      ],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P03",
+      "split": "development",
+      "question": "查人参条目里写明的不宜同用提醒，原文是什么？",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-99364a8410f1ddb60feca9c1",
+          "name": "人参"
+        }
+      ],
+      "expected_fields": [
+        "注意"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "1b728ba55df7e7297fc52cad3640e1765253ddbde5197cc1888cdce16ee9b289"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-99364a8410f1ddb60feca9c1"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P03.png",
+        "image_sha256": "3eaab53cc2561de4820a62b13c2c986d37ca6cf9091dfbf5a8906166d5ae2631"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-99364a8410f1ddb60feca9c1",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-001-100:227",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 7,
+            "source_document": "high",
+            "source_pdf_page": 30,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 9,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 7
+          },
+          "bbox_0_1000": [
+            231,
+            117,
+            327,
+            135
+          ],
+          "text_sha256": "aa53ae895172ae2ae1659a29cf099142f5ffcf19a63581a3cd248d1852d42e29",
+          "block_sha256": "09292200d0bd118593512690a996602153a7cf0bf1cb5c2d6061ccaf61d0338b",
+          "anchor_id": "A-1131431c7ebe01a663e55934749502dc"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-99364a8410f1ddb60feca9c1",
+          "label": "注意",
+          "scope": "prepared_slices",
+          "block_id": "part-001-100:264",
+          "start": 0,
+          "end": 16,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 8,
+            "source_document": "high",
+            "source_pdf_page": 31,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 10,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 8
+          },
+          "bbox_0_1000": [
+            107,
+            852,
+            347,
+            866
+          ],
+          "text_sha256": "1b728ba55df7e7297fc52cad3640e1765253ddbde5197cc1888cdce16ee9b289",
+          "block_sha256": "e9ecbf4b22014a0f4eb41f54ee6c8eab7e86b13092b8bffddbb5d375740cbc21",
+          "anchor_id": "A-616792cace5c7e8510f9290d4d5387f3"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P04",
+      "split": "development",
+      "question": "当归有哪些药典功能与主治记载？保留涉及酒当归的限定，不要自己配对功能和病证。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-91438c2bd1cb594a95c13128",
+          "name": "当归"
+        }
+      ],
+      "expected_fields": [
+        "功能与主治"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "79c3c1c200fb7c6012132d504ec45f55907c036cb803af1e525bcea0f2ebad30"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P04.png",
+        "image_sha256": "ee7eb9cbfcc3c338400c45f5b1aafbb32d0ea95bdccab041272bc6c8c68a406c"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-91438c2bd1cb594a95c13128",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:1540",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 140,
+            "source_document": "high",
+            "source_pdf_page": 161,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 142,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 40
+          },
+          "bbox_0_1000": [
+            668,
+            175,
+            764,
+            195
+          ],
+          "text_sha256": "049a6b72bc0f8161435f2011ded4c51fa2fff47faf993a1e9b50fbc7300498b9",
+          "block_sha256": "cfa7c7cf93bb69c1bb8472391261f6143783fe509150332c6e7c7aa869b37d33",
+          "anchor_id": "A-63e5aed136d1e5eec802918c2636a53d"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-91438c2bd1cb594a95c13128",
+          "label": "功能与主治",
+          "scope": "prepared_slices",
+          "block_id": "part-101-200:1574",
+          "start": 0,
+          "end": 94,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 141,
+            "source_document": "high",
+            "source_pdf_page": 162,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 143,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 41
+          },
+          "bbox_0_1000": [
+            70,
+            796,
+            487,
+            865
+          ],
+          "text_sha256": "79c3c1c200fb7c6012132d504ec45f55907c036cb803af1e525bcea0f2ebad30",
+          "block_sha256": "d740e59f6734d99b910ff4dc87624665831ee88510030db95ff46f6685f23a95",
+          "anchor_id": "A-dfdf4a07a0a7079b432a59e1e2ab86e3"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P05",
+      "split": "development",
+      "question": "核对川芎条目记载的用量，仅引用原始资料，不给个人用药建议。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-68478866da9a70522b4b2e09",
+          "name": "川芎"
+        }
+      ],
+      "expected_fields": [
+        "用法与用量"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "4f2ff2050213382729c0ba9d294a2ee6e44bb6e212df4a59d199fcca90b14149"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-68478866da9a70522b4b2e09"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P05.png",
+        "image_sha256": "7e5e16c5ee5f735eaf27d9f7f9fb5e5558c8463ba290b309914101f9e2d7d3a1"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-68478866da9a70522b4b2e09",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-001-100:1523",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 41,
+            "source_document": "high",
+            "source_pdf_page": 62,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 43,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 41
+          },
+          "bbox_0_1000": [
+            668,
+            834,
+            761,
+            852
+          ],
+          "text_sha256": "d89852f06790715c0fb6cb135555dd1c9c0c2de1c0cd3b534a47b86d9853feed",
+          "block_sha256": "99de4c7fcc88004ad35f949280c8fb4e21a9e4ffdaa9407e26efb88badebf266",
+          "anchor_id": "A-c04111a1f3a80bc4be10ee283c06636f"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-68478866da9a70522b4b2e09",
+          "label": "用法与用量",
+          "scope": "prepared_slices",
+          "block_id": "part-001-100:1559",
+          "start": 0,
+          "end": 13,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 42,
+            "source_document": "high",
+            "source_pdf_page": 63,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 44,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 42
+          },
+          "bbox_0_1000": [
+            539,
+            853,
+            707,
+            866
+          ],
+          "text_sha256": "4f2ff2050213382729c0ba9d294a2ee6e44bb6e212df4a59d199fcca90b14149",
+          "block_sha256": "19ec2119856b5b839006297bf8371a73401f57bba85e4a4d1f4fd4aea5a2746d",
+          "anchor_id": "A-88c341f02563413456dc839e0e03a7cf"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P06",
+      "split": "development",
+      "question": "甘草条目的同用禁忌提醒写在哪里？请给出原文出处。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-34aa9ec74498c63a17d1e706",
+          "name": "甘草"
+        }
+      ],
+      "expected_fields": [
+        "注意"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "7c435bebddae1a075fced19276e9cc3bb06dc0c40149733c9a546566b7ca0671"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-34aa9ec74498c63a17d1e706"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P06.png",
+        "image_sha256": "d9c5f555aea2757e4dd6bd9e40e6c48c6f4585dc999f130066bae93e01df436a"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-34aa9ec74498c63a17d1e706",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-001-100:3361",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 89,
+            "source_document": "high",
+            "source_pdf_page": 110,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 91,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 89
+          },
+          "bbox_0_1000": [
+            233,
+            398,
+            329,
+            416
+          ],
+          "text_sha256": "171f756a383a6c41ef8cd383f89ea87380fd3e7c5e8f150a9054d7a588a410f1",
+          "block_sha256": "cac28e9a4bdd5d01419f52ee242bc1557e61927670d0efeb669700b2a459aaeb",
+          "anchor_id": "A-a1e4bbce0e21515668a78c3ee263437f"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-34aa9ec74498c63a17d1e706",
+          "label": "注意",
+          "scope": "prepared_slices",
+          "block_id": "part-001-100:3390",
+          "start": 0,
+          "end": 26,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 90,
+            "source_document": "high",
+            "source_pdf_page": 111,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 92,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 90
+          },
+          "bbox_0_1000": [
+            105,
+            215,
+            475,
+            230
+          ],
+          "text_sha256": "7c435bebddae1a075fced19276e9cc3bb06dc0c40149733c9a546566b7ca0671",
+          "block_sha256": "1a3ad61e1f543c630d71af64f58c50205dde78a9a32d9e281906e0810aafc042",
+          "anchor_id": "A-6e052479c5ba0ed75bef51d593994240"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P07",
+      "split": "development",
+      "question": "金银花在存放时对环境、潮湿和虫害有什么原文要求？",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-baa41eafc52d0933e14b3c95",
+          "name": "金银花"
+        }
+      ],
+      "expected_fields": [
+        "贮藏"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "6877df69d6d6661ad8d5369ca9fec41b7a03214a51ee4a0ba3749d4d12b5ee9b"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-baa41eafc52d0933e14b3c95"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P07.png",
+        "image_sha256": "9f61c4085b37a18c796891213973d068e2749344c57f3deb5123cc9b325d7562"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-baa41eafc52d0933e14b3c95",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-201-300:1370",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 236,
+            "source_document": "high",
+            "source_pdf_page": 257,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 238,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 36
+          },
+          "bbox_0_1000": [
+            660,
+            216,
+            781,
+            234
+          ],
+          "text_sha256": "971f89415cb8ea00b9c3667debe652b5d8fcdb343e74203c9a2cb0fb58125b73",
+          "block_sha256": "4ec5680128a34d240371e749d950f79841cfed90bc790889d9503b5492522c22",
+          "anchor_id": "A-8c71aeff4b4131b89009abbaf2e3c1e9"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-baa41eafc52d0933e14b3c95",
+          "label": "贮藏",
+          "scope": "monograph",
+          "block_id": "part-201-300:1403",
+          "start": 0,
+          "end": 17,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 237,
+            "source_document": "high",
+            "source_pdf_page": 258,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 239,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 37
+          },
+          "bbox_0_1000": [
+            547,
+            649,
+            789,
+            663
+          ],
+          "text_sha256": "6877df69d6d6661ad8d5369ca9fec41b7a03214a51ee4a0ba3749d4d12b5ee9b",
+          "block_sha256": "7720471b6876e8849428816a99cc01974501f2f679b757ad27153828a5bdb1c3",
+          "anchor_id": "A-1a0e2e412f62747f0901332d8ad0b22a"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P08",
+      "split": "development",
+      "question": "查陈皮的贮藏原文，后面的品种注释不要混进来。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "known_storage_boundary_regression",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-916607a51c9876e39d1acf59",
+          "name": "陈皮"
+        }
+      ],
+      "expected_fields": [
+        "贮藏"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "51a1e3950f3fb14fc5ced8f380675127d282499181b979add3bc5002829b1124"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-916607a51c9876e39d1acf59"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P08.png",
+        "image_sha256": "382d8d92043ef867d469767a7b6de5c792723cde309446c2bb6731670ef7aeb9"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-916607a51c9876e39d1acf59",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-201-300:95",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 204,
+            "source_document": "high",
+            "source_pdf_page": 225,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 206,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 4
+          },
+          "bbox_0_1000": [
+            238,
+            282,
+            331,
+            300
+          ],
+          "text_sha256": "36e177145c0eeebafb80308c036bcb55eefc7844420af9aee7c17322afa492a0",
+          "block_sha256": "568feee2a6b4ad76742fd790134de5b39b4ef6fc9b43b3db437a01176248f311",
+          "anchor_id": "A-25d5763e18c79749d5661970dd020a45"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-916607a51c9876e39d1acf59",
+          "label": "贮藏",
+          "scope": "prepared_slices",
+          "block_id": "part-201-300:135",
+          "start": 0,
+          "end": 17,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 205,
+            "source_document": "high",
+            "source_pdf_page": 226,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 207,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 5
+          },
+          "bbox_0_1000": [
+            112,
+            668,
+            357,
+            681
+          ],
+          "text_sha256": "51a1e3950f3fb14fc5ced8f380675127d282499181b979add3bc5002829b1124",
+          "block_sha256": "ec36188d966ae96b9e55bf5cafced37867da609d5d1a1fd22b5c4667d21f9ac3",
+          "anchor_id": "A-0893c9f5283812115a2738c6c5ae4598"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P09",
+      "split": "development",
+      "question": "我在核对丹参资料，只需要功能与主治原文及出处。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-286aad7a798a996040ceaa27",
+          "name": "丹参"
+        }
+      ],
+      "expected_fields": [
+        "功能与主治"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "2cd27aa278a74e0079f1977164387d65c52e1bce8eb9b8876fb42aaea14c381a"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-286aad7a798a996040ceaa27"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P09.png",
+        "image_sha256": "fab53fa947e7a54e94cc53432578ab7ba5f72a700c3cc8c918c64005b4094861"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-286aad7a798a996040ceaa27",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-001-100:2925",
+          "start": 0,
+          "end": 47,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 78,
+            "source_document": "high",
+            "source_pdf_page": 99,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 80,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 78
+          },
+          "bbox_0_1000": [
+            152,
+            341,
+            418,
+            424
+          ],
+          "text_sha256": "6d4f9ba8c7344f6200a3992446eeeec556fd8f248f3ced70a1ddcf5c80324cc2",
+          "block_sha256": "a6724041a7469f9b2231fef21520fa1e541dc99d46ab5515a69b64da417bf075",
+          "anchor_id": "A-bdf704cfa44d6685a8cdb7d7015e19c1"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-286aad7a798a996040ceaa27",
+          "label": "功能与主治",
+          "scope": "prepared_slices",
+          "block_id": "part-001-100:2965",
+          "start": 0,
+          "end": 69,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 79,
+            "source_document": "high",
+            "source_pdf_page": 100,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 81,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 79
+          },
+          "bbox_0_1000": [
+            82,
+            667,
+            487,
+            718
+          ],
+          "text_sha256": "2cd27aa278a74e0079f1977164387d65c52e1bce8eb9b8876fb42aaea14c381a",
+          "block_sha256": "1215a97389e46fbfa0f8e807d6667be44c29d1cf1f6a71119f52929c68e89ba3",
+          "anchor_id": "A-d57acff12b531e6a54cebd538a6d0b9e"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P10",
+      "split": "development",
+      "question": "党参的药典来源段列了哪些植物？请引用来源段，不替我判断分类学身份。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-dd86dbface93996013c40232",
+          "name": "党参"
+        }
+      ],
+      "expected_fields": [
+        "origin"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "ccdf9bed1fe3835c09bc283e6573adce4444d0875154e1339609655a0f30712b"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-dd86dbface93996013c40232"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P10.png",
+        "image_sha256": "6fdd1d04d40ec4bc5aae7ebe9ea3826e862af24e8b7d712c8d0d0d0ca442ff91"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-dd86dbface93996013c40232",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-201-300:3855",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 300,
+            "source_document": "high",
+            "source_pdf_page": 321,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 302,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 100
+          },
+          "bbox_0_1000": [
+            240,
+            650,
+            334,
+            669
+          ],
+          "text_sha256": "936047e280b1c3ebe4fe2b6a16a2394f17ccecef3fa99371bd18f20faa1ad222",
+          "block_sha256": "a72409dc97f8f602f84cc11a348bd8f2bbbdc46e657f87d07d2b72c53a74c5c7",
+          "anchor_id": "A-ed38b36a72c2fb422d8369648291b43c"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-dd86dbface93996013c40232",
+          "label": "origin",
+          "scope": "monograph",
+          "block_id": "part-201-300:3857",
+          "start": 0,
+          "end": 160,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 300,
+            "source_document": "high",
+            "source_pdf_page": 321,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 302,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 100
+          },
+          "bbox_0_1000": [
+            85,
+            733,
+            490,
+            804
+          ],
+          "text_sha256": "ccdf9bed1fe3835c09bc283e6573adce4444d0875154e1339609655a0f30712b",
+          "block_sha256": "28d390818a2e210198f500f82ae07878cf4d91c39495d35db2378073ab7b9dc8",
+          "anchor_id": "A-6fb3deda6ab0cfd38fafe478604eac41"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P11",
+      "split": "development",
+      "question": "限定白芍、苍术两条记录，比较贮藏环境和虫蛀防护的原文；某项没写就不要补充。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "bounded_cross_entry_semantic",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-95c7a701c60a42443ef0a19c",
+          "name": "白芍"
+        },
+        {
+          "entry_id": "mineru-herb-fcdd96c4c674b5cbc33448f6",
+          "name": "苍术"
+        }
+      ],
+      "expected_fields": [
+        "贮藏"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "cd33b5b0cd8956ec40bfd80dce44a7e909dc674d1a8bb57e0a2dd7762a69d63b"
+        },
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "29954cc490d90ac92db4a85c35dd6b3c0adc7a3593a242d795dede76d987c3f9"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-95c7a701c60a42443ef0a19c",
+        "mineru-herb-fcdd96c4c674b5cbc33448f6"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P11.png",
+        "image_sha256": "8b686304a4cdafdc17cf5cc65f8e1d67615b93181345b35bc521444c06e33134"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-95c7a701c60a42443ef0a19c",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:350",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 110,
+            "source_document": "high",
+            "source_pdf_page": 131,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 112,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 10
+          },
+          "bbox_0_1000": [
+            236,
+            192,
+            329,
+            210
+          ],
+          "text_sha256": "c036aedd31a23f98ec35cd4de0a8d2cc6706ee69688ee09f4d197db8f2a801e8",
+          "block_sha256": "e5064d3d342c54c764cefb3bc7f2021b6b89342151838472952cc5d54fa30acf",
+          "anchor_id": "A-94f05803fbf1c29cb6f1925201a36882"
+        },
+        {
+          "entry_id": "mineru-herb-fcdd96c4c674b5cbc33448f6",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:2747",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 171,
+            "source_document": "high",
+            "source_pdf_page": 192,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 173,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 71
+          },
+          "bbox_0_1000": [
+            238,
+            124,
+            334,
+            142
+          ],
+          "text_sha256": "e059a5dacbf0eb5376b84b502b57f77afb16de19d93cbad05587ed839e0e95e6",
+          "block_sha256": "65eb8b9798bc90cb25e39fa42a3122f311d55aa6f730c888fdbde8df23c1767d",
+          "anchor_id": "A-eb0cb40dabab440201a067e3fea8e0e4"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-95c7a701c60a42443ef0a19c",
+          "label": "贮藏",
+          "scope": "prepared_slices",
+          "block_id": "part-101-200:386",
+          "start": 0,
+          "end": 12,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 110,
+            "source_document": "high",
+            "source_pdf_page": 131,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 112,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 10
+          },
+          "bbox_0_1000": [
+            542,
+            722,
+            717,
+            737
+          ],
+          "text_sha256": "cd33b5b0cd8956ec40bfd80dce44a7e909dc674d1a8bb57e0a2dd7762a69d63b",
+          "block_sha256": "a4feba00ba203ff5be8deac383fb93b64e2ef641c8501cb8e2470500130536fc",
+          "anchor_id": "A-960fa91f141eb85cc42ae03458ccf8ed"
+        },
+        {
+          "entry_id": "mineru-herb-fcdd96c4c674b5cbc33448f6",
+          "label": "贮藏",
+          "scope": "prepared_slices",
+          "block_id": "part-101-200:2781",
+          "start": 0,
+          "end": 11,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 171,
+            "source_document": "high",
+            "source_pdf_page": 192,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 173,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 71
+          },
+          "bbox_0_1000": [
+            542,
+            826,
+            710,
+            840
+          ],
+          "text_sha256": "29954cc490d90ac92db4a85c35dd6b3c0adc7a3593a242d795dede76d987c3f9",
+          "block_sha256": "d241fbcb3bc7550274107f37d41bd956dba2129947a9ab6e57ac9ec6ba57ceac",
+          "anchor_id": "A-80dec46b80cedeccc069dd3843644032"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P12",
+      "split": "development",
+      "question": "只在黄芪和金银花条目中找与受潮、虫害防护相关的保存说明，列出候选原文和出处。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "bounded_cross_entry_semantic",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+          "name": "黄芪"
+        },
+        {
+          "entry_id": "mineru-herb-baa41eafc52d0933e14b3c95",
+          "name": "金银花"
+        }
+      ],
+      "expected_fields": [
+        "贮藏"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "a0988b23e4a5141bde8d9092b7f07b7a69b87784cc6647f3a05296faa86485d2"
+        },
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "6877df69d6d6661ad8d5369ca9fec41b7a03214a51ee4a0ba3749d4d12b5ee9b"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676",
+        "mineru-herb-baa41eafc52d0933e14b3c95"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P12.png",
+        "image_sha256": "3301c29ad5cbfc517cd483f73832616eadb6bd32a75b4c42ffcc63f5dc0c907c"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-301-400:798",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 321,
+            "source_document": "high",
+            "source_pdf_page": 342,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 323,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 21
+          },
+          "bbox_0_1000": [
+            668,
+            821,
+            761,
+            838
+          ],
+          "text_sha256": "cb99e9354248f658c6f4fdc46e6a6a1a504d4c98c5f541097fcc1605cf7fc7da",
+          "block_sha256": "f3b6f10ee35ff7f98d27a4e94ed48cb8503a230a56c642bc10dfd6ea37b719bd",
+          "anchor_id": "A-fa75c5d91a1a64e0673bdb1ab851af8d"
+        },
+        {
+          "entry_id": "mineru-herb-baa41eafc52d0933e14b3c95",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-201-300:1370",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 236,
+            "source_document": "high",
+            "source_pdf_page": 257,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 238,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 36
+          },
+          "bbox_0_1000": [
+            660,
+            216,
+            781,
+            234
+          ],
+          "text_sha256": "971f89415cb8ea00b9c3667debe652b5d8fcdb343e74203c9a2cb0fb58125b73",
+          "block_sha256": "4ec5680128a34d240371e749d950f79841cfed90bc790889d9503b5492522c22",
+          "anchor_id": "A-8c71aeff4b4131b89009abbaf2e3c1e9"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+          "label": "贮藏",
+          "scope": "prepared_slices",
+          "block_id": "part-301-400:840",
+          "start": 0,
+          "end": 17,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 323,
+            "source_document": "high",
+            "source_pdf_page": 344,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 325,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 23
+          },
+          "bbox_0_1000": [
+            102,
+            394,
+            352,
+            407
+          ],
+          "text_sha256": "a0988b23e4a5141bde8d9092b7f07b7a69b87784cc6647f3a05296faa86485d2",
+          "block_sha256": "ec9890495bd503f78d98fd092a7d721aaa43370bca09d538b569797c25acb440",
+          "anchor_id": "A-b9b8f9e4a95a5d51c5cf28497d3807ad"
+        },
+        {
+          "entry_id": "mineru-herb-baa41eafc52d0933e14b3c95",
+          "label": "贮藏",
+          "scope": "monograph",
+          "block_id": "part-201-300:1403",
+          "start": 0,
+          "end": 17,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 237,
+            "source_document": "high",
+            "source_pdf_page": 258,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 239,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 37
+          },
+          "bbox_0_1000": [
+            547,
+            649,
+            789,
+            663
+          ],
+          "text_sha256": "6877df69d6d6661ad8d5369ca9fec41b7a03214a51ee4a0ba3749d4d12b5ee9b",
+          "block_sha256": "7720471b6876e8849428816a99cc01974501f2f679b757ad27153828a5bdb1c3",
+          "anchor_id": "A-1a0e2e412f62747f0901332d8ad0b22a"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P13",
+      "split": "development",
+      "question": "读取ETCM的FuLing拉丁名，并并列药典茯苓来源段，分别保留原始记录位置，不确认两者身份。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "structured_document_bridge",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-a967b4d1c53114248a6d2c62",
+          "name": "茯苓"
+        }
+      ],
+      "expected_fields": [
+        "origin",
+        "latin_name"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "a7dfd8fb4bafa08b3e5d169d4609c6a9dbc9c04bb6d9c36ad8f5f753e4366215"
+        },
+        {
+          "require_raw_json_value": true,
+          "value_sha256": "5e6897aeb55c677aeebc6f7f2eb1562bcf161a864cdf1d5dbb4666d197214fc3"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "etcm2-local:ae294e23818b2d0dd0e6653d4a8155d4a5731999b39888b756389d5baff31afe",
+        "mineru-herb-a967b4d1c53114248a6d2c62"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P13.png",
+        "image_sha256": "80c16dfe9b95265a55d2e054bee83385f3330c5f82eefffe301ed41de35b04ed"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-a967b4d1c53114248a6d2c62",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-201-300:2160",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 257,
+            "source_document": "high",
+            "source_pdf_page": 278,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 259,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 57
+          },
+          "bbox_0_1000": [
+            667,
+            118,
+            764,
+            137
+          ],
+          "text_sha256": "90e4e58d454b4a7803af7ed5224d9f6821619fc82112e57e8f1e76f01063b37e",
+          "block_sha256": "ecf14801cfc2341c792eee2d04a221c3b3c8a9bf784b15acaa792e6896776989",
+          "anchor_id": "A-7743b308d4cb945d55306740e0159753"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-a967b4d1c53114248a6d2c62",
+          "label": "origin",
+          "scope": "monograph",
+          "block_id": "part-201-300:2163",
+          "start": 0,
+          "end": 145,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 257,
+            "source_document": "high",
+            "source_pdf_page": 278,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 259,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 57
+          },
+          "bbox_0_1000": [
+            510,
+            202,
+            919,
+            288
+          ],
+          "text_sha256": "a7dfd8fb4bafa08b3e5d169d4609c6a9dbc9c04bb6d9c36ad8f5f753e4366215",
+          "block_sha256": "bb92ed6d1e36fad374119fef6a6d3d08d844e22e33d7044e34403bd06a8a6422",
+          "anchor_id": "A-78365abdcea1d54e6815d672dbaa17e8"
+        },
+        {
+          "relative_file_path": "etcm_herbs/FuLing.json",
+          "file_sha256": "4414d50eed5bf624f8092db6bda62586d7e8cf9329831a5ac06d1508fc57ca4c",
+          "json_pointer": "/data/0/value/1/value",
+          "value_sha256": "5e6897aeb55c677aeebc6f7f2eb1562bcf161a864cdf1d5dbb4666d197214fc3",
+          "source_record_id": "etcm2-local:ae294e23818b2d0dd0e6653d4a8155d4a5731999b39888b756389d5baff31afe",
+          "label": "latin_name",
+          "kind": "etcm_json",
+          "anchor_id": "A-be5d0e5eda9bc42601bc2accfcbddc64"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P14",
+      "split": "development",
+      "question": "核对ETCM BaiZhu的药用部位与药典白术来源段，分别列出原值和出处；不要把Root自动改成根茎。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "structured_document_bridge",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-b411d013f6ad7cd93372ad36",
+          "name": "白术"
+        }
+      ],
+      "expected_fields": [
+        "origin",
+        "medicinal_part"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "9289c3fd76e6c56b6f1c71da11964c274bfadf959c9fe6f8222bd5dbc22415aa"
+        },
+        {
+          "require_raw_json_value": true,
+          "value_sha256": "dd851e069aed87b2f34480d458351591969d681f7b4d94acf409f2c9fde8e501"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "etcm2-local:9d22988dcf884595f9d12aa47aa53582baf54b22eefb285f99a9cdf701b11ca6",
+        "mineru-herb-b411d013f6ad7cd93372ad36"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P14.png",
+        "image_sha256": "f9fabfe58bbc00d56e4b992e755318a2aaf0f984f612c27aa619325410f082b6"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-b411d013f6ad7cd93372ad36",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:294",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 108,
+            "source_document": "high",
+            "source_pdf_page": 129,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 110,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 8
+          },
+          "bbox_0_1000": [
+            667,
+            542,
+            761,
+            559
+          ],
+          "text_sha256": "0cf44f27533dfd42fb66ba21296378d1af03d6889c47174c7213c30495003a09",
+          "block_sha256": "69c0623ab4368e52f7f824c195795b65fa0f8021f349c2a2b0729d7135ff3a2c",
+          "anchor_id": "A-3ad95c1fa35ac850ad08836959f0378d"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-b411d013f6ad7cd93372ad36",
+          "label": "origin",
+          "scope": "monograph",
+          "block_id": "part-101-200:296",
+          "start": 0,
+          "end": 83,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 108,
+            "source_document": "high",
+            "source_pdf_page": 129,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 110,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 8
+          },
+          "bbox_0_1000": [
+            510,
+            643,
+            917,
+            694
+          ],
+          "text_sha256": "9289c3fd76e6c56b6f1c71da11964c274bfadf959c9fe6f8222bd5dbc22415aa",
+          "block_sha256": "b18fef0ca9fe39f0216ee620e28d7150519d35da275b9ad546872568c5720449",
+          "anchor_id": "A-b7b87cd89875d8ecb1f2136c98c96d87"
+        },
+        {
+          "relative_file_path": "etcm_herbs/BaiZhu.json",
+          "file_sha256": "b524686ce34f8e9a5895b6fbcc77404244f6858bc87494ecb10dfa9c3534b9dd",
+          "json_pointer": "/data/0/value/5/value",
+          "value_sha256": "dd851e069aed87b2f34480d458351591969d681f7b4d94acf409f2c9fde8e501",
+          "source_record_id": "etcm2-local:9d22988dcf884595f9d12aa47aa53582baf54b22eefb285f99a9cdf701b11ca6",
+          "label": "medicinal_part",
+          "kind": "etcm_json",
+          "anchor_id": "A-0b00bd1650e528e5e7e6975c206ed5ab"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P15",
+      "split": "reserved",
+      "question": "紫苏叶条目如何描述存放条件？给出原始保存说明。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-a7d62fc2f50f82cd759fe7a9",
+          "name": "紫苏叶"
+        }
+      ],
+      "expected_fields": [
+        "贮藏"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "d3edd12f29a0108d1f519c1fe27340e6c7f8db2e99566ab8dd38bd0b9a2ff396"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-a7d62fc2f50f82cd759fe7a9"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P15.png",
+        "image_sha256": "e75a9d082886efec798f9a68b327b87600d3a0bfbec41592db4e714810c50d73"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-a7d62fc2f50f82cd759fe7a9",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-301-400:2294",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 362,
+            "source_document": "high",
+            "source_pdf_page": 383,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 364,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 62
+          },
+          "bbox_0_1000": [
+            233,
+            815,
+            347,
+            833
+          ],
+          "text_sha256": "5e9de7e15636dddac87d22288ece240e53c0c084f7dea2b0e6528fdf8bc2fc7d",
+          "block_sha256": "fd172b969bd73935f1d6a838f87c427ef1bc770a46ff2b47a6d854985aa50d34",
+          "anchor_id": "A-40ba8e823651b6b54fb27c6e6026c9fb"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-a7d62fc2f50f82cd759fe7a9",
+          "label": "贮藏",
+          "scope": "prepared_slices",
+          "block_id": "part-301-400:2319",
+          "start": 0,
+          "end": 12,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 363,
+            "source_document": "high",
+            "source_pdf_page": 384,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 365,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 63
+          },
+          "bbox_0_1000": [
+            99,
+            200,
+            270,
+            214
+          ],
+          "text_sha256": "d3edd12f29a0108d1f519c1fe27340e6c7f8db2e99566ab8dd38bd0b9a2ff396",
+          "block_sha256": "cb900967700b07d4e9c3c489fa2673ebc5aacf21030974d4aa5ad7cc530bf9f6",
+          "anchor_id": "A-231bf2cb568ff16b4edbc6a6509acb70"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P16",
+      "split": "reserved",
+      "question": "查独活对霉变和虫害防护的保存说明，引用原文。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-81942db6b6cbbe29bd180933",
+          "name": "独活"
+        }
+      ],
+      "expected_fields": [
+        "贮藏"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "6b06e90b2b89c75e28e09bddd117d0cafe6bdec7110ff73b7cfe53be246690cc"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-81942db6b6cbbe29bd180933"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P16.png",
+        "image_sha256": "b4700fcd01176028a8e36154dc6d0d1470426e6de5b37083545a0c99eeec5196"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-81942db6b6cbbe29bd180933",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-201-300:3115",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 281,
+            "source_document": "high",
+            "source_pdf_page": 302,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 283,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 81
+          },
+          "bbox_0_1000": [
+            231,
+            800,
+            327,
+            818
+          ],
+          "text_sha256": "ac17024bbd4624aec6f85d004f7f0a6c7fca3670934d02797ecac78a77da845a",
+          "block_sha256": "aafc36ebbbd5d344968c1d1e8e147ca3af00ad7c517a1c44cbdf9d7e9bdb6d5a",
+          "anchor_id": "A-e3b5326eea6861da086de0009245dd05"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-81942db6b6cbbe29bd180933",
+          "label": "贮藏",
+          "scope": "prepared_slices",
+          "block_id": "part-201-300:3142",
+          "start": 0,
+          "end": 15,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 282,
+            "source_document": "high",
+            "source_pdf_page": 303,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 284,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 82
+          },
+          "bbox_0_1000": [
+            110,
+            191,
+            322,
+            205
+          ],
+          "text_sha256": "6b06e90b2b89c75e28e09bddd117d0cafe6bdec7110ff73b7cfe53be246690cc",
+          "block_sha256": "e614a88418e4c466ac64186fbabe36e382b773b7040813725b49fcf1130f88d9",
+          "anchor_id": "A-4af4aa418c230cbabc2fc3ce6396c905"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P17",
+      "split": "reserved",
+      "question": "五味子的性味与归经在条目中怎样记载？",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-ee924ec27906f9c3142278ea",
+          "name": "五味子"
+        }
+      ],
+      "expected_fields": [
+        "性味与归经"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "432486af2a72213f5431aef5428c08329061dde6438bf0d0dbc1d4cd9180df64"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-ee924ec27906f9c3142278ea"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P17.png",
+        "image_sha256": "ebdfb6966e0fc7ee1c4bbca07f8bb0d626f847104ca2786e5f834c73c7dc17ba"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-ee924ec27906f9c3142278ea",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-001-100:2507",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 67,
+            "source_document": "high",
+            "source_pdf_page": 88,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 69,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 67
+          },
+          "bbox_0_1000": [
+            658,
+            435,
+            774,
+            451
+          ],
+          "text_sha256": "c2a4b02f7c20439df12009e1cb0fe0facd7554f56e71f3f23c53c709f1cc88d4",
+          "block_sha256": "faeb12e4f92e525b6dbcb8fb3abdff953d77e925d058a74a8bf1004404d9f751",
+          "anchor_id": "A-27803c95f303ced563e876cd8921f15a"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-ee924ec27906f9c3142278ea",
+          "label": "性味与归经",
+          "scope": "prepared_slices",
+          "block_id": "part-001-100:2534",
+          "start": 0,
+          "end": 21,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 68,
+            "source_document": "high",
+            "source_pdf_page": 89,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 70,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 68
+          },
+          "bbox_0_1000": [
+            115,
+            778,
+            403,
+            791
+          ],
+          "text_sha256": "432486af2a72213f5431aef5428c08329061dde6438bf0d0dbc1d4cd9180df64",
+          "block_sha256": "034b603addf31ea6b3dd11f93d3f4d1675fdb9d81871ea2a4357ee4b86bb92ff",
+          "anchor_id": "A-9727db7757956e4b110fc7c42efc666a"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P18",
+      "split": "reserved",
+      "question": "核对车前子原文用量及是否有煎服方式限定，只作资料摘录。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-e520c127ea3d145aa2bf052a",
+          "name": "车前子"
+        }
+      ],
+      "expected_fields": [
+        "用法与用量"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "774cd990f84c008ff07329796920e8efd23a5744a56c39054730fcac8c9fe870"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-e520c127ea3d145aa2bf052a"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P18.png",
+        "image_sha256": "2d5bef2de1432608ab84bd267e3dbb41a2ddd6e58a8aa2d7afb0706235f29e73"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-e520c127ea3d145aa2bf052a",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-001-100:2580",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 69,
+            "source_document": "high",
+            "source_pdf_page": 90,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 71,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 69
+          },
+          "bbox_0_1000": [
+            655,
+            195,
+            773,
+            214
+          ],
+          "text_sha256": "97ae39875948ca362f369e2f0037658320757a213a2ea32427c87c6f6b1d9b52",
+          "block_sha256": "bd9d2b84386c1885c1b3677d739de5d4025cd0559b5e340a2b8c9db3effc47c9",
+          "anchor_id": "A-e921fbaac6f46c2c85084a7b6728c435"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-e520c127ea3d145aa2bf052a",
+          "label": "用法与用量",
+          "scope": "prepared_slices",
+          "block_id": "part-001-100:2614",
+          "start": 0,
+          "end": 16,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 70,
+            "source_document": "high",
+            "source_pdf_page": 91,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 72,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 70
+          },
+          "bbox_0_1000": [
+            115,
+            655,
+            319,
+            669
+          ],
+          "text_sha256": "774cd990f84c008ff07329796920e8efd23a5744a56c39054730fcac8c9fe870",
+          "block_sha256": "a7539c375f6def999087173c021a538cd510255b2e4ef917492dd1447e42b5b5",
+          "anchor_id": "A-a5929b627201b157d3d86b6a44dd5e22"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P19",
+      "split": "reserved",
+      "question": "酸枣仁有哪些药典功能与主治记载？请并列保留原文。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-40ff21ea5e60999e5aa4f7e1",
+          "name": "酸枣仁"
+        }
+      ],
+      "expected_fields": [
+        "功能与主治"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "2c4c24e64e0342f391bedbea8b1c3e757a1f650c2f40014e08e101bf6fb4c528"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-40ff21ea5e60999e5aa4f7e1"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P19.png",
+        "image_sha256": "7fefe895ba01476162325bc05ae4089a2dacf9b8682a2bfe31f8b990fb1f18a0"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-40ff21ea5e60999e5aa4f7e1",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-301-400:3428",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 392,
+            "source_document": "high",
+            "source_pdf_page": 413,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 394,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 92
+          },
+          "bbox_0_1000": [
+            653,
+            324,
+            769,
+            342
+          ],
+          "text_sha256": "6b78b20fd0ce2763560be2b8cd8409f62801b76a3b0a453ce31d2df36856a9e9",
+          "block_sha256": "89b37e504e7aee6a69e2cc45cc4054cd0bb2d14646b301cc7ae4178123751594",
+          "anchor_id": "A-a88c256fccb00386c055e7966844e35c"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-40ff21ea5e60999e5aa4f7e1",
+          "label": "功能与主治",
+          "scope": "prepared_slices",
+          "block_id": "part-301-400:3461",
+          "start": 0,
+          "end": 45,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 393,
+            "source_document": "high",
+            "source_pdf_page": 414,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 395,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 93
+          },
+          "bbox_0_1000": [
+            512,
+            212,
+            917,
+            244
+          ],
+          "text_sha256": "2c4c24e64e0342f391bedbea8b1c3e757a1f650c2f40014e08e101bf6fb4c528",
+          "block_sha256": "4e23444778692afe895ca9c2dfdd31272797b561a35728c520ba8f6dab01d057",
+          "anchor_id": "A-4d5ee94f997e8d5b95a5ff4ae00f99b7"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-P20",
+      "split": "reserved",
+      "question": "山茱萸条目对保存环境和虫害防护有什么说明？",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "document_evidence",
+      "expected_status": "evidence_found",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-3ca5d4a6712691fc0e1bdb0e",
+          "name": "山茱萸"
+        }
+      ],
+      "expected_fields": [
+        "贮藏"
+      ],
+      "required_facts": [
+        {
+          "require_original_wording": true,
+          "anchor_text_sha256": "cd33b5b0cd8956ec40bfd80dce44a7e909dc674d1a8bb57e0a2dd7762a69d63b"
+        }
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-3ca5d4a6712691fc0e1bdb0e"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-P20.png",
+        "image_sha256": "f03dad447049e7758096130a84d4e1b20e210632dd177bf6eedd7ce78c866325"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-3ca5d4a6712691fc0e1bdb0e",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-001-100:1041",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 28,
+            "source_document": "high",
+            "source_pdf_page": 49,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 30,
+            "observed_printed_page": 30,
+            "printed_label_status": "anchor_visually_observed_pending_human_review",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 28
+          },
+          "bbox_0_1000": [
+            231,
+            595,
+            344,
+            613
+          ],
+          "text_sha256": "ab06402250a2ea696692b597b1acba20a7d44a6244c0245c0e275220d97735b3",
+          "block_sha256": "b1c42aed4f42dbb5a954b36f0438c97aeef38def4da36d368656e7d8f7c7c06b",
+          "anchor_id": "A-193102df71a368f56a65cebd2c7b7845"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-3ca5d4a6712691fc0e1bdb0e",
+          "label": "贮藏",
+          "scope": "prepared_slices",
+          "block_id": "part-001-100:1075",
+          "start": 0,
+          "end": 12,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 29,
+            "source_document": "high",
+            "source_pdf_page": 50,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 31,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 29
+          },
+          "bbox_0_1000": [
+            110,
+            319,
+            285,
+            332
+          ],
+          "text_sha256": "cd33b5b0cd8956ec40bfd80dce44a7e909dc674d1a8bb57e0a2dd7762a69d63b",
+          "block_sha256": "ea2d8aa840d12ca164b486711ab3a0e5123bcefaa88e33901be58fe2f165e8da",
+          "anchor_id": "A-7840d69ff0d2a82b6b6c7f1be21eaf9b"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-N01",
+      "split": "development",
+      "question": "只查当前药典白术条目中独立的【注意】字段；没有这个字段就说明未收录，不从其他内容补造。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "missing_explicit_field",
+      "expected_status": "missing_field",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-b411d013f6ad7cd93372ad36",
+          "name": "白术"
+        }
+      ],
+      "expected_fields": [
+        "注意"
+      ],
+      "required_facts": [
+        "当前冻结OCR条目范围内未观察到独立【注意】标签，不代表没有任何使用限制"
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-b411d013f6ad7cd93372ad36"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-N01.png",
+        "image_sha256": "58f8bb85d657e885482ffeb69201ad95013fe90763ab9dea0e3462c538b1a56a"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-b411d013f6ad7cd93372ad36",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:294",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 108,
+            "source_document": "high",
+            "source_pdf_page": 129,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 110,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 8
+          },
+          "bbox_0_1000": [
+            667,
+            542,
+            761,
+            559
+          ],
+          "text_sha256": "0cf44f27533dfd42fb66ba21296378d1af03d6889c47174c7213c30495003a09",
+          "block_sha256": "69c0623ab4368e52f7f824c195795b65fa0f8021f349c2a2b0729d7135ff3a2c",
+          "anchor_id": "A-3ad95c1fa35ac850ad08836959f0378d"
+        }
+      ],
+      "relevant_anchors": [],
+      "excluded_anchors": [],
+      "absence_witness": {
+        "entry_id": "mineru-herb-b411d013f6ad7cd93372ad36",
+        "label": "注意",
+        "start_block_id": "part-101-200:294",
+        "end_before_block_id": "part-101-200:322",
+        "interval_sha256": "25aa9f90c1a2d46444b1ab5bef39171edd1a186b22d33df5e8163aac6f9806b1",
+        "block_count": 26,
+        "meaning": "label_absent_in_this_frozen_OCR_entry_interval_not_absence_in_reality"
+      },
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-N02",
+      "split": "development",
+      "question": "只查当前药典黄芪条目中独立的【注意】字段；没有这个字段就说明未收录，不从其他内容补造。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "missing_explicit_field",
+      "expected_status": "missing_field",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+          "name": "黄芪"
+        }
+      ],
+      "expected_fields": [
+        "注意"
+      ],
+      "required_facts": [
+        "当前冻结OCR条目范围内未观察到独立【注意】标签，不代表没有任何使用限制"
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-4d2e9a34d40176dfd7d25676"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-N02.png",
+        "image_sha256": "5f38d9f212bc2fef7f65aa5ffab2704bcc7dc7f81249542018067e9f80c27d36"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-301-400:798",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 321,
+            "source_document": "high",
+            "source_pdf_page": 342,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 323,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第301-400页.pdf",
+            "upload_part_page": 21
+          },
+          "bbox_0_1000": [
+            668,
+            821,
+            761,
+            838
+          ],
+          "text_sha256": "cb99e9354248f658c6f4fdc46e6a6a1a504d4c98c5f541097fcc1605cf7fc7da",
+          "block_sha256": "f3b6f10ee35ff7f98d27a4e94ed48cb8503a230a56c642bc10dfd6ea37b719bd",
+          "anchor_id": "A-fa75c5d91a1a64e0673bdb1ab851af8d"
+        }
+      ],
+      "relevant_anchors": [],
+      "excluded_anchors": [],
+      "absence_witness": {
+        "entry_id": "mineru-herb-4d2e9a34d40176dfd7d25676",
+        "label": "注意",
+        "start_block_id": "part-301-400:798",
+        "end_before_block_id": "part-301-400:843",
+        "interval_sha256": "5f3e2f74973002c20653492b845d2ed9850ed74dc5f5e4e7dd5ecfbcf4f5c6f3",
+        "block_count": 44,
+        "meaning": "label_absent_in_this_frozen_OCR_entry_interval_not_absence_in_reality"
+      },
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-N03",
+      "split": "development",
+      "question": "只查当前药典当归条目中独立的【注意】字段；没有这个字段就说明未收录，不从其他内容补造。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "missing_explicit_field",
+      "expected_status": "missing_field",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-91438c2bd1cb594a95c13128",
+          "name": "当归"
+        }
+      ],
+      "expected_fields": [
+        "注意"
+      ],
+      "required_facts": [
+        "当前冻结OCR条目范围内未观察到独立【注意】标签，不代表没有任何使用限制"
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-91438c2bd1cb594a95c13128"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-N03.png",
+        "image_sha256": "c440a677ac8072b73b4f8f785e3c09d86c413f9528e6eefd11593fcf904459ca"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-91438c2bd1cb594a95c13128",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:1540",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 140,
+            "source_document": "high",
+            "source_pdf_page": 161,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 142,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 40
+          },
+          "bbox_0_1000": [
+            668,
+            175,
+            764,
+            195
+          ],
+          "text_sha256": "049a6b72bc0f8161435f2011ded4c51fa2fff47faf993a1e9b50fbc7300498b9",
+          "block_sha256": "cfa7c7cf93bb69c1bb8472391261f6143783fe509150332c6e7c7aa869b37d33",
+          "anchor_id": "A-63e5aed136d1e5eec802918c2636a53d"
+        }
+      ],
+      "relevant_anchors": [],
+      "excluded_anchors": [],
+      "absence_witness": {
+        "entry_id": "mineru-herb-91438c2bd1cb594a95c13128",
+        "label": "注意",
+        "start_block_id": "part-101-200:1540",
+        "end_before_block_id": "part-101-200:1577",
+        "interval_sha256": "22b63d6ac768995cff00da666d840286099ef03b0bc85540cf3ce98e2a7034ee",
+        "block_count": 36,
+        "meaning": "label_absent_in_this_frozen_OCR_entry_interval_not_absence_in_reality"
+      },
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-N04",
+      "split": "reserved",
+      "question": "只查当前药典栀子条目中独立的【注意】字段；没有这个字段就说明未收录，不从其他内容补造。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "missing_explicit_field",
+      "expected_status": "missing_field",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-af521f8129341357e2c3ba0d",
+          "name": "栀子"
+        }
+      ],
+      "expected_fields": [
+        "注意"
+      ],
+      "required_facts": [
+        "当前冻结OCR条目范围内未观察到独立【注意】标签，不代表没有任何使用限制"
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-af521f8129341357e2c3ba0d"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-N04.png",
+        "image_sha256": "d606133fbc82bdb3f7eafd18acf7db44cf83fa29cfba23e6733b5c6b6aecf804"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-af521f8129341357e2c3ba0d",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-201-300:2497",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 265,
+            "source_document": "high",
+            "source_pdf_page": 286,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 267,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 65
+          },
+          "bbox_0_1000": [
+            665,
+            529,
+            759,
+            546
+          ],
+          "text_sha256": "73c4b5604ecd9305c05de627f13513991657a7022d09c5417a33506409c65b18",
+          "block_sha256": "3a37e96d81f3c87fff605ac61412672170230d0594469d1f9fd83e4dbc41c424",
+          "anchor_id": "A-c1e6837b2f8fa0ea5fe930328d713676"
+        }
+      ],
+      "relevant_anchors": [],
+      "excluded_anchors": [],
+      "absence_witness": {
+        "entry_id": "mineru-herb-af521f8129341357e2c3ba0d",
+        "label": "注意",
+        "start_block_id": "part-201-300:2497",
+        "end_before_block_id": "part-201-300:2530",
+        "interval_sha256": "6913055388eb2891f901d83f973d83a93fc6f3f5b934286a68eeb0a510b3dd1f",
+        "block_count": 34,
+        "meaning": "label_absent_in_this_frozen_OCR_entry_interval_not_absence_in_reality"
+      },
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-N05",
+      "split": "reserved",
+      "question": "只查当前药典决明子条目中独立的【注意】字段；没有这个字段就说明未收录，不从其他内容补造。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "missing_explicit_field",
+      "expected_status": "missing_field",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-6e47c1865a32cd1c1ada4b53",
+          "name": "决明子"
+        }
+      ],
+      "expected_fields": [
+        "注意"
+      ],
+      "required_facts": [
+        "当前冻结OCR条目范围内未观察到独立【注意】标签，不代表没有任何使用限制"
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-6e47c1865a32cd1c1ada4b53"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-N05.png",
+        "image_sha256": "771ec7046203ceea330ec426c0997bfbdfdb562db9ade0c4e233ef6c5cf37de0"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-6e47c1865a32cd1c1ada4b53",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:2040",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 153,
+            "source_document": "high",
+            "source_pdf_page": 174,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 155,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 53
+          },
+          "bbox_0_1000": [
+            225,
+            426,
+            342,
+            444
+          ],
+          "text_sha256": "6b3e4f402ca71f0d4a4a47bbdb6f6aa3f98dcc423e56de5553872b4b98e6395b",
+          "block_sha256": "5f0efc565e2547c39a72fd0b56e5ff69a2cc0371b502b5bccb7f2946fbd2d28b",
+          "anchor_id": "A-5a74983ed4bd49263ae56b83b8c8eb0e"
+        }
+      ],
+      "relevant_anchors": [],
+      "excluded_anchors": [],
+      "absence_witness": {
+        "entry_id": "mineru-herb-6e47c1865a32cd1c1ada4b53",
+        "label": "注意",
+        "start_block_id": "part-101-200:2040",
+        "end_before_block_id": "part-101-200:2076",
+        "interval_sha256": "0afac232cd12db29fa271385e13e28c83417d9f713c4d549bc5ae69982ec7b86",
+        "block_count": 36,
+        "meaning": "label_absent_in_this_frozen_OCR_entry_interval_not_absence_in_reality"
+      },
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-A01",
+      "split": "development",
+      "question": "我记录的是地黄，也可能是熟地黄，炮制形式还没确定。请先核对我要查哪一个条目的用量。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "preparation_object_ambiguity",
+      "expected_status": "clarification_required",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-c8dc913b247ceda3564ef536",
+          "name": "地黄"
+        },
+        {
+          "entry_id": "mineru-herb-c3b2d6d15102df0e955164c2",
+          "name": "熟地黄"
+        }
+      ],
+      "expected_fields": [
+        "用法与用量"
+      ],
+      "required_facts": [
+        "对象/炮制形式未确定，先要求选择明确条目；不得擅自混并用量"
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-c3b2d6d15102df0e955164c2",
+        "mineru-herb-c8dc913b247ceda3564ef536"
+      ],
+      "disambiguation_options": [
+        "地黄",
+        "熟地黄"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-A01.png",
+        "image_sha256": "2340e3452745d0c406ddd4d1a27d829971e46ca7484a28198dee46a049837cc0"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-c8dc913b247ceda3564ef536",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:1178",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 130,
+            "source_document": "high",
+            "source_pdf_page": 151,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 132,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 30
+          },
+          "bbox_0_1000": [
+            668,
+            652,
+            757,
+            670
+          ],
+          "text_sha256": "dfd78b3b37760dbce3f7ea02d823bff3c8c3ad64d241d3cc6bfc6bd3a0e46611",
+          "block_sha256": "01f8727ba541f813b726deb19ee76afa47ef81e486546100d39fcd07cad96e3e",
+          "anchor_id": "A-f731bc0fe6534aa04d0a72208cc7976a"
+        },
+        {
+          "entry_id": "mineru-herb-c3b2d6d15102df0e955164c2",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:1219",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 131,
+            "source_document": "high",
+            "source_pdf_page": 152,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 133,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 31
+          },
+          "bbox_0_1000": [
+            658,
+            813,
+            778,
+            831
+          ],
+          "text_sha256": "4cb8c79d37edf77c3ea6c0fb0739f1aee93d6d2f0206a738fe8db8d5fd3a3690",
+          "block_sha256": "699355af0b11d99b581f9eb48c7cd51b4ddb2c1bc6d0b803640a75e9a477ace6",
+          "anchor_id": "A-8a4f71a85173f001c376b51cbc79f80b"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-c8dc913b247ceda3564ef536",
+          "label": "用法与用量",
+          "scope": "prepared_slices",
+          "block_id": "part-101-200:1216",
+          "start": 0,
+          "end": 18,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 131,
+            "source_document": "high",
+            "source_pdf_page": 152,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 133,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 31
+          },
+          "bbox_0_1000": [
+            542,
+            702,
+            781,
+            715
+          ],
+          "text_sha256": "b65b71041cecc5164f3ec439e69a1f687ed2284a113d5feaa2a62ba028b4ab49",
+          "block_sha256": "436292a5fd9afcf1b9cf1031eb695e4b4b87bfb70449445212fc91e535bc6cf9",
+          "anchor_id": "A-6a302ba3fca4347e29e650dba753478d"
+        },
+        {
+          "entry_id": "mineru-herb-c8dc913b247ceda3564ef536",
+          "label": "用法与用量",
+          "scope": "prepared_slices",
+          "block_id": "part-101-200:1217",
+          "start": 0,
+          "end": 11,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 131,
+            "source_document": "high",
+            "source_pdf_page": 152,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 133,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 31
+          },
+          "bbox_0_1000": [
+            542,
+            720,
+            673,
+            733
+          ],
+          "text_sha256": "3eb721ad60746468de3792a7bc67295bdf1106ce12582ec7d16ad1fbcf87a61d",
+          "block_sha256": "47fd105db4666dadece8cf39879bf760d0120466ac67317a350df0577d813936",
+          "anchor_id": "A-01fc096d642dc36617c3b385471187f0"
+        },
+        {
+          "entry_id": "mineru-herb-c3b2d6d15102df0e955164c2",
+          "label": "用法与用量",
+          "scope": "monograph",
+          "block_id": "part-101-200:1240",
+          "start": 0,
+          "end": 13,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 132,
+            "source_document": "high",
+            "source_pdf_page": 153,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 134,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 32
+          },
+          "bbox_0_1000": [
+            110,
+            762,
+            278,
+            776
+          ],
+          "text_sha256": "994269387297a110ed5fd33b87c1643693564241d962900686bd32027b72a49e",
+          "block_sha256": "14b500c55cae1eda984e943f4f269a79d1b0ee889e066619d1ae74760c22d60a",
+          "anchor_id": "A-c7bf812f93f052a59bc6167bf9074d84"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-A02",
+      "split": "development",
+      "question": "我记录的是何首乌，也可能是制何首乌，炮制形式还没确定。请先核对我要查哪一个条目的用量。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "preparation_object_ambiguity",
+      "expected_status": "clarification_required",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-839b2c25c719208fb4817784",
+          "name": "何首乌"
+        },
+        {
+          "entry_id": "mineru-herb-ea09ad6a4f3da403bf6895d0",
+          "name": "制何首乌"
+        }
+      ],
+      "expected_fields": [
+        "用法与用量"
+      ],
+      "required_facts": [
+        "对象/炮制形式未确定，先要求选择明确条目；不得擅自混并用量"
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-839b2c25c719208fb4817784",
+        "mineru-herb-ea09ad6a4f3da403bf6895d0"
+      ],
+      "disambiguation_options": [
+        "何首乌",
+        "制何首乌"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-A02.png",
+        "image_sha256": "2df3c3fb44ac54192fd4aea185c8a7bbd7a0dfb6c55c86b77022146afaa862b6"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-839b2c25c719208fb4817784",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:3363",
+          "start": 0,
+          "end": 42,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 187,
+            "source_document": "high",
+            "source_pdf_page": 208,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 189,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 87
+          },
+          "bbox_0_1000": [
+            129,
+            231,
+            442,
+            292
+          ],
+          "text_sha256": "da58a32030a7eab111c32d1a2a7099fd34e15d9a3b703273c4b2bbb06a348a77",
+          "block_sha256": "a262efb7f6656428f382af462a549485b0f36cc82ce68702b721aeacf2312eae",
+          "anchor_id": "A-1878f204c1b885094c563e60d852431a"
+        },
+        {
+          "entry_id": "mineru-herb-ea09ad6a4f3da403bf6895d0",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:3398",
+          "start": 0,
+          "end": 4,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 188,
+            "source_document": "high",
+            "source_pdf_page": 209,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 190,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 88
+          },
+          "bbox_0_1000": [
+            220,
+            292,
+            346,
+            310
+          ],
+          "text_sha256": "2c097c13cde7a61df1073368282a444e49876178e3f415fb8f3cf159c8604c90",
+          "block_sha256": "b4cae35aa68e91768c78311bd0da6fda561ec8f7094b6bfda6bbefe808ad0f16",
+          "anchor_id": "A-8f55b00cfa3fa087ffceab8d1b037598"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-839b2c25c719208fb4817784",
+          "label": "用法与用量",
+          "scope": "prepared_slices",
+          "block_id": "part-101-200:3396",
+          "start": 0,
+          "end": 12,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 188,
+            "source_document": "high",
+            "source_pdf_page": 209,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 190,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 88
+          },
+          "bbox_0_1000": [
+            110,
+            217,
+            268,
+            231
+          ],
+          "text_sha256": "12f9963dc3e0c246420c7c5b6e9fb487573f36a503bfe488ae4a8324f59b64c0",
+          "block_sha256": "b334f2062e5e9fe2c0b9e9c734bb6578c75880281dc66157fb106edc2ca6b7ab",
+          "anchor_id": "A-7c5b77414429cebd6f9e58d5de39099f"
+        },
+        {
+          "entry_id": "mineru-herb-ea09ad6a4f3da403bf6895d0",
+          "label": "用法与用量",
+          "scope": "monograph",
+          "block_id": "part-101-200:3421",
+          "start": 0,
+          "end": 13,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 188,
+            "source_document": "high",
+            "source_pdf_page": 209,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 190,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 88
+          },
+          "bbox_0_1000": [
+            537,
+            307,
+            702,
+            321
+          ],
+          "text_sha256": "8049ef4f5e00e1a8403b30887acfba27d5e895fb4024a81d94fdc5d0f20615b9",
+          "block_sha256": "77c489f95c7e92de0786a573fad714bdc3c287e178af78a994e31f59a06953b6",
+          "anchor_id": "A-72094f192db81202fab62928da0b0b60"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-A03",
+      "split": "development",
+      "question": "我记录的是半夏，也可能是姜半夏或法半夏，炮制形式还没确定。请先核对我要查哪一个条目的用量。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "preparation_object_ambiguity",
+      "expected_status": "clarification_required",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-526746f796513d2e88df4037",
+          "name": "半夏"
+        },
+        {
+          "entry_id": "mineru-herb-21fc3e6c979a4a819ea1aa94",
+          "name": "姜半夏"
+        },
+        {
+          "entry_id": "mineru-herb-2edbd85194e7fdf04bf45199",
+          "name": "法半夏"
+        }
+      ],
+      "expected_fields": [
+        "用法与用量"
+      ],
+      "required_facts": [
+        "对象/炮制形式未确定，先要求选择明确条目；不得擅自混并用量"
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-21fc3e6c979a4a819ea1aa94",
+        "mineru-herb-2edbd85194e7fdf04bf45199",
+        "mineru-herb-526746f796513d2e88df4037"
+      ],
+      "disambiguation_options": [
+        "半夏",
+        "姜半夏",
+        "法半夏"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-A03.png",
+        "image_sha256": "277c2c28b676d5ba0aaafb7a57b936ea13ab44e7810c0647b8e41e9f1359bd4c"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-526746f796513d2e88df4037",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:953",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 125,
+            "source_document": "high",
+            "source_pdf_page": 146,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 127,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 25
+          },
+          "bbox_0_1000": [
+            236,
+            379,
+            331,
+            397
+          ],
+          "text_sha256": "bb6ae0b8f0c71f01fc70797f9b7a1f065c5b6202af3d3b11acf781fa40018d86",
+          "block_sha256": "a785f2dc7c1c8bb6ecea8bc9381e76c1354fd74be70697fa76c6389c56748786",
+          "anchor_id": "A-4a62491f1b9d3b9bf29b102bb57d4695"
+        },
+        {
+          "entry_id": "mineru-herb-21fc3e6c979a4a819ea1aa94",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:997",
+          "start": 0,
+          "end": 5,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 126,
+            "source_document": "high",
+            "source_pdf_page": 147,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 128,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 26
+          },
+          "bbox_0_1000": [
+            225,
+            329,
+            342,
+            347
+          ],
+          "text_sha256": "e0f5e01a4a6cd113baeba164825a10dc86e316fbc616f67039237b837038e494",
+          "block_sha256": "663bb4f8ca170b567ecca06958b6655e1470949aff78d1dcd99c075848d406e4",
+          "anchor_id": "A-94d8f8f9cba9585ff70c5ae414a4edf7"
+        },
+        {
+          "entry_id": "mineru-herb-2edbd85194e7fdf04bf45199",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-101-200:972",
+          "start": 0,
+          "end": 5,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 125,
+            "source_document": "high",
+            "source_pdf_page": 146,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 127,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 25
+          },
+          "bbox_0_1000": [
+            653,
+            470,
+            769,
+            488
+          ],
+          "text_sha256": "83c60f3ecd9873c74a6740b83e98a406115f8c5a8a36a8c733ae86490765f440",
+          "block_sha256": "da078fe49db266f2af169e070dbe86cdeade8ff4a8114002160bc5483be1c8d9",
+          "anchor_id": "A-7a4fa2727884f4429d632181b34875dc"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-526746f796513d2e88df4037",
+          "label": "用法与用量",
+          "scope": "prepared_slices",
+          "block_id": "part-101-200:969",
+          "start": 0,
+          "end": 41,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 125,
+            "source_document": "high",
+            "source_pdf_page": 146,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 127,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 25
+          },
+          "bbox_0_1000": [
+            509,
+            341,
+            915,
+            373
+          ],
+          "text_sha256": "c0a0e82117edbc1de3f449d360306d2da50a8ab30596a1356de2aa85cc5235b9",
+          "block_sha256": "5c32a9178d799281d68377523d9d5fab4cd7f4758d8278412d49157b51911fce",
+          "anchor_id": "A-a1eba27af3703648fa4f1d0640276783"
+        },
+        {
+          "entry_id": "mineru-herb-21fc3e6c979a4a819ea1aa94",
+          "label": "用法与用量",
+          "scope": "monograph",
+          "block_id": "part-101-200:1007",
+          "start": 0,
+          "end": 12,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 126,
+            "source_document": "high",
+            "source_pdf_page": 147,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 128,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 26
+          },
+          "bbox_0_1000": [
+            542,
+            198,
+            707,
+            212
+          ],
+          "text_sha256": "3edf14e33ae742e682cb72d43cdf58ca7d61401052f92530622b59186c4d452d",
+          "block_sha256": "730497207041c689f93eb3bd37cbd55896280a099c3573041db009b99f5e6a34",
+          "anchor_id": "A-502594d8de874ed84d8f1bbcb1687b88"
+        },
+        {
+          "entry_id": "mineru-herb-2edbd85194e7fdf04bf45199",
+          "label": "用法与用量",
+          "scope": "monograph",
+          "block_id": "part-101-200:990",
+          "start": 0,
+          "end": 12,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 126,
+            "source_document": "high",
+            "source_pdf_page": 147,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 128,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第101-200页.pdf",
+            "upload_part_page": 26
+          },
+          "bbox_0_1000": [
+            107,
+            236,
+            270,
+            249
+          ],
+          "text_sha256": "3edf14e33ae742e682cb72d43cdf58ca7d61401052f92530622b59186c4d452d",
+          "block_sha256": "5db176372b7d3c607e0ec95e8baeabec43445d89b715db4f614794ef046cf235",
+          "anchor_id": "A-b81122d1d4095ee4265fd00998cca159"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-A04",
+      "split": "reserved",
+      "question": "我记录的是川乌，也可能是制川乌，炮制形式还没确定。请先核对我要查哪一个条目的用量。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "preparation_object_ambiguity",
+      "expected_status": "clarification_required",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-26ba11b13e49f36e6c99c5d4",
+          "name": "川乌"
+        },
+        {
+          "entry_id": "mineru-herb-948ea89af5cf54104018723d",
+          "name": "制川乌"
+        }
+      ],
+      "expected_fields": [
+        "用法与用量"
+      ],
+      "required_facts": [
+        "对象/炮制形式未确定，先要求选择明确条目；不得擅自混并用量"
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-26ba11b13e49f36e6c99c5d4",
+        "mineru-herb-948ea89af5cf54104018723d"
+      ],
+      "disambiguation_options": [
+        "川乌",
+        "制川乌"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-A04.png",
+        "image_sha256": "f7420071c5b3ba15f96ae3a36e7e466469060384d0a2aab7040c4325c58c1d33"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-26ba11b13e49f36e6c99c5d4",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-001-100:1472",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 40,
+            "source_document": "high",
+            "source_pdf_page": 61,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 42,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 40
+          },
+          "bbox_0_1000": [
+            235,
+            483,
+            327,
+            502
+          ],
+          "text_sha256": "968fb4c977597fd7a1ee511fde8f6142bf886d46f502e415b1e9d50e190adf4e",
+          "block_sha256": "2f03680ade707659cf8edcd85e0d7ac44939bcbf5dc60e466ac6e564a88370ab",
+          "anchor_id": "A-30f92e213ef6ecf2334b3eefc5337e6e"
+        },
+        {
+          "entry_id": "mineru-herb-948ea89af5cf54104018723d",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-001-100:1500",
+          "start": 0,
+          "end": 3,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 41,
+            "source_document": "high",
+            "source_pdf_page": 62,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 43,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 41
+          },
+          "bbox_0_1000": [
+            223,
+            306,
+            339,
+            325
+          ],
+          "text_sha256": "b64459192ee76515824f9153d15bcdf933c90e1d51f39882babe8042c54f6caf",
+          "block_sha256": "8d83ab1fdffc98c437a47ea6437e247a300f47e22f0e518c78b9c148cda7ab24",
+          "anchor_id": "A-09b10e00dc839165edfde807c7bc2302"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-26ba11b13e49f36e6c99c5d4",
+          "label": "用法与用量",
+          "scope": "prepared_slices",
+          "block_id": "part-001-100:1497",
+          "start": 0,
+          "end": 14,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 41,
+            "source_document": "high",
+            "source_pdf_page": 62,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 43,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 41
+          },
+          "bbox_0_1000": [
+            105,
+            176,
+            322,
+            190
+          ],
+          "text_sha256": "748ce75a4fa91323ec25b0f8005f7071f405de2fa3c784433b835828c75d3535",
+          "block_sha256": "ac6376802ab918da473b6b19490b3b173db6eb572ed969e87f0b404844dc70b6",
+          "anchor_id": "A-52b98c7f01128a8d0a3f82181f2d9d04"
+        },
+        {
+          "entry_id": "mineru-herb-948ea89af5cf54104018723d",
+          "label": "用法与用量",
+          "scope": "monograph",
+          "block_id": "part-001-100:1520",
+          "start": 0,
+          "end": 20,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 41,
+            "source_document": "high",
+            "source_pdf_page": 62,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 43,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第001-100页.pdf",
+            "upload_part_page": 41
+          },
+          "bbox_0_1000": [
+            542,
+            704,
+            794,
+            718
+          ],
+          "text_sha256": "ad65999fcb7f04df3f20b2b88ef3de9f59eaca0b629e5caa99c28c2753e57204",
+          "block_sha256": "5324ef4354350ee627f0b9f1630a2b62f0a2e65a143679bdfc4bfce761c4169e",
+          "anchor_id": "A-5f8584ed12fb50d029474f48e6c5a730"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    },
+    {
+      "case_id": "RAG-A05",
+      "split": "reserved",
+      "question": "我记录的是草乌，也可能是制草乌，炮制形式还没确定。请先核对我要查哪一个条目的用量。",
+      "origin": "author_AI_written_from_raw_source",
+      "category": "preparation_object_ambiguity",
+      "expected_status": "clarification_required",
+      "expected_entities": [
+        {
+          "entry_id": "mineru-herb-80728a864bb6a51910c6ef0c",
+          "name": "草乌"
+        },
+        {
+          "entry_id": "mineru-herb-261ac009eb2a28876a46f7b0",
+          "name": "制草乌"
+        }
+      ],
+      "expected_fields": [
+        "用法与用量"
+      ],
+      "required_facts": [
+        "对象/炮制形式未确定，先要求选择明确条目；不得擅自混并用量"
+      ],
+      "forbidden_claims": [
+        "不得将资料关联升级为对象身份已人工确认",
+        "不得将未检出解释为现实中不存在"
+      ],
+      "review_status": "ai_raw_source_checked_pending_human_signoff",
+      "human_signoff": false,
+      "group_ids": [
+        "mineru-herb-261ac009eb2a28876a46f7b0",
+        "mineru-herb-80728a864bb6a51910c6ef0c"
+      ],
+      "disambiguation_options": [
+        "草乌",
+        "制草乌"
+      ],
+      "review_method": "author_AI_original_PDF_crops_and_raw_OCR_review; JSON_pointer_checked_for_structured_anchors",
+      "review_evidence": {
+        "private_image": "var/rag_r1_review_v1/RAG-A05.png",
+        "image_sha256": "ff52b7375881b427eb3fc2f3d7723ca89c72fc983bbc6e15f6e650dcb7ac1bee"
+      },
+      "title_anchors": [
+        {
+          "entry_id": "mineru-herb-80728a864bb6a51910c6ef0c",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-201-300:2007",
+          "start": 0,
+          "end": 2,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 253,
+            "source_document": "high",
+            "source_pdf_page": 274,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 255,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 53
+          },
+          "bbox_0_1000": [
+            242,
+            216,
+            334,
+            233
+          ],
+          "text_sha256": "b48432da0f27aabedcf12f928422a4db9d4c4aa62ac6e040aee3483510227275",
+          "block_sha256": "dc7e67a3eac4d951f241022682620fd1a663b08155e20180bc78418bf871ddd3",
+          "anchor_id": "A-5b5df1c603e7deecca5a02bd484f6455"
+        },
+        {
+          "entry_id": "mineru-herb-261ac009eb2a28876a46f7b0",
+          "label": "entry_title",
+          "scope": "entry_title",
+          "block_id": "part-201-300:2035",
+          "start": 0,
+          "end": 44,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 254,
+            "source_document": "high",
+            "source_pdf_page": 275,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 256,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 54
+          },
+          "bbox_0_1000": [
+            97,
+            115,
+            468,
+            177
+          ],
+          "text_sha256": "ee068d12826b8bdef43aa115dbf790c1a33cfe9e1f7172e810e489b25485a2a2",
+          "block_sha256": "73e428ef12b13ff0b2da67b1e65e9ee83599e0b6f29431c568200255750ac316",
+          "anchor_id": "A-d9e7e2d90cd82a18b5544f45d2701b62"
+        }
+      ],
+      "relevant_anchors": [
+        {
+          "entry_id": "mineru-herb-80728a864bb6a51910c6ef0c",
+          "label": "用法与用量",
+          "scope": "prepared_slices",
+          "block_id": "part-201-300:2029",
+          "start": 0,
+          "end": 14,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 253,
+            "source_document": "high",
+            "source_pdf_page": 274,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 255,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 53
+          },
+          "bbox_0_1000": [
+            542,
+            864,
+            754,
+            877
+          ],
+          "text_sha256": "748ce75a4fa91323ec25b0f8005f7071f405de2fa3c784433b835828c75d3535",
+          "block_sha256": "5673b9ce93ec51d0b9562a6395c1f2584f7154088c9eb4118d366c095b0c4ed7",
+          "anchor_id": "A-daea3ee78625672848b0b0a86d29f44e"
+        },
+        {
+          "entry_id": "mineru-herb-261ac009eb2a28876a46f7b0",
+          "label": "用法与用量",
+          "scope": "monograph",
+          "block_id": "part-201-300:2054",
+          "start": 0,
+          "end": 21,
+          "kind": "pdf_block",
+          "source": {
+            "chapter_pdf_page": 254,
+            "source_document": "high",
+            "source_pdf_page": 275,
+            "source_sha256": "4b5a7c5c48cd3441f7c76a430113b31694e13bd33954539d61ab2bbd5da134b2",
+            "expected_printed_page": 256,
+            "observed_printed_page": null,
+            "printed_label_status": "expected_sequence_not_individually_verified",
+            "upload_part": "药材和饮片_第201-300页.pdf",
+            "upload_part_page": 54
+          },
+          "bbox_0_1000": [
+            541,
+            462,
+            808,
+            476
+          ],
+          "text_sha256": "3cc19c7bdc752d9573d1464d2df7ed6dac516d833e9f51fccd84ebddc95aeb99",
+          "block_sha256": "780a9e9cefdbac5f7da6efb50a6275b176509206b8189864e4c713b1ccb39342",
+          "anchor_id": "A-6106eb7e09d6ccaa77acdfeed8b015c7"
+        }
+      ],
+      "excluded_anchors": [],
+      "absence_witness": null,
+      "reference_kind": "authored_raw_source_reference",
+      "relevance_complete": false,
+      "clinical_correctness_claim": false
+    }
+  ],
+  "source_blocks_sha256": "a1eed2cb59097eb7b404b638b868f6aea5859ffc2749a07101f3007cb63f6001",
+  "reference_counts": {
+    "evidence_found": 20,
+    "missing_field": 5,
+    "clarification_required": 5
+  },
+  "splits": {
+    "development": 20,
+    "reserved": 10
+  },
+  "human_signoff": false,
+  "independent_user_set": false,
+  "reserved_status": "not_run_for_retrieval_or_generation",
+  "kind": "author_AI_written_source_checked_research_reference",
+  "not_a_model_or_retrieval_score": true
+}

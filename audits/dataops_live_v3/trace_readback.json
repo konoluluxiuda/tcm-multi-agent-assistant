@@ -1,0 +1,89 @@
+{
+  "status": "passed",
+  "evaluation_roots": 9,
+  "generations": 33,
+  "actual_provider_requests": 33,
+  "traces": [
+    {
+      "case_id": "R01",
+      "strategy": "A",
+      "trace_id": "81379fb05143a81e9650334c451490b0",
+      "root_id": "8aa87502a2948ed9",
+      "generations": 13,
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "R01",
+      "strategy": "P",
+      "trace_id": "e17c08813727990ca24036b8df1cbbab",
+      "root_id": "438f6d6a8bf38dd6",
+      "generations": 2,
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "R01",
+      "strategy": "F",
+      "trace_id": "d67cf64b7176ce0f56bfbee88b0ef3c0",
+      "root_id": "e48e5e8b21635d2a",
+      "generations": 0,
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "B04",
+      "strategy": "A",
+      "trace_id": "23b774deb67ff670ce8d0868bb6bc99a",
+      "root_id": "0f79134202fec36b",
+      "generations": 8,
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "B04",
+      "strategy": "P",
+      "trace_id": "318bfa3b7fcdd478dcbd4df88056d8fd",
+      "root_id": "9b3d367e5e689dbd",
+      "generations": 1,
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "B04",
+      "strategy": "F",
+      "trace_id": "ae26a07b654e9bacbae4dd1784b8a3f9",
+      "root_id": "f63862230da26069",
+      "generations": 0,
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "B01",
+      "strategy": "A",
+      "trace_id": "b66d445c9fdd5860088bde5a12b3876c",
+      "root_id": "ada50247aa1e58c9",
+      "generations": 8,
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "B01",
+      "strategy": "P",
+      "trace_id": "180f3405cbd69a508e63a7399948c09f",
+      "root_id": "4e7bda79bec37d36",
+      "generations": 1,
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    },
+    {
+      "case_id": "B01",
+      "strategy": "F",
+      "trace_id": "56eb78893be3db02d345a25583f22cb3",
+      "root_id": "763bec0c8d0bff39",
+      "generations": 0,
+      "provider_receipts_matched": true,
+      "parent_links_verified": true
+    }
+  ]
+}

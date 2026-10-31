@@ -62,10 +62,28 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
     if isinstance(relation_context,dict) and relation_context.get('kind')=='analysis_plan_focus_v1' and text in ('出处呢','查看出处','来源呢','回看分析结果','刚才的分析结果'):
         return route('assistant',{'topic':'research_plan','replay':True},'analysis_plan_replay')
     short = re.sub(r'\s+', '', text).rstrip('？?。！!')
+    # Consume the whole service-help question so a trailing task is not discarded.
+    capability_question = re.fullmatch(
+        r'(?:请问|请介绍一下|介绍一下|我想知道|我想了解)?'
+        r'(?:(?:当前|目前|现在)(?:的)?)?'
+        r'(?:(?:你|你们|系统|这个系统|这个项目|这个助手|本系统|平台|这个平台|这个服务|助手|agent|Agent)(?:的)?)?'
+        r'(?:(?:当前|目前|现在))?'
+        r'(?:能做什么|能干什么|可以做什么|可以帮我做什么|能帮我做什么|'
+        r'有哪些功能|有什么功能|支持哪些功能|支持什么功能|支持哪些任务|支持什么任务|支持什么|'
+        r'有哪些能力|有什么能力|有哪些任务能力|能完成哪些任务|能处理哪些任务|'
+        r'可以查什么|能查什么|怎么用|功能介绍|使用帮助|帮助)(?:呢|呀|啊|吗)?', short)
+    if capability_question:
+        return route('assistant', {'topic': 'capabilities'}, 'capability_question')
     from tcm.dataset_info import parse as dataset_request
     dataset = dataset_request(text)
     if dataset is not None:
         return route('assistant', dataset, 'dataset_description')
+    from tcm.question_contract import field_tasks
+    attributes = field_tasks(text)
+    if (attributes and len(attributes) == 1 and attributes[0]['tool'] == 'herb_attributes'
+            and len(attributes[0]['arguments']['fields']) > 1):
+        return route('herb', {**attributes[0]['arguments'], 'resolve_unique_name': True},
+                     'structured_multi_field_query')
     from tcm.research_plan_intent import capture as capture_plan
     plan=capture_plan(text)
     if plan is not None:return route('assistant',plan,'multi_step_analysis')
@@ -94,8 +112,6 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
             re.search(r'(?:能|可以|支持|有)(?:查到|查询|查|提供|收录|哪些)', short) and
             re.search(r'(?:哪些|什么).*(?:资料|内容|数据)|(?:资料|内容|数据).*(?:范围|包括|涵盖)', short)):
         return route('assistant', {'topic':'capabilities'}, 'source_coverage_question')
-    if re.search(r'(?:你|系统|这个项目|这个助手|平台).*(?:能做什么|能干什么|有什么功能|支持什么|怎么用|可以做什么)', short) or short in ('帮助', '使用帮助', '有哪些功能', '支持哪些功能', '功能介绍', '可以查什么', '能查什么', '怎么用', '能做什么', '有什么功能'):
-        return route('assistant', {'topic': 'capabilities'}, 'capability_question')
     count_question = bool(re.search(r'多少|几种|几条|有哪些|几类|有多大', short))
     dataset_question = bool(re.search(r'药材|中草药|中药|数据库|收录|支持|ETCM|索引', short, re.I))
     category_question = bool(re.fullmatch(r'(?:目前|当前|系统|一共|总共)?(?:有)?(?:(?:有哪些|有多少种|有多少类)(?:功效|功能)(?:分类)?|多少种功效|(?:功能|功效)(?:分类)?(?:有多少种|有多少类|有哪些|有几类|有多少))[？?]*', short))

@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "services": [
+    {
+      "port": 7896,
+      "runtime": {
+        "started_at": "2026-10-30T16:54:23.887509+00:00",
+        "source_revision": "4f423df990c92ab06b79f715a94752fc2eaee7bd41000bdedac9492326c6e190",
+        "disk_revision": "4f423df990c92ab06b79f715a94752fc2eaee7bd41000bdedac9492326c6e190",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": false,
+          "driver": "disabled",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1"
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": true
+      },
+      "health": {
+        "/": 200,
+        "/dataops": 200,
+        "/ready/herbs": 200,
+        "/ready/research": 200
+      }
+    },
+    {
+      "port": 7912,
+      "runtime": {
+        "started_at": "2026-10-30T16:54:26.570260+00:00",
+        "source_revision": "4f423df990c92ab06b79f715a94752fc2eaee7bd41000bdedac9492326c6e190",
+        "disk_revision": "4f423df990c92ab06b79f715a94752fc2eaee7bd41000bdedac9492326c6e190",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": true,
+          "driver": "synthetic",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1"
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": true
+      },
+      "health": {
+        "/": 200,
+        "/dataops": 200,
+        "/ready/herbs": 200,
+        "/ready/research": 200
+      }
+    }
+  ],
+  "new_retrieval_exposed_to_http": false,
+  "external_model_enabled": false
+}

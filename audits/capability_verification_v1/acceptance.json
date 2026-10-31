@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-30",
+  "scope": "local configured task capability verification; not independent model accuracy",
+  "offline": {
+    "modules": 8,
+    "tests": 90,
+    "skipped": 0,
+    "network_attempts": 0,
+    "results": [
+      {
+        "module": "test_assistant_router.py",
+        "status": "passed",
+        "total": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_capabilities.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_chat_task_handoff.py",
+        "status": "passed",
+        "total": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_chat.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_dataops_d2_api.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_intent_guidance.py",
+        "status": "passed",
+        "total": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_intent_planner.py",
+        "status": "passed",
+        "total": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_new_user_wording.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    ]
+  },
+  "table_browser": {
+    "status": "passed",
+    "question": "整理白术和黄芪的功效、注意事项，保留出处并生成表格",
+    "data": "real_local",
+    "driver": "synthetic",
+    "external_model_calls": 0,
+    "chat_homepage_submission": true,
+    "record_count": 2,
+    "inline_download_hash_verified": true,
+    "reload_restores_task": true,
+    "chat_followup_revision": true,
+    "reused_cells": 8,
+    "v1_preserved": true,
+    "unknown_requirements_not_enqueued": true,
+    "javascript_errors": [],
+    "blocked_external_assets": 10,
+    "font_layout_reviewed": false
+  },
+  "live_capability_browser": {
+    "status": "passed",
+    "port": 7912,
+    "question": "当前能做什么",
+    "menu_visible": true,
+    "synthetic_label_visible": true,
+    "javascript_errors": [],
+    "blocked_external_assets": 5
+  },
+  "bookmarks": {
+    "status": "passed",
+    "saved": true,
+    "markdown_download": true,
+    "markdown_bytes": 4236,
+    "backup_download": true,
+    "external_model_calls": 0
+  },
+  "similarity": {
+    "status": "complete",
+    "tool": "herb_target_similarity",
+    "returned_items": 5
+  },
+  "known_limitations": [
+    "neighbour paraphrase returns403 with intent model off",
+    "disease index not configured in7912",
+    "pharmacopoeia missing attention field remains partial",
+    "real LLM dynamic A not accepted; web driver synthetic"
+  ],
+  "source_sha256": {
+    "tcm/capabilities.py": "0f8c656709fda9dfae69a4a18e5496eb5db2ddf2a189408a02ef68a6db897ac6",
+    "tcm/assistant_router.py": "38070921b7b8451eea4c847d35dca360c566f96c25d2e2e0a6ca17ae0a95b851",
+    "tcm/assistant_info.py": "b92bd75ffffe7fa21f15035a95768a500a01905707dd1947f87f8e6a89516848",
+    "tcm/dataops/api.py": "e6a3be4c6129bde51e84aee5877ac5543707cd5f35280682425451a625dca4a5",
+    "tcm/dataops/service.py": "3b00149285a970476282dc66ba4f63fa3fa50943d0a57d60c8ddfb76bda8aa86"
+  },
+  "external_model_calls": 0,
+  "full_offline_suite_rerun": false,
+  "final_7912_smoke": {
+    "status": "passed",
+    "questions": [
+      {
+        "question": "当前能做什么",
+        "http": 200
+      },
+      {
+        "question": "你能做什么",
+        "http": 200
+      },
+      {
+        "question": "目前能做什么？",
+        "http": 200
+      },
+      {
+        "question": "现在支持哪些任务",
+        "http": 200
+      }
+    ],
+    "api_matches_help": true,
+    "existing_completed_jobs_preserved": 2
+  }
+}

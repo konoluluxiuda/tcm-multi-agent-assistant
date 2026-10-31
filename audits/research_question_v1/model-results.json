@@ -1,0 +1,224 @@
+{
+  "version": "research-question-live-v1",
+  "records": [
+    {
+      "id": "Q01",
+      "strategy": "rules",
+      "passed": false,
+      "status": "needs_input",
+      "fields_correct": false,
+      "scope_correct": false,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 0
+    },
+    {
+      "id": "Q01",
+      "strategy": "model",
+      "passed": true,
+      "status": "ready",
+      "fields_correct": true,
+      "scope_correct": true,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 1,
+      "tokens": 1531,
+      "duration_seconds": 1.117
+    },
+    {
+      "id": "Q02",
+      "strategy": "rules",
+      "passed": true,
+      "status": "ready",
+      "fields_correct": true,
+      "scope_correct": true,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 0
+    },
+    {
+      "id": "Q02",
+      "strategy": "model",
+      "passed": true,
+      "status": "ready",
+      "fields_correct": true,
+      "scope_correct": true,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 1,
+      "tokens": 1549,
+      "duration_seconds": 1.277
+    },
+    {
+      "id": "Q03",
+      "strategy": "rules",
+      "passed": false,
+      "status": "needs_input",
+      "fields_correct": false,
+      "scope_correct": false,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 0
+    },
+    {
+      "id": "Q03",
+      "strategy": "model",
+      "passed": true,
+      "status": "ready",
+      "fields_correct": true,
+      "scope_correct": true,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 1,
+      "tokens": 1539,
+      "duration_seconds": 1.21
+    },
+    {
+      "id": "Q04",
+      "strategy": "rules",
+      "passed": false,
+      "status": "needs_input",
+      "fields_correct": false,
+      "scope_correct": false,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 0
+    },
+    {
+      "id": "Q04",
+      "strategy": "model",
+      "passed": false,
+      "status": "needs_input",
+      "fields_correct": false,
+      "scope_correct": false,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 1,
+      "tokens": 1597,
+      "duration_seconds": 1.835
+    },
+    {
+      "id": "Q05",
+      "strategy": "rules",
+      "passed": true,
+      "status": "needs_input",
+      "fields_correct": null,
+      "scope_correct": null,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 0
+    },
+    {
+      "id": "Q05",
+      "strategy": "model",
+      "passed": true,
+      "status": "needs_input",
+      "fields_correct": null,
+      "scope_correct": null,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 0,
+      "tokens": 0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "Q06",
+      "strategy": "rules",
+      "passed": true,
+      "status": "needs_input",
+      "fields_correct": null,
+      "scope_correct": null,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 0
+    },
+    {
+      "id": "Q06",
+      "strategy": "model",
+      "passed": true,
+      "status": "needs_input",
+      "fields_correct": null,
+      "scope_correct": null,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 0,
+      "tokens": 0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "Q07",
+      "strategy": "rules",
+      "passed": true,
+      "status": "needs_input",
+      "fields_correct": null,
+      "scope_correct": null,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 0
+    },
+    {
+      "id": "Q07",
+      "strategy": "model",
+      "passed": true,
+      "status": "needs_input",
+      "fields_correct": null,
+      "scope_correct": null,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 0,
+      "tokens": 0,
+      "duration_seconds": 0.0
+    },
+    {
+      "id": "Q08",
+      "strategy": "rules",
+      "passed": false,
+      "status": "needs_input",
+      "fields_correct": false,
+      "scope_correct": false,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": false,
+      "requests": 0
+    },
+    {
+      "id": "Q08",
+      "strategy": "model",
+      "passed": false,
+      "status": "ready",
+      "fields_correct": false,
+      "scope_correct": true,
+      "unsafe_acceptance": false,
+      "wrong_ready_goal": true,
+      "requests": 1,
+      "tokens": 1538,
+      "duration_seconds": 1.444
+    }
+  ],
+  "actual_requests": 5,
+  "reference_status": "author_semantic_reference_development_pending_human_signoff",
+  "goal_execution": false,
+  "generalization_proven": false,
+  "summary": {
+    "rules": {
+      "passed": 4,
+      "total": 8,
+      "wrong_ready": 0,
+      "unsafe_acceptance": 0
+    },
+    "model": {
+      "passed": 6,
+      "total": 8,
+      "wrong_ready": 1,
+      "unsafe_acceptance": 0
+    }
+  },
+  "total_tokens": 7754,
+  "notes": [
+    "Author development questions, not independent holdout or clinical evaluation.",
+    "Three model-strategy cases were answered by host preflight with zero model requests.",
+    "No generated goal was executed.",
+    "Q04 unnecessary clarification and Q08 wrong ready goal are preserved.",
+    "Posthoc guard replay is separate and does not replace these scores.",
+    "No Langfuse export was enabled for this goal-only comparison."
+  ]
+}

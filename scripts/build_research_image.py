@@ -11,14 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def files():
-    names = ['Dockerfile.research', 'requirements-tcm.txt', 'constraints-research-chat.txt', 'requirements-research-preview.txt',
-             'requirements-research-chat.txt', 'app.py', 'config.py', 'features.py', 'source_access.py',
-             'resources/source_manifest.json']
-    names += [str(p.relative_to(ROOT)) for p in (ROOT / 'agents').glob('*.py')]
-    names += [str(p.relative_to(ROOT)) for p in (ROOT / 'agents/guardrails').glob('*.py')]
-    names += [str(p.relative_to(ROOT)) for p in (ROOT / 'tcm').glob('*') if p.suffix in ('.py', '.html', '.js')]
-    names += [str(p.relative_to(ROOT)) for p in (ROOT / 'templates').glob('*.html')]
-    return sorted(set(names))
+    from scripts.dataops_source_manifest import manifest
+    return sorted(manifest(ROOT)['files'])
 
 
 def build(tag, receipt):

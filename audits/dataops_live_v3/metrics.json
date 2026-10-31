@@ -1,0 +1,42 @@
+{
+  "status": "failed_compatibility",
+  "strategies": [
+    {
+      "strategy": "F",
+      "passed": 3,
+      "total": 3,
+      "provider_requests": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0,
+      "elapsed_seconds_sum": 2.293,
+      "cost": null
+    },
+    {
+      "strategy": "P",
+      "passed": 3,
+      "total": 3,
+      "provider_requests": 4,
+      "input_tokens": 1976,
+      "output_tokens": 280,
+      "total_tokens": 2256,
+      "elapsed_seconds_sum": 5.533,
+      "cost": null
+    },
+    {
+      "strategy": "A",
+      "passed": 1,
+      "total": 3,
+      "provider_requests": 29,
+      "input_tokens": 43875,
+      "output_tokens": 1526,
+      "total_tokens": 45401,
+      "elapsed_seconds_sum": 28.656,
+      "cost": null
+    }
+  ],
+  "total_requests": 33,
+  "total_tokens": 47657,
+  "repeat_or_statistical_claim": false,
+  "cost": null
+}

@@ -1,0 +1,273 @@
+{
+  "status": "passed",
+  "evaluation_roots": 24,
+  "generations": 12,
+  "scores_verified": 24,
+  "meaning": "development_goal_contract_only",
+  "traces": [
+    {
+      "case_id": "C01",
+      "strategy": "R",
+      "trace_id": "99991c038eaf916958c8b24cac746db4",
+      "root_id": "934516da80a9607d",
+      "generations": 0,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "C01",
+      "strategy": "G",
+      "trace_id": "f077d756dda9b2486eb94b33e4ac3e44",
+      "root_id": "78e32d764e7b490a",
+      "generations": 1,
+      "score": false,
+      "level": "WARNING",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "C02",
+      "strategy": "R",
+      "trace_id": "e04a7b049a42a67a11075242fb5bb27a",
+      "root_id": "74cd63881d4ebed1",
+      "generations": 0,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "C02",
+      "strategy": "G",
+      "trace_id": "665d6fcb3e4334d824f0079d61e9cbc2",
+      "root_id": "64c97edc5051750f",
+      "generations": 1,
+      "score": false,
+      "level": "WARNING",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "C03",
+      "strategy": "R",
+      "trace_id": "677165fab0f4a5513d15f9820b560757",
+      "root_id": "0be46db6170c8f08",
+      "generations": 0,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "C03",
+      "strategy": "G",
+      "trace_id": "b9405a3078d2d3b27361bc98e1722171",
+      "root_id": "02798b7cf3ca479a",
+      "generations": 1,
+      "score": false,
+      "level": "WARNING",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "C04",
+      "strategy": "R",
+      "trace_id": "c56bdb2d311f830478b3851f61358d39",
+      "root_id": "33f89027c0917fce",
+      "generations": 0,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "C04",
+      "strategy": "G",
+      "trace_id": "25765e0baff8c1d940ddbfee73d8d740",
+      "root_id": "e24fed4c4a2775a9",
+      "generations": 1,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "G01",
+      "strategy": "R",
+      "trace_id": "b904c6145ced7ee017aa54f9ab90d77c",
+      "root_id": "464d780f281ecb6c",
+      "generations": 0,
+      "score": false,
+      "level": "WARNING",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "G01",
+      "strategy": "G",
+      "trace_id": "17e2f4382206989e83f3a2ae894adbba",
+      "root_id": "fe1d2cde28a76297",
+      "generations": 1,
+      "score": false,
+      "level": "WARNING",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "G02",
+      "strategy": "R",
+      "trace_id": "bd8989271d46eba3174880b26ed1ae61",
+      "root_id": "fb5982af67fd3bf8",
+      "generations": 0,
+      "score": false,
+      "level": "WARNING",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "G02",
+      "strategy": "G",
+      "trace_id": "f2222a129642cd1bd4a260695944b1d0",
+      "root_id": "bb4d01b56e9926d7",
+      "generations": 1,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "G03",
+      "strategy": "R",
+      "trace_id": "407cfe2b4d2abbc12cd9afe700bde235",
+      "root_id": "c2b8b456581c7a13",
+      "generations": 0,
+      "score": false,
+      "level": "WARNING",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "G03",
+      "strategy": "G",
+      "trace_id": "6c4427b91d876deb2ccf664b1f676509",
+      "root_id": "5b3e389448415823",
+      "generations": 1,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "G04",
+      "strategy": "R",
+      "trace_id": "a159cad69778684f9505e552bdfc8923",
+      "root_id": "cfefefb4c15cdaad",
+      "generations": 0,
+      "score": false,
+      "level": "WARNING",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "G04",
+      "strategy": "G",
+      "trace_id": "54df622a0d68a78620607a501486c375",
+      "root_id": "e0f34f96816aee8f",
+      "generations": 1,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "N01",
+      "strategy": "R",
+      "trace_id": "531eb2c26e761e1f78b7c25576cbaf1f",
+      "root_id": "ff564dc32d705fa1",
+      "generations": 0,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "N01",
+      "strategy": "G",
+      "trace_id": "561938742ab09492c8edc7004f2c3ae8",
+      "root_id": "dcc714c8647d00b0",
+      "generations": 1,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "N02",
+      "strategy": "R",
+      "trace_id": "422bd99c4f92882c12f9b28e941dbb63",
+      "root_id": "6de82266543e9475",
+      "generations": 0,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "N02",
+      "strategy": "G",
+      "trace_id": "7c4b92fa95aa00c85f6e904c85a03ce8",
+      "root_id": "fe34138157215e3b",
+      "generations": 1,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "N03",
+      "strategy": "R",
+      "trace_id": "ff15a1184c6723288a26cbac950dff8b",
+      "root_id": "64f125b500f08342",
+      "generations": 0,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "N03",
+      "strategy": "G",
+      "trace_id": "a5a63f4b842a0b13f1f6a2b242521c4b",
+      "root_id": "141a81b0dd96d2f2",
+      "generations": 1,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "N04",
+      "strategy": "R",
+      "trace_id": "056f6ffe1adc953f9bf6e0d2b4495e88",
+      "root_id": "7681dcc0f2d862ff",
+      "generations": 0,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    },
+    {
+      "case_id": "N04",
+      "strategy": "G",
+      "trace_id": "8727e22093b219fdfcb0bdcaa022f16f",
+      "root_id": "31483a8012af021b",
+      "generations": 1,
+      "score": true,
+      "level": "DEFAULT",
+      "parent_links_verified": true,
+      "provider_receipts_matched": true
+    }
+  ]
+}

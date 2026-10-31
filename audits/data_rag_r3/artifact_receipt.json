@@ -1,0 +1,38 @@
+{
+  "private_root": "var/rag_r3_v1",
+  "release_content_id": "ade3f558c489da80d7491207140837e6d3c91f79d64ab4ad691692a3d194cee1",
+  "raw_sources_modified": false,
+  "r2_original_results_modified": false,
+  "original_provider_requests": 4,
+  "additional_requests_for_presentation_fix": 0,
+  "original_protocol_preserved": true,
+  "post_experiment_changes": [
+    "display deduplication and neutral shared-span label",
+    "API store-failure handling"
+  ],
+  "final_code_sha256": {
+    "tcm/rag_pipeline.py": "fbbd3847f2d7d21897ca37c0ae036c0f8849475b278407273849a9183e20eb20",
+    "tcm/rag_retrieval.py": "6014e20d9f1a739a5b53094e5b9de03377fc6437ed7ea80c91df92ea909adc41",
+    "tcm/rag_model.py": "b211f85ce2b0bd5c2bb6d8cedfab4200e1ac05f4bc27e2fde0895ece892c9186",
+    "tcm/rag_retrieval_eval.py": "27ab5f34de4cdf744756b5cf78c10c60822dd7359fc4608ffb0bf2b5a6885ccc",
+    "tcm/rag_api.py": "ba81ec3fa896d4c9f1a9fe617ab37a317b4d2a10b2dc11476c5358508eb19caa",
+    "tcm/tracing.py": "95e54ce012d235b41bf60eecf0cd14a939d85f303a38326ee6f50f8ec0889033",
+    "tcm/mineru_retrieval.py": "5d4082e6b485ff63774e1d855fb9e9d4e480413ea84736ac0cf3e2027343aa01",
+    "tcm/mineru_guards.py": "76db1eb76910c3abc30c27e88484d6576e93c1020ada8aa74249d9bb289e77fd",
+    "scripts/eval_rag_pipeline.py": "cbed02215393f0038b8fbed75fc82a77d2fd4f0710d8edc3f6a233e152e126c9",
+    "app.py": "8e8a4e8c1036a6b4bce10cff4c4b0515de1f45880aeec783e97cc538e29165d2",
+    "scripts/preview_local_tasks.py": "9a0fdbc5476960a77b710c0e54287690f244838968e500aed46db21ac4512b17",
+    "tcm/rag_workbench.html": "3633a04f231129010b41fc7ec97258a2fbb078dada325575a602539dcc06f8b4",
+    "tests/test_rag_pipeline.py": "d6ed90f55f718130324d00fe1fda9d58c9c8d449cfe759ddced2e74f8bb14251",
+    "tests/test_rag_model.py": "e272581aa156ae860d0262c54680801372e4aef946c07cd127c9b7af553df4a5",
+    "tests/test_rag_api.py": "5a7dcf0813ec69dc48c10482a697717f8739b23cb1e493f05f72249ed194a85d"
+  },
+  "private_artifact_sha256": {
+    "live/summary.json": "b279e56c543b9122f0cb8c331a47caa24a461225dd46be59ac178a25644be011",
+    "live/protocol.json": "9fef63969f593c29f66e5a3555d45bef99f10262b15ef333b3adbcc87200d28d",
+    "live/langfuse_readback.json": "c84188d089e145b38604ff96209d878ab1853ee24cf02ceba2baa5b9db49b6fd",
+    "live/presentation_replay.json": "e48fab688115982b5b090afa3e6d8f017bba10d6df57d3b1d1c2136014abf66b",
+    "checks/summary.json": "3129fe1a2c0176bd1c09a356bd4b48173d9c4416e9b8d6d337eea07e4ff56d71",
+    "checks_final/summary.json": "2cb6c5d0638b75d081dac504cb90988ebd56b0788b06dbaa3de3b0f6f83b1a34"
+  }
+}

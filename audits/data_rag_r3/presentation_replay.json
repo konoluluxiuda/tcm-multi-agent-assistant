@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "source_quote_validation_rechecked": true,
+  "rows": [
+    {
+      "case_id": "G01",
+      "before_chars": 150,
+      "after_chars": 90,
+      "provider_requests": 0
+    },
+    {
+      "case_id": "G02",
+      "before_chars": 70,
+      "after_chars": 80,
+      "provider_requests": 0
+    },
+    {
+      "case_id": "G03",
+      "before_chars": 163,
+      "after_chars": 99,
+      "provider_requests": 0
+    },
+    {
+      "case_id": "G04",
+      "before_chars": 144,
+      "after_chars": 144,
+      "provider_requests": 0
+    }
+  ],
+  "original_model_results_unchanged": true,
+  "provider_requests": 0
+}

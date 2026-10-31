@@ -13,7 +13,7 @@ CASE_IDS=('B01','B04','R01')
 
 def preview():
     suite_path=ROOT/'eval/dataops_tasks_v1.json';suite=json.loads(suite_path.read_text())
-    return {'version':'dataops-synthetic-live-pilot-v3','status':'prepared_not_run',
+    return {'version':'dataops-synthetic-live-pilot-v4','status':'prepared_not_run',
         'cases':[{'case_id':c['case_id'],'question':c['question'],'goal':c['goal'],'parent_goal':c.get('parent_goal')}
                  for c in suite['cases'] if c['case_id'] in CASE_IDS],
         'suite_sha256':hashlib.sha256(suite_path.read_bytes()).hexdigest(),
@@ -21,6 +21,7 @@ def preview():
         'endpoint':'https://api.deepseek.com/chat/completions','model':'deepseek-flash',
         'max_requests_total':36,'max_A_requests_per_goal':8,'max_P_requests_per_goal':1,
         'max_response_corrections_per_A_goal':1,
+        'context_contract':'Explicit remaining budgets, delivery prerequisites, read-vs-missing and field-scope ambiguity; no forced next action or automatic host completion.',
         'correction_policy':'Only a received, rejected tool action may get one new decision with sanitized feedback. Counts within the same eight requests; unknown dispatch is never resent.',
         'max_output_tokens':1200,'max_request_bytes':65536,'request_timeout_seconds':30,'retries':0,
         'thinking':{'type':'disabled'},
@@ -106,6 +107,7 @@ def execute(args):
     from tcm.dataops.evaluation import SourceOracle,MeasuredDriver,run_case,write
     from tcm.dataops.model import OpenAIToolDriver,ModelResponseRejected
     from tcm.dataops.planning import NativePlanDriver,request_plan
+    from tcm.tracing import observation, flush
     spec=preview();args.out.mkdir(parents=True)
     write(args.out/'protocol.json',spec)
     configured=dotenv_values(ROOT/'.env') if (ROOT/'.env').is_file() else {}
@@ -119,12 +121,13 @@ def execute(args):
         suite=json.loads((ROOT/'eval/dataops_tasks_v1.json').read_text());cases=[c for c in suite['cases'] if c['case_id'] in CASE_IDS]
         references={c['case_id']:oracle.reference(c) for c in cases};write(args.out/'reference.json',references)
         code={str(p.relative_to(ROOT)):fingerprint(p) for p in (ROOT/'tcm/dataops').glob('*.py')}
-        code.update({str(p.relative_to(ROOT)):fingerprint(p) for p in (Path(__file__).resolve(),ROOT/'tests/dataops_fixture.py')})
+        code.update({str(p.relative_to(ROOT)):fingerprint(p) for p in
+                     (Path(__file__).resolve(),ROOT/'tests/dataops_fixture.py',ROOT/'tcm/tracing.py')})
         write(args.out/'source_code.json',code)
         class LiveDriver:
             def __init__(self,strategy,case):
                 self.strategy,self.case=strategy,case;self.context_bytes=[];self.plans={};self.usage=[]
-                self.label='dataops-live-'+strategy+'-synthetic-v3'
+                self.label='dataops-live-'+strategy+'-synthetic-v4'
                 self.max_response_corrections=spec['max_response_corrections_per_A_goal'] if strategy=='A' else 0
                 self.native=OpenAIToolDriver(model,authorized=True,
                     max_response_corrections=self.max_response_corrections) if strategy=='A' else None
@@ -155,10 +158,17 @@ def execute(args):
                     captured.append(driver);return driver
                 before=len(transport.requests)
                 directory=args.out/'runs'/case['case_id']/strategy
-                result=run_case(deepcopy(case),references[case['case_id']],oracle,strategy,factory,directory,
-                                driver_factory=driver_factory)
-                result.update(case_id=case['case_id'],strategy=strategy,external_model_calls=len(transport.requests)-before,
-                    planning_stub_steps=0,provider_usage=getattr(captured[0],'usage',None),cost=None)
+                with observation('dataops.evaluation', input={'question': case['question'], 'goal': case['goal']},
+                        metadata={'case_id': case['case_id'], 'strategy': strategy,
+                                  'experiment_id': args.out.name, 'protocol': spec['version']}) as trace:
+                    result=run_case(deepcopy(case),references[case['case_id']],oracle,strategy,factory,directory,
+                                    driver_factory=driver_factory)
+                    result.update(case_id=case['case_id'],strategy=strategy,external_model_calls=len(transport.requests)-before,
+                        planning_stub_steps=0,provider_usage=getattr(captured[0],'usage',None),cost=None)
+                    trace.update(output=result, metadata={'actual_provider_requests': len(transport.requests)-before},
+                                 level='DEFAULT' if result['status']=='passed' else 'WARNING',
+                                 status_message=result.get('stop_reason') or result['outcome'])
+                    trace.score('development_contract_pass', int(result['status']=='passed'))
                 directory.mkdir(parents=True,exist_ok=True);write(directory/'evaluation.json',result);results.append(result)
                 write(args.out/'progress.json',results)
         report={'status':'passed' if all(r['status']=='passed' for r in results) else 'failed',
@@ -166,13 +176,14 @@ def execute(args):
             'actual_provider_requests':len(transport.requests),'cost':None,
             'real_data_or_history_sent':False,'holdout_or_business_accuracy_claim':False}
         write(args.out/'summary.json',report)
+        flush()
         print(json.dumps({'status':report['status'],'actual_provider_requests':len(transport.requests)},ensure_ascii=False))
         return 0 if report['status']=='passed' else 1
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--execute-synthetic',action='store_true',help='Requires explicit separate authorization for this new pilot')
+    p.add_argument('--execute-synthetic',action='store_true',help='Explicitly execute a new bounded pilot under the current authorization; never replay an old run')
     p.add_argument('--out',type=Path)
     args=p.parse_args()
     if not args.execute_synthetic:

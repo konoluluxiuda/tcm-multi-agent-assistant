@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "port": 7896,
+  "legacy_agent_disabled": true,
+  "main_chat_question_and_revision": true,
+  "iframe_downloads": true,
+  "refresh_restores_card": true,
+  "provider_count_label_accurate": true,
+  "provider_requests": 0,
+  "javascript_errors": [],
+  "external_browser_requests": []
+}

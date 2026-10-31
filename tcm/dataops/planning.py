@@ -29,11 +29,21 @@ def request_plan(chat_model, goal, question, *, authorized=False):
     if getattr(chat_model,'max_retries',None)!=0 or not 0<(getattr(chat_model,'max_tokens',None) or 0)<=1200:
         raise ValueError('Configure retries=0 and output<=1200 tokens')
     model=chat_model.bind_tools([PLAN_TOOL],parallel_tool_calls=False,tool_choice='required')
-    reply=model.invoke([{'role':'system','content':'为资料核对任务制定一次性计划，只调用set_plan。必须按依赖顺序保留查询、'
+    messages=[{'role':'system','content':'为资料核对任务制定一次性计划，只调用set_plan。必须按依赖顺序保留查询、'
         '来源核对、字段读取、构建、验证、结束；可在读取后增加比较。缓存、暂时读取失败和人工候选选择由宿主处理，'
         '不要虚构来源ID；没有工具观察供你重规划。'},
-        {'role':'user','content':canonical({'original_question':question,'goal':goal})}])
-    return parse_plan(reply),reply.usage_metadata or {}
+        {'role':'user','content':canonical({'original_question':question,'goal':goal})}]
+    from tcm.tracing import observation
+    with observation('dataops.plan', generation=True, model=getattr(chat_model, 'model_name', None),
+                     input={'messages': messages, 'tools': [PLAN_TOOL]},
+                     metadata={'strategy': 'P', 'provider_request_attempts': 1}) as trace:
+        reply=model.invoke(messages)
+        usage=reply.usage_metadata or {}
+        trace.update(usage_details={k: v for k, v in usage.items()
+                                  if k in ('input_tokens', 'output_tokens', 'total_tokens') and type(v) is int} or None)
+        steps=parse_plan(reply)
+        trace.update(output={'steps': steps})
+        return steps,usage
 
 
 class NativePlanDriver(FixedPlanDriver):

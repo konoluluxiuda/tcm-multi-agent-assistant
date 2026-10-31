@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "port": 7914,
+  "driver": "fixed",
+  "optional_question_model_offered": false,
+  "question_to_goal_to_artifact": true,
+  "named_rows_with_missing_retained": true,
+  "selection_distinct_from_named_audit": true,
+  "parent_scope_preserved": true,
+  "v1_file_unchanged": true,
+  "same_key_replayed": true,
+  "refresh_restores_result": true,
+  "ambiguous_question_creates_no_task": true,
+  "downloads_sha256_verified": true,
+  "provider_requests": 0,
+  "javascript_errors": [],
+  "external_browser_requests": []
+}

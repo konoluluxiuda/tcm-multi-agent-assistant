@@ -52,6 +52,11 @@ def summary(s):
                 for sid, x in inspections.items() if x['status'] not in ('unmatched', 'ambiguous', 'source_mismatch')
                 and any(f not in x['fields'] for f in s['goal']['document_fields'])}
     uninspected = [sid for sid in ids if sid not in inspections]
+    evidence = evidence_items(s)
+    already_read = set(s.get('evidence_reads', []))
+    limits = s.get('execution_limits', {'model_calls': Limits.model_calls, 'tool_calls': Limits.tool_calls,
+                                       'leaf_reads': Limits.leaf_reads})
+    audit = s['goal']['completion_policy'] == 'audit'
     observation = deepcopy(s.get('observation'))
     if observation and 'reads' in observation:
         observation['read_count'] = len(observation['reads'])
@@ -68,6 +73,20 @@ def summary(s):
                 if cell['status'] not in ('candidate_value', 'present')][:20],
             'artifact': bool(s.get('artifact')), 'verified': s.get('verified', False),
             'evidence_refs': list(evidence_items(s))[:80],
+            'evidence_already_read': sorted(already_read)[:80],
+            'unread_evidence_count': len(set(evidence) - already_read),
+            'budget': {'decision_slots_remaining_including_current': max(0, limits['model_calls'] - s['model_calls']),
+                       'tool_actions_remaining': max(0, limits['tool_calls'] - s['tool_calls']),
+                       'source_reads_remaining': max(0, limits['leaf_reads'] - s['leaf_reads'])},
+            'delivery': {'ready_to_build': s['selected'] is not None and not uninspected and not unread,
+                         'ready_to_verify': bool(s.get('artifact')) and not s.get('verified', False),
+                         'ready_to_finish': bool(s.get('artifact')) and s.get('verified', False),
+                         'minimum_delivery_actions_remaining': int(not s.get('artifact')) + int(not s.get('verified')) + 1,
+                         'audit_allows_reported_missing_or_ambiguous_values': audit,
+                         'unread_fields_are_unfetched_not_null_values': True,
+                         'scope_ambiguity_must_remain_unknown': True},
+            'progress_watch': {'consecutive_no_progress': s.get('stalls', 0), 'stop_after': 2,
+                               'inspections_needed': bool(uninspected), 'field_reads_needed': bool(unread)},
             'observation': observation, 'model_calls': s['model_calls'],
             'response_corrections': s.get('response_corrections', 0),
             'action_contract': {'tool_calls_per_response': 1, 'execute_rejected_calls': False},
@@ -198,7 +217,14 @@ class Engine:
             if name != 'wait' and s['active_seconds'] >= self.limits.active_seconds:
                 s.update(status='partial', reason='active_time_budget', last_node=name)
                 return {'data': s}
-            result = fn(s)
+            from tcm.tracing import observation
+            with observation('dataops.' + ('decision' if name == 'model' else name), metadata={'workspace_id': self.identifier,
+                    'driver': self.driver.label, 'driver_steps_before': s['model_calls'],
+                    'tool_calls_before': s['tool_calls']}) as trace:
+                result = fn(s)
+                after = result if result is not None else s
+                trace.update(output={'status': after['status'], 'pending': bool(after.get('pending')),
+                                     'latest_event': after.get('events', [])[-1:]})
             s = result if result is not None else s
             s['active_seconds'] += time.monotonic() - started
             s['last_node'] = name
@@ -416,6 +442,20 @@ class Engine:
         return graph.compile(checkpointer=saver)
 
     def run(self, answer=None):
+        from tcm.tracing import observation
+        with observation('dataops.execution', input={'question': self.doc['question'], 'goal': self.doc['goal']},
+                metadata={'workspace_id': self.identifier, 'revision': self.doc['revision'],
+                          'parent_id': self.doc.get('parent_id'), 'source_revision': self.doc['source_revision'],
+                          'driver': self.driver.label, 'resume_segment': answer is not None,
+                          **({'provider_requests': 0} if self.driver.label == 'synthetic_observation_policy' else {})}) as trace:
+            result = self._run(answer)
+            trace.update(output={'status': result['status'], 'artifact': result.get('artifact'),
+                                 'progress': result.get('progress')},
+                         level='WARNING' if result['status'] in ('partial','interrupted','failed') else 'DEFAULT',
+                         status_message=result.get('error') or result['status'])
+            return result
+
+    def _run(self, answer=None):
         with (self.directory / 'execution.lock').open('a') as lock:
             try:
                 fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -434,6 +474,8 @@ class Engine:
                         raise Conflict('Execution code changed; start a new run instead of replaying')
                     if state.get('response_correction_limit', 0) != self.max_response_corrections:
                         raise Conflict('Response correction policy changed; start a new run')
+                    if state.get('execution_limits') != self._execution_limits():
+                        raise Conflict('Execution limits changed; start a new run')
                     if answer is not None and any(x['answer'] == answer for x in state['answered']):
                         answer = None
                     if answer is not None:
@@ -460,6 +502,7 @@ class Engine:
                         model_calls=0, tool_calls=0, leaf_reads=0, active_seconds=0.0, stalls=0, usage=[],
                         status='running', result=None, artifact=None, verified=False, driver=self.driver.label)
                     state.update(response_corrections=0, response_correction_limit=self.max_response_corrections)
+                    state['execution_limits'] = self._execution_limits()
                     state['implementation_revision'] = self.implementation_revision
                     command = {'data': state}
                 for item in graph.stream(command, config, stream_mode='values', durability='sync'):
@@ -472,3 +515,7 @@ class Engine:
     def _project(self, state):
         return self.store.project(self.owner, self.identifier, status=state['status'], pending=state.get('pending'),
             progress=projection(state), result=state.get('result'), artifact=state.get('artifact'), error=state.get('reason'))
+
+    def _execution_limits(self):
+        return {key: getattr(self.limits, key) for key in
+                ('model_calls', 'tool_calls', 'leaf_reads', 'context_bytes', 'active_seconds')}

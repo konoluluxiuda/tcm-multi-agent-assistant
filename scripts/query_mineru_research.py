@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('question')
-    parser.add_argument('--index', type=Path, default=ROOT / 'var/mineru_retrieval_v2')
+    parser.add_argument('--index', type=Path, default=ROOT / 'var/mineru_retrieval_v3')
     parser.add_argument('--method', choices=METHODS, default='name_field')
     parser.add_argument('--name')
     parser.add_argument('--field')

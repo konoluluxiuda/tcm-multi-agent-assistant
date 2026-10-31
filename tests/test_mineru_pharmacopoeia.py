@@ -21,6 +21,48 @@ def normalize(items, part='part-a', first=1, count=1, document='high'):
 
 
 class MineruAdapterTests(unittest.TestCase):
+    def test_storage_reagent_note_and_cross_page_continuation_are_separate(self):
+        blocks = normalize([raw('示例药 Shiliyao HERBA EXEMPLI', 100, level=2),
+            raw('【贮藏】置干燥处。', 200), raw('注：[1]示例缓冲液的配制', 240),
+            raw('取示例试剂，加水至刻度。', 100, page=1),
+            raw('另一药 Lingyiyao RADIX EXEMPLI', 300, page=1, level=2)], count=2)
+        parsed = segment_blocks(blocks); fields = parsed['entries'][0]['fields']
+        self.assertEqual([f['label'] for f in fields], ['贮藏', '条目注释'])
+        self.assertEqual([s['block_id'] for s in fields[0]['segments']], ['part-a:1'])
+        self.assertEqual([s['block_id'] for s in fields[1]['segments']], ['part-a:2', 'part-a:3'])
+        self.assertEqual(len(parsed['entries']), 2)
+
+    def test_inline_storage_note_preserves_exact_offsets_and_next_field(self):
+        text = '【贮藏】密闭。\n注：PBS缓冲液的制备 取示例试剂。\n【注意】示例。'
+        blocks = normalize([raw('示例药 Shiliyao HERBA EXEMPLI', 100, level=2), raw(text, 200)])
+        fields = segment_blocks(blocks)['entries'][0]['fields']
+        self.assertEqual([f['label'] for f in fields], ['贮藏', '条目注释', '注意'])
+        segments = [s for f in fields for s in f['segments']]
+        self.assertEqual(''.join(text[s['start']:s['end']] for s in segments), text)
+        self.assertEqual(fields[1]['scope'], 'monograph')
+
+    def test_storage_related_notes_unknown_notes_and_other_field_notes_are_retained(self):
+        for text in ('注：贮藏温度不得超过示例温度。', '注：示例说明，尚不能判断归属。',
+                     '注：缓冲液存放时应密闭。'):
+            blocks = normalize([raw('示例药 Shiliyao HERBA EXEMPLI', 100, level=2),
+                                raw('【贮藏】密闭。', 200), raw(text, 240)])
+            fields = segment_blocks(blocks)['entries'][0]['fields']
+            self.assertEqual([f['label'] for f in fields], ['贮藏'])
+            self.assertEqual(len(fields[0]['segments']), 2)
+        blocks = normalize([raw('示例药 Shiliyao HERBA EXEMPLI', 100, level=2),
+                            raw('【含量测定】示例。', 200), raw('注：PBS缓冲液的制备 示例。', 240)])
+        self.assertEqual([f['label'] for f in segment_blocks(blocks)['entries'][0]['fields']], ['含量测定'])
+
+    def test_cultivar_and_assay_notes_are_kept_as_notes_without_changing_entry_identity(self):
+        for note in ('注：栽培变种主要有示例甲。', '注：示例仅做[性状]检测。'):
+            blocks = normalize([raw('示例药 Shiliyao HERBA EXEMPLI', 100, level=2),
+                raw('饮片', 160, level=2), raw('【贮藏】密闭。', 200), raw(note, 240)])
+            before_id = segment_blocks(blocks[:-1])['entries'][0]['id']
+            entry = segment_blocks(blocks)['entries'][0]
+            self.assertEqual(entry['id'], before_id)
+            self.assertEqual([f['label'] for f in entry['fields']], ['贮藏', '条目注释'])
+            self.assertEqual(entry['fields'][-1]['scope'], 'prepared_slices')
+
     def test_reorders_scrambled_columns_and_preserves_raw_indices(self):
         items = [raw('【贮藏】示例', 100, column='right'),
                  raw('本品为测试来源。', 180), raw('HERBA EXEMPLI', 150, level=2),

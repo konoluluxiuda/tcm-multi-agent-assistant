@@ -1,0 +1,257 @@
+{
+  "version": "dataops-goal-understanding-dev-v1",
+  "kind": "author_written_known_synthetic_development_not_holdout",
+  "frozen_before_model_execution": true,
+  "defaults": {
+    "attributes": [
+      "medicinal_part",
+      "latin_name"
+    ],
+    "document_fields": [
+      "功能与主治",
+      "注意"
+    ],
+    "completion_policy": "audit",
+    "named_query_limit": 50,
+    "filter_query_default_limit": 20
+  },
+  "reference_policy": "Exact normalized object set, query scope, output field sets, completion policy and revision intent. Ambiguous/unsupported whole requests must not execute partially. A delivery that correctly reports missing data may complete under audit. No clinical truth claims.",
+  "cases": [
+    {
+      "case_id": "C01",
+      "category": "control",
+      "question": "整理Alpha的功效、注意，保留出处并生成表格",
+      "expected_status": "ready",
+      "expected_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      },
+      "expected_names": [
+        "Alpha"
+      ],
+      "parent_goal": null
+    },
+    {
+      "case_id": "C02",
+      "category": "control",
+      "question": "整理Beta的贮藏，保留出处",
+      "expected_status": "ready",
+      "expected_goal": {
+        "query": {
+          "names": [
+            "Beta"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "贮藏"
+        ]
+      },
+      "expected_names": [
+        "Beta"
+      ],
+      "parent_goal": null
+    },
+    {
+      "case_id": "C03",
+      "category": "control",
+      "question": "整理药用部位包含Root的前2条记录的功效",
+      "expected_status": "ready",
+      "expected_goal": {
+        "query": {
+          "filters": [
+            {
+              "field": "medicinal_part",
+              "op": "contains",
+              "value": "Root"
+            }
+          ],
+          "limit": 2
+        },
+        "document_fields": [
+          "功能与主治"
+        ]
+      },
+      "expected_names": [
+        "Beta"
+      ],
+      "parent_goal": null
+    },
+    {
+      "case_id": "C04",
+      "category": "control",
+      "question": "增加贮藏，保留旧字段",
+      "expected_status": "ready",
+      "expected_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "功能与主治",
+          "注意",
+          "贮藏"
+        ]
+      },
+      "expected_names": [
+        "Alpha"
+      ],
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      }
+    },
+    {
+      "case_id": "G01",
+      "category": "expression",
+      "question": "请做一张Alpha的资料表：一列写药典记载的用途，一列写使用时的提醒，找不到的留空，别编，出处也带上",
+      "expected_status": "ready",
+      "expected_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      },
+      "expected_names": [
+        "Alpha"
+      ],
+      "parent_goal": null
+    },
+    {
+      "case_id": "G02",
+      "category": "expression",
+      "question": "Beta和Delta放在同一个工作簿里；仅摘录药典的保存条件，原始资料的位置要留着",
+      "expected_status": "ready",
+      "expected_goal": {
+        "query": {
+          "names": [
+            "Beta",
+            "Delta"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "贮藏"
+        ]
+      },
+      "expected_names": [
+        "Beta",
+        "Delta"
+      ],
+      "parent_goal": null
+    },
+    {
+      "case_id": "G03",
+      "category": "expression",
+      "question": "现有这张表原来的列和值都不要动，另外添上药典里怎么保存的那一列",
+      "expected_status": "ready",
+      "expected_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "功能与主治",
+          "注意",
+          "贮藏"
+        ]
+      },
+      "expected_names": [
+        "Alpha"
+      ],
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      }
+    },
+    {
+      "case_id": "G04",
+      "category": "expression",
+      "question": "原来的药典列都换掉，最终药典只要保存条件这一项；ETCM的列和对象别动",
+      "expected_status": "ready",
+      "expected_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        },
+        "document_fields": [
+          "贮藏"
+        ]
+      },
+      "expected_names": [
+        "Alpha"
+      ],
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      }
+    },
+    {
+      "case_id": "N01",
+      "category": "clarification",
+      "question": "把那两味药的资料整理成表格，和刚才一样",
+      "expected_status": "needs_input",
+      "expected_goal": null,
+      "expected_names": [],
+      "parent_goal": null
+    },
+    {
+      "case_id": "N02",
+      "category": "clarification",
+      "question": "现有表格把注意那列换成保存条件，其他药典列是否保留我还没决定",
+      "expected_status": "needs_input",
+      "expected_goal": null,
+      "expected_names": [],
+      "parent_goal": {
+        "query": {
+          "names": [
+            "Alpha"
+          ],
+          "limit": 50
+        }
+      }
+    },
+    {
+      "case_id": "N03",
+      "category": "unsupported",
+      "question": "整理Alpha的功效，再预测它对肺癌的疗效，放进表格",
+      "expected_status": "needs_input",
+      "expected_goal": null,
+      "expected_names": [],
+      "parent_goal": null
+    },
+    {
+      "case_id": "N04",
+      "category": "unsupported",
+      "question": "导出Alpha的功效表，并删除没有注意事项的源记录",
+      "expected_status": "needs_input",
+      "expected_goal": null,
+      "expected_names": [],
+      "parent_goal": null
+    }
+  ]
+}

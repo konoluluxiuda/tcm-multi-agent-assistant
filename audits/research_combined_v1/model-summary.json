@@ -1,0 +1,46 @@
+{
+  "status": "completed",
+  "actual_requests": 12,
+  "total_tokens": 30768,
+  "business_cases": {
+    "R": {
+      "passed": 0,
+      "total": 2,
+      "goal_requests_attributed": 0,
+      "execution_requests": 0,
+      "tokens_attributed": 0
+    },
+    "G": {
+      "passed": 2,
+      "total": 2,
+      "goal_requests_attributed": 2,
+      "execution_requests": 0,
+      "tokens_attributed": 3297
+    },
+    "A": {
+      "passed": 2,
+      "total": 2,
+      "goal_requests_attributed": 2,
+      "execution_requests": 10,
+      "tokens_attributed": 30768
+    }
+  },
+  "source_evidence_reread_fragments": 9,
+  "search_documents_calls": 0,
+  "retries": 0,
+  "native_benefit_over_G_proven": false,
+  "C01_A_tools": [
+    "list_candidates",
+    "inspect_candidates",
+    "read_evidence",
+    "read_evidence",
+    "deliver_result"
+  ],
+  "C02_A_tools": [
+    "list_candidates",
+    "inspect_candidates",
+    "read_evidence",
+    "read_evidence",
+    "deliver_result"
+  ]
+}
