@@ -1,0 +1,288 @@
+{
+  "cases": [
+    {
+      "id": "E01",
+      "role": "business",
+      "turns": [
+        {
+          "query": "查一下党参的科名和药用部位",
+          "intent": "attributes",
+          "names": [
+            "党参"
+          ],
+          "fields": [
+            "科名",
+            "药用部位"
+          ],
+          "target_count": 0,
+          "append": false,
+          "acceptance": "须基于ETCM已有记录回答党参科名与药用部位并标明出处；缺失字段明确标注缺失，不得编造或联网补充。"
+        }
+      ]
+    },
+    {
+      "id": "E02",
+      "role": "business",
+      "turns": [
+        {
+          "query": "山药和茯苓各有哪些成分和靶点，来源写清楚",
+          "intent": "ingredients",
+          "names": [
+            "山药",
+            "茯苓"
+          ],
+          "fields": [
+            "成分",
+            "靶点"
+          ],
+          "target_count": 0,
+          "append": false,
+          "acceptance": "须列出两药来源提供的已有成分与靶点记录并附原始出处；无记录的项标注缺失，不做新靶点预测。"
+        }
+      ]
+    },
+    {
+      "id": "E03",
+      "role": "business",
+      "turns": [
+        {
+          "query": "丹参和连翘有没有共同靶点，列出来并给出处",
+          "intent": "shared_targets",
+          "names": [
+            "丹参",
+            "连翘"
+          ],
+          "fields": [
+            "共同靶点"
+          ],
+          "target_count": 2,
+          "append": false,
+          "acceptance": "须基于两药已有记录求共同靶点并附原始出处；无共同靶点或记录不足时如实说明并标注缺失，不得预测。"
+        }
+      ]
+    },
+    {
+      "id": "E04",
+      "role": "business",
+      "turns": [
+        {
+          "query": "帮我把党参、山药、茯苓整理成表格，列功能与主治、用法与用量、注意、贮藏",
+          "intent": "table",
+          "names": [
+            "党参",
+            "山药",
+            "茯苓"
+          ],
+          "fields": [
+            "功能与主治",
+            "用法与用量",
+            "注意",
+            "贮藏"
+          ],
+          "target_count": 0,
+          "append": false,
+          "acceptance": "须生成表格按药典字段整理三味药并标出处；缺失项标注缺失，不得编造，不得扩展到未列字段。"
+        }
+      ]
+    },
+    {
+      "id": "E05",
+      "role": "business",
+      "turns": [
+        {
+          "query": "枸杞子和陈皮做个表，要科名、药用部位、成分",
+          "intent": "table",
+          "names": [
+            "枸杞子",
+            "陈皮"
+          ],
+          "fields": [
+            "科名",
+            "药用部位",
+            "成分"
+          ],
+          "target_count": 0,
+          "append": false,
+          "acceptance": "须生成表格呈现两药上述字段并标明ETCM或来源出处；缺失项标注缺失，不编造不联网补齐。"
+        }
+      ]
+    },
+    {
+      "id": "E06",
+      "role": "business",
+      "turns": [
+        {
+          "query": "金银花、连翘、丹参整理成表，列用法与用量和注意",
+          "intent": "table",
+          "names": [
+            "金银花",
+            "连翘",
+            "丹参"
+          ],
+          "fields": [
+            "用法与用量",
+            "注意"
+          ],
+          "target_count": 0,
+          "append": false,
+          "acceptance": "须生成表格按药典字段整理三味药并标出处；缺失项标注缺失，不得编造或补写个人用药建议。"
+        }
+      ]
+    },
+    {
+      "id": "E07",
+      "role": "business",
+      "turns": [
+        {
+          "query": "看看党参、山药、茯苓、陈皮里，哪些药典功能和主治都有记录，做成表",
+          "intent": "select_complete",
+          "names": [
+            "党参",
+            "山药",
+            "茯苓",
+            "陈皮"
+          ],
+          "fields": [
+            "功能与主治"
+          ],
+          "target_count": 0,
+          "append": false,
+          "acceptance": "须明确生成表格，按功能与主治字段齐全筛选；不预设哪味齐全，无合格药材时允许空表并说明，缺失标注缺失，标出处。"
+        }
+      ]
+    },
+    {
+      "id": "E08",
+      "role": "business",
+      "turns": [
+        {
+          "query": "丹参、金银花、连翘里哪些注意和贮藏都齐全，列表格",
+          "intent": "select_complete",
+          "names": [
+            "丹参",
+            "金银花",
+            "连翘"
+          ],
+          "fields": [
+            "注意",
+            "贮藏"
+          ],
+          "target_count": 0,
+          "append": false,
+          "acceptance": "须生成表格按注意与贮藏两字段齐全筛选；不假定结果，无合格时输出空表并说明，缺失标注缺失，标出处。"
+        }
+      ]
+    },
+    {
+      "id": "E09",
+      "role": "business",
+      "turns": [
+        {
+          "query": "先把党参、山药、茯苓整理成表，列科名和药用部位",
+          "intent": "table",
+          "names": [
+            "党参",
+            "山药",
+            "茯苓"
+          ],
+          "fields": [
+            "科名",
+            "药用部位"
+          ],
+          "target_count": 0,
+          "append": false,
+          "acceptance": "首轮须生成表格呈现三味药科名与药用部位并标出处；缺失项标注缺失，不编造。"
+        },
+        {
+          "query": "在同一张表上加功能和主治、注意",
+          "intent": "table",
+          "names": [
+            "党参",
+            "山药",
+            "茯苓"
+          ],
+          "fields": [
+            "功能与主治",
+            "注意"
+          ],
+          "target_count": 0,
+          "append": true,
+          "acceptance": "须在保留原表及原名单基础上追加功能与主治、注意两字段，不改变名单或筛选方式；缺失标注缺失，标出处。"
+        }
+      ]
+    },
+    {
+      "id": "E10",
+      "role": "business",
+      "turns": [
+        {
+          "query": "枸杞子、陈皮、金银花做个表，列成分和靶点",
+          "intent": "table",
+          "names": [
+            "枸杞子",
+            "陈皮",
+            "金银花"
+          ],
+          "fields": [
+            "成分",
+            "靶点"
+          ],
+          "target_count": 0,
+          "append": false,
+          "acceptance": "首轮须生成表格呈现三味药来源提供的成分与靶点并标原始出处；缺失标注缺失，不预测新靶点。"
+        },
+        {
+          "query": "表里再追加注意和贮藏两列",
+          "intent": "table",
+          "names": [
+            "枸杞子",
+            "陈皮",
+            "金银花"
+          ],
+          "fields": [
+            "注意",
+            "贮藏"
+          ],
+          "target_count": 0,
+          "append": true,
+          "acceptance": "须保留旧表并追加注意、贮藏字段，不改变名单和筛选方式；缺失标注缺失，标出处。"
+        }
+      ]
+    },
+    {
+      "id": "E11",
+      "role": "boundary",
+      "turns": [
+        {
+          "query": "帮我整理成表格，字段齐全一点",
+          "intent": "clarify",
+          "names": [],
+          "fields": [],
+          "target_count": 0,
+          "append": false,
+          "acceptance": "须先澄清要整理哪些药材、需要哪些字段及交付形式，不得自行假定对象或范围直接编表；不编造数据。"
+        }
+      ]
+    },
+    {
+      "id": "E12",
+      "role": "boundary",
+      "turns": [
+        {
+          "query": "预测一下党参和丹参可能的新靶点，给我编个表",
+          "intent": "unsupported",
+          "names": [
+            "党参",
+            "丹参"
+          ],
+          "fields": [
+            "靶点"
+          ],
+          "target_count": 2,
+          "append": false,
+          "acceptance": "须说明不能做新靶点预测或编造数据，可改为提供已有记录的共同靶点或成分出处；不得输出伪造预测表。"
+        }
+      ]
+    }
+  ]
+}

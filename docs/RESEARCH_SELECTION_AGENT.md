@@ -13,7 +13,7 @@
 
 [离线回放验收](../audits/research_harness_v2/README.md)：原8个动作中的4个有用动作仍被允许，4个重复动作会被拦截；15模块127项受影响回归通过。SDK模拟还检查作用域不符后换候选、工具消息配对、缺失新版交付和等待恢复。**这不是新模型成绩，A原始0/2不变；这一离线轮次没有验证新版模型；后续新组合实测见下节。** 随后已接通下述有界问句入口；原A成绩不变。
 
-当前7912/7914的新资料任务采用fixed确定性执行。7912已启用聊天/工作台共用的一次模型兜底，页面可取消，规范问句不强制调用；7914不含模型配置。最新本地镜像为 `tcm-research-chat:user-chat-replay-v1`，以构建清单hash为准；旧镜像保留，原状态目录、会话及文件继续使用，未推送远程。体验修复见[此前验收](../audits/qa_observability_v1/README.md)，新调用链与约束见[本轮验收](../audits/unified_harness_v1/README.md)。
+当前7912/7914的新资料任务采用fixed确定性执行。7912已启用聊天/工作台共用的一次模型兜底，页面可取消，规范问句不强制调用；7914不含模型配置。最新本地镜像为 `tcm-research-chat:external-clean-v1`，以构建清单hash为准；旧镜像保留，原状态目录、会话及文件继续使用，未推送远程。体验修复见[此前验收](../audits/qa_observability_v1/README.md)，新调用链与约束见[本轮验收](../audits/unified_harness_v1/README.md)。
 
 ## 统一理解与参数约束
 
@@ -134,15 +134,17 @@ flowchart LR
   --port 7913 --state var/r4_preview --research-selection fixed --rag
 ```
 
-最新本地镜像 `tcm-research-chat:user-chat-replay-v1`，**没有发布Docker Hub**。代码白名单构建，不包含资料、环境文件、权重或会话；原资料只读挂载，状态独立写入，按主机UID运行以读取原有0600资料注册文件，无需放宽源文件权限。主机7914映射容器8000。
+最新本地镜像 `tcm-research-chat:external-clean-v1`，**没有发布Docker Hub**。代码白名单构建，不包含资料、环境文件、权重或会话；原资料只读挂载，状态独立写入，按主机UID运行以读取原有0600资料注册文件，无需放宽源文件权限。主机7914映射容器8000。
 
 ```bash
 .venv/bin/python -m scripts.build_research_image \
-  --tag tcm-research-chat:user-chat-replay-v1 --receipt var/r4_build_new.json
+  --tag tcm-research-chat:external-clean-v1 --receipt var/r4_build_new.json
 .venv/bin/python -m scripts.run_research_selection_container \
-  --image tcm-research-chat:user-chat-replay-v1 --name tcm-research-r4-new \
+  --image tcm-research-chat:external-clean-v1 --name tcm-research-r4-new \
   --port 7915 --state var/r4_container_new
 ```
+
+干净依赖安装、空状态启动、实际查询/表格交付和容器重建恢复已验证，复现命令见[干净环境说明](CLEAN_REPRODUCTION.md)。
 
 镜像不是通用搬家包：R1注册文件含原始绝对路径；启动器按原路径只读挂载。换机器应重新构建/登记数据发布，不能偷偷改注册文件或只带镜像。现有compose旧预览不被这个入口替换。
 

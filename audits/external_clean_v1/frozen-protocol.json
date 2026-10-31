@@ -1,0 +1,56 @@
+{
+  "version": "external-unseen-v1",
+  "suite_sha256": "5349efffdedffdd84621bd3d90a9c9ee20603a64255ed3cda2281b0e5cf7ed0b",
+  "evaluator_sha256": "005023fd625c06deb089b77e12f7fe11480c04f6da9e2b87581fc8c0358acaee",
+  "services": {
+    "clean": "http://127.0.0.1:7916",
+    "fallback": "http://127.0.0.1:7912"
+  },
+  "model_request_cap": 24,
+  "allow_model": true,
+  "max_requests_per_understanding": 1,
+  "automatic_retries": 0,
+  "authorship": {
+    "kind": "external_unseen_declared",
+    "source": "Fresh-context deepseek-flash simulated user; only capability brief and candidate names supplied",
+    "source_sha256": "3be4d76b453b0bf88beb4d7d32c06907f116eea9d53fa2db0949bdc67e4e5b2c",
+    "reviewer": "Automated structural mapping by project developer; no independent human review",
+    "reviewed_at": "2026-10-31T14:35:14.810276+00:00",
+    "independent_acceptance": false,
+    "author_requests": 1,
+    "author_tokens": 1865,
+    "no_code_old_questions_or_failures_sent": true,
+    "note": "Raw questions are frozen before service execution. AI authorship is not human demand validation. Developer maps semantic requirements into machine contracts without changing questions."
+  },
+  "scope": "HTTP workflow regression, original-source ETCM sample checks, artifact integrity; not a clinical or extraction-accuracy evaluation",
+  "counter_scope": "HTTP-reported requests, not provider wire receipts; unknown counts consume one reserved budget unit",
+  "comparison_limit": "Deployed configurations are recorded, not assumed to differ only in model switch.",
+  "source_file_count": 8,
+  "common_source_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+  "source_revision_scope": "research-application-v3",
+  "all_had_current_source": true,
+  "service_modes": {
+    "clean": {
+      "enabled": true,
+      "driver": "fixed",
+      "external_model_enabled": false,
+      "execution_model_enabled": false,
+      "question_model_enabled": false,
+      "question_policy": "local_then_one_model_v1",
+      "chat_question_fallback_enabled": false,
+      "goal_input": "bounded_question_or_form",
+      "identity_approval": false
+    },
+    "fallback": {
+      "enabled": true,
+      "driver": "fixed",
+      "external_model_enabled": true,
+      "execution_model_enabled": false,
+      "question_model_enabled": true,
+      "question_policy": "local_then_one_model_v1",
+      "chat_question_fallback_enabled": true,
+      "goal_input": "bounded_question_or_form",
+      "identity_approval": false
+    }
+  }
+}

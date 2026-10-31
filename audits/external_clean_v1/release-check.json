@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "release_id": "r1_20261030",
+  "content_id": "ade3f558c489da80d7491207140837e6d3c91f79d64ab4ad691692a3d194cee1",
+  "raw_herb_files_verified": 2076,
+  "reference_check": {
+    "status": "passed",
+    "cases": 30,
+    "kind": "source_anchor_and_contract_integrity_only",
+    "retrieval_or_answer_scores": null,
+    "reserved_retrieval_executed": false,
+    "human_signoff": false
+  },
+  "model_calls": 0,
+  "vector_builds": 0,
+  "active_service_configuration_changed": false
+}

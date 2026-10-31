@@ -45,8 +45,8 @@ def validate_suite(suite):
   if not 1<=len(case['turns'])<=3:raise ValueError('Invalid scenario length')
   for turn in case['turns']:
    if not isinstance(turn['query'],str) or not 1<=len(turn['query'])<=1000:raise ValueError('Invalid question')
-   if not (turn.get('checks') or turn.get('task') or turn.get('no_workspace')):raise ValueError('A frozen acceptance contract is required')
-   for name in turn.get('relation_sources',[]):
+   if not (turn.get('checks') or turn.get('task') or turn.get('no_workspace') or turn.get('relation_requirements')):raise ValueError('A frozen acceptance contract is required')
+   for name in turn.get('relation_sources',[])+turn.get('reference_sources',[]):
     if not re.fullmatch('[A-Za-z0-9]+',name):raise ValueError('Invalid source basename')
 
 
@@ -80,7 +80,7 @@ def prepare(suite_path,out,services,source,*,allow_model=False,model_cap=8,clien
  source=Path(source).resolve();refs={}
  for case in suite['cases']:
   for turn in case['turns']:
-   for name in turn.get('relation_sources',[]):
+   for name in set(turn.get('relation_sources',[])+turn.get('reference_sources',[])):
     path=source/'etcm_herbs'/(name+'.json');refs[str(path)]=digest(path)
  save(out/'suite.private.json',suite)
  protocol={'version':suite['version'],'suite_sha256':digest(out/'suite.private.json'),'evaluator_sha256':digest(__file__),
@@ -129,6 +129,26 @@ def source_checks(turn,body,source):
  return checked
 
 
+def relation_bundle(body, requirements):
+ """Require each requested source/kind, rather than scoring a partial answer OK."""
+ found=set()
+ def visit(value):
+  if isinstance(value,dict):
+   if value.get('kind') in ('ingredient','target') and isinstance(value.get('data'),dict):
+    data=value['data']
+    if isinstance(data.get('total'),int) and (data['total']==0 or data.get('items')):
+     for group in value.get('groups',[]):
+      for option in group.get('options',[]):
+       path=option.get('source',{}).get('relative_file_path','')
+       found.add((value['kind'],Path(path).stem))
+   for child in value.values():visit(child)
+  elif isinstance(value,list):
+   for child in value:visit(child)
+ visit(body)
+ missing=[r for r in requirements if (r['kind'],r['source']) not in found]
+ if missing:raise ValueError('Not all requested source/kind result groups were delivered')
+
+
 def check_task(client,body,expect,folder,parent=None,timeout=90):
  from tcm.dataops.artifacts import verify
  identifier=body['assistant']['workspace_id'];deadline=time.monotonic()+timeout
@@ -138,8 +158,9 @@ def check_task(client,body,expect,folder,parent=None,timeout=90):
   if time.monotonic()>=deadline:raise ValueError('Task polling timeout')
   time.sleep(.2)
  save(folder/'workspace.private.json',doc)
- if doc['status']!='complete' or not doc.get('artifact'):raise ValueError('Task did not deliver')
+ if doc['status'] not in expect.get('allowed_status',['complete']) or not doc.get('artifact'):raise ValueError('Task did not deliver')
  if doc['goal']['research']['mode']!=expect['mode'] or set(doc['goal']['document_fields'])!=set(expect['fields']):raise ValueError('Task goal mismatch')
+ if 'attributes' in expect and set(doc['goal']['attributes'])!=set(expect['attributes']):raise ValueError('Task attribute set mismatch')
  rows=doc['result']['rows']
  if sorted(r['name'] for r in rows)!=sorted(expect['rows']):raise ValueError('Task row set mismatch')
  for field in expect.get('missing',[]):
@@ -195,7 +216,21 @@ def execute(out,*,client_factory=httpx.Client):
       if calls is not None and calls>1:raise ValueError('Single-understanding request contract exceeded')
       if response.status_code in (429,503) or response.status_code>=500:
        stopped=True;raise ValueError('Busy or unknown dispatch; batch did not retry')
-      if response.status_code!=turn.get('http',200):raise ValueError('Unexpected HTTP status')
+      if response.status_code not in turn.get('allowed_http',[turn.get('http',200)]):raise ValueError('Unexpected HTTP status')
+      if turn.get('safe_rejection') and response.status_code!=403 and value.get('assistant',{}).get('status') not in ('needs_input','clarification_needed','unsupported'):
+       raise ValueError('Unsupported or unclear request was not safely clarified/rejected')
+      if turn.get('relation_requirements'):
+       if value.get('assistant',{}).get('status') in ('queued','running') and value['assistant'].get('run_id'):
+        deadline=time.monotonic()+90
+        while True:
+         terminal=client.get('/api/research/runs/'+value['assistant']['run_id']);terminal.raise_for_status()
+         payload=terminal.json()
+         if payload.get('status') not in ('queued','running'):break
+         if time.monotonic()>=deadline:raise ValueError('Relation bundle task timed out')
+         time.sleep(.3)
+        save(folder/'relation-task.private.json',payload)
+        relation_bundle(payload,turn['relation_requirements'])
+       else:relation_bundle(value,turn['relation_requirements'])
       for check in turn.get('checks',[]):
        if pointer(value,check['path'])!=check['equals']:raise ValueError('Response assertion failed: '+check['path'])
       row['raw_source_witnesses_checked']=source_checks(turn,value,Path(protocol['source_root']))

@@ -21,15 +21,17 @@ def start(image,release,state,port,name):
       'ENABLE_RAG_WORKBENCH':'1','ENABLE_RAG_GENERATION':'0','RAG_RELEASE_PATH':str(release),
       'RAG_RUN_DB':'/app-memory/rag.sqlite3',
       'PHARMACOPOEIA_INDEX':str(release/'index'),'TCM_DB':c['herbs'],'ETCM_ENRICHMENT_DB':c['enrichment'],
+      'ETCM_TARGET_DB':c['targets'],
       'ETCM_SOURCE_ROOT':c['source_root'],'PHARMACOPOEIA_PDF_HIGH':c['pdf_high'],'PHARMACOPOEIA_PDF_FULL':c['pdf_full'],
       'CHAT_MODEL':'offline-disabled','CHAT_API_KEY':'unused','CHAT_BASE_URL':'http://127.0.0.1:9/v1',
       'EMBEDDING_MODEL':'offline-disabled','EMBEDDING_API_KEY':'unused','EMBEDDING_BASE_URL':'http://127.0.0.1:9/v1','EMBEDDING_DIM':'1024',
       'ENABLE_LANGFUSE':'0','LANGFUSE_TRACING_ENABLED':'false','LANGCHAIN_TRACING_V2':'false','LANGSMITH_TRACING':'false',
       'ENABLE_INTENT_PLANNER':'0','ENABLE_EVIDENCE_ASSISTANT':'0','ENABLE_NATURAL_ROUTING':'1',
+      'ENABLE_DATAOPS_RESEARCH_GOAL_MODEL':'0',
       'ENABLE_RESEARCH_TASKS':'0','ENABLE_RESEARCH_PLAN_JOBS':'0','RESEARCH_JOB_DSN':'',
       'CHAT_COOKIE_NAME':'research_selection_container','RESEARCH_TOOLS_ONLY':'1',
       'ENABLE_WEB_SEARCH':'0','ENABLE_PUBMED':'0','ENABLE_IMAGE_ANALYSIS':'0','ENABLE_SPEECH':'0'}
-    paths={release,Path(c['herbs']),Path(c['enrichment']),Path(c['source_root']),Path(c['pdf_high']),Path(c['pdf_full'])}
+    paths={release,Path(c['herbs']),Path(c['enrichment']),Path(c['targets']),Path(c['source_root']),Path(c['pdf_high']),Path(c['pdf_full'])}
     for p in paths:
         if not p.exists() or p.is_symlink() or ',' in str(p):raise ValueError('Registered read-only mount missing or invalid')
     if any(state==p or state in p.parents or p in state.parents for p in paths):raise ValueError('State and corpus must be separate')
@@ -49,7 +51,7 @@ def start(image,release,state,port,name):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--image',default='tcm-research-chat:user-chat-replay-v1');p.add_argument('--release',type=Path,default=Path('var/data_releases/r1_20261030'))
+    p.add_argument('--image',default='tcm-research-chat:external-clean-v1');p.add_argument('--release',type=Path,default=Path('var/data_releases/r1_20261030'))
     p.add_argument('--state',type=Path,default=Path('var/recruitment_delivery_v2/container-state'));p.add_argument('--port',type=int,default=7914)
     p.add_argument('--name',default='tcm-research-r4');args=p.parse_args()
     print(json.dumps(start(args.image,args.release,args.state,args.port,args.name),ensure_ascii=False))

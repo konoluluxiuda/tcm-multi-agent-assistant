@@ -1,0 +1,12 @@
+{
+  "purpose": "fresh-context AI simulated user question authorship, no corpus/code/eval/history",
+  "requests": 1,
+  "max_output_tokens": 4500,
+  "max_request_bytes": 65536,
+  "timeout": 60,
+  "retries": 0,
+  "model": "deepseek-flash",
+  "endpoint": "https://api.deepseek.com/chat/completions",
+  "brief_sha256": "66a42bc3cd971a65b33a7b2fa9128e9f5089ac60db9eb468f3cd6a82f5600cfc",
+  "independent_human_acceptance": false
+}

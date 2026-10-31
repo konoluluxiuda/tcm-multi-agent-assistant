@@ -15,7 +15,7 @@ def files():
     return sorted(manifest(ROOT)['files'])
 
 
-def build(tag, receipt):
+def build(tag, receipt, *, no_cache=False):
     paths = files()
     fingerprint = {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in paths}
     tree_sha = hashlib.sha256(json.dumps(fingerprint, sort_keys=True).encode()).hexdigest()
@@ -31,12 +31,12 @@ def build(tag, receipt):
             shutil.copyfile(source, target)
             if hashlib.sha256(target.read_bytes()).hexdigest() != fingerprint[name]:
                 raise ValueError('Build source changed while creating context: ' + name)
-        subprocess.run(['docker', 'build', '-f', str(context / 'Dockerfile.research'),
+        subprocess.run(['docker', 'build', *(['--no-cache'] if no_cache else []), '-f', str(context / 'Dockerfile.research'),
                         '--build-arg', 'SOURCE_REVISION=' + revision + ('-working-tree' if dirty else ''),
                         '--build-arg', 'SOURCE_TREE_SHA256=' + tree_sha, '-t', tag, str(context)], check=True)
     image = json.loads(subprocess.check_output(['docker', 'image', 'inspect', tag], text=True))[0]
     result = {'image_tag': tag, 'image_id': image['Id'], 'image_bytes': image['Size'],
-              'base_revision': revision, 'working_tree_dirty': dirty, 'source_tree_sha256': tree_sha,
+              'base_revision': revision, 'working_tree_dirty': dirty, 'source_tree_sha256': tree_sha, 'no_cache': no_cache,
               'source_files_sha256': fingerprint, 'build_context_bytes': sum((ROOT / n).stat().st_size for n in paths),
               'context_policy': 'temporary allowlisted runtime files; no corpus, .env, weights or sessions',
               'docker_hub_published': False}
@@ -49,6 +49,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--tag', default='tcm-research-chat:local')
     parser.add_argument('--receipt', type=Path, default=ROOT / 'var/docker_research_v1/build.json')
+    parser.add_argument('--no-cache', action='store_true', help='Reinstall dependencies instead of reusing Docker build layers')
     args = parser.parse_args()
-    result = build(args.tag, args.receipt)
+    result = build(args.tag, args.receipt, no_cache=args.no_cache)
     print(json.dumps({k: result[k] for k in ('image_tag', 'image_id', 'image_bytes', 'source_tree_sha256')}))

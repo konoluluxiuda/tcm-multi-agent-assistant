@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "container": "tcm-research-r4",
+  "port": 7914,
+  "image": "tcm-research-chat:external-clean-v1",
+  "image_id": "sha256:d2e865d4453435f4784cd8a68c0a6f160e13980f916d190ec4163e63df223551",
+  "driver": "fixed",
+  "external_model_enabled": false,
+  "source_mounts_read_only": true,
+  "rollback_container": "tcm-research-r4-before-external-clean-v1",
+  "preserved_artifacts": 25,
+  "old_artifacts_unchanged": true,
+  "session_cookie_survived": true,
+  "image_source_files_checked": 195,
+  "image_source_files_match": true,
+  "target_catalog_mounted_read_only": true,
+  "docker_hub_published": false,
+  "runtime": {
+    "started_at": "2026-10-31T14:43:52.671164+00:00",
+    "source_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+    "disk_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+    "source_revision_scope": "research-application-v3",
+    "entrypoint_revision": "71b641c40a25bea853d4a43d3a84a48dca692ad85739fd15272764ea42cf2c98",
+    "disk_entrypoint_revision": "71b641c40a25bea853d4a43d3a84a48dca692ad85739fd15272764ea42cf2c98",
+    "optional_modules_revision": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disk_optional_modules_revision": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "restart_required": false,
+    "source_check": "ok",
+    "dataops": {
+      "agent": false,
+      "driver": "disabled",
+      "external_model_enabled": false,
+      "question_compiler": "local_bounded_grammar_v1",
+      "research_selection": {
+        "enabled": true,
+        "driver": "fixed",
+        "external_model_enabled": false,
+        "execution_model_enabled": false,
+        "question_model_enabled": false,
+        "question_policy": "local_then_one_model_v1",
+        "chat_question_fallback_enabled": false,
+        "goal_input": "bounded_question_or_form",
+        "identity_approval": false
+      }
+    },
+    "rag": {
+      "enabled": true,
+      "generation_enabled": false
+    },
+    "intent_model_enabled": false,
+    "dataops_tracing_enabled": false
+  }
+}

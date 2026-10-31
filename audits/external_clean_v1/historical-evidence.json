@@ -1,0 +1,13 @@
+{
+  "unchanged": true,
+  "checked": [
+    "audits/data_rag_r1/README.md",
+    "audits/data_rag_r2/metrics.json",
+    "audits/data_rag_r3/live_metrics.json",
+    "audits/data_rag_r4/live_summary.json",
+    "audits/research_question_v1/model-results.json",
+    "audits/research_combined_v1/model-summary.json",
+    "audits/research_combined_v1/model-results.json"
+  ],
+  "recomputed_old_scores": false
+}

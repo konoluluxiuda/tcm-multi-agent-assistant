@@ -1,0 +1,12 @@
+{
+  "image_tag": "tcm-research-chat:external-clean-v1",
+  "image_id": "sha256:d2e865d4453435f4784cd8a68c0a6f160e13980f916d190ec4163e63df223551",
+  "image_bytes": 453302801,
+  "base_revision": "e0851390c154ed91dbfaa7c039a3503b52ae6a2b",
+  "working_tree_dirty": true,
+  "source_tree_sha256": "4c106dc71dc3a7c04e12af197e7f5a6948e525f1343b32a4f77ec8775ced905e",
+  "no_cache": true,
+  "build_context_bytes": 3107716,
+  "context_policy": "temporary allowlisted runtime files; no corpus, .env, weights or sessions",
+  "docker_hub_published": false
+}

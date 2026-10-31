@@ -1,0 +1,398 @@
+{
+  "version": "external-unseen-v1",
+  "status": "failed",
+  "records": [
+    {
+      "service": "clean",
+      "id": "E01",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 3,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 0.218
+    },
+    {
+      "service": "clean",
+      "id": "E02",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 0,
+      "status": "failed",
+      "reason": "Not all requested source/kind result groups were delivered",
+      "duration_seconds": 0.127
+    },
+    {
+      "service": "clean",
+      "id": "E03",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 0,
+      "status": "failed",
+      "reason": "'relations'",
+      "duration_seconds": 0.072
+    },
+    {
+      "service": "clean",
+      "id": "E04",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "duration_seconds": 2.541
+    },
+    {
+      "service": "clean",
+      "id": "E05",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "duration_seconds": 2.646
+    },
+    {
+      "service": "clean",
+      "id": "E06",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'assistant'",
+      "duration_seconds": 0.175
+    },
+    {
+      "service": "clean",
+      "id": "E07",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "duration_seconds": 2.675
+    },
+    {
+      "service": "clean",
+      "id": "E08",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "duration_seconds": 2.658
+    },
+    {
+      "service": "clean",
+      "id": "E09",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'assistant'",
+      "duration_seconds": 0.161
+    },
+    {
+      "service": "clean",
+      "id": "E09",
+      "turn": 1,
+      "role": "business",
+      "passed": false,
+      "status": "not_run_parent_failed"
+    },
+    {
+      "service": "clean",
+      "id": "E10",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "duration_seconds": 2.519
+    },
+    {
+      "service": "clean",
+      "id": "E10",
+      "turn": 1,
+      "role": "business",
+      "passed": false,
+      "status": "not_run_parent_failed"
+    },
+    {
+      "service": "clean",
+      "id": "E11",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 4.495
+    },
+    {
+      "service": "clean",
+      "id": "E12",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "http": 403,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "passed",
+      "duration_seconds": 0.029
+    },
+    {
+      "service": "fallback",
+      "id": "E01",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 3,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 0.414
+    },
+    {
+      "service": "fallback",
+      "id": "E02",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 1,
+      "status": "failed",
+      "reason": "Not all requested source/kind result groups were delivered",
+      "duration_seconds": 5.282
+    },
+    {
+      "service": "fallback",
+      "id": "E03",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 1,
+      "status": "failed",
+      "reason": "'relations'",
+      "duration_seconds": 3.787
+    },
+    {
+      "service": "fallback",
+      "id": "E04",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "delivery": {
+        "rows": 3,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 228,
+          "rows": 3,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": false
+      },
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 10.642
+    },
+    {
+      "service": "fallback",
+      "id": "E05",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "duration_seconds": 4.859
+    },
+    {
+      "service": "fallback",
+      "id": "E06",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "duration_seconds": 4.522
+    },
+    {
+      "service": "fallback",
+      "id": "E07",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "duration_seconds": 4.071
+    },
+    {
+      "service": "fallback",
+      "id": "E08",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "duration_seconds": 4.432
+    },
+    {
+      "service": "fallback",
+      "id": "E09",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "Task goal mismatch",
+      "duration_seconds": 10.248
+    },
+    {
+      "service": "fallback",
+      "id": "E09",
+      "turn": 1,
+      "role": "business",
+      "passed": false,
+      "status": "not_run_parent_failed"
+    },
+    {
+      "service": "fallback",
+      "id": "E10",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "duration_seconds": 4.909
+    },
+    {
+      "service": "fallback",
+      "id": "E10",
+      "turn": 1,
+      "role": "business",
+      "passed": false,
+      "status": "not_run_parent_failed"
+    },
+    {
+      "service": "fallback",
+      "id": "E11",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 6.367
+    },
+    {
+      "service": "fallback",
+      "id": "E12",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 6.208
+    }
+  ],
+  "by_service": {
+    "clean": {
+      "business": {
+        "passed": 1,
+        "total": 12
+      },
+      "boundary": {
+        "passed": 2,
+        "total": 2
+      }
+    },
+    "fallback": {
+      "business": {
+        "passed": 2,
+        "total": 12
+      },
+      "boundary": {
+        "passed": 2,
+        "total": 2
+      }
+    }
+  },
+  "reported_model_calls_known": 11,
+  "responses_with_unknown_model_count": 0,
+  "reserved_model_units": 11,
+  "stopped": false,
+  "authorship": {
+    "kind": "external_unseen_declared",
+    "source": "Fresh-context deepseek-flash simulated user; only capability brief and candidate names supplied",
+    "source_sha256": "3be4d76b453b0bf88beb4d7d32c06907f116eea9d53fa2db0949bdc67e4e5b2c",
+    "reviewer": "Automated structural mapping by project developer; no independent human review",
+    "reviewed_at": "2026-10-31T14:35:14.810276+00:00",
+    "independent_acceptance": false,
+    "author_requests": 1,
+    "author_tokens": 1865,
+    "no_code_old_questions_or_failures_sent": true,
+    "note": "Raw questions are frozen before service execution. AI authorship is not human demand validation. Developer maps semantic requirements into machine contracts without changing questions."
+  },
+  "independent_acceptance": false,
+  "raw_values_published": false,
+  "model_count_scope": "HTTP-reported requests, not provider wire receipts; unknown counts consume one reserved budget unit",
+  "comparison_limit": "Deployed configurations are recorded, not assumed to differ only in model switch."
+}

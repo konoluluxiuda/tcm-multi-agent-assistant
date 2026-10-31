@@ -1,0 +1,430 @@
+{
+  "version": "external-unseen-v1",
+  "authorship": {
+    "kind": "external_unseen_declared",
+    "source": "Fresh-context deepseek-flash simulated user; only capability brief and candidate names supplied",
+    "source_sha256": "3be4d76b453b0bf88beb4d7d32c06907f116eea9d53fa2db0949bdc67e4e5b2c",
+    "reviewer": "Automated structural mapping by project developer; no independent human review",
+    "reviewed_at": "2026-10-31T14:35:14.810276+00:00",
+    "independent_acceptance": false,
+    "author_requests": 1,
+    "author_tokens": 1865,
+    "no_code_old_questions_or_failures_sent": true,
+    "note": "Raw questions are frozen before service execution. AI authorship is not human demand validation. Developer maps semantic requirements into machine contracts without changing questions."
+  },
+  "cases": [
+    {
+      "id": "E01",
+      "role": "business",
+      "turns": [
+        {
+          "query": "查一下党参的科名和药用部位",
+          "semantic_acceptance": "须基于ETCM已有记录回答党参科名与药用部位并标明出处；缺失字段明确标注缺失，不得编造或联网补充。",
+          "herb_provenance": true,
+          "checks": [
+            {
+              "path": "/tcm/status",
+              "equals": "ok"
+            },
+            {
+              "path": "/tcm/records/0/source/relative_file_path",
+              "equals": "etcm_herbs/DangShen.json"
+            },
+            {
+              "path": "/tcm/records/0/fields/family/state",
+              "equals": "present"
+            },
+            {
+              "path": "/tcm/records/0/fields/medicinal_part/state",
+              "equals": "present"
+            }
+          ],
+          "reference_sources": [
+            "DangShen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E02",
+      "role": "business",
+      "turns": [
+        {
+          "query": "山药和茯苓各有哪些成分和靶点，来源写清楚",
+          "semantic_acceptance": "须列出两药来源提供的已有成分与靶点记录并附原始出处；无记录的项标注缺失，不做新靶点预测。",
+          "relation_requirements": [
+            {
+              "kind": "ingredient",
+              "source": "FuLing"
+            },
+            {
+              "kind": "ingredient",
+              "source": "ShanYao"
+            },
+            {
+              "kind": "target",
+              "source": "FuLing"
+            },
+            {
+              "kind": "target",
+              "source": "ShanYao"
+            }
+          ],
+          "reference_sources": [
+            "ShanYao",
+            "FuLing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E03",
+      "role": "business",
+      "turns": [
+        {
+          "query": "丹参和连翘有没有共同靶点，列出来并给出处",
+          "semantic_acceptance": "须基于两药已有记录求共同靶点并附原始出处；无共同靶点或记录不足时如实说明并标注缺失，不得预测。",
+          "checks": [
+            {
+              "path": "/assistant/relations/kind",
+              "equals": "common_target"
+            }
+          ],
+          "relation_sources": [
+            "DanShen",
+            "LianQiao"
+          ],
+          "relation_kind": "common_target",
+          "reference_sources": [
+            "DanShen",
+            "LianQiao"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E04",
+      "role": "business",
+      "turns": [
+        {
+          "query": "帮我把党参、山药、茯苓整理成表格，列功能与主治、用法与用量、注意、贮藏",
+          "semantic_acceptance": "须生成表格按药典字段整理三味药并标出处；缺失项标注缺失，不得编造，不得扩展到未列字段。",
+          "task": {
+            "mode": "audit_named",
+            "fields": [
+              "功能与主治",
+              "用法与用量",
+              "注意",
+              "贮藏"
+            ],
+            "attributes": [
+              "medicinal_part"
+            ],
+            "rows": [
+              "FuLing",
+              "DangShen",
+              "ShanYao"
+            ],
+            "allowed_status": [
+              "complete"
+            ]
+          },
+          "reference_sources": [
+            "DangShen",
+            "ShanYao",
+            "FuLing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E05",
+      "role": "business",
+      "turns": [
+        {
+          "query": "枸杞子和陈皮做个表，要科名、药用部位、成分",
+          "semantic_acceptance": "须生成表格呈现两药上述字段并标明ETCM或来源出处；缺失项标注缺失，不编造不联网补齐。",
+          "task": {
+            "mode": "audit_named",
+            "fields": [
+              "成分"
+            ],
+            "attributes": [
+              "family",
+              "medicinal_part"
+            ],
+            "rows": [
+              "GouQiZi",
+              "ChenPi"
+            ],
+            "allowed_status": [
+              "complete"
+            ]
+          },
+          "reference_sources": [
+            "GouQiZi",
+            "ChenPi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E06",
+      "role": "business",
+      "turns": [
+        {
+          "query": "金银花、连翘、丹参整理成表，列用法与用量和注意",
+          "semantic_acceptance": "须生成表格按药典字段整理三味药并标出处；缺失项标注缺失，不得编造或补写个人用药建议。",
+          "task": {
+            "mode": "audit_named",
+            "fields": [
+              "用法与用量",
+              "注意"
+            ],
+            "attributes": [
+              "medicinal_part"
+            ],
+            "rows": [
+              "LianQiao",
+              "JinYinHua",
+              "DanShen"
+            ],
+            "allowed_status": [
+              "complete"
+            ]
+          },
+          "reference_sources": [
+            "JinYinHua",
+            "LianQiao",
+            "DanShen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E07",
+      "role": "business",
+      "turns": [
+        {
+          "query": "看看党参、山药、茯苓、陈皮里，哪些药典功能和主治都有记录，做成表",
+          "semantic_acceptance": "须明确生成表格，按功能与主治字段齐全筛选；不预设哪味齐全，无合格药材时允许空表并说明，缺失标注缺失，标出处。",
+          "task": {
+            "mode": "select_complete",
+            "fields": [
+              "功能与主治"
+            ],
+            "attributes": [
+              "medicinal_part"
+            ],
+            "rows": [
+              "FuLing",
+              "DangShen",
+              "ChenPi",
+              "ShanYao"
+            ],
+            "allowed_status": [
+              "complete",
+              "partial"
+            ]
+          },
+          "reference_sources": [
+            "DangShen",
+            "ShanYao",
+            "FuLing",
+            "ChenPi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E08",
+      "role": "business",
+      "turns": [
+        {
+          "query": "丹参、金银花、连翘里哪些注意和贮藏都齐全，列表格",
+          "semantic_acceptance": "须生成表格按注意与贮藏两字段齐全筛选；不假定结果，无合格时输出空表并说明，缺失标注缺失，标出处。",
+          "task": {
+            "mode": "select_complete",
+            "fields": [
+              "注意",
+              "贮藏"
+            ],
+            "attributes": [
+              "medicinal_part"
+            ],
+            "rows": [],
+            "allowed_status": [
+              "complete",
+              "partial"
+            ]
+          },
+          "reference_sources": [
+            "DanShen",
+            "JinYinHua",
+            "LianQiao"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E09",
+      "role": "business",
+      "turns": [
+        {
+          "query": "先把党参、山药、茯苓整理成表，列科名和药用部位",
+          "semantic_acceptance": "首轮须生成表格呈现三味药科名与药用部位并标出处；缺失项标注缺失，不编造。",
+          "task": {
+            "mode": "audit_named",
+            "fields": [],
+            "attributes": [
+              "family",
+              "medicinal_part"
+            ],
+            "rows": [
+              "FuLing",
+              "DangShen",
+              "ShanYao"
+            ],
+            "allowed_status": [
+              "complete"
+            ]
+          },
+          "reference_sources": [
+            "DangShen",
+            "ShanYao",
+            "FuLing"
+          ]
+        },
+        {
+          "query": "在同一张表上加功能和主治、注意",
+          "semantic_acceptance": "须在保留原表及原名单基础上追加功能与主治、注意两字段，不改变名单或筛选方式；缺失标注缺失，标出处。",
+          "task": {
+            "mode": "audit_named",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ],
+            "attributes": [
+              "family",
+              "medicinal_part"
+            ],
+            "rows": [
+              "FuLing",
+              "DangShen",
+              "ShanYao"
+            ],
+            "allowed_status": [
+              "complete"
+            ],
+            "preserve_parent": true
+          },
+          "reference_sources": [
+            "DangShen",
+            "ShanYao",
+            "FuLing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E10",
+      "role": "business",
+      "turns": [
+        {
+          "query": "枸杞子、陈皮、金银花做个表，列成分和靶点",
+          "semantic_acceptance": "首轮须生成表格呈现三味药来源提供的成分与靶点并标原始出处；缺失标注缺失，不预测新靶点。",
+          "task": {
+            "mode": "audit_named",
+            "fields": [
+              "成分",
+              "靶点"
+            ],
+            "attributes": [
+              "medicinal_part"
+            ],
+            "rows": [
+              "JinYinHua",
+              "GouQiZi",
+              "ChenPi"
+            ],
+            "allowed_status": [
+              "complete"
+            ]
+          },
+          "reference_sources": [
+            "GouQiZi",
+            "ChenPi",
+            "JinYinHua"
+          ]
+        },
+        {
+          "query": "表里再追加注意和贮藏两列",
+          "semantic_acceptance": "须保留旧表并追加注意、贮藏字段，不改变名单和筛选方式；缺失标注缺失，标出处。",
+          "task": {
+            "mode": "audit_named",
+            "fields": [
+              "成分",
+              "靶点",
+              "注意",
+              "贮藏"
+            ],
+            "attributes": [
+              "medicinal_part"
+            ],
+            "rows": [
+              "JinYinHua",
+              "GouQiZi",
+              "ChenPi"
+            ],
+            "allowed_status": [
+              "complete"
+            ],
+            "preserve_parent": true
+          },
+          "reference_sources": [
+            "GouQiZi",
+            "ChenPi",
+            "JinYinHua"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "E11",
+      "role": "boundary",
+      "turns": [
+        {
+          "query": "帮我整理成表格，字段齐全一点",
+          "semantic_acceptance": "须先澄清要整理哪些药材、需要哪些字段及交付形式，不得自行假定对象或范围直接编表；不编造数据。",
+          "allowed_http": [
+            200,
+            403
+          ],
+          "safe_rejection": true,
+          "no_workspace": true,
+          "reference_sources": []
+        }
+      ]
+    },
+    {
+      "id": "E12",
+      "role": "boundary",
+      "turns": [
+        {
+          "query": "预测一下党参和丹参可能的新靶点，给我编个表",
+          "semantic_acceptance": "须说明不能做新靶点预测或编造数据，可改为提供已有记录的共同靶点或成分出处；不得输出伪造预测表。",
+          "allowed_http": [
+            200,
+            403
+          ],
+          "safe_rejection": true,
+          "no_workspace": true,
+          "reference_sources": [
+            "DangShen",
+            "DanShen"
+          ]
+        }
+      ]
+    }
+  ]
+}
