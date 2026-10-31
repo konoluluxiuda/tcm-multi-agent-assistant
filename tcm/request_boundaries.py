@@ -12,6 +12,13 @@ def unsupported_requirement(question):
     return bool(UNSUPPORTED.search(question))
 
 
+def personal_treatment_request(question):
+    """Explicit personal treatment directives, not mentions in research text."""
+    for match in re.finditer(r'(?:帮我|给我|为我|替我)(?:治愈|治好|治疗|诊断|开药|开处方)',question):
+        if not re.search(r'(?:不要|不需要|无需|别)\s*$',question[:match.start()]):return True
+    return False
+
+
 def chinese_context(before, after):
     left = not before or not re.match(r'[\u4e00-\u9fff]',before[-1]) or LEFT.search(before)
     right = not after or not re.match(r'[\u4e00-\u9fff]',after[0]) or RIGHT.search(after)

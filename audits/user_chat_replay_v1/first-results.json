@@ -1,0 +1,404 @@
+{
+  "version": "user-chat-replay-v1",
+  "status": "failed",
+  "records": [
+    {
+      "service": "local",
+      "id": "U01",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 0.251
+    },
+    {
+      "service": "local",
+      "id": "U02",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 0.47
+    },
+    {
+      "service": "local",
+      "id": "U03",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 13,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 5.682
+    },
+    {
+      "service": "local",
+      "id": "U04",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 3,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 0.54
+    },
+    {
+      "service": "local",
+      "id": "U05",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 20,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 5.037
+    },
+    {
+      "service": "local",
+      "id": "U06",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 44,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 8.037
+    },
+    {
+      "service": "local",
+      "id": "U07",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "delivery": {
+        "rows": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 120,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": false
+      },
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 11.054
+    },
+    {
+      "service": "local",
+      "id": "U07",
+      "turn": 1,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "delivery": {
+        "rows": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 6,
+          "verified_cells": 157,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": true
+      },
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 8.254
+    },
+    {
+      "service": "local",
+      "id": "U08",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'assistant'",
+      "duration_seconds": 0.135
+    },
+    {
+      "service": "local",
+      "id": "U09",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "http": 403,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "passed",
+      "duration_seconds": 0.037
+    },
+    {
+      "service": "local",
+      "id": "U10",
+      "turn": 0,
+      "role": "boundary",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 0,
+      "status": "failed",
+      "reason": "'assistant'",
+      "duration_seconds": 0.079
+    },
+    {
+      "service": "local",
+      "id": "U11",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "http": 403,
+      "reported_model_calls": 0,
+      "status": "failed",
+      "reason": "Unexpected HTTP status",
+      "duration_seconds": 0.002
+    },
+    {
+      "service": "fallback",
+      "id": "U01",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 0.154
+    },
+    {
+      "service": "fallback",
+      "id": "U02",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 0.219
+    },
+    {
+      "service": "fallback",
+      "id": "U03",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 13,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 1.582
+    },
+    {
+      "service": "fallback",
+      "id": "U04",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 3,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 0.459
+    },
+    {
+      "service": "fallback",
+      "id": "U05",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 20,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 2.384
+    },
+    {
+      "service": "fallback",
+      "id": "U06",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 44,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 7.083
+    },
+    {
+      "service": "fallback",
+      "id": "U07",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "delivery": {
+        "rows": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 120,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": false
+      },
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 8.416
+    },
+    {
+      "service": "fallback",
+      "id": "U07",
+      "turn": 1,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "delivery": {
+        "rows": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 6,
+          "verified_cells": 157,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": true
+      },
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 8.235
+    },
+    {
+      "service": "fallback",
+      "id": "U08",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "delivery": {
+        "rows": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 136,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": false
+      },
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 9.708
+    },
+    {
+      "service": "fallback",
+      "id": "U09",
+      "turn": 0,
+      "role": "boundary",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 1,
+      "status": "failed",
+      "reason": "Unexpected HTTP status",
+      "duration_seconds": 3.222
+    },
+    {
+      "service": "fallback",
+      "id": "U10",
+      "turn": 0,
+      "role": "boundary",
+      "passed": false,
+      "http": 200,
+      "reported_model_calls": 0,
+      "status": "failed",
+      "reason": "'assistant'",
+      "duration_seconds": 0.095
+    },
+    {
+      "service": "fallback",
+      "id": "U11",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 6.855
+    }
+  ],
+  "by_service": {
+    "local": {
+      "business": {
+        "passed": 8,
+        "total": 10
+      },
+      "boundary": {
+        "passed": 1,
+        "total": 2
+      }
+    },
+    "fallback": {
+      "business": {
+        "passed": 10,
+        "total": 10
+      },
+      "boundary": {
+        "passed": 0,
+        "total": 2
+      }
+    }
+  },
+  "reported_model_calls_known": 3,
+  "responses_with_unknown_model_count": 0,
+  "reserved_model_units": 3,
+  "stopped": false,
+  "authorship": {
+    "kind": "observed_user_exposed",
+    "source": "User conversation and external-agent walkthroughs supplied by the user",
+    "independent_acceptance": false,
+    "note": "Original wording, already exposed during development; regression, not an unseen holdout."
+  },
+  "independent_acceptance": false,
+  "raw_values_published": false,
+  "model_count_scope": "HTTP-reported requests, not provider wire receipts; unknown counts consume one reserved budget unit",
+  "comparison_limit": "Deployed configurations are recorded, not assumed to differ only in model switch."
+}

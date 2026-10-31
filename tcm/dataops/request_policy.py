@@ -10,8 +10,14 @@ def followup(question):
 def matches(question):
     if not isinstance(question, str) or question.lstrip().startswith('/'):
         return False
-    return followup(question) or bool(re.search(
+    selection=bool(re.search(r'(?:挑选|挑出|选出|找出|筛出|选取|挑)\s*[0-9一二两三四五六七八九十]+(?:条|味|个)',question)
+                   and re.search(r'齐全|完整|都有',question) and re.search(r'功效|注意|贮藏|用量|字段',question))
+    return followup(question) or vague_task(question) or selection or bool(re.search(
         r'表格|资料表|对照表|核对表|资料卡|出处表|表里|[Ee]xcel|[Xx][Ll][Ss][Xx]|(?:做成|做个|生成|制作).{0,12}表', question))
+
+
+def vague_task(question):
+    return bool(re.fullmatch(r'\s*(?:请帮我|帮我|请|麻烦你)?\s*(?:整理|汇总|归纳)(?:一下|下|一些|这些|点)?(?:资料|数据|内容)[。！？?!\s]*',question))
 
 
 def requires_delivery(question):

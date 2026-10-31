@@ -1,0 +1,124 @@
+{
+  "version": "user-chat-replay-postfix-v1",
+  "suite_sha256": "013e6267c8b724c30949470b95b4bf0db8b0dc4f0b308f9d9f205670d07c71a2",
+  "evaluator_sha256": "317a63b705e88e829316eeac040d6e393888abf88e40c1a2875ab5249fe8d164",
+  "services": {
+    "local": "http://127.0.0.1:7896",
+    "fallback": "http://127.0.0.1:7912"
+  },
+  "runtimes": {
+    "local": {
+      "started_at": "2026-10-31T14:03:37.290370+00:00",
+      "source_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+      "disk_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+      "source_revision_scope": "research-application-v3",
+      "entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+      "disk_entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+      "optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+      "disk_optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+      "restart_required": false,
+      "source_check": "ok",
+      "dataops": {
+        "agent": false,
+        "driver": "disabled",
+        "external_model_enabled": false,
+        "question_compiler": "local_bounded_grammar_v1",
+        "research_selection": {
+          "enabled": true,
+          "driver": "fixed",
+          "external_model_enabled": false,
+          "execution_model_enabled": false,
+          "question_model_enabled": false,
+          "question_policy": "local_then_one_model_v1",
+          "chat_question_fallback_enabled": false,
+          "goal_input": "bounded_question_or_form",
+          "identity_approval": false
+        }
+      },
+      "rag": {
+        "enabled": true,
+        "generation_enabled": false
+      },
+      "intent_model_enabled": false,
+      "dataops_tracing_enabled": true,
+      "data_readiness_snapshot": {
+        "herbs": {
+          "status": "ready",
+          "dataset_version": "local-2026-10-10",
+          "source_record_count": 2076,
+          "count_unit": "source_record"
+        },
+        "research": {
+          "status": "ready",
+          "research_only": true,
+          "human_signoff": false,
+          "index_sha256": "ae9910c2149820930bec103b227eee04f2287f8158501dcebee3ac7f5b5558a3"
+        }
+      }
+    },
+    "fallback": {
+      "started_at": "2026-10-31T14:03:41.277479+00:00",
+      "source_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+      "disk_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+      "source_revision_scope": "research-application-v3",
+      "entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+      "disk_entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+      "optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+      "disk_optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+      "restart_required": false,
+      "source_check": "ok",
+      "dataops": {
+        "agent": true,
+        "driver": "synthetic",
+        "external_model_enabled": true,
+        "question_compiler": "local_bounded_grammar_v1",
+        "research_selection": {
+          "enabled": true,
+          "driver": "fixed",
+          "external_model_enabled": true,
+          "execution_model_enabled": false,
+          "question_model_enabled": true,
+          "question_policy": "local_then_one_model_v1",
+          "chat_question_fallback_enabled": true,
+          "goal_input": "bounded_question_or_form",
+          "identity_approval": false
+        }
+      },
+      "rag": {
+        "enabled": true,
+        "generation_enabled": true
+      },
+      "intent_model_enabled": false,
+      "dataops_tracing_enabled": true,
+      "data_readiness_snapshot": {
+        "herbs": {
+          "status": "ready",
+          "dataset_version": "local-2026-10-10",
+          "source_record_count": 2076,
+          "count_unit": "source_record"
+        },
+        "research": {
+          "status": "ready",
+          "research_only": true,
+          "human_signoff": false,
+          "index_sha256": "ae9910c2149820930bec103b227eee04f2287f8158501dcebee3ac7f5b5558a3"
+        }
+      }
+    }
+  },
+  "model_request_cap": 4,
+  "allow_model": true,
+  "max_requests_per_understanding": 1,
+  "automatic_retries": 0,
+  "authorship": {
+    "kind": "observed_user_exposed",
+    "source": "User conversation and external-agent walkthroughs supplied by the user",
+    "independent_acceptance": false,
+    "note": "Original wording, already exposed during development; regression, not an unseen holdout."
+  },
+  "independent_acceptance": false,
+  "scope": "HTTP workflow regression, original-source ETCM sample checks, artifact integrity; not a clinical or extraction-accuracy evaluation",
+  "counter_scope": "HTTP-reported requests, not provider wire receipts; unknown counts consume one reserved budget unit",
+  "comparison_limit": "Deployed configurations are recorded, not assumed to differ only in model switch.",
+  "raw_source_files_sha256": {}
+}

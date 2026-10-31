@@ -536,6 +536,10 @@ def chat(
 ):
     """Process user text query through the multi-agent system."""
     mark_chat_request(http_request, phase='routing')
+    from tcm.request_boundaries import personal_treatment_request
+    if env_bool('RESEARCH_TOOLS_ONLY') and personal_treatment_request(request.query):
+        mark_chat_request(http_request,phase='response',tool='assistant',model_calls=0)
+        raise HTTPException(403,'本服务仅供资料查询与整理，不能提供个体诊断、治疗或处方。可查询已收录资料及出处。')
     from tcm.dataops.chat import matches as matches_dataops, execute as execute_dataops
     from tcm.dataops.request_policy import needs_fallback
     from tcm.capabilities import research_runtime

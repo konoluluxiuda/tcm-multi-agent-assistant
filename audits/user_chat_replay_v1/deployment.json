@@ -1,0 +1,149 @@
+{
+  "status": "passed",
+  "services": [
+    {
+      "port": 7896,
+      "runtime": {
+        "started_at": "2026-10-31T14:03:37.290370+00:00",
+        "source_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+        "disk_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+        "source_revision_scope": "research-application-v3",
+        "entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+        "disk_entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+        "optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "disk_optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": false,
+          "driver": "disabled",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1",
+          "research_selection": {
+            "enabled": true,
+            "driver": "fixed",
+            "external_model_enabled": false,
+            "execution_model_enabled": false,
+            "question_model_enabled": false,
+            "question_policy": "local_then_one_model_v1",
+            "chat_question_fallback_enabled": false,
+            "goal_input": "bounded_question_or_form",
+            "identity_approval": false
+          }
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": false
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": true
+      },
+      "cookie_survived": true
+    },
+    {
+      "port": 7912,
+      "runtime": {
+        "started_at": "2026-10-31T14:03:41.277479+00:00",
+        "source_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+        "disk_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+        "source_revision_scope": "research-application-v3",
+        "entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+        "disk_entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+        "optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "disk_optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": true,
+          "driver": "synthetic",
+          "external_model_enabled": true,
+          "question_compiler": "local_bounded_grammar_v1",
+          "research_selection": {
+            "enabled": true,
+            "driver": "fixed",
+            "external_model_enabled": true,
+            "execution_model_enabled": false,
+            "question_model_enabled": true,
+            "question_policy": "local_then_one_model_v1",
+            "chat_question_fallback_enabled": true,
+            "goal_input": "bounded_question_or_form",
+            "identity_approval": false
+          }
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": true
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": true
+      },
+      "cookie_survived": true
+    },
+    {
+      "port": 7914,
+      "runtime": {
+        "started_at": "2026-10-31T14:03:47.411649+00:00",
+        "source_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+        "disk_revision": "5bf893dbcb37237c524f12c91ef719b7a68e077d12fb97c690ebc7e5ab55a4b6",
+        "source_revision_scope": "research-application-v3",
+        "entrypoint_revision": "71b641c40a25bea853d4a43d3a84a48dca692ad85739fd15272764ea42cf2c98",
+        "disk_entrypoint_revision": "71b641c40a25bea853d4a43d3a84a48dca692ad85739fd15272764ea42cf2c98",
+        "optional_modules_revision": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "disk_optional_modules_revision": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": false,
+          "driver": "disabled",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1",
+          "research_selection": {
+            "enabled": true,
+            "driver": "fixed",
+            "external_model_enabled": false,
+            "execution_model_enabled": false,
+            "question_model_enabled": false,
+            "question_policy": "local_then_one_model_v1",
+            "chat_question_fallback_enabled": false,
+            "goal_input": "bounded_question_or_form",
+            "identity_approval": false
+          }
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": false
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": false
+      },
+      "cookie_survived": true
+    }
+  ],
+  "same_shared_research_revision": true,
+  "image": {
+    "image_tag": "tcm-research-chat:user-chat-replay-v1",
+    "image_id": "sha256:34ccaeb479f5b1d25300061e64fdd898fcd8c5bfdca64dbcf91ec2571d26da1b",
+    "base_revision": "b724ce9c990f9ccc22ea32141eea7c46a8612df5",
+    "working_tree_dirty": true,
+    "source_tree_sha256": "4c106dc71dc3a7c04e12af197e7f5a6948e525f1343b32a4f77ec8775ced905e"
+  },
+  "deployment": {
+    "port": 7914,
+    "source_mounts_read_only": true,
+    "cookie_survived": true,
+    "old_artifacts_checked": 104,
+    "old_artifacts_unchanged": true,
+    "rollback_container": "tcm-research-r4-before-user-replay-v1",
+    "docker_hub_published": false,
+    "image_source_files_checked": 190,
+    "image_source_files_match": true
+  },
+  "container_smoke": {
+    "status": "passed",
+    "port": 7914,
+    "clinical_http": 403,
+    "unscoped_status": "clarification_needed",
+    "unscoped_model_calls": 0,
+    "runtime_current": true
+  }
+}

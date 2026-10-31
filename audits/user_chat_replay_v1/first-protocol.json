@@ -1,0 +1,128 @@
+{
+  "version": "user-chat-replay-v1",
+  "suite_sha256": "b2b0edc1415f5b79c7794905b8c52c8183f0fd52cf5211fe799b00d6dd3a98eb",
+  "evaluator_sha256": "317a63b705e88e829316eeac040d6e393888abf88e40c1a2875ab5249fe8d164",
+  "services": {
+    "local": "http://127.0.0.1:7896",
+    "fallback": "http://127.0.0.1:7912"
+  },
+  "runtimes": {
+    "local": {
+      "started_at": "2026-10-31T11:45:08.946165+00:00",
+      "source_revision": "6b4de598b0fece7d757d1d02e5bf7be34b2d146565aa7228aef4be22c40fe345",
+      "disk_revision": "6b4de598b0fece7d757d1d02e5bf7be34b2d146565aa7228aef4be22c40fe345",
+      "source_revision_scope": "research-application-v3",
+      "entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+      "disk_entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+      "optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+      "disk_optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+      "restart_required": false,
+      "source_check": "ok",
+      "dataops": {
+        "agent": false,
+        "driver": "disabled",
+        "external_model_enabled": false,
+        "question_compiler": "local_bounded_grammar_v1",
+        "research_selection": {
+          "enabled": true,
+          "driver": "fixed",
+          "external_model_enabled": false,
+          "execution_model_enabled": false,
+          "question_model_enabled": false,
+          "question_policy": "local_then_one_model_v1",
+          "chat_question_fallback_enabled": false,
+          "goal_input": "bounded_question_or_form",
+          "identity_approval": false
+        }
+      },
+      "rag": {
+        "enabled": true,
+        "generation_enabled": false
+      },
+      "intent_model_enabled": false,
+      "dataops_tracing_enabled": true,
+      "data_readiness_snapshot": {
+        "herbs": {
+          "status": "ready",
+          "dataset_version": "local-2026-10-10",
+          "source_record_count": 2076,
+          "count_unit": "source_record"
+        },
+        "research": {
+          "status": "ready",
+          "research_only": true,
+          "human_signoff": false,
+          "index_sha256": "ae9910c2149820930bec103b227eee04f2287f8158501dcebee3ac7f5b5558a3"
+        }
+      }
+    },
+    "fallback": {
+      "started_at": "2026-10-31T11:45:12.575207+00:00",
+      "source_revision": "6b4de598b0fece7d757d1d02e5bf7be34b2d146565aa7228aef4be22c40fe345",
+      "disk_revision": "6b4de598b0fece7d757d1d02e5bf7be34b2d146565aa7228aef4be22c40fe345",
+      "source_revision_scope": "research-application-v3",
+      "entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+      "disk_entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+      "optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+      "disk_optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+      "restart_required": false,
+      "source_check": "ok",
+      "dataops": {
+        "agent": true,
+        "driver": "synthetic",
+        "external_model_enabled": true,
+        "question_compiler": "local_bounded_grammar_v1",
+        "research_selection": {
+          "enabled": true,
+          "driver": "fixed",
+          "external_model_enabled": true,
+          "execution_model_enabled": false,
+          "question_model_enabled": true,
+          "question_policy": "local_then_one_model_v1",
+          "chat_question_fallback_enabled": true,
+          "goal_input": "bounded_question_or_form",
+          "identity_approval": false
+        }
+      },
+      "rag": {
+        "enabled": true,
+        "generation_enabled": true
+      },
+      "intent_model_enabled": false,
+      "dataops_tracing_enabled": true,
+      "data_readiness_snapshot": {
+        "herbs": {
+          "status": "ready",
+          "dataset_version": "local-2026-10-10",
+          "source_record_count": 2076,
+          "count_unit": "source_record"
+        },
+        "research": {
+          "status": "ready",
+          "research_only": true,
+          "human_signoff": false,
+          "index_sha256": "ae9910c2149820930bec103b227eee04f2287f8158501dcebee3ac7f5b5558a3"
+        }
+      }
+    }
+  },
+  "model_request_cap": 8,
+  "allow_model": true,
+  "max_requests_per_understanding": 1,
+  "automatic_retries": 0,
+  "authorship": {
+    "kind": "observed_user_exposed",
+    "source": "User conversation and external-agent walkthroughs supplied by the user",
+    "independent_acceptance": false,
+    "note": "Original wording, already exposed during development; regression, not an unseen holdout."
+  },
+  "independent_acceptance": false,
+  "scope": "HTTP workflow regression, original-source ETCM sample checks, artifact integrity; not a clinical or extraction-accuracy evaluation",
+  "counter_scope": "HTTP-reported requests, not provider wire receipts; unknown counts consume one reserved budget unit",
+  "comparison_limit": "Deployed configurations are recorded, not assumed to differ only in model switch.",
+  "raw_source_files_sha256": {
+    "etcm_herbs/BaiZhu.json": "b524686ce34f8e9a5895b6fbcc77404244f6858bc87494ecb10dfa9c3534b9dd",
+    "etcm_herbs/DangGui.json": "46c03d4594839102f1fa6a324f85b92769a93d86901d243a4373f41083c08f1f",
+    "etcm_herbs/ChuanXiong.json": "259b896cf8a9ebfd756ce421e0f35d3409e658391e6dca1f9388b0d70163a80d"
+  }
+}

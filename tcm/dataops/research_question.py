@@ -207,6 +207,7 @@ def local_proposal(question,catalog,*,parent=None):
     if selection and (not target_match or number(target_match.group(1)) not in range(1,6)):
         return needs(question,'请说明要从候选中挑出几条，当前支持1–5条。')
     if parent and re.search(r'只保留|改为|替换|删掉|删除',text):return needs(question,'当前连续修改支持增加字段并保留旧字段；替换要求请新建任务。')
+    if selection:text=re.sub(r'(?<!不)(?:字段)?齐全(?:的)?','',text)
     for old,new in [('需要留意的地方','注意'),('有什么作用','功效'),('存放条件','贮藏'),('存放环境','贮藏'),
                     ('存放方式','贮藏'),('保存方式','贮藏'),('出处也留好','保留出处'),('上一份','当前结果'),
                     ('上一版','当前结果'),('原来的内容别删','保留旧字段'),('再添一栏','增加'),('补上','增加'),

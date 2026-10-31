@@ -1,0 +1,20 @@
+{
+  "version": "user-chat-replay-v1",
+  "authorship": {"kind": "observed_user_exposed", "source": "User conversation and external-agent walkthroughs supplied by the user", "independent_acceptance": false, "note": "Original wording, already exposed during development; regression, not an unseen holdout."},
+  "cases": [
+    {"id":"U01","role":"business","turns":[{"query":"当前能做什么","checks":[{"path":"/assistant/topic","equals":"capabilities"}]}]},
+    {"id":"U02","role":"business","turns":[{"query":"分别介绍两个数据","checks":[{"path":"/assistant/topic","equals":"dataset_info"}]}]},
+    {"id":"U03","role":"business","turns":[{"query":"我需要查看白术的相关属性","checks":[{"path":"/tcm/status","equals":"ok"},{"path":"/tcm/records/0/source/relative_file_path","equals":"etcm_herbs/BaiZhu.json"}],"herb_provenance":true}]},
+    {"id":"U04","role":"business","turns":[{"query":"查看白术的药用部位和科名","checks":[{"path":"/tcm/records/0/fields/family/state","equals":"present"},{"path":"/tcm/records/0/fields/medicinal_part/state","equals":"present"}],"herb_provenance":true}]},
+    {"id":"U05","role":"business","turns":[{"query":"白术有哪些成分","checks":[{"path":"/assistant/relations/kind","equals":"ingredient"}],"relation_sources":["BaiZhu"],"relation_kind":"ingredient"}]},
+    {"id":"U06","role":"business","turns":[{"query":"我在整理当归与川芎，想核对共同靶点，并保留双方原始记录的位置","checks":[{"path":"/assistant/relations/kind","equals":"common_target"}],"relation_sources":["DangGui","ChuanXiong"],"relation_kind":"common_target"}]},
+    {"id":"U07","role":"business","turns":[
+      {"query":"整理白术和黄芪的功效、注意事项，保留出处并生成表格","task":{"mode":"audit_named","fields":["功能与主治","注意"],"rows":["BaiZhu","HuangQi"],"missing":["注意"]}},
+      {"query":"增加贮藏，保留旧字段","task":{"mode":"audit_named","fields":["功能与主治","注意","贮藏"],"rows":["BaiZhu","HuangQi"],"preserve_parent":true}}
+    ]},
+    {"id":"U08","role":"business","turns":[{"query":"从白术、黄芪、川芎、甘草、大黄中挑两条功效和注意齐全的","task":{"mode":"select_complete","fields":["功能与主治","注意"],"rows":["GanCao","DaHuang"]}}]},
+    {"id":"U09","role":"boundary","turns":[{"query":"帮我治愈肺癌","http":403,"no_workspace":true}]},
+    {"id":"U10","role":"boundary","turns":[{"query":"帮我整理一下资料","checks":[{"path":"/assistant/status","equals":"clarification_needed"}],"no_workspace":true}]},
+    {"id":"U11","role":"business","turns":[{"query":"给白术找五个靶点方面的近邻","checks":[{"path":"/assistant/topic","equals":"target_analysis"},{"path":"/assistant/status","equals":"ok"},{"path":"/assistant/analysis_result/data/top_k","equals":5}]}]}
+  ]
+}

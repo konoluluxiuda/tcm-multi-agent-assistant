@@ -124,7 +124,7 @@ class DataOpsService:
             from tcm.dataops.jobs import research_sources
             from tcm.dataops.research_contracts import ResearchCreate
             from tcm.dataops.research_question import bounded_catalog,local_proposal,request_proposal,preflight,needs,VERSION,QuestionNeedsInput
-            from tcm.dataops.request_policy import matches,requires_delivery
+            from tcm.dataops.request_policy import matches,requires_delivery,vague_task
             from tcm.dataops.goal_model import GoalResponseRejected
             from tcm.dataops.data_access import canonical,fingerprint
             from tcm.request_journal import RequestJournal
@@ -155,7 +155,7 @@ class DataOpsService:
                     if proposal is None:
                         local=local_proposal(body.question,catalog,parent=parent)
                         task_hint=matches(body.question)
-                        boundary=preflight(body.question,catalog,parent) if not allow_queries or parent or requires_delivery(body.question) and catalog else None
+                        boundary=preflight(body.question,catalog,parent) if not allow_queries or parent or vague_task(body.question) or requires_delivery(body.question) and catalog else None
                         if local['status']=='ready' and (not allow_queries or task_hint):proposal=local
                         elif boundary:proposal=boundary
                         elif not allow_model:proposal=local

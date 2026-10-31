@@ -125,6 +125,32 @@ class EntryTests(unittest.TestCase):
             time.sleep(.02)
         self.fail('task did not finish')
 
+    def test_personal_treatment_and_unscoped_tasks_never_dispatch_model(self):
+        from tcm.request_boundaries import personal_treatment_request
+        self.assertFalse(personal_treatment_request('不要帮我治疗，只查药典资料'))
+        self.assertFalse(personal_treatment_request('帮我查询药典的功能与主治'))
+        with patch('tcm.dataops.research_model.configured_model',side_effect=AssertionError('unnecessary model')):
+            for enabled in ('0','1'):
+                with patch.dict('os.environ',{'ENABLE_DATAOPS_RESEARCH_GOAL_MODEL':enabled}):
+                    r=self.client.post('/chat',json={'query':'帮我治愈肺癌','request_key':'treatment-'+enabled})
+                    self.assertEqual(r.status_code,403);self.assertIn('资料',r.json()['detail'])
+                    for i,q in enumerate(('帮我整理一下资料','请汇总这些数据')):
+                        r=self.client.post('/chat',json={'query':q,'request_key':'unscoped-'+enabled+str(i)})
+                        self.assertEqual(r.status_code,200,r.text)
+                        self.assertEqual(r.json()['assistant']['status'],'clarification_needed')
+                        self.assertEqual(r.json()['model_calls'],0)
+            self.assertEqual(self.client.get('/api/dataops/workspaces').json()['items'],[])
+
+    def test_completeness_selection_without_file_keyword_is_local_goal(self):
+        with patch('tcm.dataops.research_model.configured_model',side_effect=AssertionError('unnecessary model')):
+            r=self.client.post('/chat',json={'query':'从Alpha和Beta中挑一条功效齐全的','request_key':'selection-no-table'})
+            self.assertEqual(r.status_code,200,r.text)
+            self.assertEqual(r.json()['model_calls'],0)
+            doc=self.wait(r.json()['assistant']['workspace_id'])
+            self.assertEqual(doc['goal']['research']['mode'],'select_complete')
+            self.assertEqual(doc['goal']['document_fields'],['功能与主治'])
+            self.assertEqual(doc['goal']['research']['target_count'],1)
+
     def test_local_complete_and_host_controls_never_construct_model(self):
         self.client.get('/dataops/research')
         self.assertIn('request-understanding-note',self.client.get('/').text)

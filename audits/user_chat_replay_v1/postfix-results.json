@@ -1,0 +1,140 @@
+{
+  "version": "user-chat-replay-postfix-v1",
+  "status": "passed",
+  "records": [
+    {
+      "service": "local",
+      "id": "U08",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "delivery": {
+        "rows": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 136,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": false
+      },
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 9.408
+    },
+    {
+      "service": "local",
+      "id": "U09",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "http": 403,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "passed",
+      "duration_seconds": 0.028
+    },
+    {
+      "service": "local",
+      "id": "U10",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 4.481
+    },
+    {
+      "service": "fallback",
+      "id": "U08",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "delivery": {
+        "rows": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 136,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": false
+      },
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 9.238
+    },
+    {
+      "service": "fallback",
+      "id": "U09",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "http": 403,
+      "reported_model_calls": null,
+      "raw_source_witnesses_checked": 0,
+      "status": "passed",
+      "duration_seconds": 0.027
+    },
+    {
+      "service": "fallback",
+      "id": "U10",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "replay_added_model_calls": 0,
+      "status": "passed",
+      "duration_seconds": 4.173
+    }
+  ],
+  "by_service": {
+    "local": {
+      "business": {
+        "passed": 1,
+        "total": 1
+      },
+      "boundary": {
+        "passed": 2,
+        "total": 2
+      }
+    },
+    "fallback": {
+      "business": {
+        "passed": 1,
+        "total": 1
+      },
+      "boundary": {
+        "passed": 2,
+        "total": 2
+      }
+    }
+  },
+  "reported_model_calls_known": 0,
+  "responses_with_unknown_model_count": 1,
+  "reserved_model_units": 1,
+  "stopped": false,
+  "authorship": {
+    "kind": "observed_user_exposed",
+    "source": "User conversation and external-agent walkthroughs supplied by the user",
+    "independent_acceptance": false,
+    "note": "Original wording, already exposed during development; regression, not an unseen holdout."
+  },
+  "independent_acceptance": false,
+  "raw_values_published": false,
+  "model_count_scope": "HTTP-reported requests, not provider wire receipts; unknown counts consume one reserved budget unit",
+  "comparison_limit": "Deployed configurations are recorded, not assumed to differ only in model switch."
+}
