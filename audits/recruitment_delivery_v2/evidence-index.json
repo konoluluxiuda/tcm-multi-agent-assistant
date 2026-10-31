@@ -1,0 +1,41 @@
+{
+  "saved_evidence_recomputed": false,
+  "new_provider_requests": 0,
+  "sources": [
+    {
+      "path": "audits/data_rag_r1/README.md",
+      "sha256": "5cfd8ae3160ae65537ea9efd4057bdfa6a2e1fb4a7bee8fd25d54b57ab087d30",
+      "scope": "Data release and raw-source reference limits"
+    },
+    {
+      "path": "audits/data_rag_r2/metrics.json",
+      "sha256": "f19f486149e0312f6d763b06df832993983c007b6220822a18e7d397bf4b9c86",
+      "scope": "First retrieval comparison; no vector advantage"
+    },
+    {
+      "path": "audits/data_rag_r3/live_metrics.json",
+      "sha256": "b279e56c543b9122f0cb8c331a47caa24a461225dd46be59ac178a25644be011",
+      "scope": "Restricted quoted generation, not open medical synthesis"
+    },
+    {
+      "path": "audits/data_rag_r4/live_summary.json",
+      "sha256": "2b1fcf3e7a194dd1dbdf044fc96ca2dee9a44ccd73324bc83a662f6be009a13e",
+      "scope": "Original R4 failure, unchanged"
+    },
+    {
+      "path": "audits/research_question_v1/model-results.json",
+      "sha256": "aa102e6884a018aef5ae20f671cfd539893e0e1d6ddc2874d8904d600d21c561",
+      "scope": "Original eight authored Goal cases, unchanged"
+    },
+    {
+      "path": "audits/research_combined_v1/model-summary.json",
+      "sha256": "8cc84dbd55b876c792f723312e5a6121b7826e702eb6b52aa6e2a238e3a1252f",
+      "scope": "Shared Goal plus fixed/native execution costs"
+    },
+    {
+      "path": "audits/research_combined_v1/model-results.json",
+      "sha256": "5eb67ac1837fd9b2488bdfccb2eb1b5d694301ade52028723f2d2fcc75a35d8c",
+      "scope": "New limited task deliveries, not universal accuracy"
+    }
+  ]
+}

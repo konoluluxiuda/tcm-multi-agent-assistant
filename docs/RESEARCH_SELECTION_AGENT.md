@@ -13,7 +13,7 @@
 
 [离线回放验收](../audits/research_harness_v2/README.md)：原8个动作中的4个有用动作仍被允许，4个重复动作会被拦截；15模块127项受影响回归通过。SDK模拟还检查作用域不符后换候选、工具消息配对、缺失新版交付和等待恢复。**这不是新模型成绩，A原始0/2不变；这一离线轮次没有验证新版模型；后续新组合实测见下节。** 随后已接通下述有界问句入口；原A成绩不变。
 
-当前7912/7914部署的新资料任务采用本地确定性执行（fixed）。7912可勾选一次模型理解，默认不勾选；7914不含模型配置。最新本地镜像为 `tcm-research-chat:r4-combined-v1`，旧 `r4-harness-v2` 和 `r4-final` 保留作历史版本。容器更新复用了原状态目录，已有会话与文件继续可读取；没有推送远程。
+当前7912/7914部署的新资料任务采用本地确定性执行（fixed）。7912可勾选一次模型理解，默认不勾选；7914不含模型配置。最新本地镜像为 `tcm-research-chat:recruitment-v1`（运行源码与提交2cac0d4一致），旧 `r4-harness-v2` 和 `r4-final` 保留作历史版本。容器更新复用了原状态目录，已有会话与文件继续可读取；没有推送远程。
 
 ## 最新组合实测与执行选择
 
@@ -122,13 +122,13 @@ flowchart LR
   --port 7913 --state var/r4_preview --research-selection fixed --rag
 ```
 
-最新本地镜像 `tcm-research-chat:r4-combined-v1`，**没有发布Docker Hub**。代码白名单构建，不包含资料、环境文件、权重或会话；原资料只读挂载，状态独立写入，按主机UID运行以读取原有0600资料注册文件，无需放宽源文件权限。主机7914映射容器8000。
+最新本地镜像 `tcm-research-chat:recruitment-v1`，**没有发布Docker Hub**。代码白名单构建，不包含资料、环境文件、权重或会话；原资料只读挂载，状态独立写入，按主机UID运行以读取原有0600资料注册文件，无需放宽源文件权限。主机7914映射容器8000。
 
 ```bash
 .venv/bin/python -m scripts.build_research_image \
-  --tag tcm-research-chat:r4-combined-v1 --receipt var/r4_build_new.json
+  --tag tcm-research-chat:recruitment-v1 --receipt var/r4_build_new.json
 .venv/bin/python -m scripts.run_research_selection_container \
-  --image tcm-research-chat:r4-combined-v1 --name tcm-research-r4-new \
+  --image tcm-research-chat:recruitment-v1 --name tcm-research-r4-new \
   --port 7915 --state var/r4_container_new
 ```
 
@@ -143,6 +143,8 @@ flowchart LR
 准备命令不调用模型。真实实验必须另行明确具体题目/目的地/预算；没有自动调用下一轮或无限重试。失败与原始回复只保存在本地私有运行目录，公共验收文档只记录必要统计。
 
 ## 三分钟演示与仍未完成项
+
+当前演示与一条命令排练已更新，见[求职演示](PROJECT_DEMO.md)及[面试证据](INTERVIEW_EVIDENCE.md)。排练使用真实资料和fixed策略，模型成绩展示保存的独立回执，不临时重跑刷分。
 
 先展示五候选两字段的筛选与带来源表格，再补贮藏生成v2、对照v1不变，最后展示两次真实A失败及Langfuse轨迹。可讲清楚版本化数据、精确读取与检索分工、受限tool calling、持久化/幂等/租约、有界上下文、可验证交付，以及为什么此处保留程序基线。
 

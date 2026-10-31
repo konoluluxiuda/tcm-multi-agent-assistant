@@ -1,0 +1,51 @@
+{
+  "container": "tcm-research-r4",
+  "id": "c8819d54609cfafac1aa71ee1da605b7f5f014a944bf3398b33c97c0475d4c99",
+  "port": 7914,
+  "image": "tcm-research-chat:recruitment-v1",
+  "driver": "fixed",
+  "external_model_enabled": false,
+  "release_content_id": "ade3f558c489da80d7491207140837e6d3c91f79d64ab4ad691692a3d194cee1",
+  "source_mounts_read_only": true,
+  "state": "/home/zry/workspace/Multi-Agent-Medical-Assistant/var/rag_r4_v1/container-final-state",
+  "url": "http://127.0.0.1:7914/dataops/research",
+  "image_id": "sha256:a2cd7197f1a2ab35bd8614bca454ed6ebcbf75296137c8fc1a7233034fcd4b2d",
+  "source_tree_sha256": "76c52ec88a40a9c0119caaf29d8d733fbb030a43aa1df1be4ed3d46c2dfef8ad",
+  "runtime": {
+    "started_at": "2026-10-31T08:48:29.617318+00:00",
+    "source_revision": "d78d599fb63c7fd553f491f5ba1c6fde008a406564e871eeb074b517d3e70aab",
+    "disk_revision": "d78d599fb63c7fd553f491f5ba1c6fde008a406564e871eeb074b517d3e70aab",
+    "restart_required": false,
+    "source_check": "ok",
+    "dataops": {
+      "agent": false,
+      "driver": "disabled",
+      "external_model_enabled": false,
+      "question_compiler": "local_bounded_grammar_v1",
+      "research_selection": {
+        "enabled": true,
+        "driver": "fixed",
+        "external_model_enabled": false,
+        "execution_model_enabled": false,
+        "question_model_enabled": false,
+        "goal_input": "bounded_question_or_form",
+        "identity_approval": false
+      }
+    },
+    "rag": {
+      "enabled": true,
+      "generation_enabled": false
+    },
+    "intent_model_enabled": false,
+    "dataops_tracing_enabled": false
+  },
+  "old_cookie_and_artifact_preserved": true,
+  "old_artifact_sha256": "799ba0f774fd988967c4c623ae6a2f38fd6b8c3b6504bb247932c18b9ff2cb3a",
+  "old_workspace_id": "85ffeb45fdce4a0bb8952ffa4f8db5ff",
+  "read_only_rootfs": true,
+  "user": "1000:1000",
+  "rollback_container": "tcm-research-r4-before-recruitment-v1",
+  "runtime_files_match_git_head": true,
+  "runtime_git_head": "2cac0d46885aa14526a4ff07bbd3faca8eca5a1d",
+  "remote_published": false
+}

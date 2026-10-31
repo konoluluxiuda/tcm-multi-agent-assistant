@@ -1,0 +1,95 @@
+[
+  {
+    "port": 7896,
+    "status": {
+      "started_at": "2026-10-31T08:44:51.908201+00:00",
+      "source_revision": "81119df45d468e99c67de4bf713141a6359a3dbfd305e33873b269dc8ddb9c3d",
+      "disk_revision": "81119df45d468e99c67de4bf713141a6359a3dbfd305e33873b269dc8ddb9c3d",
+      "restart_required": false,
+      "source_check": "ok",
+      "dataops": {
+        "agent": false,
+        "driver": "disabled",
+        "external_model_enabled": false,
+        "question_compiler": "local_bounded_grammar_v1",
+        "research_selection": {
+          "enabled": true,
+          "driver": "fixed",
+          "external_model_enabled": false,
+          "execution_model_enabled": false,
+          "question_model_enabled": false,
+          "goal_input": "bounded_question_or_form",
+          "identity_approval": false
+        }
+      },
+      "rag": {
+        "enabled": true,
+        "generation_enabled": false
+      },
+      "intent_model_enabled": false,
+      "dataops_tracing_enabled": true
+    }
+  },
+  {
+    "port": 7912,
+    "status": {
+      "started_at": "2026-10-31T08:44:51.909764+00:00",
+      "source_revision": "81119df45d468e99c67de4bf713141a6359a3dbfd305e33873b269dc8ddb9c3d",
+      "disk_revision": "81119df45d468e99c67de4bf713141a6359a3dbfd305e33873b269dc8ddb9c3d",
+      "restart_required": false,
+      "source_check": "ok",
+      "dataops": {
+        "agent": true,
+        "driver": "synthetic",
+        "external_model_enabled": true,
+        "question_compiler": "local_bounded_grammar_v1",
+        "research_selection": {
+          "enabled": true,
+          "driver": "fixed",
+          "external_model_enabled": true,
+          "execution_model_enabled": false,
+          "question_model_enabled": true,
+          "goal_input": "bounded_question_or_form",
+          "identity_approval": false
+        }
+      },
+      "rag": {
+        "enabled": true,
+        "generation_enabled": true
+      },
+      "intent_model_enabled": false,
+      "dataops_tracing_enabled": true
+    }
+  },
+  {
+    "port": 7914,
+    "status": {
+      "started_at": "2026-10-31T08:48:29.617318+00:00",
+      "source_revision": "d78d599fb63c7fd553f491f5ba1c6fde008a406564e871eeb074b517d3e70aab",
+      "disk_revision": "d78d599fb63c7fd553f491f5ba1c6fde008a406564e871eeb074b517d3e70aab",
+      "restart_required": false,
+      "source_check": "ok",
+      "dataops": {
+        "agent": false,
+        "driver": "disabled",
+        "external_model_enabled": false,
+        "question_compiler": "local_bounded_grammar_v1",
+        "research_selection": {
+          "enabled": true,
+          "driver": "fixed",
+          "external_model_enabled": false,
+          "execution_model_enabled": false,
+          "question_model_enabled": false,
+          "goal_input": "bounded_question_or_form",
+          "identity_approval": false
+        }
+      },
+      "rag": {
+        "enabled": true,
+        "generation_enabled": false
+      },
+      "intent_model_enabled": false,
+      "dataops_tracing_enabled": false
+    }
+  }
+]

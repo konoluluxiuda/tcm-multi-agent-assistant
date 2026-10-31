@@ -49,7 +49,7 @@ def start(image,release,state,port,name):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--image',default='tcm-research-chat:r4-combined-v1');p.add_argument('--release',type=Path,default=Path('var/data_releases/r1_20261030'))
-    p.add_argument('--state',type=Path,default=Path('var/research_combined_v1/container-state'));p.add_argument('--port',type=int,default=7914)
+    p.add_argument('--image',default='tcm-research-chat:recruitment-v1');p.add_argument('--release',type=Path,default=Path('var/data_releases/r1_20261030'))
+    p.add_argument('--state',type=Path,default=Path('var/recruitment_delivery_v2/container-state'));p.add_argument('--port',type=int,default=7914)
     p.add_argument('--name',default='tcm-research-r4');args=p.parse_args()
     print(json.dumps(start(args.image,args.release,args.state,args.port,args.name),ensure_ascii=False))

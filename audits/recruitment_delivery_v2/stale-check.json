@@ -1,0 +1,7 @@
+{
+  "status": "expected_rejection",
+  "original_status": "failed",
+  "reason": "stale_server_restart_required",
+  "task_stages_started": 0,
+  "model_count_claimed": false
+}

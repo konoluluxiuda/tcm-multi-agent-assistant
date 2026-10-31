@@ -1,6 +1,6 @@
-# DataOps 3–5分钟演示
+# DataOps历史D2演示与当前入口
 
-最新有界资料任务请先看[组合实测与执行选择](RESEARCH_SELECTION_AGENT.md)及[本轮验收](../audits/research_combined_v1/README.md)：常规fixed执行，7912可选一次模型Goal理解；两项新业务的多轮A也完成交付，但未显示交付增益。下文保留旧D2演示命令与其当时状态。
+当前三分钟演示及一条命令排练见[求职演示](PROJECT_DEMO.md)。最新有界资料任务请先看[组合实测与执行选择](RESEARCH_SELECTION_AGENT.md)及[本轮验收](../audits/research_combined_v1/README.md)：常规fixed执行，7912可选一次模型Goal理解；两项新业务的多轮A也完成交付，但未显示交付增益。下文保留旧D2演示命令与其当时状态。
 
 原D2演示为真实本地资料＋明确标注的模型替身；不将它称为DeepSeek真实推理演示。详细口径见[D3记录](DATAOPS_D3_EVALUATION.md)。另有三题合成真实模型V2：F/P各3/3、A为0/3，不能作为动态Agent成功演示。
 
@@ -52,7 +52,7 @@
 
 ## Docker引擎恢复后的本地命令
 
-当前环境引擎不可用，以下命令尚未执行。构建不包含原始资料、.env或本地运行记录：
+D3当时引擎不可用，以下为历史命令，未用于最新镜像验收。当前引擎和本地镜像已可用，以[当前运行说明](RESEARCH_SELECTION_AGENT.md)及新验收回执为准。构建不包含原始资料、.env或本地运行记录：
 
 ```bash
 docker build -f Dockerfile.research \

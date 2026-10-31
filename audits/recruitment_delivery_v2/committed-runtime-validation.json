@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "modules": 178,
+  "total": 1480,
+  "skipped": 0,
+  "network_attempts": 0,
+  "syntax_files": 580,
+  "original_full_run_status": "failed",
+  "original_failure_modules": [
+    "test_request_observability.py"
+  ],
+  "repair": "Missing optional research message now falls back to existing response instead of causing HTTP 500.",
+  "affected_modules_retested": [
+    "test_answer_text.py",
+    "test_assistant_router.py",
+    "test_compare_rag.py",
+    "test_mineru_chat.py",
+    "test_request_coverage.py",
+    "test_request_observability.py"
+  ],
+  "original_logs_preserved": true,
+  "scope": "validation for committed runtime 2cac0d4; new rehearsal tests reported separately"
+}

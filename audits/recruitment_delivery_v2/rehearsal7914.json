@@ -1,0 +1,106 @@
+{
+  "status": "passed",
+  "mode": "dataops_fixed_api",
+  "phase": "complete",
+  "stages": [
+    {
+      "stage": "v1",
+      "workspace_id": "b67bb9f6d538451b9253d938b2b97dc4",
+      "revision": 1,
+      "rows": 2,
+      "missing_cells": 2,
+      "artifact_sha256": "194afbf129eca52d6bc6ca490655173768f749ab37c70aa582be6b061757f91a",
+      "artifact": "v1.xlsx",
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 120,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "stage": "v2",
+      "workspace_id": "3c9df6b642d84c68abb4dee8a5fc4bb1",
+      "revision": 2,
+      "rows": 2,
+      "missing_cells": 2,
+      "artifact_sha256": "38c9433f680492571a1c6d5888fb59ab8bbe876c8cc49418bc44e3073cbb8ff4",
+      "artifact": "v2.xlsx",
+      "verification": {
+        "status": "passed",
+        "sheets": 6,
+        "verified_cells": 157,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "stage": "selection",
+      "workspace_id": "43c00c8672c344f8b76aee25b6f155b2",
+      "revision": 1,
+      "rows": 2,
+      "missing_cells": 0,
+      "artifact_sha256": "c2321c74e7760c9b1246e602187282f8c3e864eedc70130e4978cc0d43ef8d53",
+      "artifact": "selection.xlsx",
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 136,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "stage": "ambiguous",
+      "status": "needs_input",
+      "task_created": false
+    },
+    {
+      "stage": "unsupported",
+      "status": "needs_input",
+      "task_created": false
+    }
+  ],
+  "external_model_calls": 0,
+  "model_calls_verified": true,
+  "source_quality": "candidate extraction, pending human signoff",
+  "business_accuracy": "not_measured",
+  "new_live_benchmark": false,
+  "client_git_commit": "2cac0d46885aa14526a4ff07bbd3faca8eca5a1d",
+  "client_runtime_source_tree": "50d86fb4b516f45b1d8f062bf298066ecc2123de690588fdea3c328e8f61eb6b",
+  "client_revision_does_not_identify_server_revision": true,
+  "client_script_sha256": "aacbcc04638bd84e7755c346ad6181dd9ed08150bb9a9e8a1c3f880fe1d1f276",
+  "server_runtime": {
+    "started_at": "2026-10-31T08:48:29.617318+00:00",
+    "source_revision": "d78d599fb63c7fd553f491f5ba1c6fde008a406564e871eeb074b517d3e70aab",
+    "disk_revision": "d78d599fb63c7fd553f491f5ba1c6fde008a406564e871eeb074b517d3e70aab",
+    "restart_required": false,
+    "source_check": "ok",
+    "dataops": {
+      "agent": false,
+      "driver": "disabled",
+      "external_model_enabled": false,
+      "question_compiler": "local_bounded_grammar_v1",
+      "research_selection": {
+        "enabled": true,
+        "driver": "fixed",
+        "external_model_enabled": false,
+        "execution_model_enabled": false,
+        "question_model_enabled": false,
+        "goal_input": "bounded_question_or_form",
+        "identity_approval": false
+      }
+    },
+    "rag": {
+      "enabled": true,
+      "generation_enabled": false
+    },
+    "intent_model_enabled": false,
+    "dataops_tracing_enabled": false
+  },
+  "old_file_unchanged": true,
+  "old_cells_unchanged": true,
+  "clarification_creates_no_task": true,
+  "client_sources_unchanged": true
+}
