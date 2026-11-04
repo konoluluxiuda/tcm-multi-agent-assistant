@@ -1,8 +1,8 @@
 # 文档导航
 
-**当前入口（2026-11-04）：** [统一大纲与技术细节](TCM_PROJECT_ROADMAP.md)、[收尾验收与真实结果](../audits/requirements_completion_v1/README.md)。此前[暂停交接](NEXT_SESSION_HANDOFF_20261103.md)与[操作文档](PROJECT_COMPLETION_HANDOFF.md)作为历史背景。
+**当前入口（2026-11-04）：** [统一大纲与技术细节](TCM_PROJECT_ROADMAP.md)、[工具反馈理解与离线验收](../audits/requirements_feedback_v1/README.md)、[上一阶段真实结果](../audits/requirements_completion_v1/README.md)。此前[暂停交接](NEXT_SESSION_HANDOFF_20261103.md)作为历史背景。
 
-**最新状态：** C阶段全仓1804项通过；7933双来源专项通过；live_v2共118次请求、119组合有终态、1组合保留中断。新业务30题R/G/V为2/8/6题通过，默认策略未切换。历史注释清理后另建7934镜像验收，公开材料本地提交，私有资料与原始回执不提交，不推送。以下保留历史阶段入口。
+**最新状态：** 可选W策略已接有界只读工具反馈，最多3次模型请求；全仓1835项/211模块通过，合成开发样例5/5。真实回归8场景9轮、G/W最多36次已冻结待确认，尚未调用模型；默认策略与7934部署不变。以下保留历史阶段入口。
 
 **最新入口（2026-11-01）：** 7921已接统一理解V2，普通问句先理解、参数与资料需求分别校验，最多2次请求，fixed执行；7920本地。离线与保存提案验证已完成，真实新策略收益待验收。见[实现与回滚](../audits/understanding_v2/README.md)、[使用说明](NEW_USER_GUIDE.md)及[统一大纲](TCM_PROJECT_ROADMAP.md)。以下保留各阶段历史口径。
 

@@ -1,0 +1,233 @@
+[
+  {
+    "id": "D001",
+    "split": "dev",
+    "category": "single_field",
+    "entrypoint": "workbench",
+    "turns": [
+      {
+        "id": "t1",
+        "question": "Alpha的药用部位"
+      }
+    ],
+    "expected": {
+      "task_class": "supported",
+      "objects": [
+        "Alpha"
+      ],
+      "requirements": [
+        {
+          "object_ref": "o1",
+          "namespace": "etcm",
+          "name": "medicinal_part"
+        }
+      ],
+      "source_assertions": [
+        {
+          "object_ref": "o1",
+          "namespace": "etcm",
+          "name": "medicinal_part",
+          "value_contains": "Leaf",
+          "source_document": "etcm_herbs/Alpha.json"
+        }
+      ],
+      "delivery": "answer",
+      "allowed_terminal_states": [
+        "success"
+      ]
+    }
+  },
+  {
+    "id": "D002",
+    "split": "dev",
+    "category": "cross_source",
+    "entrypoint": "workbench",
+    "turns": [
+      {
+        "id": "t1",
+        "question": "Alpha的药用部位和功效"
+      }
+    ],
+    "expected": {
+      "task_class": "supported",
+      "objects": [
+        "Alpha"
+      ],
+      "requirements": [
+        {
+          "object_ref": "o1",
+          "namespace": "etcm",
+          "name": "medicinal_part"
+        },
+        {
+          "object_ref": "o1",
+          "namespace": "pharmacopoeia",
+          "name": "功能与主治"
+        }
+      ],
+      "source_assertions": [
+        {
+          "object_ref": "o1",
+          "namespace": "etcm",
+          "name": "medicinal_part",
+          "value_contains": "Leaf",
+          "source_document": "etcm_herbs/Alpha.json"
+        },
+        {
+          "object_ref": "o1",
+          "namespace": "pharmacopoeia",
+          "name": "功能与主治",
+          "value_contains": "测试原文0",
+          "source_document": "high",
+          "page": 1
+        }
+      ],
+      "delivery": "answer",
+      "allowed_terminal_states": [
+        "success"
+      ]
+    }
+  },
+  {
+    "id": "D003",
+    "split": "dev",
+    "category": "table",
+    "entrypoint": "workbench",
+    "turns": [
+      {
+        "id": "t1",
+        "question": "整理Alpha和Beta的药用部位和功效，生成表格"
+      },
+      {
+        "id": "t2",
+        "question": "增加注意，保留旧字段"
+      }
+    ],
+    "expected": {
+      "task_class": "supported",
+      "objects": [
+        "Alpha",
+        "Beta"
+      ],
+      "requirements": [
+        {
+          "object_ref": "o1",
+          "namespace": "pharmacopoeia",
+          "name": "功能与主治"
+        },
+        {
+          "object_ref": "o1",
+          "namespace": "pharmacopoeia",
+          "name": "注意"
+        },
+        {
+          "object_ref": "o2",
+          "namespace": "pharmacopoeia",
+          "name": "功能与主治"
+        },
+        {
+          "object_ref": "o2",
+          "namespace": "pharmacopoeia",
+          "name": "注意"
+        }
+      ],
+      "source_assertions": [
+        {
+          "object_ref": "o1",
+          "namespace": "pharmacopoeia",
+          "name": "功能与主治",
+          "value_contains": "测试原文0",
+          "source_document": "high",
+          "page": 1
+        },
+        {
+          "object_ref": "o2",
+          "namespace": "pharmacopoeia",
+          "name": "功能与主治",
+          "value_contains": "测试原文1",
+          "source_document": "high",
+          "page": 2
+        }
+      ],
+      "delivery": "table",
+      "allowed_terminal_states": [
+        "complete"
+      ],
+      "table": {
+        "row_policy": "keep_all",
+        "parent_fields": [
+          "功能与主治"
+        ]
+      },
+      "missing_assertions": [
+        {
+          "object_ref": "o1",
+          "namespace": "pharmacopoeia",
+          "name": "注意"
+        },
+        {
+          "object_ref": "o2",
+          "namespace": "pharmacopoeia",
+          "name": "注意"
+        }
+      ]
+    }
+  },
+  {
+    "id": "D004",
+    "split": "dev",
+    "category": "boundary",
+    "entrypoint": "chat",
+    "turns": [
+      {
+        "id": "t1",
+        "question": "帮我治愈肺癌"
+      }
+    ],
+    "expected": {
+      "task_class": "boundary",
+      "delivery": "answer",
+      "allowed_terminal_states": [
+        "unsupported"
+      ]
+    }
+  },
+  {
+    "id": "D005",
+    "split": "dev",
+    "category": "single_field",
+    "entrypoint": "chat",
+    "turns": [
+      {
+        "id": "t1",
+        "question": "Alpha的药用部位"
+      }
+    ],
+    "expected": {
+      "task_class": "supported",
+      "objects": [
+        "Alpha"
+      ],
+      "requirements": [
+        {
+          "object_ref": "o1",
+          "namespace": "etcm",
+          "name": "medicinal_part"
+        }
+      ],
+      "source_assertions": [
+        {
+          "object_ref": "o1",
+          "namespace": "etcm",
+          "name": "medicinal_part",
+          "value_contains": "Leaf",
+          "source_document": "etcm_herbs/Alpha.json"
+        }
+      ],
+      "delivery": "answer",
+      "allowed_terminal_states": [
+        "success"
+      ]
+    }
+  }
+]

@@ -37,8 +37,8 @@ def main():
                         help='Enable bounded candidate selection at /dataops/research; native permits up to 10 model requests per task')
     parser.add_argument('--research-goal-model',action='store_true',
                         help='Enable question understanding for chat/workbench; page can opt out; requires --research-selection')
-    parser.add_argument('--understanding-policy',choices=('local_then_one_model_v1','unified_v2','requirements_v3'),
-                        default='local_then_one_model_v1',help='unified_v2 uses model understanding plus at most one correction or independent task review (2 requests total); requirements_v3 uses the versioned requirement contract')
+    parser.add_argument('--understanding-policy',choices=('local_then_one_model_v1','unified_v2','requirements_v3','requirements_feedback_v1'),
+                        default='local_then_one_model_v1',help='unified_v2 uses model understanding plus at most one correction or independent task review (2 requests total); requirements_v3 uses the versioned requirement contract; requirements_feedback_v1 checks tools before one optional repair (3 requests maximum)')
     parser.add_argument('--langfuse-env', type=Path, default=ROOT/'var/langfuse_local/app.env',
                         help='Private tracing configuration; only tracing keys are loaded')
     args = parser.parse_args()
@@ -207,12 +207,12 @@ def main():
     print(f'资料工作台：http://127.0.0.1:{args.port}/dataops', flush=True)
     if args.rag:print(f'引用资料页：http://127.0.0.1:{args.port}/rag',flush=True)
     if args.research_selection:print(f'候选核对任务：http://127.0.0.1:{args.port}/dataops/research（{args.research_selection}）',flush=True)
-    if args.research_goal_model:print('问句理解：'+('统一模型理解，最多2次请求（首轮加一次纠正或独立复核）' if args.understanding_policy in ('unified_v2','requirements_v3') else '本地优先，最多1次模型兜底')+'；聊天与工作台共用，工作台可取消。任务执行开关独立。',flush=True)
+    if args.research_goal_model:print('问句理解：'+('工具反馈理解，最多3次请求（提取、必要修正、复核）' if args.understanding_policy=='requirements_feedback_v1' else '统一模型理解，最多2次请求（首轮加一次纠正或独立复核）' if args.understanding_policy in ('unified_v2','requirements_v3') else '本地优先，最多1次模型兜底')+'；聊天与工作台共用，工作台可取消。任务执行开关独立。',flush=True)
     model_modes=[]
     if args.with_intent_model:model_modes.append('未识别问句可调用意图模型一次')
     if args.rag_model:model_modes.append('引用回答可按需调用模型一次')
     if args.research_selection=='native':model_modes.append('候选任务每任务最多10次模型请求')
-    if args.research_goal_model:model_modes.append(f"问句理解每请求编号最多{2 if args.understanding_policy in ('unified_v2','requirements_v3') else 1}次，执行开关独立")
+    if args.research_goal_model:model_modes.append(f"问句理解每请求编号最多{3 if args.understanding_policy=='requirements_feedback_v1' else 2 if args.understanding_policy in ('unified_v2','requirements_v3') else 1}次，执行开关独立")
     print(('；'.join(model_modes) if model_modes else '本地资料模式；外部模型关闭。')+' 联网工具关闭。'+
           ('DataOps Langfuse追踪已启用。' if args.with_langfuse else '追踪关闭。')+
           'Ctrl+C停止，同一状态目录可恢复记录。',flush=True)

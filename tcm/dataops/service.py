@@ -136,7 +136,7 @@ class DataOpsService:
             from tcm.dataops.research_question import bounded_catalog,local_proposal,request_proposal,preflight,needs,VERSION,QuestionNeedsInput
             from tcm.dataops.request_policy import matches,requires_delivery,vague_task
             from tcm.dataops.goal_model import GoalResponseRejected
-            from tcm.dataops.data_access import canonical,fingerprint
+            from tcm.dataops.data_access import canonical,fingerprint,SourceChanged
             from tcm.request_journal import RequestJournal
             runtime=research_runtime()
             understanding_policy=runtime['question_policy']
@@ -166,6 +166,7 @@ class DataOpsService:
                     'requirements_planner':fingerprint(Path(__file__).with_name('requirements_planner.py')),
                     'requirements_understanding':fingerprint(Path(__file__).with_name('requirements_understanding.py')),
                     'requirements_pipeline':fingerprint(Path(__file__).with_name('requirements_pipeline.py')),
+                    'requirements_feedback':fingerprint(Path(__file__).with_name('requirements_feedback.py')) if understanding_policy=='requirements_feedback_v1' else None,
                     'capability_matrix':fingerprint(Path(__file__).with_name('capability_matrix.py')),
                     'parent_artifact':parent.get('artifact') if parent else None,
                     'model':os.getenv('RAG_MODEL') if allow_model else None,
@@ -181,11 +182,16 @@ class DataOpsService:
                     except QuestionNeedsInput as exc:
                         diagnostic.record('name_resolution','needs_input',code='unverified_name_variant')
                         proposal=needs(body.question,str(exc));catalog={}
-                    if proposal is None and understanding_policy=='requirements_v3':
+                    if proposal is None and understanding_policy=='requirements_feedback_v1':
+                        from tcm.request_boundaries import unsupported_requirement,personal_treatment_request
+                        if unsupported_requirement(body.question) or personal_treatment_request(body.question):
+                            proposal=needs(body.question,'当前仅支持已有资料查询与整理，请明确资料字段。',
+                                           compiler=understanding_policy,calls=0,code='unsupported_requirement')
+                    if proposal is None and understanding_policy in ('requirements_v3','requirements_feedback_v1'):
                         if not allow_model:
                             proposal=needs(body.question,
-                                'requirements_v3 需要一次模型理解；本部署未启用模型或已显式选择本地解析，请使用表单明确对象与字段。',
-                                compiler='requirements_v3',calls=0,code='requirements_unresolved')
+                                '需求契约策略需要模型理解；本部署未启用模型或已显式选择本地解析，请使用表单明确对象与字段。',
+                                compiler=understanding_policy,calls=0,code='requirements_unresolved')
                         else:
                             if parent and isinstance(parent.get('goal'),dict):
                                 _names=sources.name_catalog()
@@ -194,9 +200,22 @@ class DataOpsService:
                                         catalog[_name]=_names[_name]
                             from tcm.dataops.requirements_pipeline import run_requirements_v3
                             from tcm.dataops.research_model import configured_model
-                            model=configured_model(max_requests=2)
+                            feedback_enabled=understanding_policy=='requirements_feedback_v1'
+                            from tcm.dataops.requirements_feedback import SourceProbeFailed
+                            model=configured_model(max_requests=3 if feedback_enabled else 2)
                             try:
-                                pipeline=run_requirements_v3(model,body.question,catalog,parent=parent,authorized=True)
+                                if feedback_enabled:
+                                    from tcm.dataops.requirements_feedback import run_requirements_feedback
+                                    pipeline=run_requirements_feedback(model,body.question,catalog,parent=parent,
+                                                                       sources=sources,authorized=True)
+                                else:
+                                    pipeline=run_requirements_v3(model,body.question,catalog,parent=parent,authorized=True)
+                            except SourceProbeFailed:
+                                diagnostic.record('requirements_pipeline','failed',code='source_probe_failed')
+                                raise HTTPException(503,'本地资料预检失败，本请求未执行且未自动重试。') from None
+                            except SourceChanged:
+                                diagnostic.record('requirements_pipeline','rejected',code='source_unavailable')
+                                raise HTTPException(409,'资料版本已变化，本请求未执行，请使用新的请求编号。') from None
                             except Exception:
                                 diagnostic.record('requirements_pipeline','unknown',code='model_dispatch_unknown')
                                 raise HTTPException(503,'目标理解状态未知，本请求未自动重试。') from None
@@ -205,7 +224,7 @@ class DataOpsService:
                             diagnostic.record('requirements_pipeline','returned',pipeline_status=pipeline['status'],
                                               external_model_calls=pipeline.get('external_model_calls',0))
                             if pipeline['status']=='ready' and 'goal' in pipeline:
-                                proposal={'status':'ready','goal':pipeline['goal'],'compiler':'requirements_v3',
+                                proposal={'status':'ready','goal':pipeline['goal'],'compiler':understanding_policy,
                                           'external_model_calls':pipeline['external_model_calls'],
                                           'usage':pipeline.get('usage',{}),
                                           'requirements':pipeline['requirements'].model_dump()}
@@ -213,16 +232,18 @@ class DataOpsService:
                                 _routes=pipeline['query_routes']
                                 proposal={'status':'query','route':_routes[0],'routes':_routes,
                                           'source_revision':sources.revision,
-                                          'compiler':'requirements_v3',
+                                          'compiler':understanding_policy,
                                           'external_model_calls':pipeline['external_model_calls'],
                                           'usage':pipeline.get('usage',{}),
                                           'requirements':pipeline['requirements'].model_dump()}
                             else:
                                 code=pipeline.get('failure',{}).get('code',pipeline['status'])
                                 message=pipeline.get('failure',{}).get('message') or '；'.join(pipeline.get('errors') or ['需求未完整确定'])
-                                proposal=needs(body.question,message,compiler='requirements_v3',
+                                proposal=needs(body.question,message,compiler=understanding_policy,
                                                calls=pipeline.get('external_model_calls',0),code=code)
                                 proposal['usage']=pipeline.get('usage',{})
+                            proposal['understanding_attempts']=pipeline.get('understanding_attempts',[])
+                            proposal['tool_feedback']=pipeline.get('tool_feedback',[])
                     local=None
                     if proposal is None:
                         local=local_proposal(body.question,catalog,parent=parent)

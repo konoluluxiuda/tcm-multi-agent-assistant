@@ -479,7 +479,7 @@
                                 {% if evidence_assistant_synthetic %}<p class="workspace-note">AI模式当前仅使用合成资料，不读取或发送药典片段。测试示例：整理虚构示例草的功效与注意事项。</p>{% endif %}
                                 {% endif %}
                                 {% if intent_planner_enabled %}<p class="workspace-note" id="model-intent-note">自然问法识别已开启：仅未识别的当前问句发送模型，不发送资料或聊天历史。</p>{% endif %}
-                                {% if question_fallback_enabled %}<p class="workspace-note" id="request-understanding-note">{% if question_understanding_policy == "unified_v2" %}统一理解已启用：普通问句先由模型理解；需要时再纠正参数或独立复核任务，总计最多2次请求。{% else %}补充理解已启用：本地未完整识别时最多调用一次模型。{% endif %}发送当前问句、名称候选和任务结构，不发送资料正文或聊天历史。资料任务页可选择仅本地解析。</p>{% endif %}
+                                {% if question_fallback_enabled %}<p class="workspace-note" id="request-understanding-note">{% if question_understanding_policy == "requirements_feedback_v1" %}工具反馈理解已启用：先检查资料与工具，需要时修正一次并复核，最多3次请求；只发送字段可用状态，不发送资料正文。{% elif question_understanding_policy == "unified_v2" %}统一理解已启用：普通问句先由模型理解；需要时再纠正参数或独立复核任务，总计最多2次请求。{% else %}补充理解已启用：本地未完整识别时最多调用一次模型。{% endif %}发送当前问句、名称候选和任务结构，不发送资料正文或聊天历史。资料任务页可选择仅本地解析。</p>{% endif %}
                                 <textarea id="message-input" class="form-control message-input" rows="1" placeholder="{% if natural_routing_enabled %}例如：有哪些功效分类？黄芪有什么作用？{% else %}药材：/herb BaiBu；药典：/research 甘草的功效{% endif %}"></textarea>
                             </div>
                             

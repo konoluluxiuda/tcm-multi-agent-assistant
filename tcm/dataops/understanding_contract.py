@@ -65,6 +65,6 @@ def differences(first, second):
 def policy():
     import os
     value = os.getenv('DATAOPS_UNDERSTANDING_POLICY', 'local_then_one_model_v1')
-    if value not in ('local_then_one_model_v1', 'unified_v2', 'requirements_v3'):
+    if value not in ('local_then_one_model_v1', 'unified_v2', 'requirements_v3', 'requirements_feedback_v1'):
         raise ValueError('Unsupported DATAOPS_UNDERSTANDING_POLICY')
     return value

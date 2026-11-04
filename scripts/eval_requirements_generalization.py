@@ -12,6 +12,7 @@ from tcm.evaluation.ledger import Ledger
 ROOT=Path(__file__).resolve().parents[1]
 SUITE_DIR=ROOT/'eval/requirements_generalization_v1'
 POLICIES=('R','G','V')
+POLICY_LIMITS={'R':0,'G':1,'V':2,'W':3}
 
 
 def _save(path,value):
@@ -34,9 +35,12 @@ def _code_hashes():
     return hashes
 
 
-def _budget(scenarios):
+def _budget(scenarios, policies=POLICIES):
+    if not policies or len(set(policies))!=len(policies) or set(policies)-POLICY_LIMITS.keys():
+        raise ValueError('Choose unique supported evaluation policies')
     n=sum(len(s.turns) for s in scenarios)
-    return {'R':0,'G':n,'V':2*n,'total':3*n,'turns':n,'scenarios':len(scenarios)}
+    limits={p:POLICY_LIMITS[p]*n for p in policies}
+    return {**limits,'total':sum(limits.values()),'turns':n,'scenarios':len(scenarios)}
 
 
 def _data_hashes(release):
@@ -75,8 +79,9 @@ def author_provenance(directory,scenarios):
             'reference_review':json.loads((directory/'reference_review.json').read_text())}
 
 
-def prepare(out,suite_path=None,*,release=None,synthetic=False,author_dir=None):
+def prepare(out,suite_path=None,*,release=None,synthetic=False,author_dir=None,policies=POLICIES):
     out=Path(out)
+    _budget([],policies)
     if out.exists():raise ValueError('run directory already exists')
     scenarios=_read_suite(suite_path or SUITE_DIR/'questions.private.jsonl')
     if not synthetic and release is None:raise ValueError('A real release or explicit synthetic mode is required')
@@ -90,12 +95,15 @@ def prepare(out,suite_path=None,*,release=None,synthetic=False,author_dir=None):
     data=_data_hashes(release)
     _save(out/'data.private.json',data)
     protocol={'version':'requirements-generalization-v2','mode':'synthetic' if synthetic else 'real',
-        'release':str(Path(release).resolve()) if release else None,'policies':list(POLICIES),'budget':_budget(scenarios),
+        'release':str(Path(release).resolve()) if release else None,'policies':list(policies),'budget':_budget(scenarios,policies),
         'endpoint':'https://api.deepseek.com','model':'deepseek-flash','thinking':'disabled','temperature':0,
         'max_output_tokens':1200,'max_request_bytes':65536,'timeout_seconds':30,'retries':0,
         'trace_export':False,'stop':'unknown dispatch or provider HTTP error stops subsequent combinations',
         'inputs':'current question, static tools/prompts, bounded candidate names, parent fields and correction feedback; no corpus/PDF/history',
         'independent_heldout':bool(provenance),'reference_status':'programmatic source consistency; botanical identity not human approved' if provenance else 'author supplied; must be independently checked before heldout claims'}
+    if 'W' in policies:
+        protocol['inputs']+='; W additionally sends bounded availability states and mechanical preflight feedback, never source values'
+        protocol['feedback_limits']={'model_calls_per_turn':3,'repairs_per_turn':1,'probe_objects':2,'probe_fields_per_object':4,'probe_rounds_at_most':2}
     _save(out/'protocol.json',protocol)
     manifest={'files':{n:digest(out/n) for n in ('questions.private.json','data.private.json','protocol.json')},'code':_code_hashes(),'runtime':_runtime_versions()}
     if provenance:manifest['files']['author_provenance.private.json']=digest(out/'author_provenance.private.json')
@@ -113,7 +121,7 @@ def validate(out):
     protocol=json.loads((out/'protocol.json').read_text())
     if _data_hashes(protocol['release'])!=json.loads((out/'data.private.json').read_text()):raise ValueError('Frozen data changed')
     scenarios=_read_suite(out/'questions.private.json')
-    if _budget(scenarios)!=protocol['budget']:raise ValueError('Budget mismatch')
+    if _budget(scenarios,protocol['policies'])!=protocol['budget']:raise ValueError('Budget mismatch')
     return protocol,scenarios
 
 
@@ -146,7 +154,7 @@ def _execute(out,authorize=False,*,resume=False,worker=None,synthetic_only=False
     ledger=Ledger(out/'ledger.sqlite3',protocol['budget'])
     if ledger.results() and not resume:raise ValueError('Execution already started; explicit resume only skips started combinations')
     for s in scenarios:
-        for policy in POLICIES:
+        for policy in protocol['policies']:
             if ledger.stopped():break
             if not ledger.claim(s.id,policy):continue
             try:r=(worker or _run_worker)(out,s,policy)
@@ -183,11 +191,11 @@ def score_run(out):
         r=CaseResult.model_validate(raw);key=(r.scenario_id,r.policy)
         if key in observed:raise ValueError('Duplicate combination')
         observed[key]=r
-    expected={(s.id,p) for s in scenarios for p in POLICIES}
+    expected={(s.id,p) for s in scenarios for p in protocol['policies']}
     if set(observed)-expected:raise ValueError('Unknown combination')
     graded=[];by={}
     for s in scenarios:
-        for p in POLICIES:
+        for p in protocol['policies']:
             r=observed.get((s.id,p),CaseResult(scenario_id=s.id,policy=p,status='not_run'))
             # Results only reference artifacts in their own case folder.
             folder=(out/'cases'/f'{s.id}_{p}').resolve()
@@ -201,7 +209,7 @@ def score_run(out):
     requests=ledger.dispatches()
     import math
     efficiency={}
-    for policy in POLICIES:
+    for policy in protocol['policies']:
         timings=sorted(sum(s.duration_seconds for s in r.steps) for r in observed.values() if r.policy==policy and r.steps)
         receipts=[x for x in requests if x['policy']==policy]
         efficiency[policy]={'dispatches':len(receipts),'unknown_usage':sum(x['usage'] is None for x in receipts),
@@ -226,10 +234,11 @@ def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('phase',choices=('prepare','dry-run','execute','score'));p.add_argument('--out',type=Path,required=True)
     p.add_argument('--suite',type=Path);p.add_argument('--release',type=Path);p.add_argument('--synthetic',action='store_true')
+    p.add_argument('--policies',nargs='+',choices=tuple(POLICY_LIMITS),default=POLICIES,help='R local, G one-call fallback, V blind review, W bounded tool feedback; prepare only')
     p.add_argument('--author-dir',type=Path,help='Original independent questions, freeze and source review')
     p.add_argument('--authorize-execute',help='SHA256 of the reviewed frozen manifest');p.add_argument('--resume',action='store_true')
     a=p.parse_args(argv)
-    if a.phase=='prepare':r=prepare(a.out,a.suite,release=a.release,synthetic=a.synthetic,author_dir=a.author_dir)
+    if a.phase=='prepare':r=prepare(a.out,a.suite,release=a.release,synthetic=a.synthetic,author_dir=a.author_dir,policies=a.policies)
     elif a.phase=='dry-run':r=dry_run(a.out,resume=a.resume)
     elif a.phase=='execute':r=execute(a.out,authorize=a.authorize_execute,resume=a.resume)
     else:r=score_run(a.out)

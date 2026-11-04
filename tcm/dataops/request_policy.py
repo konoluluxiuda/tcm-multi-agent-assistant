@@ -28,7 +28,7 @@ def needs_fallback(question, selected):
     if not isinstance(question, str) or question.lstrip().startswith('/'):
         return False
     from tcm.dataops.understanding_contract import policy
-    if policy()=='unified_v2':
+    if policy() in ('unified_v2','requirements_feedback_v1'):
         # Only exact controls and host-bound selections bypass understanding.
         # A plausible regex route alone is not evidence of complete understanding.
         if question.strip().rstrip('。？！?!') in ('你能做什么','当前能做什么','数据概览','介绍两个数据库'):

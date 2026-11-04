@@ -1,0 +1,52 @@
+{
+  "status": "prepared_not_authorized_not_executed",
+  "manifest_sha256": "64907979d098bad5f3884d06fb738aa4ca89b389eb893f783ce775d542d75884",
+  "protocol": {
+    "version": "requirements-generalization-v2",
+    "mode": "real",
+    "release": "/home/zry/workspace/Multi-Agent-Medical-Assistant/var/data_releases/r1_names_20261101",
+    "policies": [
+      "G",
+      "W"
+    ],
+    "budget": {
+      "G": 9,
+      "W": 27,
+      "total": 36,
+      "turns": 9,
+      "scenarios": 8
+    },
+    "endpoint": "https://api.deepseek.com",
+    "model": "deepseek-flash",
+    "thinking": "disabled",
+    "temperature": 0,
+    "max_output_tokens": 1200,
+    "max_request_bytes": 65536,
+    "timeout_seconds": 30,
+    "retries": 0,
+    "trace_export": false,
+    "stop": "unknown dispatch or provider HTTP error stops subsequent combinations",
+    "inputs": "current question, static tools/prompts, bounded candidate names, parent fields and correction feedback; no corpus/PDF/history; W additionally sends bounded availability states and mechanical preflight feedback, never source values",
+    "independent_heldout": false,
+    "reference_status": "author supplied; must be independently checked before heldout claims",
+    "feedback_limits": {
+      "model_calls_per_turn": 3,
+      "repairs_per_turn": 1,
+      "probe_objects": 2,
+      "probe_fields_per_object": 4,
+      "probe_rounds_at_most": 2
+    }
+  },
+  "scenario_ids": [
+    "HV2-01",
+    "HV2-07",
+    "HV2-13",
+    "HV2-20",
+    "HV2-29",
+    "HV2-32",
+    "HV2-35",
+    "HV2-36"
+  ],
+  "provenance": "Previously observed live_v2 scenarios; split changed to dev; questions and reference expectations unchanged. Not independent heldout.",
+  "previous_manifest_sha256": "f39416ab281b54fa944afe1067a08b36a9f782e5149fe68f60e64e47be887b57"
+}

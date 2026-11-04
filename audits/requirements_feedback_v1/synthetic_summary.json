@@ -1,0 +1,301 @@
+{
+  "version": "requirements-generalization-v2",
+  "mode": "synthetic",
+  "by_policy": {
+    "G": {
+      "supported": {
+        "completed": 2,
+        "total": 4
+      },
+      "boundary": {
+        "completed": 1,
+        "total": 1
+      },
+      "not_run": 0,
+      "clarification": 0
+    },
+    "W": {
+      "supported": {
+        "completed": 4,
+        "total": 4
+      },
+      "boundary": {
+        "completed": 1,
+        "total": 1
+      },
+      "not_run": 0,
+      "clarification": 0
+    }
+  },
+  "scores": [
+    {
+      "scenario_id": "D001",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed"
+    },
+    {
+      "scenario_id": "D001",
+      "policy": "W",
+      "task_class": "supported",
+      "completed": true,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [],
+      "run_status": "completed"
+    },
+    {
+      "scenario_id": "D002",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed"
+    },
+    {
+      "scenario_id": "D002",
+      "policy": "W",
+      "task_class": "supported",
+      "completed": true,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [],
+      "run_status": "completed"
+    },
+    {
+      "scenario_id": "D003",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": true,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "table": true,
+        "forbidden_claims": true
+      },
+      "failures": [],
+      "run_status": "completed"
+    },
+    {
+      "scenario_id": "D003",
+      "policy": "W",
+      "task_class": "supported",
+      "completed": true,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "table": true,
+        "forbidden_claims": true
+      },
+      "failures": [],
+      "run_status": "completed"
+    },
+    {
+      "scenario_id": "D004",
+      "policy": "G",
+      "task_class": "boundary",
+      "completed": true,
+      "terminal_state": "unsupported",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "forbidden_claims": true
+      },
+      "failures": [],
+      "run_status": "completed"
+    },
+    {
+      "scenario_id": "D004",
+      "policy": "W",
+      "task_class": "boundary",
+      "completed": true,
+      "terminal_state": "unsupported",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "forbidden_claims": true
+      },
+      "failures": [],
+      "run_status": "completed"
+    },
+    {
+      "scenario_id": "D005",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": true,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [],
+      "run_status": "completed"
+    },
+    {
+      "scenario_id": "D005",
+      "policy": "W",
+      "task_class": "supported",
+      "completed": true,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [],
+      "run_status": "completed"
+    }
+  ],
+  "efficiency": {
+    "G": {
+      "dispatches": 0,
+      "unknown_usage": 0,
+      "known_tokens": 0,
+      "timed_cases": 5,
+      "p50_seconds": 2.669654332996288,
+      "p95_seconds": 5.856715592992259,
+      "actual_policies": [
+        "local_or_unknown",
+        "local_then_one_model_v1",
+        "structured_named_field_query"
+      ]
+    },
+    "W": {
+      "dispatches": 10,
+      "unknown_usage": 0,
+      "known_tokens": 120,
+      "timed_cases": 5,
+      "p50_seconds": 1.5112805630051298,
+      "p95_seconds": 6.142425999008992,
+      "actual_policies": [
+        "local_or_unknown",
+        "requirements_feedback_v1",
+        "unified_request_fallback"
+      ]
+    }
+  },
+  "dispatched": 10,
+  "real_model_requests": 0,
+  "unknown_outcomes": 0,
+  "usage_unknown": 0,
+  "known_total_tokens": 120,
+  "provider_stopped": false,
+  "independent_generalization_proven": false
+}

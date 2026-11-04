@@ -209,7 +209,7 @@ def run(out,scenario,policy):
     ledger=Ledger(out/'ledger.sqlite3',protocol['budget']);current={};steps=[];parent=None;parent_path=None;models=[]
     base={'ENABLE_DATAOPS':'1','ENABLE_DATAOPS_RESEARCH':'1','DATAOPS_RESEARCH_DRIVER':'fixed','ENABLE_DATAOPS_AGENT':'0','DATAOPS_DRIVER':'disabled',
         'ENABLE_DATAOPS_RESEARCH_GOAL_MODEL':'0' if policy=='R' else '1',
-        'DATAOPS_UNDERSTANDING_POLICY':'requirements_v3' if policy=='V' else 'local_then_one_model_v1',
+        'DATAOPS_UNDERSTANDING_POLICY':'requirements_feedback_v1' if policy=='W' else 'requirements_v3' if policy=='V' else 'local_then_one_model_v1',
         'DATAOPS_ROOT':str(folder/'state/dataops'),'CHAT_MEMORY_DB':str(folder/'state/memory.sqlite3'),
         'RESEARCH_JOB_DB':str(folder/'state/jobs.sqlite3'),'RESEARCH_JOB_DSN':'','RESEARCH_CHECKPOINT_DSN':'',
         'ENABLE_NATURAL_ROUTING':'1','RESEARCH_TOOLS_ONLY':'1','ENABLE_INTENT_PLANNER':'0','ENABLE_PHARMACOPOEIA_RESEARCH':'1',
@@ -289,7 +289,7 @@ def run(out,scenario,policy):
 
 def main():
     from scripts.eval_requirements_generalization import _read_suite,_save
-    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--case',required=True);p.add_argument('--policy',choices=('R','G','V'),required=True)
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--case',required=True);p.add_argument('--policy',choices=('R','G','V','W'),required=True)
     a=p.parse_args();s=next(s for s in _read_suite(a.out/'questions.private.json') if s.id==a.case)
     r=run(a.out,s,a.policy);_save(a.out/'cases'/f'{s.id}_{a.policy}'/'result.private.json',r.model_dump())
 

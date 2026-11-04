@@ -72,7 +72,7 @@ class GoalResponseRejected(Exception):
         self.diagnostics = diagnostics
 
 
-def _payload(question, catalog, parent, feedback):
+def _payload(question, catalog, parent, feedback, context=None):
     from tcm.dataops.capability_matrix import ETCM_ATTRIBUTES, ETCM_QUERY_ONLY, PHARMACOPOEIA_TABLE_FIELDS, PHARMACOPOEIA_QUERY_ONLY
     payload = {'question': question, 'available_fields': {
         'etcm': sorted(ETCM_ATTRIBUTES | ETCM_QUERY_ONLY),
@@ -86,6 +86,8 @@ def _payload(question, catalog, parent, feedback):
         }
     if feedback:
         payload['validation_feedback'] = feedback
+    if context is not None:
+        payload['tool_observations'] = context
     return json.dumps(payload, ensure_ascii=False)
 
 
@@ -110,18 +112,18 @@ def correction_fields(exc):
     return result
 
 
-def _once(model, question, catalog, *, parent=None, authorized=False, phase='initial', feedback=None):
+def _once(model, question, catalog, *, parent=None, authorized=False, phase='initial', feedback=None, context=None, system_suffix=''):
     if not authorized:
         raise PermissionError('Requirements model is opt-in')
     if model.max_retries != 0:
         raise ValueError('Unbounded model retries')
-    system = REQUIREMENTS_SYSTEM
+    system = REQUIREMENTS_SYSTEM + system_suffix
     if phase == 'semantic_review':
         system += '\n这是独立需求复核。只从用户原句重新提取对象、逐对象字段、行策略、数量和交付形式；没有提供其他提案，不猜测它。无法确定 keep_all 还是 filter_complete 时 needs_input。'
     if feedback:
         system += '\n上次返回未通过宿主校验，仅允许本次纠正；参考 validation_feedback 中的错误码和字段路径，重新返回完整契约，不能删除用户要求。'
     messages = [{'role': 'system', 'content': system},
-                {'role': 'user', 'content': _payload(question, catalog, parent, feedback)}]
+                {'role': 'user', 'content': _payload(question, catalog, parent, feedback, context)}]
     tools = [submit_requirements_v2_tool()]
     prompt_hash = hashlib.sha256(system.encode()).hexdigest()
     tools_hash = hashlib.sha256(repr(tools).encode()).hexdigest()

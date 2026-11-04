@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-04",
+  "status": "offline_passed_live_pending",
+  "policy": "requirements_feedback_v1",
+  "default_policy": "local_then_one_model_v1",
+  "offline": {
+    "status": "passed",
+    "tests": 1835,
+    "modules": 211,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "synthetic": {
+    "scenarios": 5,
+    "turns": 6,
+    "G_passed": 3,
+    "W_passed": 5,
+    "real_model_requests": 0,
+    "simulated_dispatches": 10,
+    "independent_generalization_proven": false
+  },
+  "deployment": "Source only; existing 7934 image does not include this policy",
+  "live": "Separate frozen 36-request maximum proposal; no execution or reuse of previous remaining budget",
+  "excluded_attempts": [
+    {
+      "path": "var/requirements_feedback_v1/synthetic",
+      "reason": "Frozen implementation changed during development; preserved, excluded from final acceptance"
+    }
+  ]
+}

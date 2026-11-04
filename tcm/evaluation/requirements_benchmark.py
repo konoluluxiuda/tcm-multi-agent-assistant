@@ -138,7 +138,7 @@ class ResultStep(Contract):
 
 class CaseResult(Contract):
     scenario_id: str
-    policy: Literal['R', 'G', 'V']
+    policy: Literal['R', 'G', 'V', 'W']
     steps: list[ResultStep] = Field(default_factory=list)
     status: Literal['completed', 'failed', 'not_run', 'unknown'] = 'completed'
     error: str | None = None

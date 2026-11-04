@@ -50,7 +50,7 @@ class Ledger:
             total=con.execute('SELECT count(*) FROM dispatches').fetchone()[0]
             used=con.execute('SELECT count(*) FROM dispatches WHERE policy=?',(policy,)).fetchone()[0]
             local=con.execute('SELECT count(*) FROM dispatches WHERE scenario=? AND policy=? AND turn=?',(scenario,policy,turn)).fetchone()[0]
-            if total>=self.budget['total'] or used>=self.budget[policy] or local>={'R':0,'G':1,'V':2}[policy]:raise RuntimeError('Dispatch budget exhausted')
+            if total>=self.budget['total'] or used>=self.budget[policy] or local>={'R':0,'G':1,'V':2,'W':3}[policy]:raise RuntimeError('Dispatch budget exhausted')
             return con.execute('INSERT INTO dispatches(scenario,policy,turn,status,created) VALUES(?,?,?,?,?)',(scenario,policy,turn,'unknown',time.time())).lastrowid
 
     def received(self,identifier,http,usage):

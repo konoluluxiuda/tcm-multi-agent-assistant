@@ -34,7 +34,7 @@ def research_runtime():
             'execution_model_enabled':execution_model,
             'question_model_enabled':question_model,
             'question_policy':policy(),
-            'question_request_limit':2 if policy() in ('unified_v2', 'requirements_v3') else 1,
+            'question_request_limit':3 if policy()=='requirements_feedback_v1' else 2 if policy() in ('unified_v2', 'requirements_v3') else 1,
             'semantic_regex_guards':env_bool('SEMANTIC_REGEX_GUARDS',True),
             'chat_question_fallback_enabled':question_model,
             'goal_input': 'bounded_question_or_form', 'identity_approval': False}
