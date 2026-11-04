@@ -136,6 +136,27 @@ class MemoryBackupTests(unittest.TestCase):
         with sqlite3.connect(self.source) as db: db.execute("UPDATE conversations SET payload='{}'")
         with self.assertRaisesRegex(BackupError,'invalid_conversation_payload'): self.backup()
 
+    def test_delivery_commit_marker_survives_backup_restore(self):
+        from langchain_core.messages import HumanMessage, AIMessage
+        snapshot = self.store.load(self.cookie)
+        self.store.save(self.cookie, [HumanMessage(content='fixture'), AIMessage(content='saved')],
+                        {'kind':'agent_contexts_v1','herb':None}, revision=snapshot.revision,
+                        turn_key='answer:fixture-delivery')
+        self.backup(); restored = self.restored()
+        before = restored.load(self.cookie)
+        saved = restored.save(self.cookie, [], None, revision=before.revision,
+                              turn_key='answer:fixture-delivery')
+        self.assertFalse(saved)
+        self.assertEqual(restored.load(self.cookie).revision, before.revision)
+        self.assertEqual(len(restored.load(self.cookie).messages), 2)
+
+    def test_old_database_without_delivery_table_still_restores(self):
+        with sqlite3.connect(self.source) as db:
+            db.execute('DROP TABLE completed_deliveries')
+        self.backup()
+        restored = self.restored()
+        self.assertTrue(restored.valid_cookie(self.cookie))
+
     def test_private_permissions_and_symlink_refusal(self):
         self.backup(); self.restored()
         self.assertEqual(self.bundle.stat().st_mode & 0o777,0o700)

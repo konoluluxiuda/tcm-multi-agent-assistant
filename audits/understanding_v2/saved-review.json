@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "case": "N06",
+      "status": "passed",
+      "reason": null,
+      "origin": "saved_initial_model_arguments_plus_manually_constructed_independent_review_fixture",
+      "source_diagnostic_sha256": "13f0bd9f4677c308a2939472fd25b7382d9e0a2ccde9d1df887bf63672786bad",
+      "substitute_sdk_invocations": 2,
+      "external_model_requests": 0,
+      "http_status": 200,
+      "delivery": {
+        "rows": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 128,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": false
+      }
+    }
+  ],
+  "external_model_requests": 0,
+  "blocked_network_attempts": 0,
+  "claim": "Exposed N06 first response replay plus manually specified review fixture, actual local sources; neither fresh model review nor new model score"
+}

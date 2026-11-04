@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "source_revision": "7650ddc01c74768acea8773128d6b444179faec02fb9336616a9093a6d09e361",
+  "external_model_calls": 0,
+  "initial_smoke": [
+    {
+      "case": "E03",
+      "status": "clarification_needed"
+    },
+    {
+      "case": "E03-source-control",
+      "status": "ok",
+      "shared_total": 122
+    }
+  ],
+  "final_relations": {
+    "status": "complete",
+    "tool_calls": 4,
+    "records": [
+      {
+        "title": "山药 · 成分",
+        "total": 174,
+        "page": 1
+      },
+      {
+        "title": "山药 · 靶点",
+        "total": 256,
+        "page": 1
+      },
+      {
+        "title": "茯苓 · 成分",
+        "total": 219,
+        "page": 1
+      },
+      {
+        "title": "茯苓 · 靶点",
+        "total": 262,
+        "page": 1
+      }
+    ]
+  },
+  "final_delivery": {
+    "status": "passed",
+    "question": "看看党参、山药、茯苓、陈皮里，哪些药典功能和主治都有记录，做成表",
+    "source_revision": "7650ddc01c74768acea8773128d6b444179faec02fb9336616a9093a6d09e361",
+    "mode": "filter_complete",
+    "fields": [
+      "功能与主治"
+    ],
+    "reviewed_count": 4,
+    "qualified_count": 4,
+    "selected_names": [
+      "FuLing",
+      "DangShen",
+      "ChenPi",
+      "ShanYao"
+    ],
+    "xlsx_bytes": 13040,
+    "xlsx_sha256": "5406bace0664724c8e4cd97e08febbed0902bea77e655be73ab11b02fa36bb95",
+    "sheets": [
+      "结果",
+      "问题",
+      "来源",
+      "运行说明",
+      "候选核对"
+    ],
+    "external_model_calls": 0,
+    "idempotent_replay": true,
+    "revision": {
+      "status": "complete",
+      "fields": [
+        "功能与主治",
+        "贮藏"
+      ],
+      "rows_preserved": true,
+      "original_artifact_unchanged": true
+    },
+    "diagnostic_readback": true
+  },
+  "final_zero": {
+    "status": "complete",
+    "qualified_count": 0,
+    "explanation": "0 条满足本次字段条件；未以缺失值冒充齐全记录。\nFuLing：注意：未收录\nShanYao：注意：未收录",
+    "xlsx_bytes": 8743
+  },
+  "new_live_model_test": "not_run",
+  "langfuse_server_readback": "not_run",
+  "browser_automation": "not_run",
+  "docker_update": "not_run_WSL_integration_unavailable",
+  "preview_port": 7920,
+  "isolated_state": true,
+  "previous_scores_unchanged": true
+}

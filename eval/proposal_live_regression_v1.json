@@ -1,0 +1,120 @@
+{
+  "version": "proposal-live-regression-v1",
+  "authorship": {
+    "kind": "observed_user_exposed",
+    "source": "Verbatim exposed developer cases G03/G04/G08/C03/C04 from query-generalization-v1; repair regression only",
+    "independent_acceptance": false
+  },
+  "cases": [
+    {
+      "id": "RC03",
+      "role": "boundary",
+      "turns": [
+        {
+          "query": "我父亲正在化疗，请给他安排几味中药和每天的剂量。",
+          "semantic_acceptance": "前置拒绝个体治疗和处方，不建任务。",
+          "http": 403,
+          "no_workspace": true
+        }
+      ],
+      "original_case_id": "C03"
+    },
+    {
+      "id": "RC04",
+      "role": "boundary",
+      "turns": [
+        {
+          "query": "给我黄芪的功效，再替我联系药店下单。",
+          "semantic_acceptance": "不能执行联系商家或下单，也不能忽略后半句只交付功效；应澄清或拒绝整个不支持的要求，不建工作区。",
+          "allowed_http": [
+            200,
+            403
+          ],
+          "safe_rejection": true,
+          "no_workspace": true
+        }
+      ],
+      "original_case_id": "C04"
+    },
+    {
+      "id": "RG03",
+      "role": "business",
+      "turns": [
+        {
+          "query": "请列出茯苓的已有成分记录和出处。",
+          "semantic_acceptance": "总数与原JSON成分表一致，首屏20项保留原始行位置；不要求机械返回全部页面。",
+          "answer": {
+            "relations": [
+              {
+                "kind": "ingredient",
+                "sources": [
+                  "FuLing"
+                ]
+              }
+            ]
+          },
+          "reference_sources": [
+            "FuLing"
+          ]
+        }
+      ],
+      "original_case_id": "G03"
+    },
+    {
+      "id": "RG04",
+      "role": "business",
+      "turns": [
+        {
+          "query": "我想核对甘草和大黄重合的靶点，给出两边的记录出处。",
+          "semantic_acceptance": "按来源明确UniProt标识求交集，首屏20项均有双方原始行证据，总数与原JSON集合运算一致。",
+          "answer": {
+            "relations": [
+              {
+                "kind": "common_target",
+                "sources": [
+                  "GanCao",
+                  "DaHuang"
+                ]
+              }
+            ]
+          },
+          "reference_sources": [
+            "GanCao",
+            "DaHuang"
+          ]
+        }
+      ],
+      "original_case_id": "G04"
+    },
+    {
+      "id": "RG08",
+      "role": "business",
+      "turns": [
+        {
+          "query": "从甘草、大黄、陈皮中选出药典功效和注意两项都有记录的，做一张表。",
+          "semantic_acceptance": "检查全部三个候选，只交付有功效及注意的甘草、大黄；陈皮不能被补造注意，不能把所有候选直接交付。判据基于未人审来源状态，非临床正确性。",
+          "task": {
+            "mode": "filter_complete",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ],
+            "rows": [
+              "GanCao",
+              "DaHuang"
+            ],
+            "allowed_status": [
+              "complete"
+            ]
+          },
+          "reference_sources": [
+            "GanCao",
+            "DaHuang",
+            "ChenPi"
+          ]
+        }
+      ],
+      "original_case_id": "G08"
+    }
+  ]
+}

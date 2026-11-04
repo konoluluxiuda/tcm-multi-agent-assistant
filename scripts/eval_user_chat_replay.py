@@ -33,7 +33,7 @@ def pointer(value,path):
 
 def validate_suite(suite):
  authorship=suite['authorship'];kind=authorship['kind']
- if kind not in ('observed_user_exposed','external_unseen_declared'):raise ValueError('Question provenance required')
+ if kind not in ('observed_user_exposed','external_unseen_declared','developer_authored_frozen'):raise ValueError('Question provenance required')
  if authorship.get('independent_acceptance') is not False:raise ValueError('Runner cannot certify independent acceptance')
  if kind=='external_unseen_declared' and not all(authorship.get(k) for k in ('source_sha256','reviewer','reviewed_at')):
   raise ValueError('External question/reference review declaration required')
@@ -45,7 +45,14 @@ def validate_suite(suite):
   if not 1<=len(case['turns'])<=3:raise ValueError('Invalid scenario length')
   for turn in case['turns']:
    if not isinstance(turn['query'],str) or not 1<=len(turn['query'])<=1000:raise ValueError('Invalid question')
-   if not (turn.get('checks') or turn.get('task') or turn.get('no_workspace') or turn.get('relation_requirements')):raise ValueError('A frozen acceptance contract is required')
+   if not (turn.get('checks') or turn.get('task') or turn.get('no_workspace') or turn.get('relation_requirements') or turn.get('answer')):raise ValueError('A frozen acceptance contract is required')
+   if turn.get('answer'):
+    answer=turn['answer']
+    from scripts.query_answer_checks import validate as validate_answer
+    validate_answer(answer)
+    sources={v['source'] for v in answer.get('attributes',[])}
+    sources.update(n for v in answer.get('relations',[]) for n in v['sources'])
+    if not sources<=set(turn.get('reference_sources',[])):raise ValueError('Answer sources must be frozen')
    for name in turn.get('relation_sources',[])+turn.get('reference_sources',[]):
     if not re.fullmatch('[A-Za-z0-9]+',name):raise ValueError('Invalid source basename')
 
@@ -74,6 +81,9 @@ def prepare(suite_path,out,services,source,*,allow_model=False,model_cap=8,clien
   if parsed.scheme!='http' or parsed.hostname!='127.0.0.1' or parsed.username or parsed.password or parsed.path not in ('','/') or parsed.query or parsed.fragment:raise ValueError('Local preview root required')
   with client_factory(base_url=url,timeout=30,follow_redirects=False) as c:servers[label]=runtime(c)
   if servers[label]['dataops']['research_selection']['question_model_enabled'] and (not allow_model or model_cap==0):raise ValueError('Explicit model-enabled batch required')
+  selection=servers[label]['dataops']['research_selection']
+  if selection['question_model_enabled'] and (selection.get('question_request_limit',1)!=1 or selection.get('question_policy')=='unified_v2'):
+   raise ValueError('This frozen evaluator only supports one-request understanding; prepare a separately budgeted unified_v2 protocol')
  if len({d['source_revision'] for d in servers.values()})!=1:raise ValueError('Services do not share research source revision')
  if len({json.dumps(d['data_readiness_snapshot'],sort_keys=True) for d in servers.values()})!=1:raise ValueError('Services do not share source readiness versions')
  out.mkdir(parents=True,exist_ok=False,mode=0o700)
@@ -83,12 +93,18 @@ def prepare(suite_path,out,services,source,*,allow_model=False,model_cap=8,clien
    for name in set(turn.get('relation_sources',[])+turn.get('reference_sources',[])):
     path=source/'etcm_herbs'/(name+'.json');refs[str(path)]=digest(path)
  save(out/'suite.private.json',suite)
+ for name in ('eval_user_chat_replay.py','query_answer_checks.py'):
+  origin=Path(__file__).with_name(name)
+  if name=='query_answer_checks.py' and not any(t.get('answer') for c in suite['cases'] for t in c['turns']):continue
+  snapshot=out/(name+'.frozen');snapshot.write_bytes(origin.read_bytes());snapshot.chmod(0o600)
  protocol={'version':suite['version'],'suite_sha256':digest(out/'suite.private.json'),'evaluator_sha256':digest(__file__),
   'services':services,'runtimes':servers,'source_root':str(source),'source_sha256':refs,'model_request_cap':model_cap,
   'allow_model':allow_model,'max_requests_per_understanding':1,'automatic_retries':0,
   'authorship':suite['authorship'],'independent_acceptance':False,'scope':'HTTP workflow regression, original-source ETCM sample checks, artifact integrity; not a clinical or extraction-accuracy evaluation',
   'counter_scope':'HTTP-reported requests, not provider wire receipts; unknown counts consume one reserved budget unit',
   'comparison_limit':'Deployed configurations are recorded, not assumed to differ only in model switch.'}
+ if any(turn.get('answer') for case in suite['cases'] for turn in case['turns']):
+  protocol['answer_evaluator_sha256']=digest(Path(__file__).with_name('query_answer_checks.py'))
  save(out/'protocol.private.json',protocol);return protocol
 
 
@@ -179,9 +195,36 @@ def check_task(client,body,expect,folder,parent=None,timeout=90):
  return (doc,path),{'rows':len(rows),'verification':verification,'parent_preserved':bool(expect.get('preserve_parent'))}
 
 
+def read_query_result(client,identifier,folder,timeout=90):
+ """Read already delivered observations; never query sources or call a model."""
+ import re
+ if not re.fullmatch('[0-9a-f]{32}',identifier):raise ValueError('Invalid query task ID')
+ deadline=time.monotonic()+timeout
+ while True:
+  terminal=client.get('/api/research/runs/'+identifier);terminal.raise_for_status();payload=terminal.json()
+  if payload.get('status') not in ('queued','running'):break
+  if time.monotonic()>=deadline:raise ValueError('Query task timed out')
+  time.sleep(.2)
+ save(folder/'query-task.private.json',payload)
+ if payload.get('status') not in ('complete','partial','ok'):raise ValueError('Query task did not complete')
+ references=(payload.get('result') or {}).get('run',{}).get('evidence',{})
+ if len(references)>8:raise ValueError('Too many query observations')
+ observations=[]
+ for evidence_id,reference in references.items():
+  if not re.fullmatch('obs-[1-9][0-9]*',evidence_id):raise ValueError('Invalid query evidence ID')
+  response=client.get('/api/research/runs/'+identifier+'/evidence/'+evidence_id+'/download');response.raise_for_status()
+  if len(response.content)>16*1024*1024:raise ValueError('Query observation exceeds evaluation budget')
+  if reference.get('content_sha256') and hashlib.sha256(response.content).hexdigest()!=reference['content_sha256']:
+   raise ValueError('Downloaded query observation checksum mismatch')
+  full=response.json();save(folder/('query-evidence-'+evidence_id+'.private.json'),full);observations.append(full)
+ return {'task':payload,'observations':observations}
+
+
 def execute(out,*,client_factory=httpx.Client):
  protocol=json.loads((out/'protocol.private.json').read_text())
  if digest(__file__)!=protocol['evaluator_sha256'] or digest(out/'suite.private.json')!=protocol['suite_sha256']:raise ValueError('Frozen evaluator/suite changed')
+ if protocol.get('answer_evaluator_sha256') and digest(Path(__file__).with_name('query_answer_checks.py'))!=protocol['answer_evaluator_sha256']:
+  raise ValueError('Frozen answer evaluator changed')
  for name,sha in protocol['source_sha256'].items():
   if digest(name)!=sha:raise ValueError('Frozen source changed')
  suite=json.loads((out/'suite.private.json').read_text());clients={}
@@ -206,11 +249,13 @@ def execute(out,*,client_factory=httpx.Client):
      enabled=server['dataops']['research_selection']['question_model_enabled']
      if enabled and reserved>=protocol['model_request_cap']:
       records.append({**row,'status':'not_run_budget'});stopped=True;continue
-     started=time.monotonic();body={'query':turn['query'],'request_key':uuid4().hex};calls=None;value={}
+     started=time.monotonic();body={'query':turn['query'],'request_key':uuid4().hex};calls=None;value={};request_id=None
      try:
       response=client.post('/chat',json=body)
       if response.status_code in (429,503) or response.status_code>=500:stopped=True
-      value=response.json();save(folder/'response.private.json',{'http':response.status_code,'body':value,'request_id':response.headers.get('x-request-id')})
+      request_id=response.headers.get('x-request-id')
+      value=response.json();save(folder/'response.private.json',{'http':response.status_code,'body':value,'request_id':request_id})
+      row['request_id']=request_id
       calls=reported_calls(value,server);known+=calls or 0;unknown+=calls is None;reserved+=(calls if calls is not None else 1) if enabled else 0
       row.update(http=response.status_code,reported_model_calls=calls)
       if calls is not None and calls>1:raise ValueError('Single-understanding request contract exceeded')
@@ -233,34 +278,54 @@ def execute(out,*,client_factory=httpx.Client):
        else:relation_bundle(value,turn['relation_requirements'])
       for check in turn.get('checks',[]):
        if pointer(value,check['path'])!=check['equals']:raise ValueError('Response assertion failed: '+check['path'])
+      if turn.get('answer'):
+       from scripts.query_answer_checks import check as check_answer
+       answer_value={'chat':value};assistant=value.get('assistant',{})
+       if assistant.get('run_id'):
+        answer_value.update(read_query_result(client,assistant['run_id'],folder))
+       row['answer']=check_answer(answer_value,turn['answer'],protocol['source_root'])
       row['raw_source_witnesses_checked']=source_checks(turn,value,Path(protocol['source_root']))
       if turn.get('task'):
        parent,receipt=check_task(client,value,turn['task'],folder,parent)
        row['delivery']=receipt
       if turn.get('no_workspace') and client.get('/api/dataops/workspaces').json()['items']:raise ValueError('Unexpected workspace for boundary')
+      row['primary_contract_passed']=True
       if response.status_code<400:
-       if enabled and reserved>=protocol['model_request_cap']:raise ValueError('No budget reserved for replay check')
-       replay=client.post('/chat',json=body)
-       if replay.status_code==429 or replay.status_code>=500:stopped=True
-       replayed=replay.json();save(folder/'replay.private.json',{'http':replay.status_code,'body':replayed})
-       extra=reported_calls(replayed,server);known+=extra or 0;unknown+=extra is None;reserved+=(extra if extra is not None else 1) if enabled else 0
-       if replay.status_code!=response.status_code or extra!=0:raise ValueError('Replay changed status or model count')
-       if turn.get('task') and replayed['assistant']['workspace_id']!=parent[0]['id']:raise ValueError('Replay created another workspace')
-       row['replay_added_model_calls']=extra
+       if enabled and reserved>=protocol['model_request_cap']:
+        row['replay_status']='not_run_no_budget'
+       else:
+        replay=client.post('/chat',json=body)
+        if replay.status_code==429 or replay.status_code>=500:stopped=True
+        replayed=replay.json();save(folder/'replay.private.json',{'http':replay.status_code,'body':replayed})
+        extra=reported_calls(replayed,server);known+=extra or 0;unknown+=extra is None;reserved+=(extra if extra is not None else 1) if enabled else 0
+        if replay.status_code!=response.status_code or extra!=0:raise ValueError('Replay changed status or model count')
+        if turn.get('task') and replayed['assistant']['workspace_id']!=parent[0]['id']:raise ValueError('Replay created another workspace')
+        row.update(replay_added_model_calls=extra,replay_status='passed')
       row.update(status='passed',passed=True)
      except (ValueError,KeyError,TypeError,IndexError,httpx.HTTPError) as exc:
       row.update(status='failed',reason=str(exc)[:180])
       if enabled and 'reported_model_calls' not in row:
        row['reported_model_calls']=None;unknown+=1;reserved+=1
       if isinstance(exc,httpx.HTTPError):stopped=True
+     if request_id:
+      try:
+       diagnostic=client.get('/api/dataops/diagnostics/'+request_id)
+       row['diagnostic_http']=diagnostic.status_code
+       if diagnostic.is_success:
+        detail=diagnostic.json();save(folder/'diagnostic.private.json',detail)
+        row['diagnostic_reasons']=[{'stage':e['stage'],'status':e['status'],'code':e.get('code')}
+           for e in detail.get('events',[]) if e.get('code') or e['status'] in ('rejected','needs_input','failed')]
+      except (httpx.HTTPError,ValueError,KeyError):row['diagnostic_readback']='unavailable'
      row['duration_seconds']=round(time.monotonic()-started,3)
      records.append(row);save(folder/'score.json',row)
   by_service={label:{role:{'passed':sum(r['passed'] for r in records if r['service']==label and r['role']==role),
    'total':sum(r['service']==label and r['role']==role for r in records)} for role in ('business','boundary')} for label in clients}
-  report={'version':protocol['version'],'status':'passed' if all(r['passed'] for r in records) else 'failed',
+  skipped_replays=sum(r.get('replay_status')=='not_run_no_budget' for r in records)
+  report={'version':protocol['version'],'status':('partial' if skipped_replays else 'passed') if all(r['passed'] for r in records) else 'failed',
    'records':records,'by_service':by_service,'reported_model_calls_known':known,'responses_with_unknown_model_count':unknown,
    'reserved_model_units':reserved,'stopped':stopped,'authorship':protocol['authorship'],'independent_acceptance':False,
-   'raw_values_published':False,'model_count_scope':protocol['counter_scope'],'comparison_limit':protocol['comparison_limit']}
+   'raw_values_published':False,'model_count_scope':protocol['counter_scope'],'comparison_limit':protocol['comparison_limit'],
+   'replay_checks_not_run':skipped_replays}
   save(out/'report.json',report);return report
  finally:
   for c in clients.values():c.close()

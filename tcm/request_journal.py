@@ -25,6 +25,11 @@ class RequestJournal:
             db.execute('INSERT INTO answers VALUES(?,?,?,NULL)',(owner,key,signature))
         return None
 
+    def get(self,owner,key):
+        with sqlite3.connect(self.path,timeout=5) as db:
+            row=db.execute('SELECT signature,result FROM answers WHERE owner=? AND key=?',(owner,key)).fetchone()
+        return None if not row or row[1] is None else json.loads(row[1])
+
     def complete(self,owner,key,result):
         with sqlite3.connect(self.path) as db:
             db.execute('UPDATE answers SET result=? WHERE owner=? AND key=?',

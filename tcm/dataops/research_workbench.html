@@ -5,7 +5,7 @@ body{font:16px/1.6 system-ui,sans-serif;max-width:1080px;margin:32px auto;paddin
 <h1>资料任务</h1><p>整理指定药材时保留缺失；从候选中挑选时核对字段齐全性。结果附出处，药材身份仍待核验。</p>
 <section><label>用一句话说明任务<br><textarea id="question" rows="3" style="width:95%;font:inherit;padding:10px">整理白术和黄芪的功效、注意事项，保留出处并生成表格</textarea></label>
 <label><input type="checkbox" id="question_parent" disabled>接续当前结果，增加字段并保留原对象和旧字段</label>
-<label><input type="checkbox" id="question_model" disabled>本地未完整识别时允许一次模型理解（不发送资料正文或会话历史；取消即仅本地解析）</label>
+<label><input type="checkbox" id="question_model" disabled>允许模型理解（次数由当前策略限制；不发送资料正文或会话历史，取消即仅本地解析）</label>
 <button type="button" id="question_submit" disabled>理解并执行</button><p id="question_hint">正在读取配置…</p>
 <small>可写“从白术、黄芪、川芎、甘草、大黄中挑两条功效和注意字段齐全的”或在当前表上“增加贮藏，保留旧字段”。有歧义时保留原句供修改，不创建半个任务。</small></section>
 <section><p id="mode">正在读取部署配置…</p><form id="form">
@@ -16,17 +16,18 @@ body{font:16px/1.6 system-ui,sans-serif;max-width:1080px;margin:32px auto;paddin
 <button id="submit" type="submit" disabled>开始核对</button><button id="revision" type="button" disabled>按当前勾选字段生成新版本</button></form>
 <small>也可使用此表单明确指定。ETCM药用部位固定保留；新版保留原记录及旧字段，缺失不由模型补写。</small></section>
 <section aria-live="polite"><p id="message">尚未开始任务。</p><div id="actions"></div><div id="output"></div></section>
+<script src="/static/answer_delivery.js"></script>
 <script>
-let current=null,timer=null,busy=false;const el=id=>document.getElementById(id),savedKey='r4-workspace';
-async function api(path,body){const r=await fetch(path,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined});const v=await r.json();if(!r.ok)throw Error(typeof v.detail==='string'?v.detail:JSON.stringify(v.detail));return v}
+let current=null,timer=null,busy=false,researchEnabled=false;const el=id=>document.getElementById(id),savedKey='r4-workspace';
+async function api(path,body){const r=await fetch(path,{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined});const v=await r.json();v.request_id=r.headers.get('X-Request-ID');if(!r.ok&&!v.answer_steps)throw Error(typeof v.detail==='string'?v.detail:JSON.stringify(v.detail));return v}
 function node(tag,text){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n}
 function button(text,fn){const b=node('button',text);b.type='button';b.onclick=()=>fn().catch(showError);return b}
 function showError(e){el('message').textContent=e.message;busy=false;el('submit').disabled=false}
 function fields(){return [...document.querySelectorAll('#fields input:checked')].map(x=>x.value)}
-function render(value){current=value;const w=value.workspace, j=value.job;localStorage.setItem(savedKey,w.id);el('output').replaceChildren();el('actions').replaceChildren();
+function render(value){localStorage.removeItem('r4-last-answer');current=value;const w=value.workspace, j=value.job;localStorage.setItem(savedKey,w.id);el('output').replaceChildren();el('actions').replaceChildren();
 const rr=w.result?.research;el('message').textContent=({queue_busy:'队列正忙，尚未入队；可使用同一请求编号重新提交',queued:'已排队',running:'正在核对',waiting_input:'需要选择来源',complete:'核对完成',partial:'仅部分完成',interrupted:'执行中断，未自动重发模型请求',failed:'执行失败',cancelled:'已取消'})[j.status]||j.status;
 if(w.error)el('message').textContent+='：'+w.error;
-if(rr)el('message').textContent+=rr.task_mode==='audit_named'?`；已核对 ${rr.reviewed_count}/${rr.target_count} 条，字段齐全 ${rr.qualified_count} 条。`:`；符合字段条件 ${rr.qualified_count}/${rr.target_count} 条。`;
+if(rr)el('message').textContent+=['audit_named','filter_complete'].includes(rr.task_mode)?`；已核对 ${rr.reviewed_count}/${rr.target_count} 条，字段齐全 ${rr.qualified_count} 条。`:`；符合字段条件 ${rr.qualified_count}/${rr.target_count} 条。`;
 if(w.selection_message)el('message').textContent+='\n'+w.selection_message;
 if(w.artifact){const a=node('a','下载带出处的表格 · v'+w.revision);a.href='/api/dataops/workspaces/'+w.id+'/artifact';el('output').append(a)}
 if(w.result){const table=node('table'),head=node('tr');head.append(node('th','记录'),...w.goal.document_fields.map(f=>node('th',f)));table.append(head);for(const row of w.result.rows){const tr=node('tr');tr.append(node('td',row.name||row.source_id));for(const f of w.goal.document_fields){const cell=row.cells[f];tr.append(node('td',cell?.value||'未取得独立字段（'+(cell?.status||'unknown')+'）'))}table.append(tr)}el('output').append(table);const d=node('details'),summary=node('summary','出处、候选核对与数据差异');d.append(summary,node('pre',JSON.stringify({issues:w.result.issues,evidence:w.result.evidence,research:w.result.research},null,2)));el('output').append(d)}
@@ -43,10 +44,43 @@ const body={request_key:crypto.randomUUID(),question:'从限定候选中核对'+
 if(revision){const p=current.workspace;goal={...p.goal,document_fields:[...new Set([...p.goal.document_fields,...chosen])]};if(goal.document_fields.length>4)throw Error('新版总字段最多4项');body.goal=goal;body.parent_id=p.id;body.expected_revision=p.revision}
 busy=true;el('submit').disabled=true;try{const result=await api('/api/dataops/research-tasks',body);await poll(result.workspace.id)}catch(e){busy=false;throw e}}
 el('form').onsubmit=e=>{e.preventDefault();submit().catch(showError)};el('revision').onclick=()=>submit(true).catch(showError);
-el('question_submit').onclick=async()=>{if(busy)return;const question=el('question').value.trim();if(!question){el('question_hint').textContent='请输入任务。';return}
-const parent=current?.workspace,continuation=el('question_parent').checked||/上一[份版张]|当前结果|^(?:请|再|继续)*(?:增加|新增|添加|补充|补上)/.test(question);
-const body={question,use_model:el('question_model').checked};if(continuation&&parent?.artifact){body.parent_id=parent.id;body.expected_revision=parent.revision}
-const signature=JSON.stringify(body),saved=JSON.parse(localStorage.getItem('r4-question-request')||'null');body.request_key=saved?.signature===signature?saved.key:crypto.randomUUID();localStorage.setItem('r4-question-request',JSON.stringify({signature,key:body.request_key}));busy=true;el('question_submit').disabled=true;
-try{const result=await api('/api/dataops/research-questions',body);if(result.workspace){el('question_hint').textContent='目标已保存，正在执行。';await poll(result.workspace.id)}else{el('question_hint').textContent=result.proposal.issues.join('\n');el('message').textContent='需要补充任务说明，尚未创建任务。';busy=false;el('question_submit').disabled=false}}catch(e){el('question_hint').textContent=e.message;busy=false;el('question_submit').disabled=false}};
-(async()=>{const c=(await api('/api/dataops/capabilities')).research_selection;el('mode').textContent=!c.enabled?'此部署未启用候选核对任务。':c.execution_model_enabled?'真实模型模式：每个任务最多10次请求，不自动重试。资料片段可能发送到已配置的DeepSeek。':c.driver==='fixed'?'本地确定性执行：按字段状态核对并生成表格，执行阶段不调用外部模型。':'本地模拟策略：不调用外部模型；用于验收工具、任务和交付流程。';el('submit').disabled=!c.enabled;el('question_submit').disabled=!c.enabled;el('question_model').disabled=!c.question_model_enabled;el('question_model').checked=c.question_model_enabled;el('question_hint').textContent=c.question_model_enabled?'先本地完整解析；未识别时最多调用一次模型。明确歧义或能力限制直接说明。':'当前使用本地有界解析，模型理解未启用。';const old=localStorage.getItem(savedKey);if(old)await poll(old)})().catch(showError);
+function renderQuery(result) {
+  clearTimeout(timer);current=null;localStorage.removeItem(savedKey);
+  el('output').replaceChildren();el('actions').replaceChildren();
+  el('revision').disabled=true;el('question_parent').checked=false;el('question_parent').disabled=true;
+  el('message').textContent=result.status==='success'?'查询完成。':result.status==='partial'?'查询部分完成。':'查询未完成。';
+  renderAnswerDelivery(el('output'),result);
+  if(result.request_key)localStorage.setItem('r4-last-answer',result.request_key);
+}
+el('question_submit').onclick=async()=>{
+  if(busy)return;
+  const question=el('question').value.trim();
+  if(!question){el('question_hint').textContent='请输入任务。';return}
+  const parent=current?.workspace,continuation=el('question_parent').checked||/上一[份版张]|当前结果|^(?:请|再|继续)*(?:增加|新增|添加|补充|补上)/.test(question);
+  const body={question,use_model:el('question_model').checked};
+  if(continuation&&parent?.artifact){body.parent_id=parent.id;body.expected_revision=parent.revision}
+  const signature=JSON.stringify(body),saved=JSON.parse(localStorage.getItem('r4-question-request')||'null');
+  body.request_key=saved?.signature===signature?saved.key:crypto.randomUUID();
+  localStorage.setItem('r4-question-request',JSON.stringify({signature,key:body.request_key}));
+  busy=true;el('question_submit').disabled=true;el('submit').disabled=true;
+  let queued=false;
+  try {
+    const result=await api('/api/dataops/research-questions',body);
+    if(result.workspace){
+      el('question_hint').textContent='目标已保存，正在执行。';await poll(result.workspace.id);queued=busy;
+    }else if(result.proposal?.status==='query'){
+      el('question_hint').textContent='已识别为查询任务，正在执行。';
+      const result=await api('/api/dataops/answer',{request_key:body.request_key});
+      renderQuery(result);el('question_hint').textContent=result.replayed?'已读取保存的结果，未重复执行。':'结果与出处已保存。';
+    }else{
+      el('question_hint').textContent=(result.proposal?.issues||[result.proposal?.failure?.message||'请补充要查询的对象和内容。']).join('\n');
+      el('message').textContent='需要补充任务说明，尚未创建任务。';
+      el('output').replaceChildren();el('actions').replaceChildren();clearTimeout(timer);
+      current=null;el('revision').disabled=true;el('question_parent').disabled=true;el('question_parent').checked=false;
+      localStorage.removeItem(savedKey);localStorage.removeItem('r4-last-answer');
+    }
+  }catch(e){el('question_hint').textContent=e.message}
+  finally{busy=queued;el('question_submit').disabled=busy||!researchEnabled;el('submit').disabled=busy||!researchEnabled}
+};
+(async()=>{const c=(await api('/api/dataops/capabilities')).research_selection;researchEnabled=c.enabled;el('mode').textContent=!c.enabled?'此部署未启用候选核对任务。':c.execution_model_enabled?'真实模型模式：每个任务最多10次请求，不自动重试。资料片段可能发送到已配置的DeepSeek。':c.driver==='fixed'?'本地确定性执行：按字段状态核对并生成表格，执行阶段不调用外部模型。':'本地模拟策略：不调用外部模型；用于验收工具、任务和交付流程。';el('submit').disabled=!c.enabled;el('question_submit').disabled=!c.enabled;el('question_model').disabled=!c.question_model_enabled;el('question_model').checked=c.question_model_enabled;el('question_hint').textContent=c.question_model_enabled?(c.question_policy==='unified_v2'?'统一模型理解；首轮加一次纠正或独立复核，合计最多2次请求。要求不明确时先澄清。':c.question_policy==='requirements_v3'?'版本化需求契约；首轮加一次纠正或独立复核，合计最多2次请求。要求不明确时先澄清。':'先本地完整解析；未识别时最多调用一次模型。明确歧义或能力限制直接说明。'):'当前使用本地有界解析，模型理解未启用。';const answerKey=localStorage.getItem('r4-last-answer');if(answerKey){renderQuery(await api('/api/dataops/answers/'+encodeURIComponent(answerKey)))}else{const old=localStorage.getItem(savedKey);if(old)await poll(old)}})().catch(showError);
 </script></html>

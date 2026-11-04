@@ -1,0 +1,214 @@
+{
+  "version": "query-generalization-v2",
+  "authorship": {
+    "kind": "developer_authored_frozen",
+    "source": "Implementation assistant authored wording before either service execution; knows implementation and previous failures",
+    "independent_acceptance": false,
+    "note": "New wording, not independent holdout or new semantic task families; no business or prompt edits during execution"
+  },
+  "cases": [
+    {
+      "id": "N01",
+      "role": "business",
+      "turns": [
+        {
+          "query": "葛根在ETCM里记载的科名和药用部位分别是什么？原始位置请附上。",
+          "reference_sources": [
+            "GeGen"
+          ],
+          "answer": {
+            "attributes": [
+              {
+                "source": "GeGen",
+                "fields": [
+                  "family",
+                  "medicinal_part"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "N02",
+      "role": "business",
+      "turns": [
+        {
+          "query": "请帮我列一下桔梗收录过哪些成分，并带上记录出处。",
+          "reference_sources": [
+            "JieGeng"
+          ],
+          "answer": {
+            "relations": [
+              {
+                "kind": "ingredient",
+                "sources": [
+                  "JieGeng"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "N03",
+      "role": "business",
+      "turns": [
+        {
+          "query": "想核查薄荷与桂枝有没有重复的靶点标识，双方原始行都要能找到。",
+          "reference_sources": [
+            "BoHe",
+            "GuiZhi"
+          ],
+          "answer": {
+            "relations": [
+              {
+                "kind": "common_target",
+                "sources": [
+                  "BoHe",
+                  "GuiZhi"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "N04",
+      "role": "business",
+      "turns": [
+        {
+          "query": "请把桔梗的药典用量原文给我看一下，标清是哪一页。",
+          "reference_sources": [
+            "JieGeng"
+          ],
+          "answer": {
+            "pharmacopoeia": [
+              {
+                "name": "桔梗",
+                "fields": [
+                  "用法与用量"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "N05",
+      "role": "business",
+      "turns": [
+        {
+          "query": "做一张葛根和桔梗的资料摘录表，只摘药典功效及贮藏，每项写上出处。",
+          "reference_sources": [
+            "GeGen",
+            "JieGeng"
+          ],
+          "task": {
+            "mode": "audit_named",
+            "fields": [
+              "功能与主治",
+              "贮藏"
+            ],
+            "rows": [
+              "GeGen",
+              "JieGeng"
+            ],
+            "allowed_status": [
+              "complete"
+            ]
+          }
+        },
+        {
+          "query": "再增加药典用量，原来的两味药和旧列都保留。",
+          "reference_sources": [
+            "GeGen",
+            "JieGeng"
+          ],
+          "task": {
+            "mode": "audit_named",
+            "fields": [
+              "功能与主治",
+              "贮藏",
+              "用法与用量"
+            ],
+            "rows": [
+              "GeGen",
+              "JieGeng"
+            ],
+            "preserve_parent": true,
+            "allowed_status": [
+              "complete",
+              "partial"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "N06",
+      "role": "business",
+      "turns": [
+        {
+          "query": "甘草、陈皮、大黄中，哪些同时有药典功效和注意记载？只把符合条件的整理成表。",
+          "reference_sources": [
+            "GanCao",
+            "ChenPi",
+            "DaHuang"
+          ],
+          "task": {
+            "mode": "filter_complete",
+            "fields": [
+              "功能与主治",
+              "注意"
+            ],
+            "rows": [
+              "GanCao",
+              "DaHuang"
+            ],
+            "allowed_status": [
+              "complete"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "C01",
+      "role": "boundary",
+      "turns": [
+        {
+          "query": "能简要介绍这两个资料库分别适合查什么吗？",
+          "reference_sources": [],
+          "checks": [
+            {
+              "path": "/assistant/topic",
+              "equals": "dataset_info"
+            }
+          ],
+          "no_workspace": true
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "role": "boundary",
+      "turns": [
+        {
+          "query": "请把它们汇总成表，没写的标出来。",
+          "reference_sources": [],
+          "allowed_http": [
+            200,
+            403
+          ],
+          "safe_rejection": true,
+          "no_workspace": true
+        }
+      ]
+    }
+  ]
+}

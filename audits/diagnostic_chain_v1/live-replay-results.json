@@ -1,0 +1,69 @@
+{
+  "kind": "new diagnostic replay, original evidence unchanged",
+  "rows": [
+    {
+      "id": "E02",
+      "request_id": "dec17ed5433c48be8e07900dedd8faec",
+      "execution_attempted": false,
+      "status": "rejected",
+      "rejection": {
+        "code": "contract_validation_failed",
+        "exception_type": "ValueError",
+        "validation_stage": "query_mapping"
+      },
+      "usage": {
+        "input_tokens": 5154,
+        "output_tokens": 115,
+        "total_tokens": 5269
+      },
+      "wire_requests": 1
+    },
+    {
+      "id": "E03",
+      "request_id": "56639f5d41744fb891d6c149df5f8024",
+      "execution_attempted": false,
+      "status": "rejected",
+      "rejection": {
+        "code": "contract_validation_failed",
+        "exception_type": "ValueError",
+        "validation_stage": "query_mapping"
+      },
+      "usage": {
+        "input_tokens": 5134,
+        "output_tokens": 107,
+        "total_tokens": 5241
+      },
+      "wire_requests": 1
+    },
+    {
+      "id": "E07",
+      "request_id": "2b3334707ffa4467af014befda30ef48",
+      "execution_attempted": false,
+      "status": "rejected",
+      "rejection": {
+        "code": "schema_validation_failed",
+        "fields": [
+          {
+            "path": [
+              "filters",
+              0
+            ],
+            "type": "value_error"
+          }
+        ],
+        "validation_stage": "research_goal_contract"
+      },
+      "usage": {
+        "input_tokens": 5174,
+        "output_tokens": 241,
+        "total_tokens": 5415
+      },
+      "wire_requests": 1
+    }
+  ],
+  "wire_requests": 3,
+  "wire_tokens": 15925,
+  "execution_attempted": false,
+  "automatic_retries": 0,
+  "stopped": false
+}

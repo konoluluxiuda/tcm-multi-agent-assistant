@@ -1,0 +1,87 @@
+{
+  "status": "passed",
+  "services": [
+    {
+      "port": 7921,
+      "source_revision": "74ea261f61486139bfb29efe4fd0e8b60c024b4c795fabe3c545156c7e653775",
+      "disk_revision": "74ea261f61486139bfb29efe4fd0e8b60c024b4c795fabe3c545156c7e653775",
+      "restart_required": false,
+      "selection": {
+        "enabled": true,
+        "driver": "fixed",
+        "external_model_enabled": true,
+        "execution_model_enabled": false,
+        "question_model_enabled": true,
+        "question_policy": "unified_v2",
+        "question_request_limit": 2,
+        "semantic_regex_guards": true,
+        "chat_question_fallback_enabled": true,
+        "goal_input": "bounded_question_or_form",
+        "identity_approval": false
+      },
+      "pages": [
+        {
+          "path": "/",
+          "http": 200
+        },
+        {
+          "path": "/dataops",
+          "http": 200
+        },
+        {
+          "path": "/dataops/research",
+          "http": 200
+        },
+        {
+          "path": "/rag",
+          "http": 200
+        }
+      ],
+      "help_http": 200,
+      "help_model_calls": 0,
+      "help_counter_path": "assistant.llm_calls"
+    },
+    {
+      "port": 7920,
+      "source_revision": "74ea261f61486139bfb29efe4fd0e8b60c024b4c795fabe3c545156c7e653775",
+      "disk_revision": "74ea261f61486139bfb29efe4fd0e8b60c024b4c795fabe3c545156c7e653775",
+      "restart_required": false,
+      "selection": {
+        "enabled": true,
+        "driver": "fixed",
+        "external_model_enabled": false,
+        "execution_model_enabled": false,
+        "question_model_enabled": false,
+        "question_policy": "local_then_one_model_v1",
+        "question_request_limit": 1,
+        "semantic_regex_guards": true,
+        "chat_question_fallback_enabled": false,
+        "goal_input": "bounded_question_or_form",
+        "identity_approval": false
+      },
+      "pages": [
+        {
+          "path": "/",
+          "http": 200
+        },
+        {
+          "path": "/dataops",
+          "http": 200
+        },
+        {
+          "path": "/dataops/research",
+          "http": 200
+        },
+        {
+          "path": "/rag",
+          "http": 200
+        }
+      ],
+      "help_http": 200,
+      "help_model_calls": 0,
+      "help_counter_path": "assistant.llm_calls"
+    }
+  ],
+  "external_model_requests": 0,
+  "scope": "Runtime/source readiness, registered pages, exact help control; no live intent evaluation"
+}

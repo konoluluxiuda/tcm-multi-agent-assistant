@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "baseline": "1532105",
+  "local_results_compared": 14,
+  "provider_input_schema_prompt_comparisons": 42,
+  "provider_requests": 0,
+  "no_business_scores_recomputed": true,
+  "details": [
+    {
+      "case": "E01",
+      "turn": 0,
+      "unchanged": true
+    },
+    {
+      "case": "E02",
+      "turn": 0,
+      "unchanged": true
+    },
+    {
+      "case": "E03",
+      "turn": 0,
+      "unchanged": true
+    },
+    {
+      "case": "E04",
+      "turn": 0,
+      "unchanged": true
+    },
+    {
+      "case": "E05",
+      "turn": 0,
+      "unchanged": true
+    },
+    {
+      "case": "E06",
+      "turn": 0,
+      "unchanged": true
+    },
+    {
+      "case": "E07",
+      "turn": 0,
+      "unchanged": true
+    },
+    {
+      "case": "E08",
+      "turn": 0,
+      "unchanged": true
+    },
+    {
+      "case": "E09",
+      "turn": 0,
+      "unchanged": true
+    },
+    {
+      "case": "E09",
+      "turn": 1,
+      "unchanged": true
+    },
+    {
+      "case": "E10",
+      "turn": 0,
+      "unchanged": true
+    },
+    {
+      "case": "E10",
+      "turn": 1,
+      "unchanged": true
+    },
+    {
+      "case": "E11",
+      "turn": 0,
+      "unchanged": true
+    },
+    {
+      "case": "E12",
+      "turn": 0,
+      "unchanged": true
+    }
+  ]
+}

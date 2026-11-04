@@ -1,0 +1,45 @@
+{
+  "purpose": "diagnostic replay, not tuning or replacement of original results",
+  "cases": [
+    {
+      "id": "E02",
+      "question": "山药和茯苓各有哪些成分和靶点，来源写清楚"
+    },
+    {
+      "id": "E03",
+      "question": "丹参和连翘有没有共同靶点，列出来并给出处"
+    },
+    {
+      "id": "E07",
+      "question": "看看党参、山药、茯苓、陈皮里，哪些药典功能和主治都有记录，做成表"
+    }
+  ],
+  "provider": "https://api.deepseek.com",
+  "model": "deepseek-flash",
+  "requests": 3,
+  "per_case_requests": 1,
+  "output_tokens": 1200,
+  "request_bytes": 65536,
+  "timeout_seconds": 30,
+  "automatic_retries": 0,
+  "data_sent": "exact previous questions, static prompt/tools and bounded name aliases; no source values/PDF/history/credentials",
+  "goal_execution": false,
+  "source_revision": {
+    "dataset_version": "local-2026-10-10",
+    "sources": [
+      "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+      "9d3f9c6f8a5c7ececbde957e2a1ea6a74d6f225ff5194c094e3e45f4578a0980",
+      "ae9910c2149820930bec103b227eee04f2287f8158501dcebee3ac7f5b5558a3",
+      "21a85a2f65a0f8f08b7045c3cd48e1a716eb1b551ec5a411813c9e4ae9599e2e"
+    ],
+    "rules": "dataops-research-v1",
+    "release_content_id": "ade3f558c489da80d7491207140837e6d3c91f79d64ab4ad691692a3d194cee1"
+  },
+  "code_sha256": {
+    "tcm/dataops/research_question.py": "baacf0c43bf8c7ae836956341b39caa567882d096e1c190437d034258b0de76e",
+    "tcm/dataops/diagnostics.py": "bbef49262a7d2ffef76aebba9fb0499c174572a12a68d5e0b0e1dfacbdc579ac",
+    "tcm/tracing.py": "7e0115f7b30c9565c348e7d5174adb0dd677f51a7c5a1799f5079a6b82508b2a",
+    "tcm/dataops/research_model.py": "d5f1594a796ab0e5c6875fc4d82da598df658f33a840a16dfa6afb835a724564"
+  },
+  "created_at": "2026-10-31T15:49:47.759478+00:00"
+}

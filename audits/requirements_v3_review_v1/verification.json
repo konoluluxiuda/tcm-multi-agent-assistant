@@ -1,0 +1,140 @@
+{
+  "modules": [
+    {
+      "exit_code": 0,
+      "module": "test_requirements_adapter.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "exit_code": 0,
+      "module": "test_requirements_pipeline.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "exit_code": 0,
+      "module": "test_requirements_planner.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "exit_code": 0,
+      "module": "test_requirements_understanding.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "exit_code": 0,
+      "module": "test_requirements_v2.py",
+      "status": "passed",
+      "total": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "exit_code": 0,
+      "module": "test_requirements_v3_http.py",
+      "status": "passed",
+      "total": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "exit_code": 0,
+      "module": "test_understanding_v2.py",
+      "status": "passed",
+      "total": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "exit_code": 0,
+      "module": "test_understanding_gate.py",
+      "status": "passed",
+      "total": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "total": 78,
+  "probe_exit_code": 0,
+  "source_unchanged": true,
+  "source_before": {
+    "tcm/dataops/requirements_v2.py": "3433e0ebc52f89a16b52c77a4e0e3611a8ffcb03fdd6a996a53c9a52fc5288e1",
+    "tcm/dataops/requirements_understanding.py": "42bdde2a40acb8934cf010319effd24d07e7f420ee8855f68f7c8be81efd5fd8",
+    "tcm/dataops/requirements_planner.py": "f43e9f4c81444b0ac8f7b18ae223e13088f324ded8bd088b58662ed53e527d3a",
+    "tcm/dataops/requirements_pipeline.py": "816507bf5940596207da8daed198f8363787944b531d0923b89cd35e3215d33b",
+    "tcm/dataops/capability_matrix.py": "333475a0fe732b9d3dc96a2b1cab811215aae3d9f407e8b9ce2e2625c0ba4d31",
+    "tcm/dataops/service.py": "b1337e5791ed1a2b3e20e0e487cd02fb39a9625a5aedc63200b241b67c577ec5",
+    "tests/test_requirements_v3_http.py": "021f77d7580b8d3adea593d586137bf98c8be10c5d81ca96e0b825a06c74c999",
+    "tests/test_requirements_pipeline.py": "b85f888edafd1709e4c2f7b0ed0960f25f07fe87b3d0d1b271a97681ddea7cd9",
+    "tests/test_requirements_v2.py": "a0aff20fb5d672725cccf6239bb2a7bac2d04a60169f0e04ede3a59cd8110e68",
+    "tests/test_requirements_understanding.py": "ecb076c67559ebb28703644eb26366665e1782bc968223e7c990df75abd1aca4",
+    "tests/test_requirements_planner.py": "1db54a9dbb600c3d6b341055db5c2c1fce71fff355d61461bc22a7484dd29314",
+    "tests/test_requirements_adapter.py": "5d7665389759dfe93e97d40fa087b5c5e523ea88aee88af3316d7f266bf36d7c"
+  },
+  "source_after": {
+    "tcm/dataops/requirements_v2.py": "3433e0ebc52f89a16b52c77a4e0e3611a8ffcb03fdd6a996a53c9a52fc5288e1",
+    "tcm/dataops/requirements_understanding.py": "42bdde2a40acb8934cf010319effd24d07e7f420ee8855f68f7c8be81efd5fd8",
+    "tcm/dataops/requirements_planner.py": "f43e9f4c81444b0ac8f7b18ae223e13088f324ded8bd088b58662ed53e527d3a",
+    "tcm/dataops/requirements_pipeline.py": "816507bf5940596207da8daed198f8363787944b531d0923b89cd35e3215d33b",
+    "tcm/dataops/capability_matrix.py": "333475a0fe732b9d3dc96a2b1cab811215aae3d9f407e8b9ce2e2625c0ba4d31",
+    "tcm/dataops/service.py": "b1337e5791ed1a2b3e20e0e487cd02fb39a9625a5aedc63200b241b67c577ec5",
+    "tests/test_requirements_v3_http.py": "021f77d7580b8d3adea593d586137bf98c8be10c5d81ca96e0b825a06c74c999",
+    "tests/test_requirements_pipeline.py": "b85f888edafd1709e4c2f7b0ed0960f25f07fe87b3d0d1b271a97681ddea7cd9",
+    "tests/test_requirements_v2.py": "a0aff20fb5d672725cccf6239bb2a7bac2d04a60169f0e04ede3a59cd8110e68",
+    "tests/test_requirements_understanding.py": "ecb076c67559ebb28703644eb26366665e1782bc968223e7c990df75abd1aca4",
+    "tests/test_requirements_planner.py": "1db54a9dbb600c3d6b341055db5c2c1fce71fff355d61461bc22a7484dd29314",
+    "tests/test_requirements_adapter.py": "5d7665389759dfe93e97d40fa087b5c5e523ea88aee88af3316d7f266bf36d7c"
+  },
+  "live_model_requests": 0,
+  "probe_sha256": "979a89f241fe3d936ef715efe58e7da962625b724fe1823b47d41c2073762899",
+  "probe_results_sha256": "3e1d5f717cfa8c02ae90aa6f1c4f1c1b2bda456830a1bccbf0374beb3300ce00",
+  "source_after_probe": {
+    "tcm/dataops/requirements_v2.py": "3433e0ebc52f89a16b52c77a4e0e3611a8ffcb03fdd6a996a53c9a52fc5288e1",
+    "tcm/dataops/requirements_understanding.py": "42bdde2a40acb8934cf010319effd24d07e7f420ee8855f68f7c8be81efd5fd8",
+    "tcm/dataops/requirements_planner.py": "f43e9f4c81444b0ac8f7b18ae223e13088f324ded8bd088b58662ed53e527d3a",
+    "tcm/dataops/requirements_pipeline.py": "816507bf5940596207da8daed198f8363787944b531d0923b89cd35e3215d33b",
+    "tcm/dataops/capability_matrix.py": "333475a0fe732b9d3dc96a2b1cab811215aae3d9f407e8b9ce2e2625c0ba4d31",
+    "tcm/dataops/service.py": "b1337e5791ed1a2b3e20e0e487cd02fb39a9625a5aedc63200b241b67c577ec5",
+    "tests/test_requirements_v3_http.py": "021f77d7580b8d3adea593d586137bf98c8be10c5d81ca96e0b825a06c74c999",
+    "tests/test_requirements_pipeline.py": "b85f888edafd1709e4c2f7b0ed0960f25f07fe87b3d0d1b271a97681ddea7cd9",
+    "tests/test_requirements_v2.py": "a0aff20fb5d672725cccf6239bb2a7bac2d04a60169f0e04ede3a59cd8110e68",
+    "tests/test_requirements_understanding.py": "ecb076c67559ebb28703644eb26366665e1782bc968223e7c990df75abd1aca4",
+    "tests/test_requirements_planner.py": "1db54a9dbb600c3d6b341055db5c2c1fce71fff355d61461bc22a7484dd29314",
+    "tests/test_requirements_adapter.py": "5d7665389759dfe93e97d40fa087b5c5e523ea88aee88af3316d7f266bf36d7c"
+  }
+}

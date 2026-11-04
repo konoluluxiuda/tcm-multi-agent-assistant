@@ -1,0 +1,436 @@
+{
+  "version": "query-generalization-v2",
+  "status": "failed",
+  "records": [
+    {
+      "service": "local",
+      "id": "N01",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "request_id": "83809eed8ed94170a717eefe1b2bfc54",
+      "http": 200,
+      "reported_model_calls": 0,
+      "status": "failed",
+      "reason": "Requested attributes or raw witnesses missing",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [],
+      "duration_seconds": 0.169
+    },
+    {
+      "service": "local",
+      "id": "N02",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "request_id": "445bbe16aeef44cc92bffb9be25daaf8",
+      "http": 403,
+      "reported_model_calls": 0,
+      "status": "failed",
+      "reason": "Unexpected HTTP status",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [],
+      "duration_seconds": 0.103
+    },
+    {
+      "service": "local",
+      "id": "N03",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "request_id": "b48ae08308ae4b528508f2656de5a22d",
+      "http": 200,
+      "reported_model_calls": 0,
+      "status": "failed",
+      "reason": "Requested relation/source result missing",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [],
+      "duration_seconds": 0.223
+    },
+    {
+      "service": "local",
+      "id": "N04",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "request_id": "8984867d9d17431496bb9a9e1ab8e093",
+      "http": 200,
+      "reported_model_calls": 0,
+      "status": "failed",
+      "reason": "Requested pharmacopoeia fields or page evidence missing",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [],
+      "duration_seconds": 0.169
+    },
+    {
+      "service": "local",
+      "id": "N05",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "request_id": "2230c7bbe4c94526bcfb567b9c43178d",
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [],
+      "duration_seconds": 0.212
+    },
+    {
+      "service": "local",
+      "id": "N05",
+      "turn": 1,
+      "role": "business",
+      "passed": false,
+      "status": "not_run_parent_failed"
+    },
+    {
+      "service": "local",
+      "id": "N06",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "request_id": "bae523c0da5c4960a245c87e2ee0578d",
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [],
+      "duration_seconds": 0.177
+    },
+    {
+      "service": "local",
+      "id": "C01",
+      "turn": 0,
+      "role": "boundary",
+      "passed": false,
+      "request_id": "b420e6d41df84f369d936d2284c131ef",
+      "http": 403,
+      "reported_model_calls": 0,
+      "status": "failed",
+      "reason": "Unexpected HTTP status",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [],
+      "duration_seconds": 0.083
+    },
+    {
+      "service": "local",
+      "id": "C02",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "request_id": "f8cf809a3303427f91c027f0dec3fa39",
+      "http": 403,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "primary_contract_passed": true,
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [],
+      "duration_seconds": 0.116
+    },
+    {
+      "service": "fallback",
+      "id": "N01",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "request_id": "153fb0e5d55e4ac4a01172cc9f26f286",
+      "http": 200,
+      "reported_model_calls": 1,
+      "answer": {
+        "raw_witnesses_or_pdf_anchors_checked": 2,
+        "scope": "ETCM raw JSON equality and PDF anchor structure; not medical or OCR correctness"
+      },
+      "raw_source_witnesses_checked": 0,
+      "primary_contract_passed": true,
+      "replay_added_model_calls": 0,
+      "replay_status": "passed",
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "local_unresolved_terms"
+        }
+      ],
+      "duration_seconds": 4.938
+    },
+    {
+      "service": "fallback",
+      "id": "N02",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "request_id": "9a258bddefeb49f29430bf1120d89c09",
+      "http": 200,
+      "reported_model_calls": 1,
+      "answer": {
+        "raw_witnesses_or_pdf_anchors_checked": 20,
+        "scope": "ETCM raw JSON equality and PDF anchor structure; not medical or OCR correctness"
+      },
+      "raw_source_witnesses_checked": 0,
+      "primary_contract_passed": true,
+      "replay_added_model_calls": 0,
+      "replay_status": "passed",
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "local_unresolved_terms"
+        }
+      ],
+      "duration_seconds": 5.741
+    },
+    {
+      "service": "fallback",
+      "id": "N03",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "request_id": "f1c59ffd66d6490e8f341dc2e3423de5",
+      "http": 200,
+      "reported_model_calls": 1,
+      "answer": {
+        "raw_witnesses_or_pdf_anchors_checked": 44,
+        "scope": "ETCM raw JSON equality and PDF anchor structure; not medical or OCR correctness"
+      },
+      "raw_source_witnesses_checked": 0,
+      "primary_contract_passed": true,
+      "replay_added_model_calls": 0,
+      "replay_status": "passed",
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "local_unresolved_terms"
+        }
+      ],
+      "duration_seconds": 6.273
+    },
+    {
+      "service": "fallback",
+      "id": "N04",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "request_id": "5d4c6f1ba0294bd6bae34a42a48154fb",
+      "http": 200,
+      "reported_model_calls": 1,
+      "answer": {
+        "raw_witnesses_or_pdf_anchors_checked": 1,
+        "scope": "ETCM raw JSON equality and PDF anchor structure; not medical or OCR correctness"
+      },
+      "raw_source_witnesses_checked": 0,
+      "primary_contract_passed": true,
+      "replay_added_model_calls": 0,
+      "replay_status": "passed",
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "local_unresolved_terms"
+        }
+      ],
+      "duration_seconds": 4.943
+    },
+    {
+      "service": "fallback",
+      "id": "N05",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "request_id": "c6052df9f7f64fd191a46a580b769320",
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "delivery": {
+        "rows": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 124,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": false
+      },
+      "primary_contract_passed": true,
+      "replay_added_model_calls": 0,
+      "replay_status": "passed",
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "local_unresolved_terms"
+        }
+      ],
+      "duration_seconds": 8.987
+    },
+    {
+      "service": "fallback",
+      "id": "N05",
+      "turn": 1,
+      "role": "business",
+      "passed": true,
+      "request_id": "dc34771bd0e8433b82069a38949b31ef",
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "delivery": {
+        "rows": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 6,
+          "verified_cells": 161,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": true
+      },
+      "primary_contract_passed": true,
+      "replay_added_model_calls": 0,
+      "replay_status": "passed",
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "local_unresolved_terms"
+        }
+      ],
+      "duration_seconds": 8.94
+    },
+    {
+      "service": "fallback",
+      "id": "N06",
+      "turn": 0,
+      "role": "business",
+      "passed": false,
+      "request_id": "1b8ee99bf6f040a3a173c04517009325",
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "status": "failed",
+      "reason": "'workspace_id'",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "local_unresolved_terms"
+        },
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "completeness_mode_mismatch"
+        }
+      ],
+      "duration_seconds": 3.755
+    },
+    {
+      "service": "fallback",
+      "id": "C01",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "request_id": "571a75e7fdb14c4da31d6184743190ce",
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "primary_contract_passed": true,
+      "replay_added_model_calls": 0,
+      "replay_status": "passed",
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "no_candidate_scope"
+        }
+      ],
+      "duration_seconds": 5.038
+    },
+    {
+      "service": "fallback",
+      "id": "C02",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "request_id": "15f831ee14c849899ad821c633d41de6",
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "primary_contract_passed": true,
+      "replay_added_model_calls": 0,
+      "replay_status": "passed",
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "no_candidate_scope"
+        },
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "no_candidate_scope"
+        }
+      ],
+      "duration_seconds": 5.447
+    }
+  ],
+  "by_service": {
+    "local": {
+      "business": {
+        "passed": 0,
+        "total": 7
+      },
+      "boundary": {
+        "passed": 1,
+        "total": 2
+      }
+    },
+    "fallback": {
+      "business": {
+        "passed": 6,
+        "total": 7
+      },
+      "boundary": {
+        "passed": 2,
+        "total": 2
+      }
+    }
+  },
+  "reported_model_calls_known": 9,
+  "responses_with_unknown_model_count": 0,
+  "reserved_model_units": 9,
+  "stopped": false,
+  "authorship": {
+    "kind": "developer_authored_frozen",
+    "source": "Implementation assistant authored wording before either service execution; knows implementation and previous failures",
+    "independent_acceptance": false,
+    "note": "New wording, not independent holdout or new semantic task families; no business or prompt edits during execution"
+  },
+  "independent_acceptance": false,
+  "raw_values_published": false,
+  "model_count_scope": "HTTP-reported requests, not provider wire receipts; unknown counts consume one reserved budget unit",
+  "comparison_limit": "Deployed configurations are recorded, not assumed to differ only in model switch.",
+  "replay_checks_not_run": 0
+}

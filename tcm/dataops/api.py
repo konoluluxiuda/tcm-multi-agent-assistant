@@ -12,7 +12,7 @@ from fastapi import APIRouter, HTTPException, Request, Response
 from fastapi.responses import FileResponse, HTMLResponse, StreamingResponse
 
 from features import env_bool
-from tcm.dataops.contracts import CreateWorkspace, Query, CreateAgent, Answer, Recover, TaskQuestion, SubmitQuestion
+from tcm.dataops.contracts import CreateWorkspace, Query, CreateAgent, Answer, Recover, TaskQuestion, SubmitQuestion, AnswerDeliveryRequest
 from tcm.dataops.data_access import Sources, SourceChanged
 from tcm.dataops.service import DataOpsService, ProposalNeedsInput
 from tcm.dataops.workspace import Workspaces, Conflict
@@ -58,6 +58,9 @@ def create_router(memory_provider, cookie_name, *, service=None):
         cookie = request.cookies.get(cookie_name())
         if not memory.valid_cookie(cookie):
             raise HTTPException(401, '请打开资料工作台初始化会话。')
+        from tcm.dataops import diagnostics
+        diagnostics.bind(os.getenv('DATAOPS_ROOT') or Path(memory.path).with_name('dataops'),
+                         hashlib.sha256(cookie.encode()).hexdigest())
         return (Workspaces(os.getenv('DATAOPS_ROOT') or Path(memory.path).with_name('dataops')),
                 hashlib.sha256(cookie.encode()).hexdigest())
 
@@ -89,6 +92,14 @@ def create_router(memory_provider, cookie_name, *, service=None):
             response.set_cookie(cookie_name(), memory.new_cookie(), httponly=True, samesite='lax',
                                 secure=env_bool('CHAT_COOKIE_SECURE'), max_age=memory.ttl_seconds)
         return response
+
+    @router.get('/api/dataops/diagnostics/{identifier}')
+    def request_diagnostics(identifier: str, request: Request, response: Response):
+        from tcm.dataops.diagnostics import Store
+        store,owner=context(request,response)
+        try:return Store(store.root).get(owner,identifier)
+        except KeyError:raise HTTPException(404,'本会话没有对应诊断记录；旧请求缺失的记录不会补造。') from None
+        except (OSError,sqlite3.Error):raise HTTPException(503,'本地诊断记录暂不可用。') from None
 
     def agent_enabled():
         from tcm.capabilities import dataops_runtime
@@ -267,6 +278,28 @@ def create_router(memory_provider, cookie_name, *, service=None):
                                     'medicinal_part': r['fields']['medicinal_part']['value']} for r in data['records']]
                 return data
         return call(action)
+
+    @router.post('/api/dataops/answer')
+    def answer(body: AnswerDeliveryRequest, request: Request, response: Response):
+        store, owner = context(request, response)
+        def action():
+            from tcm.dataops.answer_delivery import deliver_saved_query, status_code
+            from agents.agent_decision import process_query
+            result = deliver_saved_query(root=store.root, memory=memory_provider(),
+                session_id=request.cookies.get(cookie_name()), request_key=body.request_key,
+                sources_provider=configured_sources, process_query=process_query)
+            response.status_code = status_code(result)
+            return result
+        return call(action)
+
+    @router.get('/api/dataops/answers/{request_key}')
+    def saved_answer(request_key: str, request: Request, response: Response):
+        store, owner = context(request, response)
+        memory_provider().load(request.cookies.get(cookie_name()))
+        from tcm.dataops.answer_delivery import read_answer
+        # Reading a completed historical delivery never reruns tools, even if
+        # the source has since changed. It retains its original source revision.
+        return call(lambda: read_answer(store.root, owner, request_key))
 
     @router.post('/api/dataops/workspaces')
     def create(body: CreateWorkspace, request: Request, response: Response):

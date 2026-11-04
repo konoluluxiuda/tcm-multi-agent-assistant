@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-04",
+  "engineering_acceptance": "passed",
+  "real_business_generalization": "not_proven",
+  "offline_ci": {
+    "tests": 1804,
+    "modules": 208,
+    "skipped": 0,
+    "network_attempts": 0,
+    "source_scope": "frozen live_v2 implementation before removal of one HTML comment"
+  },
+  "post_evaluation_runtime_change": {
+    "file": "templates/index.html",
+    "change": "remove one historical commented credential literal",
+    "behavior_changed": false,
+    "exact_frozen_template_reconstruction_verified": true
+  },
+  "live_v2": {
+    "completed_combinations": 119,
+    "interrupted_combinations": 1,
+    "not_started_combinations": 0,
+    "dispatches": 118,
+    "http_200": 118,
+    "unknown_dispatches": 0,
+    "automatic_retries": 0,
+    "new_dispatches_after_resume": 114,
+    "known_total_tokens": 394191
+  },
+  "latest_image": {
+    "image_tag": "tcm-research-chat:requirements-completion-v2-20261104",
+    "image_id": "sha256:7cda82d7bff4bad5d3c057850c4f796950c39342eccb5b5ce012c2b0a1d432f8",
+    "source_tree_sha256": "193c36996c2748f11e865967c3cf1aa79c0ac0a2762eef3bd196dcbf6a1bf442",
+    "context_policy": "temporary allowlisted runtime files; no corpus, .env, weights or sessions",
+    "docker_hub_published": false
+  },
+  "latest_container": {
+    "name": "tcm-requirements-clean-completion-v2",
+    "port": 7934,
+    "clean_recovery": "passed",
+    "answer_checks": 10,
+    "answer_status": "passed",
+    "models_enabled": false
+  },
+  "preserved_containers": [
+    7933,
+    7932,
+    7936
+  ],
+  "default_policy_changed": false,
+  "subagents_created": 0,
+  "git_push": false,
+  "private_artifacts_committed": false
+}

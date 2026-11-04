@@ -1,0 +1,222 @@
+{
+  "review_status": "changes_requested",
+  "scope": "Document/code review, targeted offline rerun, injected SDK proposals and runtime GET only; no production code edits or restarts",
+  "files_sha256": {
+    "audits/understanding_refactor_v1/README.md": "b538c6152a8413fde7a82081bedaa6d4a5bfd25aefb6e9e8777b41586fab8761",
+    "scripts/check_understanding_counterexamples.py": "d47c72de9aa7d8622d6e8f5abf7c424259972578656d5982ce3ca37cdeba93d7",
+    "tcm/dataops/research_question.py": "5c7f2cbcccb27737273fc75111fe5c304198ddea0383b6b81647c1ae3a1aa676",
+    "tcm/dataops/understanding_contract.py": "604a02c0579f98a3d840438462d973576743619ddf8cf0b292aa222ff2389668",
+    "tcm/dataops/capability_matrix.py": "60ac4ad9322c3f1ce60cf9c6ea0c6a96a5df19bf31527f714d44ace8d75ec523",
+    "tcm/dataops/service.py": "8a4ecf6a25d0f291831c6ea2c0f2d82fab194b1e3b3c27d06dc9214d0e019c9d",
+    "tests/test_understanding_v2.py": "78b788096b3d82450d33618ed86a514bdc7871dc54582c14b59a15f76d6fae9b",
+    "tests/test_capabilities.py": "ca74966e5bc44898913f552488e94dd63120928f5aade1b55c7451b2a5d4de97"
+  },
+  "existing_full_ci_records": [
+    {
+      "path": "var/ci_understanding_v3b/summary.json",
+      "sha256": "95bbe31ae8cb5b47ced2dadad57668f09f238d7612dc5e1d8e42f6e4d339e30c",
+      "status": "failed",
+      "modules": 194,
+      "total": 1619,
+      "failed_modules": [
+        {
+          "module": "test_capabilities.py",
+          "status": "failed",
+          "total": 8,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "network_attempts": 0
+        }
+      ],
+      "live_provider_evaluation": {
+        "status": "not_run",
+        "reason": "offline regression uses deterministic substitutes"
+      }
+    },
+    {
+      "path": "var/ci_understanding_v3c/summary.json",
+      "sha256": "65fa4ab96c65583e15b9677d3b31ac4dccabcc31cfcec0c4f74844f0a1963f9d",
+      "status": "failed",
+      "modules": 194,
+      "total": 1620,
+      "failed_modules": [
+        {
+          "module": "test_capabilities.py",
+          "status": "failed",
+          "total": 8,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "network_attempts": 0
+        }
+      ],
+      "live_provider_evaluation": {
+        "status": "not_run",
+        "reason": "offline regression uses deterministic substitutes"
+      }
+    },
+    {
+      "path": "var/ci_understanding_v3d/summary.json",
+      "sha256": "65fa4ab96c65583e15b9677d3b31ac4dccabcc31cfcec0c4f74844f0a1963f9d",
+      "status": "failed",
+      "modules": 194,
+      "total": 1620,
+      "failed_modules": [
+        {
+          "module": "test_capabilities.py",
+          "status": "failed",
+          "total": 8,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "network_attempts": 0
+        }
+      ],
+      "live_provider_evaluation": {
+        "status": "not_run",
+        "reason": "offline regression uses deterministic substitutes"
+      }
+    },
+    {
+      "path": "var/ci_understanding_v3e/summary.json",
+      "sha256": "65fa4ab96c65583e15b9677d3b31ac4dccabcc31cfcec0c4f74844f0a1963f9d",
+      "status": "failed",
+      "modules": 194,
+      "total": 1620,
+      "failed_modules": [
+        {
+          "module": "test_capabilities.py",
+          "status": "failed",
+          "total": 8,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "expected_failures": 0,
+          "network_attempts": 0
+        }
+      ],
+      "live_provider_evaluation": {
+        "status": "not_run",
+        "reason": "offline regression uses deterministic substitutes"
+      }
+    }
+  ],
+  "targeted_rerun": [
+    {
+      "module": "test_understanding_v2.py",
+      "status": "passed",
+      "total": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_capabilities.py",
+      "status": "failed",
+      "total": 8,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "offline_probes": {
+    "harness_1": {
+      "exit_code": 0,
+      "summary": "9/9 table-goal cases matched expectation",
+      "mismatches": []
+    },
+    "harness_0": {
+      "exit_code": 0,
+      "summary": "6/9 table-goal cases matched expectation",
+      "mismatches": [
+        "AC03",
+        "AC09",
+        "AC10"
+      ]
+    },
+    "profile_bypasses_ac05_guard": {
+      "question": "黄芪有什么作用",
+      "status": "query",
+      "route": {
+        "tool": "herb",
+        "request": {
+          "name": "黄芪",
+          "profile": true,
+          "resolve_unique_name": true
+        }
+      },
+      "calls": 1,
+      "failure": null
+    },
+    "mixed_request_drops_document_field": {
+      "question": "黄芪的药用部位和功效",
+      "status": "query",
+      "route": {
+        "tool": "herb",
+        "request": {
+          "name": "黄芪",
+          "field": "medicinal_part",
+          "resolve_unique_name": true
+        }
+      },
+      "calls": 1,
+      "failure": null
+    },
+    "switch_off_still_uses_local_contract": {
+      "status": "ready",
+      "basis": "local_requirement_contract",
+      "phases": [
+        "initial"
+      ],
+      "calls": 1
+    },
+    "external_model_requests": 0,
+    "blocked_network_attempts": 0
+  },
+  "runtime": [
+    {
+      "port": 7920,
+      "source_revision": "d8f8a7d44de52105fc3a004a254fc6938153c7090c3adcc5f37a66d0565aa68d",
+      "disk_revision": "5e74002ff65f49cd8f28f3d0f1d135e6e49e34a4328ed135104dec7994490c5b",
+      "restart_required": true,
+      "selection": {
+        "enabled": true,
+        "driver": "fixed",
+        "external_model_enabled": false,
+        "execution_model_enabled": false,
+        "question_model_enabled": false,
+        "question_policy": "local_then_one_model_v1",
+        "question_request_limit": 1,
+        "chat_question_fallback_enabled": false,
+        "goal_input": "bounded_question_or_form",
+        "identity_approval": false
+      }
+    },
+    {
+      "port": 7921,
+      "source_revision": "d8f8a7d44de52105fc3a004a254fc6938153c7090c3adcc5f37a66d0565aa68d",
+      "disk_revision": "5e74002ff65f49cd8f28f3d0f1d135e6e49e34a4328ed135104dec7994490c5b",
+      "restart_required": true,
+      "selection": {
+        "enabled": true,
+        "driver": "fixed",
+        "external_model_enabled": true,
+        "execution_model_enabled": false,
+        "question_model_enabled": true,
+        "question_policy": "unified_v2",
+        "question_request_limit": 2,
+        "chat_question_fallback_enabled": true,
+        "goal_input": "bounded_question_or_form",
+        "identity_approval": false
+      }
+    }
+  ]
+}

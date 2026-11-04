@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "rows": [
+    {
+      "port": 7896,
+      "request_id": "7d26d92e253e411aa7d1178edb9edcd0",
+      "header_matches_local_diagnostic": true,
+      "stages": [
+        "http",
+        "query_execution",
+        "request",
+        "routing"
+      ],
+      "new_model_calls": 0
+    },
+    {
+      "port": 7912,
+      "request_id": "60b3f87e96b0455b997aa635fbf4a63e",
+      "header_matches_local_diagnostic": true,
+      "stages": [
+        "http",
+        "query_execution",
+        "request",
+        "routing"
+      ],
+      "new_model_calls": 0
+    },
+    {
+      "port": 7914,
+      "request_id": "ed5af4d4c4b947eb84af09b8abf4aa3e",
+      "header_matches_local_diagnostic": true,
+      "stages": [
+        "http",
+        "query_execution",
+        "request",
+        "routing"
+      ],
+      "new_model_calls": 0
+    }
+  ]
+}

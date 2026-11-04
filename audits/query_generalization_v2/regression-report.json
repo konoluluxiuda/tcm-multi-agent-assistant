@@ -1,0 +1,163 @@
+{
+  "version": "proposal-live-regression-v1",
+  "status": "passed",
+  "records": [
+    {
+      "service": "fallback",
+      "id": "RC03",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "request_id": "1cc677fe8fdc439b954fdb63731c8122",
+      "http": 403,
+      "reported_model_calls": null,
+      "raw_source_witnesses_checked": 0,
+      "primary_contract_passed": true,
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "boundary",
+          "status": "rejected",
+          "code": "personal_treatment_request"
+        }
+      ],
+      "duration_seconds": 0.116
+    },
+    {
+      "service": "fallback",
+      "id": "RC04",
+      "turn": 0,
+      "role": "boundary",
+      "passed": true,
+      "request_id": "c60532c766d74f5d95f914b9b710a8c3",
+      "http": 200,
+      "reported_model_calls": 0,
+      "raw_source_witnesses_checked": 0,
+      "primary_contract_passed": true,
+      "replay_added_model_calls": 0,
+      "replay_status": "passed",
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [],
+      "duration_seconds": 0.346
+    },
+    {
+      "service": "fallback",
+      "id": "RG03",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "request_id": "a80c039f172d4bd090f079274900f82d",
+      "http": 200,
+      "reported_model_calls": 1,
+      "answer": {
+        "raw_witnesses_or_pdf_anchors_checked": 20,
+        "scope": "ETCM raw JSON equality and PDF anchor structure; not medical or OCR correctness"
+      },
+      "raw_source_witnesses_checked": 0,
+      "primary_contract_passed": true,
+      "replay_added_model_calls": 0,
+      "replay_status": "passed",
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "local_unresolved_terms"
+        }
+      ],
+      "duration_seconds": 9.075
+    },
+    {
+      "service": "fallback",
+      "id": "RG04",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "request_id": "f6713349146343de862a5978322ad687",
+      "http": 200,
+      "reported_model_calls": 1,
+      "answer": {
+        "raw_witnesses_or_pdf_anchors_checked": 46,
+        "scope": "ETCM raw JSON equality and PDF anchor structure; not medical or OCR correctness"
+      },
+      "raw_source_witnesses_checked": 0,
+      "primary_contract_passed": true,
+      "replay_added_model_calls": 0,
+      "replay_status": "passed",
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "local_unresolved_terms"
+        }
+      ],
+      "duration_seconds": 12.835
+    },
+    {
+      "service": "fallback",
+      "id": "RG08",
+      "turn": 0,
+      "role": "business",
+      "passed": true,
+      "request_id": "ea17f2c555e14007b86aedadc3aff9cd",
+      "http": 200,
+      "reported_model_calls": 1,
+      "raw_source_witnesses_checked": 0,
+      "delivery": {
+        "rows": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 128,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": false
+      },
+      "primary_contract_passed": true,
+      "replay_added_model_calls": 0,
+      "replay_status": "passed",
+      "status": "passed",
+      "diagnostic_http": 200,
+      "diagnostic_reasons": [
+        {
+          "stage": "requirements",
+          "status": "needs_input",
+          "code": "local_unresolved_terms"
+        }
+      ],
+      "duration_seconds": 9.79
+    }
+  ],
+  "by_service": {
+    "fallback": {
+      "business": {
+        "passed": 3,
+        "total": 3
+      },
+      "boundary": {
+        "passed": 2,
+        "total": 2
+      }
+    }
+  },
+  "reported_model_calls_known": 3,
+  "responses_with_unknown_model_count": 1,
+  "reserved_model_units": 4,
+  "stopped": false,
+  "authorship": {
+    "kind": "observed_user_exposed",
+    "source": "Verbatim exposed developer cases G03/G04/G08/C03/C04 from query-generalization-v1; repair regression only",
+    "independent_acceptance": false
+  },
+  "independent_acceptance": false,
+  "raw_values_published": false,
+  "model_count_scope": "HTTP-reported requests, not provider wire receipts; unknown counts consume one reserved budget unit",
+  "comparison_limit": "Deployed configurations are recorded, not assumed to differ only in model switch.",
+  "replay_checks_not_run": 0
+}

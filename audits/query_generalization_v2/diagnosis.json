@@ -1,0 +1,26 @@
+{
+  "case": "N06",
+  "request_id": "1b8ee99bf6f040a3a173c04517009325",
+  "first_failure_stage": "requirements / compile_draft mode validation",
+  "failure_code": "completeness_mode_mismatch",
+  "model_proposal": {
+    "mode": "filter_complete",
+    "names_count": 3,
+    "document_fields": [
+      "功能与主治",
+      "注意"
+    ],
+    "target_count": null
+  },
+  "parsed_tool_calls_sha256_matches": true,
+  "host_function": "tcm/dataops/research_question.py::all_complete_request",
+  "function_file_sha256": "9f52bb5b0be969715a983cc4abdf3bad339aafae5a557a8b02f74a08630712c8",
+  "new_question_recognized_complete": false,
+  "old_regression_question_recognized_complete": true,
+  "root_cause": "Positive lexical completeness gate requires 都有/有记录/有值/不缺/齐全/非空 and does not accept 同时有…记载. Correct model mode is rejected because absence of lexical evidence is treated as contrary intent. No source retrieval or execution was reached.",
+  "public_failure_message_misattribution": true,
+  "public_message_issue": "Says the model changed the selection mode; evidence shows the host did not recognize the wording.",
+  "offline_reproduction_calls": 1,
+  "additional_provider_requests": 0,
+  "business_code_or_prompt_modified": false
+}

@@ -38,6 +38,9 @@ def read(evidence,args):
             selected={'rows':selected.get('hits',[])}
         elif source['tool']=='pair_evidence_report' and request.field=='items':
             selected=selected.get('targets',{})
+        elif source['tool']=='herb_relation_records':
+            selected=selected.get('relations',{}).get('data',{})
+            if request.field=='rows':selected={'rows':selected.get('items',[])}
     base=selected
     if request.item_index is not None:
         candidates=base.get('items',[])

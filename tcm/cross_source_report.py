@@ -223,6 +223,11 @@ def worker():
         result = text_search(request['herb'], request['question'])
     elif request['branch'] == 'structured':
         result = structured_search(request['herb'],request.get('source_record_id'))
+    elif request['branch'] == 'relation_records':
+        from tcm.relation_queries import execute
+        params=json.loads(request['question'])
+        result=execute({'kind':params['kind'],'page':params['page'],
+                        'entities':[request['source_record_id']],'resolve_unique_sources':False})
     elif request['branch'] == 'shared_targets':
         from tcm.relation_queries import shared_targets
         selection = json.loads(request['question'])

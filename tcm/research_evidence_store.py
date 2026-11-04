@@ -128,6 +128,8 @@ class EvidenceStore:
             report=data['report'];rows=report.get('hits',report.get('rows'))
             if isinstance(rows,list):fields['rows']=len(rows)
             if isinstance(report.get('targets',{}).get('items'),list):fields['items']=len(report['targets']['items'])
+            if isinstance(report.get('relations',{}).get('data',{}).get('items'),list):
+                fields['items']=len(report['relations']['data']['items'])
         reference = {'tool': payload['tool'], 'status': payload['status'],
                      'externalized': True, 'evidence_handle': handle,
                      'source_evidence_id': evidence_id, 'content_sha256': digest,

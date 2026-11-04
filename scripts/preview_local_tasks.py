@@ -36,7 +36,9 @@ def main():
     parser.add_argument('--research-selection', choices=('fixed','synthetic','native'),
                         help='Enable bounded candidate selection at /dataops/research; native permits up to 10 model requests per task')
     parser.add_argument('--research-goal-model',action='store_true',
-                        help='Enable shared local-first, one-call question fallback for chat/workbench; page can opt out; requires --research-selection')
+                        help='Enable question understanding for chat/workbench; page can opt out; requires --research-selection')
+    parser.add_argument('--understanding-policy',choices=('local_then_one_model_v1','unified_v2','requirements_v3'),
+                        default='local_then_one_model_v1',help='unified_v2 uses model understanding plus at most one correction or independent task review (2 requests total); requirements_v3 uses the versioned requirement contract')
     parser.add_argument('--langfuse-env', type=Path, default=ROOT/'var/langfuse_local/app.env',
                         help='Private tracing configuration; only tracing keys are loaded')
     args = parser.parse_args()
@@ -69,6 +71,16 @@ def main():
         'PHARMACOPOEIA_INDEX': args.pharmacopoeia_index.resolve(),
         'ETCM_SOURCE_ROOT': ROOT.parent / 'HDCTI/dataset/ETCM2.0',
     }
+    if args.rag or args.research_selection:
+        # Chat and the workbench must resolve names from the SAME registered
+        # release. A custom release must not leave chat on the old sidecar.
+        import json
+        registered=json.loads((args.rag_release/'sources.private.json').read_text())['config']
+        for key,role in (('TCM_DB','herbs'),('ETCM_ENRICHMENT_DB','enrichment'),('ETCM_TARGET_DB','targets'),
+                         ('PHARMACOPOEIA_PDF_HIGH','pdf_high'),('PHARMACOPOEIA_PDF_FULL','pdf_full')):
+            files[key]=Path(registered[role])
+        directories.update(PHARMACOPOEIA_INDEX=args.rag_release.resolve()/'index',
+                           ETCM_SOURCE_ROOT=Path(registered['source_root']))
     missing = [str(p) for p in files.values() if not p.is_file()]
     missing += [str(p) for p in directories.values() if not p.is_dir()]
     if missing:
@@ -96,6 +108,7 @@ def main():
         'ENABLE_DATAOPS_RESEARCH':'1' if args.research_selection else '0',
         'DATAOPS_RESEARCH_DRIVER':args.research_selection or 'disabled',
         'ENABLE_DATAOPS_RESEARCH_GOAL_MODEL':'1' if args.research_goal_model else '0',
+        'DATAOPS_UNDERSTANDING_POLICY':args.understanding_policy,
         'ENABLE_SYNTHETIC_LOOP':'1' if args.synthetic_loop else '0',
         'RESEARCH_TOOLS_ONLY': '1', 'ENABLE_NATURAL_ROUTING': '1',
         'ENABLE_RESEARCH_TASKS': '1', 'ENABLE_RESEARCH_PLAN_JOBS':'1', 'ENABLE_RESEARCH_BOOKMARKS': '1',
@@ -194,12 +207,12 @@ def main():
     print(f'资料工作台：http://127.0.0.1:{args.port}/dataops', flush=True)
     if args.rag:print(f'引用资料页：http://127.0.0.1:{args.port}/rag',flush=True)
     if args.research_selection:print(f'候选核对任务：http://127.0.0.1:{args.port}/dataops/research（{args.research_selection}）',flush=True)
-    if args.research_goal_model:print('问句理解：先本地解析，未完整识别时最多一次模型兜底；聊天与工作台共用，工作台可取消。任务执行开关独立。',flush=True)
+    if args.research_goal_model:print('问句理解：'+('统一模型理解，最多2次请求（首轮加一次纠正或独立复核）' if args.understanding_policy in ('unified_v2','requirements_v3') else '本地优先，最多1次模型兜底')+'；聊天与工作台共用，工作台可取消。任务执行开关独立。',flush=True)
     model_modes=[]
     if args.with_intent_model:model_modes.append('未识别问句可调用意图模型一次')
     if args.rag_model:model_modes.append('引用回答可按需调用模型一次')
     if args.research_selection=='native':model_modes.append('候选任务每任务最多10次模型请求')
-    if args.research_goal_model:model_modes.append('未完整识别时每请求编号最多一次模型理解，执行开关独立')
+    if args.research_goal_model:model_modes.append(f"问句理解每请求编号最多{2 if args.understanding_policy in ('unified_v2','requirements_v3') else 1}次，执行开关独立")
     print(('；'.join(model_modes) if model_modes else '本地资料模式；外部模型关闭。')+' 联网工具关闭。'+
           ('DataOps Langfuse追踪已启用。' if args.with_langfuse else '追踪关闭。')+
           'Ctrl+C停止，同一状态目录可恢复记录。',flush=True)

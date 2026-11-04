@@ -136,6 +136,8 @@ class ResearchEngine(Engine):
                 if tool=='list_candidates':
                     if s['selected'] is None:
                         reads(1);selected=sources.query(self.goal.query)
+                        if self.goal.research.mode=='filter_complete' and (selected['returned']>self.goal.research.target_count or selected['next_offset'] is not None):
+                            raise ToolRejected('all_complete_pool_exceeds_limit')
                         parent=self.store.get(self.owner,self.doc['parent_id']) if self.doc.get('parent_id') else None
                         if parent:
                             validate_result(parent['result'])
@@ -201,6 +203,12 @@ class ResearchEngine(Engine):
                         if not audit_named and not s.get('parent_records') and len(qualified)!=len(ids):
                             raise ToolRejected('unqualified_delivery_records')
                         full=len(ids)==self.goal.research.target_count and len(qualified)==len(ids)
+                        if self.goal.research.mode=='filter_complete':
+                            ctx=self.context(s)
+                            expected=s.get('parent_records') or ctx['eligible']
+                            full=(not ctx['unread'] and set(s['selected']['selected_ids'])<=set(s['inspections']) and
+                                  set(ids)==set(expected) and (not s.get('parent_records') or len(qualified)==len(ids)) and
+                                  not s['selected']['unknown_names'] and not s['selected']['unknown_source_ids'])
                         if audit_named:
                             full=(len(ids)==self.goal.research.target_count and all(sid in s['inspections'] for sid in ids)
                                   and not self.context(s)['unread'] and not s['selected']['unknown_names'] and not s['selected']['unknown_source_ids'])
@@ -213,7 +221,8 @@ class ResearchEngine(Engine):
                                       decisions=s['decisions'],usage=s['usage'],trace=s['events']+[obs])
                         result['evidence'].update(s.get('research_evidence',{}))
                         result['research']={'target_count':self.goal.research.target_count,'qualified_count':len(qualified),
-                            'task_mode':self.goal.research.mode,'reviewed_count':len(ids),
+                            'task_mode':self.goal.research.mode,'reviewed_count':len(s['inspections']),
+                            'all_matching_in_named_pool':self.goal.research.mode=='filter_complete',
                             'artifact_format':'sorted-evidence-v1',
                             'candidate_pool_count':len(s['selected']['selected_ids']),'selected_ids':ids,
                             'candidate_states':[{**self.candidate_state(s,sid),'selected':sid in ids}

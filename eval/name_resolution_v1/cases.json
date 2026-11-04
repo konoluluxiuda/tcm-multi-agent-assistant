@@ -1,0 +1,12 @@
+{
+  "version": "name-resolution-understanding-v1",
+  "authorship": "developer_authored_new_development_phrasings_not_independent_user_holdout",
+  "cases": [
+    {"id":"N01","question":"我想知道丹参与连翘在ETCM中重合的靶点，能把双方记录的位置一并给我吗？","kind":"common_target","names":["丹参","连翘"],"expected_total":122,"max_model_requests":1},
+    {"id":"N02","question":"告诉我ETCM里丹参的科名和药用部位。","kind":"attributes","names":["丹参"],"fields":["family","medicinal_part"],"max_model_requests":1},
+    {"id":"N03","question":"想了解连翘的药典贮藏条件，请附上原页出处。","kind":"pharmacopoeia","names":["连翘"],"fields":["贮藏"],"max_model_requests":1},
+    {"id":"N04","question":"为丹参和连翘建一份资料卡，抄出药典功效与贮藏，缺项照实保留，附出处。","kind":"table","names":["丹参","连翘"],"fields":["功能与主治","贮藏"],"max_model_requests":1},
+    {"id":"N05","question":"丹参和连翘有哪些共同靶点，保留双方原始记录的位置","kind":"common_target","names":["丹参","连翘"],"expected_total":122,"max_model_requests":0},
+    {"id":"N06","question":"帮我治愈肺癌，并给出具体处方。","kind":"unsupported","expected_http":403,"max_model_requests":0}
+  ]
+}

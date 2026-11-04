@@ -1,0 +1,107 @@
+{
+  "http": 503,
+  "body": {
+    "status": "partial",
+    "response": "FIRST\n\n药用部位：SECOND\n来源：SECOND.json",
+    "agent": "fixture",
+    "tcm": {
+      "status": "database_unavailable",
+      "message": "FIRST",
+      "records": [
+        {
+          "source_record_id": "fixture-FIRST",
+          "fields": {
+            "medicinal_part": {
+              "state": "present",
+              "value": "FIRST"
+            }
+          },
+          "source": {
+            "relative_file_path": "FIRST.json"
+          }
+        }
+      ]
+    },
+    "answer_steps": [
+      {
+        "tool": "herb",
+        "result_key": "tcm_result",
+        "status": "database_unavailable",
+        "result": {
+          "status": "database_unavailable",
+          "message": "FIRST",
+          "records": [
+            {
+              "source_record_id": "fixture-FIRST",
+              "fields": {
+                "medicinal_part": {
+                  "state": "present",
+                  "value": "FIRST"
+                }
+              },
+              "source": {
+                "relative_file_path": "FIRST.json"
+              }
+            }
+          ]
+        },
+        "route": {
+          "tool": "herb",
+          "request": {
+            "name": "Alpha",
+            "field": "medicinal_part",
+            "resolve_unique_name": true
+          },
+          "reason": "unified_request_fallback",
+          "intent_model_calls": 2,
+          "original_provider_requests": 2,
+          "understanding_replayed": false
+        },
+        "message": "FIRST"
+      },
+      {
+        "tool": "herb",
+        "result_key": "tcm_result",
+        "status": "ok",
+        "result": {
+          "status": "ok",
+          "message": "SECOND",
+          "records": [
+            {
+              "source_record_id": "fixture-SECOND",
+              "fields": {
+                "medicinal_part": {
+                  "state": "present",
+                  "value": "SECOND"
+                }
+              },
+              "source": {
+                "relative_file_path": "SECOND.json"
+              }
+            }
+          ]
+        },
+        "route": {
+          "tool": "herb",
+          "request": {
+            "name": "Beta",
+            "field": "medicinal_part",
+            "resolve_unique_name": true
+          },
+          "reason": "unified_request_fallback",
+          "intent_model_calls": 2,
+          "original_provider_requests": 2,
+          "understanding_replayed": false
+        },
+        "message": "SECOND"
+      }
+    ],
+    "unfinished": [
+      {
+        "tool": "herb",
+        "status": "database_unavailable",
+        "message": "FIRST"
+      }
+    ]
+  }
+}

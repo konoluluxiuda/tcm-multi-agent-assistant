@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-03",
+  "scope": "working-tree implementation; synthetic source/SDK acceptance; not deployment or live-model generalization",
+  "offline_ci": {
+    "status": "passed",
+    "total": 1752,
+    "modules": 203,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "browser": {
+    "status": "passed",
+    "checks": [
+      "chat_cross_source_visible",
+      "citation_details_visible",
+      "original_pdf_page_rendered",
+      "chat_refresh_restores_all",
+      "workbench_clarification_reenables_submit",
+      "workbench_query_after_clarification",
+      "workbench_replay_no_new_understanding",
+      "workbench_refresh_restores_all",
+      "partial_keeps_success_and_unfinished"
+    ],
+    "javascript_errors": [],
+    "external_browser_requests": [],
+    "real_model_requests": 0,
+    "transport": "Playwright route -> real ASGI TestClient; synthetic data/SDK replies"
+  },
+  "source_sha256": {
+    "agents/conversation_store.py": "801fd51485d9f4f6f96bb90a11cb5bce1d2fe6d93271bd9fe7c3f61cca4d9beb",
+    "agents/memory_backup.py": "4d1f5ad3e703da874bf2ccc24830d8715cb9c5b5e4095ac03dc845ef467992ad",
+    "app.py": "8192d0fac3f3360f10417d49aab7b5209a04ba5d0389a30c559a391848b3ee6e",
+    "tcm/dataops/answer_delivery.py": "bc4dd1a60657192600ea29ee17441f86faf57e7a19c3f799efd4dbaa3c5bbe78",
+    "tcm/dataops/service.py": "e4f1cdf5e9f566edaadcefb0e134ef2a995c36bdba2fd653b985ea540ffadb9e",
+    "tcm/dataops/chat.py": "6a3230025d8dc138fca4a43917280a0181de3ae13e276ab9f4651bd7dbf10ad2",
+    "tcm/dataops/contracts.py": "c0aa8da4a31f8cfec8fedc3dd9df403479ed298116db84f98bedfa99cc3b2fa7",
+    "tcm/dataops/api.py": "727c091446df9aeedca44115ed3463e1307f763adb4b9b58daba3e970af6f927",
+    "tcm/dataops/research_workbench.html": "bdfe93b4d6f9adf8f4d667204addb76cd7dee9f66c621d2baf1f3de8db9e1215",
+    "assets/web/answer_delivery.js": "e60fea1a0038ab8c7582e9ce2f166cc040980c0059d7df29a86c40f6e5f5b592",
+    "templates/index.html": "a46dae1990922ad33685013493bf0bb90d546f310f06c0dd4b9e447cec473630",
+    "scripts/preview_local_tasks.py": "65e9f8f61b965823d3ce56e036e3f5ef7fe45e11f6ac856ac4168841a4ac7c2e",
+    "tests/test_answer_delivery.py": "646d64cf148614529515e0881dcc5d3e9e06e4b4121970468713490d221576fe",
+    "tests/test_memory_backup.py": "cbec28ec231764cbaf69e592cbd8a48596165364bea95d7df5b11ddecec6d956",
+    "tests/test_requirements_v3_http.py": "6dceeafb3a9ea20546f078ffd25cf1708d2347e16ca7655db77c108c273cbacc",
+    "audits/answer_delivery_v2/browser_check.py": "5fbd2ddb6153ed8bf5260b5928503f338d7b13012fad6eb0aa92b82d9b9385fc"
+  },
+  "default_policy_changed": false,
+  "service_restarted": false,
+  "docker_built": false,
+  "real_model_requests": 0,
+  "git_pushed": false
+}

@@ -5,6 +5,7 @@ import sqlite3
 from pathlib import Path
 
 from tcm.herbs import lookup
+from tcm.query_failures import with_failure
 from typing import Literal, TypedDict
 
 
@@ -111,12 +112,12 @@ def execute_request(request, *, dataset_version=None):
     result['records']=enrich_records(result['records'],result.get('dataset_version'))
     # Only this fixed summary enters the conversational checkpoint, not raw source text.
     result['message'] = MESSAGES.get(result['status'], '该来源记录当前不可用，系统未补造字段。')
-    return result
+    return with_failure(result)
 
 
 def _status_result(status):
-    return {'status': status, 'message': MESSAGES[status], 'records': [],
-            'total_record_count': 0, 'returned_record_count': 0, 'truncated': False}
+    return with_failure({'status': status, 'message': MESSAGES[status], 'records': [],
+            'total_record_count': 0, 'returned_record_count': 0, 'truncated': False})
 
 
 def execute_turn(request, context: HerbContext | None):
@@ -148,6 +149,7 @@ def execute_turn(request, context: HerbContext | None):
             result.update(status='ok',message=MESSAGES['ok'],name_resolution_status='name_mapping_candidates',
                           selection_method='unique_local_candidate',
                           notes=['按目录唯一中文名候选读取；名称对应关系尚未人工核验，实际来源见详情。'])
+            result.pop('failure',None)
     if result['status'] == 'ambiguous_entity':
         return result, {'status': 'ambiguous_entity'}
     if result['status'] != 'ok':

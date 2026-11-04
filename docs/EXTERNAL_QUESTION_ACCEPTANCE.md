@@ -9,13 +9,17 @@
 用例文件沿用[现有结构](../eval/user_chat_replay_v1.json)：
 
 - `authorship.kind`：已暴露回归用`observed_user_exposed`；确由外部新提供、尚未运行的可声明`external_unseen_declared`。
+- 开发者自己编写并在运行前冻结的新表述用`developer_authored_frozen`，必须明确知道旧实现、不是独立用户；字面无重复不能证明独立性。[本轮新问法首测](../audits/query_generalization_v1/README.md)属于此类。
 - 外部声明附`source_sha256`（原题/判据文件hash）、`reviewer`（可匿名代号）和`reviewed_at`；`independent_acceptance`填`false`，工具不替人认证独立性。
 - 场景`role`分`business`与`boundary`；同场景`turns`保持同一会话，支持v1后追加列。
 - 每轮`query`是不可改写的原句；`checks`用JSON Pointer和`equals`写明结构合同；需要交付时填`task`中的字段、行集合及父版要求。边界可填预期HTTP码和`no_workspace`。
+- 查询也可用`answer`声明`attributes`（来源与字段）、`relations`（类型与来源）或`pharmacopoeia`（名称与字段），不绑定直查/后台的JSON路径。ETCM来源必须列在`reference_sources`，逐项验证原JSON；药典仅查锚点结构，不能冒充原页内容人审。后台预览被截断时回读本会话完整证据并校验hash，不调用模型。
 - 引用真实值时，评审者先核对原JSON/原页，另存判据依据。机器的逐格回读只能证明文件与API一致，不能代替源内容审核。
 
 管理员先对suite做人工审查，再运行`python -m scripts.eval_user_chat_replay --suite ... --out ... --service local=http://127.0.0.1:7896`冻结；`--execute`消费一次目录。模型实例须额外开启本次批次的`--allow-model`及限额。勿传Cookie、真实个人病史或密钥作为题目；本工作台不接受个人诊疗验收目标。
 
 首测后逐题保留结果。实现问题可以修，但必须另开批次标为修复后回归，不覆盖首测。字面重复检查无法证明语义独立，调试过的题不再算未见问题。最终人工签核应核对需求是否完整完成、出处是否支持、是否有多余澄清或遗漏要求，并与机器合同检查分开报告。
+
+冻结包含题目、判据/评测器SHA及源码副本，执行前检查版本；自动收集同会话诊断。可选重放预算不足时不再次派发，记录`replay_status=not_run_no_budget`及整体`partial`，不能把未测重放写成通过，也不把业务主合同成功误算成解析失败。原已消费批次不因评测器修订自动重跑。
 
 本轮已完成一批[全新AI上下文首测](../audits/external_clean_v1/README.md)：12场景14轮，开发者机械映射判据，未做独立人工签核；本地/兜底业务场景1/10和2/10。不要把该批继续称为未见题或真人准确率。干净部署、交付和重建恢复见[复现说明](CLEAN_REPRODUCTION.md)。

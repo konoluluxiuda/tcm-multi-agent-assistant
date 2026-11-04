@@ -39,6 +39,7 @@ from tcm.project_memory_api import create_router as create_project_router
 from tcm.research_run_api import create_router as create_run_router, enabled as runs_enabled
 from tcm.research_task_api import create_router as create_task_router, enabled as tasks_enabled
 from tcm.request_observability import install as install_chat_observability, mark as mark_chat_request
+import hashlib
 from tcm.dataops.api import create_router as create_dataops_router, validate_origin as validate_dataops_origin
 from tcm.dataops.service import DataOpsService
 from tcm.runtime_status import RuntimeStatus
@@ -150,7 +151,7 @@ async def enforce_features(request: Request, call_next):
             and not (request.url.path == '/api/research/runs' or request.url.path.startswith('/api/research/runs/'))
             and not (request.url.path == '/api/research/tasks' or request.url.path.startswith('/api/research/tasks/'))
             and not (request.url.path in ('/api/dataops/query', '/api/dataops/workspaces', '/api/dataops/agent-runs',
-                                         '/api/dataops/proposals', '/api/dataops/task-requests', '/api/dataops/research-tasks', '/api/dataops/research-questions')
+                                         '/api/dataops/proposals', '/api/dataops/task-requests', '/api/dataops/research-tasks', '/api/dataops/research-questions', '/api/dataops/answer')
                      or re.fullmatch(r'/api/dataops/agent-runs/[a-f0-9]{32}/(answer|cancel|recover)', request.url.path))):
         return JSONResponse(status_code=403, content={'detail': '此部署仅支持药材与药典研究工具及会话管理。'})
     # Check before parsing upload bodies or invoking optional clients.
@@ -240,6 +241,7 @@ async def index(request: Request):
         "evidence_auto_routing_enabled": evidence_auto_routing_enabled(),
         "intent_planner_enabled": env_bool('ENABLE_INTENT_PLANNER'),
         "question_fallback_enabled": research_runtime()['chat_question_fallback_enabled'],
+        "question_understanding_policy": research_runtime()['question_policy'],
         "evidence_assistant_synthetic": os.getenv('EVIDENCE_ASSISTANT_DATA_MODE','synthetic') == 'synthetic',
         "combined_report_enabled": False})
 
@@ -285,6 +287,19 @@ def conversation(response: Response, session_id: Optional[str] = Cookie(None, al
         result = {"messages": [{"role": "user" if m.type == "human" else "assistant", "content": m.content}
                                for m in snapshot.messages if m.type in ('human', 'ai')],
                   "retention_days": agent_runtime.memory.ttl_seconds / 86400}
+        delivery_key = (getattr(snapshot.messages[-1], 'additional_kwargs', {}).get('answer_delivery_key')
+                        if snapshot.messages else None)
+        if delivery_key:
+            from tcm.dataops.answer_delivery import read_answer
+            try:
+                result['answer_delivery'] = read_answer(dataops_service.store().root,
+                    agent_runtime.memory.key(session_id), delivery_key)
+            except KeyError:
+                result['answer_delivery'] = {'status':'unavailable','answer_steps':[],
+                    'response':'保存的查询交付已不可用，请重新查询。','unfinished':[]}
+            set_session_cookie(response, session_id)
+            response.headers['Cache-Control'] = 'private, no-store'
+            return result
         herb_context, research_context = split_contexts(snapshot.tcm_context)
         if herb_context:
             result['tcm'], _ = execute_turn({'followup': True, 'field': 'source'}, herb_context)
@@ -535,15 +550,22 @@ def chat(
     session_id: Optional[str] = Cookie(None, alias=SESSION_COOKIE_NAME)
 ):
     """Process user text query through the multi-agent system."""
+    from tcm.dataops import diagnostics as diagnostic
+    diagnostic.record('request','received',question=request.query)
+    if agent_runtime.memory.valid_cookie(session_id):
+        diagnostic.bind(os.getenv('DATAOPS_ROOT') or agent_runtime.memory.path.with_name('dataops'),
+                        hashlib.sha256(session_id.encode()).hexdigest())
     mark_chat_request(http_request, phase='routing')
     from tcm.request_boundaries import personal_treatment_request
     if env_bool('RESEARCH_TOOLS_ONLY') and personal_treatment_request(request.query):
+        diagnostic.record('boundary','rejected',code='personal_treatment_request')
         mark_chat_request(http_request,phase='response',tool='assistant',model_calls=0)
         raise HTTPException(403,'本服务仅供资料查询与整理，不能提供个体诊断、治疗或处方。可查询已收录资料及出处。')
     from tcm.dataops.chat import matches as matches_dataops, execute as execute_dataops
     from tcm.dataops.request_policy import needs_fallback
     from tcm.capabilities import research_runtime
     selected=resolve_tool_request(request.query)
+    diagnostic.record('routing','resolved',selection=selected)
     resolved_request=None
     from tcm.project_semantic import enabled as memory_enabled, memory_reference, project_listing, recall as recall_projects, store_for, owner_key
     memory_turn=(memory_enabled() or project_listing(request.query)) and memory_reference(request.query)
@@ -553,6 +575,8 @@ def chat(
         if not 1 <= len(request.query.strip()) <= 2000:
             raise HTTPException(422, '整理要求须为1–2000字符。')
         session_id = session_cookie(session_id)
+        diagnostic.bind(os.getenv('DATAOPS_ROOT') or agent_runtime.memory.path.with_name('dataops'),
+                        hashlib.sha256(session_id.encode()).hexdigest())
         from tcm.dataops.workspace import Conflict as DataOpsConflict
         from tcm.dataops.data_access import SourceChanged
         from tcm.research_jobs import JobBusy, JobConflict
@@ -577,7 +601,22 @@ def chat(
         set_session_cookie(response, session_id)
         response.headers['Cache-Control'] = 'no-store'
         if assistant.get('topic')=='query_handoff':
-            resolved_request=assistant['route']
+            from tcm.dataops.answer_delivery import deliver_saved_query, status_code
+            from tcm.dataops.api import configured_sources
+            try:
+                result = deliver_saved_query(root=dataops_service.store().root, memory=agent_runtime.memory,
+                    session_id=session_id, request_key=assistant['request_key'], sources_provider=configured_sources,
+                    process_query=process_query, history_limit=config.max_conversation_history,
+                    understanding_calls=assistant['understanding_requests_this_submission'])
+            except SourceChanged:
+                raise HTTPException(409, '来源已改变，请使用新的请求编号重新提交。') from None
+            except KeyError:
+                raise HTTPException(404, '查询提案不存在。') from None
+            response.status_code = status_code(result)
+            result['routing'] = assistant['route']
+            mark_chat_request(http_request, phase='response', tool='dataops_answer', model_calls=result['model_calls'])
+            http_request.state.chat_outcome = result['status']
+            return result
         else:
             calls=assistant.get('understanding_requests_this_submission',0)
             mark_chat_request(http_request, phase='response', tool='dataops', model_calls=calls)
@@ -620,6 +659,8 @@ def chat(
         raise HTTPException(status_code=403, detail='此部署支持资料查询。可问“你能做什么”“有多少药材”“黄芪有什么作用”；也可使用 /herb、/research 或资料核对工作台。')
     # Generate session ID for cookie if it doesn't exist
     session_id = session_cookie(session_id)
+    diagnostic.bind(os.getenv('DATAOPS_ROOT') or agent_runtime.memory.path.with_name('dataops'),
+                    hashlib.sha256(session_id.encode()).hexdigest())
     
     try:
         mark_chat_request(http_request, phase='execution')
@@ -627,13 +668,14 @@ def chat(
         if resolved_request is not None:key_args['resolved_request']=resolved_request
         response_data = (process_query(request.query, session_id=session_id, task_mode='evidence',**key_args)
                          if mode == 'evidence' else process_query(request.query, session_id=session_id,**key_args))
+        diagnostic.record('query_execution','returned',result_status={k:v.get('status') for k,v in response_data.items()
+            if k.endswith('_result') and isinstance(v,dict)})
         mark_chat_request(http_request, phase='response')
         tool = next((tool for key, tool in (('evidence_answer', 'evidence'), ('assistant_result', 'assistant'),
                     ('tcm_result', 'herb'), ('research_result', 'research'), ('pubmed_result', 'pubmed'))
                      if response_data.get(key) is not None), 'legacy')
         mark_chat_request(http_request, tool=tool)
         response_text = response_data['messages'][-1].content
-        
         # Set session cookie
         set_session_cookie(response, session_id)
 
@@ -689,6 +731,12 @@ def chat(
             elif response.status_code != 200:
                 result['status'] = 'unavailable'
         from tcm.answer_text import plain_answer
+        for tool in ('tcm','research','assistant'):
+            failure=(result.get(tool) or {}).get('failure')
+            if failure:
+                result['failure']=failure
+                diagnostic.record('query_failure','returned',tool=tool,code=failure['code'],failure=failure)
+                break
         result['response'] = plain_answer(result)
         http_request.state.chat_outcome = result['status'] if result['status'] in ('success', 'partial', 'unavailable') else 'success'
         return result

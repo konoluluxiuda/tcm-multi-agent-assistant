@@ -1,0 +1,229 @@
+{
+  "status": "failed",
+  "total": 17,
+  "matched": 14,
+  "skipped": 0,
+  "external_model_requests": 0,
+  "claim": "proposal-validation fixtures, not live model or business accuracy",
+  "results": [
+    {
+      "id": "AC01",
+      "matched": true,
+      "expected": "accept",
+      "expected_stage": "goal_validation",
+      "expected_code": null,
+      "actual": {
+        "outcome": "accept",
+        "stage": "goal_validation"
+      },
+      "substitute_calls": 0
+    },
+    {
+      "id": "AC02",
+      "matched": true,
+      "expected": "reject",
+      "expected_stage": "goal_validation",
+      "expected_code": "mentioned_object_omitted",
+      "actual": {
+        "outcome": "reject",
+        "stage": "goal_validation",
+        "code": "mentioned_object_omitted"
+      },
+      "substitute_calls": 0
+    },
+    {
+      "id": "AC03",
+      "matched": false,
+      "expected": "reject",
+      "expected_stage": "requirements",
+      "expected_code": "completeness_mode_mismatch",
+      "actual": {
+        "outcome": "accept",
+        "stage": "goal_validation"
+      },
+      "substitute_calls": 0
+    },
+    {
+      "id": "AC04",
+      "matched": true,
+      "expected": "reject",
+      "expected_stage": "draft_schema",
+      "expected_code": "schema_validation_failed",
+      "actual": {
+        "outcome": "reject",
+        "stage": "draft_schema",
+        "code": "schema_validation_failed"
+      },
+      "substitute_calls": 0
+    },
+    {
+      "id": "AC05",
+      "matched": true,
+      "expected": "reject",
+      "expected_stage": "query_intent_schema",
+      "expected_code": "query_routed_to_wrong_tool",
+      "actual": {
+        "outcome": "reject",
+        "stage": "query_intent_schema",
+        "code": "query_routed_to_wrong_tool"
+      },
+      "substitute_calls": 1
+    },
+    {
+      "id": "AC06",
+      "matched": true,
+      "expected": "accept",
+      "expected_stage": "goal_validation",
+      "expected_code": null,
+      "actual": {
+        "outcome": "accept",
+        "stage": "goal_validation"
+      },
+      "substitute_calls": 0
+    },
+    {
+      "id": "AC07",
+      "matched": true,
+      "expected": "accept",
+      "expected_stage": "goal_validation",
+      "expected_code": null,
+      "actual": {
+        "outcome": "accept",
+        "stage": "goal_validation"
+      },
+      "substitute_calls": 0
+    },
+    {
+      "id": "AC08",
+      "matched": true,
+      "expected": "accept",
+      "expected_stage": "goal_validation",
+      "expected_code": null,
+      "actual": {
+        "outcome": "accept",
+        "stage": "goal_validation"
+      },
+      "substitute_calls": 0
+    },
+    {
+      "id": "AC09",
+      "matched": false,
+      "expected": "reject",
+      "expected_stage": "requirements",
+      "expected_code": "completeness_mode_mismatch",
+      "actual": {
+        "outcome": "accept",
+        "stage": "goal_validation"
+      },
+      "substitute_calls": 0
+    },
+    {
+      "id": "AC10",
+      "matched": false,
+      "expected": "reject",
+      "expected_stage": "requirements",
+      "expected_code": "selection_requirement_mismatch",
+      "actual": {
+        "outcome": "accept",
+        "stage": "goal_validation"
+      },
+      "substitute_calls": 0
+    },
+    {
+      "id": "AC11",
+      "matched": true,
+      "expected": "reject",
+      "expected_stage": "query_intent_schema",
+      "expected_code": "query_routed_to_wrong_tool",
+      "actual": {
+        "outcome": "reject",
+        "stage": "query_intent_schema",
+        "code": "query_routed_to_wrong_tool"
+      },
+      "substitute_calls": 1
+    },
+    {
+      "id": "AC12",
+      "matched": true,
+      "expected": "reject",
+      "expected_stage": "query_intent_schema",
+      "expected_code": "query_requirement_omitted",
+      "actual": {
+        "outcome": "reject",
+        "stage": "query_intent_schema",
+        "code": "query_requirement_omitted"
+      },
+      "substitute_calls": 1
+    },
+    {
+      "id": "AC13",
+      "matched": true,
+      "expected": "accept",
+      "expected_stage": "query_mapping",
+      "expected_code": null,
+      "actual": {
+        "outcome": "accept",
+        "stage": "query_mapping"
+      },
+      "substitute_calls": 1
+    },
+    {
+      "id": "AC14",
+      "matched": true,
+      "expected": "accept",
+      "expected_stage": "query_mapping",
+      "expected_code": null,
+      "actual": {
+        "outcome": "accept",
+        "stage": "query_mapping"
+      },
+      "substitute_calls": 1
+    },
+    {
+      "id": "AC15",
+      "matched": true,
+      "expected": "accept",
+      "expected_stage": "query_mapping",
+      "expected_code": null,
+      "actual": {
+        "outcome": "accept",
+        "stage": "query_mapping"
+      },
+      "substitute_calls": 1
+    },
+    {
+      "id": "AC16",
+      "matched": true,
+      "expected": "accept",
+      "expected_stage": "goal_validation",
+      "expected_code": null,
+      "actual": {
+        "outcome": "accept",
+        "stage": "goal_validation"
+      },
+      "substitute_calls": 0
+    },
+    {
+      "id": "AC17",
+      "matched": true,
+      "expected": "reject",
+      "expected_stage": "requirements",
+      "expected_code": "parent_goal_mismatch",
+      "actual": {
+        "outcome": "reject",
+        "stage": "requirements",
+        "code": "parent_goal_mismatch"
+      },
+      "substitute_calls": 0
+    }
+  ],
+  "suite_version": "understanding-gate-v2",
+  "suite_sha256": "31349bdfcf117c88f44f202589ee1f73622fcb91d5fd34b5695686803ae7bae0",
+  "semantic_regex_guards": false,
+  "files_sha256": {
+    "scripts/check_understanding_counterexamples.py": "a4ee0e9132315b10ab372cf86a6e52b850368fc644471959632e009dba9c5821",
+    "tcm/dataops/research_question.py": "d0df91c28925aff0218dff8e4249d69fb55b24b992dab3cc19aee83c877bddfa",
+    "tcm/dataops/query_coverage.py": "5b93c8b5ad4342cc2e650a9c684c9ae709ffc4c8478f64671085ce44ce53ca10",
+    "tcm/intent_planner.py": "359c65a49d82b394892c1d2036c5491d40aa2257f7f042c1949adb2703887ea8"
+  }
+}

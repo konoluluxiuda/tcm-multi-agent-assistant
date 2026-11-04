@@ -1,0 +1,2855 @@
+{
+  "date": "2026-11-04",
+  "run": "var/requirements_completion_v1/live_v2",
+  "manifest_sha256": "f39416ab281b54fa944afe1067a08b36a9f782e5149fe68f60e64e47be887b57",
+  "report_sha256": "5927aa79a781811df4d50d0906efe87d17de5daea81434ccaa357df164292998",
+  "groups": {
+    "seen_regression": {
+      "R": {
+        "supported": {
+          "passed": 1,
+          "total": 4
+        },
+        "boundary": {
+          "passed": 0,
+          "total": 0
+        },
+        "passed": 1,
+        "total": 4,
+        "run_status": {
+          "completed": 4
+        },
+        "terminal_states": {
+          "unsupported": 1,
+          "success": 1,
+          "clarification": 2
+        }
+      },
+      "G": {
+        "supported": {
+          "passed": 4,
+          "total": 4
+        },
+        "boundary": {
+          "passed": 0,
+          "total": 0
+        },
+        "passed": 4,
+        "total": 4,
+        "run_status": {
+          "completed": 4
+        },
+        "terminal_states": {
+          "success": 4
+        }
+      },
+      "V": {
+        "supported": {
+          "passed": 3,
+          "total": 4
+        },
+        "boundary": {
+          "passed": 0,
+          "total": 0
+        },
+        "passed": 3,
+        "total": 4,
+        "run_status": {
+          "completed": 3,
+          "unknown": 1
+        },
+        "terminal_states": {
+          "success": 3,
+          "unknown": 1
+        }
+      }
+    },
+    "previously_unrun": {
+      "R": {
+        "supported": {
+          "passed": 2,
+          "total": 30
+        },
+        "boundary": {
+          "passed": 6,
+          "total": 6
+        },
+        "passed": 8,
+        "total": 36,
+        "run_status": {
+          "completed": 33,
+          "failed": 3
+        },
+        "terminal_states": {
+          "success": 9,
+          "clarification": 15,
+          "partial": 2,
+          "unsupported": 10
+        }
+      },
+      "G": {
+        "supported": {
+          "passed": 8,
+          "total": 30
+        },
+        "boundary": {
+          "passed": 6,
+          "total": 6
+        },
+        "passed": 14,
+        "total": 36,
+        "run_status": {
+          "completed": 35,
+          "failed": 1
+        },
+        "terminal_states": {
+          "success": 12,
+          "clarification": 18,
+          "partial": 1,
+          "complete": 5
+        }
+      },
+      "V": {
+        "supported": {
+          "passed": 6,
+          "total": 30
+        },
+        "boundary": {
+          "passed": 6,
+          "total": 6
+        },
+        "passed": 12,
+        "total": 36,
+        "run_status": {
+          "completed": 36
+        },
+        "terminal_states": {
+          "clarification": 18,
+          "success": 5,
+          "complete": 13
+        }
+      }
+    }
+  },
+  "by_policy": {
+    "R": {
+      "supported": {
+        "completed": 3,
+        "total": 34
+      },
+      "boundary": {
+        "completed": 6,
+        "total": 6
+      },
+      "not_run": 0,
+      "clarification": 17
+    },
+    "G": {
+      "supported": {
+        "completed": 12,
+        "total": 34
+      },
+      "boundary": {
+        "completed": 6,
+        "total": 6
+      },
+      "not_run": 0,
+      "clarification": 18
+    },
+    "V": {
+      "supported": {
+        "completed": 9,
+        "total": 34
+      },
+      "boundary": {
+        "completed": 6,
+        "total": 6
+      },
+      "not_run": 1,
+      "clarification": 18
+    }
+  },
+  "efficiency": {
+    "R": {
+      "dispatches": 0,
+      "unknown_usage": 0,
+      "known_tokens": 0,
+      "timed_cases": 40,
+      "p50_seconds": 0.9512755370014929,
+      "p95_seconds": 2.889062456000829,
+      "actual_policies": [
+        "explicit_structured_source",
+        "local_or_unknown",
+        "local_task_inventory_review",
+        "pharmacopoeia_field_query",
+        "source_coverage_question"
+      ]
+    },
+    "G": {
+      "dispatches": 39,
+      "unknown_usage": 0,
+      "known_tokens": 195741,
+      "timed_cases": 40,
+      "p50_seconds": 5.929465912995511,
+      "p95_seconds": 11.582268769998336,
+      "actual_policies": [
+        "explicit_structured_source",
+        "local_or_unknown",
+        "local_then_one_model_v1",
+        "source_coverage_question",
+        "unified_request_fallback"
+      ]
+    },
+    "V": {
+      "dispatches": 79,
+      "unknown_usage": 0,
+      "known_tokens": 198450,
+      "timed_cases": 39,
+      "p50_seconds": 8.047833115000685,
+      "p95_seconds": 19.107501353995758,
+      "actual_policies": [
+        "explicit_structured_source",
+        "local_or_unknown",
+        "requirements_v3",
+        "source_coverage_question",
+        "unified_request_fallback"
+      ]
+    }
+  },
+  "dispatched": 118,
+  "received_http_200": 118,
+  "unknown_outcomes": 0,
+  "provider_stopped": false,
+  "known_total_tokens": 394191,
+  "usage_unknown": 0,
+  "started_combinations": 120,
+  "planned_combinations": 120,
+  "interrupted": [
+    {
+      "scenario_id": "HV2-02",
+      "policy": "V"
+    }
+  ],
+  "not_started_combinations": 0,
+  "failures": [
+    {
+      "scenario_id": "HV2-01",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "unsupported",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-02",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "unknown",
+      "dimensions": {
+        "identity": true,
+        "turns": false,
+        "execution": false,
+        "terminal_state": false,
+        "http": false,
+        "parent_completion": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "turns",
+        "execution",
+        "terminal_state",
+        "http"
+      ],
+      "run_status": "unknown",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-03",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "name_boundary_unresolved"
+      ],
+      "public_failure_stages": [
+        "name_resolution"
+      ]
+    },
+    {
+      "scenario_id": "HV2-04",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "name_boundary_unresolved"
+      ],
+      "public_failure_stages": [
+        "name_resolution"
+      ]
+    },
+    {
+      "scenario_id": "HV2-05",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "semantic_disagreement"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-07",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "name_boundary_unresolved"
+      ],
+      "public_failure_stages": [
+        "name_resolution"
+      ]
+    },
+    {
+      "scenario_id": "HV2-07",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "query_intent_schema"
+      ]
+    },
+    {
+      "scenario_id": "HV2-07",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-08",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "multiple_entities"
+      ],
+      "public_failure_stages": [
+        "name_resolution"
+      ]
+    },
+    {
+      "scenario_id": "HV2-08",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-08",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-09",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "name_boundary_unresolved"
+      ],
+      "public_failure_stages": [
+        "name_resolution"
+      ]
+    },
+    {
+      "scenario_id": "HV2-09",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "query_intent_schema"
+      ]
+    },
+    {
+      "scenario_id": "HV2-09",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-10",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "missing"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "name_boundary_unresolved"
+      ],
+      "public_failure_stages": [
+        "name_resolution"
+      ]
+    },
+    {
+      "scenario_id": "HV2-10",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "partial",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "missing"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-10",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-11",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "multiple_entities"
+      ],
+      "public_failure_stages": [
+        "name_resolution"
+      ]
+    },
+    {
+      "scenario_id": "HV2-11",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-11",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-12",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "multiple_entities"
+      ],
+      "public_failure_stages": [
+        "name_resolution"
+      ]
+    },
+    {
+      "scenario_id": "HV2-12",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-12",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-13",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-13",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "query_intent_schema"
+      ]
+    },
+    {
+      "scenario_id": "HV2-14",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "partial",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "requirements",
+        "sources",
+        "answer_values",
+        "missing"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "evidence_incomplete"
+      ],
+      "public_failure_stages": [
+        "evidence_validation"
+      ]
+    },
+    {
+      "scenario_id": "HV2-14",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "missing"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "query_intent_schema"
+      ]
+    },
+    {
+      "scenario_id": "HV2-14",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-15",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-15",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-15",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-16",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-16",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "query_intent_schema"
+      ]
+    },
+    {
+      "scenario_id": "HV2-16",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "semantic_disagreement"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-17",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "name_boundary_unresolved"
+      ],
+      "public_failure_stages": [
+        "name_resolution"
+      ]
+    },
+    {
+      "scenario_id": "HV2-17",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-17",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-18",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "partial",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "requirements",
+        "sources",
+        "answer_values",
+        "missing"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "evidence_incomplete"
+      ],
+      "public_failure_stages": [
+        "evidence_validation"
+      ]
+    },
+    {
+      "scenario_id": "HV2-18",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "missing"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-18",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "complete",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": true,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-19",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "unsupported",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-19",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": true,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-19",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "unsupported_delivery"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-20",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "unsupported",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-20",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "unsupported_delivery"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-21",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "unsupported",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-21",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "query_intent_schema"
+      ]
+    },
+    {
+      "scenario_id": "HV2-21",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "unsupported_delivery"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-22",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-22",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-23",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "unsupported",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-23",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "unsupported_delivery"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-24",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "unsupported",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-24",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "query_mapping"
+      ]
+    },
+    {
+      "scenario_id": "HV2-24",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": true,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "unsupported_delivery"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-25",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-25",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-25",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-26",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "name_not_found"
+      ],
+      "public_failure_stages": [
+        "name_resolution"
+      ]
+    },
+    {
+      "scenario_id": "HV2-26",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "name_not_found"
+      ],
+      "public_failure_stages": [
+        "name_resolution"
+      ]
+    },
+    {
+      "scenario_id": "HV2-26",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "name_not_found"
+      ],
+      "public_failure_stages": [
+        "name_resolution"
+      ]
+    },
+    {
+      "scenario_id": "HV2-27",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "unsupported",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-28",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "unsupported",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-28",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "success",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": true,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [],
+      "public_failure_stages": []
+    },
+    {
+      "scenario_id": "HV2-28",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": true,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "requirements",
+        "sources",
+        "answer_values"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "semantic_review_failed"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-29",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": false,
+        "execution": false,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "turns",
+        "execution",
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "table"
+      ],
+      "run_status": "failed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-29",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "table"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "field_requirement_mismatch"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-29",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "table"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "semantic_review_budget_exhausted"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-30",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": false,
+        "execution": false,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": false,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "turns",
+        "execution",
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "missing",
+        "table"
+      ],
+      "run_status": "failed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-30",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": false,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "missing",
+        "table"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "semantic_review_budget_exhausted"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-31",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": false,
+        "execution": false,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "turns",
+        "execution",
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "table"
+      ],
+      "run_status": "failed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-31",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": false,
+        "execution": false,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "turns",
+        "execution",
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "table"
+      ],
+      "run_status": "failed",
+      "public_failure_codes": [
+        "field_requirement_mismatch"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-31",
+      "policy": "V",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "table"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "semantic_review_budget_exhausted"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-32",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "table"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-32",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "table"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "field_requirement_mismatch"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-33",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": false,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "missing",
+        "table"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-34",
+      "policy": "R",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "table"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    },
+    {
+      "scenario_id": "HV2-34",
+      "policy": "G",
+      "task_class": "supported",
+      "completed": false,
+      "terminal_state": "clarification",
+      "dimensions": {
+        "identity": true,
+        "turns": true,
+        "execution": true,
+        "terminal_state": false,
+        "http": true,
+        "parent_completion": true,
+        "objects": false,
+        "requirements": false,
+        "reference_coverage": true,
+        "sources": false,
+        "answer_values": false,
+        "missing": true,
+        "table": false,
+        "forbidden_claims": true
+      },
+      "failures": [
+        "terminal_state",
+        "objects",
+        "requirements",
+        "sources",
+        "answer_values",
+        "table"
+      ],
+      "run_status": "completed",
+      "public_failure_codes": [
+        "requirements_unresolved"
+      ],
+      "public_failure_stages": [
+        "requirements"
+      ]
+    }
+  ],
+  "automatic_retries": 0,
+  "default_policy_changed": false,
+  "independent_generalization_proven": false,
+  "scope": "Independent AI wording; source consistency only; not a human user or clinical study",
+  "raw_provider_payloads_or_source_values_exported": false
+}

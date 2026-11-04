@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "modules": 5,
+  "total": 56,
+  "network_attempts": 0,
+  "results": [
+    {
+      "module": "test_query_answer_checks.py",
+      "status": "passed",
+      "total": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_user_chat_replay.py",
+      "status": "passed",
+      "total": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_local_query_repairs.py",
+      "status": "passed",
+      "total": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_unified_request_harness.py",
+      "status": "passed",
+      "total": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_diagnostic_chain.py",
+      "status": "passed",
+      "total": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "initial_parallel_diagnostic_module_failed": true,
+  "isolated_diagnostic_recheck_passed": true,
+  "claim": "Affected final checks plus isolated rechecks; not a whole-repository regression or concurrency stability proof"
+}

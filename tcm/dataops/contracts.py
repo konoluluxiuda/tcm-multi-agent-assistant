@@ -13,6 +13,10 @@ class Contract(BaseModel):
     model_config = ConfigDict(extra='forbid', strict=True)
 
 
+class AnswerDeliveryRequest(Contract):
+    request_key: str = Field(min_length=8, max_length=100, pattern=r'^[a-zA-Z0-9_-]+$')
+
+
 class Filter(Contract):
     field: str
     op: Literal['equals', 'contains', 'missing'] = 'contains'

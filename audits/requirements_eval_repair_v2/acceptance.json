@@ -1,0 +1,151 @@
+{
+  "date": "2026-11-03",
+  "status": "offline_and_isolated_deployment_passed_live_pending",
+  "full_ci": {
+    "status": "passed",
+    "total": 1792,
+    "modules": 206,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "after_ci_focused_tests": 41,
+  "synthetic": {
+    "scenarios": 5,
+    "turns": 6,
+    "R": 3,
+    "G": 3,
+    "V": 5,
+    "real_model_requests": 0,
+    "sdk_simulations": 8
+  },
+  "clean_deployment": {
+    "status": "passed",
+    "stage": "complete",
+    "delivery": [
+      {
+        "stage": "v1",
+        "workspace_id": "9c7ee927b3764b4eaaa7b067db08c22c",
+        "revision": 1,
+        "rows": 2,
+        "missing_cells": 2,
+        "artifact_sha256": "8e26c9cd265dd74ac52d92c9c7be89c47f57ea5a50d72d6446e72d4215249479",
+        "artifact": "v1.xlsx",
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 120,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        }
+      },
+      {
+        "stage": "v2",
+        "workspace_id": "23ec8f669d07494bb2e59964dad159ae",
+        "revision": 2,
+        "rows": 2,
+        "missing_cells": 2,
+        "artifact_sha256": "ec64e3b808f12703667e36243a7fd5acc4844bd3abbc549770a95db593b5df90",
+        "artifact": "v2.xlsx",
+        "verification": {
+          "status": "passed",
+          "sheets": 6,
+          "verified_cells": 157,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        }
+      },
+      {
+        "stage": "selection",
+        "workspace_id": "97a8b5e0e3174e87945584c534f42f60",
+        "revision": 1,
+        "rows": 2,
+        "missing_cells": 0,
+        "artifact_sha256": "86425be3ac4470fa04d21c3da5b63c4c30e9c1ee49533b2cedeb1bcfc20f46b4",
+        "artifact": "selection.xlsx",
+        "verification": {
+          "status": "passed",
+          "sheets": 5,
+          "verified_cells": 136,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        }
+      },
+      {
+        "stage": "ambiguous",
+        "status": "needs_input",
+        "task_created": false
+      },
+      {
+        "stage": "unsupported",
+        "status": "needs_input",
+        "task_created": false
+      }
+    ],
+    "recovery": {
+      "status": "passed",
+      "conversation_restored": true,
+      "workspace_count_restored": 3,
+      "old_artifacts_unchanged": 3,
+      "v3_after_recreation": {
+        "rows": 2,
+        "verification": {
+          "status": "passed",
+          "sheets": 6,
+          "verified_cells": 182,
+          "rows": 2,
+          "method": "reopen_compare_every_cell_v1"
+        },
+        "parent_preserved": true
+      },
+      "v3_revision": 3,
+      "source_revision": "f3be11df29118a3fd90326736382a29d3e2ad0b38a93deec507d64346ce95de7",
+      "new_process_verified": true,
+      "external_model_calls": 0
+    },
+    "container": "tcm-requirements-clean-names-v2",
+    "port": 7932,
+    "initial_state_empty": true,
+    "external_model_calls": 0
+  },
+  "answer_delivery": {
+    "status": "passed",
+    "real_model_requests": 0,
+    "model_understanding_evaluated": false,
+    "proposal_origin": "local owner-bound SQLite seed; existing API performs real tools",
+    "checks": [
+      "source_fingerprint",
+      "cross_source_two_steps",
+      "replay_zero_new_tools",
+      "route_injection_rejected",
+      "foreign_owner_denied",
+      "stale_proposal_rejected",
+      "container_restart",
+      "historical_read",
+      "conversation_restore",
+      "restart_replay"
+    ],
+    "source_revision": "f3be11df29118a3fd90326736382a29d3e2ad0b38a93deec507d64346ce95de7",
+    "container": "tcm-requirements-clean-names-v2",
+    "image_id": "sha256:e428b85cb7812ef6fce162a347fff7020a252b953d5239e2e749b22da664b9ec"
+  },
+  "heldout": {
+    "author_freeze": "eval/requirements_heldout_v2/author_freeze.json",
+    "source_release": "r1_names_20261101",
+    "scenarios": 40,
+    "turns": 43,
+    "budget": {
+      "R": 0,
+      "G": 43,
+      "V": 86,
+      "total": 129,
+      "turns": 43,
+      "scenarios": 40
+    },
+    "protocol": "var/requirements_heldout_v2/live_v1/protocol.json",
+    "real_model_requests": 0,
+    "live_evaluated": false
+  },
+  "default_policy_changed": false,
+  "git_committed": false,
+  "remote_image_pushed": false
+}

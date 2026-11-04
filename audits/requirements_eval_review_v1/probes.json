@@ -1,0 +1,79 @@
+{
+  "mode": "offline-fake-client",
+  "real_model_requests": 0,
+  "findings": [
+    {
+      "probe": "unbound_single_field_satisfies_two_objects",
+      "defect_observed": true
+    },
+    {
+      "probe": "missing_assertions_ignored",
+      "defect_observed": true
+    },
+    {
+      "probe": "wrong_source_value_namespace_field_passes",
+      "defect_observed": true
+    },
+    {
+      "probe": "missing_second_turn_and_nonexistent_artifact_pass",
+      "defect_observed": true,
+      "observed_turns": [
+        "t1"
+      ]
+    },
+    {
+      "probe": "http503_with_claimed_success_passes",
+      "defect_observed": true
+    },
+    {
+      "probe": "multi_turn_budget_undercounted",
+      "defect_observed": true,
+      "scenarios": 43,
+      "turns": 46,
+      "reported": {
+        "R": 0,
+        "G": 43,
+        "V": 86,
+        "total": 129,
+        "n": 43
+      },
+      "correct_maximum": {
+        "R": 0,
+        "G": 46,
+        "V": 92,
+        "total": 138
+      }
+    },
+    {
+      "probe": "cli_execute_has_no_client",
+      "defect_observed": true,
+      "error": "execute requires an HTTP client"
+    },
+    {
+      "probe": "altered_frozen_question_executes",
+      "defect_observed": true
+    },
+    {
+      "probe": "execute_does_not_validate_script_hash",
+      "defect_observed": true
+    },
+    {
+      "probe": "repeat_execute_repeats_combinations",
+      "defect_observed": true
+    },
+    {
+      "probe": "missing_policy_combinations_not_in_denominator",
+      "defect_observed": true,
+      "reported": {
+        "R": {
+          "completed": 1,
+          "total": 1
+        }
+      }
+    },
+    {
+      "probe": "interruption_loses_completed_first_result",
+      "defect_observed": true
+    }
+  ]
+}

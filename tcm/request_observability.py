@@ -30,7 +30,8 @@ class ChatObservabilityMiddleware:
         self.app = app
 
     async def __call__(self, scope, receive, send):
-        if scope['type'] != 'http' or scope['method'] != 'POST' or scope['path'] != '/chat':
+        tracked = scope.get('path') == '/chat' or scope.get('path','').startswith('/api/dataops/')
+        if scope['type'] != 'http' or scope['method'] != 'POST' or not tracked:
             return await self.app(scope, receive, send)
         start = time.monotonic()
         trace = {'event': 'chat_request', 'request_id': uuid.uuid4().hex,
@@ -52,7 +53,17 @@ class ChatObservabilityMiddleware:
             await send(message)
 
         try:
-            await self.app(scope, receive, traced_send)
+            from tcm.dataops.diagnostics import request_context, record
+            from tcm.tracing import observation
+            with request_context(trace['request_id']), observation('dataops.request', metadata={'http_path':scope['path']}):
+                record('http','received',path=scope['path'])
+                try:
+                    await self.app(scope, receive, traced_send)
+                except Exception as exc:
+                    record('http','failed',code='unhandled_exception',exception_type=type(exc).__name__)
+                    raise
+                finally:
+                    record('http','finished',http_status=status)
         except Exception:
             # Routing failures can happen before the endpoint's own try block.
             trace['error_kind'] = 'internal_error'

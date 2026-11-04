@@ -49,8 +49,25 @@ def spans(question):
 def clauses(question):return [p.text for p in spans(question)]
 
 
+def relation_tasks(text):
+    """A fully consumed coordinated request, never an ingredient→target join."""
+    text=strip_lead(text)
+    match=re.fullmatch(r'(?:查询|查看|读取|查一下|看看|查)?\s*(.{1,256}?)'
+                      r'(?:各自?|分别)?(?:有哪些|有什么|的)(?:化学)?'
+                      r'(成分(?:和|与|及|、)靶点|靶点(?:和|与|及|、)成分|成分|靶点)(?:有哪些|是什么)?',text)
+    if not match:return None
+    names=[n.strip() for n in re.split(r'和|与|及|、',match[1])]
+    if not 1<=len(names)<=4 or len(set(names))!=len(names):return None
+    from tcm.intent_planner import grounded
+    if any(not re.fullmatch(r'[\u4e00-\u9fffA-Za-z0-9 .():_\-]{1,100}',n) or
+           re.search(r'我|不要|不查|只有|比较|整理|药典|的|各|分别',n) or not grounded(n,text) for n in names):return None
+    kinds=([{'成分':'ingredient','靶点':'target'}[match[2]]] if match[2] in ('成分','靶点') else
+           ['ingredient','target'] if match[2].startswith('成分') else ['target','ingredient'])
+    return [{'tool':'herb_relation_records','arguments':{'name':n,'kind':k,'page':1}} for n in names for k in kinds]
+
+
 def strip_lead(text):
-    return re.sub(r'^(?:(?:请帮我|帮我|麻烦你|麻烦|请|然后|并且|同时|并|再|先|分别|把|将)\s*)+','',text).strip()
+    return re.sub(r'^(?:(?:请帮我|帮我|麻烦你|麻烦|我想知道|我想了解|告诉我|想知道|想了解|请|然后|并且|同时|并|再|先|分别|把|将)\s*)+','',text).strip()
 
 
 def field_tasks(text,_depth=0):
@@ -61,7 +78,7 @@ def field_tasks(text,_depth=0):
     """
     from tcm.research_report_plan import ATTR,PHARMA,NAME,fields
     if _depth>4 or len(text)>1000:return None
-    text=strip_lead(text)
+    text=strip_lead(text).rstrip('？?。！!').strip()
     text=re.sub(r'(?:整理到一起|整理在一起|汇总到一起|汇总|整理)$','',text).strip()
     command=r'(?:查询|查看|读取|查一下|看一下|核对|查)?\s*'
     for tag,tool,mapping in [('药典','pharmacopoeia_lookup',PHARMA),('ETCM','herb_attributes',ATTR)]:
@@ -69,13 +86,13 @@ def field_tasks(text,_depth=0):
                   command+NAME+r'(?:的|在)'+tag+r'(?:中|里)?(?:的)?(.+)']
         for pattern in patterns:
             match=re.fullmatch(pattern,text,re.I)
-            if match and not re.search(r'和|与|及|比较|对比|对照|整理|我|不要|不是',match[1]):
+            if match and match[1].strip() not in ('它','这味药','刚才那味药','刚才的药材') and not re.search(r'和|与|及|比较|对比|对照|整理|我|不要|不是|关于|有关|想知道|想了解|告诉|需要|希望',match[1]):
                 requested=fields(match[2],mapping,12 if tool=='herb_attributes' else 4)
                 if requested:return [{'tool':tool,'arguments':{'name':match[1].strip(),'fields':requested}}]
     # Structural-only fields have an unambiguous local source. Shared fields
     # such as 归经 do not implicitly choose ETCM over the pharmacopoeia.
     match=re.fullmatch(command+NAME+r'的(.+)',text)
-    if match and not re.search(r'和|与|及|比较|对比|对照|整理|我|不要|不是',match[1]):
+    if match and match[1].strip() not in ('它','这味药','刚才那味药','刚才的药材') and not re.search(r'和|与|及|比较|对比|对照|整理|我|不要|不是|关于|有关|想知道|想了解|告诉|需要|希望|药典|ETCM',match[1],re.I):
         requested=fields(match[2],ATTR,12)
         if requested and any(token in match[2] for token in ('科名','药用部位','药性','药味','产地','功效分类','适应证','文献ID','拉丁名','英文名','拼音')):
             return [{'tool':'herb_attributes','arguments':{'name':match[1].strip(),'fields':requested}}]

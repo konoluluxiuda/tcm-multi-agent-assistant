@@ -7,6 +7,7 @@ from agents.conversation_store import MemoryUnavailable
 from agents.runtime import session_turn
 from tcm.mineru_pharmacopoeia import digest
 from tcm.mineru_retrieval import name_key, INTENTS
+from tcm.query_failures import with_failure
 
 MESSAGES = {
     'candidates': '药典记载如下。',
@@ -102,7 +103,7 @@ class ResearchTool:
         stripped = question.strip()
         comparison=comparison_request(stripped)
         if comparison is not None:
-            return self.compare(stripped,comparison), None
+            return with_failure(self.compare(stripped,comparison)), None
         is_source = stripped.rstrip('？?。！!') in SOURCE_QUERY
         followup = bool(FOLLOWUP.match(stripped)) or is_source
         result, resolved = None, stripped
@@ -144,10 +145,10 @@ class ResearchTool:
             message = f'想了解{new_context["name"]}的哪些内容？可问功效、用量或注意事项。'
         if result and result.get('missing_fields'):
             message += ' 本次未检出字段：' + '、'.join(result['missing_fields']) + '；未检出不等于不存在。'
-        return {"status": status, "message": message, "tool_result": result,
+        return with_failure({"status": status, "message": message, "tool_result": result,
                 "focus_name": new_context["name"] if new_context else None, "followup": followup,
                 "resolved_question": resolved if result else None, "research_only": True,
-                "human_signoff": False, "llm_calls": 0, "workflow": "deterministic_research_tool_router"}, new_context
+                "human_signoff": False, "llm_calls": 0, "workflow": "deterministic_research_tool_router"}), new_context
 
     def compare(self, question, request):
         base={'focus_name':None,'followup':False,'resolved_question':question,

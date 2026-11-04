@@ -1,0 +1,89 @@
+{
+  "status": "passed",
+  "stage": "complete",
+  "delivery": [
+    {
+      "stage": "v1",
+      "workspace_id": "b39efe33e18a4a00be0531b628d76792",
+      "revision": 1,
+      "rows": 2,
+      "missing_cells": 2,
+      "artifact_sha256": "9ee19719c8877e4596f1fa8fc3ce557f7d1dcbc393a0c6f792206e6cb6bd6669",
+      "artifact": "v1.xlsx",
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 120,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "stage": "v2",
+      "workspace_id": "3ae4d9c0293442ee99f278265eb2eb37",
+      "revision": 2,
+      "rows": 2,
+      "missing_cells": 2,
+      "artifact_sha256": "c5545ff61cc3453ac800d86afb57e7a66290a1712578c4ed7b3ae972c1e7add6",
+      "artifact": "v2.xlsx",
+      "verification": {
+        "status": "passed",
+        "sheets": 6,
+        "verified_cells": 157,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "stage": "selection",
+      "workspace_id": "8cd36d1402994d40afc0960c2cb1b9c3",
+      "revision": 1,
+      "rows": 2,
+      "missing_cells": 0,
+      "artifact_sha256": "e96fedfd1f62dfeec6d30ed412cde65003cd3096a71b8502a735ba074fc98217",
+      "artifact": "selection.xlsx",
+      "verification": {
+        "status": "passed",
+        "sheets": 5,
+        "verified_cells": 136,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      }
+    },
+    {
+      "stage": "ambiguous",
+      "status": "needs_input",
+      "task_created": false
+    },
+    {
+      "stage": "unsupported",
+      "status": "needs_input",
+      "task_created": false
+    }
+  ],
+  "recovery": {
+    "status": "passed",
+    "conversation_restored": true,
+    "workspace_count_restored": 3,
+    "old_artifacts_unchanged": 3,
+    "v3_after_recreation": {
+      "rows": 2,
+      "verification": {
+        "status": "passed",
+        "sheets": 6,
+        "verified_cells": 182,
+        "rows": 2,
+        "method": "reopen_compare_every_cell_v1"
+      },
+      "parent_preserved": true
+    },
+    "v3_revision": 3,
+    "source_revision": "a46be1faa8699279422dd47e2f6aa8fb595e5b8e6a5bcc6ba4fcf4ca1db5b9a2",
+    "new_process_verified": true,
+    "external_model_calls": 0
+  },
+  "container": "tcm-requirements-clean-completion-v2",
+  "port": 7934,
+  "initial_state_empty": true,
+  "external_model_calls": 0
+}

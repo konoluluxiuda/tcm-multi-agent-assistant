@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "checks": [
+    "chat_cross_source_visible",
+    "citation_details_visible",
+    "original_pdf_page_rendered",
+    "chat_refresh_restores_all",
+    "workbench_clarification_reenables_submit",
+    "workbench_query_after_clarification",
+    "workbench_replay_no_new_understanding",
+    "workbench_refresh_restores_all",
+    "partial_keeps_success_and_unfinished"
+  ],
+  "javascript_errors": [],
+  "external_browser_requests": [],
+  "real_model_requests": 0,
+  "transport": "Playwright route -> real ASGI TestClient; synthetic data/SDK replies"
+}

@@ -1,0 +1,125 @@
+{
+  "status": "passed",
+  "phase": "After frozen first runs completed; no change to those scores",
+  "files": [
+    "tcm/dataops/research_question.py",
+    "tcm/dataops/failures.py",
+    "tests/test_filter_mode_constraints.py"
+  ],
+  "policy": "positive_constraints_v1",
+  "prompt_or_schema_changed": false,
+  "local_recognition_expanded": false,
+  "offline_modules": 20,
+  "offline_checks": 167,
+  "network_attempts": 0,
+  "regression": {
+    "status": "passed",
+    "results": [
+      {
+        "case": "N06",
+        "status": "passed",
+        "reason": null,
+        "origin": "saved_model_arguments",
+        "source_diagnostic_sha256": "13f0bd9f4677c308a2939472fd25b7382d9e0a2ccde9d1df887bf63672786bad",
+        "substitute_sdk_invocations": 1,
+        "external_model_requests": 0,
+        "http_status": 200,
+        "delivery": {
+          "rows": 2,
+          "verification": {
+            "status": "passed",
+            "sheets": 5,
+            "verified_cells": 128,
+            "rows": 2,
+            "method": "reopen_compare_every_cell_v1"
+          },
+          "parent_preserved": false
+        }
+      }
+    ],
+    "external_model_requests": 0,
+    "blocked_network_attempts": 0,
+    "claim": "Exposed N06 replay with saved parameters and actual local sources; no new model score"
+  },
+  "whole_pool_check": {
+    "reviewed_count": 3,
+    "qualified_count": 2,
+    "all_matching_in_named_pool": true,
+    "rows": [
+      "GanCao",
+      "DaHuang"
+    ]
+  },
+  "deployment": {
+    "status": "passed",
+    "services": [
+      {
+        "port": 7921,
+        "source_revision": "40ddff61fbc58a53272a1941784c6364e8bfe6c5e3195f91c26746affb1f4fc4",
+        "disk_revision": "40ddff61fbc58a53272a1941784c6364e8bfe6c5e3195f91c26746affb1f4fc4",
+        "restart_required": false,
+        "driver": "fixed",
+        "question_model_enabled": true,
+        "pages": [
+          {
+            "path": "/",
+            "http": 200
+          },
+          {
+            "path": "/dataops",
+            "http": 200
+          },
+          {
+            "path": "/dataops/research",
+            "http": 200
+          },
+          {
+            "path": "/rag",
+            "http": 200
+          }
+        ],
+        "source_readiness": "ready"
+      },
+      {
+        "port": 7920,
+        "source_revision": "40ddff61fbc58a53272a1941784c6364e8bfe6c5e3195f91c26746affb1f4fc4",
+        "disk_revision": "40ddff61fbc58a53272a1941784c6364e8bfe6c5e3195f91c26746affb1f4fc4",
+        "restart_required": false,
+        "driver": "fixed",
+        "question_model_enabled": false,
+        "pages": [
+          {
+            "path": "/",
+            "http": 200
+          },
+          {
+            "path": "/dataops",
+            "http": 200
+          },
+          {
+            "path": "/dataops/research",
+            "http": 200
+          },
+          {
+            "path": "/rag",
+            "http": 200
+          }
+        ],
+        "source_readiness": "ready"
+      }
+    ],
+    "new_model_requests": 0,
+    "checks_scope": "GET runtime/source readiness and page registration; repaired query tested separately using saved SDK args"
+  },
+  "additional_live_model_requests": 0,
+  "initial_test_error": "First 8-test run exposed unregistered selection_requirement_mismatch public code; retained, fixed and final tests passed",
+  "initial_replay_environment_error": "Initial script import failed without PYTHONPATH before app import/query; retained; correctly configured replay passed",
+  "not_certified": [
+    "post-repair live model requery",
+    "independent user accuracy",
+    "general semantic entailment",
+    "native multi-round benefit",
+    "Docker image update",
+    "Langfuse server readback"
+  ]
+}

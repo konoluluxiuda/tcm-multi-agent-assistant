@@ -39,13 +39,20 @@ def _validate(db):
         raise BackupError('invalid_database')
     tables = {row[0] for row in db.execute("SELECT name FROM sqlite_master WHERE type='table'")
               if not row[0].startswith('sqlite_')}
-    if tables != {'settings', 'conversations'}:
+    if tables not in ({'settings', 'conversations'}, {'settings', 'conversations', 'completed_deliveries'}):
         raise BackupError('not_conversation_database')
     if db.execute("SELECT value FROM settings WHERE key='store_kind'").fetchone() != ('tcm_completed_conversations_v1',):
         raise BackupError('not_conversation_database')
     secret = db.execute("SELECT value FROM settings WHERE key='cookie_secret'").fetchone()
     if not secret or not re.fullmatch('[0-9a-f]{64}', secret[0]):
         raise BackupError('missing_signing_key')
+    if 'completed_deliveries' in tables:
+        columns = [r[1] for r in db.execute('PRAGMA table_info(completed_deliveries)')]
+        if columns != ['owner', 'request_key']:
+            raise BackupError('invalid_delivery_receipts')
+        for owner, request_key in db.execute('SELECT owner,request_key FROM completed_deliveries'):
+            if not isinstance(owner, str) or not re.fullmatch('[0-9a-f]{64}', owner) or not isinstance(request_key, str) or not request_key:
+                raise BackupError('invalid_delivery_receipts')
     for key, revision, raw, updated, deleted in db.execute('SELECT key,revision,payload,updated_at,deleted FROM conversations'):
         if (not re.fullmatch('[0-9a-f]{64}', key) or type(revision) is not int or revision < 1 or
                 not isinstance(updated, (float, int)) or not math.isfinite(updated) or deleted not in (0, 1)):

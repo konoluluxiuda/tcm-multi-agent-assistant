@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-02",
+  "verdict": "existing HTTP merge fixed; stage not accepted",
+  "regression_total": 102,
+  "regressions": [
+    {
+      "module": "test_requirements_v2.py",
+      "status": "passed",
+      "total": 26,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_requirements_planner.py",
+      "status": "passed",
+      "total": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_requirements_understanding.py",
+      "status": "passed",
+      "total": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_requirements_adapter.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_requirements_pipeline.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_requirements_v3_http.py",
+      "status": "passed",
+      "total": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    },
+    {
+      "module": "test_requirements_review3.py",
+      "status": "passed",
+      "total": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "defect_reproductions": [
+    {
+      "module": "probe.py",
+      "status": "passed",
+      "total": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0
+    }
+  ],
+  "historical_full_ci": {
+    "path": "var/requirements_v3_ci17/summary.json",
+    "sha256": "a0841af2791ca4e96e9b456022f1af4d9e924b1ca76d2e6b8c164b2d5f88d002",
+    "status": "passed",
+    "total": 1733,
+    "rerun_this_review": false
+  },
+  "browser_tested": false,
+  "real_model_requests": 0,
+  "business_code_changed": false,
+  "service_restarted": false,
+  "source_sha256": {
+    "audits/requirements_v3/acceptance.json": "6b9a522df4ac3f61033e7a8905a5e3c63140c505753ec124cb437af994246dc2",
+    "tcm/dataops/answer_delivery.py": "2c968bad0edf5ad952d230c6f871bcdd342c1f3570a56b8585497bedb27b0e24",
+    "tcm/dataops/api.py": "909879411d4f0deeda1b932e420bbc4ae1323e8699b5c6f3a89e80f31d701aa7",
+    "tcm/dataops/service.py": "9c8cd0fea01234fccc293b3e09cc3df649a56dea7b0f929904e97497d067c7c0",
+    "app.py": "3967f0fc8d3a11e0e259509dd2a4f89f3b3192287f3662b582633e899cf92049",
+    "agents/agent_decision.py": "6d25de3c020b136fbc65cc1e7ace5006d238389a1c12ec3505734247748b5ddb",
+    "templates/index.html": "39457dc3501119916d623a26138561ca0c49c14a7af088536c5a201d510c2f2a",
+    "tcm/dataops/research_workbench.html": "9bbcd42eea7d279889c07772aa86142dacdbc482f7984973f80127e5fba112dc",
+    "tests/test_requirements_v3_http.py": "cdc9dce8dc7c12fe6a1a762cb965cf3ccdace026d2e0f2f9ba0b05307a57914b"
+  }
+}

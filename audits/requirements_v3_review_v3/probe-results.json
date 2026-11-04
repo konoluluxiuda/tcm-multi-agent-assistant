@@ -1,0 +1,466 @@
+{
+  "previous_review": {
+    "previous_probes": {
+      "correction_failure_accounting": {
+        "status": "needs_input",
+        "actual_calls": 2,
+        "reported_calls": 2,
+        "usage": {
+          "input_tokens": 20,
+          "output_tokens": 4,
+          "total_tokens": 24
+        },
+        "failure": {
+          "code": "correction_exhausted",
+          "stage": "requirements_schema",
+          "message": "契约参数纠正后仍未通过校验，请明确对象、字段和筛选要求。",
+          "automatic_retry": false
+        },
+        "phases": [
+          "initial",
+          "correction"
+        ]
+      },
+      "review_failure_accounting": {
+        "status": "needs_input",
+        "actual_calls": 2,
+        "reported_calls": 2,
+        "usage": {
+          "input_tokens": 20,
+          "output_tokens": 4,
+          "total_tokens": 24
+        },
+        "failure": {
+          "code": "semantic_review_failed",
+          "stage": "semantic_check",
+          "message": "未能确认完整需求，本次未执行。",
+          "automatic_retry": false
+        },
+        "phases": [
+          "initial",
+          "semantic_review"
+        ]
+      },
+      "review_unknown_dispatch": {
+        "exception": "TimeoutError",
+        "message": "unknown"
+      },
+      "wrong_semantics_after_correction": {
+        "status": "needs_input",
+        "actual_calls": 2,
+        "reported_calls": 2,
+        "usage": {
+          "input_tokens": 20,
+          "output_tokens": 4,
+          "total_tokens": 24
+        },
+        "failure": {
+          "code": "semantic_review_budget_exhausted",
+          "stage": "semantic_check",
+          "message": "参数已纠正，但仍需核对任务含义；两次理解额度已用完，未执行。请明确对象、字段与行策略。",
+          "automatic_retry": false
+        },
+        "phases": [
+          "initial",
+          "correction"
+        ]
+      },
+      "same_semantics_different_refs": {
+        "status": "ready",
+        "actual_calls": 2,
+        "reported_calls": 2,
+        "usage": {
+          "input_tokens": 20,
+          "output_tokens": 4,
+          "total_tokens": 24
+        },
+        "failure": null,
+        "phases": [
+          "initial",
+          "semantic_review"
+        ]
+      },
+      "model_context": {
+        "catalog_sent": true,
+        "parent_sent": true,
+        "correction_code_sent": true
+      },
+      "clarification_without_objects": {
+        "accepted": true,
+        "objects": 0,
+        "requirements": 0
+      },
+      "mixed_dataset_and_herb": {
+        "accepted": true,
+        "objects": 1,
+        "requirements": 2
+      },
+      "duplicate_object_ref": {
+        "exception": "ValidationError",
+        "message": "1 validation error for RequirementsDraftV2\n  Value error, Duplicate object refs [type=value_error, input_value={'version': 'requirements...True}, 'unresolved': []}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.10/v/value_error"
+      },
+      "ready_empty_requirements": {
+        "exception": "ValidationError",
+        "message": "1 validation error for RequirementsDraftV2\n  Value error, ready requires at least one executable requirement [type=value_error, input_value={'version': 'requirements...True}, 'unresolved': []}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.10/v/value_error"
+      },
+      "no_candidate": {
+        "ok": false,
+        "errors": [
+          "object 黄芪 has no source candidate"
+        ]
+      },
+      "ambiguous_candidate": {
+        "ok": false,
+        "errors": [
+          "object 黄芪 has ambiguous candidates; select a source"
+        ]
+      },
+      "coverage_arguments": {
+        "ok": false,
+        "missing": [
+          {
+            "requirement_id": "",
+            "object_ref": "o1",
+            "namespace": "pharmacopoeia",
+            "name": "功能与主治",
+            "scope": "full"
+          }
+        ],
+        "errors": [
+          "plan covers unrequested work",
+          "declared covers do not match derived coverage"
+        ]
+      },
+      "coverage_tool": {
+        "ok": false,
+        "missing": [
+          {
+            "requirement_id": "",
+            "object_ref": "o1",
+            "namespace": "pharmacopoeia",
+            "name": "功能与主治",
+            "scope": "full"
+          }
+        ],
+        "errors": [
+          "unknown tool nonexistent_tool",
+          "declared covers do not match derived coverage"
+        ]
+      },
+      "coverage_duplicate": {
+        "ok": false,
+        "missing": [],
+        "errors": [
+          "duplicate step id s1_o1_pharmacopoeia_功能与主治",
+          "duplicate step pharmacopoeia_lookup {'object_ref': 'o1', 'namespace': 'pharmacopoeia', 'name': '功能与主治'}",
+          "plan covers unrequested work"
+        ]
+      },
+      "coverage_extra": {
+        "ok": false,
+        "missing": [],
+        "errors": [
+          "unknown tool nonexistent_tool"
+        ]
+      },
+      "all_targets_becomes_page_one": {
+        "validation": {
+          "ok": false,
+          "errors": [
+            "full-read (completeness=all) is not yet supported; request a bounded page"
+          ]
+        },
+        "coverage": {
+          "ok": true,
+          "missing": [],
+          "errors": []
+        },
+        "routes": [
+          {
+            "tool": "assistant",
+            "request": {
+              "topic": "etcm_relations",
+              "kind": "target",
+              "entities": [
+                "黄芪"
+              ],
+              "page": 1,
+              "all_pages": true
+            }
+          }
+        ]
+      },
+      "common_target_real_tool_schema": {
+        "exception": "ValidationError",
+        "message": "1 validation error for RelationArgs\nkind\n  Input should be 'ingredient' or 'target' [type=literal_error, input_value='common_target', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.10/v/literal_error"
+      },
+      "append_loses_old_fields": {
+        "mechanical_valid": true,
+        "goal": {
+          "title": "问句资料核对",
+          "query": {
+            "names": [
+              "Herb1"
+            ],
+            "filters": [],
+            "limit": 20
+          },
+          "attributes": [
+            "family"
+          ],
+          "document_fields": [
+            "功能与主治",
+            "注意",
+            "贮藏"
+          ],
+          "completion_policy": "audit",
+          "research": {
+            "mode": "audit_named",
+            "target_count": 1,
+            "monograph_only": false
+          }
+        },
+        "real_goal_valid": true
+      },
+      "six_named_rows": {
+        "exception": "ValidationError",
+        "message": "1 validation error for ResearchGoal\nresearch.target_count\n  Input should be less than or equal to 5 [type=less_than_equal, input_value=6, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.10/v/less_than_equal"
+      },
+      "table_per_object_scope_widened": {
+        "exception": "ValueError",
+        "message": "per-object field differences cannot be expressed in a single ResearchGoal"
+      },
+      "top_n_missing_count": {
+        "exception": "ValidationError",
+        "message": "1 validation error for RequirementsDraftV2\ndelivery\n  Value error, top_n requires count [type=value_error, input_value={'form': 'table', 'row_policy': 'top_n'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.10/v/value_error"
+      },
+      "http_local_optout": {
+        "http": 200,
+        "model_constructed": 0,
+        "model_calls": 0,
+        "body": {
+          "proposal": {
+            "status": "needs_input",
+            "question": "整理Alpha和Beta的功效和注意，生成表格",
+            "goal": null,
+            "issues": [
+              "requirements_v3 需要一次模型理解；本部署未启用模型或已显式选择本地解析，请使用表单明确对象与字段。"
+            ],
+            "unresolved": [],
+            "compiler": "requirements_v3",
+            "external_model_calls": 0,
+            "defaults": [],
+            "refresh_source_ids": [],
+            "failure": {
+              "code": "requirements_unresolved",
+              "stage": "requirements",
+              "message": "任务要求尚未完整确定，请补充对象、字段或筛选条件。",
+              "automatic_retry": false
+            }
+          },
+          "replayed": false
+        }
+      }
+    },
+    "additional_probes": {
+      "relation_pipeline": {
+        "status": "ready",
+        "model_calls": 2
+      },
+      "dataset_pipeline": {
+        "status": "ready",
+        "model_calls": 2
+      },
+      "wrong_known_tool": {
+        "coverage": {
+          "ok": false,
+          "missing": [],
+          "errors": [
+            "herb_attributes cannot serve namespace pharmacopoeia"
+          ]
+        },
+        "routes": [
+          {
+            "tool": "herb",
+            "request": {
+              "name": "黄芪",
+              "field": "功能与主治",
+              "resolve_unique_name": true
+            }
+          }
+        ]
+      },
+      "relation_pair_semantics": {
+        "different_pairs_compare_equal": false
+      },
+      "unrequested_filter_attribute": {
+        "exception": "ValueError",
+        "message": "filtering modes require explicit ETCM attribute and pharmacopoeia fields"
+      },
+      "append_changes_parent_scope": {
+        "parent": {
+          "query": {
+            "names": [
+              "黄芪",
+              "白术"
+            ],
+            "filters": [],
+            "limit": 20
+          },
+          "attributes": [
+            "family"
+          ],
+          "document_fields": [
+            "注意"
+          ],
+          "research": {
+            "mode": "filter_complete",
+            "target_count": 2,
+            "monograph_only": true
+          }
+        },
+        "new_goal": {
+          "title": "问句资料核对",
+          "query": {
+            "names": [
+              "黄芪",
+              "白术"
+            ],
+            "filters": [],
+            "limit": 20
+          },
+          "attributes": [
+            "family"
+          ],
+          "document_fields": [
+            "功能与主治",
+            "注意"
+          ],
+          "completion_policy": "audit",
+          "research": {
+            "mode": "filter_complete",
+            "target_count": 2,
+            "monograph_only": true
+          }
+        }
+      },
+      "actual_relation_executor_all_pages": {
+        "status": "ok",
+        "total": 26,
+        "returned_count": 20,
+        "next_offset": 20,
+        "equal_to_page_one": true
+      },
+      "expected_adapter_rejection_http": {
+        "first_http": 200,
+        "first": {
+          "proposal": {
+            "status": "needs_input",
+            "question": "整理Alpha功效注意、Beta科名，生成表格",
+            "goal": null,
+            "issues": [
+              "当前表格契约无法表达该需求：per-object field differences cannot be expressed in a single ResearchGoal"
+            ],
+            "unresolved": [],
+            "compiler": "requirements_v3",
+            "external_model_calls": 2,
+            "defaults": [],
+            "refresh_source_ids": [],
+            "failure": {
+              "code": "unsupported_delivery",
+              "stage": "requirements",
+              "message": "当前表格契约无法表达该需求（逐对象字段不同或数量超限）；本次未执行。请改为所有对象相同字段，或缩小对象集。",
+              "automatic_retry": false
+            },
+            "usage": {
+              "input_tokens": 20,
+              "output_tokens": 4,
+              "total_tokens": 24
+            }
+          },
+          "replayed": false
+        },
+        "replay_http": 200,
+        "replay": {
+          "proposal": {
+            "status": "needs_input",
+            "question": "整理Alpha功效注意、Beta科名，生成表格",
+            "goal": null,
+            "issues": [
+              "当前表格契约无法表达该需求：per-object field differences cannot be expressed in a single ResearchGoal"
+            ],
+            "unresolved": [],
+            "compiler": "requirements_v3",
+            "external_model_calls": 2,
+            "defaults": [],
+            "refresh_source_ids": [],
+            "failure": {
+              "code": "unsupported_delivery",
+              "stage": "requirements",
+              "message": "当前表格契约无法表达该需求（逐对象字段不同或数量超限）；本次未执行。请改为所有对象相同字段，或缩小对象集。",
+              "automatic_retry": false
+            },
+            "usage": {
+              "input_tokens": 20,
+              "output_tokens": 4,
+              "total_tokens": 24
+            }
+          },
+          "replayed": true
+        },
+        "model_calls": 2
+      }
+    }
+  },
+  "remaining_boundaries": {
+    "answer_replaced_by_table_step": {
+      "coverage": {
+        "ok": true,
+        "missing": [],
+        "errors": []
+      },
+      "routes": []
+    },
+    "plan_pairing_mutation": {
+      "coverage": {
+        "ok": true,
+        "missing": [],
+        "errors": []
+      },
+      "executed_pairs": [
+        [
+          "甲",
+          "丙"
+        ],
+        [
+          "乙",
+          "丁"
+        ]
+      ]
+    },
+    "all_explicitly_stopped_in_pipeline": {
+      "status": "needs_input",
+      "errors": [
+        "full-read (completeness=all) is not yet supported; request a bounded page"
+      ],
+      "routes_exist": false
+    },
+    "append_explicitly_changed_object": {
+      "http": 202,
+      "model_calls": 2,
+      "submitted_object": "Gamma",
+      "proposal_status": "ready",
+      "task_status": "complete",
+      "executed_names": [
+        "Alpha",
+        "Beta"
+      ],
+      "requirement_objects": [
+        {
+          "mention": "Gamma",
+          "ref": "o1"
+        }
+      ]
+    }
+  }
+}

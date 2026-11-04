@@ -21,7 +21,7 @@ def signature(plan):
     tools={s.call.tool for s in plan.steps}
     keys=set()
     if tools & {'search_disease_sources','disease_gene_profile','rank_herbs_for_gene_set'}:keys.add('ETCM_DISEASE_DB')
-    if tools & {'herb_target_profile','herb_target_similarity','rank_herbs_for_gene_set','herb_attributes','pair_evidence_report'}:keys.update(('TCM_DB','ETCM_ENRICHMENT_DB'))
+    if tools & {'herb_target_profile','herb_target_similarity','rank_herbs_for_gene_set','herb_attributes','herb_relation_records','pair_evidence_report'}:keys.update(('TCM_DB','ETCM_ENRICHMENT_DB'))
     values={key:[str(Path(os.environ[key]).resolve()),file_token(os.environ[key])] for key in sorted(keys)}
     if tools & {'pharmacopoeia_lookup','pair_evidence_report'}:
         index=Path(os.environ['PHARMACOPOEIA_INDEX']);values['pharmacopoeia']=[str(index.resolve()),file_token(index/'research.sqlite3'),file_token(index/'manifest.json')]
@@ -54,7 +54,7 @@ def compile_scope(plan,selections):
                 if f'{i}:{j}' in selections:selected_herbs[name]=selections[f'{i}:{j}']
             continue
         name=step.call.arguments.name
-        if step.call.tool in ('herb_target_profile','herb_target_similarity','herb_attributes') and str(i) in selections:
+        if step.call.tool in ('herb_target_profile','herb_target_similarity','herb_attributes','herb_relation_records') and str(i) in selections:
             selected_herbs[name]=selections[str(i)]
         if step.call.tool in ('search_disease_sources','disease_gene_profile','rank_herbs_for_gene_set') and str(i) in selections:
             selected_diseases[name]=selections[str(i)]
@@ -79,7 +79,7 @@ def compile_scope(plan,selections):
             call['arguments']['source_ids']=ids
         else:
             name=call['arguments']['name']
-            if step.call.tool in ('herb_target_profile','herb_target_similarity','herb_attributes'):
+            if step.call.tool in ('herb_target_profile','herb_target_similarity','herb_attributes','herb_relation_records'):
                 sid,options=resolve_herb(name)
                 if options is not None:return None,(i,options,str(i))
                 call['arguments']['name']=sid
@@ -107,6 +107,10 @@ def format_result(run,evidence_store=None):
             block['evidence_reads']=[{'evidence_id':eid,'field':field,'count':len(values),
                 'label':'共同靶点原始记录' if field=='items' else '字段原文与出处'} for field,values in (
                 ('rows',report.get('hits',report.get('rows',[]))),('items',report.get('targets',{}).get('items',[]))) if values]
+            if name=='herb_relation_records':
+                block['evidence_reads']=[{'evidence_id':eid,'field':'items',
+                                         'count':len(report.get('relations',{}).get('data',{}).get('items',[])),
+                                         'label':'本页原始成分/靶点记录'}]
             blocks.append(block);continue
         if name=='search_disease_sources':continue
         if name=='disease_gene_profile':
@@ -137,6 +141,7 @@ def format_result(run,evidence_store=None):
     summaries=[]
     for block in blocks:
         if block.get('report_kind')=='pair':summaries.append(block['title']+'；共同靶点'+(str(block['shared_total'])+'个' if block['shared_total'] is not None else '未取得'))
+        elif block.get('report_kind')=='relations':summaries.append(block['title']+'：'+str(block['total'])+'条记录，本页'+str(len(block['field_rows']))+'条')
         elif block.get('report_kind')=='fields':summaries.append(block['title']+'：'+str(len(block['field_rows']))+'条字段记录')
         elif block['tool']=='disease_gene_profile':summaries.append(f"{block['title'].split(' · ')[0]}：{block['target_count']}个靶点，已读取{len(block['rows'])}条原始记录")
         elif 'items' in block:summaries.append(f"{block['title']} {len(block['items'])}个")
@@ -151,6 +156,7 @@ def format_result(run,evidence_store=None):
             full=evidence_store.resolve(eid,run['evidence'][eid])
             data=full['data'];target_ids=data.get('target_ids',data.get('profile',{}).get('target_ids',[]))
             report=data.get('report',{})
+            if full['tool']=='herb_relation_records':report=report.get('relations',{}).get('data',{})
             for field,values in (('target_ids',target_ids),('rows',data.get('rows',report.get('hits',report.get('rows')))),('items',data.get('items',report.get('targets',{}).get('items')))):
                 if isinstance(values,list) and values:
                     entry={'evidence_id':eid,'field':field,'count':len(values)}

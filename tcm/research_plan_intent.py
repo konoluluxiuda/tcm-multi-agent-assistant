@@ -36,7 +36,8 @@ def clean(text):
 
 
 def presentation(text):
-    return bool(re.fullmatch(r'(?:附上|附|保留|给出|显示)(?:双方|对应|各项|所有|每项)?'
+    if re.fullmatch(r'(?:来源|出处)(?:写|标|注明|说明)(?:清楚|清晰|明确)',clean(text)):return True
+    return bool(re.fullmatch(r'(?:附上|附|保留|给出|显示|注明|标明)(?:双方|对应|各项|所有|每项)?'
         r'(?:出处|来源|依据|原始记录(?:(?:的)?位置)?)(?:(?:和|与|及)(?:出处|来源|依据|原始记录(?:(?:的)?位置)?))*',clean(text).replace('各自','对应')))
 
 
@@ -52,6 +53,12 @@ def validate_question(plan,question):
         if len(set(step.clauses))!=len(step.clauses) or any(i<0 or i>=len(parts) for i in step.clauses):
             raise ValueError('Invalid clause reference')
         if step.call.tool in REPORT_TOOLS:
+            if step.call.tool=='herb_relation_records':
+                from tcm.question_contract import relation_tasks
+                expected=[c for i in step.clauses for c in (relation_tasks(parts[i]) or [])]
+                if len(step.clauses)!=1 or step.call.model_dump() not in expected:
+                    raise ValueError('Ungrounded relation requirement')
+                covered.update(step.clauses);continue
             from tcm.research_report_plan import validate_step
             validate_step(step,parts)
             names=step.call.arguments.herbs if step.call.tool=='pair_evidence_report' else [step.call.arguments.name]
@@ -91,9 +98,23 @@ def validate_question(plan,question):
         raise ValueError('Unaccounted request clauses')
     # Clause coverage alone cannot detect a missing second object in one
     # coordinated sentence. Check its complete field-task multiset as well.
-    from tcm.question_contract import field_tasks
+    from tcm.question_contract import field_tasks,relation_tasks
     from tcm.research_business_tools import CALL
     for i,part in enumerate(parts):
+        expected_relations=relation_tasks(part)
+        if expected_relations:
+            actual_relations=[s.call.model_dump() for s in plan.steps if i in s.clauses]
+            # A single generic target question may retain its established
+            # identifier-profile answer. It never substitutes for ingredients
+            # or a coordinated multi-object/multi-kind request.
+            if (len(expected_relations)==len(actual_relations)==1 and
+                    expected_relations[0]['arguments']['kind']=='target' and
+                    actual_relations[0]['tool']=='herb_target_profile' and
+                    actual_relations[0]['arguments']['name']==expected_relations[0]['arguments']['name']):
+                continue
+            if Counter(canonical_call(c) for c in actual_relations)!=Counter(canonical_call(c) for c in expected_relations):
+                raise ValueError('Relation requirements omitted or duplicated')
+            continue
         if any(step.call.tool=='pair_evidence_report' and i in step.clauses for step in plan.steps):continue
         expected=field_tasks(part)
         if not expected:continue
@@ -102,6 +123,11 @@ def validate_question(plan,question):
         actual=Counter(key(step.call) for step in plan.steps if i in step.clauses and step.call.tool in ('herb_attributes','pharmacopoeia_lookup'))
         if actual!=wanted:raise ValueError('Field requirements omitted or duplicated')
     return plan
+
+
+def canonical_call(call):
+    from tcm.research_business_tools import CALL
+    return CALL.validate_python(call).model_dump_json()
 
 
 def count(value):
@@ -128,8 +154,8 @@ def local_plan(question):
         if paired and i in paired['clauses']:continue
         text=clean(part)
         if presentation(part):continue
-        from tcm.question_contract import field_tasks
-        reports=field_tasks(text)
+        from tcm.question_contract import field_tasks,relation_tasks
+        reports=relation_tasks(text) or field_tasks(text)
         if reports:
             steps.extend(PlanStep(call=report,clauses=[i]) for report in reports);continue
         modifier=re.fullmatch(r'(?:显示|列出|列|返回)?前([0-9]+|[一二三四五六七八九十两]+)(?:个|条|项)(?:药材|来源)?',text)
@@ -186,7 +212,8 @@ def capture(question):
     # An explicitly named source with an unfamiliar field sentence must reach
     # typed intent validation, rather than the broad pharmacopoeia-keyword path.
     source_proposal=bool(re.search(r'ETCM|药典',question,re.I) and re.search(r'关于|告诉我|想知道|想了解',question) and one is None)
-    single_contract=single_contract or source_proposal
+    from tcm.question_contract import relation_tasks
+    single_contract=single_contract or source_proposal or any(len(relation_tasks(p) or [])>1 for p in parts)
     if not mixed_pair and not single_contract and (len(parts)<2 or not re.search(r'靶点|候选|近邻|Jaccard|药典|ETCM',question,re.I)):return None
     try:plan=local_plan(question)
     except ValueError:plan=None

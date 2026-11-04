@@ -1,0 +1,52 @@
+"""Safe user-facing reasons; never return raw exceptions, prompts or source values."""
+MESSAGES={
+    'parent_goal_mismatch':'增量提案改变了父版本的对象或筛选要求，本次未执行；请保留原范围，或新建任务。',
+    'semantic_disagreement':'两次需求核对不一致，本次未执行。请明确对象、所需字段，以及保留全部记录还是只保留字段齐全项。',
+    'semantic_review_failed':'未能确认完整的整理要求，本次未执行。请明确保留全部记录还是只要齐全项及所需字段。',
+    'semantic_review_budget_exhausted':'参数已纠正，但仍需核对任务含义；本次两次理解额度已用完，未执行。请明确保留全部记录还是仅齐全项。',
+    'correction_exhausted':'工具参数纠正后仍未通过校验，本次未执行，也不会继续调用模型。请核对对象、字段和筛选要求。',
+    'name_boundary_unresolved':'识别到药名片段，但无法确认完整名称或上下文；请明确写出完整药名和查询字段。',
+    'entity_required':'当前没有已确认药材；请先给出完整药名。',
+    'multiple_entities':'识别到多个药名；请分别查询，或明确比较对象和字段。',
+    'field_not_resolved':'未确认查询字段；请明确属性、功效、用量或贮藏等内容。',
+    'field_not_recorded':'当前来源未检出所需字段；未检出不表示不存在。',
+    'ambiguous_field':'字段对应多个原文范围，需要核对条目及炮制品。',
+    'preparation_scope_unresolved':'指定炮制品范围尚未确认，不能使用母药字段替代。',
+    'evidence_incomplete':'部分证据未完整解析，请核对未完成字段及原页。',
+    'evidence_not_found':'当前来源未检出候选证据，未补造内容。',
+    'context_stale':'上次选择的来源或规则版本已改变，请明确药名重新查询。',
+    'query_parameters_invalid':'查询参数不完整或超出支持范围，请核对药名和字段。',
+    'tool_disabled':'当前查询工具未启用，请联系维护者检查配置。',
+    'no_candidate_scope':'没有识别到可查询的药材；请给出药名或来源编号。',
+    'unknown_alias':'药名不在当前名称目录中；请核对完整药名或使用已收录拼音。',
+    'name_not_found':'当前名称目录没有该药名对应的来源；请核对完整药名或已收录拼音。',
+    'ambiguous_source':'该药名对应多个来源，需要选择本次查询的来源。',
+    'candidate_confirmation_required':'已找到名称候选，请核对并选择本次查询的来源。',
+    'source_unavailable':'来源目录不可用或版本不一致，本次没有读取结果。',
+    'mentioned_object_omitted':'模型遗漏了问句中的药材，本次未执行。请明确列出全部对象。',
+    'query_entity_not_grounded':'模型提取的药名未通过原句名称校验，本次未执行。请使用完整药名。',
+    'pair_requirement_coverage_failed':'模型选择的综合报告与问句要求不符，本次未执行。请明确要共同靶点还是药典字段对照。',
+    'relation_requirement_coverage_failed':'模型漏掉或重复了成分/靶点要求，本次未执行。',
+    'field_requirement_mismatch':'解析遗漏了要求的字段或包含排除列，本次未执行。请明确保留的列。',
+    'query_requirement_omitted':'模型未完整保留查询要求，本次未执行。请明确全部字段和任务。',
+    'filter_contract_invalid':'模型填写的筛选参数不支持；药典字段齐全性应在读取后筛选，本次未执行。',
+    'schema_validation_failed':'模型返回的工具参数不符合接口规范，本次未执行。可以明确对象和字段后重新提交。',
+    'invalid_tool_call_shape':'模型没有返回一个可用的工具调用，本次未执行。',
+    'model_dispatch_unknown':'模型请求未取得可确认的结果，本次没有自动重试；请保留排查编号核对请求状态。',
+    'delivery_routed_to_partial_query':'模型把表格交付误选为普通查询，本次未执行。',
+    'query_routed_to_wrong_tool':'该问句要求的是药典字段（如功效、贮藏），但被识别成ETCM属性查询；本次未执行。请明确是按药典字段还是ETCM属性查询。',
+    'completeness_mode_mismatch':'筛选提案未通过要求核对，本次未执行。请明确要保留全部记录、筛出齐全项还是查找缺失项。',
+    'selection_requirement_mismatch':'筛选提案未通过数量核对，本次未执行。请明确是否挑选固定数量及所需条数。',
+    'unsupported_requirement':'请求包含当前未支持的任务，请保留已有资料查询或整理要求。',
+    'unsupported_delivery':'当前表格契约无法表达该需求（逐对象字段不同或数量超限）；本次未执行。请改为所有对象相同字段，或缩小对象集。',
+    'cross_source_not_wired':'跨来源的多字段查询尚未接线；本次未执行，请拆成单字段分别查询。',
+}
+STAGES={'requirements','name_resolution','proposal_validation','query_intent_schema','research_goal_contract','query_mapping',
+        'field_resolution','evidence_validation','retrieval','context_validation','source_read','routing'}
+
+
+def public_failure(code,stage='requirements'):
+    code=code if code in MESSAGES else 'requirements_unresolved'
+    return {'code':code,'stage':stage if stage in STAGES else 'proposal_validation',
+            'message':MESSAGES.get(code,'任务要求尚未完整确定，请补充对象、字段或筛选条件。'),
+            'automatic_retry':False}

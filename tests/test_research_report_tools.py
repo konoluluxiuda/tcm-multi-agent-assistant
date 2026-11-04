@@ -42,7 +42,7 @@ class PlanTests(unittest.TestCase):
             self.assertIsNone(local_plan(QUESTION+suffix))
 
     def test_strict_scope_and_field_contracts(self):
-        self.assertEqual(len(SPECS),8)
+        self.assertEqual(len(SPECS),9)
         raw=local_plan(QUESTION).steps[0].call.model_dump()
         with self.assertRaises(ValueError):RunScope.model_validate({'requirements':[{'id':'pair','call':raw}]})
         for fields in (['功能与主治','功能与主治'],['未知字段'],['注意']*5):

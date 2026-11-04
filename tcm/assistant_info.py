@@ -51,7 +51,12 @@ def execute(request):
         message=('当前只提供资料查询，不能执行价格交易或个体选药、处方任务。' if request.get('unsupported') else
                  '请说明要了解的资料或查询内容，例如介绍数据库、药材属性、成分或共同靶点。')
         if request.get('planner_failed'):message='暂时未能识别这句话，请换一种说法，例如“介绍两个数据库”或“查看白术的属性”。'
-        return {**result,'status':'clarification_needed','message':message}
+        if request.get('failure'):
+            from tcm.dataops.failures import public_failure
+            failure=public_failure(request['failure'].get('code'),request['failure'].get('stage'))
+            return {**result,'status':'clarification_needed','message':failure['message'],'failure':failure}
+        return {**result,'status':'clarification_needed','message':message,
+                **({'unresolved_requirements':request['unresolved_requirements']} if request.get('unresolved_requirements') else {})}
     if topic == 'research_task_review':
         question=request['question']
         if not env_bool('ENABLE_RESEARCH_TASKS'):

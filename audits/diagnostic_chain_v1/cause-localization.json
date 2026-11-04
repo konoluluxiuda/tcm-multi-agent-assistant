@@ -1,0 +1,73 @@
+{
+  "rows": [
+    {
+      "id": "E02",
+      "request_id": "dec17ed5433c48be8e07900dedd8faec",
+      "rejection": {
+        "code": "query_entity_not_grounded",
+        "exception_type": "ValueError",
+        "location": {
+          "file": "tcm/research_plan_intent.py",
+          "line": 61,
+          "function": "validate_question",
+          "source_sha256": "d4a7c4453b6d61869533a4e2a0d907106dbb10e6bb89879079a1edf544facbbf"
+        }
+      },
+      "saved_response_replayed": true,
+      "provider_requests": 0,
+      "literal_objects_grounding": {
+        "山药": true,
+        "茯苓": false
+      }
+    },
+    {
+      "id": "E03",
+      "request_id": "56639f5d41744fb891d6c149df5f8024",
+      "rejection": {
+        "code": "pair_requirement_coverage_failed",
+        "exception_type": "ValueError",
+        "location": {
+          "file": "tcm/research_report_plan.py",
+          "line": 82,
+          "function": "validate_step",
+          "source_sha256": "4f823739022640052d75a4834b805d6390e87d239b66bdcaf585a872254a2988"
+        }
+      },
+      "saved_response_replayed": true,
+      "provider_requests": 0
+    },
+    {
+      "id": "E07",
+      "request_id": "2b3334707ffa4467af014befda30ef48",
+      "rejection": {
+        "code": "filter_contract_invalid",
+        "fields": [
+          {
+            "path": [
+              "filters",
+              0
+            ],
+            "type": "value_error",
+            "code": "filter_contract_invalid",
+            "location": {
+              "file": "tcm/dataops/contracts.py",
+              "line": 24,
+              "function": "valid",
+              "source_sha256": "d0e115e4ceee29dde358e28e9419522d7b9269fab7c7e71e27442a39e3ea6a0f"
+            }
+          }
+        ],
+        "location": {
+          "file": "tcm/dataops/research_question.py",
+          "line": 137,
+          "function": "compile_draft",
+          "source_sha256": "baacf0c43bf8c7ae836956341b39caa567882d096e1c190437d034258b0de76e"
+        }
+      },
+      "saved_response_replayed": true,
+      "provider_requests": 0
+    }
+  ],
+  "new_model_calls": 0,
+  "original_wire_results_modified": false
+}

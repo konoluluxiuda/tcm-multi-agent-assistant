@@ -239,6 +239,7 @@
 <style>
 .research-result article{border:1px solid #d6e0d5;border-radius:8px;padding:12px;margin:12px 0;overflow-wrap:anywhere}.research-result h2{font-size:19px}.research-result h3{font-size:16px}.research-result .texts{display:grid;grid-template-columns:1fr 1fr;gap:12px}.research-result pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.7 system-ui;background:#f6f7f3;padding:10px}.research-result img{display:block;max-width:100%;height:auto;margin-top:10px}.research-result .notice{padding:10px;background:#fff6e4;border-left:4px solid #b17c29}.research-result .muted{font-size:13px;color:#596b60}.research-result summary{cursor:pointer}.research-result .citation{padding:10px;border:1px solid #dfe5dd;margin-top:8px}@media(max-width:650px){.research-result .texts{grid-template-columns:1fr}}
 </style>
+<script src="/static/answer_delivery.js"></script>
 </head>
 <body>
     <div class="container-fluid py-4">
@@ -478,7 +479,7 @@
                                 {% if evidence_assistant_synthetic %}<p class="workspace-note">AI模式当前仅使用合成资料，不读取或发送药典片段。测试示例：整理虚构示例草的功效与注意事项。</p>{% endif %}
                                 {% endif %}
                                 {% if intent_planner_enabled %}<p class="workspace-note" id="model-intent-note">自然问法识别已开启：仅未识别的当前问句发送模型，不发送资料或聊天历史。</p>{% endif %}
-                                {% if question_fallback_enabled %}<p class="workspace-note" id="request-understanding-note">补充理解已启用：本地未完整识别时最多调用一次模型，发送当前问句、名称候选和任务结构，不发送资料正文或聊天历史。资料任务页可选择仅本地解析。</p>{% endif %}
+                                {% if question_fallback_enabled %}<p class="workspace-note" id="request-understanding-note">{% if question_understanding_policy == "unified_v2" %}统一理解已启用：普通问句先由模型理解；需要时再纠正参数或独立复核任务，总计最多2次请求。{% else %}补充理解已启用：本地未完整识别时最多调用一次模型。{% endif %}发送当前问句、名称候选和任务结构，不发送资料正文或聊天历史。资料任务页可选择仅本地解析。</p>{% endif %}
                                 <textarea id="message-input" class="form-control message-input" rows="1" placeholder="{% if natural_routing_enabled %}例如：有哪些功效分类？黄芪有什么作用？{% else %}药材：/herb BaiBu；药典：/research 甘草的功效{% endif %}"></textarea>
                             </div>
                             
@@ -641,7 +642,6 @@
         // let isRecording = false;
         // let audioContext;
         // let currentAudio = null;  // Store a single audio instance
-        // // let elevenlabsApiKey = 'sk_4c9d3dfca9e183c7e8a7c0b9c6f7483e074ded17251e5fe7'; // Replace with your actual API key
         // let selectedVoiceId = '21m00Tcm4TlvDq8ikWAM'; // Default voice ID (Rachel)
 
         // document.addEventListener('DOMContentLoaded', function() {
@@ -1715,6 +1715,14 @@
                 chatForm.querySelector('[type="submit"]').disabled = value;
                 clearChatBtn.disabled = value;
             }
+            function renderQueryDelivery(container, answer) {
+                renderAnswerDelivery(container, answer, {
+                    tcm_result: (node, result) => renderHerbResult(node, result, chooseSource),
+                    research_result: renderResearchResult,
+                    assistant_result: (node, result) => renderAssistantResult(node, result, sendLocalRelation),
+                    pubmed_result: renderPubmedResult
+                });
+            }
             function chooseSource(sourceId) {
                 messageInput.value = '/herb ' + sourceId;
                 chatForm.requestSubmit();
@@ -1733,11 +1741,16 @@
                 const restored=[history.tcm,history.research,history.pubmed,history.assistant].filter(Boolean);
                 const lastAssistant=history.messages.findLastIndex(message=>message.role!=='user');
                 for (const [index,message] of history.messages.entries()) {
-                    if(index===lastAssistant&&restored.some(result=>result.message===message.content))continue;
+                    if(index===lastAssistant&&(history.answer_delivery||restored.some(result=>result.message===message.content)))continue;
                     const node = document.createElement('div');
                     node.className = 'message ' + (message.role === 'user' ? 'user-message' : 'assistant-message');
                     node.textContent = typeof message.content === 'string' ? message.content : JSON.stringify(message.content);
                     chatBody.appendChild(node);
+                }
+                if (history.answer_delivery) {
+                    const card = document.createElement('div');
+                    card.className = 'message assistant-message';
+                    renderQueryDelivery(card, history.answer_delivery);chatBody.appendChild(card);
                 }
                 if (history.tcm) {
                     const card = document.createElement('div');
@@ -1919,7 +1932,7 @@
                         503: '所需工具或存储暂不可用，请检查服务状态。'
                     })[response.status] || '请求未完成，请稍后重试。';
                     const data = await response.json();
-                    if (!response.ok && !data.tcm && !data.research && !data.pubmed && !data.assistant && !data.evidence_answer) {
+                    if (!response.ok && !data.answer_steps && !data.tcm && !data.research && !data.pubmed && !data.assistant && !data.evidence_answer) {
                         // Server messages are rendered as literal text, never as markup.
                         if (typeof data.detail === 'string' && data.detail.length <= 500) failureMessage = data.detail;
                         throw new Error('Request failed');
@@ -1936,7 +1949,7 @@
                     const cleanText = removeMarkdown(data.response);
                     
                     // Build HTML content for the response with audio controls
-                    let assistantHtml = (data.tcm || data.research || data.pubmed || data.assistant || data.evidence_answer || data.project_memory) ? '' : `
+                    let assistantHtml = (data.answer_steps || data.tcm || data.research || data.pubmed || data.assistant || data.evidence_answer || data.project_memory) ? '' : `
                         <div class="agent-tag">${data.agent}</div>
                         <div>${marked.parse(data.response)}</div>
                         <div class="audio-controls mt-2">
@@ -1985,7 +1998,9 @@
                         }
                     }
                     
-                    if (data.project_memory) {
+                    if (data.answer_steps) {
+                        renderQueryDelivery(assistantMessageElement, data);
+                    } else if (data.project_memory) {
                         window.renderProjectMemory(assistantMessageElement, data.project_memory);
                     } else if (data.evidence_answer) {
                         assistantMessageElement.dataset.evidenceAnswerStatus = data.evidence_answer.status;

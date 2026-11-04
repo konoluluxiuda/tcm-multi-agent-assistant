@@ -83,6 +83,7 @@ function renderResearchPlan(container,result,send){
         const section=node('section');section.dataset.analysisBlock=block.tool;section.append(node('h6',block.title));container.append(section);
         if(block.externalized)section.append(node('p',block.preview_notice));
         if(block.report_kind){
+            if(block.report_kind==='relations')section.append(node('p','共 '+block.total+' 条来源记录；第 '+block.page+' 页，每页最多20条。'+(block.next_page?'后续页可明确询问药名、成分或靶点及页码。':'')));
             if(block.report_kind==='pair'){
                 const body=table(section,['资料','字段',...(block.herbs||['药材1','药材2'])]);
                 for(const item of block.field_rows||[]){const r=node('tr');r.append(node('td',item.source_type),node('td',item.field));

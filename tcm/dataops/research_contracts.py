@@ -5,7 +5,7 @@ from tcm.dataops.contracts import Contract,Goal,CreateAgent,SubmitQuestion
 
 
 class Selection(Contract):
-    mode:Literal['select_complete','audit_named']='select_complete'
+    mode:Literal['select_complete','audit_named','filter_complete']='select_complete'
     target_count:int=Field(default=2,ge=1,le=5)
     monograph_only:bool=False
 
@@ -22,6 +22,10 @@ class ResearchGoal(Goal):
         if self.completion_policy!='audit':raise ValueError('This profile preserves unverified source scope')
         if self.research.mode=='audit_named' and (self.query.filters or self.query.offset or not (self.query.names or self.query.source_ids)):
             raise ValueError('Named audit requires an explicit unpaged record set')
+        if self.research.mode=='filter_complete' and (self.query.filters or self.query.offset or
+                not (self.query.names or self.query.source_ids) or
+                len(self.query.source_ids or self.query.names)>5):
+            raise ValueError('All-complete filtering requires up to five explicit unpaged candidates')
         return self
 
     def legacy(self):

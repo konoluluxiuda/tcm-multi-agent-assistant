@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "scope": "offline gate and query coverage fixes; local preview update",
+  "external_model_requests": 0,
+  "full_ci_modules": 195,
+  "full_ci_tests": 1631,
+  "gate_on": {
+    "matched": 17,
+    "total": 17,
+    "exit_code": 0
+  },
+  "gate_off_negative_control": {
+    "matched": 14,
+    "total": 17,
+    "exit_code": 1
+  },
+  "files_sha256": {
+    "tcm/dataops/query_coverage.py": "5b93c8b5ad4342cc2e650a9c684c9ae709ffc4c8478f64671085ce44ce53ca10",
+    "tcm/dataops/research_question.py": "d0df91c28925aff0218dff8e4249d69fb55b24b992dab3cc19aee83c877bddfa",
+    "tcm/dataops/service.py": "33092e7d3fd525dd71bf7b711a08238398b2281c71f642b0745e81a234427cb4",
+    "tcm/capabilities.py": "276fd920032fd613d396ea6b9b38cb120abcf2937f134b20330c9b04a4a5b288",
+    "scripts/check_understanding_counterexamples.py": "a4ee0e9132315b10ab372cf86a6e52b850368fc644471959632e009dba9c5821",
+    "tests/test_understanding_gate.py": "e0547bee686364f9f181718fd8024a1756dff07ba3b282148509df5a0146e0d8",
+    "tests/test_capabilities.py": "9202bfaa7542e63e430c4e0f3a953ed457150d737f33e556e3bf47d8053d76f6",
+    "eval/understanding_v2/counterexamples_gate_v2.json": "31349bdfcf117c88f44f202589ee1f73622fcb91d5fd34b5695686803ae7bae0"
+  },
+  "remaining": [
+    "Requirements-first execution contract and capability matrix integration",
+    "real model generalization comparison"
+  ],
+  "deployment_notes": [
+    "Both existing preview commands verified before SIGINT; no active jobs",
+    "Initial private deployment receipt used exclusive create twice; PIDs recovered without restarting again",
+    "Help control exposes assistant.llm_calls, not top-level model_calls; check corrected",
+    "Latest private process manifest: var/understanding_gate_fix_v1/deployment-complete.private.json"
+  ]
+}

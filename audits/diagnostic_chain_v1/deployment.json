@@ -1,0 +1,143 @@
+{
+  "status": "passed",
+  "services": [
+    {
+      "port": 7896,
+      "runtime": {
+        "started_at": "2026-10-31T15:59:27.350200+00:00",
+        "source_revision": "53006092b3247f2e443ecc6d3f81c25f0f41f6ab6a27d47ec53f999d33cb2dc2",
+        "disk_revision": "53006092b3247f2e443ecc6d3f81c25f0f41f6ab6a27d47ec53f999d33cb2dc2",
+        "source_revision_scope": "research-application-v3",
+        "entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+        "disk_entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+        "optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "disk_optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": false,
+          "driver": "disabled",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1",
+          "research_selection": {
+            "enabled": true,
+            "driver": "fixed",
+            "external_model_enabled": false,
+            "execution_model_enabled": false,
+            "question_model_enabled": false,
+            "question_policy": "local_then_one_model_v1",
+            "chat_question_fallback_enabled": false,
+            "goal_input": "bounded_question_or_form",
+            "identity_approval": false
+          }
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": false
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": true
+      },
+      "diagnostic_request_id": "2cbdd071ed87446d832bf652235b307c",
+      "owner_api_readback": true,
+      "expected_rejection_recorded": true,
+      "model_calls": 0,
+      "cookie_survived": true
+    },
+    {
+      "port": 7912,
+      "runtime": {
+        "started_at": "2026-10-31T15:59:32.785123+00:00",
+        "source_revision": "53006092b3247f2e443ecc6d3f81c25f0f41f6ab6a27d47ec53f999d33cb2dc2",
+        "disk_revision": "53006092b3247f2e443ecc6d3f81c25f0f41f6ab6a27d47ec53f999d33cb2dc2",
+        "source_revision_scope": "research-application-v3",
+        "entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+        "disk_entrypoint_revision": "d6ad4573ee942e8b98c017e7a44d1c7ba4257390db37269ea67410b16e03ab01",
+        "optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "disk_optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": true,
+          "driver": "synthetic",
+          "external_model_enabled": true,
+          "question_compiler": "local_bounded_grammar_v1",
+          "research_selection": {
+            "enabled": true,
+            "driver": "fixed",
+            "external_model_enabled": true,
+            "execution_model_enabled": false,
+            "question_model_enabled": true,
+            "question_policy": "local_then_one_model_v1",
+            "chat_question_fallback_enabled": true,
+            "goal_input": "bounded_question_or_form",
+            "identity_approval": false
+          }
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": true
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": true
+      },
+      "diagnostic_request_id": "39e9f11dab5a4cde86206bbfed8464e7",
+      "owner_api_readback": true,
+      "expected_rejection_recorded": true,
+      "model_calls": 0,
+      "cookie_survived": true
+    },
+    {
+      "port": 7914,
+      "runtime": {
+        "started_at": "2026-10-31T15:59:38.769152+00:00",
+        "source_revision": "53006092b3247f2e443ecc6d3f81c25f0f41f6ab6a27d47ec53f999d33cb2dc2",
+        "disk_revision": "53006092b3247f2e443ecc6d3f81c25f0f41f6ab6a27d47ec53f999d33cb2dc2",
+        "source_revision_scope": "research-application-v3",
+        "entrypoint_revision": "71b641c40a25bea853d4a43d3a84a48dca692ad85739fd15272764ea42cf2c98",
+        "disk_entrypoint_revision": "71b641c40a25bea853d4a43d3a84a48dca692ad85739fd15272764ea42cf2c98",
+        "optional_modules_revision": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "disk_optional_modules_revision": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": false,
+          "driver": "disabled",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1",
+          "research_selection": {
+            "enabled": true,
+            "driver": "fixed",
+            "external_model_enabled": false,
+            "execution_model_enabled": false,
+            "question_model_enabled": false,
+            "question_policy": "local_then_one_model_v1",
+            "chat_question_fallback_enabled": false,
+            "goal_input": "bounded_question_or_form",
+            "identity_approval": false
+          }
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": false
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": false
+      },
+      "diagnostic_request_id": "6ddff158318e4a6a800138fa9fa5c0b1",
+      "owner_api_readback": true,
+      "expected_rejection_recorded": true,
+      "model_calls": 0,
+      "cookie_survived": true
+    }
+  ],
+  "image": "tcm-research-chat:diagnostic-chain-v1",
+  "image_id": "sha256:c46c8978ccf456c21dd6cf1c32e207cf700fb78cde88ef1d5ccc43ee96350919",
+  "image_source_files_checked": 196,
+  "old_artifacts_preserved": 108,
+  "old_artifacts_unchanged": true,
+  "rollback_container": "tcm-research-r4-before-diagnostic-chain-v1",
+  "external_model_calls": 0,
+  "docker_hub_published": false,
+  "historical_port_7916": "unchanged external-clean-v1 snapshot, not current diagnostic deployment"
+}

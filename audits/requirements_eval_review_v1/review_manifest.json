@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-03",
+  "real_model_requests": 0,
+  "implementation_changed": false,
+  "reviewed_sha256": {
+    "scripts/eval_requirements_generalization.py": "7e4527052679fc7c63733b119fa66aa4f833dc0b71319f6b5fc6b988e1154f75",
+    "tcm/evaluation/requirements_benchmark.py": "b00542c53c0946f0f979b0cfa26e648619f4620dc5c984c3195e9fdfaffeea6d",
+    "tests/test_requirements_benchmark.py": "87bb5eed1958c70a238d207efa9b5681b4097e0ea67728db549ee8741e080490",
+    "tests/test_requirements_eval_protocol.py": "3ccc67ebe54dd20af68fedd3f01cce4433c988875aa29020410dba1358ba717a",
+    "eval/requirements_generalization_v1/questions.private.draft.jsonl": "f059cda361dbe3cbbcc852339a3baf3d021160b832d50d30d29ac222cd924f31"
+  },
+  "existing_tests_passed": 21,
+  "defect_probes_reproduced": 12
+}

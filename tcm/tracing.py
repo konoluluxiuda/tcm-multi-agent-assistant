@@ -9,13 +9,13 @@ LOG = logging.getLogger(__name__)
 _PRIVATE = re.compile(r'password|secret|api.?key|authorization|cookie|headers|reasoning|chain.of.thought', re.I)
 
 
-def sanitize(value):
+def sanitize(value,*,max_depth=8):
     """Limit payload size/depth and strip credentials and hidden reasoning."""
     secrets = [v for k, v in os.environ.items() if _PRIVATE.search(k) and len(v) >= 8]
     budget = [48000]
 
     def clean(v, depth=0):
-        if depth > 8 or budget[0] <= 0:
+        if depth > max_depth or budget[0] <= 0:
             return '[truncated]'
         if isinstance(v, dict):
             return {str(k)[:100]: '[redacted]' if _PRIVATE.search(str(k)) else clean(x, depth+1)
@@ -66,6 +66,10 @@ class Observation:
         if os.getenv('TCM_TRACE_CONTENT') != '1':
             values = {k: v for k, v in values.items() if k not in ('input', 'output')}
         try:
+            from tcm.dataops.diagnostics import CURRENT
+            diagnostic = CURRENT.get()
+            if diagnostic and 'metadata' in values:
+                values['metadata'] = {**values['metadata'], 'diagnostic_request_id': diagnostic['request_id']}
             self.span.update(**sanitize(values))
         except Exception:
             LOG.warning('Langfuse update unavailable; execution continues')
@@ -81,13 +85,20 @@ class Observation:
 @contextmanager
 def observation(name, *, input=None, metadata=None, generation=False, model=None):
     cm = None; span = None
+    depth_token = None
     try:
+        from tcm.dataops.diagnostics import CURRENT, SPAN_DEPTH
+        diagnostic = CURRENT.get()
+        depth = SPAN_DEPTH.get()
+        depth_token = SPAN_DEPTH.set(depth + 1)
+        correlation = {'diagnostic_request_id': diagnostic['request_id']} if diagnostic else {}
         sdk = client()
         if sdk is not None:
             cm = sdk.start_as_current_observation(name=name,
                 as_type='generation' if generation else 'span', model=model,
                 input=sanitize(input) if os.getenv('TCM_TRACE_CONTENT') == '1' else None,
-                metadata=sanitize(metadata or {}))
+                metadata=sanitize({**(metadata or {}), **correlation}),
+                **({'trace_context': {'trace_id': diagnostic['request_id']}} if diagnostic and depth == 0 else {}))
             span = cm.__enter__()
     except Exception:
         cm = None
@@ -106,6 +117,8 @@ def observation(name, *, input=None, metadata=None, generation=False, model=None
                 cm.__exit__(None, None, None)
             except Exception:
                 LOG.warning('Langfuse close unavailable; execution continues')
+        if depth_token is not None:
+            SPAN_DEPTH.reset(depth_token)
 
 
 def flush():

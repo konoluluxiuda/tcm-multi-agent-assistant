@@ -904,7 +904,7 @@ def init_agent_state() -> AgentState:
     }
 
 
-def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='auto',request_key=None,resolved_request=None) -> Dict:
+def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='auto',request_key=None,resolved_request=None,persist_turn=True) -> Dict:
     """
     Process a user query through the agent decision system.
     
@@ -952,9 +952,10 @@ def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='a
     # Keep history to reasonable size (ANOTHER OPTION: summarize and store before truncating history)
     if len(result["messages"]) > config.max_conversation_history:  # Keep last config.max_conversation_history messages
         result["messages"] = result["messages"][-config.max_conversation_history:]
-    memory.save(session_id, result["messages"], pack_contexts(result.get('tcm_context'), result.get('research_context'),
-                result.get('pubmed_context'),result.get('relation_context'),
-                task_review=capture_chat_review(result.get('assistant_result'))), revision=snapshot.revision)
+    if persist_turn:
+        memory.save(session_id, result["messages"], pack_contexts(result.get('tcm_context'), result.get('research_context'),
+                    result.get('pubmed_context'),result.get('relation_context'),
+                    task_review=capture_chat_review(result.get('assistant_result'))), revision=snapshot.revision)
 
     # visualize conversation history in console
     for m in result["messages"]:
@@ -963,13 +964,13 @@ def _process_query(query: Union[str, Dict], thread_config: Dict, *, task_mode='a
     # Add the response to conversation history
     return result
 
-def process_query(query: Union[str, Dict], conversation_history=None, *, session_id=None, task_mode='auto',request_key=None,resolved_request=None) -> Dict:
+def process_query(query: Union[str, Dict], conversation_history=None, *, session_id=None, task_mode='auto',request_key=None,resolved_request=None,persist_turn=True) -> Dict:
     """Run a turn in its own session; omitted IDs create isolated one-shot calls.
 
     Completed turns live in SQLite and survive restart. Client-supplied
     history is intentionally not trusted as server-side state.
     """
     with session_turn(session_id) as thread_config:
-        args={'task_mode':task_mode,'request_key':request_key}
+        args={'task_mode':task_mode,'request_key':request_key,'persist_turn':persist_turn}
         if resolved_request is not None:args['resolved_request']=resolved_request
         return _process_query(query, thread_config, **args)

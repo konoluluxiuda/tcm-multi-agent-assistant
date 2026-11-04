@@ -7,7 +7,7 @@ PHARMA={'来源':'来源','基原':'来源','性味与归经':'性味与归经',
     '注意事项':'注意','注意':'注意','禁忌':'注意','贮藏':'贮藏','保存':'贮藏','炮制':'炮制',
     '性状':'性状','鉴别':'鉴别','检查':'检查','含量测定':'含量测定'}
 ATTR={'科名':'family','科':'family','药用部位':'medicinal_part','部位':'medicinal_part',
-    '药性':'properties','药味':'flavors','归经':'meridians','产地':'habitat','功效分类':'efficacy_class',
+    '药性':'properties','药味':'flavors','性味':('properties','flavors'),'归经':'meridians','产地':'habitat','功效分类':'efficacy_class',
     '适应证':'indications','文献ID':'reference_pmids','拉丁名':'latin_name','英文名':'english_name','拼音':'name_pinyin'}
 NAME=r'([\u4e00-\u9fffA-Za-z0-9 .():_\-]{1,80}?)'
 
@@ -17,7 +17,11 @@ def clean(text):return re.sub(r'^(?:(?:请帮我|帮我|请|然后|并且|同时
 
 def fields(text,aliases,limit=4):
     names=sorted(aliases,key=len,reverse=True);pattern='|'.join(map(re.escape,names));result=[]
-    remainder=re.sub(pattern,lambda m:result.append(aliases[m[0]]) or '',text)
+    def consume(match):
+        value=aliases[match[0]]
+        result.extend(value if isinstance(value,tuple) else (value,))
+        return ''
+    remainder=re.sub(pattern,consume,text)
     if re.sub(r'(?:和|与|及|、|的|以及|字段|原文|属性|信息|都|是什么|呢|\s)+','',remainder):return None
     result=list(dict.fromkeys(result))
     return result if 1<=len(result)<=limit else None

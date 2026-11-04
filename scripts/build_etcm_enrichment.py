@@ -34,13 +34,15 @@ def pharma_candidates(entries,blocks):
         name=entry.get('name_zh_candidate')
         if not isinstance(name,str) or not re.fullmatch(r'[\u4e00-\u9fff]{2,20}',name):continue
         for identifier in entry.get('title_block_ids',[]):
-            block=index[identifier];text=block.get('text',block.get('raw',{}).get('text','')).strip()
-            prefix=re.split(r'\s+(?=[A-Z]{3,})',text,maxsplit=1)[0]
-            if re.fullmatch(r'[A-Za-z -]{2,70}',prefix):
-                normalized=re.sub(r'[ -]','',prefix).casefold()
-                result[normalized].append({'name_zh':name,'entry_id':entry['id'],
+            from tcm.etcm_name_candidates import title_pinyin
+            block=index[identifier];text=block.get('text',block.get('raw',{}).get('text',''))
+            if block.get('flags'):continue
+            parsed=title_pinyin(text,name)
+            if parsed:
+                result[parsed['normalized']].append({'name_zh':name,'entry_id':entry['id'],
                     'method':'normalized_pinyin_title_candidate','identity_verified':False,
-                    'block_id':identifier,'title_text':text,'source':block.get('source')})
+                    'block_id':identifier,'title_text':text,'source':block.get('source'),
+                    'title_pinyin':parsed})
     return result
 
 

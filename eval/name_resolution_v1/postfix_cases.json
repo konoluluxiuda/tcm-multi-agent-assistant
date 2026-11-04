@@ -1,0 +1,7 @@
+{
+ "authorship":"developer_authored_targeted_regression_phrasings_not_independent_holdout",
+ "cases":[
+  {"id":"P01","question":"请告诉我连翘与丹参有没有重合的靶点，附上两边来源。","kind":"common_target","names":["连翘","丹参"],"expected_total":122,"max_model_requests":1},
+  {"id":"P02","question":"想知道连翘在ETCM里的科名以及药用部位是什么。","kind":"attributes","names":["连翘"],"fields":["family","medicinal_part"],"max_model_requests":1}
+ ]
+}

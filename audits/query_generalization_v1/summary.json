@@ -1,0 +1,487 @@
+{
+  "version": "query-generalization-v1",
+  "scope": "developer-authored new phrasings; frozen first execution, not independent user accuracy",
+  "business_code_and_prompts_changed_during_evaluation": false,
+  "business_code_changed_this_task": false,
+  "first_run_status": "failed",
+  "scenario_results": {
+    "local": {
+      "business": {
+        "passed": 0,
+        "total": 8
+      },
+      "boundary": {
+        "passed": 1,
+        "total": 4
+      },
+      "cases": [
+        {
+          "id": "G01",
+          "role": "business",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Requested attributes or raw witnesses missing",
+              "request_id": "db189a918d5846d29f72cbc4f1e0213c"
+            }
+          ]
+        },
+        {
+          "id": "G02",
+          "role": "business",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Unexpected HTTP status",
+              "request_id": "3575d6bcb2814110adb2aca9091c470f"
+            }
+          ]
+        },
+        {
+          "id": "G03",
+          "role": "business",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Unexpected HTTP status",
+              "request_id": "72b92088f57341958d350c58c2f9f39d"
+            }
+          ]
+        },
+        {
+          "id": "G04",
+          "role": "business",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Requested relation/source result missing",
+              "request_id": "6ad31da330ae4ef2b9e8ce3514b97a63"
+            }
+          ]
+        },
+        {
+          "id": "G05",
+          "role": "business",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Requested relation/source result missing",
+              "request_id": "6e00758906184abeb8ba851a33aec552"
+            }
+          ]
+        },
+        {
+          "id": "G06",
+          "role": "business",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Requested pharmacopoeia fields or page evidence missing",
+              "request_id": "8283e87e2948484fbb699f6533c560c4"
+            }
+          ]
+        },
+        {
+          "id": "G07",
+          "role": "business",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "'workspace_id'",
+              "request_id": "cb4243d9cd964bb880f994c14d678377"
+            },
+            {
+              "turn": 1,
+              "status": "not_run_parent_failed",
+              "reason": null,
+              "request_id": null
+            }
+          ]
+        },
+        {
+          "id": "G08",
+          "role": "business",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "'workspace_id'",
+              "request_id": "fa4ab3d46bbf4a898bdd6fca8b37402f"
+            }
+          ]
+        },
+        {
+          "id": "C01",
+          "role": "boundary",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Unexpected HTTP status",
+              "request_id": "5ce4d10209c74a3caed0778deac1a76b"
+            }
+          ]
+        },
+        {
+          "id": "C02",
+          "role": "boundary",
+          "passed": true,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "passed",
+              "reason": null,
+              "request_id": "9b9315db52384565b598d3f0e1ea60a3"
+            }
+          ]
+        },
+        {
+          "id": "C03",
+          "role": "boundary",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Unexpected HTTP status",
+              "request_id": "237989493b8e4013b50afd820182defa"
+            }
+          ]
+        },
+        {
+          "id": "C04",
+          "role": "boundary",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Unsupported or unclear request was not safely clarified/rejected",
+              "request_id": "9255757e0ed54a1aa500e33c22058182"
+            }
+          ]
+        }
+      ]
+    },
+    "fallback": {
+      "business": {
+        "passed": 4,
+        "total": 8
+      },
+      "boundary": {
+        "passed": 2,
+        "total": 4
+      },
+      "cases": [
+        {
+          "id": "G01",
+          "role": "business",
+          "passed": true,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "passed",
+              "reason": null,
+              "request_id": "8138ae9c4786455ab3b762dd7e1d8043"
+            }
+          ]
+        },
+        {
+          "id": "G02",
+          "role": "business",
+          "passed": true,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "passed",
+              "reason": null,
+              "request_id": "6d99b3255e9d42b591c539871091c0ac"
+            }
+          ]
+        },
+        {
+          "id": "G03",
+          "role": "business",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Requested relation/source result missing",
+              "request_id": "67befb2fb1b4443da8727774c716da92"
+            }
+          ]
+        },
+        {
+          "id": "G04",
+          "role": "business",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Requested relation/source result missing",
+              "request_id": "1d20c5d3cfc14568a210b8c2d8107f80"
+            }
+          ]
+        },
+        {
+          "id": "G05",
+          "role": "business",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Requested relation/source result missing",
+              "request_id": "3864b81b42fe4758830c5892430b3463"
+            }
+          ]
+        },
+        {
+          "id": "G06",
+          "role": "business",
+          "passed": true,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "passed",
+              "reason": null,
+              "request_id": "af1669c7fb8c49c7884af439e934f8c6"
+            }
+          ]
+        },
+        {
+          "id": "G07",
+          "role": "business",
+          "passed": true,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "passed",
+              "reason": null,
+              "request_id": "0165b13e5cbe49258eddd8a433e07333"
+            },
+            {
+              "turn": 1,
+              "status": "passed",
+              "reason": null,
+              "request_id": "c0f0733bc76947928474594f23579628"
+            }
+          ]
+        },
+        {
+          "id": "G08",
+          "role": "business",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "'workspace_id'",
+              "request_id": "f512f4dfc3ce4232a2099e46016c3834"
+            }
+          ]
+        },
+        {
+          "id": "C01",
+          "role": "boundary",
+          "passed": true,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "passed",
+              "reason": null,
+              "request_id": "7edc5e7aad7848019e76fdcd6dde3b71"
+            }
+          ]
+        },
+        {
+          "id": "C02",
+          "role": "boundary",
+          "passed": true,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "passed",
+              "reason": null,
+              "request_id": "9a0e8b2eb6a848e3b012dcb47c052a4a"
+            }
+          ]
+        },
+        {
+          "id": "C03",
+          "role": "boundary",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "Unexpected HTTP status",
+              "request_id": "6285c5a4c9ca4484972b899a78770bbd"
+            }
+          ]
+        },
+        {
+          "id": "C04",
+          "role": "boundary",
+          "passed": false,
+          "turns": [
+            {
+              "turn": 0,
+              "status": "failed",
+              "reason": "No budget reserved for replay check",
+              "request_id": "cfa2a477caf24fe9b9863bd96c616f69"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "reported_understanding_requests": 13,
+  "matching_model_return_events": 13,
+  "usage": {
+    "input_tokens": 72919,
+    "output_tokens": 1687,
+    "total_tokens": 74606
+  },
+  "usage_by_case": [
+    {
+      "case": "fallback_C01_0",
+      "request_id": "7edc5e7aad7848019e76fdcd6dde3b71",
+      "input_tokens": 5589,
+      "output_tokens": 35,
+      "total_tokens": 5624
+    },
+    {
+      "case": "fallback_C02_0",
+      "request_id": "9a0e8b2eb6a848e3b012dcb47c052a4a",
+      "input_tokens": 5590,
+      "output_tokens": 247,
+      "total_tokens": 5837
+    },
+    {
+      "case": "fallback_C03_0",
+      "request_id": "6285c5a4c9ca4484972b899a78770bbd",
+      "input_tokens": 5594,
+      "output_tokens": 74,
+      "total_tokens": 5668
+    },
+    {
+      "case": "fallback_C04_0",
+      "request_id": "cfa2a477caf24fe9b9863bd96c616f69",
+      "input_tokens": 5605,
+      "output_tokens": 83,
+      "total_tokens": 5688
+    },
+    {
+      "case": "fallback_G01_0",
+      "request_id": "8138ae9c4786455ab3b762dd7e1d8043",
+      "input_tokens": 5605,
+      "output_tokens": 75,
+      "total_tokens": 5680
+    },
+    {
+      "case": "fallback_G02_0",
+      "request_id": "6d99b3255e9d42b591c539871091c0ac",
+      "input_tokens": 5619,
+      "output_tokens": 81,
+      "total_tokens": 5700
+    },
+    {
+      "case": "fallback_G03_0",
+      "request_id": "67befb2fb1b4443da8727774c716da92",
+      "input_tokens": 5605,
+      "output_tokens": 71,
+      "total_tokens": 5676
+    },
+    {
+      "case": "fallback_G04_0",
+      "request_id": "1d20c5d3cfc14568a210b8c2d8107f80",
+      "input_tokens": 5616,
+      "output_tokens": 90,
+      "total_tokens": 5706
+    },
+    {
+      "case": "fallback_G05_0",
+      "request_id": "3864b81b42fe4758830c5892430b3463",
+      "input_tokens": 5617,
+      "output_tokens": 211,
+      "total_tokens": 5828
+    },
+    {
+      "case": "fallback_G06_0",
+      "request_id": "af1669c7fb8c49c7884af439e934f8c6",
+      "input_tokens": 5610,
+      "output_tokens": 70,
+      "total_tokens": 5680
+    },
+    {
+      "case": "fallback_G07_0",
+      "request_id": "0165b13e5cbe49258eddd8a433e07333",
+      "input_tokens": 5626,
+      "output_tokens": 219,
+      "total_tokens": 5845
+    },
+    {
+      "case": "fallback_G07_1",
+      "request_id": "c0f0733bc76947928474594f23579628",
+      "input_tokens": 5617,
+      "output_tokens": 211,
+      "total_tokens": 5828
+    },
+    {
+      "case": "fallback_G08_0",
+      "request_id": "f512f4dfc3ce4232a2099e46016c3834",
+      "input_tokens": 5626,
+      "output_tokens": 220,
+      "total_tokens": 5846
+    }
+  ],
+  "wire_http_receipts_collected": false,
+  "automatic_retries": 0,
+  "original_scores_changed": false,
+  "independent_acceptance": false,
+  "frozen_suite_sha256": "8b1d9b712273f10c218db4fcd1103d6d3c183b4a306bf4d6ddf64656cc60c8b3",
+  "first_evaluator_sha256": "a1d61a73b887851802523522eb2719b30762c7446d3d91bd257f2d4225641255",
+  "first_answer_evaluator_sha256": "8267571f39bac5f839048a4936f5529636580c380e7ab897202af11ab23dbd83",
+  "runtime_source_revision": "1552e17a583a5d8275c386208650fa194242734754970b059967ff41c02c2336",
+  "model_request_cap": 13,
+  "primary_contract_adjudication": {
+    "case": "C04",
+    "service": "fallback",
+    "original_score": "failed",
+    "original_reason": "No budget reserved for replay check",
+    "primary_contract": "passed before optional replay budget assertion",
+    "replay": "not_run",
+    "extra_model_requests": 0,
+    "original_score_preserved": true
+  },
+  "diagnostic_limits": [
+    "G05 nested argument values were truncated, cannot claim exact model argument replay",
+    "concurrency diagnostic test had one missing-record error in parallel run; isolated recheck passed; root cause not confirmed"
+  ],
+  "grader_control": {
+    "question_already_exposed": true,
+    "new_business_score": false,
+    "model_requests": 0,
+    "raw_witnesses_or_pdf_anchors_checked": 80,
+    "scope": "ETCM raw JSON equality and PDF anchor structure; not medical or OCR correctness"
+  }
+}

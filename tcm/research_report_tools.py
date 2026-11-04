@@ -36,6 +36,26 @@ def attribute_missing(result,fields):
 
 
 def missing_for(name,args,report):
+    if name=='herb_relation_records':
+        if report.get('status')!='ok':return ['ETCM关联来源未就绪']
+        rel=report.get('relations',{});data=rel.get('data',{})
+        if (rel.get('kind')!=args['kind'] or rel.get('page')!=args['page'] or
+                [g.get('query') for g in rel.get('groups',[])]!=[args['name']]):
+            raise ValueError('Relation request changed')
+        options=rel['groups'][0].get('options',[])
+        if (len(options)!=1 or options[0].get('source_record_id')!=args['name'] or
+                not options[0].get('source',{}).get('file_sha256') or
+                options[0]['source'].get('dataset_version')!=rel.get('dataset_version')):
+            raise ValueError('Relation source binding changed')
+        items=data.get('items',[]);offset=(args['page']-1)*20;total=data.get('total')
+        if (type(total) is not int or total<0 or data.get('offset')!=offset or
+                len(items)!=min(20,max(0,total-offset)) or data.get('returned_count')!=len(items) or
+                data.get('next_offset')!=(offset+20 if offset+20<total else None)):
+            raise ValueError('Relation page coverage changed')
+        if any(r.get('herb_id')!=args['name'] or r.get('kind')!=args['kind'] or
+               not r.get('source_pointer') or not isinstance(r.get('raw_row'),dict) for r in items):
+            raise ValueError('Invalid relation provenance')
+        return []
     if name=='pharmacopoeia_lookup':return text_missing(report,args['name'],args['fields'])
     if name=='herb_attributes':
         if report.get('source_record_id') not in (None,args['name']):raise ValueError('Attribute source mismatch')
@@ -71,6 +91,8 @@ def validate(name,args,raw):
         data=result.data
         if data.request!=args:raise ValueError('Report request changed')
         missing=missing_for(name,args,data.report)
+        if name=='herb_relation_records' and not missing and data.report['relations']['dataset_version']!=data.dataset_version:
+            raise ValueError('Relation dataset version changed')
         if data.missing!=missing or data.complete!= (not missing):raise ValueError('Report completion changed')
     return result.model_dump()
 
@@ -83,8 +105,10 @@ async def execute(name,args,branch,charge,contract):
         nonlocal calls
         charge();calls+=1
         return await branch(kind,herb,question,source_id=source_id)
-    question='、'.join(args['fields']) if name!='herb_attributes' else ''
-    if name=='pharmacopoeia_lookup':
+    question='、'.join(args.get('fields',[]))
+    if name=='herb_relation_records':
+        report=await leaf('relation_records',args['name'],json.dumps({'kind':args['kind'],'page':args['page']}),source_id=args['name'])
+    elif name=='pharmacopoeia_lookup':
         report=await leaf('text',args['name'],question)
     elif name=='herb_attributes':
         report=await leaf('structured',args['name'],'',source_id=args['name'])
@@ -107,6 +131,15 @@ def display(eid,payload):
     name=payload['tool'];data=payload['data'];args=data['request'];report=data['report']
     base={'tool':name,'evidence_ids':[eid],'missing':data['missing'],'source':{
         'catalog_revision':data['catalog_revision'],'identity_merged':False}}
+    if name=='herb_relation_records':
+        rel=report.get('relations',{});page=rel.get('data',{});groups=rel.get('groups',[])
+        title=(groups[0].get('display_name',args['name']) if groups else '药材')+' · '+{'ingredient':'成分','target':'靶点'}[args['kind']]
+        return {**base,'report_kind':'relations','title':title,'page':args['page'],
+                'total':page.get('total'),'next_page':args['page']+1 if page.get('next_offset') is not None else None,
+                'field_rows':[{'field':item.get('identifier') or item['name'],'value':item['name'],
+                               'evidence':{'source_record_id':item['herb_id'],'json_pointer':item['source_pointer'],
+                                           'raw_row':item['raw_row']}} for item in page.get('items',[])],
+                'source':{**base['source'],'groups':groups}}
     if name=='pair_evidence_report':
         wanted=[r for r in report.get('rows',[]) if
             (r['source_type']=='药典' and field_label(r['field']) in args['fields']) or

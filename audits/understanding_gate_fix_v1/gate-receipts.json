@@ -1,0 +1,16 @@
+[
+  {
+    "guard": "1",
+    "exit_code": 0,
+    "status": "passed",
+    "matched": 17,
+    "total": 17
+  },
+  {
+    "guard": "0",
+    "exit_code": 1,
+    "status": "failed",
+    "matched": 14,
+    "total": 17
+  }
+]

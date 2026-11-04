@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "answer_steps": [
+    {
+      "tool": "research",
+      "result_key": "research_result",
+      "status": "partial_evidence",
+      "result": {
+        "status": "partial_evidence",
+        "message": "部分功效可用，注意缺失",
+        "missing_fields": [
+          "注意"
+        ],
+        "tool_result": {
+          "hits": []
+        }
+      },
+      "route": {
+        "tool": "research"
+      },
+      "message": "部分功效可用，注意缺失"
+    }
+  ],
+  "unfinished": [],
+  "response": "部分功效可用，注意缺失"
+}

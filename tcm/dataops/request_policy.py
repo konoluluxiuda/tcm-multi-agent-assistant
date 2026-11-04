@@ -21,12 +21,22 @@ def vague_task(question):
 
 
 def requires_delivery(question):
-    return bool(re.search(r'表格|资料表|对照表|核对表|出处表|表里|[Ee]xcel|[Xx][Ll][Ss][Xx]|(?:做成|做个|生成|制作).{0,12}表',question))
+    return bool(re.search(r'资料卡|表格|资料表|对照表|核对表|出处表|表里|[Ee]xcel|[Xx][Ll][Ss][Xx]|(?:做成|做个|生成|制作).{0,12}表',question))
 
 
 def needs_fallback(question, selected):
     if not isinstance(question, str) or question.lstrip().startswith('/'):
         return False
+    from tcm.dataops.understanding_contract import policy
+    if policy()=='unified_v2':
+        # Only exact controls and host-bound selections bypass understanding.
+        # A plausible regex route alone is not evidence of complete understanding.
+        if question.strip().rstrip('。？！?!') in ('你能做什么','当前能做什么','数据概览','介绍两个数据库'):
+            return False
+        request=(selected or {}).get('request',{})
+        if request.get('selection') or request.get('replay') or request.get('followup'):
+            return False
+        return True
     if selected is None:
         return True
     request=selected.get('request',{})

@@ -1,0 +1,31 @@
+{
+  "release": "r1_names_20261101",
+  "source_revision": {
+    "dataset_version": "local-2026-10-10",
+    "sources": [
+      "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+      "00b6119f3b0f8f837112fa55bcbe620658277083ac3efb7e48e9b696fdf5cb00",
+      "ae9910c2149820930bec103b227eee04f2287f8158501dcebee3ac7f5b5558a3",
+      "94a377b914320170cf271557b5d4cb9635fbf6725805a7f9601d12651f9c0194"
+    ],
+    "rules": "dataops-research-v1",
+    "release_content_id": "ddac6f50a64863a511b303052178eb005f62bc6f0260ce5d2c37b0cc053a5b75"
+  },
+  "scenarios": 40,
+  "turns": 43,
+  "issues": [],
+  "review": "implementation agent checked source consistency before any application/model evaluation",
+  "independent_author": true,
+  "human_botanical_identity_reviewed": false,
+  "counts": {
+    "etcm_source_records": 2076,
+    "pharmacopoeia_entries": 616,
+    "pharmacopoeia_fields": 8665
+  },
+  "old_release_issue": "r1_20261030 lacks DanShen/LianQiao Chinese candidates; no original questions modified",
+  "known_grading_limits": [
+    "boundary checks terminal/HTTP, not full clinical semantic judging",
+    "list checks first-page witness and total, not every item",
+    "table checks values/artifact, not visual column order"
+  ]
+}

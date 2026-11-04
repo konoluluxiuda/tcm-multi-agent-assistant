@@ -48,8 +48,9 @@ class RouterTests(unittest.TestCase):
             self.assertTrue(result is None or result['request'].get('topic')!='dataset_info',text)
 
     def test_individual_efficacy_is_not_a_global_inventory_question(self):
-        for text in ('黄芪的功效有哪些','黄芪有什么作用','黄芪的用量是多少','查一下黄芪的药用部位'):
+        for text in ('黄芪的功效有哪些','黄芪有什么作用','黄芪的用量是多少'):
             self.assertEqual(resolve(text)['tool'],'research',text)
+        self.assertEqual(resolve('查一下黄芪的药用部位')['tool'],'herb')
         self.assertEqual(resolve('什么是归经')['request']['topic'],'concept')
         self.assertEqual(resolve('黄芪的归经是什么')['tool'],'research')
 
@@ -58,7 +59,7 @@ class RouterTests(unittest.TestCase):
             route=resolve(text)
             self.assertEqual(route['tool'],'herb',text)
             self.assertEqual(route['reason'],'structured_named_field_query')
-        self.assertEqual(resolve('白术的药用部位')['tool'],'research')
+        self.assertEqual(resolve('白术的药用部位')['tool'],'herb')
         self.assertEqual(resolve('在ETCM查询白术的药用部位')['tool'],'herb')
 
     def test_legacy_parsers_and_explicit_overrides_are_preserved(self):

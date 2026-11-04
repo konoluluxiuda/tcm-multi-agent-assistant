@@ -128,7 +128,7 @@ async def run_local_actions(path, scope, *, herbs=None, enrichment=None, on_stat
     scope=RunScope.model_validate(scope)
     tools={r.call['tool'] for r in scope.requirements}
     needs_disease=bool(tools & {'search_disease_sources','disease_gene_profile','rank_herbs_for_gene_set'})
-    needs_herbs=bool(tools & {'herb_target_profile','herb_target_similarity','rank_herbs_for_gene_set','herb_attributes','pair_evidence_report'})
+    needs_herbs=bool(tools & {'herb_target_profile','herb_target_similarity','rank_herbs_for_gene_set','herb_attributes','herb_relation_records','pair_evidence_report'})
     needs_pharma=bool(tools & {'pharmacopoeia_lookup','pair_evidence_report'})
     if needs_disease and not path or needs_herbs and not (herbs and enrichment):raise ValueError('Required analysis databases missing')
     backend=LocalAnalysisTools(path if needs_disease else None,

@@ -1,0 +1,72 @@
+{
+  "version": "requirements-v3-answer-delivery-v6",
+  "date": "2026-11-03",
+  "live_model_evaluated": false,
+  "real_model_requests": 0,
+  "default_policy_changed": false,
+  "service_restarted": false,
+  "git_pushed": false,
+  "docker_built": false,
+  "review": "audits/requirements_v3_answer_review_v2/README.md",
+  "offline_ci": {
+    "command": ".venv/bin/python -m scripts.run_offline_ci --out var/answer_delivery_v2/full_ci_final",
+    "status": "passed",
+    "exit_code": 0,
+    "total": 1752,
+    "skipped": 0,
+    "network_attempts": 0,
+    "summary": "audits/answer_delivery_v2/offline_ci_summary.json"
+  },
+  "delivered": {
+    "shared_executor": "deliver_saved_query coordinates both chat query handoffs and workbench execution with stable question/session/key, owner checks, source binding and persistent delivery receipts",
+    "chat_multi_route_merge": "app.py keeps every route's process_query result in answer_steps and builds the final text from each step's structured result",
+    "partial_failure": "partial_evidence and exceptions preserve successful blocks with unfinished; all unavailable returns HTTP 503 on both entrypoints; missing outputs are not successes",
+    "one_turn": "all tool steps use persist_turn=False; completed result then commits one compact conversation turn with an atomic completed_deliveries marker",
+    "workbench_execution": "POST /api/dataops/answer loads the owner-bound saved query proposal, executes its routes, and returns the merged answer; the page calls it and no longer throws on .join",
+    "source_revision": "the query proposal stores sources.revision and the endpoint rejects a changed source with 409",
+    "allowlist": "/api/dataops/answer added to the RESEARCH_TOOLS_ONLY allowlist",
+    "etcm_end_to_end": "TCM_DB at the make_sources herb DB: a real ETCM medicinal_part query returns Leaf plus etcm_herbs/Alpha.json provenance",
+    "pharmacopoeia_end_to_end": "a synthetic PDF plus a rebuilt index whose citation hash matches it: the research route returns TEST_EFFICACY and the page evidence",
+    "cross_source_end_to_end": "ETCM medicinal_part (Leaf) and pharmacopoeia 功能与主治 (TEST_EFFICACY) both appear in the merged response with two answer_steps",
+    "same_type_multi_route": "two herbs in one read_fields produce two routes and both medicinal_part values (Leaf/Root) survive",
+    "timeout_injection": "RequirementsSequence.invoke raises an injected exception object",
+    "regressions": "ASGI tests for merged both-route + provenance, second-route partial, workbench execution, extra-route no-turn, ETCM/pharmacopoeia/cross-source/same-type real-DB execution, and source-revision change rejection",
+    "page_rendering": "shared renderer displays all answer_steps; chat retains rich tool cards, original-page evidence and complete refresh restoration; workbench recovers from clarification",
+    "idempotent_delivery": "same-key replay reuses saved result without new tools; completed result can recover a failed memory commit; pending unknown execution is not automatically repeated",
+    "history": "owner-bound GET /api/dataops/answers/{request_key} returns stored evidence without new tool execution; conversation restoration reads the same complete delivery",
+    "backup": "memory backup accepts both old schemas and the additive completed_deliveries table; backup/restore retains delivery deduplication markers",
+    "compatibility": "single-route responses retain the legacy result field; multi-route responses use answer_steps without a misleading first-route-only alias"
+  },
+  "new_test_modules": {
+    "test_requirements_v2": 26,
+    "test_requirements_planner": 20,
+    "test_requirements_understanding": 12,
+    "test_requirements_adapter": 4,
+    "test_requirements_pipeline": 4,
+    "test_requirements_v3_http": 21,
+    "test_requirements_review3": 15
+  },
+  "not_implemented": [
+    "full-read (completeness=all) pagination (explicitly rejected before execution)",
+    "first-round local-semantic-basis optimization",
+    "real-model 40-question generalization evaluation (separate stage)"
+  ],
+  "source": "working tree, uncommitted; running instances (7920/7921) unchanged and not restarted",
+  "closure": "audits/answer_delivery_v2/README.md",
+  "previous_receipt": "audits/answer_delivery_v2/prior_acceptance.json",
+  "browser": {
+    "status": "passed",
+    "checks": 9,
+    "transport": "Playwright route -> real ASGI TestClient; synthetic data/SDK replies",
+    "real_model_requests": 0,
+    "receipt": "audits/answer_delivery_v2/browser_result.json"
+  },
+  "additional_regression_modules": {
+    "test_answer_delivery": 17,
+    "test_memory_backup": 15
+  },
+  "deployment_pending": [
+    "restart existing instances after planned deployment",
+    "build and verify current Docker image in a clean environment"
+  ]
+}

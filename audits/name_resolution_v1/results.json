@@ -1,0 +1,509 @@
+{
+  "status": "milestone_completed_with_preserved_live_failures",
+  "first_live": {
+    "status": "completed_with_recorded_results",
+    "provider_requests": 4,
+    "usage": [
+      {
+        "http_status": 200,
+        "usage": {
+          "prompt_tokens": 5605,
+          "completion_tokens": 75,
+          "total_tokens": 5680,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 5605
+        }
+      },
+      {
+        "http_status": 200,
+        "usage": {
+          "prompt_tokens": 5587,
+          "completion_tokens": 78,
+          "total_tokens": 5665,
+          "prompt_tokens_details": {
+            "cached_tokens": 2176
+          },
+          "prompt_cache_hit_tokens": 2176,
+          "prompt_cache_miss_tokens": 3411
+        }
+      },
+      {
+        "http_status": 200,
+        "usage": {
+          "prompt_tokens": 5593,
+          "completion_tokens": 71,
+          "total_tokens": 5664,
+          "prompt_tokens_details": {
+            "cached_tokens": 2176
+          },
+          "prompt_cache_hit_tokens": 2176,
+          "prompt_cache_miss_tokens": 3417
+        }
+      },
+      {
+        "http_status": 200,
+        "usage": {
+          "prompt_tokens": 5609,
+          "completion_tokens": 219,
+          "total_tokens": 5828,
+          "prompt_tokens_details": {
+            "cached_tokens": 5376
+          },
+          "prompt_cache_hit_tokens": 5376,
+          "prompt_cache_miss_tokens": 233
+        }
+      }
+    ],
+    "model_retries": 0,
+    "provider_unknown": false,
+    "business": {
+      "local": {
+        "passed": 0,
+        "total": 4
+      },
+      "fallback": {
+        "passed": 2,
+        "total": 4
+      }
+    },
+    "controls": {
+      "local": {
+        "passed": 2,
+        "total": 2
+      },
+      "fallback": {
+        "passed": 2,
+        "total": 2
+      }
+    },
+    "results": [
+      {
+        "case": "N01",
+        "arm": "local",
+        "http_status": 200,
+        "passed": false,
+        "reason": "no_matching_result",
+        "status": "clarification_needed",
+        "topic": "research_plan",
+        "provider_requests": 0,
+        "failure": null,
+        "source_revision": "e12986f6f8ac89708bb08729ada8088c6fab7f4e7ce907ca4eb35dc41b76a461",
+        "shared_total": null,
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "N01",
+        "arm": "fallback",
+        "http_status": 200,
+        "passed": false,
+        "reason": "no_matching_result",
+        "status": "clarification_needed",
+        "topic": "dataops_task",
+        "provider_requests": 1,
+        "failure": {
+          "code": "query_entity_not_grounded",
+          "stage": "query_mapping",
+          "message": "模型提取的药名未通过原句名称校验，本次未执行。请使用完整药名。",
+          "automatic_retry": false
+        },
+        "source_revision": "e12986f6f8ac89708bb08729ada8088c6fab7f4e7ce907ca4eb35dc41b76a461",
+        "shared_total": null,
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "N02",
+        "arm": "local",
+        "http_status": 200,
+        "passed": false,
+        "reason": "no_matching_result",
+        "status": "clarification_needed",
+        "topic": "research_plan",
+        "provider_requests": 0,
+        "failure": null,
+        "source_revision": "e12986f6f8ac89708bb08729ada8088c6fab7f4e7ce907ca4eb35dc41b76a461",
+        "field_labels": [],
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "N02",
+        "arm": "fallback",
+        "http_status": 200,
+        "passed": false,
+        "reason": "no_matching_result",
+        "status": "clarification_needed",
+        "topic": "dataops_task",
+        "provider_requests": 1,
+        "failure": {
+          "code": "schema_validation_failed",
+          "stage": "query_intent_schema",
+          "message": "模型返回的工具参数不符合接口规范，本次未执行。可以明确对象和字段后重新提交。",
+          "automatic_retry": false
+        },
+        "source_revision": "e12986f6f8ac89708bb08729ada8088c6fab7f4e7ce907ca4eb35dc41b76a461",
+        "field_labels": [],
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "N03",
+        "arm": "local",
+        "http_status": 200,
+        "passed": false,
+        "reason": "no_matching_result",
+        "status": "clarification_needed",
+        "topic": "research_plan",
+        "provider_requests": 0,
+        "failure": null,
+        "source_revision": "e12986f6f8ac89708bb08729ada8088c6fab7f4e7ce907ca4eb35dc41b76a461",
+        "hit_count": 0,
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "N03",
+        "arm": "fallback",
+        "http_status": 200,
+        "passed": true,
+        "reason": "contract_satisfied",
+        "status": "success",
+        "topic": null,
+        "provider_requests": 1,
+        "failure": null,
+        "source_revision": "e12986f6f8ac89708bb08729ada8088c6fab7f4e7ce907ca4eb35dc41b76a461",
+        "hit_count": 1,
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "N04",
+        "arm": "local",
+        "http_status": 200,
+        "passed": false,
+        "reason": "no_matching_result",
+        "status": "clarification_needed",
+        "topic": "dataops_task",
+        "provider_requests": 0,
+        "failure": {
+          "code": "requirements_unresolved",
+          "stage": "requirements",
+          "message": "任务要求尚未完整确定，请补充对象、字段或筛选条件。",
+          "automatic_retry": false
+        },
+        "source_revision": "e12986f6f8ac89708bb08729ada8088c6fab7f4e7ce907ca4eb35dc41b76a461",
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "N04",
+        "arm": "fallback",
+        "http_status": 200,
+        "passed": true,
+        "reason": "contract_satisfied",
+        "status": "building",
+        "topic": "dataops_task",
+        "provider_requests": 1,
+        "failure": null,
+        "source_revision": "e12986f6f8ac89708bb08729ada8088c6fab7f4e7ce907ca4eb35dc41b76a461",
+        "execution_status": "complete",
+        "xlsx_bytes": 11635,
+        "xlsx_sha256": "2518be116d7f08f9fa5992e6b38dbba8a987c7f4fb5afec49673f4bc9a0cd35a",
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "N05",
+        "arm": "local",
+        "http_status": 200,
+        "passed": true,
+        "reason": "contract_satisfied",
+        "status": "ok",
+        "topic": "etcm_relations",
+        "provider_requests": 0,
+        "failure": null,
+        "source_revision": "e12986f6f8ac89708bb08729ada8088c6fab7f4e7ce907ca4eb35dc41b76a461",
+        "shared_total": 122,
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "N05",
+        "arm": "fallback",
+        "http_status": 200,
+        "passed": true,
+        "reason": "contract_satisfied",
+        "status": "ok",
+        "topic": "etcm_relations",
+        "provider_requests": 0,
+        "failure": null,
+        "source_revision": "e12986f6f8ac89708bb08729ada8088c6fab7f4e7ce907ca4eb35dc41b76a461",
+        "shared_total": 122,
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "N06",
+        "arm": "local",
+        "http_status": 403,
+        "passed": true,
+        "reason": "contract_satisfied",
+        "status": null,
+        "topic": null,
+        "provider_requests": 0,
+        "failure": null,
+        "source_revision": "e12986f6f8ac89708bb08729ada8088c6fab7f4e7ce907ca4eb35dc41b76a461",
+        "diagnostic_readback": true
+      },
+      {
+        "case": "N06",
+        "arm": "fallback",
+        "http_status": 403,
+        "passed": true,
+        "reason": "contract_satisfied",
+        "status": null,
+        "topic": null,
+        "provider_requests": 0,
+        "failure": null,
+        "source_revision": "e12986f6f8ac89708bb08729ada8088c6fab7f4e7ce907ca4eb35dc41b76a461",
+        "diagnostic_readback": true
+      }
+    ]
+  },
+  "targeted_postfix_live": {
+    "status": "completed_with_recorded_results",
+    "provider_requests": 1,
+    "usage": [
+      {
+        "http_status": 200,
+        "usage": {
+          "prompt_tokens": 5619,
+          "completion_tokens": 91,
+          "total_tokens": 5710,
+          "prompt_tokens_details": {
+            "cached_tokens": 384
+          },
+          "prompt_cache_hit_tokens": 384,
+          "prompt_cache_miss_tokens": 5235
+        }
+      }
+    ],
+    "model_retries": 0,
+    "provider_unknown": false,
+    "business": {
+      "local": {
+        "passed": 0,
+        "total": 2
+      },
+      "fallback": {
+        "passed": 1,
+        "total": 2
+      }
+    },
+    "controls": {
+      "local": {
+        "passed": 0,
+        "total": 0
+      },
+      "fallback": {
+        "passed": 0,
+        "total": 0
+      }
+    },
+    "results": [
+      {
+        "case": "P01",
+        "arm": "local",
+        "http_status": 200,
+        "passed": false,
+        "reason": "no_matching_result",
+        "status": "clarification_needed",
+        "topic": "research_plan",
+        "provider_requests": 0,
+        "failure": null,
+        "source_revision": "aefb6000176296813c11dc5a520ec8fb4c28d2cf9868172e2ad194004cbb2bb0",
+        "shared_total": null,
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "P01",
+        "arm": "fallback",
+        "http_status": 200,
+        "passed": true,
+        "reason": "contract_satisfied",
+        "status": "ok",
+        "topic": "etcm_relations",
+        "provider_requests": 1,
+        "failure": null,
+        "source_revision": "aefb6000176296813c11dc5a520ec8fb4c28d2cf9868172e2ad194004cbb2bb0",
+        "shared_total": 122,
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "P02",
+        "arm": "local",
+        "http_status": 200,
+        "passed": false,
+        "reason": "no_matching_result",
+        "status": "clarification_needed",
+        "topic": "research_plan",
+        "provider_requests": 0,
+        "failure": null,
+        "source_revision": "aefb6000176296813c11dc5a520ec8fb4c28d2cf9868172e2ad194004cbb2bb0",
+        "field_labels": [],
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      },
+      {
+        "case": "P02",
+        "arm": "fallback",
+        "http_status": 200,
+        "passed": false,
+        "reason": "no_matching_result",
+        "status": "clarification_needed",
+        "topic": "research_plan",
+        "provider_requests": 0,
+        "failure": null,
+        "source_revision": "aefb6000176296813c11dc5a520ec8fb4c28d2cf9868172e2ad194004cbb2bb0",
+        "field_labels": [],
+        "replay_additional_requests": 0,
+        "diagnostic_readback": true
+      }
+    ]
+  },
+  "saved_reply_replay": {
+    "kind": "offline_saved_reply_and_real_local_tools_not_new_model_score",
+    "results": [
+      {
+        "case": "N01",
+        "passed": true,
+        "saved_arguments": {
+          "action": "relation",
+          "entities": [
+            "丹参",
+            "连翘"
+          ],
+          "relation_kind": "common_target"
+        },
+        "route": {
+          "tool": "assistant",
+          "request": {
+            "topic": "etcm_relations",
+            "kind": "common_target",
+            "entities": [
+              "丹参",
+              "连翘"
+            ],
+            "page": 1,
+            "resolve_unique_sources": true
+          }
+        },
+        "tool_status": "ok",
+        "new_external_model_calls": 0
+      },
+      {
+        "case": "N02",
+        "passed": true,
+        "saved_arguments": {
+          "action": "herb_field",
+          "entities": [
+            "丹参"
+          ],
+          "fields": [
+            "family",
+            "medicinal_part"
+          ]
+        },
+        "route": {
+          "tool": "herb",
+          "request": {
+            "name": "丹参",
+            "fields": [
+              "family",
+              "medicinal_part"
+            ],
+            "resolve_unique_name": true
+          }
+        },
+        "tool_status": "ok",
+        "new_external_model_calls": 0
+      }
+    ]
+  },
+  "new_model_requests": 5,
+  "new_model_tokens": 28547,
+  "model_retries": 0,
+  "old_evaluation_scores_unchanged": true,
+  "catalog": {
+    "old_candidate_rows": 520,
+    "added_rows": 41,
+    "candidate_rows": 561,
+    "identity_verified": false,
+    "output_sha256": "00b6119f3b0f8f837112fa55bcbe620658277083ac3efb7e48e9b696fdf5cb00"
+  },
+  "release": "ddac6f50a64863a511b303052178eb005f62bc6f0260ce5d2c37b0cc053a5b75",
+  "release_source_check": {
+    "status": "passed",
+    "release_id": "r1_names_20261101",
+    "content_id": "ddac6f50a64863a511b303052178eb005f62bc6f0260ce5d2c37b0cc053a5b75",
+    "raw_herb_files_verified": 2076,
+    "reference_check": {
+      "status": "passed",
+      "cases": 30,
+      "kind": "source_anchor_and_contract_integrity_only",
+      "retrieval_or_answer_scores": null,
+      "reserved_retrieval_executed": false,
+      "human_signoff": false
+    },
+    "model_calls": 0,
+    "vector_builds": 0,
+    "active_service_configuration_changed": false
+  },
+  "final_services": [
+    {
+      "port": 7920,
+      "source_revision": "6c3983ae256cb2aef5bed8ac5a5fdbcd16f386fa415746e40015e5852e32df4e",
+      "restart_required": false,
+      "question_model_enabled": false,
+      "execution_model_enabled": false,
+      "local_smoke": [
+        {
+          "question": "丹参和连翘有没有共同靶点，列出来并给出处",
+          "passed": true,
+          "model_calls": 0
+        },
+        {
+          "question": "想知道连翘在ETCM里的科名以及药用部位是什么。",
+          "passed": true,
+          "model_calls": 0
+        }
+      ],
+      "name_not_found_reason": "passed"
+    },
+    {
+      "port": 7921,
+      "source_revision": "6c3983ae256cb2aef5bed8ac5a5fdbcd16f386fa415746e40015e5852e32df4e",
+      "restart_required": false,
+      "question_model_enabled": true,
+      "execution_model_enabled": false,
+      "local_smoke": [
+        {
+          "question": "丹参和连翘有没有共同靶点，列出来并给出处",
+          "passed": true,
+          "model_calls": 0
+        }
+      ],
+      "name_not_found_reason": "passed"
+    }
+  ],
+  "docker_updated": false,
+  "docker_reason": "WSL integration unavailable",
+  "langfuse_server_readback": false,
+  "browser_automation": false
+}

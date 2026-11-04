@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "rows": [
+    {
+      "case": "rejection",
+      "trace_id": "1fd87a938b0b4fdab7b5dea82036f96f",
+      "observations": 18,
+      "same_trace_id_verified": true,
+      "all_metadata_correlated": true,
+      "parsed_arguments_retained": true,
+      "execution_present": false,
+      "external_model_requests": 0
+    },
+    {
+      "case": "delivery",
+      "trace_id": "a7a2af9d6c0044cdae458f2cab0dcfda",
+      "observations": 41,
+      "same_trace_id_verified": true,
+      "all_metadata_correlated": true,
+      "parsed_arguments_retained": true,
+      "execution_present": true,
+      "external_model_requests": 0
+    }
+  ]
+}

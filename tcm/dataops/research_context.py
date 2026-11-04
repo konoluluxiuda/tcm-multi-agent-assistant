@@ -29,9 +29,14 @@ def affordances(context):
          all(sid in inspected and sid not in unread for sid in context['parent_records'])))
     if context.get('task_mode')=='audit_named':
         delivery_ready=context['listed'] and not unread and root<=set(inspected)
+    all_complete=context.get('task_mode')=='filter_complete'
+    if all_complete:
+        delivery_ready=context['listed'] and not unread and root<=set(inspected)
     required=(sorted(root) if context.get('task_mode')=='audit_named' else list(context['parent_records']))
     deliverable=required if required else [sid for sid in context['eligible'] if sid in inspected]
     count=len(required) if required else min(context['target_count'],len(deliverable))
+    if all_complete and not context['parent_records']:
+        required=sorted(deliverable);count=len(required)
     tools=[]
     if not context['listed']:tools.append('list_candidates')
     else:
@@ -44,7 +49,8 @@ def affordances(context):
             'ambiguous_source_ids':ambiguous,'unread_evidence_ids':refs,
             'deliverable_source_ids':deliverable,'delivery_ready':bool(delivery_ready),
             'delivery_min_items':count,'delivery_max_items':count,'required_delivery_source_ids':required,
-            'delivery_requires_partial':context.get('task_mode')!='audit_named' and len(context['eligible'])<context['target_count'],
+            'delivery_requires_partial':(bool(context['parent_records']) and not set(context['parent_records'])<=set(context['eligible'])
+                                         if all_complete else context.get('task_mode')!='audit_named' and len(context['eligible'])<context['target_count']),
             'partial_requires_explicit_flag':True,'selection_is_model_owned':True}
 
 

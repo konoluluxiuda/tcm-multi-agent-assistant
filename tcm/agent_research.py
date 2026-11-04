@@ -8,6 +8,7 @@ from threading import RLock
 from features import env_bool
 from tcm.mineru_chat import ResearchTool
 from tcm.mineru_research import ResearchService, SnapshotChanged
+from tcm.query_failures import with_failure
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -30,9 +31,9 @@ def parse_request(query):
 
 
 def status_result(status, message):
-    return {'status': status, 'message': message, 'tool_result': None, 'focus_name': None,
+    return with_failure({'status': status, 'message': message, 'tool_result': None, 'focus_name': None,
             'research_only': True, 'human_signoff': False, 'llm_calls': 0,
-            'workflow': 'langgraph_explicit_research_tool'}
+            'workflow': 'langgraph_explicit_research_tool'})
 
 
 class ResearchRuntime:

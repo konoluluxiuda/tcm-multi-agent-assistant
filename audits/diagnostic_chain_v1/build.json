@@ -1,0 +1,12 @@
+{
+  "image_tag": "tcm-research-chat:diagnostic-chain-v1",
+  "image_id": "sha256:c46c8978ccf456c21dd6cf1c32e207cf700fb78cde88ef1d5ccc43ee96350919",
+  "image_bytes": 453333282,
+  "base_revision": "1532105fbfc1c998bcf145b51a44212f3db97a63",
+  "working_tree_dirty": true,
+  "source_tree_sha256": "a2eb584284185b1ed7ca71f49dd98806b5ec0acfe68196c9ac6eee2dabbeafcb",
+  "no_cache": false,
+  "build_context_bytes": 3129394,
+  "context_policy": "temporary allowlisted runtime files; no corpus, .env, weights or sessions",
+  "docker_hub_published": false
+}

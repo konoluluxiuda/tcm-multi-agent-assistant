@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "author": "independent AI, clean context",
+  "questions_sha256": "5a354825fbaf5f871dad877c1506190e46f0ea2d47a175e9923073c656ad6eac",
+  "author_statement_sha256": "3ffb4c040b3dd22fd5bb18207b093530d3fc16f6a99fb77577dc1974a9ce04cb",
+  "scenarios": 40,
+  "turns": 43,
+  "categories": {
+    "单药": 6,
+    "多药": 6,
+    "跨来源": 6,
+    "关系": 6,
+    "数据介绍": 4,
+    "表格": 6,
+    "边界": 6
+  },
+  "model_evaluated": false,
+  "author_final_message_failed": "Agent usage limit after writing files; JSON and counts independently checked",
+  "clinical_identity_reviewed": false
+}

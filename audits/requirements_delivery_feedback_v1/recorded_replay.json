@@ -1,0 +1,103 @@
+{
+  "real_model_requests": 0,
+  "receipts": [
+    {
+      "receipt": "var/requirements_heldout_v2/live_v1/cases/HV2-01_V/response-2.private.json",
+      "status": "rejected_with_actionable_feedback",
+      "fields": [
+        {
+          "path": [
+            "delivery",
+            "answer",
+            "row_policy"
+          ],
+          "type": "none_required",
+          "code": "answer_table_parameter_forbidden",
+          "message": "answer交付必须省略row_policy和count，或设为null；保留全部对象及字段需求。"
+        }
+      ]
+    },
+    {
+      "receipt": "var/requirements_heldout_v2/live_v1/cases/HV2-01_V/response-3.private.json",
+      "status": "rejected_with_actionable_feedback",
+      "fields": [
+        {
+          "path": [
+            "delivery",
+            "answer",
+            "row_policy"
+          ],
+          "type": "none_required",
+          "code": "answer_table_parameter_forbidden",
+          "message": "answer交付必须省略row_policy和count，或设为null；保留全部对象及字段需求。"
+        }
+      ]
+    },
+    {
+      "receipt": "var/requirements_heldout_v2/live_v1/cases/HV2-02_V/response-5.private.json",
+      "status": "rejected_with_actionable_feedback",
+      "fields": [
+        {
+          "path": [
+            "delivery",
+            "answer",
+            "row_policy"
+          ],
+          "type": "none_required",
+          "code": "answer_table_parameter_forbidden",
+          "message": "answer交付必须省略row_policy和count，或设为null；保留全部对象及字段需求。"
+        }
+      ]
+    },
+    {
+      "receipt": "var/requirements_heldout_v2/live_v1/cases/HV2-02_V/response-6.private.json",
+      "status": "rejected_with_actionable_feedback",
+      "fields": [
+        {
+          "path": [
+            "delivery",
+            "answer",
+            "row_policy"
+          ],
+          "type": "none_required",
+          "code": "answer_table_parameter_forbidden",
+          "message": "answer交付必须省略row_policy和count，或设为null；保留全部对象及字段需求。"
+        }
+      ]
+    },
+    {
+      "receipt": "var/requirements_heldout_v2/live_v1/cases/HV2-03_V/response-8.private.json",
+      "status": "rejected_with_actionable_feedback",
+      "fields": [
+        {
+          "path": [
+            "delivery",
+            "answer",
+            "row_policy"
+          ],
+          "type": "none_required",
+          "code": "answer_table_parameter_forbidden",
+          "message": "answer交付必须省略row_policy和count，或设为null；保留全部对象及字段需求。"
+        }
+      ]
+    },
+    {
+      "receipt": "var/requirements_heldout_v2/live_v1/cases/HV2-03_V/response-9.private.json",
+      "status": "rejected_with_actionable_feedback",
+      "fields": [
+        {
+          "path": [
+            "delivery",
+            "answer",
+            "row_policy"
+          ],
+          "type": "none_required",
+          "code": "answer_table_parameter_forbidden",
+          "message": "answer交付必须省略row_policy和count，或设为null；保留全部对象及字段需求。"
+        }
+      ]
+    }
+  ],
+  "count": 6,
+  "model_correction_demonstrated": false
+}

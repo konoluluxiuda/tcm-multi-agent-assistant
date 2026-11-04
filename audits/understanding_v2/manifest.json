@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "new_external_model_requests": 0,
+  "application_revision": "d8f8a7d44de52105fc3a004a254fc6938153c7090c3adcc5f37a66d0565aa68d",
+  "files_sha256": {
+    "app.py": "ffb1712227ca15165e7b00485c9b40e82d2ca9df0a14fb215ab3fb67bed3d76e",
+    "scripts/preview_local_tasks.py": "26a07a08ec6ea035b616a9431e10ba766ce4f54198e6b7c55f8a11a96e445220",
+    "scripts/eval_user_chat_replay.py": "f6443e4758c298dd865813dfbe51a75eebe36f41f432524414b59cd2226daf2c",
+    "tcm/capabilities.py": "9e6ec6d3d37cf88f8ff0e0907ab3c20a9e3a775f0cf2eb6bbf92800ef80d2d76",
+    "tcm/dataops/request_policy.py": "a7e80dfd60f1bf2c33b4a2f5936461da5fff3d25a357931537559411d1bd0885",
+    "tcm/dataops/understanding_contract.py": "0e288adbe284fbd32ca915d75bef828437b7c9d72d4865c4c2c6ac1c9e7819c0",
+    "tcm/dataops/research_question.py": "4fb8d022ab72a4a382e9ac96439e8d33b1bb68d8176dcd9597acbd013fbb989d",
+    "tcm/dataops/service.py": "8a4ecf6a25d0f291831c6ea2c0f2d82fab194b1e3b3c27d06dc9214d0e019c9d",
+    "tcm/dataops/failures.py": "6566c34dca805e3da5276939f2ee7dbe33eab93911ba37d3b6bd5075510decd4",
+    "tcm/intent_planner.py": "359c65a49d82b394892c1d2036c5491d40aa2257f7f042c1949adb2703887ea8",
+    "tcm/dataops/research_workbench.html": "ad36de73ad05d6d05d720884d15679fa109240a922962c8a8670dfec46040bf3",
+    "templates/index.html": "39457dc3501119916d623a26138561ca0c49c14a7af088536c5a201d510c2f2a",
+    "tests/test_understanding_v2.py": "f505168f3f80a99971ad758692605788a39690fcaee3d8c0f5e0241d83646142",
+    "tests/test_user_chat_replay.py": "fdc30dd5002da5565bea8393cfe62d3cb29a834fc183b31a7545b48f70d5ace7"
+  },
+  "limits": [
+    "same-model reviewer may agree on wrong meaning",
+    "ordinary query projection is not independently semantically reviewed",
+    "legacy analysis_plan grammar remains",
+    "no new Docker or Langfuse server verification"
+  ]
+}

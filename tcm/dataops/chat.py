@@ -82,9 +82,14 @@ def execute(service, memory, session_id, question, *, request_key=None, history_
                 result = anyio.from_thread.run(submit)
                 if result.get('proposal',{}).get('status')=='query':
                     proposal=result['proposal'];calls=proposal['external_model_calls']
-                    return {'topic':'query_handoff','route':{**proposal['route'],'mode':'model',
-                        'reason':'unified_request_fallback','intent_model_calls':0 if result['replayed'] else calls,
-                        'original_provider_requests':calls,'understanding_replayed':result['replayed']}}
+                    routes=proposal.get('routes') or [proposal['route']]
+                    meta={'mode':'model','reason':'unified_request_fallback',
+                          'intent_model_calls':0 if result['replayed'] else calls,
+                          'original_provider_requests':calls,'understanding_replayed':result['replayed']}
+                    return {'topic':'query_handoff','request_key':key,
+                            'understanding_requests_this_submission':meta['intent_model_calls'],
+                            'route':{**routes[0],**meta},
+                            'routes':[{**r,**meta} for r in routes]}
                 if not result.get('workspace'):raise ProposalNeedsInput(result['proposal'])
                 output = {**card(result['workspace']),'replayed':result.get('replayed',False),
                           'understanding_requests_this_submission':0 if result.get('replayed') else
@@ -93,6 +98,7 @@ def execute(service, memory, session_id, question, *, request_key=None, history_
                 output = {'topic': 'dataops_task', 'status': 'clarification_needed',
                           'message': '\n'.join(exc.proposal['issues']), 'question': question,
                           'unresolved': exc.proposal['unresolved'],
+                          'failure':exc.proposal.get('failure'),
                           'llm_calls':exc.proposal.get('external_model_calls',0),
                           'network_calls':exc.proposal.get('external_model_calls',0),
                           'counts_scope':'understanding_result_total',

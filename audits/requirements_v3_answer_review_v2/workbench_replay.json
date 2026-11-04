@@ -1,0 +1,81 @@
+{
+  "calls": [
+    {
+      "args": [
+        ""
+      ],
+      "kwargs": {
+        "session_id": null,
+        "resolved_request": {
+          "tool": "herb",
+          "request": {
+            "name": "Alpha",
+            "field": "medicinal_part",
+            "resolve_unique_name": true
+          }
+        }
+      }
+    },
+    {
+      "args": [
+        ""
+      ],
+      "kwargs": {
+        "session_id": null,
+        "resolved_request": {
+          "tool": "herb",
+          "request": {
+            "name": "Beta",
+            "field": "medicinal_part",
+            "resolve_unique_name": true
+          }
+        },
+        "persist_turn": false
+      }
+    },
+    {
+      "args": [
+        ""
+      ],
+      "kwargs": {
+        "session_id": null,
+        "resolved_request": {
+          "tool": "herb",
+          "request": {
+            "name": "Alpha",
+            "field": "medicinal_part",
+            "resolve_unique_name": true
+          }
+        }
+      }
+    },
+    {
+      "args": [
+        ""
+      ],
+      "kwargs": {
+        "session_id": null,
+        "resolved_request": {
+          "tool": "herb",
+          "request": {
+            "name": "Beta",
+            "field": "medicinal_part",
+            "resolve_unique_name": true
+          }
+        },
+        "persist_turn": false
+      }
+    }
+  ],
+  "proposal_keys": [
+    "status",
+    "route",
+    "routes",
+    "source_revision",
+    "compiler",
+    "external_model_calls",
+    "usage",
+    "requirements"
+  ],
+  "real_model_requests": 0
+}

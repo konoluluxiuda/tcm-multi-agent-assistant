@@ -1,6 +1,12 @@
 # R4 候选资料核对：运行、对照与当前边界
 
-更新：2026-10-31。工程整合、真实资料网页及本地镜像已验收；**原A的0/2保留；新版在两项新限定任务交付通过，尚无多轮收益证据**。统一状态见[大纲](TCM_PROJECT_ROADMAP.md)，执行记录见[R4验收](../audits/data_rag_r4/README.md)。本轮已接通有界问句与表单两种输入；模型理解仅保留显式实验开关，不能当作任意自然语言任务理解已完成。
+**当前问句策略（2026-11-01）：** 7921已启用 `--understanding-policy unified_v2`，普通自然问句先由模型理解；资料目标核对独立需求合同，必要时一次参数纠正或独立复核，总计最多2次请求。7920纯本地、fixed执行均保留。旧单次策略仍可显式使用；下文旧验收的端口和调用次数是当时口径。见[最新运行、验证、限制与回滚](../audits/understanding_v2/README.md)。
+
+更新：2026-11-01。工程整合、真实资料网页及本地镜像已验收；**原A的0/2保留；新版在两项新限定任务交付通过，尚无多轮收益证据**。统一状态见[大纲](TCM_PROJECT_ROADMAP.md)，执行记录见[R4验收](../audits/data_rag_r4/README.md)。本轮已接通有界问句与表单两种输入；模型理解仅保留显式实验开关，不能当作任意自然语言任务理解已完成。
+
+第一版诊断修复已实现：最多5条明确候选可用`filter_complete`全量筛齐全项，普通共同靶点查询不附加药典列，多药成分/靶点分别读取并核对完整动作集合。本轮独立试用端口7920，模型关闭；旧镜像未更新，中文名缺口和真实模型重测仍待完成。详见[修复验收](../audits/repair_attempt_v1/README.md)。
+
+最新名称/兜底大步已补41条有原始标题依据的中文候选，聊天与工作台同一资料发布；属性查询支持1–4项，已知失败返回具体原因。当前7920为本地模式，7921为一次模型理解，使用`r1_names_20261101`；首测和修复后回归分开统计，见[本轮结果及完整启动命令](../audits/name_resolution_v1/README.md)。
 
 ## 执行层修复：Harness V2（最初离线验收）
 
@@ -13,7 +19,7 @@
 
 [离线回放验收](../audits/research_harness_v2/README.md)：原8个动作中的4个有用动作仍被允许，4个重复动作会被拦截；15模块127项受影响回归通过。SDK模拟还检查作用域不符后换候选、工具消息配对、缺失新版交付和等待恢复。**这不是新模型成绩，A原始0/2不变；这一离线轮次没有验证新版模型；后续新组合实测见下节。** 随后已接通下述有界问句入口；原A成绩不变。
 
-当前7912/7914的新资料任务采用fixed确定性执行。7912已启用聊天/工作台共用的一次模型兜底，页面可取消，规范问句不强制调用；7914不含模型配置。最新本地镜像为 `tcm-research-chat:external-clean-v1`，以构建清单hash为准；旧镜像保留，原状态目录、会话及文件继续使用，未推送远程。体验修复见[此前验收](../audits/qa_observability_v1/README.md)，新调用链与约束见[本轮验收](../audits/unified_harness_v1/README.md)。
+此前验收时7912/7914的新资料任务采用fixed确定性执行。7912已启用聊天/工作台共用的一次模型兜底，页面可取消，规范问句不强制调用；7914不含模型配置。最新本地镜像为 `tcm-research-chat:diagnostic-chain-v1`，以构建清单hash为准；旧镜像保留，原状态目录、会话及文件继续使用，未推送远程。体验修复见[此前验收](../audits/qa_observability_v1/README.md)，新调用链与约束见[本轮验收](../audits/unified_harness_v1/README.md)。
 
 ## 统一理解与参数约束
 
@@ -125,6 +131,8 @@ flowchart LR
 
 **当前决策：** 常规字段整理继续走确定性流程。真实驱动仅保留显式实验入口，未在运行网页默认开启。执行上下文/工具状态已做离线修复，原题未复测，新组合两题已交付；有界Goal入口及单次模型理解已接通，但新8题理解仍有两项失败，不能当作稳定自由任务理解。不能用这两道可编程字段题继续证明“必须Agent”，也不因A失败而扩充框架或不断重测旧题。
 
+请求/模型参数/校验/后台工具的逐步诊断已接入，业务规则未修复，见[诊断使用说明](REQUEST_DIAGNOSTICS.md)。
+
 ## 启动与复现
 
 独立本地确定性预览（原有7912已运行时可直接访问，无需再启动）：
@@ -134,13 +142,13 @@ flowchart LR
   --port 7913 --state var/r4_preview --research-selection fixed --rag
 ```
 
-最新本地镜像 `tcm-research-chat:external-clean-v1`，**没有发布Docker Hub**。代码白名单构建，不包含资料、环境文件、权重或会话；原资料只读挂载，状态独立写入，按主机UID运行以读取原有0600资料注册文件，无需放宽源文件权限。主机7914映射容器8000。
+最新本地镜像 `tcm-research-chat:diagnostic-chain-v1`，**没有发布Docker Hub**。代码白名单构建，不包含资料、环境文件、权重或会话；原资料只读挂载，状态独立写入，按主机UID运行以读取原有0600资料注册文件，无需放宽源文件权限。主机7914映射容器8000。
 
 ```bash
 .venv/bin/python -m scripts.build_research_image \
-  --tag tcm-research-chat:external-clean-v1 --receipt var/r4_build_new.json
+  --tag tcm-research-chat:diagnostic-chain-v1 --receipt var/r4_build_new.json
 .venv/bin/python -m scripts.run_research_selection_container \
-  --image tcm-research-chat:external-clean-v1 --name tcm-research-r4-new \
+  --image tcm-research-chat:diagnostic-chain-v1 --name tcm-research-r4-new \
   --port 7915 --state var/r4_container_new
 ```
 

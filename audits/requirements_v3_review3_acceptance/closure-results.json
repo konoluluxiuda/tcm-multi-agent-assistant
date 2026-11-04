@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "name": "correct_and_swapped_pairing",
+      "status": "passed"
+    },
+    {
+      "name": "answer_table_swap_and_adapter",
+      "status": "passed"
+    },
+    {
+      "name": "row_policy_conflict",
+      "status": "passed"
+    },
+    {
+      "name": "target_count_conflict",
+      "status": "passed"
+    },
+    {
+      "name": "foreign_parent_conflict_http",
+      "status": "passed",
+      "first_http": 200,
+      "replay_http": 200,
+      "actual_model_fixture_calls": 2,
+      "new_child_workspace": false,
+      "parent_artifact_unchanged": true
+    },
+    {
+      "name": "subset_parent_conflict_http",
+      "status": "passed",
+      "first_http": 200,
+      "replay_http": 200,
+      "actual_model_fixture_calls": 2,
+      "new_child_workspace": false,
+      "parent_artifact_unchanged": true
+    }
+  ],
+  "real_model_requests": 0
+}

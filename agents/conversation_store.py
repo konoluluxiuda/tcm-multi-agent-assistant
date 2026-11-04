@@ -76,6 +76,9 @@ class ConversationStore:
                 )
             ''')
             con.execute("INSERT OR IGNORE INTO settings VALUES ('store_kind','tcm_completed_conversations_v1')")
+            con.execute('''CREATE TABLE IF NOT EXISTS completed_deliveries (
+                owner TEXT NOT NULL, request_key TEXT NOT NULL,
+                PRIMARY KEY(owner,request_key))''')
             con.execute('PRAGMA user_version=1')
             con.commit()
             yield con
@@ -137,16 +140,20 @@ class ConversationStore:
                 raise MemoryUnavailable('Unsupported conversation payload')
             return ConversationSnapshot(revision, decode(obj['messages']), obj['tcm_context'])
 
-    def save(self, session_id, messages, tcm_context, *, revision):
+    def save(self, session_id, messages, tcm_context, *, revision, turn_key=None):
         from langchain_core.messages import messages_to_dict
-        return self._save(session_id, messages, tcm_context, revision, messages_to_dict)
+        return self._save(session_id, messages, tcm_context, revision, messages_to_dict, turn_key=turn_key)
 
     def save_serialized(self, session_id, messages, context, *, revision):
         """Persist the same versioned JSON envelope for a dependency-free tool workflow."""
         return self._save(session_id, messages, context, revision, lambda values: values)
 
-    def _save(self, session_id, messages, tcm_context, revision, encode):
+    def _save(self, session_id, messages, tcm_context, revision, encode, *, turn_key=None):
         with self.connection() as con:
+            con.execute('BEGIN IMMEDIATE')
+            if turn_key and con.execute('SELECT 1 FROM completed_deliveries WHERE owner=? AND request_key=?',
+                                        (self.key(session_id), turn_key)).fetchone():
+                return False
             payload = json.dumps({'version': 1, 'messages': encode(messages),
                                   'tcm_context': tcm_context}, ensure_ascii=False, allow_nan=False)
             key, now = self.key(session_id), self.clock()
@@ -157,6 +164,9 @@ class ConversationStore:
                     WHERE key=? AND revision=? AND deleted=0''', (payload, now, key, revision))
             if cursor.rowcount != 1:
                 raise ConversationConflict('Conversation changed; reload before retrying')
+            if turn_key:
+                con.execute('INSERT INTO completed_deliveries VALUES (?,?)', (key, turn_key))
+            return True
 
     def delete(self, session_id):
         # Keep only a tombstone so an in-flight save cannot recreate deleted content.

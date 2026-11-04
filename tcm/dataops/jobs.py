@@ -52,7 +52,15 @@ async def execute_job(owner, doc, *, guard, on_state, sources_factory=None, driv
     engine = engine_type(store, owner, target['id'], sources_factory or default_sources,
                     (driver_factory or default_driver)(), guard=guard, on_state=report)
     try:
-        result = await asyncio.to_thread(engine.run, payload.get('answer'))
+        from tcm.dataops.diagnostics import job_context,record
+        with job_context(root,owner,target['id']):
+            try:
+                result = await asyncio.to_thread(engine.run, payload.get('answer'))
+                record('execution','finished',workspace_id=target['id'],status_result=result['status'],
+                       artifact=result.get('artifact'),business_acceptance='not_evaluated')
+            except BaseException as exc:
+                record('execution','failed',code='execution_exception',exception_type=type(exc).__name__)
+                raise
     finally:
         if hasattr(engine.driver, 'close'):
             engine.driver.close()

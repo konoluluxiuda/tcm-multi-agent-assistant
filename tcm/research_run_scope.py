@@ -4,7 +4,7 @@ from tcm.task_tools import Contract
 from tcm.research_business_tools import CALL,fulfilled
 
 DISEASE_ACTIONS = ('disease_gene_profile', 'rank_herbs_for_gene_set')
-HERB_ACTIONS = ('herb_target_profile', 'herb_target_similarity','herb_attributes')
+HERB_ACTIONS = ('herb_target_profile', 'herb_target_similarity','herb_attributes','herb_relation_records')
 
 
 class Requirement(Contract):

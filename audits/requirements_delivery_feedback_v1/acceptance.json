@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-03",
+  "status": "passed",
+  "full_ci": {
+    "tests": 1799,
+    "modules": 207,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "focused_tests": 100,
+  "recorded_replays": 6,
+  "real_model_requests": 0,
+  "real_model_improvement_verified": false,
+  "default_policy_changed": false,
+  "containers_rebuilt": false,
+  "git_committed": false,
+  "source_sha256": {
+    "tcm/dataops/requirements_v2.py": "8293eeb8346d117fe6136f1b805586b83863bf1e20dc9df07a3429ffde6a059e",
+    "tcm/dataops/requirements_understanding.py": "c676080b7e06636d6174e3e5309e2e0daf257d01d0ec0beb9461eb40e1e146e7",
+    "tests/test_requirements_delivery_feedback.py": "9bc5c99a09aac55946ce4a203dbb7907a11a029d55583a5cc658e1cb653e4f74"
+  }
+}

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import httpx
 from scripts import eval_user_chat_replay as replay
@@ -60,6 +61,14 @@ class ReplayTests(unittest.TestCase):
   with self.assertRaises(FileExistsError):replay.execute(out,client_factory=factory)
   self.assertEqual(len(self.posts),2)
 
+ def test_one_request_protocol_cannot_dispatch_against_two_request_service(self):
+  value=deepcopy(RUNTIME)
+  value['dataops']['research_selection'].update(question_model_enabled=True,question_policy='unified_v2',question_request_limit=2)
+  with patch.object(replay,'runtime',return_value=value):
+   with self.assertRaisesRegex(ValueError,'one-request'):
+    self.prepare(client_factory=self.factory(model=True),allow_model=True)
+  self.assertFalse(self.posts)
+
  def test_server_or_suite_change_blocks_before_submission(self):
   out=self.prepare(client_factory=self.factory())
   with self.assertRaises(ValueError):replay.execute(out,client_factory=self.factory(changed=True))
@@ -86,6 +95,16 @@ class ReplayTests(unittest.TestCase):
   replay.prepare(path,out2,{'model':'http://127.0.0.1:9999'},self.root,allow_model=True,client_factory=factory)
   r=replay.execute(out2,client_factory=factory)
   self.assertEqual(r['status'],'failed');self.assertEqual(r['reported_model_calls_known'],2)
+
+ def test_budget_exhaustion_separates_primary_success_from_unrun_replay(self):
+  factory=self.factory(model=True,replay_calls=1)
+  out=self.prepare(client_factory=factory,allow_model=True,model_cap=1)
+  r=replay.execute(out,client_factory=factory)
+  self.assertEqual(len(self.posts),1)
+  self.assertTrue(r['records'][0]['primary_contract_passed'])
+  self.assertTrue(r['records'][0]['passed'])
+  self.assertEqual(r['records'][0]['replay_status'],'not_run_no_budget')
+  self.assertEqual(r['replay_checks_not_run'],1);self.assertEqual(r['status'],'partial')
 
  def test_provenance_import_and_local_endpoint_guards(self):
   data=suite();data['authorship']['independent_acceptance']=True

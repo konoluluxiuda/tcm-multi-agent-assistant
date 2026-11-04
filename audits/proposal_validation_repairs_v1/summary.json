@@ -1,0 +1,122 @@
+{
+  "status": "passed",
+  "scope": "exposed-case regression with real local sources; not a new live model accuracy score",
+  "offline": {
+    "modules": 60,
+    "total": 529,
+    "network_attempts": 0
+  },
+  "real_source_regression": {
+    "status": "passed",
+    "results": [
+      {
+        "case": "G03",
+        "status": "passed",
+        "reason": null,
+        "origin": "saved_model_arguments",
+        "source_diagnostic_sha256": "99d3342010ee6a1a48464e7dad912ba7f3f9cb8967f3a19973033528e61cbb7c",
+        "substitute_sdk_invocations": 1,
+        "external_model_requests": 0,
+        "http_status": 200,
+        "answer": {
+          "raw_witnesses_or_pdf_anchors_checked": 20,
+          "scope": "ETCM raw JSON equality and PDF anchor structure; not medical or OCR correctness"
+        },
+        "execution_origin": "saved_model_arguments"
+      },
+      {
+        "case": "G04",
+        "status": "passed",
+        "reason": null,
+        "origin": "saved_model_arguments",
+        "source_diagnostic_sha256": "06b3dfc453541c2b06edffba1c9e9c72f98c2b356b7c4dc4f9b6cb85c7d6d2fd",
+        "substitute_sdk_invocations": 1,
+        "external_model_requests": 0,
+        "http_status": 200,
+        "answer": {
+          "raw_witnesses_or_pdf_anchors_checked": 46,
+          "scope": "ETCM raw JSON equality and PDF anchor structure; not medical or OCR correctness"
+        },
+        "execution_origin": "saved_model_arguments"
+      },
+      {
+        "case": "G05",
+        "status": "passed",
+        "reason": null,
+        "origin": "independently_constructed_expected_plan_not_saved_model_arguments",
+        "source_diagnostic_sha256": null,
+        "substitute_sdk_invocations": 0,
+        "external_model_requests": 0,
+        "http_status": 200,
+        "answer": {
+          "raw_witnesses_or_pdf_anchors_checked": 80,
+          "scope": "ETCM raw JSON equality and PDF anchor structure; not medical or OCR correctness"
+        },
+        "execution_origin": "local_rule_without_sdk"
+      },
+      {
+        "case": "G08",
+        "status": "passed",
+        "reason": null,
+        "origin": "saved_model_arguments",
+        "source_diagnostic_sha256": "048d1c4327797816d206df4c18fdb29e48d23b610656bf1155d5352b9704ba35",
+        "substitute_sdk_invocations": 1,
+        "external_model_requests": 0,
+        "http_status": 200,
+        "delivery": {
+          "rows": 2,
+          "verification": {
+            "status": "passed",
+            "sheets": 5,
+            "verified_cells": 128,
+            "rows": 2,
+            "method": "reopen_compare_every_cell_v1"
+          },
+          "parent_preserved": false
+        },
+        "execution_origin": "saved_model_arguments"
+      },
+      {
+        "case": "C03",
+        "status": "passed",
+        "reason": null,
+        "origin": "saved_model_arguments",
+        "source_diagnostic_sha256": "73184c7d533b2d88dd5681bb02138d274f9cd6cec4a1aad2089ac30915cf4097",
+        "substitute_sdk_invocations": 0,
+        "external_model_requests": 0,
+        "http_status": 403,
+        "execution_origin": "local_rule_without_sdk"
+      },
+      {
+        "case": "C04",
+        "status": "passed",
+        "reason": null,
+        "origin": "saved_model_arguments",
+        "source_diagnostic_sha256": "b6ef7aeeceaab8740ab5d7e5668edc5e8d8cf496f08cec9858e961ff4d1cd6f2",
+        "substitute_sdk_invocations": 0,
+        "external_model_requests": 0,
+        "http_status": 200,
+        "execution_origin": "local_rule_without_sdk"
+      }
+    ],
+    "external_model_requests": 0,
+    "blocked_network_attempts": 0,
+    "claim": "Regression of exposed questions with saved parameters or an explicitly constructed G05 plan; no new model score"
+  },
+  "http_regression_cases": 10,
+  "source_revision": "570dff1542c80527e9840aa0be90246a9843f2f21d50e6f4beec9455e7f4e447",
+  "new_external_model_requests": 0,
+  "original_first_run_business_scores_preserved": {
+    "local": "0/8",
+    "one_understanding_plus_fixed": "4/8"
+  },
+  "remaining_limits": [
+    "Only ordinary model queries use directory-anchored entity grounding; complex plans retain bounded coverage contracts",
+    "Finite negation/preparation/compound guards do not prove universal Chinese entity understanding",
+    "Private diagnostic depth is 16 with size/redaction limits; Langfuse export retains default shallow bounds",
+    "Thread-level diagnostic serialization is not a multi-process or distributed reliability guarantee"
+  ],
+  "data_release_unchanged": "r1_names_20261101",
+  "docker_image_updated": false,
+  "langfuse_server_readback_tested": false
+}

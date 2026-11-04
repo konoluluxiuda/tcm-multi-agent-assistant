@@ -80,10 +80,15 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
         return route('assistant', dataset, 'dataset_description')
     from tcm.question_contract import field_tasks
     attributes = field_tasks(text)
-    if (attributes and len(attributes) == 1 and attributes[0]['tool'] == 'herb_attributes'
-            and len(attributes[0]['arguments']['fields']) > 1):
-        return route('herb', {**attributes[0]['arguments'], 'resolve_unique_name': True},
-                     'structured_multi_field_query')
+    if attributes and len(attributes) == 1 and attributes[0]['tool'] == 'herb_attributes':
+        arguments=attributes[0]['arguments']
+        if len(arguments['fields']) > 1:
+            return route('herb', {**arguments, 'resolve_unique_name': True},
+                         'structured_multi_field_query')
+        return route('herb', {'name':arguments['name'],'field':arguments['fields'][0],
+                             'resolve_unique_name':True},
+                     'structured_named_field_query' if arguments['name'].isascii()
+                     else 'structured_field_query')
     from tcm.research_plan_intent import capture as capture_plan
     plan=capture_plan(text)
     if plan is not None:return route('assistant',plan,'multi_step_analysis')

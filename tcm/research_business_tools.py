@@ -6,7 +6,12 @@ from tcm.analysis_tools import AnalysisCall,SPECS as ANALYSIS_SPECS,ProfileArgs
 
 PharmaField=Literal['来源','性味与归经','功能与主治','用法与用量','注意','贮藏','炮制','性状','鉴别','检查','含量测定']
 AttributeField=Literal['family','medicinal_part','properties','flavors','meridians','habitat','efficacy_class','indications','reference_pmids','latin_name','english_name','name_pinyin']
-REPORT_TOOLS=('pharmacopoeia_lookup','herb_attributes','pair_evidence_report')
+REPORT_TOOLS=('pharmacopoeia_lookup','herb_attributes','pair_evidence_report','herb_relation_records')
+
+
+class RelationArgs(ProfileArgs):
+    kind:Literal['ingredient','target']
+    page:int=Field(default=1,ge=1,le=1000)
 
 
 class PharmaArgs(ProfileArgs):
@@ -62,7 +67,12 @@ class PairCall(Contract):
     arguments:PairArgs
 
 
-BusinessCall=Annotated[AnalysisCall|PharmaCall|AttributeCall|PairCall,Field(discriminator='tool')]
+class RelationCall(Contract):
+    tool:Literal['herb_relation_records']
+    arguments:RelationArgs
+
+
+BusinessCall=Annotated[AnalysisCall|PharmaCall|AttributeCall|PairCall|RelationCall,Field(discriminator='tool')]
 CALL=TypeAdapter(BusinessCall)
 
 
@@ -77,6 +87,7 @@ class ReportData(Contract):
 
 
 SPECS={**ANALYSIS_SPECS,
+    'herb_relation_records':(RelationArgs,ReportData,'读取一味药的成分ingredient或靶点target来源记录（每页20行，保留原始行和JSON位置）。多药、多类分别调用；不是成分到靶点预测，也不等于靶点画像。','ETCM成分/靶点记录'),
     'pharmacopoeia_lookup':(PharmaArgs,ReportData,'查询明确药材的药典字段原文与原页出处；fields必须逐项来自问题，不生成用药结论。','药典字段'),
     'herb_attributes':(AttributeArgs,ReportData,'查询已选择ETCM来源的基础属性，保留原值和JSON位置；缺字段保持缺失。','ETCM属性'),
     'pair_evidence_report':(PairArgs,ReportData,'复用两药报告子图：双方药典字段、ETCM属性、共同UniProt与双方原始记录。宿主选择source_ids；all_targets仅在明确要求全部共同靶点时开启。内部读取计入总预算，不是治疗或机制推断。','两药证据报告')}

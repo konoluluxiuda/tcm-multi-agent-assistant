@@ -1,0 +1,19 @@
+{
+  "questions_edited": false,
+  "execution_started": false,
+  "by": "implementation agent; sources separately checked",
+  "not_clinical_review": true,
+  "decisions": {
+    "性味": "properties + flavors; never collapse taste into thermal nature",
+    "HV2-15": "资料卡未明确文件交付，按answer评测",
+    "table": "keep_all; missing is not filtering; final answer includes parent fields",
+    "relations": "first page plus true total; no claim of full lists",
+    "datasets": "reference coverage must include names/counts requested, not only ETCM keyword"
+  },
+  "pending": [
+    "dataset count/field coverage assertions",
+    "boundary side-effect checks",
+    "manual inspection of source statuses and values",
+    "frozen implementation/protocol after scorer validation"
+  ]
+}

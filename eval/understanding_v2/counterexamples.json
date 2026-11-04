@@ -1,0 +1,160 @@
+{
+  "version": "understanding-acceptance-v1",
+  "description": "统一理解链验收集：同时覆盖“正确提案必须执行”和“错误提案必须拦截”。row_policy 取值 keep_all|filter_complete|top_n。fields 用 namespace:name 消除歧义。",
+  "cases": [
+    {
+      "id": "AC01",
+      "category": "positive",
+      "question": "整理白术和黄芪的功效、注意，保留出处并生成表格",
+      "proposal": {
+        "objects": ["白术", "黄芪"],
+        "fields": ["pharmacopoeia:功能与主治", "pharmacopoeia:注意"],
+        "row_policy": "keep_all",
+        "count": null,
+        "output": "table",
+        "operation": "new"
+      },
+      "expect": "accept"
+    },
+    {
+      "id": "AC02",
+      "category": "negative",
+      "question": "整理白术、黄芪、当归的功效、注意，生成表格",
+      "proposal": {
+        "objects": ["白术"],
+        "fields": ["pharmacopoeia:功能与主治", "pharmacopoeia:注意"],
+        "row_policy": "filter_complete",
+        "count": null,
+        "output": "table",
+        "operation": "new"
+      },
+      "expect": "reject",
+      "reject_code": "mentioned_object_omitted",
+      "note": "用户指定三味药，提案漏掉两味，且把 keep_all 悄悄改成 filter_complete"
+    },
+    {
+      "id": "AC03",
+      "category": "negative",
+      "question": "从白术、黄芪、当归中只整理功效、注意同时有记录的",
+      "proposal": {
+        "objects": ["白术", "黄芪", "当归"],
+        "fields": ["pharmacopoeia:功能与主治", "pharmacopoeia:注意"],
+        "row_policy": "keep_all",
+        "count": null,
+        "output": "table",
+        "operation": "new"
+      },
+      "expect": "reject",
+      "reject_code": "row_policy_mismatch",
+      "note": "“同时有记录”= filter_complete，提案却用 keep_all 保留全部"
+    },
+    {
+      "id": "AC04",
+      "category": "negative",
+      "question": "在上一份表上增加贮藏，保留旧字段",
+      "proposal": {
+        "objects": [],
+        "fields": ["pharmacopoeia:贮藏"],
+        "row_policy": "keep_all",
+        "count": null,
+        "output": "table",
+        "operation": "replace"
+      },
+      "expect": "reject",
+      "reject_code": "parent_scope_change",
+      "note": "连续修改只允许 append_fields，不能 replace/delete"
+    },
+    {
+      "id": "AC05",
+      "category": "negative",
+      "question": "黄芪有什么作用",
+      "proposal": {
+        "objects": ["黄芪"],
+        "fields": ["etcm:name_pinyin", "etcm:latin_name", "etcm:english_name", "etcm:family", "etcm:habitat", "etcm:medicinal_part", "etcm:properties", "etcm:flavors", "etcm:meridians", "etcm:efficacy_class", "etcm:indications"],
+        "row_policy": "not_applicable",
+        "count": null,
+        "output": "answer",
+        "operation": "query"
+      },
+      "expect": "reject",
+      "reject_code": "semantic_field_mismatch",
+      "note": "“作用”应映射 pharmacopoeia:功能与主治（或 etcm:indications），不是 ETCM 全量属性 dump"
+    },
+    {
+      "id": "AC06",
+      "category": "positive",
+      "question": "从白术、黄芪、川芎、甘草、大黄中挑两条功效和注意齐全的",
+      "proposal": {
+        "objects": ["白术", "黄芪", "川芎", "甘草", "大黄"],
+        "fields": ["pharmacopoeia:功能与主治", "pharmacopoeia:注意"],
+        "row_policy": "top_n",
+        "count": 2,
+        "output": "table",
+        "operation": "new"
+      },
+      "expect": "accept"
+    },
+    {
+      "id": "AC07",
+      "category": "synonym",
+      "question": "从白术、黄芪中只留功效和注意都齐全的",
+      "proposal": {
+        "objects": ["白术", "黄芪"],
+        "fields": ["pharmacopoeia:功能与主治", "pharmacopoeia:注意"],
+        "row_policy": "filter_complete",
+        "count": null,
+        "output": "table",
+        "operation": "new"
+      },
+      "expect": "accept",
+      "note": "“只留齐全” = filter_complete，与 AC06 的“挑两条齐全”在 row_policy 上不同但都被正确表达"
+    },
+    {
+      "id": "AC08",
+      "category": "synonym",
+      "question": "从白术、黄芪中筛出功效和注意都有记录的",
+      "proposal": {
+        "objects": ["白术", "黄芪"],
+        "fields": ["pharmacopoeia:功能与主治", "pharmacopoeia:注意"],
+        "row_policy": "filter_complete",
+        "count": null,
+        "output": "table",
+        "operation": "new"
+      },
+      "expect": "accept",
+      "note": "“筛出都有记录” 与 AC07 同义，必须归一化到同一个 filter_complete"
+    },
+    {
+      "id": "AC09",
+      "category": "meaning_change",
+      "question": "核对白术、黄芪的功效和注意，全部保留",
+      "proposal": {
+        "objects": ["白术", "黄芪"],
+        "fields": ["pharmacopoeia:功能与主治", "pharmacopoeia:注意"],
+        "row_policy": "filter_complete",
+        "count": null,
+        "output": "table",
+        "operation": "new"
+      },
+      "expect": "reject",
+      "reject_code": "row_policy_mismatch",
+      "note": "“全部保留”= keep_all，与 filter_complete 语义相反"
+    },
+    {
+      "id": "AC10",
+      "category": "meaning_change",
+      "question": "整理白术和黄芪的功效、注意",
+      "proposal": {
+        "objects": ["白术", "黄芪"],
+        "fields": ["pharmacopoeia:功能与主治", "pharmacopoeia:注意"],
+        "row_policy": "top_n",
+        "count": 2,
+        "output": "table",
+        "operation": "new"
+      },
+      "expect": "reject",
+      "reject_code": "row_policy_mismatch",
+      "note": "未说挑前几条，top_n 是擅自添加的数量语义"
+    }
+  ]
+}

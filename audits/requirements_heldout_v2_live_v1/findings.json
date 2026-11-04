@@ -1,0 +1,204 @@
+{
+  "status": "stopped_as_authorized_after_unknown_dispatch",
+  "manifest_sha256": "9c340183d383e7d34c2aab408998b0bf55128a6aee173cc2148228f77f58b5d0",
+  "planned_scenarios": 40,
+  "planned_combinations": 120,
+  "started_combinations": 12,
+  "not_started_combinations": 108,
+  "requests": 11,
+  "received_http_200": 10,
+  "unknown_requests": 1,
+  "known_total_tokens": 35618,
+  "unknown_usage_not_zero": true,
+  "automatic_retries": 0,
+  "raw_grader_passes_on_started": {
+    "R": 0,
+    "G": 3,
+    "V": 0
+  },
+  "scoring_caveat": "HV2-02 does not explicitly specify dataset; raw gold only accepts ETCM. Keep raw score, do not interpret pharmacy evidence as necessarily incorrect.",
+  "proven_g_benefit_cases": [
+    "HV2-01",
+    "HV2-03",
+    "HV2-04"
+  ],
+  "global_generalization_proven": false,
+  "schema_replay": [
+    {
+      "scenario": "HV2-01",
+      "policy": "R",
+      "terminal_state": "unsupported",
+      "schema_failures": []
+    },
+    {
+      "scenario": "HV2-01",
+      "policy": "G",
+      "terminal_state": "success",
+      "schema_failures": []
+    },
+    {
+      "scenario": "HV2-01",
+      "policy": "V",
+      "terminal_state": "clarification",
+      "schema_failures": [
+        {
+          "receipt": "var/requirements_heldout_v2/live_v1/cases/HV2-01_V/response-2.private.json",
+          "errors": [
+            {
+              "path": [
+                "delivery"
+              ],
+              "message": "Value error, answer delivery cannot carry row_policy/count"
+            }
+          ],
+          "delivery": {
+            "form": "answer",
+            "include_evidence": true,
+            "row_policy": "keep_all"
+          }
+        },
+        {
+          "receipt": "var/requirements_heldout_v2/live_v1/cases/HV2-01_V/response-3.private.json",
+          "errors": [
+            {
+              "path": [
+                "delivery"
+              ],
+              "message": "Value error, answer delivery cannot carry row_policy/count"
+            }
+          ],
+          "delivery": {
+            "form": "answer",
+            "include_evidence": true,
+            "row_policy": "keep_all",
+            "count": null
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "HV2-02",
+      "policy": "R",
+      "terminal_state": "success",
+      "schema_failures": []
+    },
+    {
+      "scenario": "HV2-02",
+      "policy": "G",
+      "terminal_state": "clarification",
+      "schema_failures": []
+    },
+    {
+      "scenario": "HV2-02",
+      "policy": "V",
+      "terminal_state": "clarification",
+      "schema_failures": [
+        {
+          "receipt": "var/requirements_heldout_v2/live_v1/cases/HV2-02_V/response-5.private.json",
+          "errors": [
+            {
+              "path": [
+                "delivery"
+              ],
+              "message": "Value error, answer delivery cannot carry row_policy/count"
+            }
+          ],
+          "delivery": {
+            "form": "answer",
+            "include_evidence": true,
+            "row_policy": "keep_all"
+          }
+        },
+        {
+          "receipt": "var/requirements_heldout_v2/live_v1/cases/HV2-02_V/response-6.private.json",
+          "errors": [
+            {
+              "path": [
+                "delivery"
+              ],
+              "message": "Value error, answer delivery cannot carry row_policy/count"
+            }
+          ],
+          "delivery": {
+            "form": "answer",
+            "include_evidence": true,
+            "row_policy": "keep_all"
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "HV2-03",
+      "policy": "R",
+      "terminal_state": "clarification",
+      "schema_failures": []
+    },
+    {
+      "scenario": "HV2-03",
+      "policy": "G",
+      "terminal_state": "success",
+      "schema_failures": []
+    },
+    {
+      "scenario": "HV2-03",
+      "policy": "V",
+      "terminal_state": "clarification",
+      "schema_failures": [
+        {
+          "receipt": "var/requirements_heldout_v2/live_v1/cases/HV2-03_V/response-8.private.json",
+          "errors": [
+            {
+              "path": [
+                "delivery"
+              ],
+              "message": "Value error, answer delivery cannot carry row_policy/count"
+            }
+          ],
+          "delivery": {
+            "form": "answer",
+            "include_evidence": true,
+            "row_policy": "keep_all"
+          }
+        },
+        {
+          "receipt": "var/requirements_heldout_v2/live_v1/cases/HV2-03_V/response-9.private.json",
+          "errors": [
+            {
+              "path": [
+                "delivery"
+              ],
+              "message": "Value error, answer delivery cannot carry row_policy/count"
+            }
+          ],
+          "delivery": {
+            "form": "answer",
+            "include_evidence": true,
+            "row_policy": "keep_all",
+            "count": null
+          }
+        }
+      ]
+    },
+    {
+      "scenario": "HV2-04",
+      "policy": "R",
+      "terminal_state": "clarification",
+      "schema_failures": []
+    },
+    {
+      "scenario": "HV2-04",
+      "policy": "G",
+      "terminal_state": "success",
+      "schema_failures": []
+    },
+    {
+      "scenario": "HV2-04",
+      "policy": "V",
+      "terminal_state": "unavailable",
+      "schema_failures": []
+    }
+  ],
+  "production_code_changed": false,
+  "default_policy_changed": false,
+  "new_provider_calls_during_analysis": 0
+}

@@ -1,5 +1,14 @@
 # 新用户使用说明与示例问题
 
+
+**2026-11-03 工作区更新：** 模型理解后的查询交付由聊天和工作台共用执行器，显示所有查询块及出处；部分失败保留已取得结果。完整交付保存后可刷新恢复，同一请求编号重放不重新理解或执行工具。`requirements_v3` 仍需显式选择，默认策略未变，现有运行实例不会自动加载本次代码。见[实现与验证](../audits/answer_delivery_v2/README.md)。
+
+工作台查询采用两步 API：`POST /api/dataops/research-questions` 返回 `status=query` 提案后，用同一 Cookie 和 `request_key` 调用 `POST /api/dataops/answer`。服务端读取已保存提案，客户端不能指定工具路由。`GET /api/dataops/answers/{request_key}` 回读历史交付，不重新访问来源；结果保留原来源版本。重新执行时来源已改变会返回409，需要新建请求。
+
+查询交付响应的 `answer_steps` 包含各步结果，`unfinished` 列出未完成项；顶层 `model_calls`、`understanding_requests_this_submission`、`tool_calls_this_submission` 都表示本次新增，`original_provider_requests` 表示原提案累计理解调用。全部不可用返回503，部分完成返回200＋partial。后文 `assistant.*` 计数说明仍适用于表格任务响应。
+
+聊天只向记忆提交一轮摘要与交付引用，原文结果存放在 `DATAOPS_ROOT/answer_deliveries.sqlite3`。多对象结果全部可回看；存在多个同类对象时不默认选择其中一个作为追问焦点，请继续明确药名。备份应同时保留会话数据库与整个 `DATAOPS_ROOT`，不能仅复制会话摘要后就认为交付原文已备份。
+
 新增[资料任务页](RESEARCH_SELECTION_AGENT.md)：7912与Docker7914的 `/dataops/research` 可输入任务问句，或用表单指定候选、字段和数量。可直接试：
 
 - “整理白术和黄芪的功效、注意事项，保留出处并生成表格”：两味均保留，缺失注意项如实显示。
@@ -8,11 +17,13 @@
 
 明确“挑几条、哪些字段齐全”的筛选无需附加“生成表格”。只说“帮我整理一下资料”会先要求补充药名或筛选范围；个人诊断、治疗指令直接说明服务边界。原话回放和实际限制见[验收记录](../audits/user_chat_replay_v1/README.md)；外部新问题的出题/冻结方式见[外部验收说明](EXTERNAL_QUESTION_ACCEPTANCE.md)。
 
-默认先做完整的本地解析并确定性执行。当前7912已配置统一模型兜底：聊天与资料任务页在未完整识别时最多补一次理解；页面的允许模型选项默认勾选，可取消，规范问句仍可零调用。7896/7914未启用目标模型，保持本地解析。模型只接收当前问句、名称候选、字段/工具定义及父表结构，不发送资料正文或聊天历史；查询直接回到原查询链，表格进入工作区。歧义、越界或模型提案不合格时说明原因，保留原句，不静默执行半个任务。见[统一理解与Harness验收](../audits/unified_harness_v1/README.md)。
+当前试用：**7921为统一模型理解 `unified_v2`，7920为纯本地对照**，执行阶段均为fixed。7921普通自然问句先由模型理解；需要时再纠正一次参数或独立复核整理要求，合计最多2次请求。明确指令、精确帮助和已选来源回看保留快速路径；表格中的保留行规则无法确认时先澄清。资料任务页可取消模型选项。旧 `local_then_one_model_v1` 策略仍可显式启用，保持本地优先、最多一次补充。
 
-API的 `use_model` 省略或为 `null` 时沿用部署开关；`false` 强制仅本地解析，`true` 允许本地未识别时的一次模型补充，不强制每题调用。该限制仅指目标理解；另行启用的RAG生成和native执行有独立预算。多轮Agent仍为显式实验，不保证所有任务都能执行；旧评测失败保留。
+模型只接收当前问句、名称候选、字段/工具定义及父表结构；纠正时附错误码和参数位置，复核时不提供首轮提案，不发送资料正文或聊天历史。查询回到原工具，表格进入工作区。两次需求核对一致也不等于内容一定正确，仍需核对结果出处。运行和限制见[统一理解V2](../audits/understanding_v2/README.md)。
 
-执行统计中，`decision_steps` 是本地策略或模型的决策步数，`provider_requests` 才是执行阶段的外部模型请求数；一次问句理解另计于 `goal_provider_requests`。未知请求数显示为 `null`，不算作0。工作区 `mode` 区分 `research_fixed`（确定性）、`research_synthetic`（本地模拟）与 `research_native`（多轮模型）；队列尚未记录驱动时显示 `execution_pending_or_unknown`。历史检查点的内部字段保持兼容，API展示采用上述名称。
+API的 `use_model` 省略或为 `null` 时沿用部署开关；`false` 强制仅本地解析，`true` 使用该部署的理解策略。不开模型的部署仍拒绝 `true`。本次理解总数保存在回执中，同key重放新增0次；超时等未知结果不自动重试。该额度只针对理解，RAG生成和native执行有独立开关及预算。
+
+执行统计中，`decision_steps` 是本地策略或模型的决策步数，`provider_requests` 才是执行阶段的外部模型请求数；问句理解请求另计于 `goal_provider_requests`。未知请求数显示为 `null`，不算作0。工作区 `mode` 区分 `research_fixed`（确定性）、`research_synthetic`（本地模拟）与 `research_native`（多轮模型）；队列尚未记录驱动时显示 `execution_pending_or_unknown`。历史检查点的内部字段保持兼容，API展示采用上述名称。
 
 聊天返回的顶层`model_calls`及`assistant.understanding_requests_this_submission`表示本次提交新增的理解请求，重放为0；`assistant.llm_calls`按`counts_scope`表示原工作区或理解结果累计值，两者不混为重复付费。
 
@@ -22,7 +33,7 @@ API的 `use_model` 省略或为 `null` 时沿用部署开关；`false` 强制仅
 {"model_calls":0,"assistant":{"understanding_requests_this_submission":0,"llm_calls":1,"counts_scope":"workspace_total","replayed":true}}
 ```
 
-`understanding_requests_this_submission`不在聊天顶层；普通查询的理解回执在`routing`内。队列忙碌返回429及`Retry-After`，工作区标为`queue_busy`，表示已保留目标但尚未入队。使用同一Cookie、同一`request_key`和原始请求重试，会复用目标与理解回执；队列仍忙时继续429，不再调用模型。字段、对象、来源版本改变时返回409，需要核对后新建。旧版的`queue_not_enqueued`失败记录未证明属于忙碌，不自动恢复或重发。
+旧表格任务的 `understanding_requests_this_submission` 位于 `assistant` 内；新的查询交付另在顶层提供同名计数，见上文。队列忙碌返回429及`Retry-After`，工作区标为`queue_busy`，表示已保留目标但尚未入队。使用同一Cookie、同一`request_key`和原始请求重试，会复用目标与理解回执；队列仍忙时继续429，不再调用模型。字段、对象、来源版本改变时返回409，需要核对后新建。旧版的`queue_not_enqueued`失败记录未证明属于忙碌，不自动恢复或重发。
 
 `/api/runtime`的`source_revision_scope=research-application-v3`表示共享服务源码摘要，可跨本地进程和镜像比较；预览启动脚本由`entrypoint_revision`另行记录，未打包进研究镜像的旧影像/RAG/文献子模块由`optional_modules_revision`记录。`restart_required`检查三部分是否漂移。相同服务源码摘要不代表模型开关、数据版本或部署参数相同。
 
@@ -89,7 +100,7 @@ curl --fail --silent --show-error --cookie /tmp/tcm-session.cookies \
 
 普通共同靶点查询默认展示首页。两药报告明确要求“全部共同靶点”时支持受控分页，当前上限10页、每页20项；预算不足保留已读结果并标记未完成，不把部分结果说成全量。该报告现已作为受控工具接入新多步骤聊天。全量任务先按最高14次读取检查剩余预算，实际按派发次数扣减；无法容纳时不开始该动作。见[报告工具统一](RESEARCH_REPORT_TOOLS.md)。
 
-新多步骤聊天覆盖八个业务工具：原五个结构化分析，加药典字段、ETCM属性、两药证据报告。文献检索、任意下载任务、治疗或预测等要求仍未纳入统一计划；证据下载只是读取已完成的工具结果。规则未识别时，默认本地预览会说明限制；只有显式启用意图模型时，才可能发送当前问句进行一次提案，不发送资料或会话历史。
+新多步骤聊天覆盖八个业务工具：原五个结构化分析，加药典字段、ETCM属性、两药证据报告。文献检索、任意下载任务、治疗或预测等要求仍未纳入统一计划；证据下载只是读取已完成的工具结果。规则未识别时，默认本地预览会说明限制；启用模型理解后才会发送当前问句，实际策略和请求上限以 `/api/runtime` 为准，不发送资料正文或会话历史。
 
 “本地研究”面板可生成单药/两药报告；`/research-tasks`保留较早的任务清单流程，用于明确计划和来源核对，不是普通聊天查询的必经步骤。
 

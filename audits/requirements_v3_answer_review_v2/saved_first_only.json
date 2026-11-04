@@ -1,0 +1,301 @@
+{
+  "http": {
+    "status": "success",
+    "response": "拼音：Alpha\n药用部位：Leaf\n来源：etcm_herbs/Alpha.json\n\n拼音：Beta\n药用部位：Root\n来源：etcm_herbs/Beta.json",
+    "agent": "TCM_HERB_AGENT",
+    "routing": {
+      "tool": "herb",
+      "reason": "unified_request_fallback",
+      "mode": "model",
+      "intent_model_calls": 2,
+      "original_provider_requests": 2,
+      "understanding_replayed": false
+    },
+    "model_calls": 2,
+    "tcm": {
+      "status": "ok",
+      "dataset_version": "fixture-v1",
+      "records": [
+        {
+          "source_record_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+          "source": {
+            "source_namespace": "etcm2-local",
+            "dataset_version": "fixture-v1",
+            "relative_file_path": "etcm_herbs/Alpha.json",
+            "file_sha256": "b996cf7d7ee20dacdbd7bde466fdcb053db658ce8571c9ee78cbd10a845feef2",
+            "section_id": "base_information",
+            "normalization_rule_version": 1,
+            "review_status": "unverified"
+          },
+          "warnings": [
+            "source_content_unverified",
+            "chinese_names_unmapped",
+            "relations_not_imported"
+          ],
+          "fields": {
+            "name_pinyin": {
+              "state": "present",
+              "value": "Alpha",
+              "source": {
+                "source_namespace": "etcm2-local",
+                "dataset_version": "fixture-v1",
+                "relative_file_path": "etcm_herbs/Alpha.json",
+                "file_sha256": "b996cf7d7ee20dacdbd7bde466fdcb053db658ce8571c9ee78cbd10a845feef2",
+                "section_id": "base_information",
+                "normalization_rule_version": 1,
+                "review_status": "unverified",
+                "json_pointer": "/data/0/value/0/value",
+                "raw_field_key": "Herb Name in Pinyin",
+                "raw_value": "Alpha"
+              }
+            },
+            "medicinal_part": {
+              "state": "present",
+              "value": "Leaf",
+              "source": {
+                "source_namespace": "etcm2-local",
+                "dataset_version": "fixture-v1",
+                "relative_file_path": "etcm_herbs/Alpha.json",
+                "file_sha256": "b996cf7d7ee20dacdbd7bde466fdcb053db658ce8571c9ee78cbd10a845feef2",
+                "section_id": "base_information",
+                "normalization_rule_version": 1,
+                "review_status": "unverified",
+                "json_pointer": "/data/0/value/2/value",
+                "raw_field_key": "Medicinal Part",
+                "raw_value": "Leaf"
+              }
+            }
+          }
+        }
+      ],
+      "warnings": [
+        "source_content_unverified",
+        "chinese_names_unmapped"
+      ],
+      "total_record_count": 1,
+      "returned_record_count": 1,
+      "truncated": false,
+      "message": "药材资料如下。",
+      "requested_fields": [
+        "medicinal_part"
+      ],
+      "followup": false
+    },
+    "answer_steps": [
+      {
+        "tool": "herb",
+        "result_key": "tcm_result",
+        "status": "ok",
+        "result": {
+          "status": "ok",
+          "dataset_version": "fixture-v1",
+          "records": [
+            {
+              "source_record_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+              "source": {
+                "source_namespace": "etcm2-local",
+                "dataset_version": "fixture-v1",
+                "relative_file_path": "etcm_herbs/Alpha.json",
+                "file_sha256": "b996cf7d7ee20dacdbd7bde466fdcb053db658ce8571c9ee78cbd10a845feef2",
+                "section_id": "base_information",
+                "normalization_rule_version": 1,
+                "review_status": "unverified"
+              },
+              "warnings": [
+                "source_content_unverified",
+                "chinese_names_unmapped",
+                "relations_not_imported"
+              ],
+              "fields": {
+                "name_pinyin": {
+                  "state": "present",
+                  "value": "Alpha",
+                  "source": {
+                    "source_namespace": "etcm2-local",
+                    "dataset_version": "fixture-v1",
+                    "relative_file_path": "etcm_herbs/Alpha.json",
+                    "file_sha256": "b996cf7d7ee20dacdbd7bde466fdcb053db658ce8571c9ee78cbd10a845feef2",
+                    "section_id": "base_information",
+                    "normalization_rule_version": 1,
+                    "review_status": "unverified",
+                    "json_pointer": "/data/0/value/0/value",
+                    "raw_field_key": "Herb Name in Pinyin",
+                    "raw_value": "Alpha"
+                  }
+                },
+                "medicinal_part": {
+                  "state": "present",
+                  "value": "Leaf",
+                  "source": {
+                    "source_namespace": "etcm2-local",
+                    "dataset_version": "fixture-v1",
+                    "relative_file_path": "etcm_herbs/Alpha.json",
+                    "file_sha256": "b996cf7d7ee20dacdbd7bde466fdcb053db658ce8571c9ee78cbd10a845feef2",
+                    "section_id": "base_information",
+                    "normalization_rule_version": 1,
+                    "review_status": "unverified",
+                    "json_pointer": "/data/0/value/2/value",
+                    "raw_field_key": "Medicinal Part",
+                    "raw_value": "Leaf"
+                  }
+                }
+              }
+            }
+          ],
+          "warnings": [
+            "source_content_unverified",
+            "chinese_names_unmapped"
+          ],
+          "total_record_count": 1,
+          "returned_record_count": 1,
+          "truncated": false,
+          "message": "药材资料如下。",
+          "requested_fields": [
+            "medicinal_part"
+          ],
+          "followup": false
+        },
+        "route": {
+          "tool": "herb",
+          "request": {
+            "name": "Alpha",
+            "field": "medicinal_part",
+            "resolve_unique_name": true
+          },
+          "reason": "unified_request_fallback",
+          "intent_model_calls": 2,
+          "original_provider_requests": 2,
+          "understanding_replayed": false
+        },
+        "message": "药材资料如下。"
+      },
+      {
+        "tool": "herb",
+        "result_key": "tcm_result",
+        "status": "ok",
+        "result": {
+          "status": "ok",
+          "dataset_version": "fixture-v1",
+          "records": [
+            {
+              "source_record_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+              "source": {
+                "source_namespace": "etcm2-local",
+                "dataset_version": "fixture-v1",
+                "relative_file_path": "etcm_herbs/Beta.json",
+                "file_sha256": "0bff3c4bab0724169faac7c55853569dc9f5f5af2f8c35c60389b858401b634e",
+                "section_id": "base_information",
+                "normalization_rule_version": 1,
+                "review_status": "unverified"
+              },
+              "warnings": [
+                "source_content_unverified",
+                "chinese_names_unmapped",
+                "relations_not_imported"
+              ],
+              "fields": {
+                "name_pinyin": {
+                  "state": "present",
+                  "value": "Beta",
+                  "source": {
+                    "source_namespace": "etcm2-local",
+                    "dataset_version": "fixture-v1",
+                    "relative_file_path": "etcm_herbs/Beta.json",
+                    "file_sha256": "0bff3c4bab0724169faac7c55853569dc9f5f5af2f8c35c60389b858401b634e",
+                    "section_id": "base_information",
+                    "normalization_rule_version": 1,
+                    "review_status": "unverified",
+                    "json_pointer": "/data/0/value/0/value",
+                    "raw_field_key": "Herb Name in Pinyin",
+                    "raw_value": "Beta"
+                  }
+                },
+                "medicinal_part": {
+                  "state": "present",
+                  "value": "Root",
+                  "source": {
+                    "source_namespace": "etcm2-local",
+                    "dataset_version": "fixture-v1",
+                    "relative_file_path": "etcm_herbs/Beta.json",
+                    "file_sha256": "0bff3c4bab0724169faac7c55853569dc9f5f5af2f8c35c60389b858401b634e",
+                    "section_id": "base_information",
+                    "normalization_rule_version": 1,
+                    "review_status": "unverified",
+                    "json_pointer": "/data/0/value/2/value",
+                    "raw_field_key": "Medicinal Part",
+                    "raw_value": "Root"
+                  }
+                }
+              }
+            }
+          ],
+          "warnings": [
+            "source_content_unverified",
+            "chinese_names_unmapped"
+          ],
+          "total_record_count": 1,
+          "returned_record_count": 1,
+          "truncated": false,
+          "message": "药材资料如下。",
+          "requested_fields": [
+            "medicinal_part"
+          ],
+          "followup": false
+        },
+        "route": {
+          "tool": "herb",
+          "request": {
+            "name": "Beta",
+            "field": "medicinal_part",
+            "resolve_unique_name": true
+          },
+          "reason": "unified_request_fallback",
+          "intent_model_calls": 2,
+          "original_provider_requests": 2,
+          "understanding_replayed": false
+        },
+        "message": "药材资料如下。"
+      }
+    ],
+    "unfinished": []
+  },
+  "saved_messages": [
+    {
+      "content": "Alpha和Beta的药用部位",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "type": "human",
+      "name": null,
+      "id": "192b4dd2-37f3-4dd6-9f3c-a24c9a9df36e"
+    },
+    {
+      "content": "药材资料如下。",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "type": "ai",
+      "name": null,
+      "id": "e2db63aa-fdf5-49b6-9c0c-19c5acc1d5d3",
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": null
+    }
+  ],
+  "saved_herb_context": {
+    "status": "selected",
+    "source_record_id": "etcm2-local:2ae5bc165fb438c908669d42339545709ea3f914e389a403ab1c55fdaf765fbf",
+    "dataset_version": "fixture-v1",
+    "file_sha256": "b996cf7d7ee20dacdbd7bde466fdcb053db658ce8571c9ee78cbd10a845feef2",
+    "last_fields": [
+      "medicinal_part"
+    ]
+  },
+  "second_herb_context": {
+    "status": "selected",
+    "source_record_id": "etcm2-local:49dd8f33ddb7932dee466776e6228f11118784c3747aa5c694ce8aa5998f3736",
+    "dataset_version": "fixture-v1",
+    "file_sha256": "0bff3c4bab0724169faac7c55853569dc9f5f5af2f8c35c60389b858401b634e",
+    "last_fields": [
+      "medicinal_part"
+    ]
+  }
+}

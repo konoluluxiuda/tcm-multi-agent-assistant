@@ -1,0 +1,43 @@
+{
+  "results": [
+    {
+      "case": "G03",
+      "check": "literal_name_guard",
+      "grounded": {
+        "茯苓": false
+      },
+      "model_calls": 0
+    },
+    {
+      "case": "G04",
+      "check": "literal_name_guard",
+      "grounded": {
+        "甘草": true,
+        "大黄": false
+      },
+      "model_calls": 0
+    },
+    {
+      "case": "G05",
+      "check": "independently_constructed_expected_four_action_plan",
+      "result": "Unaccounted request clauses",
+      "model_calls": 0,
+      "actual_nested_model_arguments_truncated": true
+    },
+    {
+      "case": "G08",
+      "check": "whole_pool_completeness_classifier",
+      "recognized": false,
+      "model_returned_mode": "filter_complete",
+      "model_calls": 0
+    },
+    {
+      "case": "C03",
+      "check": "saved_unsupported_shape_with_reason",
+      "result": "rejected_by_query_intent_schema",
+      "model_calls": 0
+    }
+  ],
+  "new_model_calls": 0,
+  "business_code_modified": false
+}

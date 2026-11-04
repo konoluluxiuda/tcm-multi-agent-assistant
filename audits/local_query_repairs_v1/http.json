@@ -1,0 +1,246 @@
+{
+  "status": "passed",
+  "new_model_calls": 0,
+  "services": [
+    {
+      "port": 7920,
+      "runtime": {
+        "started_at": "2026-11-01T06:22:03.665577+00:00",
+        "source_revision": "1552e17a583a5d8275c386208650fa194242734754970b059967ff41c02c2336",
+        "disk_revision": "1552e17a583a5d8275c386208650fa194242734754970b059967ff41c02c2336",
+        "source_revision_scope": "research-application-v3",
+        "entrypoint_revision": "1422dd875b81607a5ce11b4663ebe61a7307f4627294aaef08e03469cb0f9219",
+        "disk_entrypoint_revision": "1422dd875b81607a5ce11b4663ebe61a7307f4627294aaef08e03469cb0f9219",
+        "optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "disk_optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": false,
+          "driver": "disabled",
+          "external_model_enabled": false,
+          "question_compiler": "local_bounded_grammar_v1",
+          "research_selection": {
+            "enabled": true,
+            "driver": "fixed",
+            "external_model_enabled": false,
+            "execution_model_enabled": false,
+            "question_model_enabled": false,
+            "question_policy": "local_then_one_model_v1",
+            "chat_question_fallback_enabled": false,
+            "goal_input": "bounded_question_or_form",
+            "identity_approval": false
+          }
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": false
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": false
+      },
+      "cases": [
+        {
+          "question": "想知道连翘的药用部位",
+          "tool": "tcm",
+          "status": "ok",
+          "failure_code": null,
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "635837f0e8db45a780b34634447c8463",
+          "passed": true
+        },
+        {
+          "question": "查看白术的药用部位、科名、性味、归经",
+          "tool": "tcm",
+          "status": "ok",
+          "failure_code": null,
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "9bb840f132f348ac889dae72042390c7",
+          "passed": true
+        },
+        {
+          "question": "/research 白术的药用部位",
+          "tool": "research",
+          "status": "candidates",
+          "failure_code": null,
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "648a9d1831f2458e99f98c30a5182dc6",
+          "passed": true
+        },
+        {
+          "question": "它的药用部位",
+          "tool": "research",
+          "status": "candidates",
+          "failure_code": null,
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "581ef71bdc88421ebed558657a101bd5",
+          "passed": true
+        },
+        {
+          "question": "/research 未知药的功效",
+          "tool": "research",
+          "status": "name_not_resolved",
+          "failure_code": "name_not_found",
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "27851e6ad09e4b609c8d67d3b0a09530",
+          "passed": true
+        },
+        {
+          "question": "/research 想知道连翘的药用部位",
+          "tool": "research",
+          "status": "name_not_resolved",
+          "failure_code": "name_boundary_unresolved",
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "549abc22990c41659aa77da4fbed3d3d",
+          "passed": true
+        },
+        {
+          "question": "/research 白术的注意",
+          "tool": "research",
+          "status": "field_not_observed",
+          "failure_code": "field_not_recorded",
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "f797abe7d5254e4e8b22a26608912965",
+          "passed": true
+        },
+        {
+          "question": "/herb UnknownHerb",
+          "tool": "tcm",
+          "status": "not_found",
+          "failure_code": "name_not_found",
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "2ca0b593403f4e499f14b866530a5d95",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "port": 7921,
+      "runtime": {
+        "started_at": "2026-11-01T06:22:03.224452+00:00",
+        "source_revision": "1552e17a583a5d8275c386208650fa194242734754970b059967ff41c02c2336",
+        "disk_revision": "1552e17a583a5d8275c386208650fa194242734754970b059967ff41c02c2336",
+        "source_revision_scope": "research-application-v3",
+        "entrypoint_revision": "1422dd875b81607a5ce11b4663ebe61a7307f4627294aaef08e03469cb0f9219",
+        "disk_entrypoint_revision": "1422dd875b81607a5ce11b4663ebe61a7307f4627294aaef08e03469cb0f9219",
+        "optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "disk_optional_modules_revision": "1cbca841c46fa0cde90faded48244db4fdf1cc061e5649991b5fdadbfb991463",
+        "restart_required": false,
+        "source_check": "ok",
+        "dataops": {
+          "agent": false,
+          "driver": "disabled",
+          "external_model_enabled": true,
+          "question_compiler": "local_bounded_grammar_v1",
+          "research_selection": {
+            "enabled": true,
+            "driver": "fixed",
+            "external_model_enabled": true,
+            "execution_model_enabled": false,
+            "question_model_enabled": true,
+            "question_policy": "local_then_one_model_v1",
+            "chat_question_fallback_enabled": true,
+            "goal_input": "bounded_question_or_form",
+            "identity_approval": false
+          }
+        },
+        "rag": {
+          "enabled": true,
+          "generation_enabled": false
+        },
+        "intent_model_enabled": false,
+        "dataops_tracing_enabled": false
+      },
+      "cases": [
+        {
+          "question": "想知道连翘的药用部位",
+          "tool": "tcm",
+          "status": "ok",
+          "failure_code": null,
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "55cbb590c0144eab84c90588367d2c55",
+          "passed": true
+        },
+        {
+          "question": "查看白术的药用部位、科名、性味、归经",
+          "tool": "tcm",
+          "status": "ok",
+          "failure_code": null,
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "19726dc53caf4c508783be3b0b15f1e6",
+          "passed": true
+        },
+        {
+          "question": "/research 白术的药用部位",
+          "tool": "research",
+          "status": "candidates",
+          "failure_code": null,
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "8ce2d6a83ec04b98acb0a644ee061df8",
+          "passed": true
+        },
+        {
+          "question": "它的药用部位",
+          "tool": "research",
+          "status": "candidates",
+          "failure_code": null,
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "826e5ec152e34d02851e1097d4a33fa0",
+          "passed": true
+        },
+        {
+          "question": "/research 未知药的功效",
+          "tool": "research",
+          "status": "name_not_resolved",
+          "failure_code": "name_not_found",
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "b8de38b930214426b82df4beb9ab0d7a",
+          "passed": true
+        },
+        {
+          "question": "/research 想知道连翘的药用部位",
+          "tool": "research",
+          "status": "name_not_resolved",
+          "failure_code": "name_boundary_unresolved",
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "384013cb8cf340c4b7fe66bfe48d8882",
+          "passed": true
+        },
+        {
+          "question": "/research 白术的注意",
+          "tool": "research",
+          "status": "field_not_observed",
+          "failure_code": "field_not_recorded",
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "8668d85c63bc4ffbb4670857f97fc924",
+          "passed": true
+        },
+        {
+          "question": "/herb UnknownHerb",
+          "tool": "tcm",
+          "status": "not_found",
+          "failure_code": "name_not_found",
+          "model_calls": 0,
+          "model_events": 0,
+          "request_id": "9ebedaa3c0f140b2a48c0a6cf599d30f",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

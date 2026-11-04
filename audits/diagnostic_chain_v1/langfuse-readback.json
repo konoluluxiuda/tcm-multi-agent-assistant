@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "diagnostic_replays": [
+    {
+      "case": "E02",
+      "trace_id": "dec17ed5433c48be8e07900dedd8faec",
+      "observations": 11,
+      "original_rejected_return_preserved": true,
+      "offline_analysis_appended": true,
+      "all_metadata_correlated": true
+    },
+    {
+      "case": "E03",
+      "trace_id": "56639f5d41744fb891d6c149df5f8024",
+      "observations": 11,
+      "original_rejected_return_preserved": true,
+      "offline_analysis_appended": true,
+      "all_metadata_correlated": true
+    },
+    {
+      "case": "E07",
+      "trace_id": "2b3334707ffa4467af014befda30ef48",
+      "observations": 11,
+      "original_rejected_return_preserved": true,
+      "offline_analysis_appended": true,
+      "all_metadata_correlated": true
+    }
+  ],
+  "production_chat": [
+    {
+      "port": 7896,
+      "trace_id": "7d26d92e253e411aa7d1178edb9edcd0",
+      "observations": 6,
+      "production_chat_header_correlation": true
+    },
+    {
+      "port": 7912,
+      "trace_id": "60b3f87e96b0455b997aa635fbf4a63e",
+      "observations": 6,
+      "production_chat_header_correlation": true
+    }
+  ],
+  "readback_provider_requests": 0
+}

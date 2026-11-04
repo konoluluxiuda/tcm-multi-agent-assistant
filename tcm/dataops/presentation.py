@@ -7,7 +7,7 @@ LOCAL_DRIVERS = {'research_fixed_field_policy', 'research_synthetic_observation_
 
 
 def selection_message(research):
-    if research.get('task_mode', 'select_complete') != 'select_complete' or research.get('qualified_count') != 0:
+    if research.get('task_mode', 'select_complete') not in ('select_complete','filter_complete') or research.get('qualified_count') != 0:
         return None
     labels = {'missing': '未收录', 'not_inspected': '尚未核对', 'unmatched': '未找到对应条目',
               'source_mismatch': '来源版本不符', 'ambiguous': '有多个候选',

@@ -1,0 +1,49 @@
+{
+  "version": "requirements-v3-answer-delivery-v5",
+  "date": "2026-11-02",
+  "live_model_evaluated": false,
+  "real_model_requests": 0,
+  "default_policy_changed": false,
+  "service_restarted": false,
+  "git_pushed": false,
+  "docker_built": false,
+  "review": "audits/requirements_v3_answer_review_v1/README.md",
+  "offline_ci": {
+    "command": ".venv/bin/python -m scripts.run_offline_ci --out var/requirements_v3_ci17",
+    "status": "passed",
+    "exit_code": 0,
+    "total": 1733,
+    "skipped": 0,
+    "network_attempts": 0
+  },
+  "delivered": {
+    "shared_executor": "tcm/dataops/answer_delivery.py: merge_answer_datas + execute_routes, used by app.py and /api/dataops/answer",
+    "chat_multi_route_merge": "app.py keeps every route's process_query result in answer_steps and builds the final text from each step's structured result",
+    "partial_failure": "second-route failure yields status=partial with the first block kept and unfinished listed; all-fail yields unavailable/503",
+    "one_turn": "process_query/_process_query gained persist_turn=False; extra routes do not save a turn (test asserts message count unchanged)",
+    "workbench_execution": "POST /api/dataops/answer loads the owner-bound saved query proposal, executes its routes, and returns the merged answer; the page calls it and no longer throws on .join",
+    "source_revision": "the query proposal stores sources.revision and the endpoint rejects a changed source with 409",
+    "allowlist": "/api/dataops/answer added to the RESEARCH_TOOLS_ONLY allowlist",
+    "etcm_end_to_end": "TCM_DB at the make_sources herb DB: a real ETCM medicinal_part query returns Leaf plus etcm_herbs/Alpha.json provenance",
+    "pharmacopoeia_end_to_end": "a synthetic PDF plus a rebuilt index whose citation hash matches it: the research route returns TEST_EFFICACY and the page evidence",
+    "cross_source_end_to_end": "ETCM medicinal_part (Leaf) and pharmacopoeia 功能与主治 (TEST_EFFICACY) both appear in the merged response with two answer_steps",
+    "same_type_multi_route": "two herbs in one read_fields produce two routes and both medicinal_part values (Leaf/Root) survive",
+    "timeout_injection": "RequirementsSequence.invoke raises an injected exception object",
+    "regressions": "ASGI tests for merged both-route + provenance, second-route partial, workbench execution, extra-route no-turn, ETCM/pharmacopoeia/cross-source/same-type real-DB execution, and source-revision change rejection"
+  },
+  "new_test_modules": {
+    "test_requirements_v2": 26,
+    "test_requirements_planner": 20,
+    "test_requirements_understanding": 12,
+    "test_requirements_adapter": 4,
+    "test_requirements_pipeline": 4,
+    "test_requirements_v3_http": 21,
+    "test_requirements_review3": 15
+  },
+  "not_implemented": [
+    "full-read (completeness=all) pagination (explicitly rejected before execution)",
+    "first-round local-semantic-basis optimization",
+    "real-model 40-question generalization evaluation (separate stage)"
+  ],
+  "source": "working tree, uncommitted; running instances (7920/7921) unchanged and not restarted"
+}

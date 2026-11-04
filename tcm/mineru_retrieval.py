@@ -148,6 +148,7 @@ class ResearchRetriever:
                     'message': '未解析指定炮制品范围；不能直接使用母药字段。请核对相关条目原页。',
                     'related_entries': self.related_entries([v['parent_name'] for v in variants])}
         if rejected:
+            result['query_interpretation']['name_resolution']='context_rejected'
             return {**result, 'status': 'name_not_resolved', 'lookup_complete': False,
                     'message': '药名上下文无法确认，请明确使用候选药名查询。'}
         result['query_interpretation']['name_forms'] = [
@@ -169,6 +170,7 @@ class ResearchRetriever:
         else:
             names = checked_names
             if not names:
+                result['query_interpretation']['name_resolution']='no_indexed_name'
                 return {**result, 'status': 'name_not_resolved'}
             if len(names) > 1:
                 if len({name_key(n) for n in names}) == 1:

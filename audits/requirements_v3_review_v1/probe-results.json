@@ -1,0 +1,271 @@
+{
+  "correction_failure_accounting": {
+    "status": "needs_input",
+    "actual_calls": 2,
+    "reported_calls": 1,
+    "usage": {
+      "input_tokens": 10,
+      "output_tokens": 2,
+      "total_tokens": 12
+    },
+    "failure": {
+      "code": "correction_exhausted",
+      "stage": "requirements_schema",
+      "message": "契约参数纠正后仍未通过校验，请明确对象、字段和筛选要求。",
+      "automatic_retry": false
+    },
+    "phases": [
+      "initial",
+      "correction"
+    ]
+  },
+  "review_failure_accounting": {
+    "status": "needs_input",
+    "actual_calls": 2,
+    "reported_calls": 1,
+    "usage": {
+      "input_tokens": 10,
+      "output_tokens": 2,
+      "total_tokens": 12
+    },
+    "failure": {
+      "code": "semantic_review_failed",
+      "stage": "semantic_check",
+      "message": "未能确认完整需求，本次未执行。",
+      "automatic_retry": false
+    },
+    "phases": [
+      "initial",
+      "semantic_review"
+    ]
+  },
+  "review_unknown_dispatch": {
+    "status": "needs_input",
+    "actual_calls": 2,
+    "reported_calls": 1,
+    "usage": {
+      "input_tokens": 10,
+      "output_tokens": 2,
+      "total_tokens": 12
+    },
+    "failure": {
+      "code": "semantic_review_failed",
+      "stage": "semantic_check",
+      "message": "未能确认完整需求，本次未执行。",
+      "automatic_retry": false
+    },
+    "phases": [
+      "initial",
+      "semantic_review"
+    ]
+  },
+  "wrong_semantics_after_correction": {
+    "status": "ready",
+    "actual_calls": 2,
+    "reported_calls": 2,
+    "usage": {
+      "input_tokens": 20,
+      "output_tokens": 4,
+      "total_tokens": 24
+    },
+    "failure": null,
+    "phases": [
+      "initial",
+      "correction"
+    ]
+  },
+  "same_semantics_different_refs": {
+    "status": "needs_input",
+    "actual_calls": 2,
+    "reported_calls": 2,
+    "usage": {
+      "input_tokens": 20,
+      "output_tokens": 4,
+      "total_tokens": 24
+    },
+    "failure": {
+      "code": "semantic_disagreement",
+      "stage": "semantic_check",
+      "message": "两次需求核对不一致，本次未执行。请明确对象、字段与行策略。",
+      "automatic_retry": false
+    },
+    "phases": [
+      "initial",
+      "semantic_review"
+    ]
+  },
+  "model_context": {
+    "catalog_sent": false,
+    "parent_sent": false,
+    "correction_code_sent": false
+  },
+  "clarification_without_objects": {
+    "exception": "ValidationError",
+    "message": "1 validation error for RequirementsDraftV2\n  Value error, No objects requires a dataset-level requirement [type=value_error, input_value={'status': 'needs_input',...对象或任务目标']}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.10/v/value_error"
+  },
+  "mixed_dataset_and_herb": {
+    "exception": "AttributeError",
+    "message": "'DatasetReq' object has no attribute 'object_refs'"
+  },
+  "duplicate_object_ref": {
+    "accepted": true,
+    "objects": 2,
+    "requirements": 1
+  },
+  "ready_empty_requirements": {
+    "accepted": true,
+    "objects": 1,
+    "requirements": 0
+  },
+  "no_candidate": {
+    "ok": true,
+    "errors": []
+  },
+  "ambiguous_candidate": {
+    "ok": true,
+    "errors": []
+  },
+  "coverage_arguments": {
+    "ok": true,
+    "missing": [],
+    "errors": []
+  },
+  "coverage_tool": {
+    "ok": true,
+    "missing": [],
+    "errors": []
+  },
+  "coverage_duplicate": {
+    "ok": true,
+    "missing": [],
+    "errors": []
+  },
+  "coverage_extra": {
+    "ok": true,
+    "missing": [],
+    "errors": []
+  },
+  "all_targets_becomes_page_one": {
+    "validation": {
+      "ok": true,
+      "errors": []
+    },
+    "coverage": {
+      "ok": true,
+      "missing": [],
+      "errors": []
+    },
+    "routes": [
+      {
+        "tool": "assistant",
+        "request": {
+          "topic": "etcm_relations",
+          "kind": "target",
+          "entities": [
+            "黄芪"
+          ],
+          "page": 1
+        }
+      }
+    ]
+  },
+  "common_target_real_tool_schema": {
+    "exception": "ValidationError",
+    "message": "1 validation error for RelationArgs\nkind\n  Input should be 'ingredient' or 'target' [type=literal_error, input_value='common_target', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.10/v/literal_error"
+  },
+  "append_loses_old_fields": {
+    "mechanical_valid": true,
+    "goal": {
+      "title": "问句资料核对",
+      "query": {
+        "names": [
+          "Herb1"
+        ],
+        "filters": [],
+        "limit": 20
+      },
+      "attributes": [
+        "medicinal_part"
+      ],
+      "document_fields": [
+        "贮藏"
+      ],
+      "completion_policy": "audit",
+      "research": {
+        "mode": "audit_named",
+        "target_count": 1,
+        "monograph_only": false
+      }
+    },
+    "real_goal_valid": true
+  },
+  "six_named_rows": {
+    "mechanical_valid": true,
+    "goal": {
+      "title": "问句资料核对",
+      "query": {
+        "names": [
+          "Herb1",
+          "Herb2",
+          "Herb3",
+          "Herb4",
+          "Herb5",
+          "Herb6"
+        ],
+        "filters": [],
+        "limit": 20
+      },
+      "attributes": [
+        "medicinal_part"
+      ],
+      "document_fields": [
+        "功能与主治"
+      ],
+      "completion_policy": "audit",
+      "research": {
+        "mode": "audit_named",
+        "target_count": 6,
+        "monograph_only": false
+      }
+    },
+    "real_goal_valid": false
+  },
+  "table_per_object_scope_widened": {
+    "coverage": true,
+    "goal": {
+      "title": "问句资料核对",
+      "query": {
+        "names": [
+          "黄芪",
+          "白术"
+        ],
+        "filters": [],
+        "limit": 20
+      },
+      "attributes": [
+        "family"
+      ],
+      "document_fields": [
+        "功能与主治"
+      ],
+      "completion_policy": "audit",
+      "research": {
+        "mode": "filter_complete",
+        "target_count": 2,
+        "monograph_only": false
+      }
+    }
+  },
+  "top_n_missing_count": {
+    "mechanical_valid": true,
+    "inferred_count": 1
+  },
+  "http_local_optout": {
+    "http": 500,
+    "model_constructed": 1,
+    "model_calls": 0,
+    "body": {
+      "detail": "请求处理失败，请保留请求编号以便排查；未自动重试。"
+    }
+  }
+}

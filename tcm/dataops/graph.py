@@ -221,10 +221,18 @@ class Engine:
             with observation('dataops.' + ('decision' if name == 'model' else name), metadata={'workspace_id': self.identifier,
                     'driver': self.driver.label, 'driver_steps_before': s['model_calls'],
                     'tool_calls_before': s['tool_calls']}) as trace:
-                result = fn(s)
+                from tcm.dataops.diagnostics import record
+                record('execution_node','started',node=name,workspace_id=self.identifier,
+                       driver=self.driver.label,action=s.get('action'),decision_step=s['model_calls'],tool_calls=s['tool_calls'])
+                try:result = fn(s)
+                except BaseException as exc:
+                    record('execution_node','failed',code='node_exception',node=name,exception_type=type(exc).__name__)
+                    raise
                 after = result if result is not None else s
                 trace.update(output={'status': after['status'], 'pending': bool(after.get('pending')),
                                      'latest_event': after.get('events', [])[-1:]})
+                record('execution_node','finished',node=name,workspace_id=self.identifier,action=after.get('action'),
+                       status_result=after['status'],reason=after.get('reason'),latest_event=after.get('events',[])[-1:])
             s = result if result is not None else s
             s['active_seconds'] += time.monotonic() - started
             s['last_node'] = name
@@ -453,6 +461,9 @@ class Engine:
                                  'progress': result.get('progress')},
                          level='WARNING' if result['status'] in ('partial','interrupted','failed') else 'DEFAULT',
                          status_message=result.get('error') or result['status'])
+            from tcm.dataops.diagnostics import record
+            record('delivery','finished',status_result=result['status'],artifact=result.get('artifact'),
+                   business_acceptance='not_evaluated')
             return result
 
     def _run(self, answer=None):

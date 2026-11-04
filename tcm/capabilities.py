@@ -22,6 +22,7 @@ def dataops_runtime():
 
 
 def research_runtime():
+    from tcm.dataops.understanding_contract import policy
     driver = os.getenv('DATAOPS_RESEARCH_DRIVER', 'disabled')
     ready = (env_bool('ENABLE_DATAOPS') and env_bool('ENABLE_DATAOPS_RESEARCH') and
              driver in ('fixed', 'synthetic', 'native') and not os.getenv('RESEARCH_JOB_DSN'))
@@ -32,7 +33,9 @@ def research_runtime():
             'external_model_enabled':execution_model or question_model,
             'execution_model_enabled':execution_model,
             'question_model_enabled':question_model,
-            'question_policy':'local_then_one_model_v1',
+            'question_policy':policy(),
+            'question_request_limit':2 if policy() in ('unified_v2', 'requirements_v3') else 1,
+            'semantic_regex_guards':env_bool('SEMANTIC_REGEX_GUARDS',True),
             'chat_question_fallback_enabled':question_model,
             'goal_input': 'bounded_question_or_form', 'identity_approval': False}
 
@@ -72,7 +75,7 @@ def describe():
     selection = runtime['research_selection']
     selection_mode=('真实模型执行，每任务最多10次请求' if selection['execution_model_enabled'] else
                     '本地确定性执行' if selection['driver']=='fixed' else '本地模拟策略')
-    if selection['question_model_enabled']:selection_mode+='；可选单次模型理解问句'
+    if selection['question_model_enabled']:selection_mode+=f"；问句理解最多{selection['question_request_limit']}次请求"
     add('research_selection', '资料问句、候选核对与增量交付（'+selection_mode+'）',
         selection['enabled'], (Path(os.getenv('RAG_RELEASE_PATH','var/data_releases/r1_20261030'))/'release.json').is_file(),
         '打开 /dataops/research，输入整理要求或选择候选和字段')

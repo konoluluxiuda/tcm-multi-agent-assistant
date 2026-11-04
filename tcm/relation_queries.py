@@ -21,12 +21,12 @@ def common_target_sentence(body):
     goal = r'(?:共同靶点|共同标识)'
     evidence = (r'(?:[，,；;]\s*(?:并|同时)?(?:请)?'
                 r'(?:保留|附上|给出|列出|展示)(?:双方|两边|各自)?的?'
-                r'(?:原始记录|原始行|出处)(?:(?:的)?位置|和出处|与出处|及出处)?)?')
+                r'(?:原始记录|原始行|出处)(?:(?:的)?位置|和出处|与出处|及出处)?|[，,；;]\s*(?:列出|列出来|显示|展示)(?:并|并且|同时)(?:给出|给|附上|保留)(?:出处|来源))?')
     patterns = (
         r'(?:请帮我|帮我|麻烦|请)?\s*我(?:正在|在)?(?:整理|比较|核对|研究)\s*'+pair+
         r'[，,]\s*(?:我)?(?:想|需要|希望)(?:查询|查一下|核对|查看|比较|查)\s*(?:两者的|双方的|它们的)?'+goal,
         r'(?:请帮我|帮我|麻烦|请)?\s*(?:查询|查一下|查找|核对|查看|比较|查)?\s*'+pair+
-        r'(?:有哪些|有什么|的)?'+goal+r'(?:有哪些|是什么)?',
+        r'(?:有哪些|有什么|有没有|有无|的)?'+goal+r'(?:有哪些|是什么)?',
     )
     for pattern in patterns:
         match = re.fullmatch(pattern+evidence, body)
@@ -175,6 +175,7 @@ def shared_targets(path, records, version, *, offset=0):
 
 def execute(request):
     from tcm.chat import execute_request
+    from tcm.dataops.failures import public_failure
     result = {'topic': 'etcm_relations', 'status': 'ok', 'llm_calls': 0, 'network_calls': 0}
     if request.get('error') or request.get('kind') not in LABELS:
         return {**result, 'status': 'clarification_needed',
@@ -210,11 +211,16 @@ def execute(request):
                'ingredient_detail_available': bool(os.getenv('ETCM_SOURCE_ROOT'))}
     result['relations'] = payload
     if unavailable:
-        return {**result, 'status': 'unavailable', 'message': '当前ETCM来源数据不可用，未执行关联查询。'}
+        return {**result, 'status': 'unavailable', 'message': '当前ETCM来源数据不可用，未执行关联查询。',
+                'failure':public_failure('source_unavailable','name_resolution')}
     if any(r['status']!='ok' and g.get('selection_method')!='unique_local_candidate'
            for r,g in zip(selected,groups)):
+        missing=[g['query'] for r,g in zip(selected,groups) if not r['records']]
+        failure=public_failure('name_not_found' if missing else 'ambiguous_source','name_resolution')
         return {**result, 'status': 'clarification_needed',
-                'message': '请核对并选择本次查询的ETCM来源。中文名称是候选，未自动确认身份；没有匹配项时请改用已收录拼音或来源ID。'}
+                'failure':failure,'missing_entities':missing,
+                'message':('当前目录未匹配到：'+'、'.join(missing)+'。请核对药名或使用已收录拼音/来源ID。' if missing else
+                           '请核对并选择本次查询的ETCM来源；中文名称候选尚未人工核验。')}
     records = [r['records'][0] for r in selected]
     version = selected[0]['dataset_version']
     if any(r['dataset_version'] != version for r in selected):

@@ -1,0 +1,132 @@
+{
+  "http_status": 200,
+  "response": {
+    "status": "success",
+    "response": "药用部位：SYNTHETIC_LEAF\n来源：fixture-herb.json\n\nSECOND_RESULT\nAlpha · 功能与主治：SYNTHETIC_EFFICACY\n出处：来源PDF fixture.pdf 第7页（文件与坐标见结构化证据）。\n药典提取候选，尚未完成人工审核。",
+    "agent": "fixture-herb",
+    "tcm": {
+      "status": "ok",
+      "message": "资料如下",
+      "records": [
+        {
+          "source_record_id": "fixture-herb",
+          "fields": {
+            "medicinal_part": {
+              "state": "present",
+              "value": "SYNTHETIC_LEAF"
+            }
+          },
+          "source": {
+            "relative_file_path": "fixture-herb.json"
+          }
+        }
+      ]
+    },
+    "answer_steps": [
+      {
+        "tool": "herb",
+        "result_key": "tcm_result",
+        "status": "ok",
+        "result": {
+          "status": "ok",
+          "message": "资料如下",
+          "records": [
+            {
+              "source_record_id": "fixture-herb",
+              "fields": {
+                "medicinal_part": {
+                  "state": "present",
+                  "value": "SYNTHETIC_LEAF"
+                }
+              },
+              "source": {
+                "relative_file_path": "fixture-herb.json"
+              }
+            }
+          ]
+        },
+        "route": {
+          "tool": "herb",
+          "request": {
+            "name": "Alpha",
+            "field": "medicinal_part",
+            "resolve_unique_name": true
+          },
+          "reason": "unified_request_fallback",
+          "intent_model_calls": 2,
+          "original_provider_requests": 2,
+          "understanding_replayed": false
+        },
+        "message": "FIRST_PLACEHOLDER"
+      },
+      {
+        "tool": "research",
+        "result_key": "research_result",
+        "status": "candidates",
+        "result": {
+          "status": "candidates",
+          "message": "SECOND_RESULT",
+          "tool_result": {
+            "hits": [
+              {
+                "name": "Alpha",
+                "label": "功能与主治",
+                "text": "SYNTHETIC_EFFICACY",
+                "evidence": [
+                  {
+                    "source": {
+                      "source_document": "fixture.pdf",
+                      "source_pdf_page": 7
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "route": {
+          "tool": "research",
+          "request": {
+            "question": "Alpha的功能与主治"
+          },
+          "reason": "unified_request_fallback",
+          "intent_model_calls": 2,
+          "original_provider_requests": 2,
+          "understanding_replayed": false
+        },
+        "message": "SECOND_PLACEHOLDER"
+      }
+    ],
+    "unfinished": []
+  },
+  "fixture_model_calls": 2,
+  "real_model_requests": 0,
+  "executed_routes": [
+    {
+      "tool": "herb",
+      "request": {
+        "name": "Alpha",
+        "field": "medicinal_part",
+        "resolve_unique_name": true
+      },
+      "mode": "model",
+      "reason": "unified_request_fallback",
+      "intent_model_calls": 2,
+      "original_provider_requests": 2,
+      "understanding_replayed": false
+    },
+    {
+      "tool": "research",
+      "request": {
+        "question": "Alpha的功能与主治"
+      },
+      "mode": "model",
+      "reason": "unified_request_fallback",
+      "intent_model_calls": 2,
+      "original_provider_requests": 2,
+      "understanding_replayed": false
+    }
+  ],
+  "secondary_tool_status": "candidates",
+  "scope": "real ASGI + requirements pipeline, substituted tool results"
+}

@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "real_model_requests": 0,
+  "model_understanding_evaluated": false,
+  "proposal_origin": "local owner-bound SQLite seed; existing API performs real tools",
+  "checks": [
+    "source_fingerprint",
+    "cross_source_two_steps",
+    "replay_zero_new_tools",
+    "route_injection_rejected",
+    "foreign_owner_denied",
+    "stale_proposal_rejected",
+    "container_restart",
+    "historical_read",
+    "conversation_restore",
+    "restart_replay"
+  ],
+  "source_revision": "b992c78b6d96dd3727d55fee452c280d12fd6714ff2c99d8cc09ff8a718aed71",
+  "container": "tcm-requirements-clean-completion-v1",
+  "image_id": "sha256:f1963b35ad2651b926324e4760f284a2795bf236e37f50ec156bfdc89d56ad3b"
+}
