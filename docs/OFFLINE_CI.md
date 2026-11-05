@@ -1,6 +1,8 @@
 # 离线回归与 CI
 
-更新：2026-11-05。运行规则以当前脚本和工作流为准，末尾保留首次远程验收记录。最新使用干净Python 3.11.17环境验证215模块1862项、661份Python语法检查：全量首轮仅两个旧记忆断言模块失败，按新需求更新后14项针对性复测通过，无剩余失败、跳过或网络尝试。见[首轮、复测与验证范围](../audits/conversation_scope_v1/README.md#ci依赖修复与全仓离线验证2026-11-05)。这是全量首轮加局部复测，未提交/push，不宣称远程CI已通过。
+**最新远程验收（2026-11-05）：** 实现提交`954776b`的[GitHub回归](https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/42012672920)已完整通过215模块1862项，0跳过、0网络尝试；[下载报告](../audits/conversation_scope_v1/closure_ci_remote.json)与[版本交付](../audits/conversation_scope_v1/release_closure.md)可复查。下面本地首轮和局部复测描述保留当时状态。
+
+此前本地验证（2026-11-05）：使用干净Python 3.11.17环境覆盖215模块1862项、661份Python语法检查；全量首轮仅两个旧记忆断言模块失败，按新需求更新后14项针对性复测通过，无剩余失败、跳过或网络尝试。见[首轮、复测与验证范围](../audits/conversation_scope_v1/README.md#ci依赖修复与全仓离线验证2026-11-05)。该次仅为本地全量首轮加局部复测，当时尚未提交/push；随后远程完整通过的结果见上方。运行规则以当前脚本和工作流为准，末尾保留首次远程验收记录。
 
 工程回归与业务效果分开：历史24题作者筛查中18道资料任务仅8道完整完成，见[首轮结果](BUSINESS_CLOSURE_REVIEW.md)；最新业务范围与各轮成绩见[统一大纲](TCM_PROJECT_ROADMAP.md)。评分器测试通过只说明口径可执行。
 

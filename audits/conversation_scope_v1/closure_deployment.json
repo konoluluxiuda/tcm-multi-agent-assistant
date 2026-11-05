@@ -1,0 +1,28 @@
+{
+  "implementation_commit": "954776b10019cee1f43598ebe0c695c70ff71a59",
+  "image_tag": "tcm-research-chat:closure-954776b",
+  "image_id": "sha256:619b40b9f8298a40b4ece14c4f29698a173979dfb2864afc99b5911b2f656b8e",
+  "image_revision": "954776b10019cee1f43598ebe0c695c70ff71a59",
+  "build_worktree_dirty": false,
+  "source_tree_sha256": "81290bc6fd933d6d5823086a37be43eb472e938915cd18ad24060567b1b94d97",
+  "source_verification": {
+    "mismatches": [],
+    "checked": 227
+  },
+  "models_enabled": false,
+  "result_feedback_enabled": false,
+  "environment_preserved_except_explicit_feedback_off": true,
+  "original_memory_rows_preserved": {
+    "settings": 2,
+    "conversations": 28,
+    "completed_deliveries": 28
+  },
+  "state_backup": "var/release_closure_20261105/state-backup",
+  "rollback_container": "tcm-requirements-clean-completion-v2-before-closure-954776b",
+  "data_mounts_preserved": true,
+  "health": "healthy",
+  "preset_walkthrough": "13/13",
+  "continuous_conversation": "4/4",
+  "model_calls_during_acceptance": 0,
+  "preview_stopped": true
+}

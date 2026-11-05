@@ -1,5 +1,7 @@
 # 文档导航
 
+**本轮交付已闭环（2026-11-05）：** [提交、CI与部署记录](../audits/conversation_scope_v1/release_closure.md)。实现`954776b`已推送，GitHub全量1862项及镜像构建通过，部署至7934；五类预设问题13/13、连续追问4/4，模型仍关闭。
+
 **当前收尾范围（2026-11-04）：** 只完善单药字段、多药同字段、跨来源、分页关系查询和固定模板表格五类预设问题。暂停通用列顺序、更多理解策略及扩大模型评测。见[范围、13条走查与完成标准](PRESET_QUESTION_SCOPE.md)；下方历史功能描述不扩大本轮开发范围。
 
 **当前入口（2026-11-04）：** [统一大纲与技术细节](TCM_PROJECT_ROADMAP.md)、[工具反馈理解与离线验收](../audits/requirements_feedback_v1/README.md)、[上一阶段真实结果](../audits/requirements_completion_v1/README.md)。此前[暂停交接](NEXT_SESSION_HANDOFF_20261103.md)作为历史背景。

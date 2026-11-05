@@ -1,0 +1,26 @@
+{
+  "port": 7934,
+  "cases": [
+    {
+      "question": "分别告诉我白术和黄芪的属性",
+      "status": "clarification_needed",
+      "model_calls": 0
+    },
+    {
+      "question": "分别告诉我白术和黄芪的性味",
+      "status": "success",
+      "model_calls": 0
+    },
+    {
+      "question": "给出白术和黄芪的相关信息",
+      "status": "clarification_needed",
+      "model_calls": 0
+    },
+    {
+      "question": "这两个草药的性味是什么",
+      "status": "success",
+      "model_calls": 0
+    }
+  ],
+  "status": "passed"
+}
