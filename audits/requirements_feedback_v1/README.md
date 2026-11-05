@@ -1,5 +1,7 @@
 # 有界工具反馈理解：离线验收与待执行回归
 
+> 后续进展：真实回归已执行23次，G4/8、W5/8，详见[结果与逐案审核](live_regression_result.md)。当前已开始后续源码修复，旧冻结协议不可继续用于当前工作区；下方“待执行”为准备时记录。
+
 日期：2026-11-04。新策略 `requirements_feedback_v1`（评测 W）已接聊天与工作台，默认仍为 `local_then_one_model_v1`。这是源码与离线验收；7934现有镜像仍为上一阶段版本，本轮未部署或执行真实模型请求。
 
 ## 实现与约束
@@ -29,3 +31,5 @@
 冻结模型为 api.deepseek.com / deepseek-flash，thinking关闭，temperature=0；每次1200输出token、64KiB请求、30秒、0重试，HTTP错误或未知派发停止后续组合；不上传原始语料。旧118次实测与所有中断记录保持独立。
 
 执行前需用户确认这份新调用预算；确认后先validate冻结，再用protocol对应manifest授权execute。若源码、依赖或资料变化，应新建运行目录并重新审核，不能覆盖现有manifest。即使回归改善，仍需另立未参与开发的题集，才能讨论默认策略切换。
+
+执行交接见[逐步操作手册](../../docs/REQUIREMENTS_FEEDBACK_EXECUTION_HANDOFF.md)。文档编写不构成真实调用授权。

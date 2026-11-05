@@ -57,12 +57,14 @@ class Query(Contract):
 class Goal(Contract):
     title: str = Field(default='批量资料核对', min_length=1, max_length=120)
     query: Query = Field(default_factory=Query)
-    attributes: list[str] = Field(default_factory=lambda: ['medicinal_part', 'latin_name'], min_length=1, max_length=11)
-    document_fields: list[str] = Field(default_factory=lambda: ['功能与主治', '注意'], min_length=1, max_length=4)
+    attributes: list[str] = Field(default_factory=lambda: ['medicinal_part', 'latin_name'], min_length=0, max_length=11)
+    document_fields: list[str] = Field(default_factory=lambda: ['功能与主治', '注意'], min_length=0, max_length=4)
     completion_policy: Literal['audit', 'require_all_fields'] = 'audit'
 
     @model_validator(mode='after')
     def valid(self):
+        if not self.attributes and not self.document_fields:
+            raise ValueError('Choose at least one output field')
         if not self.title.strip():
             raise ValueError('Title is blank')
         for fields, allowed in ((self.attributes, ATTRIBUTES), (self.document_fields, DOCUMENT_FIELDS)):

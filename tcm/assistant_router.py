@@ -62,6 +62,8 @@ def resolve(query, *, herb_context=None, research_context=None, pubmed_context=N
     if isinstance(relation_context,dict) and relation_context.get('kind')=='analysis_plan_focus_v1' and text in ('出处呢','查看出处','来源呢','回看分析结果','刚才的分析结果'):
         return route('assistant',{'topic':'research_plan','replay':True},'analysis_plan_replay')
     short = re.sub(r'\s+', '', text).rstrip('？?。！!')
+    if short in ('帮我查一下','请帮我查一下','查一下'):
+        return route('assistant', {'topic':'intent_clarification'}, 'missing_query_scope')
     # Consume the whole service-help question so a trailing task is not discarded.
     capability_question = re.fullmatch(
         r'(?:请问|请介绍一下|介绍一下|我想知道|我想了解)?'

@@ -159,13 +159,12 @@ class FeedbackTests(unittest.TestCase):
     def test_adapter_cannot_inject_default_columns(self):
         draft = answer()
         draft['requirements'][0]['fields'] = [{'namespace': 'etcm', 'name': 'family'}]
-        stop = {**table(draft), 'status': 'needs_input', 'requirements': [], 'unresolved': ['表格需明确字段']}
-        model = RecordingModel(table(draft), stop)
+        model = RecordingModel(table(draft), table(draft))
         result = self.run_model(model)
-        codes = [e['code'] for e in result['tool_feedback'][0]['checks']]
-        self.assertIn('table_adapter_adds_unrequested_fields', codes)
-        self.assertEqual(result['status'], 'needs_input')
-        self.assertNotIn('goal', result)
+        self.assertEqual(result['status'], 'ready')
+        self.assertEqual(result['goal']['attributes'], ['family'])
+        self.assertEqual(result['goal']['document_fields'], [])
+        self.assertEqual(model.calls, 2)
 
     def test_source_change_stops_before_next_model_request(self):
         class Sources:

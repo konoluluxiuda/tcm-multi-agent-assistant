@@ -3,7 +3,7 @@ from collections import Counter
 import hashlib
 
 from tcm.dataops.contracts import Goal, LABELS
-from tcm.dataops.data_access import canonical
+from tcm.dataops.data_access import canonical, unrequested_inspection
 from tcm.dataops.artifacts import publish
 
 
@@ -21,7 +21,8 @@ def collect(sources, goal, *, selected=None, inspections=None):
 
     for record in selected['records']:
         sid = record['source_record_id']
-        inspected = sources.inspect(record, goal.document_fields) if inspections is None else inspections[sid]
+        inspected = (inspections[sid] if inspections is not None else
+                     sources.inspect(record, goal.document_fields) if goal.document_fields else unrequested_inspection())
         trace.append({'tool': 'inspect_sources', 'source_id': sid, 'status': inspected['status']})
         row = {'source_id': sid, 'name': record['fields']['name_pinyin']['value'],
                'mapping_status': inspected['status'], 'candidates': inspected['candidates'],
@@ -34,7 +35,7 @@ def collect(sources, goal, *, selected=None, inspections=None):
             cell = inspected['fields'].get(field, {'status': inspected['status'], 'value': None, 'evidence': []})
             refs = [add_evidence(sid, 'pharmacopoeia', item) for item in cell['evidence']]
             row['cells'][field] = {'value': cell['value'], 'status': cell['status'], 'evidence_ids': refs}
-        if inspected['status'] != 'fields_consistent_not_verified':
+        if goal.document_fields and inspected['status'] != 'fields_consistent_not_verified':
             issues.append({'source_id': sid, 'field': '身份/药用部位', 'kind': inspected['status'],
                            'message': (inspected['comparison'] or {}).get('label', '未确认对应；保留候选和缺失，不自动选择。')})
         for field, cell in row['cells'].items():

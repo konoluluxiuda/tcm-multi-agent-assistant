@@ -34,7 +34,8 @@ class ResearchEngine(Engine):
 
     def eligible(self,s,sid):
         inspected=s['inspections'].get(sid)
-        if not inspected or len(inspected['candidates'])!=1 or inspected['status'] in ('unmatched','source_mismatch','ambiguous'):
+        if not inspected or (self.goal.document_fields and
+                (len(inspected['candidates'])!=1 or inspected['status'] in ('unmatched','source_mismatch','ambiguous'))):
             return False
         record=next(r for r in s['selected']['records'] if r['source_record_id']==sid)
         if any(record['fields'][f].get('state')!='present' for f in self.goal.attributes):return False
@@ -47,7 +48,7 @@ class ResearchEngine(Engine):
         inspected = s['inspections'].get(sid, {})
         status = inspected.get('status', 'not_inspected')
         reasons = []
-        if not inspected or len(inspected.get('candidates', [])) != 1 or status in ('unmatched', 'source_mismatch', 'ambiguous'):
+        if self.goal.document_fields and (not inspected or len(inspected.get('candidates', [])) != 1 or status in ('unmatched', 'source_mismatch', 'ambiguous')):
             reasons.append({'field': '来源对应', 'status': status})
         for field in self.goal.attributes:
             state = record['fields'][field].get('state', 'missing')
@@ -166,7 +167,11 @@ class ResearchEngine(Engine):
                             if old and old['status'] in ('unmatched','source_mismatch','ambiguous'):continue
                             fields=[f for f in self.goal.document_fields if not old or f not in old['fields']]
                             if old and not fields and old['status']!='candidate_selected_pending':continue
-                            reads(1);current=sources.inspect(records[sid],fields,candidate_id=s['decisions'].get(sid) or None)
+                            if not self.goal.document_fields:
+                                from tcm.dataops.data_access import unrequested_inspection
+                                current=unrequested_inspection()
+                            else:
+                                reads(1);current=sources.inspect(records[sid],fields,candidate_id=s['decisions'].get(sid) or None)
                             if old:current['fields']={**old['fields'],**current['fields']}
                             s['inspections'][sid]=current;changed.append(sid)
                         obs['inspected']=changed

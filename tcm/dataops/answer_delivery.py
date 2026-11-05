@@ -1,5 +1,7 @@
 """Owner-bound query delivery: execute once, aggregate, persist, and restore."""
 from copy import deepcopy
+from contextlib import contextmanager
+import os
 import hashlib
 import json
 from pathlib import Path
@@ -13,6 +15,24 @@ from tcm.answer_text import plain_answer
 from tcm.request_journal import RequestJournal
 from tcm.dataops import diagnostics
 from tcm.dataops.data_access import SourceChanged
+
+@contextmanager
+def bound_query_sources(provider, revision):
+    """Validate both the query databases and the release used by the proposal."""
+    with provider() as base:
+        if 'release_content_id' not in revision:
+            yield base
+            return
+        from tcm.dataops.research_sources import ReleaseSources
+        release = os.getenv('RAG_RELEASE_PATH')
+        if not release:
+            raise SourceChanged('Release-bound query requires its configured release')
+        with ReleaseSources(release) as sources:
+            if any(base.revision.get(k) != sources.revision.get(k) for k in ('dataset_version', 'sources')):
+                raise SourceChanged('Query databases differ from proposal release')
+            yield sources
+            base.assert_unchanged()
+
 
 VERSION = 'answer-delivery-v2'
 RESULT_KEYS = {'evidence_answer': 'evidence_answer', 'assistant_result': 'assistant',
@@ -151,7 +171,7 @@ def deliver_saved_query(*, root, memory, session_id, request_key, sources_provid
         signature = hashlib.sha256(json.dumps({'version': VERSION, 'proposal': proposal},
                                               ensure_ascii=False, sort_keys=True).encode()).hexdigest()
         journal = _journal(root)
-        with sources_provider() as sources:
+        with bound_query_sources(sources_provider, proposal['source_revision']) as sources:
             if sources.revision != proposal['source_revision']:
                 raise SourceChanged('Source changed since understanding')
             saved = journal.reserve(owner, request_key, signature)

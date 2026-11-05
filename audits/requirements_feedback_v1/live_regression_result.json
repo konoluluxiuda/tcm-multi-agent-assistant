@@ -1,0 +1,299 @@
+{
+  "run": "live_regression_v1",
+  "baseline": "74f2521",
+  "manifest_sha256": "64907979d098bad5f3884d06fb738aa4ca89b389eb893f783ce775d542d75884",
+  "authorization": "用户明确：完成所有阶段任务并进行记录，可以使用调用",
+  "status": "completed",
+  "exit_code": null,
+  "frozen_validation": {
+    "before": "passed",
+    "after": "passed"
+  },
+  "combinations": {
+    "expected": 16,
+    "finished": 16,
+    "interrupted": 0,
+    "not_started": 0
+  },
+  "dispatches": {
+    "G": 9,
+    "W": 14,
+    "total": 23,
+    "budget": {
+      "G": 9,
+      "W": 27,
+      "total": 36
+    }
+  },
+  "http_errors": 0,
+  "unknown_dispatches": 0,
+  "known_total_tokens": 89504,
+  "usage_unknown": 0,
+  "provider_stopped": false,
+  "business": {
+    "completed": 2,
+    "total": 6
+  },
+  "business_W": {
+    "completed": 3,
+    "total": 6
+  },
+  "boundary": {
+    "completed": 2,
+    "total": 2
+  },
+  "boundary_W": {
+    "completed": 2,
+    "total": 2
+  },
+  "efficiency": {
+    "G": {
+      "dispatches": 9,
+      "unknown_usage": 0,
+      "known_tokens": 39358,
+      "timed_cases": 8,
+      "p50_seconds": 4.44843855399813,
+      "p95_seconds": 16.47779454200645,
+      "actual_policies": [
+        "local_or_unknown",
+        "local_then_one_model_v1",
+        "unified_request_fallback"
+      ]
+    },
+    "W": {
+      "dispatches": 14,
+      "unknown_usage": 0,
+      "known_tokens": 50146,
+      "timed_cases": 8,
+      "p50_seconds": 6.542776606002008,
+      "p95_seconds": 8.45511050899222,
+      "actual_policies": [
+        "local_or_unknown",
+        "unified_request_fallback"
+      ]
+    }
+  },
+  "w_wins": [
+    "HV2-07",
+    "HV2-13"
+  ],
+  "w_losses": [
+    "HV2-20"
+  ],
+  "both_failed": [
+    "HV2-29",
+    "HV2-32"
+  ],
+  "per_scenario": [
+    {
+      "scenario_id": "HV2-01",
+      "G": {
+        "completed": true,
+        "run_status": "completed",
+        "terminal_state": "success",
+        "failures": [],
+        "public_failure_codes": []
+      },
+      "W": {
+        "completed": true,
+        "run_status": "completed",
+        "terminal_state": "success",
+        "failures": [],
+        "public_failure_codes": []
+      },
+      "evidence": "var/requirements_feedback_v1/live_regression_v1/cases/HV2-01_{G,W}/"
+    },
+    {
+      "scenario_id": "HV2-07",
+      "G": {
+        "completed": false,
+        "run_status": "completed",
+        "terminal_state": "clarification",
+        "failures": [
+          "terminal_state",
+          "objects",
+          "requirements",
+          "sources",
+          "answer_values"
+        ],
+        "public_failure_codes": []
+      },
+      "W": {
+        "completed": true,
+        "run_status": "completed",
+        "terminal_state": "success",
+        "failures": [],
+        "public_failure_codes": []
+      },
+      "evidence": "var/requirements_feedback_v1/live_regression_v1/cases/HV2-07_{G,W}/"
+    },
+    {
+      "scenario_id": "HV2-13",
+      "G": {
+        "completed": false,
+        "run_status": "completed",
+        "terminal_state": "clarification",
+        "failures": [
+          "terminal_state",
+          "objects",
+          "requirements",
+          "sources",
+          "answer_values"
+        ],
+        "public_failure_codes": []
+      },
+      "W": {
+        "completed": true,
+        "run_status": "completed",
+        "terminal_state": "success",
+        "failures": [],
+        "public_failure_codes": []
+      },
+      "evidence": "var/requirements_feedback_v1/live_regression_v1/cases/HV2-13_{G,W}/"
+    },
+    {
+      "scenario_id": "HV2-20",
+      "G": {
+        "completed": true,
+        "run_status": "completed",
+        "terminal_state": "success",
+        "failures": [],
+        "public_failure_codes": []
+      },
+      "W": {
+        "completed": false,
+        "run_status": "completed",
+        "terminal_state": "clarification",
+        "failures": [
+          "terminal_state",
+          "objects",
+          "requirements",
+          "sources"
+        ],
+        "public_failure_codes": []
+      },
+      "evidence": "var/requirements_feedback_v1/live_regression_v1/cases/HV2-20_{G,W}/"
+    },
+    {
+      "scenario_id": "HV2-29",
+      "G": {
+        "completed": false,
+        "run_status": "completed",
+        "terminal_state": "clarification",
+        "failures": [
+          "terminal_state",
+          "objects",
+          "requirements",
+          "sources",
+          "answer_values",
+          "table"
+        ],
+        "public_failure_codes": []
+      },
+      "W": {
+        "completed": false,
+        "run_status": "failed",
+        "terminal_state": "clarification",
+        "failures": [
+          "turns",
+          "execution",
+          "terminal_state",
+          "objects",
+          "requirements",
+          "sources",
+          "answer_values",
+          "table"
+        ],
+        "public_failure_codes": []
+      },
+      "evidence": "var/requirements_feedback_v1/live_regression_v1/cases/HV2-29_{G,W}/"
+    },
+    {
+      "scenario_id": "HV2-32",
+      "G": {
+        "completed": false,
+        "run_status": "completed",
+        "terminal_state": "clarification",
+        "failures": [
+          "terminal_state",
+          "objects",
+          "requirements",
+          "sources",
+          "answer_values",
+          "table"
+        ],
+        "public_failure_codes": []
+      },
+      "W": {
+        "completed": false,
+        "run_status": "completed",
+        "terminal_state": "clarification",
+        "failures": [
+          "terminal_state",
+          "objects",
+          "requirements",
+          "sources",
+          "answer_values",
+          "table"
+        ],
+        "public_failure_codes": []
+      },
+      "evidence": "var/requirements_feedback_v1/live_regression_v1/cases/HV2-32_{G,W}/"
+    },
+    {
+      "scenario_id": "HV2-35",
+      "G": {
+        "completed": true,
+        "run_status": "completed",
+        "terminal_state": "clarification",
+        "failures": [],
+        "public_failure_codes": []
+      },
+      "W": {
+        "completed": true,
+        "run_status": "completed",
+        "terminal_state": "clarification",
+        "failures": [],
+        "public_failure_codes": []
+      },
+      "evidence": "var/requirements_feedback_v1/live_regression_v1/cases/HV2-35_{G,W}/"
+    },
+    {
+      "scenario_id": "HV2-36",
+      "G": {
+        "completed": true,
+        "run_status": "completed",
+        "terminal_state": "clarification",
+        "failures": [],
+        "public_failure_codes": []
+      },
+      "W": {
+        "completed": true,
+        "run_status": "completed",
+        "terminal_state": "clarification",
+        "failures": [],
+        "public_failure_codes": []
+      },
+      "evidence": "var/requirements_feedback_v1/live_regression_v1/cases/HV2-36_{G,W}/"
+    }
+  ],
+  "limitations": [
+    "已见题回归，不是独立未见题",
+    "未证明泛化",
+    "默认策略与部署未改",
+    "W 对 HV2-29 的失败为 correction_exhausted（工具反馈纠正未形成有效需求）"
+  ],
+  "scope": "real ASGI + real local tools + real provider; private questions/answers stay in var/",
+  "real_model_requests": 23,
+  "independent_generalization_proven": false,
+  "exit_code_review": {
+    "original_reported": 0,
+    "expected_from_cli_and_scores": 1,
+    "actual_process_receipt": "not independently verified; report creation does not establish exit code"
+  },
+  "review_findings": {
+    "HV2-20_W": "initial relation completeness=all -> full_relation_read_unsupported; one request, no correction/review",
+    "HV2-29_W": "initial correct ETCM-only fields -> adapter adds unrequested document columns -> one tool correction returns needs_input with nonempty requirements -> schema rejection",
+    "HV2-32_W": "same table adapter and malformed clarification chain as HV2-29; no source value error demonstrated"
+  }
+}

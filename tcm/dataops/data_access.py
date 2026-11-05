@@ -31,6 +31,12 @@ def token(path):
                  for f in (p, Path(str(p) + '-wal')) if f.exists())
 
 
+def unrequested_inspection():
+    """A goal without document fields makes no cross-source mapping claim."""
+    return {'status': 'not_requested', 'candidates': [], 'fields': {},
+            'comparison': None, 'identity_verified': False}
+
+
 class Sources:
     def __init__(self, herbs, enrichment, index, dataset_version=None):
         self.paths = [Path(herbs).resolve(), Path(enrichment).resolve(),

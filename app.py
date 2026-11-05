@@ -570,7 +570,11 @@ def chat(
     from tcm.project_semantic import enabled as memory_enabled, memory_reference, project_listing, recall as recall_projects, store_for, owner_key
     memory_turn=(memory_enabled() or project_listing(request.query)) and memory_reference(request.query)
     semantic_fallback=(research_runtime()['question_model_enabled'] and not memory_turn and needs_fallback(request.query,selected))
-    if request.answer_mode == 'auto' and env_bool('ENABLE_DATAOPS') and (matches_dataops(request.query) or semantic_fallback):
+    from tcm.dataops.preset_requests import parse as parse_preset
+    from tcm.dataops.understanding_contract import policy as understanding_policy
+    preset = (research_runtime()['enabled'] and understanding_policy() == 'local_then_one_model_v1'
+              and parse_preset(request.query) is not None)
+    if request.answer_mode == 'auto' and env_bool('ENABLE_DATAOPS') and (matches_dataops(request.query) or semantic_fallback or preset):
         validate_dataops_origin(http_request)
         if not 1 <= len(request.query.strip()) <= 2000:
             raise HTTPException(422, '整理要求须为1–2000字符。')

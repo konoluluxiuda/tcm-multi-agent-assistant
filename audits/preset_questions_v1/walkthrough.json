@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-05",
+  "status": "passed",
+  "passed": 13,
+  "total": 13,
+  "real_model_requests": 0,
+  "mode": "real local HTTP + read-only release; models disabled",
+  "source_tree_sha256": "b741634958488602c87ac2823e1ca863d7702e88d71d4a2ff30123a57b6ac2b1",
+  "cases": [
+    {
+      "id": "Q01",
+      "status": "passed",
+      "fields_checked": 2,
+      "evidence": "exact source fields / indexed document text"
+    },
+    {
+      "id": "Q02",
+      "status": "passed",
+      "fields_checked": 2,
+      "evidence": "exact source fields / indexed document text"
+    },
+    {
+      "id": "Q03",
+      "status": "passed",
+      "fields_checked": 2,
+      "evidence": "exact source fields / indexed document text"
+    },
+    {
+      "id": "Q04",
+      "status": "passed",
+      "fields_checked": 8,
+      "evidence": "exact source fields / indexed document text"
+    },
+    {
+      "id": "Q05",
+      "status": "passed",
+      "fields_checked": 2,
+      "evidence": "exact source fields / indexed document text"
+    },
+    {
+      "id": "Q06",
+      "status": "passed",
+      "fields_checked": 2,
+      "evidence": "exact source fields / indexed document text"
+    },
+    {
+      "id": "Q07",
+      "status": "passed",
+      "returned": 20,
+      "total": 307,
+      "evidence": "first-page raw rows checked against source JSON pointers"
+    },
+    {
+      "id": "Q08",
+      "status": "passed",
+      "returned": 20,
+      "total": 302,
+      "evidence": "first-page raw rows checked against source JSON pointers"
+    },
+    {
+      "id": "Q09",
+      "status": "passed",
+      "records": 2,
+      "xlsx_sha256": "e08fbe545ebfe7ed500da584530cc8d9d8c52225a93b4a5052819e7595a5dd33"
+    },
+    {
+      "id": "Q10",
+      "status": "passed",
+      "records": 2,
+      "xlsx_sha256": "516a1814d600317fc929aa3f8a176bdba8945e7473e3989204acecf5cf778bcd"
+    },
+    {
+      "id": "B01",
+      "status": "passed"
+    },
+    {
+      "id": "B02",
+      "status": "passed"
+    },
+    {
+      "id": "B03",
+      "status": "passed"
+    }
+  ],
+  "private_evidence": "var/preset_questions_v1/final",
+  "limitations": [
+    "fixed authored templates; not unseen-language generalization",
+    "existing 7934 deployment unchanged"
+  ]
+}

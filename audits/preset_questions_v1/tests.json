@@ -1,0 +1,116 @@
+{
+  "modules": [
+    {
+      "module": "test_requirements_single_source.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0,
+      "receipt": "var/preset_questions_v1/tests/test_requirements_single_source.json"
+    },
+    {
+      "module": "test_preset_requests.py",
+      "status": "passed",
+      "total": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0,
+      "receipt": "var/preset_questions_v1/tests_complete/test_preset_requests.json"
+    },
+    {
+      "module": "test_assistant_router.py",
+      "status": "passed",
+      "total": 25,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0,
+      "receipt": "var/preset_questions_v1/tests/test_assistant_router.json"
+    },
+    {
+      "module": "test_requirements_feedback_http.py",
+      "status": "passed",
+      "total": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0,
+      "receipt": "var/preset_questions_v1/tests/test_requirements_feedback_http.json"
+    },
+    {
+      "module": "test_answer_delivery.py",
+      "status": "passed",
+      "total": 17,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0,
+      "receipt": "var/preset_questions_v1/tests/test_answer_delivery.json"
+    },
+    {
+      "module": "test_unified_request_harness.py",
+      "status": "passed",
+      "total": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0,
+      "receipt": "var/preset_questions_v1/tests/test_unified_request_harness.json"
+    },
+    {
+      "module": "test_relation_queries.py",
+      "status": "passed",
+      "total": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0,
+      "receipt": "var/preset_questions_v1/tests_final/test_relation_queries.json"
+    },
+    {
+      "module": "test_requirements_pipeline.py",
+      "status": "passed",
+      "total": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0,
+      "receipt": "var/preset_questions_v1/tests_final/test_requirements_pipeline.json"
+    },
+    {
+      "module": "test_source_choice_policy.py",
+      "status": "passed",
+      "total": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0,
+      "receipt": "var/preset_questions_v1/tests_final/test_source_choice_policy.json"
+    },
+    {
+      "module": "test_requirements_v3_http.py",
+      "status": "passed",
+      "total": 21,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "expected_failures": 0,
+      "network_attempts": 0,
+      "receipt": "var/preset_questions_v1/tests_final/test_requirements_v3_http.json"
+    }
+  ],
+  "total": 123,
+  "status": "passed"
+}

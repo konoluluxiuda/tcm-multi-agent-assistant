@@ -1,0 +1,45 @@
+{
+  "real_model_requests": 0,
+  "scope": "saved initial draft + mechanical planner + real read-only data + XLSX; not a semantic re-review or full scenario score",
+  "cases": [
+    {
+      "scenario": "HV2-29",
+      "saved_response_sha256": "89bc5148c53fe73577d00605c0388056df49ce58f89f4110953744b5711b8db2",
+      "mechanical_status": "ready",
+      "attributes": [
+        "family",
+        "medicinal_part"
+      ],
+      "document_fields": [],
+      "records": 3,
+      "validation": {
+        "status": "passed",
+        "records": 3
+      },
+      "xlsx_sha256": "571eed419a8a44443da7800ef67c3edf097f1e76abe5bd8b8b27b651b0eb8039",
+      "missing_cells": 0,
+      "saved_clarification_rejection": "clarification_has_executable_requirements"
+    },
+    {
+      "scenario": "HV2-32",
+      "saved_response_sha256": "860fb51372c1e0f9f5761f36ed7eb8b5c932c2760cf41bb650570663fcbf7836",
+      "mechanical_status": "ready",
+      "attributes": [
+        "family",
+        "flavors",
+        "meridians",
+        "properties"
+      ],
+      "document_fields": [],
+      "records": 2,
+      "validation": {
+        "status": "passed",
+        "records": 2
+      },
+      "xlsx_sha256": "3412322ee7b31cc7f8bd4b5e69bfd8c5dee770b826fed7cd9d9dad5aadc867bd",
+      "missing_cells": 0,
+      "saved_clarification_rejection": "clarification_has_executable_requirements"
+    }
+  ],
+  "relation_all_guard": "preserved; saved all request still rejected, new prompt effect not evaluated"
+}

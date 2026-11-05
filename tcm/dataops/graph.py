@@ -22,7 +22,7 @@ from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
 from tcm.dataops.artifacts import publish, verify
 from tcm.dataops.baseline import collect, validate_result
 from tcm.dataops.contracts import Goal
-from tcm.dataops.data_access import canonical, fingerprint
+from tcm.dataops.data_access import canonical, fingerprint, unrequested_inspection
 from tcm.dataops.model import ModelResponseRejected, valid_arguments
 from tcm.dataops.workspace import Conflict
 
@@ -335,8 +335,11 @@ class Engine:
                             fields = [] if tool == 'inspect_sources' else [f for f in requested if f not in old['fields']]
                             if tool == 'lookup_document_fields' and not fields:
                                 continue
-                            reads(1)
-                            current = sources.inspect(record, fields, candidate_id=s['decisions'].get(sid) or None)
+                            if not s['goal']['document_fields']:
+                                current = unrequested_inspection()
+                            else:
+                                reads(1)
+                                current = sources.inspect(record, fields, candidate_id=s['decisions'].get(sid) or None)
                             if old:
                                 current['fields'] = {**old['fields'], **current['fields']}
                             s['inspections'][sid] = current

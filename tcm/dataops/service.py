@@ -161,6 +161,7 @@ class DataOpsService:
                     'query_coverage_code':fingerprint(Path(__file__).with_name('query_coverage.py')),
                     'semantic_regex_guards':runtime['semantic_regex_guards'],
                     'request_policy':fingerprint(Path(__file__).with_name('request_policy.py')),
+                    'preset_requests':fingerprint(Path(__file__).with_name('preset_requests.py')),
                     'query_policy':fingerprint(Path(__file__).parents[1]/'intent_planner.py') if allow_queries else None,
                     'requirements_v2':fingerprint(Path(__file__).with_name('requirements_v2.py')),
                     'requirements_planner':fingerprint(Path(__file__).with_name('requirements_planner.py')),
@@ -182,6 +183,11 @@ class DataOpsService:
                     except QuestionNeedsInput as exc:
                         diagnostic.record('name_resolution','needs_input',code='unverified_name_variant')
                         proposal=needs(body.question,str(exc));catalog={}
+                    if proposal is None and parent is None and understanding_policy=='local_then_one_model_v1':
+                        from tcm.dataops.preset_requests import proposal as preset_proposal
+                        proposal=preset_proposal(body.question,catalog)
+                        if proposal and proposal['status']=='query':
+                            proposal['source_revision']=sources.revision
                     if proposal is None and understanding_policy=='requirements_feedback_v1':
                         from tcm.request_boundaries import unsupported_requirement,personal_treatment_request
                         if unsupported_requirement(body.question) or personal_treatment_request(body.question):

@@ -91,12 +91,16 @@ Delivery = Annotated[Union[AnswerDelivery, TableDelivery], Field(discriminator='
 
 
 class RequirementsDraftV2(BaseModel):
-    model_config = ConfigDict(extra='forbid', strict=True)
+    model_config = ConfigDict(extra='forbid', strict=True, json_schema_extra={
+        'allOf': [{'if': {'properties': {'status': {'const': 'needs_input'}}, 'required': ['status']},
+                   'then': {'properties': {'requirements': {'maxItems': 0},
+                                           'unresolved': {'minItems': 1}}, 'required': ['unresolved']}}]})
     version: Literal['requirements-v2'] = 'requirements-v2'
     status: Literal['ready', 'needs_input']
     operation: Literal['new', 'append_fields']
     objects: list[ObjectRef] = Field(default_factory=list, max_length=20)
-    requirements: list[Requirement] = Field(default_factory=list, max_length=8)
+    requirements: list[Requirement] = Field(default_factory=list, max_length=8,
+        description='ready时填写可执行需求；needs_input时必须为空数组，未满足的原要求写入unresolved。')
     delivery: Delivery
     unresolved: list[str] = Field(default_factory=list, max_length=8)
 

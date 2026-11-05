@@ -341,11 +341,8 @@ def to_research_goal(bound: BoundRequirementsV2) -> dict:
         monograph_only = False
     if mode == 'select_complete' and target_count is None:
         raise ValueError('top_n requires count')
-    if mode == 'audit_named':
-        attributes = attributes or ['medicinal_part']
-        document_fields = document_fields or ['功能与主治', '注意']
-    elif not attributes or not document_fields:
-        raise ValueError('filtering modes require explicit ETCM attribute and pharmacopoeia fields')
+    if not attributes and not document_fields:
+        raise ValueError('Table requires at least one explicit output field')
     goal = {
         'title': '问句资料核对',
         'query': query,
