@@ -54,6 +54,8 @@ def execute(service, memory, session_id, question, *, request_key=None, history_
     key = request_key or uuid4().hex
     with session_turn(session_id):
         snapshot = memory.load(session_id)
+        from tcm.dataops.conversation_scope import prepare
+        conversation = prepare(question, snapshot)
         store = service.store()
         existing = store.by_request(owner, key)
         if existing:
@@ -78,7 +80,7 @@ def execute(service, memory, session_id, question, *, request_key=None, history_
             result=None
             try:
                 async def submit():
-                    return await service.submit_research_question(owner,body,allow_queries=True) if research else await service.submit(owner,body)
+                    return await service.submit_research_question(owner,body,allow_queries=True,conversation=conversation) if research else await service.submit(owner,body)
                 result = anyio.from_thread.run(submit)
                 if result.get('proposal',{}).get('status')=='query':
                     proposal=result['proposal'];calls=proposal['external_model_calls']
@@ -105,13 +107,15 @@ def execute(service, memory, session_id, question, *, request_key=None, history_
                           'replayed':bool(result and result.get('replayed')),
                           'understanding_requests_this_submission':0 if result and result.get('replayed') else
                               exc.proposal.get('external_model_calls',0)}
+        if any(getattr(m, 'additional_kwargs', {}).get('dataops_request_key') == key for m in snapshot.messages):
+            return output
         context = deepcopy(snapshot.tcm_context)
         if output.get('workspace_id'):
             if not isinstance(context, dict) or context.get('kind') != 'agent_contexts_v1':
                 context = {'kind': 'agent_contexts_v1', 'herb': context, 'research': None,
                            'pubmed': None, 'relation': None}
             context['dataops'] = {'kind': 'dataops_chat_v1', 'workspace_id': output['workspace_id']}
-        messages = snapshot.messages + [HumanMessage(content=question),
+        messages = snapshot.messages + [HumanMessage(content=question, additional_kwargs={'query_scope': conversation}),
             AIMessage(content=output['message'], additional_kwargs={'dataops_card': output, 'dataops_request_key': key})]
         memory.save(session_id, messages[-history_limit:], context, revision=snapshot.revision)
         return output

@@ -6,7 +6,11 @@
 
 执行交接：[工具反馈回归操作手册](REQUIREMENTS_FEEDBACK_EXECUTION_HANDOFF.md)（含零调用检查、授权后命令、停止条件和报告模板）。
 
-**最新状态（2026-11-05）：** [预设问题走查](../audits/preset_questions_v1/README.md)13/13通过，123项针对性回归通过，模型调用0次；7934已更新并通过同一13项部署验收。固定范围交付已完成，不扩展Agent策略。
+**真实反馈验证（2026-11-05）：** [真实调用记录](../audits/conversation_scope_v1/live_feedback_result.json)15/16次，首测3/4，失败修复后单案通过；尚未证明优于本地规则，默认部署不变。
+
+**连续对话增量（2026-11-05）：** [会话上下文与feedback衔接](../audits/conversation_scope_v1/README.md)补充未成功请求记忆、两药性味及代词追问；140项受影响测试通过。
+
+**预设范围交付（2026-11-05）：** [预设问题走查](../audits/preset_questions_v1/README.md)13/13通过，123项针对性回归通过，模型调用0次；7934已更新并通过同一13项部署验收。固定范围交付已完成，不扩展Agent策略。
 
 **最新入口（2026-11-01）：** 7921已接统一理解V2，普通问句先理解、参数与资料需求分别校验，最多2次请求，fixed执行；7920本地。离线与保存提案验证已完成，真实新策略收益待验收。见[实现与回滚](../audits/understanding_v2/README.md)、[使用说明](NEW_USER_GUIDE.md)及[统一大纲](TCM_PROJECT_ROADMAP.md)。以下保留各阶段历史口径。
 

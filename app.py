@@ -572,8 +572,10 @@ def chat(
     semantic_fallback=(research_runtime()['question_model_enabled'] and not memory_turn and needs_fallback(request.query,selected))
     from tcm.dataops.preset_requests import parse as parse_preset
     from tcm.dataops.understanding_contract import policy as understanding_policy
+    from tcm.dataops.conversation_scope import REFERENCE
     preset = (research_runtime()['enabled'] and understanding_policy() == 'local_then_one_model_v1'
-              and parse_preset(request.query) is not None)
+              and (parse_preset(request.query) is not None or
+                   REFERENCE.fullmatch(request.query.strip().rstrip('。.!！?？')) is not None))
     if request.answer_mode == 'auto' and env_bool('ENABLE_DATAOPS') and (matches_dataops(request.query) or semantic_fallback or preset):
         validate_dataops_origin(http_request)
         if not 1 <= len(request.query.strip()) <= 2000:
@@ -660,7 +662,14 @@ def chat(
             raise HTTPException(status_code=422, detail='AI整理问题须为1–1000字符。')
     if mode=='auto' and env_bool('RESEARCH_TOOLS_ONLY') and selected is None and not (
             can_auto_plan(request.query) or can_plan_intent(request.query)):
-        raise HTTPException(status_code=403, detail='此部署支持资料查询。可问“你能做什么”“有多少药材”“黄芪有什么作用”；也可使用 /herb、/research 或资料核对工作台。')
+        session_id = session_cookie(session_id)
+        from tcm.dataops.conversation_scope import remember_unhandled
+        message='此部署支持资料查询。可问“你能做什么”“有多少药材”“黄芪有什么作用”；也可使用 /herb、/research 或资料核对工作台。'
+        remember_unhandled(agent_runtime.memory, session_id, request.query, message,
+                           request_key=request.request_key, history_limit=config.max_conversation_history)
+        cookie_response=Response();set_session_cookie(cookie_response,session_id)
+        raise HTTPException(status_code=403, detail=message,
+            headers={'Set-Cookie':cookie_response.headers['set-cookie'],'Cache-Control':'no-store'})
     # Generate session ID for cookie if it doesn't exist
     session_id = session_cookie(session_id)
     diagnostic.bind(os.getenv('DATAOPS_ROOT') or agent_runtime.memory.path.with_name('dataops'),

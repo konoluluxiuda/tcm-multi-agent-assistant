@@ -128,7 +128,11 @@ def read_answer(root, owner, key):
     saved = _journal(root).get(owner, key)
     if saved is None:
         raise KeyError('No completed delivery')
-    return {**deepcopy(saved['answer']), 'replayed': True, 'model_calls': 0,
+    answer=deepcopy(saved['answer'])
+    if answer.get('result_feedback'):
+        answer['result_feedback']['requests_this_submission']=0
+    return {**answer, 'replayed': True, 'model_calls': 0,
+            'result_feedback_requests_this_submission':0,
             'understanding_requests_this_submission': 0, 'tool_calls_this_submission': 0,
             'counts_scope': 'this_submission'}
 
@@ -146,8 +150,10 @@ def _commit(memory, session_id, key, saved, history_limit):
             context[key_name] = values[0] if all(v == values[0] for v in values) else None
     answer = saved['answer']
     summary = f"查询{ {'success':'完成','partial':'部分完成','unavailable':'未完成'}[answer['status']]}，共{len(answer['answer_steps'])}项；完整结果与出处已保存。"
-    messages = snapshot.messages + [HumanMessage(content=saved['question']), AIMessage(content=summary,
-        additional_kwargs={'answer_delivery_key': key})]
+    if answer.get('result_feedback',{}).get('action') in ('clarify','stop'):
+        summary += ' 执行后复核要求澄清或停止，详见保存结果。'
+    messages = snapshot.messages + [HumanMessage(content=saved['question'], additional_kwargs={'query_scope': saved.get('conversation_context', {})}), AIMessage(content=summary,
+        additional_kwargs={'answer_delivery_key': key,'result_feedback':answer.get('result_feedback')})]
     return memory.save(session_id, messages[-history_limit:], context, revision=snapshot.revision,
                        turn_key='answer:' + key)
 
@@ -184,13 +190,25 @@ def deliver_saved_query(*, root, memory, session_id, request_key, sources_provid
                 answer.update(agent='资料查询', request_key=request_key, source_revision=sources.revision,
                               original_provider_requests=proposal.get('external_model_calls', 0),
                               tool_calls_total=len(routes), delivery_version=VERSION)
-                saved = {'answer': answer, 'question': question, 'contexts': contexts}
+                saved = {'answer': answer, 'question': question, 'contexts': contexts,
+                         'conversation_context': proposal.get('conversation_context', {})}
                 # Persist before committing memory. save(turn_key=...) makes recovery
                 # after either write idempotent, including after history truncation.
                 journal.complete(owner, request_key, saved)
-            _commit(memory, session_id, request_key, saved, history_limit)
         diagnostics.record('answer_delivery', 'replayed' if replayed else 'completed',
                            step_count=len(routes), result_status=saved['answer']['status'])
-        return {**deepcopy(saved['answer']), 'replayed': replayed,
-                'model_calls': understanding_calls, 'understanding_requests_this_submission': understanding_calls,
+        delivered=deepcopy(saved.get('execution_answer',saved['answer']))
+        execution_answer=deepcopy(delivered)
+        review_calls=0
+        if proposal.get('result_feedback_enabled'):
+            from tcm.dataops.result_feedback import review, attach
+            decision=review(root=root,owner=owner,key=request_key,proposal=proposal,answer=delivered)
+            review_calls=decision['requests_this_submission']
+            delivered=attach(delivered,decision)
+            delivered['original_provider_requests']+=decision['provider_requests']
+        journal.complete(owner,request_key,{**saved,'answer':delivered,'execution_answer':execution_answer})
+        _commit(memory,session_id,request_key,{**saved,'answer':delivered},history_limit)
+        return {**delivered, 'replayed': replayed,
+                'model_calls': understanding_calls+review_calls, 'understanding_requests_this_submission': understanding_calls,
+                'result_feedback_requests_this_submission':review_calls,
                 'tool_calls_this_submission': 0 if replayed else len(routes), 'counts_scope': 'this_submission'}

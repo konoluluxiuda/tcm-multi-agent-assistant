@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-05",
+  "status": "passed",
+  "passed": 13,
+  "total": 13,
+  "real_model_requests": 0,
+  "mode": "real local HTTP + read-only release; models disabled",
+  "source_tree_sha256": "1b5472eed020be3434a25ae9e61bb5d65c82b24f635c1a2581f08cd06f8719e0",
+  "cases": [
+    {
+      "id": "Q01",
+      "status": "passed",
+      "fields_checked": 2,
+      "evidence": "exact source fields / indexed document text"
+    },
+    {
+      "id": "Q02",
+      "status": "passed",
+      "fields_checked": 2,
+      "evidence": "exact source fields / indexed document text"
+    },
+    {
+      "id": "Q03",
+      "status": "passed",
+      "fields_checked": 2,
+      "evidence": "exact source fields / indexed document text"
+    },
+    {
+      "id": "Q04",
+      "status": "passed",
+      "fields_checked": 8,
+      "evidence": "exact source fields / indexed document text"
+    },
+    {
+      "id": "Q05",
+      "status": "passed",
+      "fields_checked": 2,
+      "evidence": "exact source fields / indexed document text"
+    },
+    {
+      "id": "Q06",
+      "status": "passed",
+      "fields_checked": 2,
+      "evidence": "exact source fields / indexed document text"
+    },
+    {
+      "id": "Q07",
+      "status": "passed",
+      "returned": 20,
+      "total": 307,
+      "evidence": "first-page raw rows checked against source JSON pointers"
+    },
+    {
+      "id": "Q08",
+      "status": "passed",
+      "returned": 20,
+      "total": 302,
+      "evidence": "first-page raw rows checked against source JSON pointers"
+    },
+    {
+      "id": "Q09",
+      "status": "passed",
+      "records": 2,
+      "xlsx_sha256": "b0c12edcfe8ad9a3632acd0796c05a4593cf0a80e407829f1ba844f0962d3a2e"
+    },
+    {
+      "id": "Q10",
+      "status": "passed",
+      "records": 2,
+      "xlsx_sha256": "e65d83d6f0a34d5dd1150b006e32e1ec3e22608f93bf42308d54848df9e16503"
+    },
+    {
+      "id": "B01",
+      "status": "passed"
+    },
+    {
+      "id": "B02",
+      "status": "passed"
+    },
+    {
+      "id": "B03",
+      "status": "passed"
+    }
+  ],
+  "private_evidence": "var/preset_questions_v1/conversation_7934",
+  "limitations": [
+    "fixed authored templates; not unseen-language generalization",
+    "7934 conversation repair deployed; external models disabled"
+  ]
+}

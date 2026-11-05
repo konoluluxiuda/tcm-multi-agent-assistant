@@ -73,15 +73,22 @@ class DeploymentTests(unittest.TestCase):
             self.assertEqual(response.status_code,503);self.assertNotIn(str(root),response.text)
         self.assertFalse(missing.exists())
 
-    def test_restricted_profile_blocks_general_chat_before_model_or_memory(self):
+    def test_restricted_profile_remembers_chat_rejection_without_calling_provider(self):
         with patch.dict('os.environ', {'RESEARCH_TOOLS_ONLY': '1'}), \
-             patch.object(self.app, 'process_query', side_effect=AssertionError('provider path reached')), \
-             patch.object(self.app, 'session_cookie', side_effect=AssertionError('memory mutated')):
+             patch.object(self.app, 'process_query', side_effect=AssertionError('provider path reached')):
             response = self.client.post('/chat', json={'query': 'hello'})
-            self.assertEqual(response.status_code, 403)
+            self.assertEqual(response.status_code, 403, response.text)
             self.assertIn('/research', response.json()['detail'])
+            self.assertEqual(self.client.get('/conversation').json()['messages'],[
+                {'role':'user','content':'hello'},
+                {'role':'assistant','content':response.json()['detail']},
+            ])
+            cookie=self.client.cookies.get(self.app.SESSION_COOKIE_NAME)
+            saved=self.app.agent_runtime.memory.load(cookie)
+            self.assertEqual(saved.messages[-1].additional_kwargs['status'],'not_executed')
             for route in ('/validate', '/upload', '/transcribe', '/generate-speech'):
                 self.assertEqual(self.client.post(route, json={}).status_code, 403, route)
+            self.assertEqual(self.app.agent_runtime.memory.load(cookie).revision,saved.revision)
             html = self.client.get('/').text
             self.assertIn('中草药证据研究', html); self.assertNotIn('Computer Vision Agents', html)
 

@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-05",
+  "status": "passed",
+  "image": "tcm-research-chat:conversation-20261105",
+  "image_id": "sha256:eb75156723fb0beaeba37302dd6244cc70a3c1d61d9cfcce039e024181b97010",
+  "health": "healthy",
+  "source_tree_sha256": "1b5472eed020be3434a25ae9e61bb5d65c82b24f635c1a2581f08cd06f8719e0",
+  "verified_files": 226,
+  "original_rows_preserved": {
+    "settings": 2,
+    "conversations": 15,
+    "completed_deliveries": 17
+  },
+  "real_model_calls": 0,
+  "conversation_walkthrough": {
+    "port": 7934,
+    "cases": [
+      {
+        "question": "分别告诉我白术和黄芪的属性",
+        "status": "clarification_needed",
+        "model_calls": 0
+      },
+      {
+        "question": "分别告诉我白术和黄芪的性味",
+        "status": "success",
+        "model_calls": 0
+      },
+      {
+        "question": "给出白术和黄芪的相关信息",
+        "status": "clarification_needed",
+        "model_calls": 0
+      },
+      {
+        "question": "这两个草药的性味是什么",
+        "status": "success",
+        "model_calls": 0
+      }
+    ],
+    "status": "passed"
+  },
+  "preset_cases_passed": 13,
+  "backup_container": "tcm-requirements-clean-completion-v2-before-conversation-20261105",
+  "private_evidence": "var/conversation_scope_v1"
+}

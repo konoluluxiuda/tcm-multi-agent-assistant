@@ -45,16 +45,22 @@ class AutoRoutingTests(unittest.TestCase):
             self.assertEqual(result['routing']['mode'],'explicit')
             self.assertNotIn('evidence_answer',result)
 
-    def test_disabled_or_real_source_mode_keeps_unmatched_input_before_memory(self):
+    def test_disabled_or_real_source_mode_remembers_rejection_without_model(self):
         import app
         for change in ({'ENABLE_EVIDENCE_AUTO_ROUTING':'0'}, {'ENABLE_EVIDENCE_ASSISTANT':'0'},
                        {'ENABLE_NATURAL_ROUTING':'0'}, {'EVIDENCE_ASSISTANT_DATA_MODE':'local_sources'}):
             with self.subTest(change=change), patch.dict('os.environ',{**FLAGS,**change}), \
                  TestClient(app.app) as client, \
-                 patch.object(app,'session_cookie',side_effect=AssertionError('memory reached')), \
                  patch.object(app,'process_query',side_effect=AssertionError('model reached')):
                 response=client.post('/chat',json={'query':'示例草的使用风险？'})
-                self.assertEqual(response.status_code,403)
+                self.assertEqual(response.status_code,403,response.text)
+                self.assertEqual(response.headers['cache-control'],'no-store')
+                self.assertEqual(client.get('/conversation').json()['messages'],[
+                    {'role':'user','content':'示例草的使用风险？'},
+                    {'role':'assistant','content':response.json()['detail']},
+                ])
+                snapshot=app.agent_runtime.memory.load(client.cookies.get(app.SESSION_COOKIE_NAME))
+                self.assertEqual(snapshot.messages[-1].additional_kwargs['status'],'not_executed')
 
     def test_unknown_command_and_over_budget_text_never_auto_plan(self):
         import app

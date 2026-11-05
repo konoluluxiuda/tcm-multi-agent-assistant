@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-05",
+  "status": "passed_after_targeted_repairs",
+  "scope": "One full offline run followed by targeted reruns of the only two changed test modules; not a second full run or a remote GitHub result.",
+  "baseline_commit": "5f1ee009dc04b9a1b7d7f5e23bb9c83b1ec9968c",
+  "worktree_dirty": true,
+  "environment": {
+    "python": "3.11.17",
+    "clean_venv": true,
+    "system_site_packages": false,
+    "test_container_networks": [],
+    "pip_check": "passed",
+    "requirements": "requirements-ci.txt",
+    "requirements_sha256": "944108fef3d9bccbf8506465513a489938237200bd5ed550af6e59bb999b9f5e",
+    "pip_freeze_sha256": "9c37a32f0dadfe59653b90c704b1fe96403e72a31ee7d130fbb9c80d8e6efd59"
+  },
+  "dependencies_added": {
+    "numpy": "1.26.4",
+    "qdrant-client": "1.20.0",
+    "psycopg[binary]": "3.2.6"
+  },
+  "first_full_run": {
+    "status": "failed",
+    "exit_code": 1,
+    "modules": 215,
+    "total": 1862,
+    "syntax_files": 661,
+    "failed_modules": 2,
+    "assertion_failures": 5,
+    "report": "ci_first_run.json"
+  },
+  "repair": {
+    "reason": "Legacy tests prohibited memory persistence for rejected chat requests; updated to the user-requested retention contract, preserving 403 and no-provider assertions. Application implementation unchanged during CI verification.",
+    "total": 14,
+    "report": "ci_repair_tests.json",
+    "changed_tests": {
+      "tests/test_evidence_auto_routing.py": {
+        "first_sha256": "7e231ddb9507dbecfa3e74d6db3c01746c0981cf1cf69fe2532e16c9cfde1a18",
+        "final_sha256": "b41fdd6513cd8e8349807ec42dffb73ee993dd3a752bf98ac3a912bd3b34d31a"
+      },
+      "tests/test_research_deployment.py": {
+        "first_sha256": "9af6be7e8412949819974a86e890805ca128157fbfd1b92a012ebbb811975b46",
+        "final_sha256": "799e557ac22ea4b3f0f41891df46dcca0e95e338a0b132c3b4153c9660eb0a54"
+      }
+    }
+  },
+  "verified_coverage": {
+    "unique_tests": 1862,
+    "modules": 215,
+    "remaining_failed_modules": 0,
+    "skipped": 0,
+    "network_attempts": 0,
+    "external_model_calls": 0
+  },
+  "previous_github_errors": {
+    "test_rag_retrieval.py": "passed",
+    "test_runtime_backup.py": "passed"
+  },
+  "raw_evidence": "var/ci_clean_20261105/",
+  "source_manifest_sha256": "c4342e8b39172e5e4989c908a6e8d4a285cdc7afb0d93347e66b53f302567b25",
+  "limits": [
+    "No remote workflow triggered or verified.",
+    "No real corpus or provider acceptance in this offline run.",
+    "No deployment, Git commit or push.",
+    "Existing 7934 service unchanged; execution-result feedback remains opt-in and source-only."
+  ]
+}

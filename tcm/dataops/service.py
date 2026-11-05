@@ -125,7 +125,7 @@ class DataOpsService:
         self.worker.start()
         return result
 
-    async def submit_research_question(self,owner,body,*,allow_queries=False):
+    async def submit_research_question(self,owner,body,*,allow_queries=False,conversation=None):
         """Shared local-first understanding, at most one paid call per key."""
         def action():
             import hashlib
@@ -154,9 +154,15 @@ class DataOpsService:
                 if parent and (parent['revision']!=body.expected_revision or parent['source_revision']!=sources.revision):
                     raise Conflict('Parent/source version changed')
                 journal=RequestJournal(store.root/'question_proposals.sqlite3',label='任务解析')
+                previous=journal.get(owner,body.request_key)
+                context=(previous or {}).get('conversation_context', conversation) or {}
+                effective_question=context.get('resolved_question',body.question)
                 signature=hashlib.sha256(canonical({'body':body.model_dump(),'sources':sources.revision,
+                    'conversation_context':context,
+                    'conversation_scope':fingerprint(Path(__file__).with_name('conversation_scope.py')),
                     'compiler':VERSION,'code':fingerprint(Path(__file__).with_name('research_question.py')),
                     'policy':understanding_policy,'allow_queries':allow_queries,
+                    'result_feedback_enabled':os.getenv('ENABLE_DATAOPS_RESULT_FEEDBACK')=='1',
                     'requirements_code':fingerprint(Path(__file__).with_name('understanding_contract.py')),
                     'query_coverage_code':fingerprint(Path(__file__).with_name('query_coverage.py')),
                     'semantic_regex_guards':runtime['semantic_regex_guards'],
@@ -178,14 +184,16 @@ class DataOpsService:
                                   allow_model=allow_model,allow_queries=allow_queries,compiler=VERSION)
                 if proposal is None:
                     try:
-                        catalog=bounded_catalog(body.question,sources.name_catalog(),parent)
+                        catalog=bounded_catalog(effective_question,sources.name_catalog(),parent)
                         diagnostic.record('name_resolution','resolved',matched_catalog=catalog,parent_bound=bool(parent))
                     except QuestionNeedsInput as exc:
                         diagnostic.record('name_resolution','needs_input',code='unverified_name_variant')
                         proposal=needs(body.question,str(exc));catalog={}
+                    if proposal is None and context.get('needs_context'):
+                        proposal=needs(body.question,'请明确这次指的是哪些药材；当前会话没有数量一致的对象范围。')
                     if proposal is None and parent is None and understanding_policy=='local_then_one_model_v1':
                         from tcm.dataops.preset_requests import proposal as preset_proposal
-                        proposal=preset_proposal(body.question,catalog)
+                        proposal=preset_proposal(effective_question,catalog)
                         if proposal and proposal['status']=='query':
                             proposal['source_revision']=sources.revision
                     if proposal is None and understanding_policy=='requirements_feedback_v1':
@@ -213,7 +221,7 @@ class DataOpsService:
                                 if feedback_enabled:
                                     from tcm.dataops.requirements_feedback import run_requirements_feedback
                                     pipeline=run_requirements_feedback(model,body.question,catalog,parent=parent,
-                                                                       sources=sources,authorized=True)
+                                                                       sources=sources,authorized=True,conversation=context)
                                 else:
                                     pipeline=run_requirements_v3(model,body.question,catalog,parent=parent,authorized=True)
                             except SourceProbeFailed:
@@ -283,6 +291,9 @@ class DataOpsService:
                                                   'model_fallback_used':proposal['external_model_calls']>0}
                     if proposal.get('status') == 'query':
                         proposal.update(question=body.question, source_revision=sources.revision)
+                    proposal['result_feedback_enabled']=(proposal.get('status')=='query' and allow_model and understanding_policy=='requirements_feedback_v1'
+                        and os.getenv('ENABLE_DATAOPS_RESULT_FEEDBACK')=='1')
+                    proposal['conversation_context']=context
                     sources.assert_unchanged();journal.complete(owner,body.request_key,proposal)
                 diagnostic.record('understanding_result','returned',proposal=proposal,replayed=replayed)
                 if proposal['status']!='ready':return {'proposal':proposal,'replayed':replayed}

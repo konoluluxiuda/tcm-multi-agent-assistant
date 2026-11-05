@@ -12,18 +12,20 @@ FIELDS = {
 def parse(question):
     if not isinstance(question, str) or len(question) > 500:
         return None
-    text = question.strip().rstrip('。.!！?？')
-    match = re.fullmatch(r'(?:查看|查询|分别告诉我|分别查询|把)(.+?)的(.+)', text)
-    if not match:
+    from tcm.dataops.conversation_scope import subject
+    parsed = subject(question)
+    if parsed is None:
         return None
-    names = re.split(r'[、和与]', match[1])
-    if not 1 <= len(names) <= 5 or len(set(names)) != len(names):
-        return None
-    if any(not re.fullmatch(r'[\u4e00-\u9fffA-Za-z]{2,30}', n) for n in names):
-        return None
+    names, body = parsed
     objects = [{'ref': f'o{i+1}', 'mention': n} for i,n in enumerate(names)]
     refs = [o['ref'] for o in objects]
-    body = match[2]
+    body = re.sub(r'(?:是什么|有哪些)$', '', body)
+    if body in ('属性', '相关信息', '信息'):
+        return RequirementsDraftV2(status='needs_input', operation='new', objects=objects,
+            requirements=[], delivery={'form':'answer'},
+            unresolved=['已记下'+ '、'.join(names)+'。需要哪些资料？可问性味、归经、科名、药用部位或药典功能与主治。'])
+    if body in ('性味', '归经', '科名', '药用部位'):
+        body = 'ETCM' + body
     relation = re.fullmatch(r'(成分|靶点)记录[，,]先显示一页', body)
     if relation and len(names) == 1:
         requirements = [{'id':'r1','kind':'relation','object_refs':refs,
@@ -73,6 +75,8 @@ def proposal(question, catalog):
         return None
     from tcm.dataops.requirements_pipeline import prepare_requirements
     from tcm.dataops.research_question import needs
+    if draft.status == 'needs_input':
+        return needs(question, '；'.join(draft.unresolved), compiler='preset_local_v1', calls=0)
     result = prepare_requirements(draft, catalog)
     if result['status'] != 'ready':
         return needs(question,'请核对完整药名及唯一来源；当前模板无法完整执行这些字段。',

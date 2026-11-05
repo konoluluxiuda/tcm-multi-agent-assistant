@@ -1,0 +1,260 @@
+{
+  "date": "2026-11-05",
+  "status": "completed_with_recorded_failures_and_repairs",
+  "model": "deepseek-flash",
+  "actual_requests": 15,
+  "maximum_requests": 16,
+  "known_tokens": 45953,
+  "http_errors": 0,
+  "unknown_dispatches": 0,
+  "usage_unknown": 0,
+  "first_pass": {
+    "passed": 3,
+    "total": 4,
+    "cases": [
+      {
+        "id": "C01",
+        "status": "passed",
+        "provider_requests": 2,
+        "clarification_kind": "semantic_disagreement; objects retained"
+      },
+      {
+        "id": "C02",
+        "status": "passed",
+        "provider_requests": 3,
+        "review": "finish",
+        "replay_added_requests": 0
+      },
+      {
+        "id": "C03",
+        "question": "给出白术和黄芪的相关信息",
+        "http_status": 200,
+        "provider_requests": 2,
+        "actual_status": "success",
+        "review": null,
+        "status": "passed"
+      },
+      {
+        "id": "C04",
+        "question": "这两个草药的性味是什么",
+        "http_status": 200,
+        "provider_requests": 3,
+        "actual_status": "partial",
+        "review": {
+          "status": "reviewed",
+          "action": "clarify",
+          "step_ids": [
+            "s3",
+            "s6"
+          ],
+          "provider_requests": 1,
+          "usage": {
+            "input_tokens": 1174,
+            "output_tokens": 58,
+            "total_tokens": 1232
+          },
+          "usage_known": true,
+          "requests_this_submission": 1
+        },
+        "status": "failed",
+        "error_type": "AssertionError"
+      }
+    ],
+    "session_layout": "C01/C02 one session; C03/C04 a second session after harness interruption; not one uninterrupted four-turn run"
+  },
+  "repair_checks": {
+    "C04": {
+      "id": "C04",
+      "question": "这两个草药的性味是什么",
+      "http_status": 200,
+      "provider_requests": 3,
+      "actual_status": "success",
+      "review": {
+        "status": "reviewed",
+        "action": "finish",
+        "step_ids": [],
+        "provider_requests": 1,
+        "usage": {
+          "input_tokens": 1095,
+          "output_tokens": 51,
+          "total_tokens": 1146
+        },
+        "usage_known": true,
+        "requests_this_submission": 1
+      },
+      "replay_added_requests": 0,
+      "status": "passed"
+    },
+    "saved_document_initial": {
+      "id": "D01",
+      "status": "failed",
+      "kind": "live review of saved C04 tool results; no tool reexecution",
+      "review": {
+        "status": "rejected",
+        "action": "stop",
+        "step_ids": [],
+        "provider_requests": 1,
+        "usage": {
+          "input_tokens": 1386,
+          "output_tokens": 51,
+          "total_tokens": 1437
+        },
+        "usage_known": true,
+        "requests_this_submission": 1
+      },
+      "provider_requests": 1
+    },
+    "saved_document_final": {
+      "date": "2026-11-05",
+      "status": "passed",
+      "review": {
+        "status": "reviewed",
+        "action": "finish",
+        "step_ids": [],
+        "provider_requests": 1,
+        "usage": {
+          "input_tokens": 1334,
+          "output_tokens": 51,
+          "total_tokens": 1385
+        },
+        "usage_known": true,
+        "requests_this_submission": 1
+      },
+      "actual_requests": 1,
+      "tokens": 1385,
+      "requests": [
+        {
+          "stage": "D01-repaired",
+          "number": 1,
+          "outcome": "response",
+          "request_bytes": 4474,
+          "http_status": 200,
+          "tokens": 1385
+        }
+      ],
+      "frozen_inputs_unchanged": true,
+      "provider_stopped": false,
+      "deployment_changed": false,
+      "kind": "saved-tool-result review; no fresh tool execution"
+    }
+  },
+  "harness_interruption": "FileExistsError writing second progress snapshot with exclusive-create save helper",
+  "repairs": [
+    "Default unqualified properties/flavors uses ETCM; explicit source requests still respected",
+    "Document observations include canonical requested fields, excerpt/evidence presence and correct candidates semantics; no raw text"
+  ],
+  "final_source_tree_sha256": "c38647b3816886c4599d05371696afcc5fac3e4de1eee0337f5ed8664d706604",
+  "requests": [
+    {
+      "run": "live_01",
+      "stage": "C01",
+      "number": 1,
+      "http_status": 200,
+      "tokens": 3953
+    },
+    {
+      "run": "live_01",
+      "stage": "C01",
+      "number": 2,
+      "http_status": 200,
+      "tokens": 4168
+    },
+    {
+      "run": "live_01",
+      "stage": "C02",
+      "number": 3,
+      "http_status": 200,
+      "tokens": 3741
+    },
+    {
+      "run": "live_01",
+      "stage": "C02",
+      "number": 4,
+      "http_status": 200,
+      "tokens": 3971
+    },
+    {
+      "run": "live_01",
+      "stage": "C02",
+      "number": 5,
+      "http_status": 200,
+      "tokens": 1093
+    },
+    {
+      "run": "live_02",
+      "stage": "C03",
+      "number": 1,
+      "http_status": 200,
+      "tokens": 3942
+    },
+    {
+      "run": "live_02",
+      "stage": "C03",
+      "number": 2,
+      "http_status": 200,
+      "tokens": 4179
+    },
+    {
+      "run": "live_02",
+      "stage": "C04",
+      "number": 3,
+      "http_status": 200,
+      "tokens": 3770
+    },
+    {
+      "run": "live_02",
+      "stage": "C04",
+      "number": 4,
+      "http_status": 200,
+      "tokens": 4078
+    },
+    {
+      "run": "live_02",
+      "stage": "C04",
+      "number": 5,
+      "http_status": 200,
+      "tokens": 1232
+    },
+    {
+      "run": "live_03",
+      "stage": "C04",
+      "number": 1,
+      "http_status": 200,
+      "tokens": 3814
+    },
+    {
+      "run": "live_03",
+      "stage": "C04",
+      "number": 2,
+      "http_status": 200,
+      "tokens": 4044
+    },
+    {
+      "run": "live_03",
+      "stage": "C04",
+      "number": 3,
+      "http_status": 200,
+      "tokens": 1146
+    },
+    {
+      "run": "live_03",
+      "stage": "D01",
+      "number": 4,
+      "http_status": 200,
+      "tokens": 1437
+    },
+    {
+      "run": "live_04",
+      "stage": "D01-repaired",
+      "number": 1,
+      "http_status": 200,
+      "tokens": 1385
+    }
+  ],
+  "private_evidence": "var/result_feedback_v1/live_01 through live_04",
+  "limitations": [
+    "Seen user examples; no independent generalization or superiority evidence",
+    "C04 repair reuses exact retained C03 history; saved document checks reuse original tool results",
+    "Default deployment and model switches unchanged; no Git commit or push"
+  ]
+}
