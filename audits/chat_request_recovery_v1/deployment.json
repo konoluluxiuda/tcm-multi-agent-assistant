@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-06",
+  "status": "passed",
+  "implementation_commit": "2e9d50c72f308ab94e4de7122dd6c7f6da95315c",
+  "image_tag": "tcm-research-chat:recovery-2e9d50c",
+  "image_id": "sha256:2c1fbaac5368eb30a80e385be7213a0ec7cf57872f375bf4e92268ea9e3d932a",
+  "source_tree_sha256": "3f4938a8135c01b65ec9e020355127cb6955b714709922379d9a9f3c10089461",
+  "build_worktree_dirty": false,
+  "context_policy": "allowlisted runtime source only; no data/env/sessions",
+  "remote_published": false,
+  "build_input_files": 230,
+  "runtime_source_check": {
+    "checked": 228,
+    "mismatches": []
+  },
+  "port": 7934,
+  "health": "healthy",
+  "state_preservation": {
+    "status": "passed",
+    "environment_preserved": true,
+    "mounts_preserved": true,
+    "health": "healthy",
+    "original_memory_rows": {
+      "settings": 2,
+      "conversations": 41,
+      "completed_deliveries": 38
+    },
+    "database_files_checked": 31,
+    "tables_checked": 62,
+    "original_rows_preserved": 2220,
+    "other_state_files_preserved": 24,
+    "rollback_container": "tcm-requirements-clean-completion-v2-before-recovery-2e9d50c",
+    "state_backup": "var/chat_recovery_release_20261106/state-backup"
+  },
+  "models_enabled": false,
+  "result_feedback_enabled": false,
+  "preset_walkthrough": {
+    "passed": 13,
+    "total": 13
+  },
+  "continuous_conversation": {
+    "passed": 4,
+    "total": 4
+  },
+  "browser": {
+    "status": "passed",
+    "port": 7934,
+    "mode": "deployed image + read-only real sources",
+    "driver": "fixed",
+    "model_calls": 0,
+    "checks": [
+      "unreceived_request_manual_retry_same_key_refresh_no_post",
+      "lost_query_response_readback_no_extra_turns",
+      "lost_table_response_same_workspace_actual_xlsx_verified"
+    ],
+    "browser_post_attempts": 4,
+    "workspace_count": 1,
+    "artifact_sha256": "76a26f3318cf756881a5575d34590ef7e9ab90b3abdab4f67c5489faf7cd1338",
+    "javascript_errors": [],
+    "external_browser_requests": [],
+    "scope": "deployment regression of known questions; not language generalization"
+  },
+  "preview_stopped": true,
+  "private_evidence": "var/chat_recovery_release_20261106",
+  "git_remote_updated": false,
+  "new_remote_ci_run": false,
+  "limitations": [
+    "targeted offline regressions; no new full CI run",
+    "known-question deployment regression, not natural-language generalization"
+  ]
+}
