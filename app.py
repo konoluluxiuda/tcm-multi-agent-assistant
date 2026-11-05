@@ -199,6 +199,7 @@ class QueryRequest(BaseModel):
     answer_mode: Literal['auto', 'evidence'] = 'auto'
     conversation_history: List = []
     request_key: Optional[str] = Field(default=None,min_length=8,max_length=100,pattern=r'^[A-Za-z0-9_-]+$')
+    request_scope: Optional[str] = Field(default=None, pattern=r'^[a-f0-9]{64}$')
 
 class SpeechRequest(BaseModel):
     text: str
@@ -256,6 +257,11 @@ def session_cookie(value):
     return store.new_cookie()
 
 
+def chat_request_scope(session_id):
+    """Non-authorizing browser binding; the HttpOnly cookie remains the identity."""
+    return hashlib.sha256(('chat-request-v1:' + session_id).encode()).hexdigest()
+
+
 def set_session_cookie(response, value):
     response.set_cookie(key=SESSION_COOKIE_NAME, value=value, httponly=True, samesite="lax",
                         max_age=agent_runtime.memory.ttl_seconds, secure=env_bool('CHAT_COOKIE_SECURE'))
@@ -286,7 +292,14 @@ def conversation(response: Response, session_id: Optional[str] = Cookie(None, al
         snapshot = agent_runtime.memory.load(session_id)
         result = {"messages": [{"role": "user" if m.type == "human" else "assistant", "content": m.content}
                                for m in snapshot.messages if m.type in ('human', 'ai')],
-                  "retention_days": agent_runtime.memory.ttl_seconds / 86400}
+                  "retention_days": agent_runtime.memory.ttl_seconds / 86400,
+                  "request_scope": chat_request_scope(session_id),
+                  "acknowledged_request_keys": list(dict.fromkeys(
+                      key for m in snapshot.messages
+                      for field in ('answer_delivery_key', 'dataops_request_key', 'unhandled_request_key')
+                      if not (field == 'dataops_request_key' and
+                              m.additional_kwargs.get('dataops_card', {}).get('status') == 'queue_busy')
+                      if isinstance(key := m.additional_kwargs.get(field), str)))}
         delivery_key = (getattr(snapshot.messages[-1], 'additional_kwargs', {}).get('answer_delivery_key')
                         if snapshot.messages else None)
         if delivery_key:
@@ -337,9 +350,10 @@ def clear_conversation(response: Response, session_id: Optional[str] = Cookie(No
     if agent_runtime.memory.valid_cookie(session_id):
         with session_turn(session_id):
             agent_runtime.memory.delete(session_id)
-    set_session_cookie(response, agent_runtime.memory.new_cookie())
+    session_id = agent_runtime.memory.new_cookie()
+    set_session_cookie(response, session_id)
     response.headers['Cache-Control'] = 'private, no-store'
-    return {"status": "cleared"}
+    return {"status": "cleared", "request_scope": chat_request_scope(session_id)}
 
 
 @app.get("/health")
@@ -550,6 +564,13 @@ def chat(
     session_id: Optional[str] = Cookie(None, alias=SESSION_COOKIE_NAME)
 ):
     """Process user text query through the multi-agent system."""
+    if request.request_scope is not None and (
+            not agent_runtime.memory.valid_cookie(session_id) or
+            request.request_scope != chat_request_scope(session_id)):
+        raise HTTPException(410, '会话已改变，请刷新后重新开始；旧请求未执行。')
+    if request.request_scope is not None:
+        # Do not silently create a new session for a pending request after expiry.
+        agent_runtime.memory.load(session_id)
     from tcm.dataops import diagnostics as diagnostic
     diagnostic.record('request','received',question=request.query)
     if agent_runtime.memory.valid_cookie(session_id):

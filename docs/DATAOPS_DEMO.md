@@ -1,6 +1,10 @@
 # DataOps历史D2演示与当前入口
 
-当前三分钟演示及一条命令排练见[求职演示](PROJECT_DEMO.md)。最新有界资料任务请先看[组合实测与执行选择](RESEARCH_SELECTION_AGENT.md)及[本轮验收](../audits/research_combined_v1/README.md)：常规fixed执行，7912可选一次模型Goal理解；两项新业务的多轮A也完成交付，但未显示交付增益。下文保留旧D2演示命令与其当时状态。
+当前演示应按[五类预设范围与业务流程](PRESET_QUESTION_SCOPE.md)组织：收到药材清单→查询字段→核对来源→分页查阅关系→下载固定模板表格→刷新回查。入口7934、实现`954776b`，模型关闭；源码、远程CI和部署验收见[交付记录](../audits/conversation_scope_v1/release_closure.md)。2026-11-06的聊天请求恢复改动仍在工作区，尚未部署。
+
+先说明资料整理人员要交付什么，再展示原Q01–Q10中对应问句、出处和实际文件。不要把多条明确问题的演示称为一个自主Agent完成复杂项目；不要将合成资料、已见例子或历史模型实验成绩混入当前交付成绩。
+
+以下为历史演示资料：三分钟演示及一条命令排练见[求职演示](PROJECT_DEMO.md)。历史组合实测见[执行选择](RESEARCH_SELECTION_AGENT.md)及[验收](../audits/research_combined_v1/README.md)：常规fixed执行，7912可选一次模型Goal理解；两项新业务的多轮A也完成交付，但未显示交付增益。下文保留旧D2演示命令与其当时状态。
 
 原D2演示为真实本地资料＋明确标注的模型替身；不将它称为DeepSeek真实推理演示。详细口径见[D3记录](DATAOPS_D3_EVALUATION.md)。另有三题合成真实模型V2：F/P各3/3、A为0/3，不能作为动态Agent成功演示。
 

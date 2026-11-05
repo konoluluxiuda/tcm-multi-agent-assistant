@@ -1,0 +1,168 @@
+{
+  "date": "2026-11-06",
+  "status": "passed",
+  "base_commit": "024dc79a02e5ff12010f5dd1d7721167ddb1ddcd",
+  "deployment_changed": false,
+  "external_model_evaluation_run": false,
+  "source_sha256": {
+    "app.py": "dba7415afee06e5269bcb4d27f971cb968329e82bd30ae9a6be29f57c541da82",
+    "templates/index.html": "5ae0e0ccf597de7e1b1f3a8787114c5437719c6008ae032e99184f636fb4f7ed",
+    "assets/web/chat_requests.js": "b26a83ca1aa97f4006c379c809aa087d0c719eb263da8bda3069710ce3004e1f",
+    "tests/test_chat_request_recovery.py": "10124d2f35537be01025d117ac866c221bfd854dcb73a8a8dd87528023b0e322",
+    "scripts/check_chat_request_recovery_browser.py": "b9e8f30a4f14cc76a52a0e9bc72cab179d8953fa4b7d31d421978a3ca347830f"
+  },
+  "offline": {
+    "modules": [
+      {
+        "module": "test_answer_delivery.py",
+        "status": "passed",
+        "total": 17,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0,
+        "local_report": "var/chat_request_recovery_20261106/test_answer_delivery.json"
+      },
+      {
+        "module": "test_chat_request_recovery.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0,
+        "local_report": "var/chat_request_recovery_20261106/test_chat_request_recovery-final.json"
+      },
+      {
+        "module": "test_conversation_scope.py",
+        "status": "passed",
+        "total": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0,
+        "local_report": "var/chat_request_recovery_20261106/test_conversation_scope.json"
+      },
+      {
+        "module": "test_dataops_chat.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0,
+        "local_report": "var/chat_request_recovery_20261106/test_dataops_chat.json"
+      },
+      {
+        "module": "test_job_resume.py",
+        "status": "passed",
+        "total": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0,
+        "local_report": "var/chat_request_recovery_20261106/test_job_resume.json"
+      },
+      {
+        "module": "test_preset_requests.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0,
+        "local_report": "var/chat_request_recovery_20261106/test_preset_requests.json"
+      },
+      {
+        "module": "test_unified_request_harness.py",
+        "status": "passed",
+        "total": 16,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0,
+        "local_report": "var/chat_request_recovery_20261106/test_unified_request_harness.json"
+      },
+      {
+        "module": "test_tcm_chat.py",
+        "status": "passed",
+        "total": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0,
+        "local_report": "var/chat_request_recovery_20261106/test_tcm_chat-final.json"
+      },
+      {
+        "module": "test_optional_features.py",
+        "status": "passed",
+        "total": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0,
+        "local_report": "var/chat_request_recovery_20261106/test_optional_features-final.json"
+      },
+      {
+        "module": "test_relation_memory.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0,
+        "local_report": "var/chat_request_recovery_20261106/test_relation_memory-final.json"
+      },
+      {
+        "module": "test_research_task_api.py",
+        "status": "passed",
+        "total": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0,
+        "local_report": "var/chat_request_recovery_20261106/test_research_task_api-final.json"
+      }
+    ],
+    "total": 114,
+    "network_attempts": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "status": "passed",
+    "data": "synthetic",
+    "execution": "fixed",
+    "model_calls": 0,
+    "checks": [
+      "unreceived_request_refresh_does_not_send_manual_retry_reuses_body",
+      "committed_query_response_lost_refresh_restores_without_reexecution",
+      "committed_table_response_lost_restores_same_workspace_and_xlsx",
+      "editing_question_creates_new_request",
+      "changed_session_discards_old_pending_request",
+      "malformed_pending_storage_is_discarded",
+      "storage_write_failure_preserves_draft_and_prevents_post"
+    ],
+    "javascript_errors": [],
+    "external_browser_requests_blocked": [],
+    "browser_post_attempts": 7,
+    "query_tool_calls": 5,
+    "visual_layout_reviewed": false
+  },
+  "validation_limits": [
+    "fixture sources, not new production-data acceptance",
+    "targeted regression, not full repository regression",
+    "no deployment or commit",
+    "known templates, not natural-language generalization"
+  ]
+}

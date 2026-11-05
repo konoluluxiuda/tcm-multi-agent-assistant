@@ -240,6 +240,7 @@
 .research-result article{border:1px solid #d6e0d5;border-radius:8px;padding:12px;margin:12px 0;overflow-wrap:anywhere}.research-result h2{font-size:19px}.research-result h3{font-size:16px}.research-result .texts{display:grid;grid-template-columns:1fr 1fr;gap:12px}.research-result pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.7 system-ui;background:#f6f7f3;padding:10px}.research-result img{display:block;max-width:100%;height:auto;margin-top:10px}.research-result .notice{padding:10px;background:#fff6e4;border-left:4px solid #b17c29}.research-result .muted{font-size:13px;color:#596b60}.research-result summary{cursor:pointer}.research-result .citation{padding:10px;border:1px solid #dfe5dd;margin-top:8px}@media(max-width:650px){.research-result .texts{grid-template-columns:1fr}}
 </style>
 <script src="/static/answer_delivery.js"></script>
+<script src="/static/chat_requests.js"></script>
 </head>
 <body>
     <div class="container-fluid py-4">
@@ -432,6 +433,10 @@
                     </details><script src="/research-loop.js" defer></script>{% endif %}
                     {% endif %}
                     <small id="memory-status" class="text-muted px-3" role="status">正在恢复已保存会话…</small>
+                    <div id="chat-pending" class="px-3 py-2" role="status" hidden>
+                        <span id="chat-pending-description"></span>
+                        <button id="chat-pending-retry" type="button" class="btn btn-sm btn-outline-primary">重试上一条请求</button>
+                    </div>
                     <div id="chat-body" class="chat-body">
                         <div class="message assistant-message">
                             <div class="agent-tag">System</div>
@@ -1688,6 +1693,26 @@
             let displayMessages = [];
             let busy = false;
             const memoryStatus = document.getElementById('memory-status');
+            const chatRequests = window.ChatRequests.create();
+            const pendingNotice = document.getElementById('chat-pending');
+            const retryRequest = document.getElementById('chat-pending-retry');
+            function showPending() {
+                const body = chatRequests.pending();
+                pendingNotice.hidden = !body;
+                if (body) document.getElementById('chat-pending-description').textContent =
+                    '尚未确认结果：' + body.query + '。刷新未自动重发。';
+            }
+            retryRequest.addEventListener('click', () => {
+                if (busy) return;
+                const body = chatRequests.pending();
+                if (!body) return;
+                messageInput.value = body.query;
+                const mode = document.getElementById('evidence-answer-mode');
+                if (mode) mode.checked = body.answer_mode === 'evidence';
+                imageUpload.value = '';
+                previewContainer.style.display = 'none';
+                chatForm.requestSubmit();
+            });
             const workspaces = window.ResearchWorkspaces?.mount({submit(query) {
                 if (busy) return false;
                 const draft = messageInput.value;
@@ -1714,6 +1739,7 @@
                 messageInput.disabled = value;
                 chatForm.querySelector('[type="submit"]').disabled = value;
                 clearChatBtn.disabled = value;
+                retryRequest.disabled = value;
             }
             function renderQueryDelivery(container, answer) {
                 renderAnswerDelivery(container, answer, {
@@ -1738,6 +1764,7 @@
                 const response = await fetch('/conversation', {credentials: 'include', cache: 'no-store'});
                 if (!response.ok) throw new Error('无法恢复会话，请检查存储后刷新。');
                 const history = await response.json();
+                chatRequests.bind(history);
                 const restored=[history.tcm,history.research,history.pubmed,history.assistant].filter(Boolean);
                 const lastAssistant=history.messages.findLastIndex(message=>message.role!=='user');
                 for (const [index,message] of history.messages.entries()) {
@@ -1776,6 +1803,7 @@
                 window.dispatchEvent(new Event('tcm-session-ready'));
                 chatBody.scrollTop = chatBody.scrollHeight;
                 setBusy(false);
+                showPending();
             } catch (error) {
                 memoryStatus.textContent = error.message;
                 // Keep inputs disabled: don't imply that storage failure is an empty conversation.
@@ -1823,6 +1851,8 @@
                 try {
                     const response = await fetch('/conversation', {method: 'DELETE', credentials: 'include'});
                     if (!response.ok) throw new Error('清除失败，请重试。');
+                    chatRequests.bind(await response.json());
+                    showPending();
                     displayMessages = [];
                     workspaces?.clear();
                     window.dispatchEvent(new Event('tcm-session-ready'));
@@ -1886,6 +1916,7 @@
                 messageInput.style.height = 'auto';
                 
                 let failedRequestId = '';
+                let textRequest = null;
                 let failureMessage = '连接或页面处理失败，请检查连接后重试；未自动重发。';
                 try {
                     let response;
@@ -1904,18 +1935,15 @@
                             credentials: 'include' // Important for cookie handling
                         });
                     } else {
+                        textRequest = chatRequests.begin(message,
+                            document.getElementById('evidence-answer-mode')?.checked ? 'evidence' : 'auto');
                         // Text-only query using the /chat endpoint with JSON
                         response = await fetch('/chat', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
                             },
-                            body: JSON.stringify({
-                                query: message,
-                                request_key: crypto.randomUUID(),
-                                answer_mode: document.getElementById('evidence-answer-mode')?.checked ? 'evidence' : 'auto',
-                                conversation_history: [] // You might want to maintain this if needed
-                            }),
+                            body: JSON.stringify(textRequest),
                             credentials: 'include' // Important for cookie handling
                         });
                     }
@@ -1932,6 +1960,7 @@
                         503: '所需工具或存储暂不可用，请检查服务状态。'
                     })[response.status] || '请求未完成，请稍后重试。';
                     const data = await response.json();
+                    if (textRequest && [403, 410, 422].includes(response.status)) chatRequests.complete(textRequest.request_key);
                     if (!response.ok && !data.answer_steps && !data.tcm && !data.research && !data.pubmed && !data.assistant && !data.evidence_answer) {
                         // Server messages are rendered as literal text, never as markup.
                         if (typeof data.detail === 'string' && data.detail.length <= 500) failureMessage = data.detail;
@@ -2133,10 +2162,15 @@
                     // Clear file upload preview
                     imageUpload.value = '';
                     previewContainer.style.display = 'none';
+                    if (textRequest && data.assistant?.status !== 'queue_busy') chatRequests.complete(textRequest.request_key);
                     
                 } catch (error) {
                     // Remove thinking indicator
                     thinkingElement.remove();
+                    if (!textRequest && !imageUpload.files.length) {
+                        messageInput.value = message;
+                        failureMessage = error.message;
+                    }
                     
                     // Add error message
                     const errorElement = document.createElement('div');
@@ -2157,6 +2191,7 @@
                     memoryStatus.textContent = failureMessage;
                 } finally {
                     setBusy(false);
+                    showPending();
                 }
                 
                 // Scroll to bottom again
