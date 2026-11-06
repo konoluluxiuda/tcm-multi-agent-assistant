@@ -94,5 +94,27 @@ class CapabilitiesTests(unittest.TestCase):
             label=next(x['label'] for x in describe()['capabilities'] if x['id']=='research_selection')
             self.assertIn('本地确定性执行',label);self.assertNotIn('模拟',label)
 
+    def test_qa_help_hides_extensions_without_disabling_existing_tools(self):
+        with patch.dict(os.environ, {'RESEARCH_TOOLS_ONLY':'1','SHOW_RESEARCH_EXTENSIONS':'0'}):
+            result=describe()
+        self.assertEqual(result['product_scope'],'qa')
+        self.assertIn('ETCM药材字段',result['message'])
+        for label in ('表格','Excel','收藏','本地模拟','工作台'):
+            self.assertNotIn(label,result['message'])
+        entries={x['id']:x for x in result['capabilities']}
+        self.assertTrue(entries['workbench']['enabled'])
+        self.assertTrue(entries['workbench']['configured'])
+        self.assertEqual(entries['workbench']['product_status'],'candidate')
+        self.assertEqual(entries['bookmarks']['product_status'],'experimental')
+        self.assertEqual(entries['herbs']['product_status'],'supported')
+
+    def test_extension_help_optin_keeps_original_runtime_gates(self):
+        with patch.dict(os.environ, {'RESEARCH_TOOLS_ONLY':'1','SHOW_RESEARCH_EXTENSIONS':'1'}):
+            result=describe()
+        self.assertEqual(result['product_scope'],'research_extensions')
+        self.assertIn('资料工作台',result['message'])
+        self.assertIn('候选或实验功能',' '.join(result['notes']))
+        self.assertFalse(result['readiness_checked'])
+
 
 if __name__ == '__main__': unittest.main()

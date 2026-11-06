@@ -5,6 +5,22 @@ from langchain_core.messages import HumanMessage
 REFERENCE = re.compile(r'^(?:请)?(?:这|那)(?P<count>两|二|三|几|些|2|3)(?:(?:个|味)(?:草药|药材|中药|药)?|草药|药材|中药|药)(?:的)?(?P<field>.+)$')
 
 
+def field_followup(question):
+    """Consume a field-only turn completely; never strip a new object or extra task."""
+    from tcm.chat import FIELD_NAMES
+    from tcm.dataops.goal_proposal import ATTRIBUTE_ALIASES, DOCUMENT_ALIASES
+    from tcm.dataops.field_sources import DEFAULTS
+    labels=set(FIELD_NAMES) | set(DEFAULTS)
+    for mapping in (ATTRIBUTE_ALIASES,DOCUMENT_ALIASES):
+        for aliases in mapping.values():
+            labels.update(aliases)
+    text=question.strip().rstrip('。.!！?？')
+    text=re.sub(r'^(?:请)?(?:再|也)?(?:给出|告诉我|查询|查看|查一下|想看|看看)?', '', text)
+    text=re.sub(r'(?:分别是什么|是什么|有哪些|呢)$', '', text)
+    field=r'(?:(?:ETCM|药典)(?:中|里)?(?:的)?)?(?:'+ '|'.join(map(re.escape,sorted(labels,key=len,reverse=True))) +r')'
+    return text if re.fullmatch(field+r'(?:[、和与及，,]'+field+r')*',text,re.I) else None
+
+
 def subject(question):
     text = question.strip().rstrip('。.!！?？')
     match = re.fullmatch(r'(?:请)?(?:我想了解|我想知道|帮我查|查一下|查看|查询|分别告诉我|分别查询|告诉我|给出|把)?(.+?)的(.+)', text)
@@ -22,10 +38,11 @@ def prepare(question, snapshot):
     """Only the latest user turn supplies antecedents; no cross-session or stale search."""
     text = question.strip().rstrip('。.!！?？')
     ref = REFERENCE.fullmatch(text)
+    fields = field_followup(question) if not ref else None
     current = subject(question)
     context = {'original_question': question, 'resolved_question': question,
                'object_mentions': current[0] if current else [], 'inherited': False}
-    if not ref:
+    if not ref and fields is None:
         return context
     previous = None
     for message in reversed(snapshot.messages):
@@ -37,7 +54,7 @@ def prepare(question, snapshot):
         return context
     saved = previous.additional_kwargs.get('query_scope', {})
     names = saved.get('object_mentions') or (subject(previous.content) or ([], ''))[0]
-    count = {'两': 2, '二': 2, '三': 3, '2': 2, '3': 3}.get(ref['count'])
+    count = {'两': 2, '二': 2, '三': 3, '2': 2, '3': 3}.get(ref['count']) if ref else None
     if not names or count is not None and len(names) != count:
         context['needs_context'] = True
         return context
@@ -48,9 +65,10 @@ def prepare(question, snapshot):
         if isinstance(feedback, dict):
             context['previous_result_feedback'] = {k:feedback.get(k) for k in ('status','action','step_ids')}
             break
-    field = re.sub(r'(?:是什么|有哪些)$', '', ref['field'])
+    field = re.sub(r'(?:是什么|有哪些)$', '', ref['field']) if ref else fields
     context.update(object_mentions=names, inherited=True, previous_question=previous.content[:500],
-                   resolved_question='查询'+'和'.join(names)+'的'+field)
+                   resolved_question='查询'+'和'.join(names)+'的'+field,
+                   reference_kind='explicit_reference' if ref else 'field_only')
     return context
 
 

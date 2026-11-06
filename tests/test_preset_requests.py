@@ -67,6 +67,24 @@ class PresetHTTPTests(unittest.TestCase):
         self.assertEqual(doc['goal']['document_fields'],[])
         self.assertEqual(self.client.get('/api/dataops/workspaces/'+doc['id']+'/artifact').status_code,200)
 
+    def test_default_sources_cross_source_followup_keeps_missing_field_and_replays(self):
+        first=self.client.post('/chat',json={'query':'我想了解Alpha的信息','request_key':'default-intro'})
+        self.assertEqual(first.json()['assistant']['status'],'clarification_needed',first.text)
+        body={'query':'给出性味和剂量','request_key':'default-followup'}
+        reply=self.client.post('/chat',json=body)
+        self.assertEqual(reply.status_code,200,reply.text)
+        value=reply.json()
+        self.assertEqual(value['model_calls'],0)
+        steps=value['answer_steps']
+        self.assertEqual(len(steps),3,value)
+        self.assertEqual({s['route']['request'].get('field') for s in steps if s['tool']=='herb'}, {'properties','flavors'})
+        document=[s for s in steps if s['tool']=='research']
+        self.assertEqual([s['route']['request']['question'] for s in document], ['Alpha的用法与用量'])
+        self.assertNotEqual(document[0]['status'],'success')  # Fixture lacks dose; never substitute ETCM.
+        again=self.client.post('/chat',json=body)
+        self.assertTrue(again.json()['replayed'],again.text)
+        self.assertEqual(again.json()['answer_steps'],steps)
+
 
 class ReleaseBindingTests(unittest.TestCase):
     def test_release_and_base_databases_both_checked(self):

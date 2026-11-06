@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "browser_checks": 16,
+  "javascript_errors": [],
+  "external_model_calls": 0,
+  "display_model_calls": 0,
+  "data": "synthetic",
+  "live_model_acceptance": "not_run",
+  "deployment": {
+    "port": 7896,
+    "source_revision": "5d6ca31aa64a4418531bb330cdefecb0eac35c23178a6d66b13c5cac7beafce7",
+    "restart_required": false,
+    "saved_state_unchanged": true,
+    "conversation_count": 4,
+    "workspace_count": 2,
+    "artifact_count": 2,
+    "execution_driver": "fixed",
+    "question_policy": "requirements_feedback_v1",
+    "result_feedback_enabled": true,
+    "live_queries_submitted": 0,
+    "external_model_calls": 0
+  },
+  "git_committed": false
+}

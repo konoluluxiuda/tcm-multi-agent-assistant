@@ -176,6 +176,7 @@ class DataOpsService:
                     'semantic_regex_guards':runtime['semantic_regex_guards'],
                     'request_policy':fingerprint(Path(__file__).with_name('request_policy.py')),
                     'preset_requests':fingerprint(Path(__file__).with_name('preset_requests.py')),
+                    'field_sources':fingerprint(Path(__file__).with_name('field_sources.py')),
                     'query_policy':fingerprint(Path(__file__).parents[1]/'intent_planner.py') if allow_queries else None,
                     'requirements_v2':fingerprint(Path(__file__).with_name('requirements_v2.py')),
                     'requirements_planner':fingerprint(Path(__file__).with_name('requirements_planner.py')),

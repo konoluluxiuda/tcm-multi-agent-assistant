@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "browser_checks": 10,
+  "javascript_errors": [],
+  "external_model_calls": 0,
+  "deployment": {
+    "port": 7896,
+    "source_revision": "c704be21528123bbd4bdd02088330892c3cfbe1d67a4c2f349e8a8e44da9bf96",
+    "restart_required": false,
+    "saved_state_unchanged": true,
+    "external_model_calls": 0,
+    "live_queries_submitted": 0
+  },
+  "git_committed": false
+}

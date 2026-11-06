@@ -89,10 +89,19 @@ def field_tasks(text,_depth=0):
             if match and match[1].strip() not in ('它','这味药','刚才那味药','刚才的药材') and not re.search(r'和|与|及|比较|对比|对照|整理|我|不要|不是|关于|有关|想知道|想了解|告诉|需要|希望',match[1]):
                 requested=fields(match[2],mapping,12 if tool=='herb_attributes' else 4)
                 if requested:return [{'tool':tool,'arguments':{'name':match[1].strip(),'fields':requested}}]
-    # Structural-only fields have an unambiguous local source. Shared fields
-    # such as 归经 do not implicitly choose ETCM over the pharmacopoeia.
+    # Fully consumed unqualified fields share the application's source defaults.
     match=re.fullmatch(command+NAME+r'的(.+)',text)
     if match and match[1].strip() not in ('它','这味药','刚才那味药','刚才的药材') and not re.search(r'和|与|及|比较|对比|对照|整理|我|不要|不是|关于|有关|想知道|想了解|告诉|需要|希望|药典|ETCM',match[1],re.I):
+        from tcm.dataops.field_sources import parse_fields
+        requested = parse_fields(re.sub(r'(?:是什么|有哪些|呢)$', '', match[2]))
+        if requested:
+            groups = {}
+            for field in requested:
+                groups.setdefault(field['namespace'], []).append(field['name'])
+            return [{'tool': 'herb_attributes' if ns == 'etcm' else 'pharmacopoeia_lookup',
+                     'arguments': {'name': match[1].strip(), 'fields': names}}
+                    for ns, names in groups.items()]
+        # Preserve established structural aliases outside the shared default set.
         requested=fields(match[2],ATTR,12)
         if requested and any(token in match[2] for token in ('科名','药用部位','药性','药味','产地','功效分类','适应证','文献ID','拉丁名','英文名','拼音')):
             return [{'tool':'herb_attributes','arguments':{'name':match[1].strip(),'fields':requested}}]

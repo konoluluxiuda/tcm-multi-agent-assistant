@@ -16,9 +16,22 @@ function citations(card,hit,kind,label,destination=card){
   });box.append(button);details.append(box);
  });destination.append(details);
 }
-function render(hit){const card=el('article');card.dataset.researchHit='true';card.append(el('h3',`${hit.name} · ${hit.label==='origin'?'来源':hit.label}`));
- const text=el('div',hit.text);text.style.whiteSpace='pre-wrap';text.dataset.resultText='true';card.append(text);
+// Display-only conversion of complete numeric quantity formulas. Unknown math
+// stays literal; never evaluate LaTeX, convert units or change source records.
+function readableEvidenceText(value){
+ if(typeof value!=='string')return value;
+ return value.replace(/(?<!\$)\$([^$\n]+)\$(?!\$)/g,(original,body)=>{
+  const match=body.trim().match(/^(\d+(?:\.\d+)?)(?:\s*(?:\\sim|~)\s*(\d+(?:\.\d+)?))?\s*(?:\\mathrm\{(g|mg|kg|mL|ml|L|μg|µg|ug)\}|(g|mg|kg|mL|ml|L|μg|µg|ug))$/);
+  return match?match[1]+(match[2]?'–'+match[2]:'')+' '+(match[3]||match[4]):original;
+ });
+}
+function render(hit,options={}){const card=el('article');card.dataset.researchHit='true';card.append(el('h3',`${hit.name} · ${hit.label==='origin'?'来源':hit.label}`));
+ let displayed=readableEvidenceText(hit.text);
+ const fieldPrefix='【'+hit.label+'】';
+ if(options.compact && displayed.startsWith(fieldPrefix))displayed=displayed.slice(fieldPrefix.length).trimStart();
+ const text=el('div',displayed);text.style.whiteSpace='pre-wrap';text.dataset.resultText='true';card.append(text);
  const proof=el('details');proof.dataset.resultDetails='true';proof.append(el('summary','出处与校订信息'));
+ if(displayed!==hit.text)proof.append(el('h4','来源文本（保留原始格式）'),el('pre',hit.text));
  if(hit.raw_text!==hit.text)proof.append(el('h4','OCR原文'),el('pre',hit.raw_text));
  if(hit.raw_name!==hit.name)proof.append(el('p',`OCR药名：${hit.raw_name}；当前名称：${hit.name}`));
  proof.append(el('p',`审核状态：${hit.review_status}；字段校订 ${hit.field_overlay_ids.length} 项；条目校订 ${hit.entry_overlay_ids.length} 项。药典摘录尚需按原页核对。`));

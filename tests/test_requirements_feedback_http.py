@@ -83,7 +83,9 @@ class FeedbackHTTPTests(unittest.TestCase):
             response = self.client.post('/api/dataops/research-questions', json={
                 'question': 'Alpha和Beta的药用部位', 'request_key': 'feedback-disagree'})
         self.assertEqual(response.status_code, 200, response.text)
-        self.assertEqual(response.json()['proposal']['failure']['code'], 'semantic_disagreement')
+        # The bounded field contract now rejects the wrong review fields
+        # before the later comparison between model proposals.
+        self.assertEqual(response.json()['proposal']['failure']['code'], 'semantic_review_failed')
         self.assertNotIn('workspace', response.json())
         self.assertEqual(self.client.get('/api/dataops/workspaces').json()['items'], [])
 

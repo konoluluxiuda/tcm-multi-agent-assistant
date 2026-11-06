@@ -1,0 +1,120 @@
+{
+  "date": "2026-11-06",
+  "scope": "qa_navigation_and_product_documentation",
+  "offline_tests": {
+    "modules": [
+      {
+        "module": "test_capabilities.py",
+        "status": "passed",
+        "total": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_optional_features.py",
+        "status": "passed",
+        "total": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_research_bookmarks.py",
+        "status": "passed",
+        "total": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_preset_requests.py",
+        "status": "passed",
+        "total": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_conversation_scope.py",
+        "status": "passed",
+        "total": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    ],
+    "total": 54,
+    "status": "passed"
+  },
+  "presentation_browser": {
+    "status": "passed",
+    "checks": [
+      "default_navigation_only_advertises_qa",
+      "developer_extension_navigation_is_explicit_and_reversible",
+      "tools_in_left_sidebar_chat_in_center",
+      "two_herbs_three_fields_each_without_duplicate_cards",
+      "cross_source_fields_share_object_but_keep_separate_evidence",
+      "missing_document_field_stays_visible_next_to_combined_properties",
+      "completed_table_has_direct_download",
+      "table_download_restored_without_stale_query_cards",
+      "conflicting_values_distinct_sources_and_partial_states_preserved",
+      "legacy_scalar_routes_use_same_compact_display_without_hiding_missing_fields",
+      "quantity_formula_readable_without_changing_values_units_or_source_text",
+      "mobile_menu_and_no_horizontal_overflow"
+    ],
+    "javascript_errors": [],
+    "external_requests": [],
+    "model_calls": 0
+  },
+  "recovery_browser": {
+    "status": "passed",
+    "data": "synthetic",
+    "execution": "fixed",
+    "model_calls": 0,
+    "checks": [
+      "unreceived_request_refresh_does_not_send_manual_retry_reuses_body",
+      "committed_query_response_lost_refresh_restores_without_reexecution",
+      "committed_table_response_lost_restores_same_workspace_and_xlsx",
+      "editing_question_creates_new_request",
+      "changed_session_discards_old_pending_request",
+      "malformed_pending_storage_is_discarded",
+      "storage_write_failure_preserves_draft_and_prevents_post"
+    ],
+    "javascript_errors": [],
+    "external_browser_requests_blocked": [],
+    "browser_post_attempts": 7,
+    "query_tool_calls": 5,
+    "visual_layout_reviewed": false
+  },
+  "local_activation": {
+    "port": 7896,
+    "source_revision": "d089afe3d93ad5ea7057d34ba2a04937b31536d22380ad53b2a1fbd29a14b531",
+    "restart_required": false,
+    "saved_state_unchanged": true,
+    "conversation_count": 5,
+    "workspace_count": 2,
+    "artifact_count": 2,
+    "question_policy": "requirements_feedback_v1",
+    "execution_driver": "fixed",
+    "extensions_visible": false,
+    "external_model_calls": 0,
+    "live_queries_submitted": 0
+  },
+  "limitations": [
+    "Synthetic offline checks, not natural language generalization",
+    "Extension navigation is not API authorization",
+    "Historical table results remain candidate capability",
+    "No real model calls or other deployment updates"
+  ]
+}

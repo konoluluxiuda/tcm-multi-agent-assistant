@@ -46,7 +46,7 @@
   window.renderAnswerDelivery = function (container, answer, renderers = {}) {
     container.dataset.answerDeliveryStatus = answer.status;
     const labels = {success: '查询完成', partial: '查询部分完成', unavailable: '查询未完成'};
-    container.append(element('p', labels[answer.status] || '查询结果'));
+    if (answer.status !== 'success') container.append(element('p', labels[answer.status] || '查询结果'));
     const groups = new Map();
     for (const step of presentationSteps(answer.answer_steps || [])) {
       const name = objectName(step);
@@ -58,18 +58,14 @@
         card.append(element('h4', name));
         const details = element('details');details.className = 'answer-evidence';
         details.append(element('summary', '出处与详细记录'));
-        group = {card, details, sources:new Map()};groups.set(key, group);container.append(card);
+        const body = element('div');body.className = 'answer-fields';card.append(body);
+        group = {card, details, body};groups.set(key, group);container.append(card);
       }
       const source = step.result_key === 'tcm_result' ? 'ETCM' : step.result_key === 'research_result' ? '药典' : '';
-      let section = group.sources.get(source);
-      if (!section) {
-        section = element('div');group.sources.set(source, section);group.card.append(section);
-        if (source) { const label = element('p', source);label.className = 'answer-source-label';section.append(label); }
-      }
       const block = element('section');block.dataset.answerStep = step.step_id;
-      block.dataset.answerSteps = step.presentation_ids.join(' ');section.append(block);
+      block.dataset.answerSteps = step.presentation_ids.join(' ');group.body.append(block);
       const renderer = renderers[step.result_key];
-      if (renderer && step.result) renderer(block, step.result, {compact:true, details:group.details});
+      if (renderer && step.result) renderer(block, step.result, {compact:true, details:group.details, source});
       else {
         const text = element('div', step.text || step.message || '此项没有返回结果。');text.style.whiteSpace='pre-wrap';block.append(text);
         if (step.result) group.details.append(element('pre', JSON.stringify(step.result, null, 2)));
@@ -78,7 +74,7 @@
     for (const group of groups.values()) if(group.details.children.length > 1) group.card.append(group.details);
     if (!(answer.answer_steps || []).length) container.append(element('p', answer.response || '结果不可用。'));
     if ((answer.unfinished || []).length) {
-      const details=element('details');details.append(element('summary','未完成项与处理说明'));
+      const details=element('details');details.dataset.answerUnfinished='true';details.append(element('summary','未完成项与处理说明'));
       const list=element('ul');
       for(const step of answer.unfinished) {
         const original=(answer.answer_steps || []).find(item=>item.step_id===step.step_id);

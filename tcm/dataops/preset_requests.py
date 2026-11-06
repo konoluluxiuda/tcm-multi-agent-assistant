@@ -1,12 +1,7 @@
 """Whole-question parsing for the documented fixed query/table templates."""
 import re
 from tcm.dataops.requirements_v2 import RequirementsDraftV2
-
-FIELDS = {
-    'etcm': {'科名': ['family'], '药用部位': ['medicinal_part'],
-             '性味': ['properties', 'flavors'], '归经': ['meridians']},
-    'pharmacopoeia': {'功能与主治': ['功能与主治'], '用法与用量': ['用法与用量']},
-}
+from tcm.dataops.field_sources import parse_fields
 
 
 def parse(question):
@@ -24,8 +19,6 @@ def parse(question):
         return RequirementsDraftV2(status='needs_input', operation='new', objects=objects,
             requirements=[], delivery={'form':'answer'},
             unresolved=['已记下'+ '、'.join(names)+'。需要哪些资料？可问性味、归经、科名、药用部位或药典功能与主治。'])
-    if body in ('性味', '归经', '科名', '药用部位'):
-        body = 'ETCM' + body
     relation = re.fullmatch(r'(成分|靶点)记录[，,]先显示一页', body)
     if relation and len(names) == 1:
         requirements = [{'id':'r1','kind':'relation','object_refs':refs,
@@ -35,33 +28,8 @@ def parse(question):
         table = body.endswith('生成表格')
         if table:
             body = body[:-4]
-        fields = []
-        while body:
-            source = re.match(r'(ETCM|药典)', body)
-            if not source:
-                return None
-            ns = 'etcm' if source[1]=='ETCM' else 'pharmacopoeia'
-            body = body[len(source[1]):]
-            found = False
-            while body:
-                label = next((k for k in sorted(FIELDS[ns],key=len,reverse=True) if body.startswith(k)),None)
-                if label is None:
-                    return None
-                found = True
-                fields.extend({'namespace':ns,'name':f} for f in FIELDS[ns][label])
-                body = body[len(label):]
-                if not body:
-                    break
-                if body[0] not in '、和':
-                    return None
-                body = body[1:]
-                if not body:
-                    return None
-                if body.startswith(('ETCM','药典')):
-                    break
-            if not found:
-                return None
-        if not fields or len({(f['namespace'],f['name']) for f in fields}) != len(fields):
+        fields = parse_fields(body)
+        if not fields:
             return None
         requirements = [{'id':'r1','kind':'read_fields','object_refs':refs,'fields':fields}]
         delivery = {'form':'table','row_policy':'keep_all'} if table else {'form':'answer'}

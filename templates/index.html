@@ -198,6 +198,7 @@
         .answer-object { margin:16px 0; padding:16px; background:#fff; border:1px solid #dfe7e3; border-radius:12px; }
         .answer-object > h4 { font-size:1.1rem; margin-bottom:12px; }
         .answer-source-label { color:#597164; font-size:.8rem; margin:8px 0; }
+        .answer-field-source { color:#65766e; font-size:.75rem; font-weight:normal; margin-left:8px; white-space:nowrap; }
         .answer-object .research-result article { border:0; padding:0; margin:8px 0; }
         .answer-object .research-result h3 { font-size:.95rem; }
         .answer-evidence { font-size:.85rem; color:#536258; margin-top:12px; }
@@ -280,13 +281,13 @@
                 <aside class="sidebar" aria-label="资料功能">
                     <h5>
                         <i class="fas fa-robot me-2"></i>
-                        {% if research_tools_only %}中草药证据研究{% else %}Medical Assistant{% endif %}
+                        {% if research_tools_only %}中草药资料问答{% else %}Medical Assistant{% endif %}
                     </h5>
                     {% if research_tools_only %}
                     <div class="agent-info"><h6>可用功能</h6>
                         {% if natural_routing_enabled %}
-                        <p>在聊天中查询药材资料、核对出处或生成表格。</p>
-                        <p>其他工具在左侧展开；聊天记录会自动保存。</p>
+                        <p>查询药材字段、跨来源核对资料，并继续追问。</p>
+                        <p>出处可展开查看；聊天记录会自动保存。</p>
                         <p>资料需核对来源；本工具用于研究辅助，不提供个体化诊疗决策。</p>
                         {% else %}
                         <p>{% if natural_routing_enabled %}可直接问“有多少药材”“黄芪有什么作用”，继续问“用量呢”“出处呢”。{% else %}输入 /research 查询药典字段、追问出处并导出证据清单。{% endif %}</p>
@@ -365,14 +366,17 @@
                                 <label>药典字段<select name="field" data-workspace-control><option>功效</option><option>用量</option><option>来源</option><option>性味与归经</option><option>注意</option><option>炮制</option><option>贮藏</option></select></label>
                                 <button type="submit" data-workspace-control>查询资料</button>
                             </form>
-                            <p class="workspace-note">药典字段候选需核对原页；ETCM返回来源记录的可用属性。查询后可在下方继续追问。两库中文名映射尚未核验。</p>
+                                <p class="workspace-note">药典字段候选需核对原页；ETCM返回来源记录的可用属性。查询后可继续追问。名称匹配不等于药材身份核验。</p>
                         </section>
                         <p class="workspace-note" data-workspace-status role="status">当前没有选择资料对象。</p>
                         <p class="workspace-note" data-workspace-feedback role="status"></p>
                     </details>
                     {% endif %}
 
-                    {% if dataops_enabled %}<p class="px-3 py-2"><a href="/dataops">资料工作台与表格</a></p>{% endif %}
+                    {% if show_research_extensions %}
+                    <details id="research-extension-tools"><summary>实验与候选功能</summary>
+                    <p class="workspace-note">以下入口未纳入当前正式问答范围；配置可用不代表已完成产品验收。</p>
+                    {% if dataops_enabled %}<p class="px-3 py-2"><a href="/dataops">资料工作台与表格（候选）</a></p>{% endif %}
                     {% if dataops_enabled %}<p class="px-3 py-2"><a href="/dataops/research">候选资料核对</a></p>{% endif %}
                     {% if rag_enabled %}<p class="px-3 py-2"><a href="/rag">引用资料回答 · 原文与多来源对照</a></p>{% endif %}
                     {% if research_tasks_enabled %}<p class="px-3 py-2"><a href="/research-tasks">任务记录</a></p>{% endif %}
@@ -447,6 +451,8 @@
                       <p id="loop-status" role="status"></p><div id="loop-history"></div>
                     </details><script src="/research-loop.js" defer></script>{% endif %}
                     {% endif %}
+                    </details>
+                    {% endif %}
                     <details><summary>使用说明与回答设置</summary>
                                 {% if research_tools_only and natural_routing_enabled %}
                                 <details><summary>示例与兼容指令</summary>
@@ -469,7 +475,7 @@
                                 {% if evidence_assistant_synthetic %}<p class="workspace-note">AI模式当前仅使用合成资料，不读取或发送药典片段。测试示例：整理虚构示例草的功效与注意事项。</p>{% endif %}
                                 {% endif %}
                                 {% if intent_planner_enabled %}<p class="workspace-note" id="model-intent-note">自然问法识别已开启：仅未识别的当前问句发送模型，不发送资料或聊天历史。</p>{% endif %}
-                                {% if question_fallback_enabled %}<p class="workspace-note" id="request-understanding-note">{% if question_understanding_policy == "requirements_feedback_v1" %}工具反馈理解已启用：先检查资料与工具，需要时修正一次并复核，最多3次请求；只发送字段可用状态，不发送资料正文。{% elif question_understanding_policy == "unified_v2" %}统一理解已启用：普通问句先由模型理解；需要时再纠正参数或独立复核任务，总计最多2次请求。{% else %}补充理解已启用：本地未完整识别时最多调用一次模型。{% endif %}发送当前问句、名称候选、任务结构及必要的会话对象和上一轮问题，不发送资料正文。资料任务页可选择仅本地解析。</p>{% endif %}
+                                {% if question_fallback_enabled %}<p class="workspace-note" id="request-understanding-note">{% if question_understanding_policy == "requirements_feedback_v1" %}工具反馈理解已启用：先检查资料与工具，需要时修正一次并复核，最多3次请求；只发送字段可用状态，不发送资料正文。{% elif question_understanding_policy == "unified_v2" %}统一理解已启用：普通问句先由模型理解；需要时再纠正参数或独立复核任务，总计最多2次请求。{% else %}补充理解已启用：本地未完整识别时最多调用一次模型。{% endif %}发送当前问句、名称候选、任务结构及必要的会话对象和上一轮问题，不发送资料正文。{% if show_research_extensions %}资料任务页可选择仅本地解析。{% endif %}</p>{% endif %}
                     </details>
                     </nav>
                     <button id="clear-chat" class="btn btn-outline-danger w-100 mt-3">
@@ -484,7 +490,7 @@
                     <div class="chat-header">
                         <h5 class="mb-0">
                             <i class="fas fa-stethoscope me-2"></i>
-                            {% if research_tools_only %}中草药证据研究{% else %}Multi-Agent Medical Assistant{% endif %}
+                            {% if research_tools_only %}中草药资料问答{% else %}Multi-Agent Medical Assistant{% endif %}
                         </h5>
                         <small class="text-muted">{% if research_tools_only %}查询来源字段 · 核对原页 · 保存证据{% elif features.image_analysis.available %}Upload medical images or ask health-related questions{% else %}Ask text questions · image analysis is disabled{% endif %}</small>
                     </div>
@@ -537,7 +543,7 @@
     <script src="/research-evidence.js"></script>
     {% if pubmed_enabled %}<script src="/research-objects.js"></script>{% endif %}
     {% if research_tools_only and natural_routing_enabled %}<script src="/research-workspaces.js"></script>{% endif %}
-    {% if research_bookmarks_enabled %}<script src="/research-bookmarks.js"></script>{% endif %}
+    {% if research_bookmarks_enabled and show_research_extensions %}<script src="/research-bookmarks.js"></script>{% endif %}
     <script src="/research-plan.js"></script>
     <script>
         function renderPubmedResult(container,result){
@@ -620,8 +626,20 @@
     <script>
         function el(tag,text,cls){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node}
         function renderResearchResult(container,result,options={}){
+            if(!options.compact && result.status==='candidates' && result.tool_result?.hits?.length && !result.tool_result.comparison){
+                const names=[...new Set(result.tool_result.hits.map(hit=>hit.name))];
+                if(names.length===1){renderAnswerDelivery(container,{status:'success',answer_steps:[{
+                    step_id:'research',result_key:'research_result',route:{request:{name:names[0]}},result
+                }]},{research_result:renderResearchResult});return;}
+            }
             container.classList.add('research-result');container.dataset.researchStatus=result.status;
-            if(result.status!=='candidates'||!result.tool_result?.hits?.length)container.append(el('p',result.message));
+            if(options.compact && !result.tool_result?.hits?.length && result.tool_result?.fields?.length){
+                const heading=el('h3',result.tool_result.fields.join('、'));heading.append(el('small',options.source||'药典','answer-field-source'));container.append(heading);
+            }
+            if(result.status!=='candidates'||!result.tool_result?.hits?.length){
+                container.append(el('p',options.compact && result.status==='field_not_observed'?'当前索引未检出此字段。':result.message));
+                if(options.compact && result.status==='field_not_observed' && options.details)options.details.append(el('p',result.message));
+            }
             const data=result.tool_result;if(!data)return;
             if(data.comparison){
                 container.dataset.researchComparison='true';
@@ -637,7 +655,7 @@
                     for(const group of comparison.groups){
                         const cell=group.cells.find(c=>c.field===field),td=el('td');td.style.minWidth='240px';
                         if(cell.status!=='candidates')td.append(el('p',cell.message));
-                        for(const hit of cell.result.hits||[]){const text=el('div',hit.text);text.style.whiteSpace='pre-wrap';td.append(text)}
+                        for(const hit of cell.result.hits||[]){const text=el('div',readableEvidenceText(hit.text));text.style.whiteSpace='pre-wrap';td.append(text)}
                         row.append(td);
                     }
                     body.append(row);
@@ -668,7 +686,7 @@
                 container.append(download,status);
                 return;
             }
-            function append(hit,notice){const card=render(hit);if(options.compact){card.querySelector('h3').textContent=hit.label==='origin'?'来源':hit.label;const proof=card.querySelector('[data-result-details]');if(proof&&options.details){proof.querySelector('summary').textContent='药典 · '+hit.label+' · 出处';options.details.append(proof)}}card.dataset.pageEndpoint='/api/research/page';if(notice)card.prepend(el('p',notice,'notice'));
+            function append(hit,notice){const card=render(hit,{compact:options.compact});if(options.compact){const heading=card.querySelector('h3');heading.textContent=hit.label==='origin'?'来源':hit.label;heading.append(el('small',options.source||'药典','answer-field-source'));const proof=card.querySelector('[data-result-details]');if(proof&&options.details){proof.querySelector('summary').textContent='药典 · '+hit.label+' · 出处';options.details.append(proof)}}card.dataset.pageEndpoint='/api/research/page';if(notice)card.prepend(el('p',notice,'notice'));
                 if(hit.reference_witness){const witness=el('section');witness.dataset.pageEndpoint='/api/research/page';witness.append(el('h3','相邻引用提示原文'),el('pre',hit.reference_witness.raw_text));citations(witness,hit.reference_witness,'evidence','引用提示原页');card.append(witness)}container.append(card)}
             for(const hit of data.hits||[])append(hit);
             for(const hit of data.unresolved_evidence||[])append(hit,'查询未完成：正文缺失或引用尚未展开，此片段不作为完整字段结果。');
@@ -1593,6 +1611,13 @@
         }
 
         function renderHerbResult(container, result, chooseSource, options = {}) {
+            if(!options.compact && result.status==='ok' && result.records?.length===1){
+                const record=result.records[0],names=[...new Set((record.name_zh_candidates||[]).map(item=>item.name_zh))];
+                const name=names.length===1?names[0]:record.fields.name_pinyin?.value;
+                if(name){renderAnswerDelivery(container,{status:'success',answer_steps:[{
+                    step_id:'herb',result_key:'tcm_result',route:{request:{name}},result
+                }]},{tcm_result:(node,data,settings)=>renderHerbResult(node,data,chooseSource,settings)});return;}
+            }
             const labels = {
                 name_pinyin: '拼音', latin_name: '拉丁名', english_name: '英文名',
                 family: '科', habitat: '产地', medicinal_part: '药用部位',
@@ -1642,15 +1667,28 @@
                     button.className = 'btn btn-sm btn-outline-primary';
                     button.addEventListener('click', () => chooseSource(record.source_record_id));
                 }
+                function display(field){
+                    return field.state==='missing'?'来源未提供':field.translation?.status==='dictionary_display'?
+                        field.translation.text+(options.compact?'':'（原文：'+field.value+'）'):
+                        Array.isArray(field.value)?field.value.join('；'):field.value;
+                }
+                function fieldLine(label,value){
+                    const line=add(card,'p',label+'：'+value);
+                    if(options.compact){const source=add(line,'small',options.source||'ETCM');source.className='answer-field-source';}
+                }
+                const combined=options.compact && record.fields.properties && record.fields.flavors &&
+                    ![record.fields.properties,record.fields.flavors].some(field=>field.translation?.status==='machine_candidate');
+                if(combined){
+                    const missing=[record.fields.properties,record.fields.flavors].some(field=>field.state==='missing');
+                    fieldLine('性味',(missing?'药性：':'')+display(record.fields.properties)+'；'+(missing?'药味：':'')+display(record.fields.flavors));
+                }
                 for (const [key, field] of Object.entries(record.fields)) {
-                    if(key==='name_pinyin')continue;
+                    if(key==='name_pinyin'&&!result.requested_fields?.includes(key))continue;
+                    if(combined&&['properties','flavors'].includes(key))continue;
                     if(field.state==='missing'&&!result.requested_fields?.includes(key))continue;
                     if(['reference_pmids','cross_references'].includes(key)&&!result.requested_fields?.includes(key))continue;
                     const translated=field.translation;
-                    add(card, 'p', (labels[key] || key) + '：' +
-                        (field.state === 'missing' ? '来源未提供' :
-                        translated?.status==='dictionary_display' ? translated.text+(options.compact ? '' : '（原文：'+field.value+'）') :
-                        Array.isArray(field.value) ? field.value.join('；') : field.value));
+                    fieldLine(labels[key] || key,display(field));
                     if(translated?.status==='machine_candidate' && translated.text){
                         const draft=add(card,'details','');add(draft,'summary','未审核机器译文（仅供对照）');
                         add(draft,'p',translated.text);add(draft,'small','术语可能误译，解释以原始字段为准，不用于实体合并或临床判断。');
@@ -2114,7 +2152,7 @@
                         const diagnostic = document.createElement('p');
                         diagnostic.className = 'small text-muted request-diagnostic';
                         diagnostic.textContent = '排查请求编号：' + failedRequestId;
-                        assistantMessageElement.append(diagnostic);
+                        (assistantMessageElement.querySelector('[data-answer-unfinished]') || assistantMessageElement).append(diagnostic);
                     }
                     chatBody.appendChild(assistantMessageElement);
                     workspaces?.observe(data);

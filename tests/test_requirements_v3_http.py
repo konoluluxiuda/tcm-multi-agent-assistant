@@ -191,7 +191,8 @@ class RequirementsV3HTTPTests(unittest.TestCase):
         cross = {'version': 'requirements-v2', 'status': 'ready', 'operation': 'new',
                  'objects': [{'ref': 'o1', 'mention': 'Alpha'}],
                  'requirements': [{'id': 'r1', 'kind': 'read_fields', 'object_refs': ['o1'],
-                                   'fields': [{'namespace': 'etcm', 'name': 'medicinal_part'},
+                                   'fields': [{'namespace': 'etcm', 'name': 'properties'},
+                                              {'namespace': 'etcm', 'name': 'flavors'},
                                               {'namespace': 'pharmacopoeia', 'name': '功能与主治'}]}],
                  'delivery': {'form': 'answer'}, 'unresolved': []}
         model = RequirementsSequence(cross, cross)
@@ -201,9 +202,9 @@ class RequirementsV3HTTPTests(unittest.TestCase):
             self.assertEqual(response.status_code, 200, response.text)
             proposal = response.json()['proposal']
             self.assertEqual(proposal['status'], 'query')
-            self.assertEqual(len(proposal['routes']), 2)
+            self.assertEqual(len(proposal['routes']), 3)
             self.assertEqual({r['request'].get('field') or r['request'].get('question') for r in proposal['routes']},
-                             {'medicinal_part', 'Alpha的功能与主治'})
+                             {'properties', 'flavors', 'Alpha的功能与主治'})
 
 
 

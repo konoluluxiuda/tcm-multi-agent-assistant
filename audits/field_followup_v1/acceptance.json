@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "offline_tests": 111,
+  "offline_modules": 9,
+  "external_model_calls": 0,
+  "live_model_acceptance": "not_run",
+  "deployment": {
+    "port": 7896,
+    "source_revision": "f5b39af9db24a9454a7479ccea091947c2ce4e05fc82a34e49112adddc589727",
+    "restart_required": false,
+    "question_policy": "requirements_feedback_v1",
+    "question_model_enabled": true,
+    "result_feedback_enabled": true,
+    "execution_driver": "fixed",
+    "saved_state_unchanged": true,
+    "external_model_calls": 0,
+    "live_queries_submitted": 0
+  }
+}

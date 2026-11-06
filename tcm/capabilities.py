@@ -63,9 +63,9 @@ def describe():
                             configured=configured, example=example))
 
     add('overview', '数据概览、数据库介绍', True, True, '介绍两个数据库')
-    add('herbs', 'ETCM药材属性', True, base, '查看白术的属性')
+    add('herbs', 'ETCM药材字段，支持明确药名后的字段追问', True, base, '查看白术的性味和归经')
     add('relations', '药材成分、靶点及原始来源', True, enrichment, '白术有哪些成分')
-    add('pharmacopoeia', '药典功效、注意事项、字段对比和出处', pharma, documents, '黄芪的功效和注意事项')
+    add('pharmacopoeia', '药典字段、多药及跨来源查询与出处', pharma, documents, '黄芪的功效和注意事项')
     add('targets', '共同靶点、靶点画像和药材相似度', True, enrichment, '当归与川芎的共同靶点')
     add('diseases', '疾病目录和疾病靶点', True, disease, '提供两个疾病及ID')
     add('disease_ranking', '按疾病靶点与药材关联排序', True, disease and enrichment, '按疾病靶点查询关联药材')
@@ -79,8 +79,14 @@ def describe():
     add('research_selection', '资料问句、候选核对与增量交付（'+selection_mode+'）',
         selection['enabled'], (Path(os.getenv('RAG_RELEASE_PATH','var/data_releases/r1_20261030'))/'release.json').is_file(),
         '打开 /dataops/research，输入整理要求或选择候选和字段')
-    available = [x for x in entries if x['enabled'] and x['configured']]
-    unavailable = [x for x in entries if not x['enabled'] or not x['configured']]
+    supported = {'overview', 'herbs', 'relations', 'pharmacopoeia'}
+    for entry in entries:
+        entry['product_status'] = ('supported' if entry['id'] in supported else
+                                   'candidate' if entry['id'] in ('workbench', 'research_selection') else 'experimental')
+    public_scope = env_bool('RESEARCH_TOOLS_ONLY') and not env_bool('SHOW_RESEARCH_EXTENSIONS')
+    visible = [x for x in entries if not public_scope or x['id'] in supported]
+    available = [x for x in visible if x['enabled'] and x['configured']]
+    unavailable = [x for x in visible if not x['enabled'] or not x['configured']]
     message = '当前可用入口：\n' + '\n'.join('• ' + x['label'] for x in available)
     if runtime['agent'] and any(x['id'] == 'dataops_agent' for x in available):
         message += '\n可试：整理白术和黄芪的功效、注意事项，保留出处并生成表格。'
@@ -88,5 +94,8 @@ def describe():
              '真实LLM自主整理尚未验收通过；当前不提供个体选药、处方或疾病疗效预测。']
     if unavailable:
         notes.append('未启用或资料未配置：' + '；'.join(x['label'] for x in unavailable) + '。')
+    if not public_scope:
+        notes.append('工作台、批量整理、研究收藏和扩展分析属于候选或实验功能，配置可用不代表当前产品已完成验收。')
     return dict(message=message, notes=notes, capabilities=entries, dataops=runtime,
+                product_scope='qa' if public_scope else 'research_extensions',
                 readiness_checked=False)

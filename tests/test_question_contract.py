@@ -31,7 +31,8 @@ class ContractTests(unittest.TestCase):
         self.assertEqual(p.steps[0].call.tool,'herb_attributes')
         self.assertEqual(p.steps[0].call.arguments.fields,['medicinal_part','family'])
         self.assertIsNone(field_tasks('查看Alpha的药用部位和采购价格'))
-        self.assertIsNone(field_tasks('Alpha的归经'))
+        self.assertEqual(field_tasks('Alpha的归经'), [
+            {'tool': 'herb_attributes', 'arguments': {'name': 'Alpha', 'fields': ['meridians']}}])
 
     def test_inline_objects_cannot_be_lost_or_duplicated(self):
         q='帮我把Alpha的药典功效和Beta在ETCM的药用部位整理到一起，附各自出处'

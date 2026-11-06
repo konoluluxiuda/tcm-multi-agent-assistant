@@ -32,6 +32,18 @@ async def check(args):
             await page.goto('http://127.0.0.1/')
             await page.wait_for_function('window.tcmSessionReady === true')
             await page.wait_for_function('!document.querySelector("#message-input").disabled')
+            assert await page.locator('#research-extension-tools, #research-bookmarks, #local-research-panel').count()==0
+            assert await page.locator('.sidebar a[href="/dataops"], .sidebar a[href="/dataops/research"]').count()==0
+            checks.append('default_navigation_only_advertises_qa')
+            with patch.dict(os.environ,{'SHOW_RESEARCH_EXTENSIONS':'1'}):
+                await page.reload();await page.wait_for_function('window.tcmSessionReady === true')
+                assert await page.locator('#research-extension-tools').count()==1
+                assert await page.locator('#research-extension-tools a[href="/dataops"]').count()==1
+                assert '实验与候选功能' in await page.locator('.sidebar').inner_text()
+            await page.reload();await page.wait_for_function('window.tcmSessionReady === true')
+            await page.wait_for_function('!document.querySelector("#message-input").disabled')
+            assert await page.locator('#research-extension-tools').count()==0
+            checks.append('developer_extension_navigation_is_explicit_and_reversible')
             assert await page.locator('.sidebar #research-workspaces').count()==1
             assert await page.locator('.chat-container #research-workspaces').count()==0
             sidebar=await page.locator('.sidebar').bounding_box();chat=await page.locator('.chat-container').bounding_box()
@@ -48,21 +60,32 @@ async def check(args):
             assert await reply.locator('.herb-source-card').count()==2
             for card in await reply.locator('.answer-object').all():
                 text=await card.inner_text()
-                for field in ('科：','药性：','药味：'):assert field in text,text
+                for field in ('科：','性味：'):assert field in text,text
                 assert '关联记录' not in text,text
+                assert '查询完成' not in text,text
                 assert await card.locator('h4').count()==1
                 assert await card.locator('.answer-evidence[open]').count()==0
             checks.append('two_herbs_three_fields_each_without_duplicate_cards')
             await send('查询Alpha的ETCM药用部位和药典功能与主治。')
             reply=page.locator('[data-answer-delivery-status]').last
             assert await reply.locator('.answer-object').count()==1
-            assert await reply.locator('.answer-source-label').all_text_contents()==['ETCM','药典']
+            assert await reply.locator('.answer-source-label').count()==0
+            assert set(await reply.locator('.answer-field-source').all_text_contents())=={'ETCM','药典'}
+            assert await reply.locator('.answer-fields').count()==1
             text=await reply.inner_text()
             assert '药用部位' in text and '功能与主治' in text
             assert '导出本轮证据' not in text and '检索说明' not in text
             await reply.locator('.answer-evidence > summary').click()
             assert await reply.locator('[data-evidence-export]').count()>=1
             checks.append('cross_source_fields_share_object_but_keep_separate_evidence')
+            await send('查询Alpha的性味和剂量')
+            reply=page.locator('[data-answer-delivery-status]').last
+            assert await reply.locator('.answer-object').count()==1
+            assert '性味：' in await reply.inner_text()
+            assert '用法与用量' in await reply.inner_text()
+            assert '排查请求编号' not in await reply.inner_text()
+            assert await reply.locator('.answer-evidence[open]').count()==0
+            checks.append('missing_document_field_stays_visible_next_to_combined_properties')
             await send('把Alpha和Beta的ETCM科名、药用部位生成表格。')
             panel=page.locator('.table-delivery').last
             download=panel.get_by_role('link',name='下载 Excel')
@@ -94,6 +117,50 @@ async def check(args):
             assert grouping['steps']==3 and grouping['unsafe']==0 and grouping['unchanged']
             assert '需要核对来源' in grouping['text']
             checks.append('conflicting_values_distinct_sources_and_partial_states_preserved')
+            direct=await page.evaluate('''() => {
+                const field=value=>({state:'present',value});
+                const result={status:'ok',dataset_version:'v1',requested_fields:['properties','flavors'],records:[{
+                    source_record_id:'s1',source:{id:'s1'},name_zh_candidates:[{name_zh:'白术'}],
+                    fields:{name_pinyin:field('BaiZhu'),properties:field('温'),flavors:{state:'missing',value:null}}}]};
+                const host=document.createElement('div');document.body.append(host);
+                renderHerbResult(host,result,()=>{});
+                const hit={name:'白术',raw_name:'白术',label:'用法与用量',text:'fixture dose',raw_text:'fixture dose',
+                    review_status:'unreviewed',field_overlay_ids:[],entry_overlay_ids:[],raw_flags:[],evidence:[],title_evidence:[]};
+                const research=document.createElement('div');document.body.append(research);
+                renderResearchResult(research,{status:'candidates',tool_result:{hits:[hit],query_interpretation:{
+                    field_matches:[{query_term:'剂量',field:'用法与用量'}]}}});
+                const output={herbHeads:host.querySelectorAll('h4').length,herb:host.innerText,
+                    researchHeads:research.querySelectorAll('.answer-object > h4').length,research:research.innerText,
+                    explanationSaved:research.textContent.includes('检索说明')};
+                host.remove();research.remove();return output;
+            }''')
+            assert direct['herbHeads']==1 and '药味：来源未提供' in direct['herb']
+            assert 'BaiZhu' not in direct['herb'] and '来源与原始字段' not in direct['herb']
+            assert direct['researchHeads']==1 and direct['research'].count('白术')==1
+            assert '检索说明' not in direct['research'] and direct['explanationSaved']
+            checks.append('legacy_scalar_routes_use_same_compact_display_without_hiding_missing_fields')
+            quantity=await page.evaluate(r'''() => {
+                const original=String.raw`【用法与用量】 $6\sim 12\mathrm{g}$`;
+                const hit={name:'白术',raw_name:'白术',label:'用法与用量',text:original,raw_text:original,
+                    review_status:'unreviewed',field_overlay_ids:[],entry_overlay_ids:[],raw_flags:[],evidence:[],title_evidence:[]};
+                const before=JSON.stringify(hit),host=document.createElement('div');document.body.append(host);
+                renderResearchResult(host,{status:'candidates',tool_result:{hits:[hit]}});
+                const values=[String.raw`$0.5\sim 1.5\mathrm{mg}$`,String.raw`$6\mathrm{g}$`,
+                    String.raw`$6\times 12\mathrm{g}$`,String.raw`$\frac{6}{12}\mathrm{g}$`,
+                    String.raw`$$6\sim 12\mathrm{g}$$`,
+                    String.raw`$6\sim 12\mathrm{g}$<img src=x onerror=alert(1)>`];
+                const output={visible:host.innerText,originalSaved:host.textContent.includes(original),
+                    unchanged:before===JSON.stringify(hit),values:values.map(readableEvidenceText),
+                    heads:host.querySelectorAll('.answer-object > h4').length};
+                host.remove();return output;
+            }''')
+            assert '6–12 g' in quantity['visible'] and '\\mathrm' not in quantity['visible']
+            assert '【用法与用量】' not in quantity['visible']
+            assert quantity['heads']==1 and quantity['visible'].count('白术')==1
+            assert quantity['originalSaved'] and quantity['unchanged']
+            assert quantity['values']==['0.5–1.5 mg','6 g',r'$6\times 12\mathrm{g}$',
+                r'$\frac{6}{12}\mathrm{g}$',r'$$6\sim 12\mathrm{g}$$','6–12 g<img src=x onerror=alert(1)>']
+            checks.append('quantity_formula_readable_without_changing_values_units_or_source_text')
             await page.screenshot(path=str(args.out/'desktop.png'),full_page=True)
             await page.set_viewport_size({'width':390,'height':844})
             assert await page.locator('#toggle-tools').is_visible()

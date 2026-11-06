@@ -27,21 +27,18 @@ def validate_query_fields(intent, question, catalog):
         provided['attributes'].update(intent.fields)
     else:
         provided['document_fields'].update(intent.fields)
-    # Shared labels do not establish a source requirement. Only adjust this
-    # bounded group when no source is explicit and no negation needs resolving.
+    # Shared labels use the same default as templates and model instructions.
+    # Keep this fallback bounded; explicit sources and negations retain guards.
     import re
     shared = '性味' in question or '归经' in question
     explicit_source = re.search(r'药典|ETCM', question, re.I)
     if shared and not explicit_source and not any(negative.values()):
-        attrs = set()
-        if '性味' in question: attrs.update(('properties', 'flavors'))
-        if '归经' in question: attrs.add('meridians')
+        from tcm.dataops.field_sources import DEFAULTS
+        attrs = {name for label in ('性味', '归经') if label in question
+                 for name in DEFAULTS[label][1]}
         positive['attributes'].difference_update(attrs)
         positive['document_fields'].discard('性味与归经')
-        if intent.action in ('herb_profile', 'herb_field'):
-            positive['attributes'].update(attrs)
-        else:
-            positive['document_fields'].add('性味与归经')
+        positive['attributes'].update(attrs)
     missing = {key: sorted(positive[key] - provided[key]) for key in provided}
     forbidden = {key: sorted(negative[key] & provided[key]) for key in provided}
     record('query_field_coverage', 'rejected' if any(missing.values()) or any(forbidden.values()) else 'accepted',

@@ -11,6 +11,22 @@ from tests.test_requirements_v3_http import RequirementsSequence
 
 
 class ScopeTests(unittest.TestCase):
+    def test_field_only_followup_inherits_recent_objects_without_changing_sources(self):
+        old=HumanMessage(content='我想了解白术的信息',additional_kwargs={'query_scope':{'object_mentions':['白术']}})
+        snapshot=SimpleNamespace(messages=[old,AIMessage(content='你想查询哪些资料？')])
+        for query in ('给出性味和剂量','性味、归经','请查看药典的性味与归经和用量'):
+            with self.subTest(query=query):
+                context=prepare(query,snapshot)
+                self.assertTrue(context['inherited'])
+                self.assertEqual(context['object_mentions'],['白术'])
+                self.assertEqual(context['reference_kind'],'field_only')
+        self.assertEqual(prepare('给出性味和剂量',snapshot)['resolved_question'],'查询白术的性味和剂量')
+        self.assertIn('药典的性味与归经',prepare('请查看药典的性味与归经和用量',snapshot)['resolved_question'])
+        for query in ('给出黄芪的性味','给出性味和剂量并替我开方','不要性味只要剂量','换个话题'):
+            self.assertFalse(prepare(query,snapshot)['inherited'],query)
+        for messages in ([],[old,HumanMessage(content='换个话题')]):
+            self.assertTrue(prepare('给出性味和剂量',SimpleNamespace(messages=messages))['needs_context'])
+
     def test_short_reference_and_natural_intro(self):
         old=HumanMessage(content='我想了解牛膝和牡丹皮的资料。')
         context=prepare('这两味的性味和归经',SimpleNamespace(messages=[old]))
@@ -31,6 +47,15 @@ class ScopeTests(unittest.TestCase):
 class ConversationHTTPTests(unittest.TestCase):
     setUp = presets.PresetHTTPTests.setUp
     wait = presets.PresetHTTPTests.wait
+    def test_field_only_reply_also_reaches_fixed_template_without_model(self):
+        with patch.dict('os.environ',{'ENABLE_DATAOPS_RESEARCH_GOAL_MODEL':'0'}):
+            first=self.client.post('/chat',json={'query':'我想了解Alpha的信息','request_key':'local-fields-first'})
+            self.assertEqual(first.json()['assistant']['status'],'clarification_needed',first.text)
+            second=self.client.post('/chat',json={'query':'给出性味','request_key':'local-fields-second'})
+        self.assertEqual(second.json()['status'],'success',second.text)
+        self.assertEqual(second.json()['model_calls'],0)
+        self.assertEqual({step['route']['request']['field'] for step in second.json()['answer_steps']},{'properties','flavors'})
+
     def test_clarification_then_pronoun_then_repeat_keeps_both_objects(self):
         import app
         q='给出Alpha和Beta的相关信息'
@@ -115,6 +140,7 @@ class FeedbackContextHTTPTests(unittest.TestCase):
             second=self.client.post('/chat',json={'query':'这两味的药用部位','request_key':'short-scope'})
             self.assertEqual(second.json()['status'],'success',second.text)
         self.assertEqual(model.calls,3)
+
         self.assertEqual(len(second.json()['answer_steps']),2)
         for payload in inputs[1:]:
             scope=payload['tool_observations']['conversation_scope']
@@ -144,3 +170,47 @@ class FeedbackContextHTTPTests(unittest.TestCase):
             self.assertTrue(scope['inherited'])
             self.assertEqual(payload['question'],'这两个草药的药用部位是什么')
         self.assertEqual(model.calls,3)
+
+
+class FieldOnlyFeedbackHTTPTests(unittest.TestCase):
+    setUp = presets.PresetHTTPTests.setUp
+    wait = presets.PresetHTTPTests.wait
+
+    def test_field_reply_reaches_model_with_object_and_delivers_both_sources(self):
+        good={'version':'requirements-v2','status':'ready','operation':'new',
+              'objects':[{'ref':'o1','mention':'Alpha'}],
+              'requirements':[{'id':'r1','kind':'read_fields','object_refs':['o1'],'fields':[
+                  {'namespace':'etcm','name':'properties'},{'namespace':'etcm','name':'flavors'},
+                  {'namespace':'pharmacopoeia','name':'用法与用量'}]}],
+              'delivery':{'form':'answer'},'unresolved':[]}
+        pending={**good,'status':'needs_input','requirements':[],'unresolved':['请指定资料字段。']}
+        model=RequirementsSequence(pending,good,good)
+        inputs=[];invoke=model.invoke
+        def capture(messages):
+            inputs.append(json.loads(messages[-1]['content']))
+            return invoke(messages)
+        model.invoke=capture
+        with patch.dict('os.environ',{'DATAOPS_UNDERSTANDING_POLICY':'requirements_feedback_v1',
+                'ENABLE_DATAOPS_RESEARCH_GOAL_MODEL':'1','ENABLE_DATAOPS_RESULT_FEEDBACK':'0'}), \
+                patch('tcm.dataops.research_model.configured_model',return_value=model):
+            first=self.client.post('/chat',json={'query':'我想了解Alpha的信息','request_key':'fields-first'})
+            self.assertEqual(first.json()['assistant']['status'],'clarification_needed',first.text)
+            body={'query':'给出性味和剂量','request_key':'fields-next'}
+            reply=self.client.post('/chat',json=body)
+            self.assertEqual(reply.status_code,200,reply.text)
+            steps=reply.json()['answer_steps']
+            self.assertEqual(len(steps),3)
+            self.assertEqual({s['route']['request'].get('field') for s in steps if s['tool']=='herb'}, {'properties','flavors'})
+            self.assertEqual([s['route']['request']['question'] for s in steps if s['tool']=='research'], ['Alpha的用法与用量'])
+            again=self.client.post('/chat',json=body)
+            self.assertTrue(again.json()['replayed'],again.text)
+            self.assertEqual(model.calls,3)
+            self.client.cookies.clear();self.client.get('/conversation')
+            empty=self.client.post('/chat',json={'query':'给出性味和剂量','request_key':'fields-empty'})
+            self.assertEqual(empty.json()['assistant']['status'],'clarification_needed',empty.text)
+            self.assertEqual(model.calls,3)
+        for payload in inputs[1:]:
+            scope=payload['tool_observations']['conversation_scope']
+            self.assertTrue(scope['inherited'])
+            self.assertEqual(scope['object_mentions'],['Alpha'])
+            self.assertEqual(scope['resolved_question'],'查询Alpha的性味和剂量')

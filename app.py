@@ -232,6 +232,7 @@ async def index(request: Request):
         "features": config.features.as_dict(), "research_tools_only": env_bool('RESEARCH_TOOLS_ONLY'),
         "pubmed_enabled": False,
         "dataops_enabled": env_bool('ENABLE_DATAOPS'),
+        "show_research_extensions": env_bool('SHOW_RESEARCH_EXTENSIONS'),
         "rag_enabled": env_bool('ENABLE_RAG_WORKBENCH'),
         "natural_routing_enabled": env_bool('ENABLE_NATURAL_ROUTING'),
         "synthetic_loop_enabled": env_bool('ENABLE_SYNTHETIC_LOOP'),
@@ -597,10 +598,11 @@ def chat(
     semantic_fallback=(research_runtime()['question_model_enabled'] and not memory_turn and needs_fallback(request.query,selected))
     from tcm.dataops.preset_requests import parse as parse_preset
     from tcm.dataops.understanding_contract import policy as understanding_policy
-    from tcm.dataops.conversation_scope import REFERENCE
+    from tcm.dataops.conversation_scope import REFERENCE, field_followup
     preset = (research_runtime()['enabled'] and understanding_policy() == 'local_then_one_model_v1'
               and (parse_preset(request.query) is not None or
-                   REFERENCE.fullmatch(request.query.strip().rstrip('。.!！?？')) is not None))
+                   REFERENCE.fullmatch(request.query.strip().rstrip('。.!！?？')) is not None or
+                   field_followup(request.query) is not None))
     if request.answer_mode == 'auto' and env_bool('ENABLE_DATAOPS') and (matches_dataops(request.query) or semantic_fallback or preset):
         validate_dataops_origin(http_request)
         if not 1 <= len(request.query.strip()) <= 2000:

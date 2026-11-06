@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "offline_tests": 207,
+  "offline_modules": 18,
+  "network_attempts": 0,
+  "external_model_calls": 0,
+  "live_model_acceptance": "not_run",
+  "deployment": {
+    "port": 7896,
+    "source_revision": "2d0c27e6f104b0b360e5fac2942cc48729316a1e69284d465e6c080c3f75be03",
+    "restart_required": false,
+    "question_policy": "requirements_feedback_v1",
+    "question_model_enabled": true,
+    "result_feedback_enabled": true,
+    "execution_driver": "fixed",
+    "saved_state_unchanged": true,
+    "conversation_count": 4,
+    "workspace_count": 2,
+    "artifact_count": 2,
+    "external_model_calls": 0,
+    "live_queries_submitted": 0
+  },
+  "historical_experiments_modified": false,
+  "git_committed": false
+}
