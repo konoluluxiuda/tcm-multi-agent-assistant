@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-06",
+  "implementation_commit": "1a893ec",
+  "source_revision": "d089afe3d93ad5ea7057d34ba2a04937b31536d22380ad53b2a1fbd29a14b531",
+  "status": "partial",
+  "execution": "fixed",
+  "data": "local_registered_real_sources",
+  "external_model_enabled": false,
+  "external_model_calls": 0,
+  "live_W_model_acceptance": "not_run",
+  "cases": [
+    {
+      "id": 1,
+      "question": "你能做什么",
+      "http": 200,
+      "observed_status": "success",
+      "model_calls": 0
+    },
+    {
+      "id": 2,
+      "question": "我想了解茯苓的信息",
+      "http": 200,
+      "observed_status": "success",
+      "model_calls": 0
+    },
+    {
+      "id": 3,
+      "question": "给出性味和剂量",
+      "http": 200,
+      "observed_status": "success",
+      "model_calls": 0
+    },
+    {
+      "id": 4,
+      "question": "归经呢",
+      "http": 200,
+      "observed_status": "success",
+      "model_calls": 0
+    },
+    {
+      "id": 5,
+      "question": "查询泽泻的ETCM药用部位和药典功能与主治。",
+      "http": 200,
+      "observed_status": "success",
+      "model_calls": 0
+    },
+    {
+      "id": 6,
+      "question": "分别告诉我茯苓和泽泻的性味。",
+      "http": 200,
+      "observed_status": "success",
+      "model_calls": 0
+    },
+    {
+      "id": 7,
+      "question": "白术有哪些成分",
+      "http": 200,
+      "observed_status": "success",
+      "model_calls": 0
+    }
+  ],
+  "latest_answer_refresh": {
+    "status": "passed",
+    "new_posts": 0,
+    "restored_object_cards": 2
+  },
+  "older_answer_refresh": {
+    "status": "failed",
+    "reason": "Only latest answer_delivery restored; older answers show summary",
+    "stored_deliveries_verified_intact": [
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "source_consistency": {
+    "status": "passed",
+    "etcm_fields": 8,
+    "pharmacopoeia_chunks": 2
+  },
+  "evidence_and_pagination": {
+    "status": "passed",
+    "checks": [
+      "pharmacopoeia_original_page_loaded",
+      "evidence_markdown_downloaded",
+      "relation_next_page_preserves_total_and_changes_rows"
+    ],
+    "page_png_sha256": "89cf90107b3968b9d49fc3efffbbb82e372985dd15abd8d01ef18ada54526657",
+    "relation_total": 307,
+    "page_size": 20,
+    "model_calls": 0,
+    "javascript_errors": [],
+    "external_browser_requests": []
+  },
+  "javascript_errors": [],
+  "external_browser_requests": [],
+  "limitations": [
+    "Not a natural-language generalization benchmark",
+    "Not W model understanding acceptance",
+    "Source consistency is not manual identity or OCR review"
+  ],
+  "temporary_server_stopped": true,
+  "existing_7896_configuration_changed": false
+}
