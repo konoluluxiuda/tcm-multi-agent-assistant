@@ -189,5 +189,8 @@ class DiagnosticApiTests(unittest.TestCase):
     def test_rejected_question_without_workspace_still_has_diagnostics(self):
         response=self.client.post('/api/dataops/research-questions',json={'question':'整理它们的功效','request_key':'no-object'})
         self.assertEqual(response.status_code,200);self.assertNotIn('workspace',response.json())
+        self.assertEqual(response.json()['proposal']['status'],'needs_input')
+        self.assertIsNone(response.json()['proposal']['goal'])
         receipt=self.client.get('/api/dataops/diagnostics/'+response.headers['X-Request-ID']).json()
-        self.assertTrue(any(e['code']=='no_candidate_scope' for e in receipt['events']))
+        self.assertTrue(any(e['stage']=='requirements' and e['code']=='requirements_unresolved'
+                            for e in receipt['events']))

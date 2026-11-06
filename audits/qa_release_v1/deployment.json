@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-06",
+  "status": "passed",
+  "implementation_commit": "12a38a96f15bbce326c59ab40deea278f56b9789",
+  "image_tag": "tcm-research-chat:qa-12a38a9",
+  "image_id": "sha256:056c2f76976e43aa25e8973e23f6716635c1597963472391789a334e91e7caec",
+  "source_tree_sha256": "a26898a2340fc5c043e8088641738be13aed5c65ef1bc73df6b96ef2286419e8",
+  "runtime_source_check": {
+    "checked": 229,
+    "mismatches": []
+  },
+  "port": 7934,
+  "health": "healthy",
+  "source_revision": "72c906d4df45dc36d7a192c1188482fe0fc00f75c49116059dd3c9b73090cf43",
+  "restart_required": false,
+  "model_calls": 0,
+  "models_enabled": false,
+  "execution_driver": "fixed",
+  "result_feedback_enabled": false,
+  "environment_preserved": true,
+  "mounts_preserved": true,
+  "state_preservation": {
+    "tables_checked": 75,
+    "original_rows_preserved": 2852,
+    "other_state_files_preserved": 30,
+    "rollback_container": "tcm-requirements-clean-completion-v2-before-qa-12a38a9"
+  },
+  "stage_browser": {
+    "status": "passed",
+    "questions": [
+      "我想了解茯苓的信息",
+      "给出性味和剂量",
+      "归经呢",
+      "查询泽泻的ETCM药用部位和药典功能与主治。",
+      "分别告诉我茯苓和泽泻的性味。"
+    ],
+    "retained_answer_turns": 4,
+    "restored_object_cards": 5,
+    "new_posts_on_refresh": 0,
+    "saved_steps_match": true,
+    "old_original_page_loaded": true,
+    "model_calls": 0,
+    "javascript_errors": [],
+    "external_requests": []
+  },
+  "deployed_browser": {
+    "status": "passed",
+    "questions": [
+      "我想了解茯苓的信息",
+      "给出性味和剂量",
+      "归经呢",
+      "查询泽泻的ETCM药用部位和药典功能与主治。",
+      "分别告诉我茯苓和泽泻的性味。"
+    ],
+    "retained_answer_turns": 4,
+    "restored_object_cards": 5,
+    "new_posts_on_refresh": 0,
+    "saved_steps_match": true,
+    "old_original_page_loaded": true,
+    "model_calls": 0,
+    "javascript_errors": [],
+    "external_requests": []
+  },
+  "preview_stopped": true,
+  "git_implementation_pushed": true,
+  "docker_hub_published": false,
+  "private_evidence": "var/qa_release_20261106",
+  "limitations": [
+    "Known-question deployment walkthrough, not generalization",
+    "W model effectiveness not retested",
+    "Python and Docker retain separate sessions and model settings"
+  ]
+}

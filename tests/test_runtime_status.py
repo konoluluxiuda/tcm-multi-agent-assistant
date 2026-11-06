@@ -103,8 +103,10 @@ class RuntimeTests(unittest.TestCase):
     def test_disabled_synthetic_panel_does_not_probe_a_disabled_endpoint(self):
         import app
         with TestClient(app.app) as client:
-            for value, visible in (('0',False),('1',True)):
+            for value, extensions, visible in (('0','0',False),('1','0',False),
+                                                ('0','1',False),('1','1',True)):
                 with patch.dict('os.environ',{'ENABLE_SYNTHETIC_LOOP':value,'RESEARCH_TOOLS_ONLY':'1',
+                                             'SHOW_RESEARCH_EXTENSIONS':extensions,
                                              'ENABLE_NATURAL_ROUTING':'1','ENABLE_RESEARCH_TASKS':'1'}):
                     html=client.get('/').text
                 self.assertEqual('src="/research-loop.js"' in html,visible)

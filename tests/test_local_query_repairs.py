@@ -33,7 +33,9 @@ class RoutingTests(unittest.TestCase):
         self.assertEqual(task['arguments']['fields'],['properties','flavors'])
 
     def test_explicit_source_and_shared_field_defaults_are_preserved(self):
-        for q in ('白术的性味','白术的归经','药典里白术的药用部位','查看白术的药典药用部位'):
+        for q in ('白术的性味','白术的归经'):
+            self.assertEqual(resolve(q)['tool'],'herb',q)
+        for q in ('药典里白术的药用部位','查看白术的药典药用部位'):
             self.assertEqual(resolve(q)['tool'],'research',q)
         self.assertEqual(field_tasks('药典白术的性味')[0]['arguments']['fields'],['性味与归经'])
 

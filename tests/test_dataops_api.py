@@ -68,8 +68,11 @@ class ApiTests(unittest.TestCase):
             result = client.post('/api/dataops/workspaces', json={'request_key': 'main-app-request', 'goal': {}})
             self.assertEqual(result.status_code, 201, result.text)
             self.assertEqual(client.post('/api/dataops/not-a-tool', json={}).status_code, 403)
-            html = client.get('/').text
-            self.assertIn('href="/dataops"', html)
+            with patch.dict('os.environ', {'SHOW_RESEARCH_EXTENSIONS':'0'}):
+                html = client.get('/').text
+            self.assertNotIn('href="/dataops"', html)
+            with patch.dict('os.environ', {'SHOW_RESEARCH_EXTENSIONS':'1'}):
+                self.assertIn('href="/dataops"', client.get('/').text)
             self.assertNotIn('workspace-tab-literature', html)
 
 

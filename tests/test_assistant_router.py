@@ -52,7 +52,7 @@ class RouterTests(unittest.TestCase):
             self.assertEqual(resolve(text)['tool'],'research',text)
         self.assertEqual(resolve('查一下黄芪的药用部位')['tool'],'herb')
         self.assertEqual(resolve('什么是归经')['request']['topic'],'concept')
-        self.assertEqual(resolve('黄芪的归经是什么')['tool'],'research')
+        self.assertEqual(resolve('黄芪的归经是什么')['tool'],'herb')
 
     def test_pinyin_or_latin_named_fields_choose_etcm_without_chinese_mapping(self):
         for text in ('BaiZhu的药用部位','查询BaiZhu的归经','Scutellaria baicalensis的药性是什么'):
