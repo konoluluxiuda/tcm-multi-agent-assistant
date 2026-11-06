@@ -10,6 +10,10 @@
 | 当前产品与本地启动 | [项目README](../README.md) |
 | 保留、隐藏、实验及待删除模块 | [功能边界与保留清单](FEATURE_STATUS.md) |
 | 问答示例与结果说明 | [使用说明](NEW_USER_GUIDE.md) |
+| 业务案例与三分钟演示 | [当前问答演示](PROJECT_DEMO.md) |
+| 个人贡献、证据与技术取舍 | [面试材料](INTERVIEW_EVIDENCE.md) |
+| 新问法、小批量验收与调用预算 | [使用验收方案](QA_USER_ACCEPTANCE.md)；[B 组首测 3/4 与追问缺口](../audits/qa_live_acceptance_v1/README.md) |
+| 首测后字段追问修复与本地激活 | [离线验证及部署边界](../audits/qa_followup_fix_v1/README.md) |
 | 架构、运行开关和维护记录 | [统一大纲](TCM_PROJECT_ROADMAP.md) |
 | 问句、工具与失败定位 | [诊断说明](REQUEST_DIAGNOSTICS.md) |
 | 本次入口与介绍收敛 | [验证记录](../audits/qa_product_scope_v1/README.md) |
@@ -32,5 +36,5 @@
 - 引用RAG：[研究页说明](RAG_CITED_ANSWER.md)。不等于当前聊天已启用向量检索或生成。
 - native Agent与策略对照：[工具反馈实验](../audits/requirements_feedback_v1/README.md)、[历史完成记录](../audits/requirements_completion_v1/README.md)。
 - Langfuse：[接入说明](LANGFUSE_OBSERVABILITY.md)。当前是否启用以运行开关为准。
-- 历史演示与面试材料：[演示](PROJECT_DEMO.md)、[证据](INTERVIEW_EVIDENCE.md)。其中表格和复杂研究故事只作为历史技术经历，不作为当前产品承诺。
+- 历史工作台演示与面试材料：[演示快照](history/PROJECT_DEMO_BEFORE_QA_DEMO_20261106.md)、[证据快照](history/INTERVIEW_EVIDENCE_BEFORE_QA_DEMO_20261106.md)。其中表格和复杂研究故事只作为历史技术经历，不作为当前产品承诺。
 - 原文档索引：[收敛前快照](history/DOCS_INDEX_BEFORE_QA_SCOPE_20261106.md)，保留其他设计文档和验收链接。

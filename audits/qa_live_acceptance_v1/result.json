@@ -1,0 +1,245 @@
+{
+  "run": "qa_user_acceptance_20261106_B01",
+  "execution_status": "completed",
+  "business_status": "not_passed",
+  "scenarios_passed": 3,
+  "scenarios_total": 4,
+  "turns_passed": 4,
+  "turns_total": 6,
+  "completed_with_values": 3,
+  "necessary_clarifications": 1,
+  "unnecessary_clarifications": 2,
+  "model_calls": 12,
+  "understanding_calls": 9,
+  "result_review_calls": 3,
+  "usage": {
+    "input_tokens": 39596,
+    "output_tokens": 1911,
+    "total_tokens": 41507
+  },
+  "unknown_dispatches": 0,
+  "usage_unknown": 0,
+  "retries": 0,
+  "latency_seconds": {
+    "each": [
+      14.147,
+      10.753,
+      10.329,
+      5.033,
+      5.536,
+      5.031
+    ],
+    "median": 7.9325,
+    "maximum": 14.147
+  },
+  "checks": {
+    "frozen_files": true,
+    "application_code": true,
+    "source_files": true,
+    "runtime": true,
+    "raw_etcm_reference_pointers": true
+  },
+  "cases": [
+    {
+      "id": "U01",
+      "passed": true,
+      "browser_checks": {
+        "javascript_errors": [],
+        "external_requests": [],
+        "chat_posts": 1
+      }
+    },
+    {
+      "id": "U02",
+      "passed": true,
+      "browser_checks": {
+        "javascript_errors": [],
+        "external_requests": [],
+        "chat_posts": 1,
+        "original_page_loaded": true
+      }
+    },
+    {
+      "id": "U03",
+      "passed": true,
+      "browser_checks": {
+        "javascript_errors": [],
+        "external_requests": [],
+        "chat_posts": 1
+      }
+    },
+    {
+      "id": "U06",
+      "passed": false,
+      "browser_checks": {
+        "javascript_errors": [],
+        "external_requests": [],
+        "chat_posts": 3,
+        "refresh_same_answers": true,
+        "new_posts_on_refresh": 0,
+        "restored_answer_turns": 0
+      }
+    }
+  ],
+  "limitations": [
+    "developer-authored small sample",
+    "no independent human identity/medical accuracy approval",
+    "no matched policy comparison",
+    "counts from application receipts, no separate provider HTTP trace",
+    "U06 generated no field answers; empty refresh equality does not pass answer recovery"
+  ],
+  "implementation_commit": "12a38a96f15bbce326c59ab40deea278f56b9789",
+  "repository_head": "30268267302ae3167ac9ca5710dc3db05b213fb2",
+  "source_revision": {
+    "dataset_version": "local-2026-10-10",
+    "sources": [
+      "0e11630a15fc2460ef253607840fac702a2e50c3a4a3839bcea0aed5b6e109ec",
+      "00b6119f3b0f8f837112fa55bcbe620658277083ac3efb7e48e9b696fdf5cb00",
+      "ae9910c2149820930bec103b227eee04f2287f8158501dcebee3ac7f5b5558a3",
+      "94a377b914320170cf271557b5d4cb9635fbf6725805a7f9601d12651f9c0194"
+    ],
+    "rules": "dataops-research-v1",
+    "release_content_id": "ddac6f50a64863a511b303052178eb005f62bc6f0260ce5d2c37b0cc053a5b75"
+  },
+  "runtime_source_revision": "72c906d4df45dc36d7a192c1188482fe0fc00f75c49116059dd3c9b73090cf43",
+  "authorization": "当前项目只再做一次小规模真实模型验收",
+  "maximum_calls": 24,
+  "mode": "W understanding + result review + fixed execution",
+  "entrypoint": "http://127.0.0.1:7896/",
+  "manifest_sha256": "58f44a0e0f8487d0ed9c639bcefc416bd2de0ae7cbe1908d7c787ad1803a0583",
+  "private_evidence": "var/qa_user_acceptance_20261106_B01",
+  "new_model_retests": 0,
+  "application_modified": false,
+  "scoring_projection_correction": "Initial scorer compared internal raw_item; corrected public-source projection without changing value/evidence expectations or re-running queries. Initial assessment retained.",
+  "turns": [
+    {
+      "scenario": "U01",
+      "turn": 1,
+      "passed": true,
+      "classification": "complete_with_values",
+      "http": 200,
+      "elapsed_seconds": 14.147,
+      "model_calls": 3,
+      "understanding_calls": 2,
+      "result_review_calls": 1,
+      "usage": {
+        "input_tokens": 9090,
+        "output_tokens": 415,
+        "total_tokens": 9505
+      },
+      "phases": [
+        "initial",
+        "semantic_review"
+      ],
+      "terminal_matches": true,
+      "display_matches": true
+    },
+    {
+      "scenario": "U02",
+      "turn": 1,
+      "passed": true,
+      "classification": "complete_with_values",
+      "http": 200,
+      "elapsed_seconds": 10.753,
+      "model_calls": 3,
+      "understanding_calls": 2,
+      "result_review_calls": 1,
+      "usage": {
+        "input_tokens": 9125,
+        "output_tokens": 425,
+        "total_tokens": 9550
+      },
+      "phases": [
+        "initial",
+        "semantic_review"
+      ],
+      "terminal_matches": true,
+      "display_matches": true
+    },
+    {
+      "scenario": "U03",
+      "turn": 1,
+      "passed": true,
+      "classification": "complete_with_values",
+      "http": 200,
+      "elapsed_seconds": 10.329,
+      "model_calls": 3,
+      "understanding_calls": 2,
+      "result_review_calls": 1,
+      "usage": {
+        "input_tokens": 9402,
+        "output_tokens": 453,
+        "total_tokens": 9855
+      },
+      "phases": [
+        "initial",
+        "semantic_review"
+      ],
+      "terminal_matches": true,
+      "display_matches": true
+    },
+    {
+      "scenario": "U06",
+      "turn": 1,
+      "passed": true,
+      "classification": "necessary_clarification",
+      "http": 200,
+      "elapsed_seconds": 5.033,
+      "model_calls": 1,
+      "understanding_calls": 1,
+      "result_review_calls": 0,
+      "usage": {
+        "input_tokens": 3995,
+        "output_tokens": 216,
+        "total_tokens": 4211
+      },
+      "phases": [
+        "initial"
+      ],
+      "terminal_matches": true,
+      "display_matches": true
+    },
+    {
+      "scenario": "U06",
+      "turn": 2,
+      "passed": false,
+      "classification": "unnecessary_clarification",
+      "http": 200,
+      "elapsed_seconds": 5.536,
+      "model_calls": 1,
+      "understanding_calls": 1,
+      "result_review_calls": 0,
+      "usage": {
+        "input_tokens": 3992,
+        "output_tokens": 194,
+        "total_tokens": 4186
+      },
+      "phases": [
+        "initial"
+      ],
+      "terminal_matches": false,
+      "display_matches": false
+    },
+    {
+      "scenario": "U06",
+      "turn": 3,
+      "passed": false,
+      "classification": "unnecessary_clarification",
+      "http": 200,
+      "elapsed_seconds": 5.031,
+      "model_calls": 1,
+      "understanding_calls": 1,
+      "result_review_calls": 0,
+      "usage": {
+        "input_tokens": 3992,
+        "output_tokens": 208,
+        "total_tokens": 4200
+      },
+      "phases": [
+        "initial"
+      ],
+      "terminal_matches": false,
+      "display_matches": false
+    }
+  ]
+}

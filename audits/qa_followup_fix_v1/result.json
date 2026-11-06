@@ -1,0 +1,171 @@
+{
+  "status": "implemented_and_verified_offline",
+  "real_model_calls": 0,
+  "historical_live_score_unchanged": "3/4 scenarios, 4/6 turns",
+  "offline": {
+    "status": "passed",
+    "modules": [
+      {
+        "module": "test_preset_requests.py",
+        "status": "passed",
+        "total": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_field_sources.py",
+        "status": "passed",
+        "total": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_requirements_feedback.py",
+        "status": "passed",
+        "total": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_requirements_feedback_http.py",
+        "status": "passed",
+        "total": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_answer_delivery.py",
+        "status": "passed",
+        "total": 17,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_chat_request_recovery.py",
+        "status": "passed",
+        "total": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_result_feedback.py",
+        "status": "passed",
+        "total": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_diagnostic_chain.py",
+        "status": "passed",
+        "total": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_requirements_feedback_protocol.py",
+        "status": "passed",
+        "total": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_conversation_scope.py",
+        "status": "passed",
+        "total": 16,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    ],
+    "total": 112,
+    "network_attempts": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "status": "passed",
+    "mode": "real sources, local parser, fixed execution, all models disabled",
+    "queries": [
+      "我想了解陈皮的信息",
+      "先给我药味和药用部位。",
+      "再补上药典的贮藏。"
+    ],
+    "returned_fields": 3,
+    "restored_answer_turns": 2,
+    "new_posts_on_refresh": 0,
+    "original_page_loaded": true,
+    "javascript_errors": [],
+    "model_calls": 0,
+    "source_values_match_frozen_reference": true,
+    "not_a_new_model_score": true,
+    "intro_adapted_for_local_mode": true
+  },
+  "activation": {
+    "port": 7896,
+    "old_pid": 53732,
+    "pid": 81395,
+    "source_revision": "b1c4c46ac56a55d509f56ecc0da54753a3762ab61827b9dbc1b1cb6b70d8252e",
+    "restart_required": false,
+    "persisted_rows_unchanged": true,
+    "runtime_settings_unchanged": true,
+    "result_feedback_enabled": true,
+    "model_calls": 0,
+    "chat_queries": 0,
+    "docker_changed": false,
+    "unchanged_rows_scope": [
+      "preview-memory.sqlite3",
+      "dataops/question_proposals.sqlite3",
+      "dataops/result_feedback.sqlite3"
+    ],
+    "sampled_saved_answers_unchanged": [
+      {
+        "case": "U01",
+        "saved_steps_match_original": true
+      },
+      {
+        "case": "U02",
+        "saved_steps_match_original": true
+      },
+      {
+        "case": "U03",
+        "saved_steps_match_original": true
+      }
+    ]
+  },
+  "source_hashes": {
+    "tcm/dataops/conversation_scope.py": "a759d7fc34a46f527d26d56b03934253f5bb9c94d177cc4ede66daee975c3d7f",
+    "tcm/dataops/chat.py": "8b30a47a4256e37f7023f23a3e06852e2807488e40e90a684b2e2b455acd1d8d",
+    "tests/test_conversation_scope.py": "25af2927d825c4da3c9f23e8f3a83105a5b8bb1bda7631d7ae3896b5127166fc"
+  },
+  "private_evidence": "var/qa_followup_fix_20261106",
+  "git_committed": false,
+  "docker_updated": false
+}

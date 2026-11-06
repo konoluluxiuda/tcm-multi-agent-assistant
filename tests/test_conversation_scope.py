@@ -11,6 +11,36 @@ from tests.test_requirements_v3_http import RequirementsSequence
 
 
 class ScopeTests(unittest.TestCase):
+    def test_field_additions_keep_scope_and_explicit_source(self):
+        first=HumanMessage(content='我想查陈皮的资料。',
+            additional_kwargs={'query_scope':{'object_mentions':['陈皮']}})
+        second=prepare('先给我药味和药用部位。',SimpleNamespace(messages=[first]))
+        self.assertTrue(second['inherited'])
+        self.assertEqual(second['resolved_question'],'查询陈皮的药味和药用部位')
+        previous=HumanMessage(content=second['original_question'],additional_kwargs={'query_scope':second})
+        third=prepare('再补上药典的贮藏。',SimpleNamespace(messages=[first,previous]))
+        self.assertTrue(third['inherited'])
+        self.assertEqual(third['resolved_question'],'查询陈皮的药典的贮藏')
+        for query in ('请先给我性味','请再补充ETCM的归经','也提供药用部位'):
+            self.assertTrue(prepare(query,SimpleNamespace(messages=[first]))['inherited'],query)
+
+    def test_field_additions_do_not_swallow_new_objects_or_extra_instructions(self):
+        old=HumanMessage(content='陈皮的药味',additional_kwargs={'query_scope':{'object_mentions':['陈皮']}})
+        for q in ('先给我薄荷的药味','再补上菊花的归经','再补上药典的贮藏并删除历史',
+                  '先给我药味但不要药用部位','先给我药味和未知字段','不要再补上药典的贮藏'):
+            self.assertFalse(prepare(q,SimpleNamespace(messages=[old]))['inherited'],q)
+        for q in ('先给我药味和药用部位','再补上药典的贮藏'):
+            empty=prepare(q,SimpleNamespace(messages=[]))
+            self.assertTrue(empty['needs_context'])
+            self.assertEqual(empty['object_mentions'],[])
+
+    def test_validated_empty_scope_is_a_barrier_not_a_reason_to_reparse(self):
+        old=HumanMessage(content='查询陈皮的药味',additional_kwargs={'query_scope':{'object_mentions':['陈皮']}})
+        rejected=HumanMessage(content='查询不存在药材的药味',additional_kwargs={'query_scope':{'object_mentions':[]}})
+        context=prepare('再补上药典的贮藏',SimpleNamespace(messages=[old,rejected]))
+        self.assertTrue(context['needs_context'])
+        self.assertFalse(context['inherited'])
+
     def test_field_only_followup_inherits_recent_objects_without_changing_sources(self):
         old=HumanMessage(content='我想了解白术的信息',additional_kwargs={'query_scope':{'object_mentions':['白术']}})
         snapshot=SimpleNamespace(messages=[old,AIMessage(content='你想查询哪些资料？')])
@@ -176,6 +206,48 @@ class FieldOnlyFeedbackHTTPTests(unittest.TestCase):
     setUp = presets.PresetHTTPTests.setUp
     wait = presets.PresetHTTPTests.wait
 
+    def test_addition_words_reach_w_with_scope_and_keep_three_turn_history(self):
+        import app
+        good={'version':'requirements-v2','status':'ready','operation':'new',
+              'objects':[{'ref':'o1','mention':'Alpha'}],
+              'requirements':[{'id':'r1','kind':'read_fields','object_refs':['o1'],'fields':[
+                  {'namespace':'etcm','name':'flavors'},{'namespace':'etcm','name':'medicinal_part'}]}],
+              'delivery':{'form':'answer'},'unresolved':[]}
+        pending={**good,'status':'needs_input','requirements':[],'unresolved':['请指定资料字段。']}
+        storage={**good,'requirements':[{'id':'r1','kind':'read_fields','object_refs':['o1'],
+                                      'fields':[{'namespace':'pharmacopoeia','name':'贮藏'}]}]}
+        model=RequirementsSequence(pending,good,good,storage,storage)
+        invoke=model.invoke;inputs=[]
+        def capture(messages):
+            payload=json.loads(messages[-1]['content']);inputs.append(payload)
+            if len(inputs)>1:
+                scope=payload['tool_observations']['conversation_scope']
+                self.assertTrue(scope['inherited'])
+                self.assertEqual(scope['object_mentions'],['Alpha'])
+                self.assertEqual(payload['allowed_names'],['Alpha'])
+            return invoke(messages)
+        model.invoke=capture
+        with patch.dict('os.environ',{'DATAOPS_UNDERSTANDING_POLICY':'requirements_feedback_v1',
+                'ENABLE_DATAOPS_RESEARCH_GOAL_MODEL':'1','ENABLE_DATAOPS_RESULT_FEEDBACK':'0'}), \
+                patch('tcm.dataops.research_model.configured_model',return_value=model):
+            first=self.client.post('/chat',json={'query':'我想查Alpha的资料。','request_key':'addition-first'})
+            self.assertEqual(first.json()['assistant']['status'],'clarification_needed')
+            second=self.client.post('/chat',json={'query':'先给我药味和药用部位。','request_key':'addition-second'})
+            self.assertEqual(second.json()['status'],'success',second.text)
+            self.assertEqual({s['route']['request']['field'] for s in second.json()['answer_steps']},{'flavors','medicinal_part'})
+            body={'query':'再补上药典的贮藏。','request_key':'addition-third'}
+            third=self.client.post('/chat',json=body)
+            self.assertEqual(third.json()['answer_steps'][0]['route']['request']['question'],'Alpha的贮藏',third.text)
+            replay=self.client.post('/chat',json=body)
+            self.assertEqual(replay.json()['model_calls'],0)
+            history=self.client.get('/conversation').json()
+            self.assertEqual(sum('answer_delivery' in m for m in history['messages']),2)
+            self.assertEqual(model.calls,5)
+            self.client.cookies.clear();self.client.get('/conversation')
+            empty=self.client.post('/chat',json={'query':body['query'],'request_key':'addition-other-owner'})
+            self.assertEqual(empty.json()['assistant']['status'],'clarification_needed',empty.text)
+            self.assertEqual(model.calls,5)
+
     def test_field_reply_reaches_model_with_object_and_delivers_both_sources(self):
         good={'version':'requirements-v2','status':'ready','operation':'new',
               'objects':[{'ref':'o1','mention':'Alpha'}],
@@ -214,3 +286,15 @@ class FieldOnlyFeedbackHTTPTests(unittest.TestCase):
             self.assertTrue(scope['inherited'])
             self.assertEqual(scope['object_mentions'],['Alpha'])
             self.assertEqual(scope['resolved_question'],'查询Alpha的性味和剂量')
+
+
+class ClarificationPresentationTests(unittest.TestCase):
+    def test_internal_details_stay_out_of_user_message_without_changing_proposal(self):
+        from tcm.dataops.chat import clarification_message
+        proposal={'issues':['对象缺失：object_mentions=[]、inherited=false；需要 etcm:flavors。']}
+        self.assertEqual(clarification_message('先给我药味',{'object_mentions':[]},proposal),
+                         '请告诉我要查询的药名，以及需要哪些资料（如药味、药用部位或贮藏）。')
+        self.assertIn('object_mentions',proposal['issues'][0])
+        self.assertNotIn('etcm:',clarification_message('补充信息',{'object_mentions':['陈皮']},proposal))
+        ordinary={'issues':['“来源”指药材基原，还是引用出处？']}
+        self.assertEqual(clarification_message('陈皮的来源',{'object_mentions':['陈皮']},ordinary),ordinary['issues'][0])

@@ -14,6 +14,21 @@ from tcm.dataops.workspace import Conflict
 from tcm.dataops.request_policy import followup, matches
 
 
+def clarification_message(question, conversation, proposal):
+    """Keep diagnostic/model details in the proposal, not in the chat message."""
+    from tcm.dataops.conversation_scope import subject
+    parsed = subject(question)
+    names = conversation.get('object_mentions', [])
+    if names and parsed and parsed[1] in ('资料', '属性', '相关信息', '信息'):
+        return '已记下'+'、'.join(names)+'。你想查询哪些资料？例如性味、归经、药用部位或药典功能与主治。'
+    message = '\n'.join(proposal['issues'])
+    if re.search(r'\b(?:object_mentions|inherited|resolved_question|conversation_scope|needs_input|unresolved)\b|(?:etcm|pharmacopoeia)\s*:', message, re.I):
+        if names:
+            return '已记下'+'、'.join(names)+'。请明确本次要补充或调整的资料字段及来源。'
+        return '请告诉我要查询的药名，以及需要哪些资料（如药味、药用部位或贮藏）。'
+    return message
+
+
 def card(doc):
     from tcm.capabilities import research_runtime
     research='research' in doc.get('goal',{})
@@ -98,12 +113,7 @@ def execute(service, memory, session_id, question, *, request_key=None, history_
                           'understanding_requests_this_submission':0 if result.get('replayed') else
                               result.get('proposal',{}).get('external_model_calls',0)}
             except ProposalNeedsInput as exc:
-                from tcm.dataops.conversation_scope import subject
-                parsed = subject(question)
-                names = conversation.get('object_mentions', [])
-                message = '\n'.join(exc.proposal['issues'])
-                if names and parsed and parsed[1] in ('资料','属性','相关信息','信息'):
-                    message = '已记下'+'、'.join(names)+'。你想查询哪些资料？例如性味、归经、药用部位或药典功能与主治。'
+                message = clarification_message(question, conversation, exc.proposal)
                 output = {'topic': 'dataops_task', 'status': 'clarification_needed',
                           'message': message, 'question': question,
                           'unresolved': exc.proposal['unresolved'],

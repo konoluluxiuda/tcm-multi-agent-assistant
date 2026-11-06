@@ -15,7 +15,9 @@ def field_followup(question):
         for aliases in mapping.values():
             labels.update(aliases)
     text=question.strip().rstrip('。.!！?？')
-    text=re.sub(r'^(?:请)?(?:再|也)?(?:给出|告诉我|查询|查看|查一下|想看|看看)?', '', text)
+    # Strip only a request prefix, then require the entire remainder to be fields.
+    # A new object, negation or extra instruction must never inherit this way.
+    text=re.sub(r'^(?:请)?(?:先|再|也)?(?:给出|给我|告诉我|查询|查看|查一下|想看|看看|补上|补充|提供|列出)?', '', text)
     text=re.sub(r'(?:分别是什么|是什么|有哪些|呢)$', '', text)
     field=r'(?:(?:ETCM|药典)(?:中|里)?(?:的)?)?(?:'+ '|'.join(map(re.escape,sorted(labels,key=len,reverse=True))) +r')'
     return text if re.fullmatch(field+r'(?:[、和与及，,]'+field+r')*',text,re.I) else None
@@ -39,7 +41,7 @@ def prepare(question, snapshot):
     text = question.strip().rstrip('。.!！?？')
     ref = REFERENCE.fullmatch(text)
     fields = field_followup(question) if not ref else None
-    current = subject(question)
+    current = subject(question) if fields is None else None
     context = {'original_question': question, 'resolved_question': question,
                'object_mentions': current[0] if current else [], 'inherited': False}
     if not ref and fields is None:
@@ -52,8 +54,11 @@ def prepare(question, snapshot):
     if previous is None:
         context['needs_context'] = True
         return context
-    saved = previous.additional_kwargs.get('query_scope', {})
-    names = saved.get('object_mentions') or (subject(previous.content) or ([], ''))[0]
+    saved = previous.additional_kwargs.get('query_scope')
+    # An explicitly empty validated scope is a boundary, not permission to
+    # reconstruct a rejected name from the old user text. Legacy turns without
+    # any scope can still use the existing bounded subject parser.
+    names = saved.get('object_mentions', []) if isinstance(saved, dict) else (subject(previous.content) or ([], ''))[0]
     count = {'两': 2, '二': 2, '三': 3, '2': 2, '3': 3}.get(ref['count']) if ref else None
     if not names or count is not None and len(names) != count:
         context['needs_context'] = True

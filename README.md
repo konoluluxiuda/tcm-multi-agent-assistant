@@ -69,6 +69,8 @@ python3 -m venv .venv
 
 [使用说明](docs/NEW_USER_GUIDE.md) · [功能状态](docs/FEATURE_STATUS.md) · [文档导航](docs/README.md) · [架构与进度](docs/TCM_PROJECT_ROADMAP.md)
 
+[业务案例与三分钟演示](docs/PROJECT_DEMO.md) · [面试证据与技术取舍](docs/INTERVIEW_EVIDENCE.md) · [小批量使用验收方案](docs/QA_USER_ACCEPTANCE.md) · [真实模型首测与待修缺口](audits/qa_live_acceptance_v1/README.md)
+
 旧README的阶段说明、运行方法与成绩完整保留在[历史快照](docs/history/README_BEFORE_QA_SCOPE_20261106.md)。未通过或中断的实验不因本轮整理改判成功。
 
 ## 来源与许可证
