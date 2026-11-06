@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-06",
+  "implementation_commit": "38943591975afc50e27efdfb2a98a72a0f4ee20c",
+  "implementation_pushed": true,
+  "image": {
+    "image_tag": "tcm-research-chat:qa-3894359",
+    "image_id": "sha256:773b5a4d54c79ee3dc83b9e7a339cc79a632f08158fd31cd2d51bacb6f53d8c8",
+    "working_tree_dirty": false,
+    "source_tree_sha256": "94cc9189601ac6585d2408648909f91218681837e8fee6b7e363938876f30a2d",
+    "context_policy": "temporary allowlisted runtime files; no corpus, .env, weights or sessions",
+    "docker_hub_published": false
+  },
+  "new_model_calls": 0,
+  "historical_live_result": "3/4 scenarios; unchanged; no post-fix model rerun",
+  "private_evidence_directory": "var/qa_followup_release_20261106",
+  "rollback_container": "tcm-requirements-clean-completion-v2-before-qa-3894359",
+  "staging_container_stopped": true,
+  "image_verification": {
+    "status": "passed",
+    "files_verified": 229,
+    "private_files_found": 0
+  },
+  "state_verification": {
+    "status": "passed",
+    "tables": 75,
+    "rows": 3078,
+    "other_files": 30,
+    "backup_matches": true,
+    "existing_state_unchanged_before_smoke": true
+  },
+  "configuration": {
+    "status": "passed",
+    "environment_unchanged": true,
+    "mounts_unchanged": true,
+    "port_unchanged": true,
+    "container_health": "healthy"
+  },
+  "runtime": {
+    "status": "passed",
+    "source_revision": "b1c4c46ac56a55d509f56ecc0da54753a3762ab61827b9dbc1b1cb6b70d8252e",
+    "ports": [
+      7896,
+      7934
+    ],
+    "restart_required": false
+  },
+  "stage_browser": {
+    "status": "passed",
+    "mode": "real sources, local parser, fixed execution, all models disabled",
+    "queries": [
+      "我想了解陈皮的信息",
+      "先给我药味和药用部位。",
+      "再补上药典的贮藏。"
+    ],
+    "returned_fields": 3,
+    "restored_answer_turns": 2,
+    "new_posts_on_refresh": 0,
+    "original_page_loaded": true,
+    "javascript_errors": [],
+    "model_calls": 0,
+    "source_values_match_frozen_reference": true,
+    "not_a_new_model_score": true,
+    "intro_adapted_for_local_mode": true
+  },
+  "deployment_browser": {
+    "status": "passed",
+    "mode": "real sources, local parser, fixed execution, all models disabled",
+    "queries": [
+      "我想了解陈皮的信息",
+      "先给我药味和药用部位。",
+      "再补上药典的贮藏。"
+    ],
+    "returned_fields": 3,
+    "restored_answer_turns": 2,
+    "new_posts_on_refresh": 0,
+    "original_page_loaded": true,
+    "javascript_errors": [],
+    "model_calls": 0,
+    "source_values_match_frozen_reference": true,
+    "not_a_new_model_score": true,
+    "intro_adapted_for_local_mode": true
+  },
+  "implementation_ci_urls": {
+    "offline": "https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/42219860632",
+    "docker": "https://github.com/konoluluxiuda/tcm-multi-agent-assistant/actions/runs/42219860779"
+  }
+}

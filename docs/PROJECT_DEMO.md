@@ -15,7 +15,7 @@
 - 已部署的本地 Docker：<http://127.0.0.1:7934/>，交付记录中为模型关闭、fixed 执行，适合排练已有问法。
 - Python 试用实例：<http://127.0.0.1:7896/>，交付记录中启用 W 理解与执行后反馈，提问可能产生模型费用；不把它当作免费演示入口。
 
-端口和开关是 2026-11-06 的部署记录，使用前核对运行状态；两者状态目录独立，不能用一个实例的会话验证另一个实例的恢复。见[交付记录](../audits/qa_release_v1/README.md)。
+端口和开关是 2026-11-06 的部署记录，使用前核对运行状态；两者状态目录独立，不能用一个实例的会话验证另一个实例的恢复。见[当前交付记录](../audits/qa_followup_release_v1/README.md)。
 
 `app.py` 是 FastAPI 应用入口；`scripts.preview_local_tasks` 是设置本地数据与功能开关、启动应用的辅助命令。另开实例时用空闲端口和新的状态目录，按[README](../README.md#本地运行)准备资料；不要为了排练覆盖现有服务或状态。私有数据库、索引与 PDF 不随 Git 或镜像分发。
 
@@ -60,6 +60,6 @@ W 的 `requirements_feedback.py::run_requirements_feedback` 每次理解最多 3
 
 - [真实资料走查](../audits/qa_real_data_walkthrough_v1/README.md)保留最初发现的历史答案恢复缺口；[后续修复](../audits/chat_history_recovery_v1/README.md)记录恢复验证。
 - [版本交付](../audits/qa_release_v1/README.md)记录 Docker、源码一致性与最终 217 模块 / 1891 项离线检查。这些不是 1891 道真实用户题。
-- [面试证据](INTERVIEW_EVIDENCE.md)解释个人贡献与技术取舍；[小批量真实模型验收](../audits/qa_live_acceptance_v1/README.md)为 3/4 场景通过。追问缺口随后已[修复并离线验证](../audits/qa_followup_fix_v1/README.md)，7896 已加载，Docker 未更新，原模型首测不改分。
+- [面试证据](INTERVIEW_EVIDENCE.md)解释个人贡献与技术取舍；[小批量真实模型验收](../audits/qa_live_acceptance_v1/README.md)为 3/4 场景通过。追问缺口随后已[修复并离线验证](../audits/qa_followup_fix_v1/README.md)，实现 `3894359` 已推送并加载至 7896 与 7934 Docker，原模型首测不改分。
 
 项目已有限定问答的实现与部署记录；新使用证据暴露的追问缺口须如实说明。若继续收尾，仅针对已定位的问题，不为演示加入新的基础设施。

@@ -2,7 +2,7 @@
 
 更新：2026-11-06。本轮按用户确认收敛正式产品。判断依据是当前调用链、使用范围及对应验收，不能只看有无源码或开关。
 
-最新[真实模型验收](../audits/qa_live_acceptance_v1/README.md)为 3/4 场景通过。随后已[修复](../audits/qa_followup_fix_v1/README.md)“先给我…”、“再补上…”未继承对象的缺口并完成离线验证，7896 已加载；7934 Docker 未同步。未新增真实模型复测，3/4 原成绩不变。
+最新[真实模型验收](../audits/qa_live_acceptance_v1/README.md)为 3/4 场景通过。随后已[修复](../audits/qa_followup_fix_v1/README.md)“先给我…”、“再补上…”未继承对象的缺口并完成离线验证；实现 `3894359` 已推送，7896 与 7934 Docker 均已加载，见[当前交付](../audits/qa_followup_release_v1/README.md)。未新增真实模型复测，3/4 原成绩不变。
 
 | 分类 | 内容 | 当前处理 | 主要位置与证据 |
 |---|---|---|---|

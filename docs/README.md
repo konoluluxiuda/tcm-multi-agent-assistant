@@ -6,7 +6,7 @@
 
 | 需要了解 | 文档 |
 |---|---|
-| 当前Git/Docker交付与完成边界 | [版本交付](../audits/qa_release_v1/README.md) |
+| 当前Git/Docker交付与完成边界 | [追问修复交付](../audits/qa_followup_release_v1/README.md)；[上一版记录](../audits/qa_release_v1/README.md) |
 | 当前产品与本地启动 | [项目README](../README.md) |
 | 保留、隐藏、实验及待删除模块 | [功能边界与保留清单](FEATURE_STATUS.md) |
 | 问答示例与结果说明 | [使用说明](NEW_USER_GUIDE.md) |
