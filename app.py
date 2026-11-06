@@ -313,6 +313,14 @@ def conversation(response: Response, session_id: Optional[str] = Cookie(None, al
             set_session_cookie(response, session_id)
             response.headers['Cache-Control'] = 'private, no-store'
             return result
+        from tcm.dataops.chat import restore as restore_dataops
+        restored_dataops = restore_dataops(snapshot, dataops_service, agent_runtime.memory.key(session_id))
+        if restored_dataops is not None:
+            # A table/clarification is the latest turn; old tool focus is not its answer.
+            result['assistant'] = restored_dataops
+            set_session_cookie(response, session_id)
+            response.headers['Cache-Control'] = 'private, no-store'
+            return result
         herb_context, research_context = split_contexts(snapshot.tcm_context)
         if herb_context:
             result['tcm'], _ = execute_turn({'followup': True, 'field': 'source'}, herb_context)
@@ -336,10 +344,6 @@ def conversation(response: Response, session_id: Optional[str] = Cookie(None, al
         if pending:
             from tcm.assistant_info import execute as execute_assistant_info
             result['assistant']=execute_assistant_info(pending)
-        from tcm.dataops.chat import restore as restore_dataops
-        restored_dataops = restore_dataops(snapshot, dataops_service, agent_runtime.memory.key(session_id))
-        if restored_dataops is not None:
-            result['assistant'] = restored_dataops
     set_session_cookie(response, session_id)
     response.headers['Cache-Control'] = 'private, no-store'
     return result

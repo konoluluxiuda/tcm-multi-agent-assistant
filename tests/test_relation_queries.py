@@ -15,6 +15,28 @@ from tcm.relation_queries import execute, parse
 
 
 class RelationQueryTests(unittest.TestCase):
+    def test_requirement_adapter_reads_unique_source_but_rechecks_ambiguity(self):
+        from tcm.dataops.requirements_pipeline import prepare_requirements
+        from tcm.dataops.requirements_v2 import RequirementsDraftV2
+        from tcm.etcm_enrichment import chinese_candidates
+        import sqlite3
+        name='测试甲草'
+        draft=RequirementsDraftV2(status='ready',operation='new',
+            objects=[{'ref':'o1','mention':name}],
+            requirements=[{'id':'r1','kind':'relation','object_refs':['o1'],
+                           'relation_kind':'target','completeness':'page'}],delivery={'form':'answer'})
+        catalog={name:[row['source_record_id'] for row in chinese_candidates(name,'v1')]}
+        request=prepare_requirements(draft,catalog)['query_routes'][0]['request']
+        result=execute(request)
+        self.assertEqual(result['status'],'ok')
+        self.assertEqual(result['relations']['groups'][0]['selection_method'],'unique_local_candidate')
+        self.assertEqual(result['relations']['page'],1)
+        with sqlite3.connect(self.database) as con:
+            con.execute("INSERT INTO name_candidates SELECT herb_id,'测试甲草',entry_id,evidence FROM name_candidates WHERE name_zh='测试乙草'")
+        result=execute(request)
+        self.assertEqual(result['status'],'clarification_needed')
+        self.assertNotIn('data',result['relations'])
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name); source = self.root/'source'

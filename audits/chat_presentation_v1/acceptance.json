@@ -1,0 +1,25 @@
+{
+  "scope": "chat presentation and bounded conversational context",
+  "offline_tests": 115,
+  "offline_modules": 11,
+  "presentation_browser_checks": 7,
+  "recovery_browser_checks": 7,
+  "external_model_calls": 0,
+  "paid_model_acceptance": "not_run",
+  "deployment": {
+    "port": 7896,
+    "source_revision": "406d73c642c4692a4af786ccbe94e1b410856092f3c32165b0b206c7bdd9d6ce",
+    "restart_required": false,
+    "question_policy": "requirements_feedback_v1",
+    "question_model_enabled": true,
+    "result_feedback_enabled": true,
+    "execution_driver": "fixed",
+    "execution_model_enabled": false,
+    "persisted_state_unchanged": true,
+    "conversations": 4,
+    "workspaces": 2,
+    "xlsx_files": 2,
+    "acceptance_queries_submitted": 0,
+    "new_external_model_calls": 0
+  }
+}

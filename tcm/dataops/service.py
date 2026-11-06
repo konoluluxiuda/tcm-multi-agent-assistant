@@ -157,6 +157,14 @@ class DataOpsService:
                 previous=journal.get(owner,body.request_key)
                 context=(previous or {}).get('conversation_context', conversation) or {}
                 effective_question=context.get('resolved_question',body.question)
+                scope_catalog=sources.name_catalog()
+                try:
+                    mentions=bounded_catalog(effective_question,scope_catalog,parent)
+                    # Resolve mentions before signing the request so replay uses the same scope.
+                    context={**context,'object_mentions':sorted(mentions,
+                        key=lambda name:effective_question.casefold().find(name.casefold()))}
+                except QuestionNeedsInput:
+                    pass  # The normal validation path below owns unsupported names.
                 signature=hashlib.sha256(canonical({'body':body.model_dump(),'sources':sources.revision,
                     'conversation_context':context,
                     'conversation_scope':fingerprint(Path(__file__).with_name('conversation_scope.py')),
@@ -184,7 +192,7 @@ class DataOpsService:
                                   allow_model=allow_model,allow_queries=allow_queries,compiler=VERSION)
                 if proposal is None:
                     try:
-                        catalog=bounded_catalog(effective_question,sources.name_catalog(),parent)
+                        catalog=bounded_catalog(effective_question,scope_catalog,parent)
                         diagnostic.record('name_resolution','resolved',matched_catalog=catalog,parent_bound=bool(parent))
                     except QuestionNeedsInput as exc:
                         diagnostic.record('name_resolution','needs_input',code='unverified_name_variant')

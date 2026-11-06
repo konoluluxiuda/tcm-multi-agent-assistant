@@ -82,6 +82,7 @@ def execute(service, memory, session_id, question, *, request_key=None, history_
                 async def submit():
                     return await service.submit_research_question(owner,body,allow_queries=True,conversation=conversation) if research else await service.submit(owner,body)
                 result = anyio.from_thread.run(submit)
+                conversation = result.get('proposal',{}).get('conversation_context', conversation)
                 if result.get('proposal',{}).get('status')=='query':
                     proposal=result['proposal'];calls=proposal['external_model_calls']
                     routes=proposal.get('routes') or [proposal['route']]
@@ -97,8 +98,14 @@ def execute(service, memory, session_id, question, *, request_key=None, history_
                           'understanding_requests_this_submission':0 if result.get('replayed') else
                               result.get('proposal',{}).get('external_model_calls',0)}
             except ProposalNeedsInput as exc:
+                from tcm.dataops.conversation_scope import subject
+                parsed = subject(question)
+                names = conversation.get('object_mentions', [])
+                message = '\n'.join(exc.proposal['issues'])
+                if names and parsed and parsed[1] in ('资料','属性','相关信息','信息'):
+                    message = '已记下'+'、'.join(names)+'。你想查询哪些资料？例如性味、归经、药用部位或药典功能与主治。'
                 output = {'topic': 'dataops_task', 'status': 'clarification_needed',
-                          'message': '\n'.join(exc.proposal['issues']), 'question': question,
+                          'message': message, 'question': question,
                           'unresolved': exc.proposal['unresolved'],
                           'failure':exc.proposal.get('failure'),
                           'llm_calls':exc.proposal.get('external_model_calls',0),

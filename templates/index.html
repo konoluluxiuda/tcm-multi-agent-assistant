@@ -185,6 +185,36 @@
             }
         }
         
+
+        .sidebar { height: calc(100dvh - 48px); }
+        .side-tools { display:flex; flex-direction:column; gap:12px; }
+        .side-tools > p, .side-tools > details { margin:0; padding:10px 0 !important; border-bottom:1px solid #e2e8ee; }
+        .side-tools summary { cursor:pointer; font-weight:600; color:#244365; }
+        .side-tools input, .side-tools select, .side-tools textarea { max-width:100%; box-sizing:border-box; }
+        .side-tools label { display:block; }
+        .side-tools .workspace-tabs { margin-top:12px; }
+        .side-tools .workspace-panel { max-height:45vh; }
+        .side-tools .workspace-form label { flex-basis:100%; }
+        .answer-object { margin:16px 0; padding:16px; background:#fff; border:1px solid #dfe7e3; border-radius:12px; }
+        .answer-object > h4 { font-size:1.1rem; margin-bottom:12px; }
+        .answer-source-label { color:#597164; font-size:.8rem; margin:8px 0; }
+        .answer-object .research-result article { border:0; padding:0; margin:8px 0; }
+        .answer-object .research-result h3 { font-size:.95rem; }
+        .answer-evidence { font-size:.85rem; color:#536258; margin-top:12px; }
+        .answer-evidence summary { cursor:pointer; }
+        .assistant-message { width:100%; max-width:94%; overflow-wrap:anywhere; }
+        .table-delivery { padding:14px; border:1px solid #dfe7e3; border-radius:10px; background:white; }
+        .table-delivery a { display:inline-block; margin-right:14px; }
+        @media (max-width:767px) {
+            .sidebar { height:auto; max-height:40vh; }
+            .sidebar .agent-info { display:none; }
+            .side-tools { display:none; }
+            .sidebar.tools-open .side-tools { display:flex; }
+            .research-workspace-layout { height:75dvh; min-height:400px; }
+            .assistant-message { max-width:100%; }
+        }
+        @media (min-width:768px) { #toggle-tools { display:none; } }
+
         /* Table styling for markdown tables */
         .message table {
             border-collapse: collapse;
@@ -212,8 +242,8 @@
             background-color: #f0f0f0;
         }
         .message [data-relation-results] td > details > summary { white-space: nowrap; }
-        .research-workspace-layout { height: auto; min-height: 90vh; }
-        .research-workspace-layout .chat-body { min-height: 220px; max-height: 50vh; }
+        .research-workspace-layout { height: calc(100dvh - 48px); min-height: 480px; }
+        .research-workspace-layout .chat-body { min-height: 0; max-height: none; }
         .research-workspace-layout #chat-form { display: flex; align-items: end; gap: 8px; }
         .research-workspace-layout #chat-form > .flex-grow-1 { flex: 1; min-width: 0; }
         .research-workspace-layout .message-input { width: 100%; box-sizing: border-box; min-height: 44px; padding: 8px; border-radius: 8px; }
@@ -247,7 +277,7 @@
         <div class="row">
             <!-- Sidebar -->
             <div class="col-md-3 mb-3">
-                <div class="sidebar">
+                <aside class="sidebar" aria-label="资料功能">
                     <h5>
                         <i class="fas fa-robot me-2"></i>
                         {% if research_tools_only %}中草药证据研究{% else %}Medical Assistant{% endif %}
@@ -255,8 +285,8 @@
                     {% if research_tools_only %}
                     <div class="agent-info"><h6>可用功能</h6>
                         {% if natural_routing_enabled %}
-                        <p>使用功能页签查看资料概览、查询药材与药典、检索现代文献。</p>
-                        <p>下方聊天保留同一任务的记录与连续追问。切换页签不会自动查询或清除选择。</p>
+                        <p>在聊天中查询药材资料、核对出处或生成表格。</p>
+                        <p>其他工具在左侧展开；聊天记录会自动保存。</p>
                         <p>资料需核对来源；本工具用于研究辅助，不提供个体化诊疗决策。</p>
                         {% else %}
                         <p>{% if natural_routing_enabled %}可直接问“有多少药材”“黄芪有什么作用”，继续问“用量呢”“出处呢”。{% else %}输入 /research 查询药典字段、追问出处并导出证据清单。{% endif %}</p>
@@ -312,25 +342,10 @@
                         </ul>
                     </div>
                     {% endif %}
-                    <button id="clear-chat" class="btn btn-outline-danger w-100 mt-3">
-                        <i class="fas fa-trash me-2"></i> 清除会话与已保存记忆
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Chat Container -->
-            <div class="col-md-9">
-                <div class="chat-container{% if research_tools_only and natural_routing_enabled %} research-workspace-layout{% endif %}">
-                    <div class="chat-header">
-                        <h5 class="mb-0">
-                            <i class="fas fa-stethoscope me-2"></i>
-                            {% if research_tools_only %}中草药证据研究{% else %}Multi-Agent Medical Assistant{% endif %}
-                        </h5>
-                        <small class="text-muted">{% if research_tools_only %}查询来源字段 · 核对原页 · 保存证据{% elif features.image_analysis.available %}Upload medical images or ask health-related questions{% else %}Ask text questions · image analysis is disabled{% endif %}</small>
-                    </div>
-                    
+                    <button type="button" id="toggle-tools" aria-expanded="false" onclick="const open=this.closest('aside').classList.toggle('tools-open');this.setAttribute('aria-expanded',String(open))">功能菜单</button>
+                    <nav class="side-tools" aria-label="功能导航">
                     {% if research_tools_only and natural_routing_enabled %}
-                    <section id="research-workspaces" class="research-workspaces" aria-label="研究工作区">
+                    <details id="research-workspaces" class="research-workspaces"><summary>资料查询与数据概览</summary>
                         <div class="workspace-tabs" role="tablist" aria-label="研究功能">
                             <button type="button" role="tab" id="workspace-tab-overview" aria-controls="workspace-overview" aria-selected="true">数据概览</button>
                             <button type="button" role="tab" id="workspace-tab-herbs" aria-controls="workspace-herbs" aria-selected="false" tabindex="-1">药材与药典</button>
@@ -354,13 +369,13 @@
                         </section>
                         <p class="workspace-note" data-workspace-status role="status">当前没有选择资料对象。</p>
                         <p class="workspace-note" data-workspace-feedback role="status"></p>
-                    </section>
+                    </details>
                     {% endif %}
 
-                    {% if dataops_enabled %}<p class="px-3 py-2"><a href="/dataops">资料核对工作台 · 批量整理与表格下载</a></p>{% endif %}
-                    {% if dataops_enabled %}<p class="px-3 py-2"><a href="/dataops/research">候选资料核对 · 分批补查与表格交付</a></p>{% endif %}
+                    {% if dataops_enabled %}<p class="px-3 py-2"><a href="/dataops">资料工作台与表格</a></p>{% endif %}
+                    {% if dataops_enabled %}<p class="px-3 py-2"><a href="/dataops/research">候选资料核对</a></p>{% endif %}
                     {% if rag_enabled %}<p class="px-3 py-2"><a href="/rag">引用资料回答 · 原文与多来源对照</a></p>{% endif %}
-                    {% if research_tasks_enabled %}<p class="px-3 py-2"><a href="/research-tasks">研究任务（ETCM本地 / 合成演示）</a></p>{% endif %}
+                    {% if research_tasks_enabled %}<p class="px-3 py-2"><a href="/research-tasks">任务记录</a></p>{% endif %}
                     {% if research_bookmarks_enabled %}
                     <details id="research-bookmarks" class="px-3 py-2">
                         <summary>研究收藏（持久保存）</summary>
@@ -432,6 +447,48 @@
                       <p id="loop-status" role="status"></p><div id="loop-history"></div>
                     </details><script src="/research-loop.js" defer></script>{% endif %}
                     {% endif %}
+                    <details><summary>使用说明与回答设置</summary>
+                                {% if research_tools_only and natural_routing_enabled %}
+                                <details><summary>示例与兼容指令</summary>
+                                {% endif %}
+                                <small class="d-block text-muted">药材资料：输入 /herb 加拼音、拉丁名、英文名或来源 ID。中文名按本地目录匹配，多个来源时需要选择。选定后可问“它的药用部位是什么？”，输入 /herb-clear 清除选择。</small>
+                                {% if pubmed_enabled %}<small class="d-block text-muted">现代文献：/pubmed Astragalus membranaceus[Title/Abstract]；/pubmed-last 回看；/pubmed-clear 清除文献焦点。清除会话不删除独立文献台账。</small>{% endif %}
+                                {% if natural_routing_enabled %}
+                                <nav aria-label="研究功能入口" class="d-flex flex-wrap gap-2 mb-2">
+                                    <button type="button" class="btn btn-sm btn-outline-primary" data-research-question="你能做什么">功能说明</button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary" data-research-question="收录了多少药材">数据概览</button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary" data-research-question="黄芪有什么作用">药典查询</button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary" data-research-question="比较白术和黄芪的功效与用量">药典对比</button>
+                                    {% if pubmed_enabled %}<button type="button" class="btn btn-sm btn-outline-primary" data-research-question="在PubMed检索 Astragalus membranaceus[Title/Abstract]">现代文献</button>{% endif %}
+                                </nav>
+                                {% endif %}
+                                {% if research_tools_only and natural_routing_enabled %}</details>{% endif %}
+                                {% if evidence_assistant_enabled %}
+                                {% if evidence_auto_routing_enabled %}<p class="workspace-note" id="auto-intent-note">自动意图识别已开启：明确查询先走规则；未匹配的问题会调用模型，使用合成资料。无需勾选即可提问。</p>{% endif %}
+                                <label class="workspace-note"><input type="checkbox" id="evidence-answer-mode"> AI整理回答（调用模型，附来源；统计问题仍直接查询）</label>
+                                {% if evidence_assistant_synthetic %}<p class="workspace-note">AI模式当前仅使用合成资料，不读取或发送药典片段。测试示例：整理虚构示例草的功效与注意事项。</p>{% endif %}
+                                {% endif %}
+                                {% if intent_planner_enabled %}<p class="workspace-note" id="model-intent-note">自然问法识别已开启：仅未识别的当前问句发送模型，不发送资料或聊天历史。</p>{% endif %}
+                                {% if question_fallback_enabled %}<p class="workspace-note" id="request-understanding-note">{% if question_understanding_policy == "requirements_feedback_v1" %}工具反馈理解已启用：先检查资料与工具，需要时修正一次并复核，最多3次请求；只发送字段可用状态，不发送资料正文。{% elif question_understanding_policy == "unified_v2" %}统一理解已启用：普通问句先由模型理解；需要时再纠正参数或独立复核任务，总计最多2次请求。{% else %}补充理解已启用：本地未完整识别时最多调用一次模型。{% endif %}发送当前问句、名称候选、任务结构及必要的会话对象和上一轮问题，不发送资料正文。资料任务页可选择仅本地解析。</p>{% endif %}
+                    </details>
+                    </nav>
+                    <button id="clear-chat" class="btn btn-outline-danger w-100 mt-3">
+                        <i class="fas fa-trash me-2"></i> 清除当前会话
+                    </button>
+                </aside>
+            </div>
+
+            <!-- Chat Container -->
+            <div class="col-md-9">
+                <div class="chat-container{% if research_tools_only and natural_routing_enabled %} research-workspace-layout{% endif %}">
+                    <div class="chat-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-stethoscope me-2"></i>
+                            {% if research_tools_only %}中草药证据研究{% else %}Multi-Agent Medical Assistant{% endif %}
+                        </h5>
+                        <small class="text-muted">{% if research_tools_only %}查询来源字段 · 核对原页 · 保存证据{% elif features.image_analysis.available %}Upload medical images or ask health-related questions{% else %}Ask text questions · image analysis is disabled{% endif %}</small>
+                    </div>
+
                     <small id="memory-status" class="text-muted px-3" role="status">正在恢复已保存会话…</small>
                     <div id="chat-pending" class="px-3 py-2" role="status" hidden>
                         <span id="chat-pending-description"></span>
@@ -462,29 +519,6 @@
                                         </button>
                                     </div>
                                 </div>
-                                {% if research_tools_only and natural_routing_enabled %}
-                                <p class="workspace-note">统一聊天：直接提问或连续追问；页签选择不会限制聊天的查询方向。</p>
-                                <details><summary>示例与兼容指令</summary>
-                                {% endif %}
-                                <small class="d-block text-muted">药材资料：输入 /herb 加拼音、拉丁名、英文名或来源 ID。中文名映射暂不支持。选定后可问“它的药用部位是什么？”，输入 /herb-clear 清除选择。</small>
-                                {% if pubmed_enabled %}<small class="d-block text-muted">现代文献：/pubmed Astragalus membranaceus[Title/Abstract]；/pubmed-last 回看；/pubmed-clear 清除文献焦点。清除会话不删除独立文献台账。</small>{% endif %}
-                                {% if natural_routing_enabled %}
-                                <nav aria-label="研究功能入口" class="d-flex flex-wrap gap-2 mb-2">
-                                    <button type="button" class="btn btn-sm btn-outline-primary" data-research-question="你能做什么">功能说明</button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary" data-research-question="收录了多少药材">数据概览</button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary" data-research-question="黄芪有什么作用">药典查询</button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary" data-research-question="比较白术和黄芪的功效与用量">药典对比</button>
-                                    {% if pubmed_enabled %}<button type="button" class="btn btn-sm btn-outline-primary" data-research-question="在PubMed检索 Astragalus membranaceus[Title/Abstract]">现代文献</button>{% endif %}
-                                </nav>
-                                {% endif %}
-                                {% if research_tools_only and natural_routing_enabled %}</details>{% endif %}
-                                {% if evidence_assistant_enabled %}
-                                {% if evidence_auto_routing_enabled %}<p class="workspace-note" id="auto-intent-note">自动意图识别已开启：明确查询先走规则；未匹配的问题会调用模型，使用合成资料。无需勾选即可提问。</p>{% endif %}
-                                <label class="workspace-note"><input type="checkbox" id="evidence-answer-mode"> AI整理回答（调用模型，附来源；统计问题仍直接查询）</label>
-                                {% if evidence_assistant_synthetic %}<p class="workspace-note">AI模式当前仅使用合成资料，不读取或发送药典片段。测试示例：整理虚构示例草的功效与注意事项。</p>{% endif %}
-                                {% endif %}
-                                {% if intent_planner_enabled %}<p class="workspace-note" id="model-intent-note">自然问法识别已开启：仅未识别的当前问句发送模型，不发送资料或聊天历史。</p>{% endif %}
-                                {% if question_fallback_enabled %}<p class="workspace-note" id="request-understanding-note">{% if question_understanding_policy == "requirements_feedback_v1" %}工具反馈理解已启用：先检查资料与工具，需要时修正一次并复核，最多3次请求；只发送字段可用状态，不发送资料正文。{% elif question_understanding_policy == "unified_v2" %}统一理解已启用：普通问句先由模型理解；需要时再纠正参数或独立复核任务，总计最多2次请求。{% else %}补充理解已启用：本地未完整识别时最多调用一次模型。{% endif %}发送当前问句、名称候选和任务结构，不发送资料正文或聊天历史。资料任务页可选择仅本地解析。</p>{% endif %}
                                 <textarea id="message-input" class="form-control message-input" rows="1" placeholder="{% if natural_routing_enabled %}例如：有哪些功效分类？黄芪有什么作用？{% else %}药材：/herb BaiBu；药典：/research 甘草的功效{% endif %}"></textarea>
                             </div>
                             
@@ -585,7 +619,7 @@
     </script>
     <script>
         function el(tag,text,cls){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node}
-        function renderResearchResult(container,result){
+        function renderResearchResult(container,result,options={}){
             container.classList.add('research-result');container.dataset.researchStatus=result.status;
             if(result.status!=='candidates'||!result.tool_result?.hits?.length)container.append(el('p',result.message));
             const data=result.tool_result;if(!data)return;
@@ -634,12 +668,12 @@
                 container.append(download,status);
                 return;
             }
-            function append(hit,notice){const card=render(hit);card.dataset.pageEndpoint='/api/research/page';if(notice)card.prepend(el('p',notice,'notice'));
+            function append(hit,notice){const card=render(hit);if(options.compact){card.querySelector('h3').textContent=hit.label==='origin'?'来源':hit.label;const proof=card.querySelector('[data-result-details]');if(proof&&options.details){proof.querySelector('summary').textContent='药典 · '+hit.label+' · 出处';options.details.append(proof)}}card.dataset.pageEndpoint='/api/research/page';if(notice)card.prepend(el('p',notice,'notice'));
                 if(hit.reference_witness){const witness=el('section');witness.dataset.pageEndpoint='/api/research/page';witness.append(el('h3','相邻引用提示原文'),el('pre',hit.reference_witness.raw_text));citations(witness,hit.reference_witness,'evidence','引用提示原页');card.append(witness)}container.append(card)}
             for(const hit of data.hits||[])append(hit);
             for(const hit of data.unresolved_evidence||[])append(hit,'查询未完成：正文缺失或引用尚未展开，此片段不作为完整字段结果。');
             for(const entry of data.related_entries||[]){const card=el('article');card.dataset.pageEndpoint='/api/research/page';card.append(el('h3',entry.name),el('p','相关母条目，仅供核对，不能替代指定炮制品。','notice'));citations(card,entry,'title_evidence','母条目原页');container.append(card)}
-            exportEvidence(container,data);
+            exportEvidence(options.details || container,data);
         }
 
         // let mediaRecorder;
@@ -1328,16 +1362,33 @@
             const message=el('p',result.message);message.style.whiteSpace='pre-wrap';container.append(message);
             if(result.topic==='dataops_task'){
                 if(!/^[a-f0-9]{32}$/.test(result.workspace_id||''))return;
-                const frame=document.createElement('iframe');frame.title='资料整理结果';
-                frame.dataset.dataopsTask=result.workspace_id;
-                frame.src='/dataops?embed=1&run='+result.workspace_id;
-                frame.style.cssText='width:100%;height:360px;border:0;display:block';
-                frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-downloads');
-                const resize=event=>{if(!frame.isConnected){window.removeEventListener('message',resize);return}
-                    if(event.origin===location.origin&&event.source===frame.contentWindow&&event.data?.type==='dataops-height'&&
-                       Number.isInteger(event.data.height))frame.style.height=Math.min(900,Math.max(160,event.data.height))+'px'};
-                window.addEventListener('message',resize);container.append(frame);
-                const link=el('a','在资料工作台查看');link.href='/dataops?run='+result.workspace_id;container.append(link);return;
+                const panel=el('section');panel.className='table-delivery';panel.dataset.dataopsTask=result.workspace_id;
+                const status=el('p','正在读取表格状态……');status.setAttribute('role','status');
+                const download=el('a','下载 Excel');download.hidden=true;download.href='/api/dataops/workspaces/'+result.workspace_id+'/artifact';
+                const link=el('a','查看表格与出处');link.href='/dataops?run='+result.workspace_id;
+                const retry=el('button','刷新状态');retry.type='button';retry.hidden=true;
+                panel.append(status,download,link,retry);container.append(panel);
+                let timer, stopped=false;
+                const labels={complete:'表格已完成',partial:'表格已生成，部分资料缺失',failed:'表格生成失败',cancelled:'任务已取消',
+                    needs_input:'请在资料工作台补充信息',awaiting_input:'请在资料工作台确认来源',queue_busy:'任务排队中'};
+                async function update(){
+                    clearTimeout(timer);if(!panel.isConnected)return;
+                    retry.disabled=true;
+                    try{
+                        const response=await fetch('/api/dataops/workspaces/'+result.workspace_id,{credentials:'same-origin',cache:'no-store'});
+                        const doc=await response.json();if(!response.ok)throw new Error('无法读取任务状态，请刷新或打开资料工作台。');
+                        message.textContent=labels[doc.status]||'正在整理资料……';
+                        const artifact=doc.artifact,ready=['complete','partial'].includes(doc.status)&&artifact?.verification?.status==='passed';
+                        download.hidden=!ready;
+                        status.textContent=ready ? '包含 '+artifact.verification.rows+' 味药材；文件已生成并通过内容校验。' :
+                            (doc.error ? '任务未完成，请打开资料工作台查看详情。' : '可在资料工作台查看进度与处理待确认项。');
+                        stopped=['complete','partial','failed','cancelled','needs_input','awaiting_input','awaiting_selection'].includes(doc.status);
+                        retry.hidden=!stopped;
+                        if(!stopped)timer=setTimeout(update,2000);
+                    }catch(error){status.textContent=error.message;retry.hidden=false;stopped=true;}
+                    finally{retry.disabled=false;}
+                }
+                retry.addEventListener('click',update);setTimeout(update,0);return;
             }
             if(result.topic==='etcm_relations'){renderRelationQuery(container,result,send);return}
             if(result.topic==='target_analysis'){renderTargetAnalysis(container,result,send);return}
@@ -1541,7 +1592,7 @@
             if(data.source_capture_status)json(info,{source_capture_status:data.source_capture_status});
         }
 
-        function renderHerbResult(container, result, chooseSource) {
+        function renderHerbResult(container, result, chooseSource, options = {}) {
             const labels = {
                 name_pinyin: '拼音', latin_name: '拉丁名', english_name: '英文名',
                 family: '科', habitat: '产地', medicinal_part: '药用部位',
@@ -1560,15 +1611,15 @@
             if (result.truncated) add(container, 'p', '匹配 ' + result.total_record_count + ' 条，展示前 20 条，请使用来源 ID 精确定位。');
             for (const record of result.records || []) {
                 const card = document.createElement('section');
-                card.className = 'border rounded p-2 my-2 herb-source-card';
+                card.className = options.compact ? 'herb-source-card' : 'border rounded p-2 my-2 herb-source-card';
                 container.appendChild(card);
-                add(card, 'h6', record.fields.name_pinyin.value);
-                if(record.name_zh_candidates?.length){
+                if(!options.compact) add(card, 'h6', record.fields.name_pinyin.value);
+                if(!options.compact && record.name_zh_candidates?.length){
                     const names=[...new Set(record.name_zh_candidates.map(x=>x.name_zh))];
                     add(card,'p',names.join('、'));
                 }
                 for(const comparison of record.identity_comparisons||[]){
-                    const box=add(card,'details','');box.dataset.etcmIdentity=comparison.status;box.dataset.resultDetails='true';
+                    const box=add(options.details || card,'details','');box.dataset.etcmIdentity=comparison.status;box.dataset.resultDetails='true';
                     add(box,'summary',comparison.name_zh+' · 药典来源对照');
                     add(box,'strong',comparison.label);
                     const part=comparison.part_comparison;
@@ -1598,14 +1649,14 @@
                     const translated=field.translation;
                     add(card, 'p', (labels[key] || key) + '：' +
                         (field.state === 'missing' ? '来源未提供' :
-                        translated?.status==='dictionary_display' ? translated.text+'（原文：'+field.value+'）' :
+                        translated?.status==='dictionary_display' ? translated.text+(options.compact ? '' : '（原文：'+field.value+'）') :
                         Array.isArray(field.value) ? field.value.join('；') : field.value));
                     if(translated?.status==='machine_candidate' && translated.text){
                         const draft=add(card,'details','');add(draft,'summary','未审核机器译文（仅供对照）');
                         add(draft,'p',translated.text);add(draft,'small','术语可能误译，解释以原始字段为准，不用于实体合并或临床判断。');
                     }
                 }
-                if(record.relation_counts?.length){
+                if(!options.compact && record.relation_counts?.length){
                     const section=add(card,'details','');section.dataset.etcmRelations=record.source_record_id;section.dataset.resultDetails='true';
                     add(section,'summary','关联记录');
                     add(section,'p','数量是来源表行数；关联不等于已验证的作用机制、治疗证据或抓取完整性。');
@@ -1645,7 +1696,7 @@
                     }
                 }
                 const details = document.createElement('details');
-                card.appendChild(details);
+                (options.details || card).appendChild(details);
                 details.dataset.resultDetails='true';add(details, 'summary', '来源与原始字段');
                 add(details, 'pre', JSON.stringify({source_record_id:record.source_record_id,dataset_version:result.dataset_version,source:record.source,fields:record.fields,warnings:record.warnings,selection_method:result.selection_method,notes:result.notes}, null, 2)).style.whiteSpace = 'pre-wrap';
             }
@@ -1743,7 +1794,7 @@
             }
             function renderQueryDelivery(container, answer) {
                 renderAnswerDelivery(container, answer, {
-                    tcm_result: (node, result) => renderHerbResult(node, result, chooseSource),
+                    tcm_result: (node, result, options) => renderHerbResult(node, result, chooseSource, options),
                     research_result: renderResearchResult,
                     assistant_result: (node, result) => renderAssistantResult(node, result, sendLocalRelation),
                     pubmed_result: renderPubmedResult
@@ -1798,7 +1849,8 @@
                     renderAssistantResult(card,history.assistant,sendLocalRelation);chatBody.append(card);
                 }
                 workspaces?.restore(history);
-                memoryStatus.textContent = '会话已自动保存，闲置 ' + history.retention_days + ' 天后过期；清除会话会删除聊天记忆。';
+                memoryStatus.textContent = '会话已自动保存';
+                memoryStatus.title = '闲置 ' + history.retention_days + ' 天后过期；清除会话会删除本会话记录。';
                 window.tcmSessionReady=true;
                 window.dispatchEvent(new Event('tcm-session-ready'));
                 chatBody.scrollTop = chatBody.scrollHeight;

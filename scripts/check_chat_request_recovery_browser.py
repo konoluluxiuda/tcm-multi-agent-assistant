@@ -117,7 +117,9 @@ async def check(args):
                 assert await pending() is None and len(requests) == count
                 assert len(fixture.client.get('/api/dataops/workspaces').json()['items']) == 1
                 assert hashlib.sha256(fixture.client.get(path).content).hexdigest() == digest
-                assert await page.locator(f'iframe[data-dataops-task="{identifier}"]').count() == 1
+                delivery = page.locator(f'[data-dataops-task="{identifier}"]')
+                assert await delivery.count() == 1
+                await delivery.get_by_role('link', name='下载 Excel').wait_for(state='visible')
                 checks.append('committed_table_response_lost_restores_same_workspace_and_xlsx')
 
                 fault = 'before'

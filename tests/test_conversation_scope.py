@@ -11,6 +11,14 @@ from tests.test_requirements_v3_http import RequirementsSequence
 
 
 class ScopeTests(unittest.TestCase):
+    def test_short_reference_and_natural_intro(self):
+        old=HumanMessage(content='我想了解牛膝和牡丹皮的资料。')
+        context=prepare('这两味的性味和归经',SimpleNamespace(messages=[old]))
+        self.assertTrue(context['inherited'])
+        self.assertEqual(context['object_mentions'],['牛膝','牡丹皮'])
+        self.assertTrue(prepare('这三味的性味',SimpleNamespace(messages=[old]))['needs_context'])
+        self.assertTrue(prepare('这两味的性味',SimpleNamespace(messages=[]))['needs_context'])
+
     def test_latest_turn_only_and_count_must_match(self):
         old=HumanMessage(content='给出白术和黄芪的相关信息')
         self.assertEqual(prepare('这两个草药的性味是什么',SimpleNamespace(messages=[old]))['resolved_question'],
@@ -84,6 +92,35 @@ class ConversationHTTPTests(unittest.TestCase):
 class FeedbackContextHTTPTests(unittest.TestCase):
     setUp = feedback.FeedbackHTTPTests.setUp
     wait = feedback.FeedbackHTTPTests.wait
+    def test_catalog_scope_survives_clarification_and_replay(self):
+        import app
+        good=feedback.draft()
+        pending={**good,'status':'needs_input','requirements':[], 'unresolved':['需要哪些字段 family？']}
+        model=RequirementsSequence(pending,good,good)
+        inputs=[];invoke=model.invoke
+        def capture(messages):
+            inputs.append(json.loads(messages[-1]['content']))
+            return invoke(messages)
+        model.invoke=capture
+        body={'query':'我想了解Alpha和Beta的资料。','request_key':'natural-scope'}
+        with patch('tcm.dataops.research_model.configured_model',return_value=model):
+            first=self.client.post('/chat',json=body)
+            self.assertEqual(first.status_code,200,first.text)
+            self.assertNotIn('family',first.json()['assistant']['message'])
+            again=self.client.post('/chat',json=body)
+            self.assertEqual(again.status_code,200,again.text)
+            snapshot=app.agent_runtime.memory.load(self.client.cookies.get(app.SESSION_COOKIE_NAME))
+            human=[m for m in snapshot.messages if isinstance(m,HumanMessage)][-1]
+            self.assertEqual(human.additional_kwargs['query_scope']['object_mentions'],['Alpha','Beta'])
+            second=self.client.post('/chat',json={'query':'这两味的药用部位','request_key':'short-scope'})
+            self.assertEqual(second.json()['status'],'success',second.text)
+        self.assertEqual(model.calls,3)
+        self.assertEqual(len(second.json()['answer_steps']),2)
+        for payload in inputs[1:]:
+            scope=payload['tool_observations']['conversation_scope']
+            self.assertTrue(scope['inherited'])
+            self.assertEqual(scope['object_mentions'],['Alpha','Beta'])
+
     def test_feedback_receives_failed_turn_context_in_initial_and_review(self):
         good=feedback.draft()
         pending={**good,'status':'needs_input','requirements':[], 'unresolved':['需要哪些属性？']}

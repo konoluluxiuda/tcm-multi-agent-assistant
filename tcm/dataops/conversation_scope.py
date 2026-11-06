@@ -2,12 +2,12 @@
 import re
 from langchain_core.messages import HumanMessage
 
-REFERENCE = re.compile(r'^(?:请)?(?:这|那)(?P<count>两|二|三|几|些|2|3)(?:个|味)?(?:草药|药材|中药|药)(?:的)?(?P<field>.+)$')
+REFERENCE = re.compile(r'^(?:请)?(?:这|那)(?P<count>两|二|三|几|些|2|3)(?:(?:个|味)(?:草药|药材|中药|药)?|草药|药材|中药|药)(?:的)?(?P<field>.+)$')
 
 
 def subject(question):
     text = question.strip().rstrip('。.!！?？')
-    match = re.fullmatch(r'(?:请)?(?:查看|查询|分别告诉我|分别查询|告诉我|给出|把)?(.+?)的(.+)', text)
+    match = re.fullmatch(r'(?:请)?(?:我想了解|我想知道|帮我查|查一下|查看|查询|分别告诉我|分别查询|告诉我|给出|把)?(.+?)的(.+)', text)
     if not match or REFERENCE.fullmatch(text):
         return None
     names = re.split(r'[、和与]', match[1])

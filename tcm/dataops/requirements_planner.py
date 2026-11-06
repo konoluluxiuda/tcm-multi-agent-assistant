@@ -378,7 +378,8 @@ def to_query_routes(bound: BoundRequirementsV2, plan: CompiledPlan) -> list:
             kind = step.arguments.get('relation_kind')
             routes.append({'tool': 'assistant',
                            'request': {'topic': 'etcm_relations', 'kind': kind,
-                                       'entities': [mention.get(r, r) for r in refs], 'page': 1}})
+                                       'entities': [mention.get(r, r) for r in refs], 'page': 1,
+                                       'resolve_unique_sources': True}})
         elif step.tool == 'dataset_info':
             routes.append({'tool': 'assistant', 'request': {'topic': 'dataset_info',
                                                            'datasets': step.arguments.get('datasets', [])}})
