@@ -1857,13 +1857,19 @@
                 const restored=[history.tcm,history.research,history.pubmed,history.assistant].filter(Boolean);
                 const lastAssistant=history.messages.findLastIndex(message=>message.role!=='user');
                 for (const [index,message] of history.messages.entries()) {
+                    if(message.role==='assistant' && message.answer_delivery){
+                        const card=document.createElement('div');card.className='message assistant-message';
+                        card.dataset.historyMessageIndex=String(index);
+                        renderQueryDelivery(card,message.answer_delivery);chatBody.appendChild(card);
+                        continue;
+                    }
                     if(index===lastAssistant&&(history.answer_delivery||restored.some(result=>result.message===message.content)))continue;
                     const node = document.createElement('div');
                     node.className = 'message ' + (message.role === 'user' ? 'user-message' : 'assistant-message');
                     node.textContent = typeof message.content === 'string' ? message.content : JSON.stringify(message.content);
                     chatBody.appendChild(node);
                 }
-                if (history.answer_delivery) {
+                if (history.answer_delivery && !history.messages[lastAssistant]?.answer_delivery) {
                     const card = document.createElement('div');
                     card.className = 'message assistant-message';
                     renderQueryDelivery(card, history.answer_delivery);chatBody.appendChild(card);

@@ -13,6 +13,7 @@
 | 问句、工具与失败定位 | [诊断说明](REQUEST_DIAGNOSTICS.md) |
 | 本次入口与介绍收敛 | [验证记录](../audits/qa_product_scope_v1/README.md) |
 | 真实资料问答走查及历史回看缺口 | [走查记录](../audits/qa_real_data_walkthrough_v1/README.md) |
+| 历史字段答案刷新恢复修复 | [修复与验证](../audits/chat_history_recovery_v1/README.md) |
 
 ## 数据与检索
 

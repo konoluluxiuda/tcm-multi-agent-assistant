@@ -291,8 +291,9 @@ def conversation(response: Response, session_id: Optional[str] = Cookie(None, al
     session_id = session_cookie(session_id)
     with session_turn(session_id):
         snapshot = agent_runtime.memory.load(session_id)
+        visible_messages = [m for m in snapshot.messages if m.type in ('human', 'ai')]
         result = {"messages": [{"role": "user" if m.type == "human" else "assistant", "content": m.content}
-                               for m in snapshot.messages if m.type in ('human', 'ai')],
+                               for m in visible_messages],
                   "retention_days": agent_runtime.memory.ttl_seconds / 86400,
                   "request_scope": chat_request_scope(session_id),
                   "acknowledged_request_keys": list(dict.fromkeys(
@@ -301,16 +302,21 @@ def conversation(response: Response, session_id: Optional[str] = Cookie(None, al
                       if not (field == 'dataops_request_key' and
                               m.additional_kwargs.get('dataops_card', {}).get('status') == 'queue_busy')
                       if isinstance(key := m.additional_kwargs.get(field), str)))}
-        delivery_key = (getattr(snapshot.messages[-1], 'additional_kwargs', {}).get('answer_delivery_key')
-                        if snapshot.messages else None)
-        if delivery_key:
-            from tcm.dataops.answer_delivery import read_answer
+        from tcm.dataops.answer_delivery import read_answer
+        for message, item in zip(visible_messages, result['messages']):
+            key = message.additional_kwargs.get('answer_delivery_key') if message.type == 'ai' else None
+            if not isinstance(key, str) or not key:
+                continue
             try:
-                result['answer_delivery'] = read_answer(dataops_service.store().root,
-                    agent_runtime.memory.key(session_id), delivery_key)
-            except KeyError:
-                result['answer_delivery'] = {'status':'unavailable','answer_steps':[],
-                    'response':'保存的查询交付已不可用，请重新查询。','unfinished':[]}
+                item['answer_delivery'] = read_answer(dataops_service.store().root,
+                    agent_runtime.memory.key(session_id), key)
+            except (KeyError, OSError, sqlite3.Error, ValueError, TypeError):
+                item['answer_delivery'] = {'status':'unavailable','answer_steps':[],
+                    'response':'此轮保存的查询结果暂时无法读取；可稍后刷新或重新查询。','unfinished':[]}
+        if result['messages'] and 'answer_delivery' in result['messages'][-1]:
+            # Retain the last-delivery API alias for existing clients. Each answer
+            # also belongs to its original message, never to a later table/clarification.
+            result['answer_delivery'] = result['messages'][-1]['answer_delivery']
             set_session_cookie(response, session_id)
             response.headers['Cache-Control'] = 'private, no-store'
             return result

@@ -86,6 +86,23 @@ async def check(args):
             assert '排查请求编号' not in await reply.inner_text()
             assert await reply.locator('.answer-evidence[open]').count()==0
             checks.append('missing_document_field_stays_visible_next_to_combined_properties')
+            async def displayed_answers():
+                return await page.locator('#chat-body [data-answer-delivery-status]').evaluate_all('''nodes => nodes.map(node => ({
+                    status:node.dataset.answerDeliveryStatus,
+                    fields:Array.from(node.querySelectorAll('.answer-fields'),item=>item.innerText),
+                    objects:Array.from(node.querySelectorAll('.answer-object > h4'),item=>item.textContent),
+                    evidence:node.querySelectorAll('.answer-evidence').length
+                }))''')
+            saved_answers=await displayed_answers()
+            assert len(saved_answers)==3
+            history_posts=[]
+            page.on('request',lambda request:history_posts.append(request.url) if request.method=='POST' else None)
+            await page.reload();await page.wait_for_function('window.tcmSessionReady === true')
+            assert await displayed_answers()==saved_answers
+            assert await page.locator('[data-history-message-index]').evaluate_all(
+                'nodes=>nodes.map(node=>node.dataset.historyMessageIndex)')==['1','3','5']
+            assert not history_posts
+            checks.append('all_saved_answers_restore_in_original_turns_without_post_or_duplicate')
             await send('把Alpha和Beta的ETCM科名、药用部位生成表格。')
             panel=page.locator('.table-delivery').last
             download=panel.get_by_role('link',name='下载 Excel')
@@ -98,9 +115,21 @@ async def check(args):
             await page.screenshot(path=str(args.out/'answers.png'),full_page=True)
             await page.reload();await page.wait_for_function('window.tcmSessionReady === true')
             await page.locator('.table-delivery').last.get_by_role('link',name='下载 Excel').wait_for(state='visible')
-            assert await page.locator('#chat-body .herb-source-card').count()==0
-            assert await page.locator('#chat-body [data-research-hit]').count()==0
-            checks.append('table_download_restored_without_stale_query_cards')
+            assert await displayed_answers()==saved_answers
+            assert await page.locator('#chat-body .table-delivery').count()==1
+            assert await page.locator('#chat-body').evaluate('''node => {
+                const table=node.querySelector('.table-delivery');
+                return Array.from(node.querySelectorAll('[data-answer-delivery-status]')).every(
+                    card=>Boolean(card.compareDocumentPosition(table)&Node.DOCUMENT_POSITION_FOLLOWING));
+            }''')
+            checks.append('table_restores_once_after_original_history_answers')
+            await send('我想了解Beta的信息')
+            posts_before=len(history_posts)
+            await page.reload();await page.wait_for_function('window.tcmSessionReady === true')
+            assert await displayed_answers()==saved_answers
+            assert len(history_posts)==posts_before
+            assert '你想查询哪些资料' in await page.locator('#chat-body .assistant-message').last.inner_text()
+            checks.append('clarification_remains_latest_with_prior_answers_in_place')
             # Conflicting values and distinct source identities must never be merged or overwritten.
             grouping=await page.evaluate('''() => {
                 const field=value=>({state:'present',value});

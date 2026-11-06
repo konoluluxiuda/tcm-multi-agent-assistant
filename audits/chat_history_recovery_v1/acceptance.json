@@ -1,0 +1,132 @@
+{
+  "date": "2026-11-06",
+  "implementation_parent_commit": "845d321",
+  "status": "passed",
+  "offline_tests": {
+    "total": 47,
+    "modules": [
+      {
+        "module": "test_chat_request_recovery.py",
+        "status": "passed",
+        "total": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_answer_delivery.py",
+        "status": "passed",
+        "total": 17,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_conversation_scope.py",
+        "status": "passed",
+        "total": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      },
+      {
+        "module": "test_preset_requests.py",
+        "status": "passed",
+        "total": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "expected_failures": 0,
+        "network_attempts": 0
+      }
+    ]
+  },
+  "presentation_browser": {
+    "status": "passed",
+    "checks": [
+      "default_navigation_only_advertises_qa",
+      "developer_extension_navigation_is_explicit_and_reversible",
+      "tools_in_left_sidebar_chat_in_center",
+      "two_herbs_three_fields_each_without_duplicate_cards",
+      "cross_source_fields_share_object_but_keep_separate_evidence",
+      "missing_document_field_stays_visible_next_to_combined_properties",
+      "all_saved_answers_restore_in_original_turns_without_post_or_duplicate",
+      "completed_table_has_direct_download",
+      "table_restores_once_after_original_history_answers",
+      "clarification_remains_latest_with_prior_answers_in_place",
+      "conflicting_values_distinct_sources_and_partial_states_preserved",
+      "legacy_scalar_routes_use_same_compact_display_without_hiding_missing_fields",
+      "quantity_formula_readable_without_changing_values_units_or_source_text",
+      "mobile_menu_and_no_horizontal_overflow"
+    ],
+    "javascript_errors": [],
+    "external_requests": [],
+    "model_calls": 0
+  },
+  "request_recovery_browser": {
+    "status": "passed",
+    "data": "synthetic",
+    "execution": "fixed",
+    "model_calls": 0,
+    "checks": [
+      "unreceived_request_refresh_does_not_send_manual_retry_reuses_body",
+      "committed_query_response_lost_refresh_restores_without_reexecution",
+      "committed_table_response_lost_restores_same_workspace_and_xlsx",
+      "editing_question_creates_new_request",
+      "changed_session_discards_old_pending_request",
+      "malformed_pending_storage_is_discarded",
+      "storage_write_failure_preserves_draft_and_prevents_post"
+    ],
+    "javascript_errors": [],
+    "external_browser_requests_blocked": [],
+    "browser_post_attempts": 7,
+    "query_tool_calls": 5,
+    "visual_layout_reviewed": false
+  },
+  "real_data_fixed_walkthrough": {
+    "status": "passed",
+    "questions": [
+      "我想了解茯苓的信息",
+      "给出性味和剂量",
+      "归经呢",
+      "查询泽泻的ETCM药用部位和药典功能与主治。",
+      "分别告诉我茯苓和泽泻的性味。"
+    ],
+    "retained_answer_turns": 4,
+    "restored_object_cards": 5,
+    "new_posts_on_refresh": 0,
+    "saved_steps_match": true,
+    "old_original_page_loaded": true,
+    "model_calls": 0,
+    "javascript_errors": [],
+    "external_requests": []
+  },
+  "local_activation": {
+    "port": 7896,
+    "source_revision": "72c906d4df45dc36d7a192c1188482fe0fc00f75c49116059dd3c9b73090cf43",
+    "restart_required": false,
+    "saved_state_unchanged": true,
+    "conversation_count": 5,
+    "workspace_count": 2,
+    "saved_answer_count": 14,
+    "artifact_count": 2,
+    "question_policy": "requirements_feedback_v1",
+    "execution_driver": "fixed",
+    "result_feedback_enabled": true,
+    "external_model_calls": 0,
+    "live_queries_submitted": 0,
+    "temporary_instance_stopped": true
+  },
+  "limitations": [
+    "Only retained messages with saved answer delivery keys",
+    "No live W model or generalization evaluation",
+    "Legacy messages and candidate tables retain existing recovery behavior"
+  ],
+  "git_committed": false
+}
